@@ -11,7 +11,7 @@ Commands and Queries:
     ```
     - POWer:CURRENTSOurce {CH<x>|REF<x>}
     - POWer:CURRENTSOurce?
-    - POWer:DISplay {OFF|ON|0|1}
+    - POWer:DISplay {ON|OFF|1|0}
     - POWer:DISplay?
     - POWer:GATESOurce {CH<x>|REF<x>|NONe}
     - POWer:GATESOurce?
@@ -27,11 +27,11 @@ Commands and Queries:
     - POWer:HARMonics:FREQRef?
     - POWer:HARMonics:IEC:CLAss {A|B|C<x>|D}
     - POWer:HARMonics:IEC:CLAss?
-    - POWer:HARMonics:IEC:FILter {OFF|ON|0|1}
+    - POWer:HARMonics:IEC:FILter {ON|OFF|1|0}
     - POWer:HARMonics:IEC:FILter?
     - POWer:HARMonics:IEC:FUNDamental <NR3>
     - POWer:HARMonics:IEC:FUNDamental?
-    - POWer:HARMonics:IEC:GROUPing {OFF|ON|1|0}
+    - POWer:HARMonics:IEC:GROUPing {ON|OFF|1|0}
     - POWer:HARMonics:IEC:GROUPing?
     - POWer:HARMonics:IEC:INPUTPOWer <NR3>
     - POWer:HARMonics:IEC:INPUTPOWer?
@@ -77,32 +77,32 @@ Commands and Queries:
     - POWer:HARMonics:SOURce?
     - POWer:HARMonics:STANDard {NONe|IEC|MIL}
     - POWer:HARMonics:STANDard?
-    - POWer:INDICators {OFF|ON|0|1}
+    - POWer:INDICators {ON|OFF|1|0}
     - POWer:INDICators?
     - POWer:MODulation:SOUrce {VOLTage|CURRent}
     - POWer:MODulation:SOUrce?
     - POWer:MODulation:TYPe {PWIdth|NWIdth|PERIod|PDUty|NDUty|FREQuency}
     - POWer:MODulation:TYPe?
     - POWer:QUALity:APPpwr?
-    - POWer:QUALity:DISplay:APPpwr {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:APPpwr {ON|OFF|1|0}
     - POWer:QUALity:DISplay:APPpwr?
-    - POWer:QUALity:DISplay:FREQuency {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:FREQuency {ON|OFF|1|0}
     - POWer:QUALity:DISplay:FREQuency?
-    - POWer:QUALity:DISplay:ICRESTfactor {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:ICRESTfactor {ON|OFF|1|0}
     - POWer:QUALity:DISplay:ICRESTfactor?
-    - POWer:QUALity:DISplay:IRMS {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:IRMS {ON|OFF|1|0}
     - POWer:QUALity:DISplay:IRMS?
-    - POWer:QUALity:DISplay:PHASEangle {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:PHASEangle {ON|OFF|1|0}
     - POWer:QUALity:DISplay:PHASEangle?
-    - POWer:QUALity:DISplay:POWERFACtor {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:POWERFACtor {ON|OFF|1|0}
     - POWer:QUALity:DISplay:POWERFACtor?
-    - POWer:QUALity:DISplay:REACTpwr {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:REACTpwr {ON|OFF|1|0}
     - POWer:QUALity:DISplay:REACTpwr?
-    - POWer:QUALity:DISplay:TRUEpwr {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:TRUEpwr {ON|OFF|1|0}
     - POWer:QUALity:DISplay:TRUEpwr?
-    - POWer:QUALity:DISplay:VCRESTfactor {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:VCRESTfactor {ON|OFF|1|0}
     - POWer:QUALity:DISplay:VCRESTfactor?
-    - POWer:QUALity:DISplay:VRMS {OFF|ON|0|1}
+    - POWer:QUALity:DISplay:VRMS {ON|OFF|1|0}
     - POWer:QUALity:DISplay:VRMS?
     - POWer:QUALity:FREQREFerence {VOLTage|CURRent}
     - POWer:QUALity:FREQREFerence?
@@ -167,7 +167,7 @@ Commands and Queries:
     - POWer:SOA:MASK:NR_Pt?
     - POWer:SOA:MASK:STATE {OFF|LIMITS|POINTS}
     - POWer:SOA:MASK:STATE?
-    - POWer:SOA:MASK:STOPOnviol {OFF|ON|0|1}
+    - POWer:SOA:MASK:STOPOnviol {ON|OFF|1|0}
     - POWer:SOA:MASK:STOPOnviol?
     - POWer:SOA:PLOTTYPe {LOG|LINear}
     - POWer:SOA:PLOTTYPe?
@@ -2870,7 +2870,7 @@ class PowerSoaMaskStoponviol(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:SOA:MASK:STOPOnviol {OFF|ON|0|1}
+        - POWer:SOA:MASK:STOPOnviol {ON|OFF|1|0}
         - POWer:SOA:MASK:STOPOnviol?
         ```
 
@@ -3223,7 +3223,7 @@ class PowerSoaMask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:SOA:MASK:STOPOnviol {OFF|ON|0|1}
+            - POWer:SOA:MASK:STOPOnviol {ON|OFF|1|0}
             - POWer:SOA:MASK:STOPOnviol?
             ```
 
@@ -4868,7 +4868,7 @@ class PowerQualityDisplayVrms(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:VRMS {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:VRMS {ON|OFF|1|0}
         - POWer:QUALity:DISplay:VRMS?
         ```
 
@@ -4893,7 +4893,7 @@ class PowerQualityDisplayVcrestfactor(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:VCRESTfactor {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:VCRESTfactor {ON|OFF|1|0}
         - POWer:QUALity:DISplay:VCRESTfactor?
         ```
 
@@ -4918,7 +4918,7 @@ class PowerQualityDisplayTruepwr(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:TRUEpwr {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:TRUEpwr {ON|OFF|1|0}
         - POWer:QUALity:DISplay:TRUEpwr?
         ```
 
@@ -4943,7 +4943,7 @@ class PowerQualityDisplayReactpwr(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:REACTpwr {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:REACTpwr {ON|OFF|1|0}
         - POWer:QUALity:DISplay:REACTpwr?
         ```
 
@@ -4968,7 +4968,7 @@ class PowerQualityDisplayPowerfactor(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:POWERFACtor {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:POWERFACtor {ON|OFF|1|0}
         - POWer:QUALity:DISplay:POWERFACtor?
         ```
 
@@ -4993,7 +4993,7 @@ class PowerQualityDisplayPhaseangle(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:PHASEangle {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:PHASEangle {ON|OFF|1|0}
         - POWer:QUALity:DISplay:PHASEangle?
         ```
 
@@ -5018,7 +5018,7 @@ class PowerQualityDisplayIrms(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:IRMS {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:IRMS {ON|OFF|1|0}
         - POWer:QUALity:DISplay:IRMS?
         ```
 
@@ -5043,7 +5043,7 @@ class PowerQualityDisplayIcrestfactor(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:ICRESTfactor {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:ICRESTfactor {ON|OFF|1|0}
         - POWer:QUALity:DISplay:ICRESTfactor?
         ```
 
@@ -5068,7 +5068,7 @@ class PowerQualityDisplayFrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:FREQuency {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:FREQuency {ON|OFF|1|0}
         - POWer:QUALity:DISplay:FREQuency?
         ```
 
@@ -5093,7 +5093,7 @@ class PowerQualityDisplayApppwr(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:QUALity:DISplay:APPpwr {OFF|ON|0|1}
+        - POWer:QUALity:DISplay:APPpwr {ON|OFF|1|0}
         - POWer:QUALity:DISplay:APPpwr?
         ```
 
@@ -5160,7 +5160,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:APPpwr {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:APPpwr {ON|OFF|1|0}
             - POWer:QUALity:DISplay:APPpwr?
             ```
 
@@ -5187,7 +5187,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:FREQuency {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:FREQuency {ON|OFF|1|0}
             - POWer:QUALity:DISplay:FREQuency?
             ```
 
@@ -5215,7 +5215,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:ICRESTfactor {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:ICRESTfactor {ON|OFF|1|0}
             - POWer:QUALity:DISplay:ICRESTfactor?
             ```
 
@@ -5241,7 +5241,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:IRMS {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:IRMS {ON|OFF|1|0}
             - POWer:QUALity:DISplay:IRMS?
             ```
 
@@ -5269,7 +5269,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:PHASEangle {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:PHASEangle {ON|OFF|1|0}
             - POWer:QUALity:DISplay:PHASEangle?
             ```
 
@@ -5297,7 +5297,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:POWERFACtor {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:POWERFACtor {ON|OFF|1|0}
             - POWer:QUALity:DISplay:POWERFACtor?
             ```
 
@@ -5323,7 +5323,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:REACTpwr {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:REACTpwr {ON|OFF|1|0}
             - POWer:QUALity:DISplay:REACTpwr?
             ```
 
@@ -5349,7 +5349,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:TRUEpwr {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:TRUEpwr {ON|OFF|1|0}
             - POWer:QUALity:DISplay:TRUEpwr?
             ```
 
@@ -5377,7 +5377,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:VCRESTfactor {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:VCRESTfactor {ON|OFF|1|0}
             - POWer:QUALity:DISplay:VCRESTfactor?
             ```
 
@@ -5403,7 +5403,7 @@ class PowerQualityDisplay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:QUALity:DISplay:VRMS {OFF|ON|0|1}
+            - POWer:QUALity:DISplay:VRMS {ON|OFF|1|0}
             - POWer:QUALity:DISplay:VRMS?
             ```
 
@@ -5886,7 +5886,7 @@ class PowerIndicators(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:INDICators {OFF|ON|0|1}
+        - POWer:INDICators {ON|OFF|1|0}
         - POWer:INDICators?
         ```
 
@@ -7607,7 +7607,7 @@ class PowerHarmonicsIecGrouping(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:HARMonics:IEC:GROUPing {OFF|ON|1|0}
+        - POWer:HARMonics:IEC:GROUPing {ON|OFF|1|0}
         - POWer:HARMonics:IEC:GROUPing?
         ```
 
@@ -7657,7 +7657,7 @@ class PowerHarmonicsIecFilter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:HARMonics:IEC:FILter {OFF|ON|0|1}
+        - POWer:HARMonics:IEC:FILter {ON|OFF|1|0}
         - POWer:HARMonics:IEC:FILter?
         ```
 
@@ -7775,7 +7775,7 @@ class PowerHarmonicsIec(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:HARMonics:IEC:FILter {OFF|ON|0|1}
+            - POWer:HARMonics:IEC:FILter {ON|OFF|1|0}
             - POWer:HARMonics:IEC:FILter?
             ```
 
@@ -7829,7 +7829,7 @@ class PowerHarmonicsIec(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:HARMonics:IEC:GROUPing {OFF|ON|1|0}
+            - POWer:HARMonics:IEC:GROUPing {ON|OFF|1|0}
             - POWer:HARMonics:IEC:GROUPing?
             ```
 
@@ -8448,7 +8448,7 @@ class PowerDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:DISplay {OFF|ON|0|1}
+        - POWer:DISplay {ON|OFF|1|0}
         - POWer:DISplay?
         ```
 
@@ -8570,7 +8570,7 @@ class Power(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:DISplay {OFF|ON|0|1}
+            - POWer:DISplay {ON|OFF|1|0}
             - POWer:DISplay?
             ```
 
@@ -8670,7 +8670,7 @@ class Power(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:INDICators {OFF|ON|0|1}
+            - POWer:INDICators {ON|OFF|1|0}
             - POWer:INDICators?
             ```
 

@@ -14,7 +14,7 @@ Commands and Queries:
     - SEARCH:DELETEALL
     - SEARCH:DELete <QString>
     - SEARCH:LIST?
-    - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch}
+    - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch|FROMSearch<x>}
     - SEARCH:SEARCH<x>:NAVigate {NEXT|PREVious|MIN|NONE|MAX}
     - SEARCH:SEARCH<x>:TOTAL?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
@@ -63,6 +63,12 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe {CRC|ESDERR|ESDJAB|CHECKSUM|ANY}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer {TCP|ICMP|UDP}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe {IPV4|IPV6}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:DESTinationaddr:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:DESTinationaddr:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:PROTOcol:VALue <QString>
@@ -77,10 +83,18 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QUALifier?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa: LENgth <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:DESTinationport:VALue <QString>
@@ -89,29 +103,45 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe {ADH|DH<x>|DL1}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition {SOF|FRAMEtype|IDentifier|DATa|IDANDDATA|EOF|ERRor|FDBITS}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType {PCRC|FCRC}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe {DAH|AH<x>|AL1}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:DIRection {READ|WRITE|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:DIRection?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:OFFSet <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:OFFSet?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQUal|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQual|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType {AF|VCID|SDT|SEC|SBC|ADS|DAS}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|xlFormError|CRC|ANYERRor}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:BRSBit {ONE|ZERo|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:BRSBit?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:ESIBit {ONE|ZERo|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:ESIBit?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote|xldata}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:MODe {EXTENDed|STandard}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:MODe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:BLUe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:BLUe:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:CONDition {SOT|EOT|DATa|EOTPDATa|OPTIONALPARam|SCRambling|COMPression|PACKets|BUSTURNAROUnd|ESCAPEMODe|STop|ERRors|MODe|WORD|SYMBol}
@@ -162,7 +192,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YUV:Y?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:CONDition {STARt|FRAMes|FRAMEID|PTYPe|DLC|EXTDLC|NETMN|COUNter|DATa|ERRors}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:CONDition?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:DATa:SIZe?
@@ -402,7 +432,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:QUAlifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA0|DATA1|DATA2|MDATA}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA<x>|MDATA}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:VALue?
@@ -458,7 +488,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:VALue?
@@ -466,7 +496,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:OFFSet <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:OFFSet?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:SIZe?
@@ -508,17 +538,17 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I2C:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:MODe {ADDR10|ADDR7}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:MODe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BPACKets {RESPonse|BROadcast}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BPACKets?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|DDR|ERRors|HOTJoin|DMSGEnd|BMSGEnd|HDRRestart|HDRExit}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CONDition?
@@ -526,45 +556,49 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:DIRection?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <QString
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ERRORTYPe {NACK|TBIT|PARity|BADDr|DADDr|PREamble|CRC}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ERRORTYPe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets {RESPonse|DIRect}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:CONDition {DATA|IDANDDATA|ERRor|IDentifier|SLEEP|SYNCfield|WAKEup}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:CONDition?
@@ -658,6 +692,24 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:BIT:TF?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:PARity {ONE|ZERo|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:PARity?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe {INVentory|STAYQUIet|RFU|RDSBLOCk|WRSBLOCk|LOCKBLOCk|RDMBLOCk|WRMBLOCk|SELECT15693SET|RSTTOREADy|WRITEAFI|LOCKAFI|WRITEDSFID|LOCKDSFID|GETSYSTEMINFo|GETMBSECSYSTem|FRDMBLOCk|EXRDSBLOCk|EXWRSBLOCk|EXLOCKBLOCk|EXRDMBLOCk|AUTHenticate|KEYUPDate|AUTHCRYPto|SECURECRYPto|CHALlenge|READBUFFer|EXGETSYSTINFo|EXGETMBSSTATus|FEXRDMBLOCks|custom|REQa|WUPa|PROPrietary|SELECT14443A|HLTa|REQB|WUPB|SLOTMARKER|ATTRIB|HLTB|ANY|ATRReq|WUPReq|PSLReq|DEPReq|DSLReq|RLSReq}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition {SOC|SOS|SYNC|CMDCODe|EOC|ERRors|SOF|AFI|PUPi|IDEntifier|UID|EOF|PAYLoad|DATa|RESPCODe|EOS}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe {ANY|PARity|CRC}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS {EIGHTBIT|SIXTYFOURBIT}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe {SAK|ATQA|ATQBPROP|ATQBCOMP|HLTB|ANY|ATRRes|WUPRes|PSLRes|DEPRes|DSLRes|RLSRes}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe {COMMand|RESPonse}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition {DATa}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:SIZe <NR1>
@@ -688,6 +740,48 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM:ROMCODe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer {CONTROL|DATA|EITHER}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype {TS<x>|EIOS|EIEOS|FTS|SDS|SKP}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC {ORDSET|DATA|INVALID}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe {ADDR32|ADDR64}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe {ANY|FADD|SWAP|CAS}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection {EITHER|READ|WRITE}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe {ANY|LOCAL|ENEND}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe {ANY|MEMORY|IO|CONFIG|MESSAGE|COMPLETION|AOPERATION|PREFIX}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|SENSORSTATus|CRCERRor}
@@ -768,27 +862,27 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:VALue <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:VALue?
@@ -796,29 +890,29 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQualINrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:CONDition {STARt|REPEATSTARt|ADDRess|HOSTADDR|DEVICEADDR|COMMand|DATa|UDIDDATa|ERRor|STOP|IDLe}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr:TYPe {ANY|ACK|NACK|PEC}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:FIELDBYTe {ONE|TWO|FOUR}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:FIELDBYTe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce B<x>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:CONDition {SYNC|DATa|ERRors|CONTROLCODe|CONTROLCHAR}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:CONDition?
@@ -828,11 +922,11 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:CONTROLCODETYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:ERRORTYPe {EEP|ESC|PARity}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:ERRORTYPe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition {DATA|SS|STARTofframe}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition?
@@ -846,17 +940,17 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:SIZe <NR2>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <Qstring>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow|SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow| SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:TYPe {GET|SET|OPTional}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:TYPe?
@@ -874,8 +968,22 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERRor|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter {COM|EDB|END|EPF|SDP|SHP|SKP|SLC|SUB|Any}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance {CP0|CP1|CP2|CP3|CP4|CP56|CP78}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {COMPATTern|CONTROLCH|CUSTom|DATAPacket|EOP|ERRor|HANDSHAKEPacket|OSET|PACKet|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe {CRC5|CRC16|CRC32}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols <NR1>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:OFFSet <NR1>
@@ -890,10 +998,22 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|PID}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe {CHARacter|DISParity}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|CRCTYPes|ERR8B10B|PID}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType {ACK|ANY|NAK|NYET|STALL}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe {KCODe|DATa}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET {TSEQ|TS<x>|SKP|DPPSTART|DPPEND|DPPABORT|LCSTART|HPSTART}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe {LMP|TP|DP|ITP|ANY}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP {PORTCAP|PORTCFG|PORTRSP|PRECTM|SETLF|U2IT|VDEVTEST|ANY}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP {ACK|DEVNOTif|ERDY|NRDY|PING|PINGRSP|STATus|STALl|ANY}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SOFFRAMENUMber <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SOFFRAMENUMber?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPECIALType {ANY|ERROr|PING|PREamble|RESERVed|SPLit}
@@ -980,7 +1100,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSLevel?
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSMode {Auto|Manual}
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSMode?
-    - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource?
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:DATARate {333|800|1066|1200|1333|1466|1600|1866|2133}
     - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:DATARate?
@@ -1096,7 +1216,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:DELTatime?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:FUNCtion {AND|NANd|NOR|OR}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:FUNCtion?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|Ch<x>_D<x>|REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|CH<x>_D<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x> <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x>?
@@ -1114,9 +1234,9 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:POLarity {POSitive|NEGative|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREthan|LESSThan|EQual|UNEQual}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn?
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:HIGHLimit <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:HIGHLimit?
@@ -1141,7 +1261,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:HIGH?
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:LOW <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:LOW?
-    - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual}NOTEQual}
+    - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual|NOTEQual}
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn?
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth?
@@ -1278,6 +1398,8 @@ class SearchSearchItemTriggerAWindowWidth(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR3>`` specifies the minimum width in seconds.
+        - ``ECL`` specifies a preset high level of -1.3 V and TTL specifies a preset high level of
+          +1.4V.
     """
 
 
@@ -1861,6 +1983,8 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
 
         Info:
             - ``<NR3>`` specifies the minimum width in seconds.
+            - ``ECL`` specifies a preset high level of -1.3 V and TTL specifies a preset high level
+              of +1.4V.
         """
         return self._width
 
@@ -1870,7 +1994,7 @@ class SearchSearchItemTriggerAType(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the trigger type setting for a search to determine where to
-          place a mark. The search number is specified by x.
+          place a mark. The search number is specified by x. Note: Some trigger types are optional.
 
     Usage:
         - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TYPe?`` query.
@@ -2763,7 +2887,7 @@ class SearchSearchItemTriggerAStopacq(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<x>`` is the number of the search on which to enable or disable the stop acquisition
           function.
-        - ``<NR1>`` = 1 enables stopping when a search hit is found. Any other character disables
+        - ``<NR1> = 1`` enables stopping when a search hit is found. Any other character disables
           the feature.
         - ``ON`` enables stopping when a search hit is found.
         - ``OFF`` disables stopping on a search hit.
@@ -2787,7 +2911,7 @@ class SearchSearchItemTriggerAState(SCPICmdWrite):
         ```
 
     Info:
-        - ``<NR1>`` = 1 enables the search. Any other character disables the search.
+        - ``<NR1> = 1`` enables the search. Any other character disables the search.
         - ``ON`` enables the search.
         - ``OFF`` disables the search.
     """
@@ -3773,7 +3897,7 @@ class SearchSearchItemTriggerARuntWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual}NOTEQual}
+        - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual|NOTEQual}
         - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn?
         ```
 
@@ -4157,7 +4281,7 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual}NOTEQual}
+            - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn {OCCURS|LESSthan|MOREthan|EQual|NOTEQual}
             - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WHEn?
             ```
 
@@ -4214,7 +4338,7 @@ class SearchSearchItemTriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
         - This command specifies to search for a pulse with a width (duration) that is less than,
           greater than, equal to, or unequal to a specified value (set using
           ``SEARch:A:PULSEWidth:WIDth`` ), OR whose ``SEARch:A:PULSEWidth:LOWLimit`` and
-          ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
+          ``SEARch:A:PULSEWidth:HIGHLimit``. The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4651,7 +4775,7 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
             - This command specifies to search for a pulse with a width (duration) that is less
               than, greater than, equal to, or unequal to a specified value (set using
               ``SEARch:A:PULSEWidth:WIDth`` ), OR whose ``SEARch:A:PULSEWidth:LOWLimit`` and
-              ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
+              ``SEARch:A:PULSEWidth:HIGHLimit``. The search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4704,7 +4828,7 @@ class SearchSearchItemTriggerALogicWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREthan|LESSThan|EQual|UNEQual}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn?
         ```
 
@@ -4736,7 +4860,7 @@ class SearchSearchItemTriggerALogicUseclockedge(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
         ```
 
@@ -5316,7 +5440,7 @@ class SearchSearchItemTriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|Ch<x>_D<x>|REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|CH<x>_D<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
         ```
 
@@ -5373,7 +5497,7 @@ class SearchSearchItemTriggerALogicInputClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|Ch<x>_D<x>|REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|CH<x>_D<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
             ```
 
@@ -5789,7 +5913,7 @@ class SearchSearchItemTriggerALogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
             ```
 
@@ -5820,7 +5944,7 @@ class SearchSearchItemTriggerALogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREthan|LESSThan|EQual|UNEQual}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn?
             ```
 
@@ -5891,7 +6015,7 @@ class SearchSearchItemTriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
           specified search.
         - ``MATH<x>`` specifies the math waveform as the search source, where the math number is
           specified by x.
-        - ``REF<x>`` specifies the reference waveform as the search source, where the reference
+        - ``REF<x>`` specifies the reference waveform as the search source, where thereference
           number is specified by x.
         - ``REF<x>_D<x>`` specifies a digital reference waveform as the source waveform for the
           specified search.
@@ -6009,7 +6133,7 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
               specified search.
             - ``MATH<x>`` specifies the math waveform as the search source, where the math number is
               specified by x.
-            - ``REF<x>`` specifies the reference waveform as the search source, where the reference
+            - ``REF<x>`` specifies the reference waveform as the search source, where thereference
               number is specified by x.
             - ``REF<x>_D<x>`` specifies a digital reference waveform as the source waveform for the
               specified search.
@@ -6068,7 +6192,7 @@ class SearchSearchItemTriggerADdrwriteTolerance(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state tolerance value.
+        - ``<NR3>`` sets the logic state tolerance value.
     """
 
 
@@ -6158,7 +6282,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobeMid(SCPICmdWrite, SCPICmdRea
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe mid reference value.
+        - ``<NR3>`` sets the DDR read search strobe mid reference value.
     """
 
 
@@ -6185,7 +6309,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobeLow(SCPICmdWrite, SCPICmdRea
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe low reference value.
+        - ``<NR3>`` sets the DDR read search strobe low reference value.
     """
 
 
@@ -6212,7 +6336,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobeHigh(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``NR3`` sets the DDR write search strobe high value.
+        - ``<NR3>`` sets the DDR write search strobe high value.
     """
 
 
@@ -6268,7 +6392,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR write search strobe high value.
+            - ``<NR3>`` sets the DDR write search strobe high value.
         """
         return self._high
 
@@ -6296,7 +6420,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe low reference value.
+            - ``<NR3>`` sets the DDR read search strobe low reference value.
         """
         return self._low
 
@@ -6324,7 +6448,7 @@ class SearchSearchItemTriggerADdrwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe mid reference value.
+            - ``<NR3>`` sets the DDR read search strobe mid reference value.
         """
         return self._mid
 
@@ -6352,7 +6476,7 @@ class SearchSearchItemTriggerADdrwriteReflevelDataMid(SCPICmdWrite, SCPICmdRead)
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data mid reference value.
+        - ``<NR3>`` sets the DDR read search data mid reference value.
     """
 
 
@@ -6379,7 +6503,7 @@ class SearchSearchItemTriggerADdrwriteReflevelDataLow(SCPICmdWrite, SCPICmdRead)
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data low reference value.
+        - ``<NR3>`` sets the DDR read search data low reference value.
     """
 
 
@@ -6406,7 +6530,7 @@ class SearchSearchItemTriggerADdrwriteReflevelDataHigh(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data high reference value.
+        - ``<NR3>`` sets the DDR read search data high reference value.
     """
 
 
@@ -6462,7 +6586,7 @@ class SearchSearchItemTriggerADdrwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data high reference value.
+            - ``<NR3>`` sets the DDR read search data high reference value.
         """
         return self._high
 
@@ -6490,7 +6614,7 @@ class SearchSearchItemTriggerADdrwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data low reference value.
+            - ``<NR3>`` sets the DDR read search data low reference value.
         """
         return self._low
 
@@ -6518,7 +6642,7 @@ class SearchSearchItemTriggerADdrwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data mid reference value.
+            - ``<NR3>`` sets the DDR read search data mid reference value.
         """
         return self._mid
 
@@ -6795,7 +6919,7 @@ class SearchSearchItemTriggerADdrwriteMincas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR write chip select CAS minimum value.
+        - ``<NR3>`` sets the DDR write chip select CAS minimum value.
     """
 
 
@@ -6823,7 +6947,7 @@ class SearchSearchItemTriggerADdrwriteMaxcas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR write chip select CAS maximum value.
+        - ``<NR3>`` sets the DDR write chip select CAS maximum value.
     """
 
 
@@ -6850,7 +6974,7 @@ class SearchSearchItemTriggerADdrwriteMargin(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR write search margin percent value in the range of 0% to 100%.
+        - ``<NR3>`` sets the DDR write search margin percent value in the range of 0% to 100%.
     """
 
 
@@ -7209,7 +7333,7 @@ class SearchSearchItemTriggerADdrwriteHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR write search hysteresis percent value in the range of 0% to 50%.
+        - ``<NR3>`` sets the DDR write search hysteresis percent value in the range of 0% to 50%.
     """
 
 
@@ -7372,7 +7496,7 @@ class SearchSearchItemTriggerADdrwriteCslevel(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR write chip select level value.
+        - ``<NR3>`` sets the DDR write chip select level value.
     """
 
 
@@ -7427,7 +7551,7 @@ class SearchSearchItemTriggerADdrwriteBurstlatency(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state burst latency value.
+        - ``<NR3>`` sets the logic state burst latency value.
     """
 
 
@@ -7672,7 +7796,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state burst latency value.
+            - ``<NR3>`` sets the logic state burst latency value.
         """
         return self._burstlatency
 
@@ -7729,7 +7853,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR write chip select level value.
+            - ``<NR3>`` sets the DDR write chip select level value.
         """
         return self._cslevel
 
@@ -7899,7 +8023,8 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR write search hysteresis percent value in the range of 0% to 50%.
+            - ``<NR3>`` sets the DDR write search hysteresis percent value in the range of 0% to
+              50%.
         """
         return self._hysteresis
 
@@ -8003,7 +8128,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR write search margin percent value in the range of 0% to 100%.
+            - ``<NR3>`` sets the DDR write search margin percent value in the range of 0% to 100%.
         """
         return self._margin
 
@@ -8032,7 +8157,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR write chip select CAS maximum value.
+            - ``<NR3>`` sets the DDR write chip select CAS maximum value.
         """
         return self._maxcas
 
@@ -8061,7 +8186,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR write chip select CAS minimum value.
+            - ``<NR3>`` sets the DDR write chip select CAS minimum value.
         """
         return self._mincas
 
@@ -8233,7 +8358,7 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state tolerance value.
+            - ``<NR3>`` sets the logic state tolerance value.
         """
         return self._tolerance
 
@@ -8261,7 +8386,7 @@ class SearchSearchItemTriggerADdrreadwriteTolerance(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state tolerance value.
+        - ``<NR3>`` sets the logic state tolerance value.
     """
 
 
@@ -8351,7 +8476,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobeMid(SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search strobe mid reference value.
+        - ``<NR3>`` sets the DDR read/write search strobe mid reference value.
     """
 
 
@@ -8378,7 +8503,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobeLow(SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search strobe low reference value.
+        - ``<NR3>`` sets the DDR read/write search strobe low reference value.
     """
 
 
@@ -8405,7 +8530,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobeHigh(SCPICmdWrite, SCPIC
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe high value.
+        - ``<NR3>`` sets the DDR read search strobe high value.
     """
 
 
@@ -8461,7 +8586,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe high value.
+            - ``<NR3>`` sets the DDR read search strobe high value.
         """
         return self._high
 
@@ -8489,7 +8614,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search strobe low reference value.
+            - ``<NR3>`` sets the DDR read/write search strobe low reference value.
         """
         return self._low
 
@@ -8517,7 +8642,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search strobe mid reference value.
+            - ``<NR3>`` sets the DDR read/write search strobe mid reference value.
         """
         return self._mid
 
@@ -8545,7 +8670,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelDataMid(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search data mid reference value.
+        - ``<NR3>`` sets the DDR read/write search data mid reference value.
     """
 
 
@@ -8572,7 +8697,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelDataLow(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search data low reference value.
+        - ``<NR3>`` sets the DDR read/write search data low reference value.
     """
 
 
@@ -8599,7 +8724,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelDataHigh(SCPICmdWrite, SCPICmd
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search data high reference value.
+        - ``<NR3>`` sets the DDR read/write search data high reference value.
     """
 
 
@@ -8655,7 +8780,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search data high reference value.
+            - ``<NR3>`` sets the DDR read/write search data high reference value.
         """
         return self._high
 
@@ -8683,7 +8808,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search data low reference value.
+            - ``<NR3>`` sets the DDR read/write search data low reference value.
         """
         return self._low
 
@@ -8711,7 +8836,7 @@ class SearchSearchItemTriggerADdrreadwriteReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search data mid reference value.
+            - ``<NR3>`` sets the DDR read/write search data mid reference value.
         """
         return self._mid
 
@@ -8989,7 +9114,7 @@ class SearchSearchItemTriggerADdrreadwriteMincas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read chip select CAS minimum value.
+        - ``<NR3>`` sets the DDR read chip select CAS minimum value.
     """
 
 
@@ -9017,7 +9142,7 @@ class SearchSearchItemTriggerADdrreadwriteMaxcas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read chip select CAS maximum value.
+        - ``<NR3>`` sets the DDR read chip select CAS maximum value.
     """
 
 
@@ -9044,7 +9169,7 @@ class SearchSearchItemTriggerADdrreadwriteMargin(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search margin percent value in the range of 0% to 100%.
+        - ``<NR3>`` sets the DDR read/write search margin percent value in the range of 0% to 100%.
     """
 
 
@@ -9403,7 +9528,8 @@ class SearchSearchItemTriggerADdrreadwriteHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read/write search hysteresis percent value in the range of 0% to 50%.
+        - ``<NR3>`` sets the DDR read/write search hysteresis percent value in the range of 0% to
+          50%.
     """
 
 
@@ -9497,7 +9623,7 @@ class SearchSearchItemTriggerADdrreadwriteCssource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource?
         ```
 
@@ -9568,7 +9694,7 @@ class SearchSearchItemTriggerADdrreadwriteCslevel(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read/write chip select level value.
+        - ``<NR3>`` sets the DDR read/write chip select level value.
     """
 
 
@@ -9623,7 +9749,7 @@ class SearchSearchItemTriggerADdrreadwriteBurstlatency(SCPICmdWrite, SCPICmdRead
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state burst latency value.
+        - ``<NR3>`` sets the logic state burst latency value.
     """
 
 
@@ -9881,7 +10007,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state burst latency value.
+            - ``<NR3>`` sets the logic state burst latency value.
         """
         return self._burstlatency
 
@@ -9938,7 +10064,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read/write chip select level value.
+            - ``<NR3>`` sets the DDR read/write chip select level value.
         """
         return self._cslevel
 
@@ -9990,7 +10116,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:DDRREADWRITE:CSSource?
             ```
 
@@ -10108,8 +10234,8 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search hysteresis percent value in the range of 0% to
-              50%.
+            - ``<NR3>`` sets the DDR read/write search hysteresis percent value in the range of 0%
+              to 50%.
         """
         return self._hysteresis
 
@@ -10217,7 +10343,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read/write search margin percent value in the range of 0% to
+            - ``<NR3>`` sets the DDR read/write search margin percent value in the range of 0% to
               100%.
         """
         return self._margin
@@ -10247,7 +10373,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read chip select CAS maximum value.
+            - ``<NR3>`` sets the DDR read chip select CAS maximum value.
         """
         return self._maxcas
 
@@ -10276,7 +10402,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read chip select CAS minimum value.
+            - ``<NR3>`` sets the DDR read chip select CAS minimum value.
         """
         return self._mincas
 
@@ -10449,7 +10575,7 @@ class SearchSearchItemTriggerADdrreadwrite(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state tolerance value.
+            - ``<NR3>`` sets the logic state tolerance value.
         """
         return self._tolerance
 
@@ -10477,7 +10603,7 @@ class SearchSearchItemTriggerADdrreadTolerance(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state tolerance value.
+        - ``<NR3>`` sets the logic state tolerance value.
     """
 
 
@@ -10566,7 +10692,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobeMid(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe mid reference value.
+        - ``<NR3>`` sets the DDR read search strobe mid reference value.
     """
 
 
@@ -10593,7 +10719,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobeLow(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe low reference value.
+        - ``<NR3>`` sets the DDR read search strobe low reference value.
     """
 
 
@@ -10620,7 +10746,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobeHigh(SCPICmdWrite, SCPICmdRea
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search strobe high value.
+        - ``<NR3>`` sets the DDR read search strobe high value.
     """
 
 
@@ -10676,7 +10802,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe high value.
+            - ``<NR3>`` sets the DDR read search strobe high value.
         """
         return self._high
 
@@ -10704,7 +10830,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe low reference value.
+            - ``<NR3>`` sets the DDR read search strobe low reference value.
         """
         return self._low
 
@@ -10732,7 +10858,7 @@ class SearchSearchItemTriggerADdrreadReflevelStrobe(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search strobe mid reference value.
+            - ``<NR3>`` sets the DDR read search strobe mid reference value.
         """
         return self._mid
 
@@ -10760,7 +10886,7 @@ class SearchSearchItemTriggerADdrreadReflevelDataMid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data mid reference value.
+        - ``<NR3>`` sets the DDR read search data mid reference value.
     """
 
 
@@ -10787,7 +10913,7 @@ class SearchSearchItemTriggerADdrreadReflevelDataLow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data low reference value.
+        - ``<NR3>`` sets the DDR read search data low reference value.
     """
 
 
@@ -10814,7 +10940,7 @@ class SearchSearchItemTriggerADdrreadReflevelDataHigh(SCPICmdWrite, SCPICmdRead)
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search data high reference value.
+        - ``<NR3>`` sets the DDR read search data high reference value.
     """
 
 
@@ -10870,7 +10996,7 @@ class SearchSearchItemTriggerADdrreadReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data high reference value.
+            - ``<NR3>`` sets the DDR read search data high reference value.
         """
         return self._high
 
@@ -10898,7 +11024,7 @@ class SearchSearchItemTriggerADdrreadReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data low reference value.
+            - ``<NR3>`` sets the DDR read search data low reference value.
         """
         return self._low
 
@@ -10926,7 +11052,7 @@ class SearchSearchItemTriggerADdrreadReflevelData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search data mid reference value.
+            - ``<NR3>`` sets the DDR read search data mid reference value.
         """
         return self._mid
 
@@ -11197,7 +11323,7 @@ class SearchSearchItemTriggerADdrreadMincas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read chip select CAS minimum value.
+        - ``<NR3>`` sets the DDR read chip select CAS minimum value.
     """
 
 
@@ -11224,7 +11350,7 @@ class SearchSearchItemTriggerADdrreadMaxcas(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read chip select CAS maximum value.
+        - ``<NR3>`` sets the DDR read chip select CAS maximum value.
     """
 
 
@@ -11251,7 +11377,7 @@ class SearchSearchItemTriggerADdrreadMargin(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search margin percent value in the range of 0% to 100%.
+        - ``<NR3>`` sets the DDR read search margin percent value in the range of 0% to 100%.
     """
 
 
@@ -11610,7 +11736,7 @@ class SearchSearchItemTriggerADdrreadHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` sets the DDR read search hysteresis percent value in the range of 0% to 50%.
+        - ``<NR3>`` sets the DDR read search hysteresis percent value in the range of 0% to 50%.
     """
 
 
@@ -11773,7 +11899,7 @@ class SearchSearchItemTriggerADdrreadCslevel(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the DDR read chip select level value.
+        - ``<NR3>`` sets the DDR read chip select level value.
     """
 
 
@@ -11809,7 +11935,9 @@ class SearchSearchItemTriggerADdrreadBurstlatency(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:DDRREAD:BURSTLatency`` command.
 
     Description:
-        - This command sets or queries the DDR read logic state burst latency value.
+        - This command sets or queries the DDR read logic state burst latency value. The DDR3
+          standard supports the following data rates: 800|1066|1333|1600|1866|2133. The LPDDR3
+          standard supports the following data rates: 333|800|1066|1200|1333|1466|1600|1866|2133.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -11828,7 +11956,7 @@ class SearchSearchItemTriggerADdrreadBurstlatency(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SEARCH<x>`` specifies the search number.
-        - ``NR3`` sets the logic state burst latency value.
+        - ``<NR3>`` sets the logic state burst latency value.
     """
 
 
@@ -12053,7 +12181,10 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:DDRREAD:BURSTLatency`` command.
 
         Description:
-            - This command sets or queries the DDR read logic state burst latency value.
+            - This command sets or queries the DDR read logic state burst latency value. The DDR3
+              standard supports the following data rates: 800|1066|1333|1600|1866|2133. The LPDDR3
+              standard supports the following data rates:
+              333|800|1066|1200|1333|1466|1600|1866|2133.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -12072,7 +12203,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state burst latency value.
+            - ``<NR3>`` sets the logic state burst latency value.
         """
         return self._burstlatency
 
@@ -12129,7 +12260,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read chip select level value.
+            - ``<NR3>`` sets the DDR read chip select level value.
         """
         return self._cslevel
 
@@ -12299,7 +12430,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search hysteresis percent value in the range of 0% to 50%.
+            - ``<NR3>`` sets the DDR read search hysteresis percent value in the range of 0% to 50%.
         """
         return self._hysteresis
 
@@ -12403,7 +12534,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` sets the DDR read search margin percent value in the range of 0% to 100%.
+            - ``<NR3>`` sets the DDR read search margin percent value in the range of 0% to 100%.
         """
         return self._margin
 
@@ -12432,7 +12563,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read chip select CAS maximum value.
+            - ``<NR3>`` sets the DDR read chip select CAS maximum value.
         """
         return self._maxcas
 
@@ -12461,7 +12592,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the DDR read chip select CAS minimum value.
+            - ``<NR3>`` sets the DDR read chip select CAS minimum value.
         """
         return self._mincas
 
@@ -12633,7 +12764,7 @@ class SearchSearchItemTriggerADdrread(SCPICmdRead):
 
         Info:
             - ``SEARCH<x>`` specifies the search number.
-            - ``NR3`` sets the logic state tolerance value.
+            - ``<NR3>`` sets the logic state tolerance value.
         """
         return self._tolerance
 
@@ -12948,7 +13079,7 @@ class SearchSearchItemTriggerABusUsbSplitHubValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` specifies the hub address. The valid characters are .
+        - ``<QString>`` specifies the hub address. The valid characters are.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -12999,7 +13130,7 @@ class SearchSearchItemTriggerABusUsbSplitHub(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the hub address. The valid characters are .
+            - ``<QString>`` specifies the hub address. The valid characters are.
         """
         return self._value
 
@@ -13260,6 +13391,322 @@ class SearchSearchItemTriggerABusUsbSofframenumber(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
+class SearchSearchItemTriggerABusUsbPacketTypeoftp(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for an USB bus on specific packet for
+          TP. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP {ACK|DEVNOTif|ERDY|NRDY|PING|PINGRSP|STATus|STALl|ANY}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?
+        ```
+
+    Info:
+        - ``ACK`` specifies the transaction packet type as ACK.
+        - ``DEVNOTif`` specifies the transaction packet type as Dev Notification.
+        - ``ERDY`` specifies the transaction packet type as ERDY.
+        - ``NRDY`` specifies the transaction packet type as NRDY.
+        - ``PING`` specifies the transaction packet type as PING.
+        - ``PINGRSP`` specifies the transaction packet type as ping response.
+        - ``STATus`` specifies the transaction packet type as status.
+        - ``STALl`` specifies the transaction packet type as status.
+        - ``ANY`` specifies any transaction packet type.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusUsbPacketTypeoflmp(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for an USB bus on specific packet for
+          LMP. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP {PORTCAP|PORTCFG|PORTRSP|PRECTM|SETLF|U2IT|VDEVTEST|ANY}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?
+        ```
+
+    Info:
+        - ``PORTCAP`` specifies the link management packet type as port capability.
+        - ``PORTCFG`` specifies the link management packet type as port configuration.
+        - ``PORTRSP`` specifies the link management packet type as port configuration response.
+        - ``PRECTM`` specifies the link management packet type as precision time management. This
+          option is enabled only for USB 3.1 Gen 1 and USB 3.2 Gen 1.
+        - ``SETLF`` specifies the link management packet type as set link function.
+        - ``U2IT`` specifies the link management packet type as U2 inactivity time-out.
+        - ``VDEVTEST`` specifies the link management packet type as vendor device test.
+        - ``ANY`` specifies any link management packet type.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusUsbPacket(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.typeoflmp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP`` command.
+        - ``.typeoftp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._typeoflmp = SearchSearchItemTriggerABusUsbPacketTypeoflmp(
+            device, f"{self._cmd_syntax}:TYPEOFLMP"
+        )
+        self._typeoftp = SearchSearchItemTriggerABusUsbPacketTypeoftp(
+            device, f"{self._cmd_syntax}:TYPEOFTP"
+        )
+
+    @property
+    def typeoflmp(self) -> SearchSearchItemTriggerABusUsbPacketTypeoflmp:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for an USB bus on specific packet
+              for LMP. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP {PORTCAP|PORTCFG|PORTRSP|PRECTM|SETLF|U2IT|VDEVTEST|ANY}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP?
+            ```
+
+        Info:
+            - ``PORTCAP`` specifies the link management packet type as port capability.
+            - ``PORTCFG`` specifies the link management packet type as port configuration.
+            - ``PORTRSP`` specifies the link management packet type as port configuration response.
+            - ``PRECTM`` specifies the link management packet type as precision time management.
+              This option is enabled only for USB 3.1 Gen 1 and USB 3.2 Gen 1.
+            - ``SETLF`` specifies the link management packet type as set link function.
+            - ``U2IT`` specifies the link management packet type as U2 inactivity time-out.
+            - ``VDEVTEST`` specifies the link management packet type as vendor device test.
+            - ``ANY`` specifies any link management packet type.
+        """  # noqa: E501
+        return self._typeoflmp
+
+    @property
+    def typeoftp(self) -> SearchSearchItemTriggerABusUsbPacketTypeoftp:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for an USB bus on specific packet
+              for TP. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP {ACK|DEVNOTif|ERDY|NRDY|PING|PINGRSP|STATus|STALl|ANY}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP?
+            ```
+
+        Info:
+            - ``ACK`` specifies the transaction packet type as ACK.
+            - ``DEVNOTif`` specifies the transaction packet type as Dev Notification.
+            - ``ERDY`` specifies the transaction packet type as ERDY.
+            - ``NRDY`` specifies the transaction packet type as NRDY.
+            - ``PING`` specifies the transaction packet type as PING.
+            - ``PINGRSP`` specifies the transaction packet type as ping response.
+            - ``STATus`` specifies the transaction packet type as status.
+            - ``STALl`` specifies the transaction packet type as status.
+            - ``ANY`` specifies any transaction packet type.
+        """  # noqa: E501
+        return self._typeoftp
+
+
+class SearchSearchItemTriggerABusUsbPackettype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for an USB bus on specific packet. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe {LMP|TP|DP|ITP|ANY}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?
+        ```
+
+    Info:
+        - ``LMP`` specifies the packet type as link management packet.
+        - ``TP`` specifies the packet type as Transaction packet.
+        - ``DP`` specifies the packet type as Data Packet.
+        - ``ITP`` specifies the packet type as Isochronous timestamp packet.
+        - ``ANY`` specifies the packet type as any type of packets.
+    """
+
+
+class SearchSearchItemTriggerABusUsbOrderedSet(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET`` command.
+
+    Description:
+        - This command specifies the USB trigger type to be valid on ordered set condition. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET {TSEQ|TS<x>|SKP|DPPSTART|DPPEND|DPPABORT|LCSTART|HPSTART}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?
+        ```
+
+    Info:
+        - ``TSEQ`` specifies the ordered set as training sequence TSEQ.
+        - ``TS1`` specifies the ordered set as training sequence TS1.
+        - ``TS2`` specifies the ordered set as training sequence TS2.
+        - ``SKP`` specifies the ordered set as SKP.
+        - ``DPPSTART`` specifies the ordered set as start of a data packet payload.
+        - ``DPPEND`` specifies the ordered set as end of a data packet payload.
+        - ``DPPABORT`` specifies the ordered set as abort a data packet payload.
+        - ``LCSTART`` specifies the ordered set as start of a link command.
+        - ``HPSTART`` specifies the ordered set as start of a header packet.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusUsbOrdered(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.set``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._set = SearchSearchItemTriggerABusUsbOrderedSet(device, f"{self._cmd_syntax}:SET")
+
+    @property
+    def set_(self) -> SearchSearchItemTriggerABusUsbOrderedSet:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET`` command.
+
+        Description:
+            - This command specifies the USB trigger type to be valid on ordered set condition. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET {TSEQ|TS<x>|SKP|DPPSTART|DPPEND|DPPABORT|LCSTART|HPSTART}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET?
+            ```
+
+        Info:
+            - ``TSEQ`` specifies the ordered set as training sequence TSEQ.
+            - ``TS1`` specifies the ordered set as training sequence TS1.
+            - ``TS2`` specifies the ordered set as training sequence TS2.
+            - ``SKP`` specifies the ordered set as SKP.
+            - ``DPPSTART`` specifies the ordered set as start of a data packet payload.
+            - ``DPPEND`` specifies the ordered set as end of a data packet payload.
+            - ``DPPABORT`` specifies the ordered set as abort a data packet payload.
+            - ``LCSTART`` specifies the ordered set as start of a link command.
+            - ``HPSTART`` specifies the ordered set as start of a header packet.
+        """  # noqa: E501
+        return self._set
+
+
+class SearchSearchItemTriggerABusUsbKeypadtype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe`` command.
+
+    Description:
+        - This command sets or queries whether the keypad is toggled to KCode or Data. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe {KCODe|DATa}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?
+        ```
+
+    Info:
+        - ``KCODe`` sets the Symbol toggle to K-Code and Character keypad is loaded.
+        - ``DATa`` sets the Symbol toggle to Data and hex keypad is loaded.
+    """
+
+
 class SearchSearchItemTriggerABusUsbHandshaketype(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType`` command.
 
@@ -13310,7 +13757,7 @@ class SearchSearchItemTriggerABusUsbErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|PID}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|CRCTYPes|ERR8B10B|PID}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE?
         ```
 
@@ -13318,8 +13765,86 @@ class SearchSearchItemTriggerABusUsbErrtype(SCPICmdWrite, SCPICmdRead):
         - ``BITSTUFFing`` specifies the error type as Bit Stuffing.
         - ``CRC5`` specifies the error type as Token CRC5 (Cyclic Redundancy Check 5).
         - ``CRC16`` specifies the error type as Data CRC16 (Cyclic Redundancy Check 16).
+        - ``CRCTYPes`` specifies the error type as USB3 CRC errors. Requires option SRUSB3.
+        - ``ERR8B10B`` specifies error type as 8b10b encoding errors. Requires option SRUSB3.
         - ``PID`` specifies the error type as PID Check Bits.
     """
+
+
+class SearchSearchItemTriggerABusUsbErr8b10bType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe`` command.
+
+    Description:
+        - This command specifies the USB3 8b10b encoding error trigger type to be valid on a
+          character or disparity. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe {CHARacter|DISParity}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?
+        ```
+
+    Info:
+        - ``CHARacter`` specifies 8b10b error trigger type as character.
+        - ``DISParity`` specifies 8b10b error trigger type as disparity.
+    """
+
+
+class SearchSearchItemTriggerABusUsbErr8b10b(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._type = SearchSearchItemTriggerABusUsbErr8b10bType(device, f"{self._cmd_syntax}:TYPe")
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusUsbErr8b10bType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe`` command.
+
+        Description:
+            - This command specifies the USB3 8b10b encoding error trigger type to be valid on a
+              character or disparity. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe {CHARacter|DISParity}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe?
+            ```
+
+        Info:
+            - ``CHARacter`` specifies 8b10b error trigger type as character.
+            - ``DISParity`` specifies 8b10b error trigger type as disparity.
+        """
+        return self._type
 
 
 class SearchSearchItemTriggerABusUsbEndpointValue(SCPICmdWrite, SCPICmdRead):
@@ -13517,14 +14042,14 @@ class SearchSearchItemTriggerABusUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``INrange`` specifies the qualifier as Inside Range.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
         - ``OUTrange`` specifies the qualifier as Out of Range.
         - ``UNEQual`` specifies the qualifier as Unequal.
-        - ``LESSThan`` specifies the qualifier as Less Than.
-        - ``MOREThan`` specifies the qualifier as More Than.
+        - ``LESSthan`` specifies the qualifier as Less Than.
+        - ``MOREthan`` specifies the qualifier as More Than.
     """  # noqa: E501
 
 
@@ -13705,14 +14230,14 @@ class SearchSearchItemTriggerABusUsbData(SCPICmdRead):
             ```
 
         Info:
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``INrange`` specifies the qualifier as Inside Range.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
             - ``OUTrange`` specifies the qualifier as Out of Range.
             - ``UNEQual`` specifies the qualifier as Unequal.
-            - ``LESSThan`` specifies the qualifier as Less Than.
-            - ``MOREThan`` specifies the qualifier as More Than.
+            - ``LESSthan`` specifies the qualifier as Less Than.
+            - ``MOREthan`` specifies the qualifier as More Than.
         """  # noqa: E501
         return self._qualifier
 
@@ -13808,6 +14333,314 @@ class SearchSearchItemTriggerABusUsbData(SCPICmdRead):
         return self._value
 
 
+class SearchSearchItemTriggerABusUsbCustomNumsymbols(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols`` command.
+
+    Description:
+        - This command sets or queries the number of symbols in the custom pattern. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the number of symbols for the custom pattern. The default value is 1.
+          A minimum of 1 character and a maximum of 16 characters.
+    """
+
+
+class SearchSearchItemTriggerABusUsbCustomHexvalue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue`` command.
+
+    Description:
+        - This command sets or queries the pattern of Hex descrambled data values in the custom
+          pattern. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the data value in the specified valid format (binary, hexadecimal,
+          or symbolic). The valid characters for binary are 0, 1, and X. The value must be a series
+          of hex values. The default value is BC. A minimum of 1 bit values. A maximum of 16 bit
+          values.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusUsbCustomEbitvalue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue`` command.
+
+    Description:
+        - This command sets or queries the pattern of eight bit descrambled data values in the
+          custom pattern. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the data value in the specified valid format (binary, hexadecimal,
+          or symbolic). The valid characters for binary are 0, 1, and X. The value must be a series
+          of 8 bit values. The default value is 10111100. A minimum of 1 x 8 bit values. A maximum
+          of 16 x 8 bit values.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusUsbCustomCharacters(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters`` command.
+
+    Description:
+        - This command sets or queries the pattern of characters in the custom pattern. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the data value in the specified valid format (binary, hexadecimal,
+          or symbolic). The valid characters for binary are 0, 1, and X. The value must be a series
+          of K-codes or XXX.X. The default value is K28.5. A minimum of 1 character and a maximum of
+          16 characters.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusUsbCustom(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.characters``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters`` command.
+        - ``.ebitvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue`` command.
+        - ``.hexvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue`` command.
+        - ``.numsymbols``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._characters = SearchSearchItemTriggerABusUsbCustomCharacters(
+            device, f"{self._cmd_syntax}:CHARacters"
+        )
+        self._ebitvalue = SearchSearchItemTriggerABusUsbCustomEbitvalue(
+            device, f"{self._cmd_syntax}:EBITVALue"
+        )
+        self._hexvalue = SearchSearchItemTriggerABusUsbCustomHexvalue(
+            device, f"{self._cmd_syntax}:HEXVALue"
+        )
+        self._numsymbols = SearchSearchItemTriggerABusUsbCustomNumsymbols(
+            device, f"{self._cmd_syntax}:NUMSYMbols"
+        )
+
+    @property
+    def characters(self) -> SearchSearchItemTriggerABusUsbCustomCharacters:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters`` command.
+
+        Description:
+            - This command sets or queries the pattern of characters in the custom pattern. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the data value in the specified valid format (binary,
+              hexadecimal, or symbolic). The valid characters for binary are 0, 1, and X. The value
+              must be a series of K-codes or XXX.X. The default value is K28.5. A minimum of 1
+              character and a maximum of 16 characters.
+        """
+        return self._characters
+
+    @property
+    def ebitvalue(self) -> SearchSearchItemTriggerABusUsbCustomEbitvalue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue`` command.
+
+        Description:
+            - This command sets or queries the pattern of eight bit descrambled data values in the
+              custom pattern. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the data value in the specified valid format (binary,
+              hexadecimal, or symbolic). The valid characters for binary are 0, 1, and X. The value
+              must be a series of 8 bit values. The default value is 10111100. A minimum of 1 x 8
+              bit values. A maximum of 16 x 8 bit values.
+        """
+        return self._ebitvalue
+
+    @property
+    def hexvalue(self) -> SearchSearchItemTriggerABusUsbCustomHexvalue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue`` command.
+
+        Description:
+            - This command sets or queries the pattern of Hex descrambled data values in the custom
+              pattern. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the data value in the specified valid format (binary,
+              hexadecimal, or symbolic). The valid characters for binary are 0, 1, and X. The value
+              must be a series of hex values. The default value is BC. A minimum of 1 bit values. A
+              maximum of 16 bit values.
+        """
+        return self._hexvalue
+
+    @property
+    def numsymbols(self) -> SearchSearchItemTriggerABusUsbCustomNumsymbols:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols`` command.
+
+        Description:
+            - This command sets or queries the number of symbols in the custom pattern. The search
+              number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the number of symbols for the custom pattern. The default value is
+              1. A minimum of 1 character and a maximum of 16 characters.
+        """
+        return self._numsymbols
+
+
+class SearchSearchItemTriggerABusUsbCrctype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe`` command.
+
+    Description:
+        - This command specifies the USB3 CRC trigger type to be valid on a CRC5, CRC16 or CRC32.
+          The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe {CRC5|CRC16|CRC32}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?
+        ```
+
+    Info:
+        - ``CRC5`` specifies CRC error type to be CRC5.
+        - ``CRC16`` specifies CRC error type to be CRC16.
+        - ``CRC32`` specifies CRC error type to be CRC32.
+    """
+
+
 class SearchSearchItemTriggerABusUsbCondition(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition`` command.
 
@@ -13826,15 +14659,23 @@ class SearchSearchItemTriggerABusUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERRor|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {COMPATTern|CONTROLCH|CUSTom|DATAPacket|EOP|ERRor|HANDSHAKEPacket|OSET|PACKet|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
         ```
 
     Info:
+        - ``COMPATTern`` specifies the search condition as Compliance Pattern. Packet view must be
+          Off. Requires option SRUSB3. Packet view must be Off.
+        - ``CONTROLCH`` specifies the search condition as Control Character. Requires option SRUSB3.
+        - ``CUSTom`` specifies the search condition as Custom symbol search. Packet viewmust be Off.
+          Requires option SRUSB3. Packet view must be Off.
         - ``DATAPacket`` specifies the search condition as Data Packet.
         - ``EOP`` specifies the search condition as End of Packet.
-        - ``ERROR`` specifies the search condition as Error.
+        - ``ERRor`` specifies the search condition as Error.
         - ``HANDSHAKEPacket`` specifies the search condition as Handshake Packet.
+        - ``OSET`` specifies the search condition as Ordered Set. Requires option SRUSB3.
+        - ``PACKet`` specifies the search condition as Packets. Packet view must be On. Requires
+          option SRUSB3. Packet view must be On.
         - ``RESET`` specifies the search condition as Reset.
         - ``RESUME`` specifies the search condition as Resume.
         - ``SPECIALPacket`` specifies the search condition as Special Packet.
@@ -13842,6 +14683,75 @@ class SearchSearchItemTriggerABusUsbCondition(SCPICmdWrite, SCPICmdRead):
         - ``SYNC`` specifies the search condition as Sync.
         - ``TOKENPacket`` specifies the search condition as Token (Address) Packet.
     """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusUsbCompliance(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for an USB bus on Compliance Pattern
+          sequences. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance {CP0|CP1|CP2|CP3|CP4|CP56|CP78}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?
+        ```
+
+    Info:
+        - ``CP0`` specifies the compliance pattern sequence as CP0.
+        - ``CP1`` specifies the compliance pattern sequence as CP1.
+        - ``CP2`` specifies the compliance pattern sequence as CP2.
+        - ``CP3`` specifies the compliance pattern sequence as CP3.
+        - ``CP4`` specifies the compliance pattern sequence as CP4.
+        - ``CP56`` specifies the compliance pattern sequence as CP5 or CP6.
+        - ``CP78`` specifies the compliance pattern sequence as CP7 or CP8.
+    """
+
+
+class SearchSearchItemTriggerABusUsbCharacter(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for an USB bus on specific control
+          symbol. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter {COM|EDB|END|EPF|SDP|SHP|SKP|SLC|SUB|Any}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?
+        ```
+
+    Info:
+        - ``COM`` specifies the control symbol as Comma (K28.5).
+        - ``EDB`` specifies the control symbol as End Bad (K28.3).
+        - ``END`` specifies the control symbol as End (K29.7).
+        - ``EPF`` specifies the control symbol as End Packet Framing (K23.7).
+        - ``SDP`` specifies the control symbol as Start Data Packet (K28.2).
+        - ``SHP`` specifies the control symbol as Start Header Packet (K27.7).
+        - ``SKP`` specifies the control symbol as Skip (K28.1).
+        - ``SLC`` specifies the control symbol as Start Link Command (K30.7).
+        - ``SUB`` specifies the control symbol as Secode Error Substitution (K28.4).
+        - ``Any`` specifies any control symbol.
+    """
 
 
 class SearchSearchItemTriggerABusUsbAddressValue(SCPICmdWrite, SCPICmdRead):
@@ -14008,11 +14918,20 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress`` command tree.
+        - ``.character``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter`` command.
+        - ``.compliance``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance`` command.
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition`` command.
+        - ``.crctype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe`` command.
+        - ``.custom``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom`` command tree.
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa`` command tree.
         - ``.endpoint``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint`` command tree.
+        - ``.err8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B`` command tree.
         - ``.errtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE`` command.
         - ``.handshaketype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType`` command.
+        - ``.keypadtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe`` command.
+        - ``.ordered``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered`` command tree.
+        - ``.packettype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe`` command.
+        - ``.packet``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet`` command tree.
         - ``.sofframenumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SOFFRAMENUMber`` command.
         - ``.specialtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPECIALType`` command.
         - ``.split``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT`` command tree.
@@ -14022,17 +14941,36 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusUsbAddress(device, f"{self._cmd_syntax}:ADDress")
+        self._character = SearchSearchItemTriggerABusUsbCharacter(
+            device, f"{self._cmd_syntax}:CHARacter"
+        )
+        self._compliance = SearchSearchItemTriggerABusUsbCompliance(
+            device, f"{self._cmd_syntax}:COMPliance"
+        )
         self._condition = SearchSearchItemTriggerABusUsbCondition(
             device, f"{self._cmd_syntax}:CONDition"
         )
+        self._crctype = SearchSearchItemTriggerABusUsbCrctype(device, f"{self._cmd_syntax}:CRCTYPe")
+        self._custom = SearchSearchItemTriggerABusUsbCustom(device, f"{self._cmd_syntax}:CUSTom")
         self._data = SearchSearchItemTriggerABusUsbData(device, f"{self._cmd_syntax}:DATa")
         self._endpoint = SearchSearchItemTriggerABusUsbEndpoint(
             device, f"{self._cmd_syntax}:ENDPoint"
+        )
+        self._err8b10b = SearchSearchItemTriggerABusUsbErr8b10b(
+            device, f"{self._cmd_syntax}:ERR8B10B"
         )
         self._errtype = SearchSearchItemTriggerABusUsbErrtype(device, f"{self._cmd_syntax}:ERRTYPE")
         self._handshaketype = SearchSearchItemTriggerABusUsbHandshaketype(
             device, f"{self._cmd_syntax}:HANDSHAKEType"
         )
+        self._keypadtype = SearchSearchItemTriggerABusUsbKeypadtype(
+            device, f"{self._cmd_syntax}:KEYPADTYPe"
+        )
+        self._ordered = SearchSearchItemTriggerABusUsbOrdered(device, f"{self._cmd_syntax}:ORDered")
+        self._packettype = SearchSearchItemTriggerABusUsbPackettype(
+            device, f"{self._cmd_syntax}:PACKETTYPe"
+        )
+        self._packet = SearchSearchItemTriggerABusUsbPacket(device, f"{self._cmd_syntax}:PACKet")
         self._sofframenumber = SearchSearchItemTriggerABusUsbSofframenumber(
             device, f"{self._cmd_syntax}:SOFFRAMENUMber"
         )
@@ -14062,6 +15000,77 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
         return self._address
 
     @property
+    def character(self) -> SearchSearchItemTriggerABusUsbCharacter:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for an USB bus on specific control
+              symbol. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter {COM|EDB|END|EPF|SDP|SHP|SKP|SLC|SUB|Any}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter?
+            ```
+
+        Info:
+            - ``COM`` specifies the control symbol as Comma (K28.5).
+            - ``EDB`` specifies the control symbol as End Bad (K28.3).
+            - ``END`` specifies the control symbol as End (K29.7).
+            - ``EPF`` specifies the control symbol as End Packet Framing (K23.7).
+            - ``SDP`` specifies the control symbol as Start Data Packet (K28.2).
+            - ``SHP`` specifies the control symbol as Start Header Packet (K27.7).
+            - ``SKP`` specifies the control symbol as Skip (K28.1).
+            - ``SLC`` specifies the control symbol as Start Link Command (K30.7).
+            - ``SUB`` specifies the control symbol as Secode Error Substitution (K28.4).
+            - ``Any`` specifies any control symbol.
+        """
+        return self._character
+
+    @property
+    def compliance(self) -> SearchSearchItemTriggerABusUsbCompliance:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for an USB bus on Compliance
+              Pattern sequences. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance {CP0|CP1|CP2|CP3|CP4|CP56|CP78}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance?
+            ```
+
+        Info:
+            - ``CP0`` specifies the compliance pattern sequence as CP0.
+            - ``CP1`` specifies the compliance pattern sequence as CP1.
+            - ``CP2`` specifies the compliance pattern sequence as CP2.
+            - ``CP3`` specifies the compliance pattern sequence as CP3.
+            - ``CP4`` specifies the compliance pattern sequence as CP4.
+            - ``CP56`` specifies the compliance pattern sequence as CP5 or CP6.
+            - ``CP78`` specifies the compliance pattern sequence as CP7 or CP8.
+        """
+        return self._compliance
+
+    @property
     def condition(self) -> SearchSearchItemTriggerABusUsbCondition:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition`` command.
 
@@ -14080,15 +15089,24 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERRor|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {COMPATTern|CONTROLCH|CUSTom|DATAPacket|EOP|ERRor|HANDSHAKEPacket|OSET|PACKet|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
             ```
 
         Info:
+            - ``COMPATTern`` specifies the search condition as Compliance Pattern. Packet view must
+              be Off. Requires option SRUSB3. Packet view must be Off.
+            - ``CONTROLCH`` specifies the search condition as Control Character. Requires option
+              SRUSB3.
+            - ``CUSTom`` specifies the search condition as Custom symbol search. Packet viewmust be
+              Off. Requires option SRUSB3. Packet view must be Off.
             - ``DATAPacket`` specifies the search condition as Data Packet.
             - ``EOP`` specifies the search condition as End of Packet.
-            - ``ERROR`` specifies the search condition as Error.
+            - ``ERRor`` specifies the search condition as Error.
             - ``HANDSHAKEPacket`` specifies the search condition as Handshake Packet.
+            - ``OSET`` specifies the search condition as Ordered Set. Requires option SRUSB3.
+            - ``PACKet`` specifies the search condition as Packets. Packet view must be On. Requires
+              option SRUSB3. Packet view must be On.
             - ``RESET`` specifies the search condition as Reset.
             - ``RESUME`` specifies the search condition as Resume.
             - ``SPECIALPacket`` specifies the search condition as Special Packet.
@@ -14097,6 +15115,55 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
             - ``TOKENPacket`` specifies the search condition as Token (Address) Packet.
         """  # noqa: E501
         return self._condition
+
+    @property
+    def crctype(self) -> SearchSearchItemTriggerABusUsbCrctype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe`` command.
+
+        Description:
+            - This command specifies the USB3 CRC trigger type to be valid on a CRC5, CRC16 or
+              CRC32. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe {CRC5|CRC16|CRC32}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe?
+            ```
+
+        Info:
+            - ``CRC5`` specifies CRC error type to be CRC5.
+            - ``CRC16`` specifies CRC error type to be CRC16.
+            - ``CRC32`` specifies CRC error type to be CRC32.
+        """
+        return self._crctype
+
+    @property
+    def custom(self) -> SearchSearchItemTriggerABusUsbCustom:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.characters``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:CHARacters`` command.
+            - ``.ebitvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:EBITVALue`` command.
+            - ``.hexvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:HEXVALue`` command.
+            - ``.numsymbols``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom:NUMSYMbols`` command.
+        """
+        return self._custom
 
     @property
     def data(self) -> SearchSearchItemTriggerABusUsbData:
@@ -14136,6 +15203,22 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
         return self._endpoint
 
     @property
+    def err8b10b(self) -> SearchSearchItemTriggerABusUsbErr8b10b:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B:TYPe`` command.
+        """
+        return self._err8b10b
+
+    @property
     def errtype(self) -> SearchSearchItemTriggerABusUsbErrtype:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE`` command.
 
@@ -14154,7 +15237,7 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|PID}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE {BITSTUFFing|CRC5|CRC16|CRCTYPes|ERR8B10B|PID}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE?
             ```
 
@@ -14162,8 +15245,10 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
             - ``BITSTUFFing`` specifies the error type as Bit Stuffing.
             - ``CRC5`` specifies the error type as Token CRC5 (Cyclic Redundancy Check 5).
             - ``CRC16`` specifies the error type as Data CRC16 (Cyclic Redundancy Check 16).
+            - ``CRCTYPes`` specifies the error type as USB3 CRC errors. Requires option SRUSB3.
+            - ``ERR8B10B`` specifies error type as 8b10b encoding errors. Requires option SRUSB3.
             - ``PID`` specifies the error type as PID Check Bits.
-        """
+        """  # noqa: E501
         return self._errtype
 
     @property
@@ -14198,6 +15283,100 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
               request not supported) (1110).
         """
         return self._handshaketype
+
+    @property
+    def keypadtype(self) -> SearchSearchItemTriggerABusUsbKeypadtype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe`` command.
+
+        Description:
+            - This command sets or queries whether the keypad is toggled to KCode or Data. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe {KCODe|DATa}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe?
+            ```
+
+        Info:
+            - ``KCODe`` sets the Symbol toggle to K-Code and Character keypad is loaded.
+            - ``DATa`` sets the Symbol toggle to Data and hex keypad is loaded.
+        """
+        return self._keypadtype
+
+    @property
+    def ordered(self) -> SearchSearchItemTriggerABusUsbOrdered:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.set``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered:SET`` command.
+        """
+        return self._ordered
+
+    @property
+    def packettype(self) -> SearchSearchItemTriggerABusUsbPackettype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for an USB bus on specific packet.
+              The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe {LMP|TP|DP|ITP|ANY}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe?
+            ```
+
+        Info:
+            - ``LMP`` specifies the packet type as link management packet.
+            - ``TP`` specifies the packet type as Transaction packet.
+            - ``DP`` specifies the packet type as Data Packet.
+            - ``ITP`` specifies the packet type as Isochronous timestamp packet.
+            - ``ANY`` specifies the packet type as any type of packets.
+        """
+        return self._packettype
+
+    @property
+    def packet(self) -> SearchSearchItemTriggerABusUsbPacket:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.typeoflmp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFLMP`` command.
+            - ``.typeoftp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet:TYPEOFTP`` command.
+        """
+        return self._packet
 
     @property
     def sofframenumber(self) -> SearchSearchItemTriggerABusUsbSofframenumber:
@@ -14337,9 +15516,9 @@ class SearchSearchItemTriggerABusSvidSlaveAddress(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``<QString>`` specifies the data value in the specified valid format. The valid characters
-          are 0, 1, and X for binary; for hexadecimal; and symbolic). the default address is XXXX.
+          are 0, 1, and X for binary; for hexadecimal; and symbolic). The default address is XXXX.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -14354,6 +15533,9 @@ class SearchSearchItemTriggerABusSvidSlave(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:SLAVE?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:SLAVE:ADDRESS`` command.
@@ -14388,9 +15570,9 @@ class SearchSearchItemTriggerABusSvidSlave(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``<QString>`` specifies the data value in the specified valid format. The valid
-              characters are 0, 1, and X for binary; for hexadecimal; and symbolic). the default
+              characters are 0, 1, and X for binary; for hexadecimal; and symbolic). The default
               address is XXXX.
         """
         return self._address
@@ -14418,7 +15600,7 @@ class SearchSearchItemTriggerABusSvidPayloadValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``<QString>`` specifies the data value in the specified valid format. The valid characters
           are 0, 1, and X for binary; for hexadecimal; and symbolic).
     """
@@ -14448,7 +15630,7 @@ class SearchSearchItemTriggerABusSvidPayloadType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``MASTer`` specifies the search condition as MASTer. This is the default payload type
           condition.
         - ``SLAVe`` specifies the search condition as SLAVe.
@@ -14465,6 +15647,9 @@ class SearchSearchItemTriggerABusSvidPayload(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:PAYLoad?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:PAYLoad:TYPe`` command.
@@ -14501,7 +15686,7 @@ class SearchSearchItemTriggerABusSvidPayload(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``MASTer`` specifies the search condition as MASTer. This is the default payload type
               condition.
             - ``SLAVe`` specifies the search condition as SLAVe.
@@ -14532,7 +15717,7 @@ class SearchSearchItemTriggerABusSvidPayload(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``<QString>`` specifies the data value in the specified valid format. The valid
               characters are 0, 1, and X for binary; for hexadecimal; and symbolic).
         """
@@ -14561,12 +15746,12 @@ class SearchSearchItemTriggerABusSvidErrorType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``ANY`` specifies the search condition as ANY. This is the default error type condition.
         - ``NACK`` specifies the search condition as NACK.
         - ``REJect`` specifies the search condition as REJect.
         - ``MIXed`` specifies the search condition as MIXed.
-        - ``PARity`` specifies the search condition as PARity.
+        - ``PARity`` specifies the search condition as PARit.
     """
 
 
@@ -14579,6 +15764,9 @@ class SearchSearchItemTriggerABusSvidError(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:ERRor?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:ERRor:TYPe`` command.
@@ -14611,13 +15799,13 @@ class SearchSearchItemTriggerABusSvidError(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``ANY`` specifies the search condition as ANY. This is the default error type
               condition.
             - ``NACK`` specifies the search condition as NACK.
             - ``REJect`` specifies the search condition as REJect.
             - ``MIXed`` specifies the search condition as MIXed.
-            - ``PARity`` specifies the search condition as PARity.
+            - ``PARity`` specifies the search condition as PARit.
         """
         return self._type
 
@@ -14644,7 +15832,7 @@ class SearchSearchItemTriggerABusSvidCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``STARTCONDition`` specifies the search condition as STARTCONDition. This is the default
           trigger on condition.
         - ``SLAVEADDRess`` specifies the search condition as SLAVEADDRess.
@@ -14676,7 +15864,7 @@ class SearchSearchItemTriggerABusSvidCommandType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``GET`` specifies the search condition as GET. This is the default command type condition.
         - ``SET`` specifies the search condition as SET.
         - ``OPTional`` specifies the search condition as OPTional.
@@ -14701,12 +15889,12 @@ class SearchSearchItemTriggerABusSvidCommandResponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow|SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow| SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``GETReg`` specifies the search condition as GETReg. This is the default command response
           condition.
         - ``GETRegvendor`` specifies the search condition as GETRegvendor.
@@ -14740,6 +15928,9 @@ class SearchSearchItemTriggerABusSvidCommand(SCPICmdRead):
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand?`` query and raise an AssertionError if the
           returned value does not match ``value``.
 
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
+
     Properties:
         - ``.response``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse`` command.
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:TYPe`` command.
@@ -14771,12 +15962,12 @@ class SearchSearchItemTriggerABusSvidCommand(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow|SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse {GETReg|GETRegvendor|GETRegtestcfg|SETFast|SETSlow| SETDecay|SETPs|SETRegaddr|SETRegdata|REGAddrvendor|REGDatavendor|REGAddrtestconfg|REGDatatestconfg|TESTmode|SETWp|GETRegpktrecent|GETRegpktalert|GETRegpktbad|GETRegvrevent}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``GETReg`` specifies the search condition as GETReg. This is the default command
               response condition.
             - ``GETRegvendor`` specifies the search condition as GETRegvendor.
@@ -14823,7 +16014,7 @@ class SearchSearchItemTriggerABusSvidCommand(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``GET`` specifies the search condition as GET. This is the default command type
               condition.
             - ``SET`` specifies the search condition as SET.
@@ -14840,6 +16031,9 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
           query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand`` command tree.
@@ -14874,6 +16068,9 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.response``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:RESPonse`` command.
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand:TYPe`` command.
@@ -14903,7 +16100,7 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``STARTCONDition`` specifies the search condition as STARTCONDition. This is the
               default trigger on condition.
             - ``SLAVEADDRess`` specifies the search condition as SLAVEADDRess.
@@ -14924,6 +16121,9 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:ERRor?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:ERRor:TYPe`` command.
         """
@@ -14939,6 +16139,9 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:PAYLoad?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:PAYLoad:TYPe`` command.
@@ -14956,6 +16159,9 @@ class SearchSearchItemTriggerABusSvid(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:SLAVE?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:SLAVE:ADDRESS`` command.
@@ -14983,15 +16189,17 @@ class SearchSearchItemTriggerABusSpmiSlaveaddressValue(SCPICmdWrite, SCPICmdRead
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the slave address for which to
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` is the binary data string that identifies the slave address for which to
           search.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpmiSlaveaddress(SCPICmdRead):
@@ -15003,6 +16211,9 @@ class SearchSearchItemTriggerABusSpmiSlaveaddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue`` command.
@@ -15035,13 +16246,13 @@ class SearchSearchItemTriggerABusSpmiSlaveaddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the slave address for which to
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` is the binary data string that identifies the slave address for which to
               search.
         """
         return self._value
@@ -15066,15 +16277,16 @@ class SearchSearchItemTriggerABusSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdR
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the register address for which to
-          search.
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``X`` is the binary data string that identifies the register address for which to search.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpmiRegisteraddress(SCPICmdRead):
@@ -15086,6 +16298,9 @@ class SearchSearchItemTriggerABusSpmiRegisteraddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess?`` query and raise an AssertionError
           if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue`` command.
@@ -15117,14 +16332,14 @@ class SearchSearchItemTriggerABusSpmiRegisteraddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the register address for which
-              to search.
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``X`` is the binary data string that identifies the register address for which to
+              search.
         """
         return self._value
 
@@ -15146,15 +16361,17 @@ class SearchSearchItemTriggerABusSpmiNoresponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` is either 'TRUE' or 'FALSE' boolean value for searching on SPMI No Response
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` is either 'TRUE' or 'FALSE' boolean value for searching on SPMI No Response
           frames.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpmiMasteraddressValue(SCPICmdWrite, SCPICmdRead):
@@ -15176,15 +16393,17 @@ class SearchSearchItemTriggerABusSpmiMasteraddressValue(SCPICmdWrite, SCPICmdRea
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the master address for which to
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` is the binary data string that identifies the master address for which to
           search.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpmiMasteraddress(SCPICmdRead):
@@ -15196,6 +16415,9 @@ class SearchSearchItemTriggerABusSpmiMasteraddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess?`` query and raise an AssertionError
           if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue`` command.
@@ -15227,13 +16449,13 @@ class SearchSearchItemTriggerABusSpmiMasteraddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the master address for which
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` is the binary data string that identifies the master address for which
               to search.
         """
         return self._value
@@ -15258,15 +16480,17 @@ class SearchSearchItemTriggerABusSpmiDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the data value for which to
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` is the binary data string that identifies the data value for which to
           search.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpmiDataSize(SCPICmdWrite, SCPICmdRead):
@@ -15292,7 +16516,7 @@ class SearchSearchItemTriggerABusSpmiDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
+        - ``SEARCH<x>`` is the Search identifier number.
         - ``<NR2>`` is the size of the data string in bytes.
     """
 
@@ -15306,6 +16530,9 @@ class SearchSearchItemTriggerABusSpmiData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:SIZe`` command.
@@ -15341,7 +16568,7 @@ class SearchSearchItemTriggerABusSpmiData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
+            - ``SEARCH<x>`` is the Search identifier number.
             - ``<NR2>`` is the size of the data string in bytes.
         """
         return self._size
@@ -15366,13 +16593,13 @@ class SearchSearchItemTriggerABusSpmiData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the data value for which to
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` is the binary data string that identifies the data value for which to
               search.
         """
         return self._value
@@ -15400,7 +16627,7 @@ class SearchSearchItemTriggerABusSpmiCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
+        - ``SEARCH<x>`` is the search identifier number.
         - ``SSC`` specifies searching for the Sequence Start Condition.
         - ``RESet`` specifies searching for the Reset command sequence.
         - ``SLEep`` specifies searching for the Sleep command sequnce.
@@ -15436,6 +16663,9 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
           query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:CONDition`` command.
@@ -15490,7 +16720,7 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
+            - ``SEARCH<x>`` is the search identifier number.
             - ``SSC`` specifies searching for the Sequence Start Condition.
             - ``RESet`` specifies searching for the Reset command sequence.
             - ``SLEep`` specifies searching for the Sleep command sequnce.
@@ -15529,6 +16759,9 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
+
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:SIZe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa:VALue`` command.
@@ -15545,6 +16778,9 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:MASTERADDRess:VALue`` command.
@@ -15569,13 +16805,13 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:NORESPonse?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` is either 'TRUE' or 'FALSE' boolean value for searching on SPMI No
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` is either 'TRUE' or 'FALSE' boolean value for searching on SPMI No
               Response frames.
         """
         return self._noresponse
@@ -15590,6 +16826,9 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:REGISTERADDRess:VALue`` command.
@@ -15606,6 +16845,9 @@ class SearchSearchItemTriggerABusSpmi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:SLAVEADDRess:VALue`` command.
@@ -15929,15 +17171,17 @@ class SearchSearchItemTriggerABusSpacewireTimecodeValue(SCPICmdWrite, SCPICmdRea
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
-        - ``QString`` sets the binary data value to be used when searching on an SpaceWire bus
+        - ``SEARCH<x>`` is the search number.
+        - ``<QString>`` sets the binary data value to be used when searching on an SpaceWire bus
           signal.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpacewireTimecode(SCPICmdRead):
@@ -15949,6 +17193,9 @@ class SearchSearchItemTriggerABusSpacewireTimecode(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode?`` query and raise an AssertionError
           if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue`` command.
@@ -15979,13 +17226,13 @@ class SearchSearchItemTriggerABusSpacewireTimecode(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
-            - ``QString`` sets the binary data value to be used when searching on an SpaceWire bus
+            - ``SEARCH<x>`` is the search number.
+            - ``<QString>`` sets the binary data value to be used when searching on an SpaceWire bus
               signal.
         """
         return self._value
@@ -16014,7 +17261,7 @@ class SearchSearchItemTriggerABusSpacewireErrortype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``EEP`` sets the error search type to Error end of packet.
         - ``ESC`` sets the error search type to Escape error.
         - ``PARity`` sets the error search type to Parity error.
@@ -16039,14 +17286,16 @@ class SearchSearchItemTriggerABusSpacewireDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
-        - ``QString`` specifies the binary data value to search for on a SpaceWire bus signal.
+        - ``SEARCH<x>`` is the search number.
+        - ``<QString>`` specifies the binary data value to search for on a SpaceWire bus signal.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSpacewireDataSize(SCPICmdWrite, SCPICmdRead):
@@ -16073,9 +17322,9 @@ class SearchSearchItemTriggerABusSpacewireDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
-        - ``NR1`` is an integer value that specifies the number of contiguous data bytes to use when
-          searching on the SpaceWire data field. The valid range is 1 to 10.
+        - ``SEARCH<x>`` is the search number.
+        - ``<NR1>`` is an integer value that specifies the number of contiguous data bytes to use
+          when searching on the SpaceWire data field. The valid range is 1 to 10.
     """
 
 
@@ -16088,6 +17337,9 @@ class SearchSearchItemTriggerABusSpacewireData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search number.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:SIZe`` command.
@@ -16128,9 +17380,9 @@ class SearchSearchItemTriggerABusSpacewireData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
-            - ``NR1`` is an integer value that specifies the number of contiguous data bytes to use
-              when searching on the SpaceWire data field. The valid range is 1 to 10.
+            - ``SEARCH<x>`` is the search number.
+            - ``<NR1>`` is an integer value that specifies the number of contiguous data bytes to
+              use when searching on the SpaceWire data field. The valid range is 1 to 10.
         """
         return self._size
 
@@ -16154,13 +17406,13 @@ class SearchSearchItemTriggerABusSpacewireData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
-            - ``QString`` specifies the binary data value to search for on a SpaceWire bus signal.
+            - ``SEARCH<x>`` is the search number.
+            - ``<QString>`` specifies the binary data value to search for on a SpaceWire bus signal.
         """
         return self._value
 
@@ -16188,7 +17440,7 @@ class SearchSearchItemTriggerABusSpacewireControlcodetype(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``NULL`` sets the control code type to Null code.
         - ``TIMECODe`` sets the control code type to Time code (only varying part of Time code [6
           bits] is considered for search).
@@ -16218,7 +17470,7 @@ class SearchSearchItemTriggerABusSpacewireControlchartype(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``FCT`` sets the control character type to Flow Control Token.
         - ``ESC`` sets the control character type to Escape.
         - ``ENDOFPACKet`` sets the control character type to End of Packet.
@@ -16248,7 +17500,7 @@ class SearchSearchItemTriggerABusSpacewireCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``SYNC`` sets the search condition to Synchronization.
         - ``DATa`` sets the search condition to Data Characters.
         - ``ERRors`` sets the search condition to SpaceWire Bus Decode Errors.
@@ -16266,6 +17518,9 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search number.
 
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:CONDition`` command.
@@ -16321,7 +17576,7 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``SYNC`` sets the search condition to Synchronization.
             - ``DATa`` sets the search condition to Data Characters.
             - ``ERRors`` sets the search condition to SpaceWire Bus Decode Errors.
@@ -16354,7 +17609,7 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``FCT`` sets the control character type to Flow Control Token.
             - ``ESC`` sets the control character type to Escape.
             - ``ENDOFPACKet`` sets the control character type to End of Packet.
@@ -16385,7 +17640,7 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``NULL`` sets the control code type to Null code.
             - ``TIMECODe`` sets the control code type to Time code (only varying part of Time code
               [6 bits] is considered for search).
@@ -16402,6 +17657,9 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search number.
 
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:DATa:SIZe`` command.
@@ -16433,7 +17691,7 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``EEP`` sets the error search type to Error end of packet.
             - ``ESC`` sets the error search type to Escape error.
             - ``PARity`` sets the error search type to Parity error.
@@ -16450,6 +17708,9 @@ class SearchSearchItemTriggerABusSpacewire(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:TIMECode:VALue`` command.
@@ -16475,14 +17736,13 @@ class SearchSearchItemTriggerABusSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce B<x>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
         ```
 
     Info:
-        - ``B<x>`` specifies the bus source as a bus number from B01 to B16. x has a minimum of 0
-          and a maximum of 16.
-    """  # noqa: E501
+        - ``B<x>`` specifies the bus source as a bus number from B0 to B16.
+    """
 
 
 class SearchSearchItemTriggerABusSmbusUdiddataValue(SCPICmdWrite, SCPICmdRead):
@@ -16503,15 +17763,17 @@ class SearchSearchItemTriggerABusSmbusUdiddataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` specifies the UDID data value as the field within a SMBUS frame to search
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the UDID data value as the field within a SMBUS frame to search
           on. The default value is XXXXXXXX.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSmbusUdiddata(SCPICmdRead):
@@ -16523,6 +17785,9 @@ class SearchSearchItemTriggerABusSmbusUdiddata(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue`` command.
@@ -16553,13 +17818,13 @@ class SearchSearchItemTriggerABusSmbusUdiddata(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` specifies the UDID data value as the field within a SMBUS frame to
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the UDID data value as the field within a SMBUS frame to
               search on. The default value is XXXXXXXX.
         """
         return self._value
@@ -16588,7 +17853,7 @@ class SearchSearchItemTriggerABusSmbusFieldbyte(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``ONE`` sets the field byte size to 8 bits. This is the default value.
         - ``TWO`` sets the field byte size to 16 bits.
         - ``FOUR`` sets the field byte size to 32 bits.
@@ -16617,7 +17882,7 @@ class SearchSearchItemTriggerABusSmbusErrorType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``ANY`` sets the error search type to ANY. This is the default value.
         - ``ACK`` sets the error search type to ACK.
         - ``NACK`` sets the error search type to NACK.
@@ -16634,6 +17899,9 @@ class SearchSearchItemTriggerABusSmbusError(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search number.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr:TYPe`` command.
@@ -16666,7 +17934,7 @@ class SearchSearchItemTriggerABusSmbusError(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``ANY`` sets the error search type to ANY. This is the default value.
             - ``ACK`` sets the error search type to ACK.
             - ``NACK`` sets the error search type to NACK.
@@ -16693,15 +17961,17 @@ class SearchSearchItemTriggerABusSmbusDeviceaddrValue(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` specifies the device address value as the field within a SMBUS frame to
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the device address value as the field within a SMBUS frame to
           search on. The default value is XXXXXXX.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSmbusDeviceaddr(SCPICmdRead):
@@ -16713,6 +17983,9 @@ class SearchSearchItemTriggerABusSmbusDeviceaddr(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue`` command.
@@ -16743,13 +18016,13 @@ class SearchSearchItemTriggerABusSmbusDeviceaddr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` specifies the device address value as the field within a SMBUS frame to
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the device address value as the field within a SMBUS frame to
               search on. The default value is XXXXXXX.
         """
         return self._value
@@ -16773,15 +18046,17 @@ class SearchSearchItemTriggerABusSmbusDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` specifies the data value as the field within a SMBUS frame to search on. The
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the data value as the field within a SMBUS frame to search on. The
           default value is XXXXXXX.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSmbusDataSize(SCPICmdWrite, SCPICmdRead):
@@ -16807,8 +18082,8 @@ class SearchSearchItemTriggerABusSmbusDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
-        - ``NR1`` sets the data size value. The valid range is 1 to 8. The default data size is 1.
+        - ``SEARCH<x>`` is the search number.
+        - ``<NR1>`` sets the data size value. The valid range is 1 to 8. The default data size is 1.
     """
 
 
@@ -16821,6 +18096,9 @@ class SearchSearchItemTriggerABusSmbusData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search number.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:SIZe`` command.
@@ -16856,9 +18134,9 @@ class SearchSearchItemTriggerABusSmbusData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
-            - ``NR1`` sets the data size value. The valid range is 1 to 8. The default data size is
-              1.
+            - ``SEARCH<x>`` is the search number.
+            - ``<NR1>`` sets the data size value. The valid range is 1 to 8. The default data size
+              is 1.
         """
         return self._size
 
@@ -16881,13 +18159,13 @@ class SearchSearchItemTriggerABusSmbusData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` specifies the data value as the field within a SMBUS frame to search on.
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the data value as the field within a SMBUS frame to search on.
               The default value is XXXXXXX.
         """
         return self._value
@@ -16915,13 +18193,13 @@ class SearchSearchItemTriggerABusSmbusCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the search number.
+        - ``SEARCH<x>`` is the search number.
         - ``STARt`` sets the search condition to start. This is the default value.
         - ``REPEATSTARt`` sets the search condition to repeat start.
         - ``ADDRess`` sets the search condition to address.
         - ``HOSTADDR`` sets the search condition to host address.
         - ``DEVICEADDR`` sets the search condition to device address.
-        - ``COMMand`` sets the search condition to command.
+        - ``COMM`` and sets the search condition to command.
         - ``DATa`` sets the search condition to data.
         - ``UDIDDATa`` sets the search condition to UDID data.
         - ``ERRor`` sets the search condition to error.
@@ -16948,15 +18226,17 @@ class SearchSearchItemTriggerABusSmbusCommandValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` specifies the command value as the field within a SMBUS frame to search on.
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the command value as the field within a SMBUS frame to search on.
           The default value is XXXXXXX.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSmbusCommand(SCPICmdRead):
@@ -16968,6 +18248,9 @@ class SearchSearchItemTriggerABusSmbusCommand(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue`` command.
@@ -16998,13 +18281,13 @@ class SearchSearchItemTriggerABusSmbusCommand(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` specifies the command value as the field within a SMBUS frame to search
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the command value as the field within a SMBUS frame to search
               on. The default value is XXXXXXX.
         """
         return self._value
@@ -17028,15 +18311,17 @@ class SearchSearchItemTriggerABusSmbusAddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the search identifier number.
-        - ``<Qstring>`` specifies the address value as the field within a SMBUS frame to search on.
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the address value as the field within a SMBUS frame to search on.
           The default value is XXXXXXX.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSmbusAddress(SCPICmdRead):
@@ -17048,6 +18333,9 @@ class SearchSearchItemTriggerABusSmbusAddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue`` command.
@@ -17078,13 +18366,13 @@ class SearchSearchItemTriggerABusSmbusAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the search identifier number.
-            - ``<Qstring>`` specifies the address value as the field within a SMBUS frame to search
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the address value as the field within a SMBUS frame to search
               on. The default value is XXXXXXX.
         """
         return self._value
@@ -17100,6 +18388,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess`` command tree.
@@ -17146,6 +18437,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess:VALue`` command.
         """
@@ -17161,6 +18455,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue`` command.
@@ -17190,13 +18487,13 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``STARt`` sets the search condition to start. This is the default value.
             - ``REPEATSTARt`` sets the search condition to repeat start.
             - ``ADDRess`` sets the search condition to address.
             - ``HOSTADDR`` sets the search condition to host address.
             - ``DEVICEADDR`` sets the search condition to device address.
-            - ``COMMand`` sets the search condition to command.
+            - ``COMM`` and sets the search condition to command.
             - ``DATa`` sets the search condition to data.
             - ``UDIDDATa`` sets the search condition to UDID data.
             - ``ERRor`` sets the search condition to error.
@@ -17216,6 +18513,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search number.
+
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:SIZe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DATa:VALue`` command.
@@ -17233,6 +18533,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:DEVICEADDR:VALue`` command.
         """
@@ -17248,6 +18551,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search number.
 
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ERROr:TYPe`` command.
@@ -17278,7 +18584,7 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the search number.
+            - ``SEARCH<x>`` is the search number.
             - ``ONE`` sets the field byte size to 8 bits. This is the default value.
             - ``TWO`` sets the field byte size to 16 bits.
             - ``FOUR`` sets the field byte size to 32 bits.
@@ -17295,6 +18601,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:UDIDDATa:VALue`` command.
@@ -17320,14 +18629,16 @@ class SearchSearchItemTriggerABusSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRe
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the slow channel identifier binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the slow channel identifier binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentSlowIdentifier(SCPICmdRead):
@@ -17339,6 +18650,9 @@ class SearchSearchItemTriggerABusSentSlowIdentifier(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier?`` query and raise an AssertionError
           if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue`` command.
@@ -17369,13 +18683,13 @@ class SearchSearchItemTriggerABusSentSlowIdentifier(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the slow channel identifier binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the slow channel identifier binary value.
         """
         return self._value
 
@@ -17398,14 +18712,16 @@ class SearchSearchItemTriggerABusSentSlowDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the slow channel data binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the slow channel data binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
@@ -17431,12 +18747,12 @@ class SearchSearchItemTriggerABusSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EQualspecifies`` the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
-        - ``LESSThan`` sets the qualifier as Less Than.
-        - ``MOREEQual`` sets the qualifier as More Than or Equal to.
-        - ``MOREThan`` sets the qualifier as More Than.
+        - ``LESSthansets`` the qualifier as Less Than.
+        - ``MOREEQualsets`` the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` specifies the qualifier as Unequal.
         - ``INrange`` sets the search qualifier to inside a range.
         - ``OUTrange`` sets the search qualifier to outside a range.
@@ -17466,8 +18782,8 @@ class SearchSearchItemTriggerABusSentSlowDataHivalue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` sets the binary Slow channel data value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` sets the binary Slow channel data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -17482,6 +18798,9 @@ class SearchSearchItemTriggerABusSentSlowData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:HIVALue`` command.
@@ -17525,8 +18844,8 @@ class SearchSearchItemTriggerABusSentSlowData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` sets the binary Slow channel data value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` sets the binary Slow channel data value.
         """
         return self._hivalue
 
@@ -17554,12 +18873,12 @@ class SearchSearchItemTriggerABusSentSlowData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EQualspecifies`` the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
-            - ``LESSThan`` sets the qualifier as Less Than.
-            - ``MOREEQual`` sets the qualifier as More Than or Equal to.
-            - ``MOREThan`` sets the qualifier as More Than.
+            - ``LESSthansets`` the qualifier as Less Than.
+            - ``MOREEQualsets`` the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` specifies the qualifier as Unequal.
             - ``INrange`` sets the search qualifier to inside a range.
             - ``OUTrange`` sets the search qualifier to outside a range.
@@ -17585,13 +18904,13 @@ class SearchSearchItemTriggerABusSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the slow channel data binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the slow channel data binary value.
         """
         return self._value
 
@@ -17605,6 +18924,9 @@ class SearchSearchItemTriggerABusSentSlow(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA`` command tree.
@@ -17629,6 +18951,9 @@ class SearchSearchItemTriggerABusSentSlow(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
+
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:HIVALue`` command.
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier``
@@ -17647,6 +18972,9 @@ class SearchSearchItemTriggerABusSentSlow(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue`` command.
@@ -17677,12 +19005,12 @@ class SearchSearchItemTriggerABusSentPauseTicksValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<NR1>`` is the minimum number of pause clock ticks to be used when searching.
     """
 
 
-class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWriteNoArguments, SCPICmdRead):
+class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
 
     Description:
@@ -17695,17 +19023,17 @@ class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWriteNoArguments, 
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<NR1>`` is the maximum number of pause clock ticks to be used when searching.
     """
 
@@ -17719,6 +19047,9 @@ class SearchSearchItemTriggerABusSentPauseTicks(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
@@ -17748,17 +19079,17 @@ class SearchSearchItemTriggerABusSentPauseTicks(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<NR1>`` is the maximum number of pause clock ticks to be used when searching.
         """
         return self._hivalue
@@ -17787,7 +19118,7 @@ class SearchSearchItemTriggerABusSentPauseTicks(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<NR1>`` is the minimum number of pause clock ticks to be used when searching.
         """
         return self._value
@@ -17815,13 +19146,13 @@ class SearchSearchItemTriggerABusSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``INrange`` sets the qualifier to be within a range.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
-        - ``LESSThan`` sets the qualifier as Less Than.
+        - ``LESSthan`` sets the qualifier as Less Than.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
-        - ``MOREThan`` sets the qualifier as More Than.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``OUTrange`` sets the qualifier to be outside a range.
         - ``UNEQual`` specifies the qualifier as Unequal.
     """  # noqa: E501
@@ -17836,6 +19167,9 @@ class SearchSearchItemTriggerABusSentPause(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier`` command.
@@ -17873,13 +19207,13 @@ class SearchSearchItemTriggerABusSentPause(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``INrange`` sets the qualifier to be within a range.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
-            - ``LESSThan`` sets the qualifier as Less Than.
+            - ``LESSthan`` sets the qualifier as Less Than.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
-            - ``MOREThan`` sets the qualifier as More Than.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``OUTrange`` sets the qualifier to be outside a range.
             - ``UNEQual`` specifies the qualifier as Unequal.
         """  # noqa: E501
@@ -17895,6 +19229,9 @@ class SearchSearchItemTriggerABusSentPause(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
@@ -17921,14 +19258,16 @@ class SearchSearchItemTriggerABusSentFastStatusValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the binary status binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the binary status binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentFastStatus(SCPICmdRead):
@@ -17940,6 +19279,9 @@ class SearchSearchItemTriggerABusSentFastStatus(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue`` command.
@@ -17970,13 +19312,13 @@ class SearchSearchItemTriggerABusSentFastStatus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the binary status binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the binary status binary value.
         """
         return self._value
 
@@ -17999,14 +19341,16 @@ class SearchSearchItemTriggerABusSentFastInvertnibbleValue(SCPICmdWrite, SCPICmd
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the fast message inverted nibble binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the fast message inverted nibble binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentFastInvertnibble(SCPICmdRead):
@@ -18018,6 +19362,9 @@ class SearchSearchItemTriggerABusSentFastInvertnibble(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue`` command.
@@ -18048,13 +19395,13 @@ class SearchSearchItemTriggerABusSentFastInvertnibble(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the fast message inverted nibble binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the fast message inverted nibble binary value.
         """
         return self._value
 
@@ -18064,7 +19411,7 @@ class SearchSearchItemTriggerABusSentFastCounterValue(SCPICmdWrite, SCPICmdRead)
 
     Description:
         - This command sets or queries the binary fast message counter value to be used when
-          searching on a SENT bus signal.
+          searching on a SENT bus signal
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -18077,14 +19424,16 @@ class SearchSearchItemTriggerABusSentFastCounterValue(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the Fast Channel 1 counter value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the Fast Channel 1 counter value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
@@ -18092,7 +19441,8 @@ class SearchSearchItemTriggerABusSentFastCounterQualifier(SCPICmdWrite, SCPICmdR
 
     Description:
         - This command sets or queries the qualifier to be used when searching on SENT fast packet
-          bus data for the secure format counter.
+          bus data for the secure format counter. The SENT bus trigger condition must be set to
+          FAST.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -18110,12 +19460,12 @@ class SearchSearchItemTriggerABusSentFastCounterQualifier(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-        - ``LESSThan`` specifies the qualifier as Less Than.
+        - ``LESSthan`` specifies the qualifier as Less Than.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-        - ``MOREThan`` specifies the qualifier as More Than.
+        - ``MOREthan`` specifies the qualifier as More Than.
         - ``UNEQual`` specifies the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -18145,8 +19495,8 @@ class SearchSearchItemTriggerABusSentFastCounterHivalue(SCPICmdWrite, SCPICmdRea
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` sets the Fast Channel 1 counter binary value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` sets the Fast Channel 1 counter binary value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -18161,6 +19511,9 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue`` command.
@@ -18205,8 +19558,8 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` sets the Fast Channel 1 counter binary value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` sets the Fast Channel 1 counter binary value.
         """
         return self._hivalue
 
@@ -18216,7 +19569,8 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
 
         Description:
             - This command sets or queries the qualifier to be used when searching on SENT fast
-              packet bus data for the secure format counter.
+              packet bus data for the secure format counter. The SENT bus trigger condition must be
+              set to FAST.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -18234,12 +19588,12 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-            - ``LESSThan`` specifies the qualifier as Less Than.
+            - ``LESSthan`` specifies the qualifier as Less Than.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-            - ``MOREThan`` specifies the qualifier as More Than.
+            - ``MOREthan`` specifies the qualifier as More Than.
             - ``UNEQual`` specifies the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -18252,7 +19606,7 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary fast message counter value to be used when
-              searching on a SENT bus signal.
+              searching on a SENT bus signal
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -18265,13 +19619,13 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the Fast Channel 1 counter value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the Fast Channel 1 counter value.
         """
         return self._value
 
@@ -18294,14 +19648,16 @@ class SearchSearchItemTriggerABusSentFastChan2bValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the Fast Channel 2 binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the Fast Channel 2 binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
@@ -18327,12 +19683,12 @@ class SearchSearchItemTriggerABusSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-        - ``LESSThan`` specifies the qualifier as Less Than.
+        - ``LESSthan`` specifies the qualifier as Less Than.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-        - ``MOREThan`` specifies the qualifier as More Than.
+        - ``MOREthan`` specifies the qualifier as More Than.
         - ``UNEQual`` specifies the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -18362,8 +19718,8 @@ class SearchSearchItemTriggerABusSentFastChan2bHivalue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` sets the Fast Channel 2 high binary data value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` sets the Fast Channel 2 high binary data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -18378,6 +19734,9 @@ class SearchSearchItemTriggerABusSentFastChan2b(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue`` command.
@@ -18421,8 +19780,8 @@ class SearchSearchItemTriggerABusSentFastChan2b(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` sets the Fast Channel 2 high binary data value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` sets the Fast Channel 2 high binary data value.
         """
         return self._hivalue
 
@@ -18450,12 +19809,12 @@ class SearchSearchItemTriggerABusSentFastChan2b(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-            - ``LESSThan`` specifies the qualifier as Less Than.
+            - ``LESSthan`` specifies the qualifier as Less Than.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-            - ``MOREThan`` specifies the qualifier as More Than.
+            - ``MOREthan`` specifies the qualifier as More Than.
             - ``UNEQual`` specifies the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -18481,13 +19840,13 @@ class SearchSearchItemTriggerABusSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the Fast Channel 2 binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the Fast Channel 2 binary value.
         """
         return self._value
 
@@ -18510,14 +19869,16 @@ class SearchSearchItemTriggerABusSentFastChan1aValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue?
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``<Qstring>`` is the Fast Channel 1 binary value.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` is the Fast Channel 1 binary value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
@@ -18543,12 +19904,12 @@ class SearchSearchItemTriggerABusSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
-        - ``EQUal`` specifies the qualifier as Equal.
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-        - ``LESSThan`` specifies the qualifier as Less Than.
+        - ``LESSthan`` specifies the qualifier as Less Than.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-        - ``MOREThan`` specifies the qualifier as More Than.
+        - ``MOREthan`` specifies the qualifier as More Than.
         - ``UNEQual`` specifies the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -18578,8 +19939,8 @@ class SearchSearchItemTriggerABusSentFastChan1aHivalue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` sets the Fast Channel 1 binary data high value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` sets the Fast Channel 1 binary data high value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -18594,6 +19955,9 @@ class SearchSearchItemTriggerABusSentFastChan1a(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:HIVALue`` command.
@@ -18637,8 +20001,8 @@ class SearchSearchItemTriggerABusSentFastChan1a(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` sets the Fast Channel 1 binary data high value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` sets the Fast Channel 1 binary data high value.
         """
         return self._hivalue
 
@@ -18666,12 +20030,12 @@ class SearchSearchItemTriggerABusSentFastChan1a(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``EQUal`` specifies the qualifier as Equal.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
-            - ``LESSThan`` specifies the qualifier as Less Than.
+            - ``LESSthan`` specifies the qualifier as Less Than.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
-            - ``MOREThan`` specifies the qualifier as More Than.
+            - ``MOREthan`` specifies the qualifier as More Than.
             - ``UNEQual`` specifies the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -18697,13 +20061,13 @@ class SearchSearchItemTriggerABusSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue?
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
-            - ``<Qstring>`` is the Fast Channel 1 binary value.
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` is the Fast Channel 1 binary value.
         """
         return self._value
 
@@ -18717,6 +20081,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.chan1a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A`` command tree.
@@ -18756,6 +20123,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
+
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:HIVALue`` command.
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier``
@@ -18775,6 +20145,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
+
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue`` command.
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier``
@@ -18793,6 +20166,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
 
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue``
@@ -18814,6 +20190,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue``
               command.
@@ -18830,6 +20209,9 @@ class SearchSearchItemTriggerABusSentFast(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue`` command.
@@ -18859,7 +20241,7 @@ class SearchSearchItemTriggerABusSentErrtypeCrc(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``FAST`` specifies searching for CRC errors only in the fast channel.
         - ``SLOW`` specifies searching for CRC errors only in the slow channel.
     """
@@ -18887,7 +20269,7 @@ class SearchSearchItemTriggerABusSentErrtype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``FRAMELENgth`` specifies searching for SENT frame length errors.
         - ``CRC`` specifies searching for CRC errors.
 
@@ -18923,7 +20305,7 @@ class SearchSearchItemTriggerABusSentErrtype(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``FAST`` specifies searching for CRC errors only in the fast channel.
             - ``SLOW`` specifies searching for CRC errors only in the slow channel.
         """
@@ -18952,7 +20334,7 @@ class SearchSearchItemTriggerABusSentCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``START`` specifies searching for start of packet.
         - ``FAST`` specifies searching for fast channel data.
         - ``SLOW`` specifies searching for slow channel data.
@@ -18969,6 +20351,9 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
           query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:CONDition`` command.
@@ -19013,7 +20398,7 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``START`` specifies searching for start of packet.
             - ``FAST`` specifies searching for fast channel data.
             - ``SLOW`` specifies searching for slow channel data.
@@ -19045,7 +20430,7 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``FRAMELENgth`` specifies searching for SENT frame length errors.
             - ``CRC`` specifies searching for CRC errors.
 
@@ -19064,6 +20449,9 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
 
         Sub-properties:
             - ``.chan1a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A`` command tree.
@@ -19086,6 +20474,9 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier`` command.
             - ``.ticks``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs`` command tree.
@@ -19102,6 +20493,9 @@ class SearchSearchItemTriggerABusSent(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
 
         Sub-properties:
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA`` command tree.
@@ -19133,7 +20527,7 @@ class SearchSearchItemTriggerABusSdlcUnnumberedFrametype(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``UP`` sets the Unnumbered Frame Type as UP.
         - ``UI`` sets the Unnumbered Frame Type as UI.
         - ``SNRM`` sets the Unnumbered Frame Type as SNRM.
@@ -19159,6 +20553,9 @@ class SearchSearchItemTriggerABusSdlcUnnumbered(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:UNNumbered?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:UNNumbered:FRAMETYPe`` command.
@@ -19193,7 +20590,7 @@ class SearchSearchItemTriggerABusSdlcUnnumbered(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``UP`` sets the Unnumbered Frame Type as UP.
             - ``UI`` sets the Unnumbered Frame Type as UI.
             - ``SNRM`` sets the Unnumbered Frame Type as SNRM.
@@ -19233,7 +20630,7 @@ class SearchSearchItemTriggerABusSdlcSupervisoryFrametype(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``RR`` sets the frame type as RR.
         - ``RNR`` sets the frame type as RNR.
         - ``REJ`` sets the frame type as REJ.
@@ -19249,6 +20646,9 @@ class SearchSearchItemTriggerABusSdlcSupervisory(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:SUPervisory?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:SUPervisory:FRAMETYPe`` command.
@@ -19283,7 +20683,7 @@ class SearchSearchItemTriggerABusSdlcSupervisory(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``RR`` sets the frame type as RR.
             - ``RNR`` sets the frame type as RNR.
             - ``REJ`` sets the frame type as REJ.
@@ -19391,7 +20791,7 @@ class SearchSearchItemTriggerABusSdlcFrameType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``COMMand`` sets Command as the Frame Type in SDLC bus. The default value of frame type
           for SDLC Unnumbered frame is Command.
         - ``RESPonse`` sets Response as the Frame Type in SDLC bus.
@@ -19408,6 +20808,9 @@ class SearchSearchItemTriggerABusSdlcFrame(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:FRAMe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:FRAMe:TYPe`` command.
@@ -19440,7 +20843,7 @@ class SearchSearchItemTriggerABusSdlcFrame(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``COMMand`` sets Command as the Frame Type in SDLC bus. The default value of frame
               type for SDLC Unnumbered frame is Command.
             - ``RESPonse`` sets Response as the Frame Type in SDLC bus.
@@ -19471,7 +20874,7 @@ class SearchSearchItemTriggerABusSdlcErrorType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``FCS`` sets FCS as the Error Type in SDLC bus. The default error type condition is FCS.
         - ``NUMERICORDer`` sets NUMERICORDer as the Error Type in SDLC bus.
     """
@@ -19486,6 +20889,9 @@ class SearchSearchItemTriggerABusSdlcError(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ERROR?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ERROR:TYPe`` command.
@@ -19518,7 +20924,7 @@ class SearchSearchItemTriggerABusSdlcError(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``FCS`` sets FCS as the Error Type in SDLC bus. The default error type condition is
               FCS.
             - ``NUMERICORDer`` sets NUMERICORDer as the Error Type in SDLC bus.
@@ -19549,7 +20955,7 @@ class SearchSearchItemTriggerABusSdlcDataValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX .
+        - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -19656,7 +21062,7 @@ class SearchSearchItemTriggerABusSdlcData(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX .
+            - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX.
         """
         return self._value
 
@@ -19683,7 +21089,7 @@ class SearchSearchItemTriggerABusSdlcCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``STARt`` specifies start as the field within a SDLC frame to search on. The default
           Trigger on Condtion is STARt.
         - ``DATa`` specifies data as the field within a SDLC frame to search on.
@@ -19720,7 +21126,7 @@ class SearchSearchItemTriggerABusSdlcAddressType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``BROadcast`` specifies the Broadcast as the field within a SDLC frame to search on.
           BROadcast is the default value.
         - ``NOSTATion`` specifies the No-Station as the field within a SDLC frame to search on.
@@ -19737,6 +21143,9 @@ class SearchSearchItemTriggerABusSdlcAddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess:TYPe`` command.
@@ -19770,7 +21179,7 @@ class SearchSearchItemTriggerABusSdlcAddress(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``BROadcast`` specifies the Broadcast as the field within a SDLC frame to search on.
               BROadcast is the default value.
             - ``NOSTATion`` specifies the No-Station as the field within a SDLC frame to search on.
@@ -19788,6 +21197,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
           query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess`` command tree.
@@ -19832,6 +21244,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess:TYPe`` command.
         """
@@ -19860,7 +21275,7 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``STARt`` specifies start as the field within a SDLC frame to search on. The default
               Trigger on Condtion is STARt.
             - ``DATa`` specifies data as the field within a SDLC frame to search on.
@@ -19902,6 +21317,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ERROR?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ERROR:TYPe`` command.
         """
@@ -19917,6 +21335,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:FRAMe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:FRAMe:TYPe`` command.
@@ -19950,6 +21371,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:SUPervisory?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:SUPervisory:FRAMETYPe``
               command.
@@ -19966,6 +21390,9 @@ class SearchSearchItemTriggerABusSdlc(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:UNNumbered?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:UNNumbered:FRAMETYPe``
@@ -19997,7 +21424,7 @@ class SearchSearchItemTriggerABusS8b10bSymbolType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``DATa`` specifies searching for Data Symbols.
         - ``CONTrol`` specifies searching for Control Symbols.
     """
@@ -20027,8 +21454,8 @@ class SearchSearchItemTriggerABusS8b10bSymbolTbitvalue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` specifies the 10 bit value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` specifies the 10 bit value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -20058,8 +21485,8 @@ class SearchSearchItemTriggerABusS8b10bSymbolTbitrdpos(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` specifies the 10 bit RD positive value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` specifies the 10 bit RD positive value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -20089,8 +21516,8 @@ class SearchSearchItemTriggerABusS8b10bSymbolTbitrdneg(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` specifies the 10 bit RD negative value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` specifies the 10 bit RD negative value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -20119,7 +21546,7 @@ class SearchSearchItemTriggerABusS8b10bSymbolMode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``EBIT`` specifies searching for Eight Bit data.
         - ``TBIT`` specifies searching for Ten bit data (6 bits and 4 bits combined). Only valid
           values are considered.
@@ -20152,8 +21579,8 @@ class SearchSearchItemTriggerABusS8b10bSymbolEbitvalue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` specifies the 8 bit value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` specifies the 8 bit value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -20183,8 +21610,8 @@ class SearchSearchItemTriggerABusS8b10bSymbolCsymvalue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
-        - ``<Qstring>`` specifies the 10 bit value.
+        - ``SEARCH<x>`` is the Search identifier number.
+        - ``<QString>`` specifies the 10 bit value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -20199,6 +21626,9 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search identifier number.
 
     Properties:
         - ``.csymvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol:CSYMVALue`` command.
@@ -20255,8 +21685,8 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` specifies the 10 bit value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` specifies the 10 bit value.
         """
         return self._csymvalue
 
@@ -20285,8 +21715,8 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` specifies the 8 bit value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` specifies the 8 bit value.
         """
         return self._ebitvalue
 
@@ -20314,7 +21744,7 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``EBIT`` specifies searching for Eight Bit data.
             - ``TBIT`` specifies searching for Ten bit data (6 bits and 4 bits combined). Only valid
               values are considered.
@@ -20348,8 +21778,8 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` specifies the 10 bit RD negative value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` specifies the 10 bit RD negative value.
         """
         return self._tbitrdneg
 
@@ -20378,8 +21808,8 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` specifies the 10 bit RD positive value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` specifies the 10 bit RD positive value.
         """
         return self._tbitrdpos
 
@@ -20408,8 +21838,8 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
-            - ``<Qstring>`` specifies the 10 bit value.
+            - ``SEARCH<x>`` is the Search identifier number.
+            - ``<QString>`` specifies the 10 bit value.
         """
         return self._tbitvalue
 
@@ -20437,7 +21867,7 @@ class SearchSearchItemTriggerABusS8b10bSymbol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``DATa`` specifies searching for Data Symbols.
             - ``CONTrol`` specifies searching for Control Symbols.
         """
@@ -20467,7 +21897,7 @@ class SearchSearchItemTriggerABusS8b10bError(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
+        - ``SEARCH<x>`` is the Search identifier number.
         - ``SYMBol`` specifies searching for Symbol Errors.
         - ``DISParity`` specifies searching for Disparity Errors.
     """
@@ -20496,7 +21926,7 @@ class SearchSearchItemTriggerABusS8b10bDisparity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the Search identifier number.
+        - ``SEARCH<x>`` is the Search identifier number.
         - ``POSITIVe`` specifies searching for positive disparity.
         - ``NEGAtive`` specifies searching for negative disparity.
         - ``EITHer`` specifies searching for neutral or either positive/negative disparity.
@@ -20526,7 +21956,7 @@ class SearchSearchItemTriggerABusS8b10bCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``SYMbols`` specifies the search condition as data or control.
         - ``ERRors`` specifies the search condition as Symbol error or disparity error.
     """
@@ -20541,6 +21971,9 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
@@ -20584,7 +22017,7 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``SYMbols`` specifies the search condition as data or control.
             - ``ERRors`` specifies the search condition as Symbol error or disparity error.
         """
@@ -20614,7 +22047,7 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
+            - ``SEARCH<x>`` is the Search identifier number.
             - ``POSITIVe`` specifies searching for positive disparity.
             - ``NEGAtive`` specifies searching for negative disparity.
             - ``EITHer`` specifies searching for neutral or either positive/negative disparity.
@@ -20645,7 +22078,7 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search identifier number.
+            - ``SEARCH<x>`` is the Search identifier number.
             - ``SYMBol`` specifies searching for Symbol Errors.
             - ``DISParity`` specifies searching for Disparity Errors.
         """
@@ -20661,6 +22094,9 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search identifier number.
 
         Sub-properties:
             - ``.csymvalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol:CSYMVALue``
@@ -21026,7 +22462,7 @@ class SearchSearchItemTriggerABusPsifiveSensorAddressValue(SCPICmdWrite, SCPICmd
         ```
 
     Info:
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,and X
           for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
     """
 
@@ -21077,8 +22513,8 @@ class SearchSearchItemTriggerABusPsifiveSensorAddress(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0,
+              1,and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
               format.
         """
         return self._value
@@ -22278,6 +23714,1590 @@ class SearchSearchItemTriggerABusPsifive(SCPICmdRead):
         return self._status
 
 
+class SearchSearchItemTriggerABusPcieTlpType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for a PCIe bus on specific TLP symbol.
+          The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe {ANY|MEMORY|IO|CONFIG|MESSAGE|COMPLETION|AOPERATION|PREFIX}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?
+        ```
+
+    Info:
+        - ``ANY`` specifies the search condition as ANY.
+        - ``MEMORY`` specifies the search condition as MEMORY.
+        - ``IO`` specifies the search condition as IO.
+        - ``CONFIG`` specifies the search condition as CONFIG.
+        - ``MESSAGE`` specifies the search condition as MESSAGE.
+        - ``COMPLETION`` specifies the search condition as COMPLETION.
+        - ``AOPERATION`` specifies the search condition as AOPERATION.
+        - ``PREFIX`` specifies the search condition as PREFIX.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusPcieTlpStag(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Steering tag of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpSnumber(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Sequence number of TLP when
+          triggering on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpRid(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Requester ID of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpPtype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for Prefix Type of TLP in PCIe bus. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe {ANY|LOCAL|ENEND}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?
+        ```
+
+    Info:
+        - ``ANY`` specifies the search condition as ANY.
+        - ``LOCAL`` specifies the search condition as LOCAL.
+        - ``ENEND`` specifies the search condition as ENEND.
+    """
+
+
+class SearchSearchItemTriggerABusPcieTlpPrefix(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Prefix of TLP when triggering on a
+          PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpMcode(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Message Code of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpDirection(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for direction of TLP in PCIe bus
+          signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection {EITHER|READ|WRITE}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?
+        ```
+
+    Info:
+        - ``EITHER`` specifies the search condition as EITHER.
+        - ``READ`` specifies the search condition as READ.
+        - ``WRITE`` specifies the search condition as WRITE.
+    """
+
+
+class SearchSearchItemTriggerABusPcieTlpBnumber(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Bus Number of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpAotype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for type of Atomic Operation of TLP in
+          PCIe bus. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe {ANY|FADD|SWAP|CAS}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?
+        ```
+
+    Info:
+        - ``ANY`` specifies the search condition as ANY.
+        - ``FADD`` specifies the search condition as FADD.
+        - ``SWAP`` specifies the search condition as SWAP.
+        - ``CAS`` specifies the search condition as CAS.
+    """
+
+
+class SearchSearchItemTriggerABusPcieTlpAlow(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Address Low of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpAhigh(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh`` command.
+
+    Description:
+        - This command sets the binary data value to be used for Address High of TLP when triggering
+          on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieTlpAddressMode(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe`` command.
+
+    Description:
+        - The command sets or queries the trigger condition for Address Mode of TLP in PCIe Gen 3.
+          The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe {ADDR32|ADDR64}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?
+        ```
+
+    Info:
+        - ``ADDR32`` specifies the search condition as ADDR32.
+        - ``ADDR64`` specifies the search condition as ADDR64.
+    """
+
+
+class SearchSearchItemTriggerABusPcieTlpAddress(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.mode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._mode = SearchSearchItemTriggerABusPcieTlpAddressMode(
+            device, f"{self._cmd_syntax}:MODe"
+        )
+
+    @property
+    def mode(self) -> SearchSearchItemTriggerABusPcieTlpAddressMode:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe`` command.
+
+        Description:
+            - The command sets or queries the trigger condition for Address Mode of TLP in PCIe Gen
+              3. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe {ADDR32|ADDR64}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe?
+            ```
+
+        Info:
+            - ``ADDR32`` specifies the search condition as ADDR32.
+            - ``ADDR64`` specifies the search condition as ADDR64.
+        """
+        return self._mode
+
+
+#  pylint: disable=too-many-instance-attributes
+class SearchSearchItemTriggerABusPcieTlp(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess`` command tree.
+        - ``.ahigh``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh`` command.
+        - ``.alow``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW`` command.
+        - ``.aotype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe`` command.
+        - ``.bnumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber`` command.
+        - ``.direction``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection`` command.
+        - ``.mcode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe`` command.
+        - ``.prefix``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix`` command.
+        - ``.ptype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe`` command.
+        - ``.rid``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID`` command.
+        - ``.snumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber`` command.
+        - ``.stag``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG`` command.
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._address = SearchSearchItemTriggerABusPcieTlpAddress(
+            device, f"{self._cmd_syntax}:ADDRess"
+        )
+        self._ahigh = SearchSearchItemTriggerABusPcieTlpAhigh(device, f"{self._cmd_syntax}:AHIGh")
+        self._alow = SearchSearchItemTriggerABusPcieTlpAlow(device, f"{self._cmd_syntax}:ALOW")
+        self._aotype = SearchSearchItemTriggerABusPcieTlpAotype(
+            device, f"{self._cmd_syntax}:AOTYpe"
+        )
+        self._bnumber = SearchSearchItemTriggerABusPcieTlpBnumber(
+            device, f"{self._cmd_syntax}:BNUMber"
+        )
+        self._direction = SearchSearchItemTriggerABusPcieTlpDirection(
+            device, f"{self._cmd_syntax}:DIRection"
+        )
+        self._mcode = SearchSearchItemTriggerABusPcieTlpMcode(device, f"{self._cmd_syntax}:MCODe")
+        self._prefix = SearchSearchItemTriggerABusPcieTlpPrefix(
+            device, f"{self._cmd_syntax}:PREFix"
+        )
+        self._ptype = SearchSearchItemTriggerABusPcieTlpPtype(device, f"{self._cmd_syntax}:PTYPe")
+        self._rid = SearchSearchItemTriggerABusPcieTlpRid(device, f"{self._cmd_syntax}:RID")
+        self._snumber = SearchSearchItemTriggerABusPcieTlpSnumber(
+            device, f"{self._cmd_syntax}:SNUMber"
+        )
+        self._stag = SearchSearchItemTriggerABusPcieTlpStag(device, f"{self._cmd_syntax}:STAG")
+        self._type = SearchSearchItemTriggerABusPcieTlpType(device, f"{self._cmd_syntax}:TYPe")
+
+    @property
+    def address(self) -> SearchSearchItemTriggerABusPcieTlpAddress:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.mode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess:MODe`` command.
+        """
+        return self._address
+
+    @property
+    def ahigh(self) -> SearchSearchItemTriggerABusPcieTlpAhigh:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Address High of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._ahigh
+
+    @property
+    def alow(self) -> SearchSearchItemTriggerABusPcieTlpAlow:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Address Low of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._alow
+
+    @property
+    def aotype(self) -> SearchSearchItemTriggerABusPcieTlpAotype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for type of Atomic Operation of TLP
+              in PCIe bus. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe {ANY|FADD|SWAP|CAS}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe?
+            ```
+
+        Info:
+            - ``ANY`` specifies the search condition as ANY.
+            - ``FADD`` specifies the search condition as FADD.
+            - ``SWAP`` specifies the search condition as SWAP.
+            - ``CAS`` specifies the search condition as CAS.
+        """
+        return self._aotype
+
+    @property
+    def bnumber(self) -> SearchSearchItemTriggerABusPcieTlpBnumber:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Bus Number of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._bnumber
+
+    @property
+    def direction(self) -> SearchSearchItemTriggerABusPcieTlpDirection:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for direction of TLP in PCIe bus
+              signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection {EITHER|READ|WRITE}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection?
+            ```
+
+        Info:
+            - ``EITHER`` specifies the search condition as EITHER.
+            - ``READ`` specifies the search condition as READ.
+            - ``WRITE`` specifies the search condition as WRITE.
+        """
+        return self._direction
+
+    @property
+    def mcode(self) -> SearchSearchItemTriggerABusPcieTlpMcode:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Message Code of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._mcode
+
+    @property
+    def prefix(self) -> SearchSearchItemTriggerABusPcieTlpPrefix:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Prefix of TLP when triggering
+              on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._prefix
+
+    @property
+    def ptype(self) -> SearchSearchItemTriggerABusPcieTlpPtype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for Prefix Type of TLP in PCIe bus.
+              The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe {ANY|LOCAL|ENEND}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe?
+            ```
+
+        Info:
+            - ``ANY`` specifies the search condition as ANY.
+            - ``LOCAL`` specifies the search condition as LOCAL.
+            - ``ENEND`` specifies the search condition as ENEND.
+        """
+        return self._ptype
+
+    @property
+    def rid(self) -> SearchSearchItemTriggerABusPcieTlpRid:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Requester ID of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._rid
+
+    @property
+    def snumber(self) -> SearchSearchItemTriggerABusPcieTlpSnumber:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Sequence number of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._snumber
+
+    @property
+    def stag(self) -> SearchSearchItemTriggerABusPcieTlpStag:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG`` command.
+
+        Description:
+            - This command sets the binary data value to be used for Steering tag of TLP when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._stag
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusPcieTlpType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for a PCIe bus on specific TLP
+              symbol. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe {ANY|MEMORY|IO|CONFIG|MESSAGE|COMPLETION|AOPERATION|PREFIX}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe?
+            ```
+
+        Info:
+            - ``ANY`` specifies the search condition as ANY.
+            - ``MEMORY`` specifies the search condition as MEMORY.
+            - ``IO`` specifies the search condition as IO.
+            - ``CONFIG`` specifies the search condition as CONFIG.
+            - ``MESSAGE`` specifies the search condition as MESSAGE.
+            - ``COMPLETION`` specifies the search condition as COMPLETION.
+            - ``AOPERATION`` specifies the search condition as AOPERATION.
+            - ``PREFIX`` specifies the search condition as PREFIX.
+        """  # noqa: E501
+        return self._type
+
+
+class SearchSearchItemTriggerABusPcieSync(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC`` command.
+
+    Description:
+        - This command sets or queries the Sync header type to trigger on a PCIe Gen 3. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC {ORDSET|DATA|INVALID}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?
+        ```
+
+    Info:
+        - ``ORDSET`` specifies the search condition as ORDSET.
+        - ``DATA`` specifies the search condition as DATA.
+        - ``INVALID`` specifies the search condition as INVALID.
+    """
+
+
+class SearchSearchItemTriggerABusPcieOsettype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype`` command.
+
+    Description:
+        - This command sets or queries the ordered set trigger condition for a PCIe bus. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype {TS<x>|EIOS|EIEOS|FTS|SDS|SKP}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?
+        ```
+
+    Info:
+        - ``TS1`` specifies the search condition as TS1.
+        - ``TS2`` specifies the search condition as TS2.
+        - ``EIOS`` specifies the search condition as EIOS.
+        - ``EIEOS`` specifies the search condition as EIEOS.
+        - ``FTS`` specifies the search condition as FTS.
+        - ``SDS`` specifies the search condition as SDS.
+        - ``SKP`` specifies the search condition as SKP.
+    """
+
+
+class SearchSearchItemTriggerABusPcieDllpVchannelValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue`` command.
+
+    Description:
+        - This command sets or queries the data value to be used for DLLP Flow control when
+          triggering on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
+          0. The maximum value is 4095.
+    """
+
+
+class SearchSearchItemTriggerABusPcieDllpVchannel(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPcieDllpVchannelValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPcieDllpVchannelValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue`` command.
+
+        Description:
+            - This command sets or queries the data value to be used for DLLP Flow control when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
+              are 0. The maximum value is 4095.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPcieDllpHcreditsValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue`` command.
+
+    Description:
+        - This command sets or queries the header credits to be used for DLLP Flow control when
+          triggering on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
+          0. The maximum value is 4095.
+    """
+
+
+class SearchSearchItemTriggerABusPcieDllpHcredits(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPcieDllpHcreditsValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPcieDllpHcreditsValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue`` command.
+
+        Description:
+            - This command sets or queries the header credits to be used for DLLP Flow control when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
+              are 0. The maximum value is 4095.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPcieDllpDcreditsValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue`` command.
+
+    Description:
+        - This command sets or queries the data value to be used for DLLP Flow control when
+          triggering on a PCIe bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
+          0. The maximum value is 4095.
+    """
+
+
+class SearchSearchItemTriggerABusPcieDllpDcredits(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPcieDllpDcreditsValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPcieDllpDcreditsValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue`` command.
+
+        Description:
+            - This command sets or queries the data value to be used for DLLP Flow control when
+              triggering on a PCIe bus signal. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
+              are 0. The maximum value is 4095.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPcieDllp(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.dcredits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits`` command tree.
+        - ``.hcredits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits`` command tree.
+        - ``.vchannel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._dcredits = SearchSearchItemTriggerABusPcieDllpDcredits(
+            device, f"{self._cmd_syntax}:DCRedits"
+        )
+        self._hcredits = SearchSearchItemTriggerABusPcieDllpHcredits(
+            device, f"{self._cmd_syntax}:HCRedits"
+        )
+        self._vchannel = SearchSearchItemTriggerABusPcieDllpVchannel(
+            device, f"{self._cmd_syntax}:VCHANnel"
+        )
+
+    @property
+    def dcredits(self) -> SearchSearchItemTriggerABusPcieDllpDcredits:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits:VALue`` command.
+        """
+        return self._dcredits
+
+    @property
+    def hcredits(self) -> SearchSearchItemTriggerABusPcieDllpHcredits:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits:VALue`` command.
+        """
+        return self._hcredits
+
+    @property
+    def vchannel(self) -> SearchSearchItemTriggerABusPcieDllpVchannel:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel:VALue`` command.
+        """
+        return self._vchannel
+
+
+class SearchSearchItemTriggerABusPcieCustomNsymbols(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols`` command.
+
+    Description:
+        - This command sets or queries the number of symbols in custom pattern to trigger on. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
+          0. The maximum value is 16.
+    """
+
+
+class SearchSearchItemTriggerABusPcieCustomDheader(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder`` command.
+
+    Description:
+        - This command sets or queries the data pattern to trigger on. The search number is
+          specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPcieCustom(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.dheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder`` command.
+        - ``.nsymbols``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._dheader = SearchSearchItemTriggerABusPcieCustomDheader(
+            device, f"{self._cmd_syntax}:DHEAder"
+        )
+        self._nsymbols = SearchSearchItemTriggerABusPcieCustomNsymbols(
+            device, f"{self._cmd_syntax}:NSYMbols"
+        )
+
+    @property
+    def dheader(self) -> SearchSearchItemTriggerABusPcieCustomDheader:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder`` command.
+
+        Description:
+            - This command sets or queries the data pattern to trigger on. The search number is
+              specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._dheader
+
+    @property
+    def nsymbols(self) -> SearchSearchItemTriggerABusPcieCustomNsymbols:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols`` command.
+
+        Description:
+            - This command sets or queries the number of symbols in custom pattern to trigger on.
+              The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
+              are 0. The maximum value is 16.
+        """
+        return self._nsymbols
+
+
+class SearchSearchItemTriggerABusPcieCheader(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer`` command.
+
+    Description:
+        - This command sets or queries the Sync header type for Custom pattern to trigger on a PCIe
+          Gen 3. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer {CONTROL|DATA|EITHER}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?
+        ```
+
+    Info:
+        - ``CONTROL`` specifies the search condition as control.
+        - ``DATA`` specifies the search condition as data.
+        - ``EITHER`` specifies the search condition as either.
+    """
+
+
+class SearchSearchItemTriggerABusPcie(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE?``
+          query.
+        - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.cheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer`` command.
+        - ``.custom``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom`` command tree.
+        - ``.dllp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP`` command tree.
+        - ``.osettype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype`` command.
+        - ``.sync``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC`` command.
+        - ``.tlp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._cheader = SearchSearchItemTriggerABusPcieCheader(
+            device, f"{self._cmd_syntax}:CHEADer"
+        )
+        self._custom = SearchSearchItemTriggerABusPcieCustom(device, f"{self._cmd_syntax}:CUSTom")
+        self._dllp = SearchSearchItemTriggerABusPcieDllp(device, f"{self._cmd_syntax}:DLLP")
+        self._osettype = SearchSearchItemTriggerABusPcieOsettype(
+            device, f"{self._cmd_syntax}:OSETtype"
+        )
+        self._sync = SearchSearchItemTriggerABusPcieSync(device, f"{self._cmd_syntax}:SYNC")
+        self._tlp = SearchSearchItemTriggerABusPcieTlp(device, f"{self._cmd_syntax}:TLP")
+
+    @property
+    def cheader(self) -> SearchSearchItemTriggerABusPcieCheader:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer`` command.
+
+        Description:
+            - This command sets or queries the Sync header type for Custom pattern to trigger on a
+              PCIe Gen 3. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer {CONTROL|DATA|EITHER}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer?
+            ```
+
+        Info:
+            - ``CONTROL`` specifies the search condition as control.
+            - ``DATA`` specifies the search condition as data.
+            - ``EITHER`` specifies the search condition as either.
+        """
+        return self._cheader
+
+    @property
+    def custom(self) -> SearchSearchItemTriggerABusPcieCustom:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.dheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:DHEAder`` command.
+            - ``.nsymbols``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom:NSYMbols`` command.
+        """
+        return self._custom
+
+    @property
+    def dllp(self) -> SearchSearchItemTriggerABusPcieDllp:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.dcredits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:DCRedits`` command tree.
+            - ``.hcredits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:HCRedits`` command tree.
+            - ``.vchannel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP:VCHANnel`` command tree.
+        """
+        return self._dllp
+
+    @property
+    def osettype(self) -> SearchSearchItemTriggerABusPcieOsettype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype`` command.
+
+        Description:
+            - This command sets or queries the ordered set trigger condition for a PCIe bus. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype {TS<x>|EIOS|EIEOS|FTS|SDS|SKP}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype?
+            ```
+
+        Info:
+            - ``TS1`` specifies the search condition as TS1.
+            - ``TS2`` specifies the search condition as TS2.
+            - ``EIOS`` specifies the search condition as EIOS.
+            - ``EIEOS`` specifies the search condition as EIEOS.
+            - ``FTS`` specifies the search condition as FTS.
+            - ``SDS`` specifies the search condition as SDS.
+            - ``SKP`` specifies the search condition as SKP.
+        """
+        return self._osettype
+
+    @property
+    def sync(self) -> SearchSearchItemTriggerABusPcieSync:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC`` command.
+
+        Description:
+            - This command sets or queries the Sync header type to trigger on a PCIe Gen 3. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC {ORDSET|DATA|INVALID}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC?
+            ```
+
+        Info:
+            - ``ORDSET`` specifies the search condition as ORDSET.
+            - ``DATA`` specifies the search condition as DATA.
+            - ``INVALID`` specifies the search condition as INVALID.
+        """
+        return self._sync
+
+    @property
+    def tlp(self) -> SearchSearchItemTriggerABusPcieTlp:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ADDRess`` command tree.
+            - ``.ahigh``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AHIGh`` command.
+            - ``.alow``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:ALOW`` command.
+            - ``.aotype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:AOTYpe`` command.
+            - ``.bnumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:BNUMber`` command.
+            - ``.direction``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:DIRection`` command.
+            - ``.mcode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:MCODe`` command.
+            - ``.prefix``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PREFix`` command.
+            - ``.ptype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:PTYPe`` command.
+            - ``.rid``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:RID`` command.
+            - ``.snumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:SNUMber`` command.
+            - ``.stag``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:STAG`` command.
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP:TYPe`` command.
+        """
+        return self._tlp
+
+
 class SearchSearchItemTriggerABusParallelDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue`` command.
 
@@ -22414,7 +25434,7 @@ class SearchSearchItemTriggerABusOnewireSearchromRomcode(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the ROM code for Search ROM. The default size and value of ROM
           code for Search ROM is 64 bits and 'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
           XXXXXXXX XXXXXXXX'.
@@ -22432,6 +25452,9 @@ class SearchSearchItemTriggerABusOnewireSearchrom(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.romcode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM:ROMCODe`` command.
@@ -22467,7 +25490,7 @@ class SearchSearchItemTriggerABusOnewireSearchrom(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the ROM code for Search ROM. The default size and value of ROM
               code for Search ROM is 64 bits and 'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
               XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22498,7 +25521,7 @@ class SearchSearchItemTriggerABusOnewireReadromSerialnumber(SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Serial Number triggering. The default
           size and value of serial number for Read ROM is 48 bits and 'XXXXXXXX XXXXXXXX XXXXXXXX
           XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22530,7 +25553,7 @@ class SearchSearchItemTriggerABusOnewireReadromFamilycode(SCPICmdWrite, SCPICmdR
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Family Code triggering. The default
           size and value of family code for Read ROM is 8 bits and 'XXXXXXXX'.
     """
@@ -22547,6 +25570,9 @@ class SearchSearchItemTriggerABusOnewireReadrom(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:READROM?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:READROM:FAMILYCODe``
@@ -22588,7 +25614,7 @@ class SearchSearchItemTriggerABusOnewireReadrom(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Family Code triggering. The default
               size and value of family code for Read ROM is 8 bits and 'XXXXXXXX'.
         """
@@ -22618,7 +25644,7 @@ class SearchSearchItemTriggerABusOnewireReadrom(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Serial Number triggering. The
               default size and value of serial number for Read ROM is 48 bits and 'XXXXXXXX XXXXXXXX
               XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22649,7 +25675,7 @@ class SearchSearchItemTriggerABusOnewireOverdriveSerialnumber(SCPICmdWrite, SCPI
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Serial Number triggering. The default
           size and value of serial number for Overdrive match ROM is 48 bits and 'XXXXXXXX XXXXXXXX
           XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22681,7 +25707,7 @@ class SearchSearchItemTriggerABusOnewireOverdriveFamilycode(SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Family Code triggering. The default
           size and value of family code for Overdrive match ROM is 8 bits and 'XXXXXXXX'.
     """
@@ -22698,6 +25724,9 @@ class SearchSearchItemTriggerABusOnewireOverdrive(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:OVERDRIVe?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:OVERDRIVe:FAMILYCODe``
@@ -22739,7 +25768,7 @@ class SearchSearchItemTriggerABusOnewireOverdrive(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Family Code triggering. The default
               size and value of family code for Overdrive match ROM is 8 bits and 'XXXXXXXX'.
         """
@@ -22769,7 +25798,7 @@ class SearchSearchItemTriggerABusOnewireOverdrive(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Serial Number triggering. The
               default size and value of serial number for Overdrive match ROM is 48 bits and
               'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22800,7 +25829,7 @@ class SearchSearchItemTriggerABusOnewireMatchromSerialnumber(SCPICmdWrite, SCPIC
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Serial Number triggering. The default
           size and value of serial number for Match ROM is 48 bits and 'XXXXXXXX XXXXXXXX XXXXXXXX
           XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22832,7 +25861,7 @@ class SearchSearchItemTriggerABusOnewireMatchromFamilycode(SCPICmdWrite, SCPICmd
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Family Code triggering. The default
           size and value of family code for Match ROM is 8 bits and 'XXXXXXXX'.
     """
@@ -22849,6 +25878,9 @@ class SearchSearchItemTriggerABusOnewireMatchrom(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM:FAMILYCODe``
@@ -22890,7 +25922,7 @@ class SearchSearchItemTriggerABusOnewireMatchrom(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Family Code triggering. The default
               size and value of family code for Match ROM is 8 bits and 'XXXXXXXX'.
         """
@@ -22920,7 +25952,7 @@ class SearchSearchItemTriggerABusOnewireMatchrom(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Serial Number triggering. The
               default size and value of serial number for Match ROM is 48 bits and 'XXXXXXXX
               XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX'.
@@ -22951,7 +25983,7 @@ class SearchSearchItemTriggerABusOnewireDataValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the data value in a valid format. The default size and value for
           DATA is 8 bits and 'XXXXXXXX'.
     """
@@ -22982,7 +26014,7 @@ class SearchSearchItemTriggerABusOnewireDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
           1. The maximum value is 5.
     """
@@ -22997,6 +26029,9 @@ class SearchSearchItemTriggerABusOnewireData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:DATa?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:DATa:SIZe`` command.
@@ -23034,7 +26069,7 @@ class SearchSearchItemTriggerABusOnewireData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
               are 1. The maximum value is 5.
         """
@@ -23064,7 +26099,7 @@ class SearchSearchItemTriggerABusOnewireData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the data value in a valid format. The default size and value
               for DATA is 8 bits and 'XXXXXXXX'.
         """
@@ -23095,7 +26130,7 @@ class SearchSearchItemTriggerABusOnewireCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``RESet`` specifies the search condition as RESet. Reset is the default trigger on
           condition.
         - ``PREsence`` specifies the search condition as PREsence.
@@ -23133,7 +26168,7 @@ class SearchSearchItemTriggerABusOnewireCommandValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the data value in a valid format. The default size and value for
           COMMAND is 8 bits and 'XXXXXXXX'.
     """
@@ -23150,6 +26185,9 @@ class SearchSearchItemTriggerABusOnewireCommand(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand:VALue`` command.
@@ -23185,7 +26223,7 @@ class SearchSearchItemTriggerABusOnewireCommand(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the data value in a valid format. The default size and value
               for COMMAND is 8 bits and 'XXXXXXXX'.
         """
@@ -23201,6 +26239,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand`` command tree.
@@ -23245,6 +26286,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand:VALue`` command.
         """
@@ -23276,7 +26320,7 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``RESet`` specifies the search condition as RESet. Reset is the default trigger on
               condition.
             - ``PREsence`` specifies the search condition as PREsence.
@@ -23302,6 +26346,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:DATa?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:DATa:SIZe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:DATa:VALue`` command.
@@ -23318,6 +26365,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM:FAMILYCODe``
@@ -23338,6 +26388,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:OVERDRIVe?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:OVERDRIVe:FAMILYCODe``
               command.
@@ -23357,6 +26410,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:READROM?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:READROM:FAMILYCODe``
               command.
@@ -23375,6 +26431,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.romcode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM:ROMCODe``
@@ -23406,7 +26465,7 @@ class SearchSearchItemTriggerABusNrzDataValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the data value in a valid format.
     """
 
@@ -23437,7 +26496,7 @@ class SearchSearchItemTriggerABusNrzDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
           1. The maximum value is 5.
     """
@@ -23452,6 +26511,9 @@ class SearchSearchItemTriggerABusNrzData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:SIZe`` command.
@@ -23488,7 +26550,7 @@ class SearchSearchItemTriggerABusNrzData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
               are 1. The maximum value is 5.
         """
@@ -23518,7 +26580,7 @@ class SearchSearchItemTriggerABusNrzData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the data value in a valid format.
         """
         return self._value
@@ -23547,7 +26609,7 @@ class SearchSearchItemTriggerABusNrzCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``DATa`` specifies the search condition as Data Characters.
     """
 
@@ -23559,6 +26621,9 @@ class SearchSearchItemTriggerABusNrz(SCPICmdRead):
         - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ?`` query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
@@ -23596,7 +26661,7 @@ class SearchSearchItemTriggerABusNrz(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``DATa`` specifies the search condition as Data Characters.
         """
         return self._condition
@@ -23612,11 +26677,948 @@ class SearchSearchItemTriggerABusNrz(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:SIZe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:VALue`` command.
         """
         return self._data
+
+
+class SearchSearchItemTriggerABusNfcUidValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue`` command.
+
+    Description:
+        - This command specifies the binary data string used for NFC triggering if the trigger
+          condition is UID.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` specifies the data value in a valid format. The value for 15693 the UID is
+          64 bits. The value for 14443A the UID is 8 bits.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusNfcUid(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusNfcUidValue(device, f"{self._cmd_syntax}:VALue")
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusNfcUidValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue`` command.
+
+        Description:
+            - This command specifies the binary data string used for NFC triggering if the trigger
+              condition is UID.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` specifies the data value in a valid format. The value for 15693 the UID
+              is 64 bits. The value for 14443A the UID is 8 bits.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusNfcType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger command/response type for a NFC bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe {COMMand|RESPonse}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``COMMand`` specifies command code as the type to search on. This is the default trigger.
+        - ``RESPonse`` specifies response code as the type to search on.
+    """
+
+
+class SearchSearchItemTriggerABusNfcResponseCode(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe`` command.
+
+    Description:
+        - This command sets or queries the trigger on response code for a NFC bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe {SAK|ATQA|ATQBPROP|ATQBCOMP|HLTB|ANY|ATRRes|WUPRes|PSLRes|DEPRes|DSLRes|RLSRes}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``SAK`` specifies SAK as the response code for 14443A to search on. The default response
+          code is SAK for 14443A.
+        - ``ATQa`` specifies ATQa as the response code for 14443A to search on.
+        - ``ATQBPROP`` specifies ATQBPROP as the response code for 14443B to search on. The default
+          response code is ATQBPROP for 14443B.
+        - ``ATQBCOMP`` specifies ATQBCOMP as the response codefor 14443B to search on.
+        - ``HLTB`` specifies HLTB as the response code for 14443B to search on.
+        - ``ANY`` specifies ANY as the response code for 14443B to search on.
+        - ``ATRRes`` specifies ATRRes as the response code for FeliCa to search on. The default
+          response code is ATRRes for FeliCa.
+        - ``WUPRes`` specifies WUPRes as the response code for FeliCa to search on.
+        - ``PSLRes`` specifies PSLRes as the response code for FeliCa to search on.
+        - ``DEPRes`` specifies DEPRes as the response code for FeliCa to search on.
+        - ``DSLRes`` specifies DSLRes as the response code for FeliCa to search on.
+        - ``RLSRes`` specifies RLSRes as the response code for FeliCa to search on.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusNfcResponse(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.code``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._code = SearchSearchItemTriggerABusNfcResponseCode(device, f"{self._cmd_syntax}:CODe")
+
+    @property
+    def code(self) -> SearchSearchItemTriggerABusNfcResponseCode:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe`` command.
+
+        Description:
+            - This command sets or queries the trigger on response code for a NFC bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe {SAK|ATQA|ATQBPROP|ATQBCOMP|HLTB|ANY|ATRRes|WUPRes|PSLRes|DEPRes|DSLRes|RLSRes}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``SAK`` specifies SAK as the response code for 14443A to search on. The default
+              response code is SAK for 14443A.
+            - ``ATQa`` specifies ATQa as the response code for 14443A to search on.
+            - ``ATQBPROP`` specifies ATQBPROP as the response code for 14443B to search on. The
+              default response code is ATQBPROP for 14443B.
+            - ``ATQBCOMP`` specifies ATQBCOMP as the response codefor 14443B to search on.
+            - ``HLTB`` specifies HLTB as the response code for 14443B to search on.
+            - ``ANY`` specifies ANY as the response code for 14443B to search on.
+            - ``ATRRes`` specifies ATRRes as the response code for FeliCa to search on. The default
+              response code is ATRRes for FeliCa.
+            - ``WUPRes`` specifies WUPRes as the response code for FeliCa to search on.
+            - ``PSLRes`` specifies PSLRes as the response code for FeliCa to search on.
+            - ``DEPRes`` specifies DEPRes as the response code for FeliCa to search on.
+            - ``DSLRes`` specifies DSLRes as the response code for FeliCa to search on.
+            - ``RLSRes`` specifies RLSRes as the response code for FeliCa to search on.
+        """  # noqa: E501
+        return self._code
+
+
+class SearchSearchItemTriggerABusNfcPayloadbits(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS`` command.
+
+    Description:
+        - This command sets or queries the number of payload bits for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS {EIGHTBIT|SIXTYFOURBIT}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``EIGHTBIT`` sets the trigger condition for NFC bus trigger to Eight Bits.
+        - ``SIXTYFOURBIT`` sets the trigger condition for NFC bus trigger to Sixty Four Bits.
+    """
+
+
+class SearchSearchItemTriggerABusNfcErrorType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe`` command.
+
+    Description:
+        - This command sets or queries the error type for NFC bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe {ANY|PARity|CRC}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``ANY`` searches any error. Applicable for 14443A.
+        - ``PARity`` searches parity error. Applicable only for 14443A.
+        - ``CRC`` searches CRC error. Applicable for all standards.
+    """
+
+
+class SearchSearchItemTriggerABusNfcError(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._type = SearchSearchItemTriggerABusNfcErrorType(device, f"{self._cmd_syntax}:TYPe")
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusNfcErrorType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe`` command.
+
+        Description:
+            - This command sets or queries the error type for NFC bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe {ANY|PARity|CRC}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``ANY`` searches any error. Applicable for 14443A.
+            - ``PARity`` searches parity error. Applicable only for 14443A.
+            - ``CRC`` searches CRC error. Applicable for all standards.
+        """
+        return self._type
+
+
+class SearchSearchItemTriggerABusNfcDataValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue`` command.
+
+    Description:
+        - This command specifies the binary data string used for NFC triggering if the trigger
+          condition is DATA.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<QString>`` specifies the data value in a valid format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusNfcDataSize(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe`` command.
+
+    Description:
+        - This command specifies the length of the data string in bytes to be used for an NFC
+          trigger if the trigger condition is DATA.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``<NR1>`` specifies the data string in a valid format. The minimum and default value is 1.
+          The maximum value is 5.
+    """
+
+
+class SearchSearchItemTriggerABusNfcData(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe`` command.
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._size = SearchSearchItemTriggerABusNfcDataSize(device, f"{self._cmd_syntax}:SIZe")
+        self._value = SearchSearchItemTriggerABusNfcDataValue(device, f"{self._cmd_syntax}:VALue")
+
+    @property
+    def size(self) -> SearchSearchItemTriggerABusNfcDataSize:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe`` command.
+
+        Description:
+            - This command specifies the length of the data string in bytes to be used for an NFC
+              trigger if the trigger condition is DATA.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<NR1>`` specifies the data string in a valid format. The minimum and default value
+              is 1. The maximum value is 5.
+        """
+        return self._size
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusNfcDataValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue`` command.
+
+        Description:
+            - This command specifies the binary data string used for NFC triggering if the trigger
+              condition is DATA.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``<QString>`` specifies the data value in a valid format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusNfcCondition(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for a NFC bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition {SOC|SOS|SYNC|CMDCODe|EOC|ERRors|SOF|AFI|PUPi|IDEntifier|UID|EOF|PAYLoad|DATa|RESPCODe|EOS}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``SOC`` specifies start in 14443A as the field within a NFC frame to search on. The
+          default trigger on condition is SOC for 14443A.
+        - ``SOS`` specifies start in 14443B and Felica as the field within a NFC frame to search on.
+          The default trigger on condition is SOS for 14443B and Felica.
+        - ``SYNC`` specifies sync as the field within a NFC frame to search on.
+        - ``CMDCODe`` specifies command code as the field within a NFC frame to search on.
+        - ``EOC`` specifies end in 14443A as the field within a NFC frame to search on.
+        - ``ERRors`` specifies error type as the field within a NFC frame to search on.
+        - ``SOF`` specifies start in 15693 as the field within a NFC frame to search on. The default
+          trigger on condition is SOF for 15693.
+        - ``AFI`` specifies AFI as the field within a NFC frame to search on.
+        - ``PUPi`` specifies PUPi as the field within a NFC frame to search on.
+        - ``IDEntifier`` specifies identifier as the field within a NFC frame to search on.
+        - ``UID`` specifies UID as the field within a NFC frame to search on.
+        - ``EOF`` specifies end in 15693 as the field within a NFC frame to search on.
+        - ``PAYLoad`` specifies payload as the field within a NFC frame to search on.
+        - ``DATa`` specifies data as the field within a NFC frame to search on.
+        - ``RESPCODe`` specifies response code as the field within a NFC frame to search on.
+        - ``EOS`` specifies end in 14443B and Felica as the field within a NFC frame to search on.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusNfcCommandCode(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe`` command.
+
+    Description:
+        - This command sets or queries the trigger on command code for a NFC bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe {INVentory|STAYQUIet|RFU|RDSBLOCk|WRSBLOCk|LOCKBLOCk|RDMBLOCk|WRMBLOCk|SELECT15693SET|RSTTOREADy|WRITEAFI|LOCKAFI|WRITEDSFID|LOCKDSFID|GETSYSTEMINFo|GETMBSECSYSTem|FRDMBLOCk|EXRDSBLOCk|EXWRSBLOCk|EXLOCKBLOCk|EXRDMBLOCk|AUTHenticate|KEYUPDate|AUTHCRYPto|SECURECRYPto|CHALlenge|READBUFFer|EXGETSYSTINFo|EXGETMBSSTATus|FEXRDMBLOCks|custom|REQa|WUPa|PROPrietary|SELECT14443A|HLTa|REQB|WUPB|SLOTMARKER|ATTRIB|HLTB|ANY|ATRReq|WUPReq|PSLReq|DEPReq|DSLReq|RLSReq}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+        - ``INVentory`` specifies inventory as the 15693 command code to search on. This is the
+          default command code is for 15693.
+        - ``STAYQUIet`` specifies STAYQUIet as the 15693 command code to search on.
+        - ``RFU`` specifies RFU as the 15693 command code to search on.
+        - ``RDSBLOCk`` specifies RDSBLOCk as the 15693 command code to search on.
+        - ``WRSBLOCk`` specifies WRSBLOCk as the 15693 command code to search on.
+        - ``LOCKBLOCk`` specifies LOCKBLOCk as the 15693 command code to search on.
+        - ``RDMBLOCk`` specifies RDMBLOCk as the 15693 command code to search on.
+        - ``WRMBLOCk`` specifies WRMBLOCk as the 15693 command code to search on.
+        - ``SELECT15693SET`` specifies select as the 15693 command code to search on.
+        - ``RSTTOREADy`` specifies RSTTOREADy as the 15693 command code to search on.
+        - ``WRITEAFI`` specifies WRITEAFI as the 15693 command code to search on.
+        - ``LOCKAFI`` specifies LOCKAFI as the 15693 command code to search on.
+        - ``WRITEDSFID`` specifies WRITEDSFID as the 15693 command code to search on.
+        - ``LOCKDSFID`` specifies LOCKDSFID as the 15693 command code to search on.
+        - ``GETSYSTEMINFo`` specifies GETSYSTEMINFo as the 15693 command code to search on.
+        - ``GETMBSECSYSTem`` specifies GETMBSECSYSTem as the 15693 command code to search on.
+        - ``FRDMBLOCk`` specifies FRDMBLOCk as the 15693 command code to search on.
+        - ``EXRDSBLOCk`` specifies EXRDSBLOCk as the 15693 command code to search on.
+        - ``EXWRSBLOCk`` specifies EXWRSBLOCk as the 15693 command code to search on.
+        - ``EXLOCKBLOCk`` specifies EXLOCKBLOCk as the 15693 command code to search on.
+        - ``EXRDMBLOCk`` specifies EXRDMBLOCk as the 15693 command code to search on.
+        - ``AUTHenticate`` specifies authenticate as the 15693 command code to search on.
+        - ``KEYUPDate`` specifies KEYUPDate as the 15693 command code to search on.
+        - ``AUTHCRYPto`` specifies AUTHCRYPto as the 15693 command code to search on.
+        - ``SECURECRYPto`` specifies SECURECRYPto as the 15693 command code to search on.
+        - ``CHALlenge`` specifies challenge as the 15693 command code to search on.
+        - ``READBUFFer`` specifies READBUFFer as the 15693 command code to search on.
+        - ``EXGETSYSTINFo`` specifies EXGETSYSTINFo as the 15693 command code to search on.
+        - ``EXGETMBSSTATus`` specifies EXGETMBSSTATus as the 15693 command code to search on.
+        - ``FEXRDMBLOCks`` specifies FEXRDMBLOCks as the 15693 command code to search on.
+        - ``custom`` specifies custom as the 15693 command code to search on.
+        - ``ANY`` specifies ANY as the 15693 command code to search on.
+        - ``REQa`` specifies REQa as the 14443A command code to search on. This is the default
+          command code is for 14443A.
+        - ``WUPa`` specifies WUPa as the 14443A command code to search on.
+        - ``PROPrietary`` specifies proprietary as the 14443A command code to search on.
+        - ``SELECT14443A`` specifies select as the 14443A command code to search on.
+        - ``HLTa`` specifies HLTa as the 14443A command code to search on.
+        - ``REQB`` specifies REQB as the 14443B command code to search on. This is the default
+          command code is for 14443B.
+        - ``WUPB`` specifies WUPB as the 14443B command code to search on.
+        - ``SLOTMARKER`` specifies SLOTMARKER as the 14443B command code to search on.
+        - ``ATTRIB`` specifies ATTRIB as the 14443B command code to search on.
+        - ``HLTB`` specifies HLTB as the 14443B command code to search on.
+        - ``ATRReq`` specifies ATRReq as the FeliCa command code to search on. This is the default
+          command code is for FeliCa.
+        - ``WUPReq`` specifies WUPReq as the FeliCa command code to search on.
+        - ``PSLReq`` specifies PSLReq as the FeliCa command code to search on.
+        - ``DEPReq`` specifies DEPReq as the FeliCa command code to search on.
+        - ``DSLReq`` specifies DSLReq as the FeliCa command code to search on.
+        - ``RLSReq`` specifies RLSReq as the FeliCa command code to search on.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusNfcCommand(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.code``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._code = SearchSearchItemTriggerABusNfcCommandCode(device, f"{self._cmd_syntax}:CODe")
+
+    @property
+    def code(self) -> SearchSearchItemTriggerABusNfcCommandCode:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe`` command.
+
+        Description:
+            - This command sets or queries the trigger on command code for a NFC bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe {INVentory|STAYQUIet|RFU|RDSBLOCk|WRSBLOCk|LOCKBLOCk|RDMBLOCk|WRMBLOCk|SELECT15693SET|RSTTOREADy|WRITEAFI|LOCKAFI|WRITEDSFID|LOCKDSFID|GETSYSTEMINFo|GETMBSECSYSTem|FRDMBLOCk|EXRDSBLOCk|EXWRSBLOCk|EXLOCKBLOCk|EXRDMBLOCk|AUTHenticate|KEYUPDate|AUTHCRYPto|SECURECRYPto|CHALlenge|READBUFFer|EXGETSYSTINFo|EXGETMBSSTATus|FEXRDMBLOCks|custom|REQa|WUPa|PROPrietary|SELECT14443A|HLTa|REQB|WUPB|SLOTMARKER|ATTRIB|HLTB|ANY|ATRReq|WUPReq|PSLReq|DEPReq|DSLReq|RLSReq}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``INVentory`` specifies inventory as the 15693 command code to search on. This is the
+              default command code is for 15693.
+            - ``STAYQUIet`` specifies STAYQUIet as the 15693 command code to search on.
+            - ``RFU`` specifies RFU as the 15693 command code to search on.
+            - ``RDSBLOCk`` specifies RDSBLOCk as the 15693 command code to search on.
+            - ``WRSBLOCk`` specifies WRSBLOCk as the 15693 command code to search on.
+            - ``LOCKBLOCk`` specifies LOCKBLOCk as the 15693 command code to search on.
+            - ``RDMBLOCk`` specifies RDMBLOCk as the 15693 command code to search on.
+            - ``WRMBLOCk`` specifies WRMBLOCk as the 15693 command code to search on.
+            - ``SELECT15693SET`` specifies select as the 15693 command code to search on.
+            - ``RSTTOREADy`` specifies RSTTOREADy as the 15693 command code to search on.
+            - ``WRITEAFI`` specifies WRITEAFI as the 15693 command code to search on.
+            - ``LOCKAFI`` specifies LOCKAFI as the 15693 command code to search on.
+            - ``WRITEDSFID`` specifies WRITEDSFID as the 15693 command code to search on.
+            - ``LOCKDSFID`` specifies LOCKDSFID as the 15693 command code to search on.
+            - ``GETSYSTEMINFo`` specifies GETSYSTEMINFo as the 15693 command code to search on.
+            - ``GETMBSECSYSTem`` specifies GETMBSECSYSTem as the 15693 command code to search on.
+            - ``FRDMBLOCk`` specifies FRDMBLOCk as the 15693 command code to search on.
+            - ``EXRDSBLOCk`` specifies EXRDSBLOCk as the 15693 command code to search on.
+            - ``EXWRSBLOCk`` specifies EXWRSBLOCk as the 15693 command code to search on.
+            - ``EXLOCKBLOCk`` specifies EXLOCKBLOCk as the 15693 command code to search on.
+            - ``EXRDMBLOCk`` specifies EXRDMBLOCk as the 15693 command code to search on.
+            - ``AUTHenticate`` specifies authenticate as the 15693 command code to search on.
+            - ``KEYUPDate`` specifies KEYUPDate as the 15693 command code to search on.
+            - ``AUTHCRYPto`` specifies AUTHCRYPto as the 15693 command code to search on.
+            - ``SECURECRYPto`` specifies SECURECRYPto as the 15693 command code to search on.
+            - ``CHALlenge`` specifies challenge as the 15693 command code to search on.
+            - ``READBUFFer`` specifies READBUFFer as the 15693 command code to search on.
+            - ``EXGETSYSTINFo`` specifies EXGETSYSTINFo as the 15693 command code to search on.
+            - ``EXGETMBSSTATus`` specifies EXGETMBSSTATus as the 15693 command code to search on.
+            - ``FEXRDMBLOCks`` specifies FEXRDMBLOCks as the 15693 command code to search on.
+            - ``custom`` specifies custom as the 15693 command code to search on.
+            - ``ANY`` specifies ANY as the 15693 command code to search on.
+            - ``REQa`` specifies REQa as the 14443A command code to search on. This is the default
+              command code is for 14443A.
+            - ``WUPa`` specifies WUPa as the 14443A command code to search on.
+            - ``PROPrietary`` specifies proprietary as the 14443A command code to search on.
+            - ``SELECT14443A`` specifies select as the 14443A command code to search on.
+            - ``HLTa`` specifies HLTa as the 14443A command code to search on.
+            - ``REQB`` specifies REQB as the 14443B command code to search on. This is the default
+              command code is for 14443B.
+            - ``WUPB`` specifies WUPB as the 14443B command code to search on.
+            - ``SLOTMARKER`` specifies SLOTMARKER as the 14443B command code to search on.
+            - ``ATTRIB`` specifies ATTRIB as the 14443B command code to search on.
+            - ``HLTB`` specifies HLTB as the 14443B command code to search on.
+            - ``ATRReq`` specifies ATRReq as the FeliCa command code to search on. This is the
+              default command code is for FeliCa.
+            - ``WUPReq`` specifies WUPReq as the FeliCa command code to search on.
+            - ``PSLReq`` specifies PSLReq as the FeliCa command code to search on.
+            - ``DEPReq`` specifies DEPReq as the FeliCa command code to search on.
+            - ``DSLReq`` specifies DSLReq as the FeliCa command code to search on.
+            - ``RLSReq`` specifies RLSReq as the FeliCa command code to search on.
+        """  # noqa: E501
+        return self._code
+
+
+#  pylint: disable=too-many-instance-attributes
+class SearchSearchItemTriggerABusNfc(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC?`` query.
+        - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
+
+    Properties:
+        - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand`` command tree.
+        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition`` command.
+        - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa`` command tree.
+        - ``.error``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor`` command tree.
+        - ``.payloadbits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS`` command.
+        - ``.response``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse`` command tree.
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe`` command.
+        - ``.uid``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._command = SearchSearchItemTriggerABusNfcCommand(device, f"{self._cmd_syntax}:COMMand")
+        self._condition = SearchSearchItemTriggerABusNfcCondition(
+            device, f"{self._cmd_syntax}:CONDition"
+        )
+        self._data = SearchSearchItemTriggerABusNfcData(device, f"{self._cmd_syntax}:DATa")
+        self._error = SearchSearchItemTriggerABusNfcError(device, f"{self._cmd_syntax}:ERRor")
+        self._payloadbits = SearchSearchItemTriggerABusNfcPayloadbits(
+            device, f"{self._cmd_syntax}:PAYLOADBITS"
+        )
+        self._response = SearchSearchItemTriggerABusNfcResponse(
+            device, f"{self._cmd_syntax}:RESPonse"
+        )
+        self._type = SearchSearchItemTriggerABusNfcType(device, f"{self._cmd_syntax}:TYPe")
+        self._uid = SearchSearchItemTriggerABusNfcUid(device, f"{self._cmd_syntax}:UID")
+
+    @property
+    def command(self) -> SearchSearchItemTriggerABusNfcCommand:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.code``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand:CODe`` command.
+        """
+        return self._command
+
+    @property
+    def condition(self) -> SearchSearchItemTriggerABusNfcCondition:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for a NFC bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition {SOC|SOS|SYNC|CMDCODe|EOC|ERRors|SOF|AFI|PUPi|IDEntifier|UID|EOF|PAYLoad|DATa|RESPCODe|EOS}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``SOC`` specifies start in 14443A as the field within a NFC frame to search on. The
+              default trigger on condition is SOC for 14443A.
+            - ``SOS`` specifies start in 14443B and Felica as the field within a NFC frame to search
+              on. The default trigger on condition is SOS for 14443B and Felica.
+            - ``SYNC`` specifies sync as the field within a NFC frame to search on.
+            - ``CMDCODe`` specifies command code as the field within a NFC frame to search on.
+            - ``EOC`` specifies end in 14443A as the field within a NFC frame to search on.
+            - ``ERRors`` specifies error type as the field within a NFC frame to search on.
+            - ``SOF`` specifies start in 15693 as the field within a NFC frame to search on. The
+              default trigger on condition is SOF for 15693.
+            - ``AFI`` specifies AFI as the field within a NFC frame to search on.
+            - ``PUPi`` specifies PUPi as the field within a NFC frame to search on.
+            - ``IDEntifier`` specifies identifier as the field within a NFC frame to search on.
+            - ``UID`` specifies UID as the field within a NFC frame to search on.
+            - ``EOF`` specifies end in 15693 as the field within a NFC frame to search on.
+            - ``PAYLoad`` specifies payload as the field within a NFC frame to search on.
+            - ``DATa`` specifies data as the field within a NFC frame to search on.
+            - ``RESPCODe`` specifies response code as the field within a NFC frame to search on.
+            - ``EOS`` specifies end in 14443B and Felica as the field within a NFC frame to search
+              on.
+        """  # noqa: E501
+        return self._condition
+
+    @property
+    def data(self) -> SearchSearchItemTriggerABusNfcData:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:SIZe`` command.
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa:VALue`` command.
+        """
+        return self._data
+
+    @property
+    def error(self) -> SearchSearchItemTriggerABusNfcError:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor:TYPe`` command.
+        """
+        return self._error
+
+    @property
+    def payloadbits(self) -> SearchSearchItemTriggerABusNfcPayloadbits:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS`` command.
+
+        Description:
+            - This command sets or queries the number of payload bits for the specified bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS {EIGHTBIT|SIXTYFOURBIT}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``EIGHTBIT`` sets the trigger condition for NFC bus trigger to Eight Bits.
+            - ``SIXTYFOURBIT`` sets the trigger condition for NFC bus trigger to Sixty Four Bits.
+        """
+        return self._payloadbits
+
+    @property
+    def response(self) -> SearchSearchItemTriggerABusNfcResponse:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.code``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse:CODe`` command.
+        """
+        return self._response
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusNfcType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger command/response type for a NFC bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe {COMMand|RESPonse}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+            - ``COMMand`` specifies command code as the type to search on. This is the default
+              trigger.
+            - ``RESPonse`` specifies response code as the type to search on.
+        """
+        return self._type
+
+    @property
+    def uid(self) -> SearchSearchItemTriggerABusNfcUid:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID:VALue`` command.
+        """
+        return self._uid
 
 
 class SearchSearchItemTriggerABusMil1553bStatusParity(SCPICmdWrite, SCPICmdRead):
@@ -24737,8 +28739,8 @@ class SearchSearchItemTriggerABusMil1553bCommandTrbit(SCPICmdWrite, SCPICmdRead)
         ```
 
     Info:
-        - ``RX`` filters command words to only match those that are receive packets.
-        - ``TX`` filters command words to only match those that are transmit packets.
+        - ``RX filters`` command words to only match those that are receive packets.
+        - ``TX filters`` command words to only match those that are transmit packets.
         - ``X`` disables filtering of command words on the R/T bit.
     """
 
@@ -25228,8 +29230,8 @@ class SearchSearchItemTriggerABusMil1553bCommand(SCPICmdRead):
             ```
 
         Info:
-            - ``RX`` filters command words to only match those that are receive packets.
-            - ``TX`` filters command words to only match those that are transmit packets.
+            - ``RX filters`` command words to only match those that are receive packets.
+            - ``TX filters`` command words to only match those that are transmit packets.
             - ``X`` disables filtering of command words on the R/T bit.
         """
         return self._trbit
@@ -26317,7 +30319,7 @@ class SearchSearchItemTriggerABusManchesterSyncValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QSTRING>`` specifies the data string in a valid format.
+        - ``<QString>`` specifies the data string in a valid format.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -26368,7 +30370,7 @@ class SearchSearchItemTriggerABusManchesterSync(SCPICmdRead):
             ```
 
         Info:
-            - ``<QSTRING>`` specifies the data string in a valid format.
+            - ``<QString>`` specifies the data string in a valid format.
         """
         return self._value
 
@@ -26457,7 +30459,7 @@ class SearchSearchItemTriggerABusManchesterErrorType(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:ERRor:TYPe`` command.
 
     Description:
-        - This command sets or queries the error to be used when searching on a Manchester signal.
+        - This command sets or queries the error to be used when searching ona Manchester signal.
           The search condition must be set to error. Parity error identifies odd and even parity.
           The search number is specified by <x>.
 
@@ -26507,7 +30509,7 @@ class SearchSearchItemTriggerABusManchesterError(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:ERRor:TYPe`` command.
 
         Description:
-            - This command sets or queries the error to be used when searching on a Manchester
+            - This command sets or queries the error to be used when searching ona Manchester
               signal. The search condition must be set to error. Parity error identifies odd and
               even parity. The search number is specified by <x>.
 
@@ -26586,7 +30588,7 @@ class SearchSearchItemTriggerABusManchesterDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` is the number of the search.
+        - ``SEARCH<x>`` is the number of the search.
         - ``<NR1>`` specifies the data string in a valid format. The minimum and default values are
           1. The maximum value is 5.
     """
@@ -26601,6 +30603,9 @@ class SearchSearchItemTriggerABusManchesterData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:DATa?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:DATa:SIZe`` command.
@@ -26640,7 +30645,7 @@ class SearchSearchItemTriggerABusManchesterData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the number of the search.
+            - ``SEARCH<x>`` is the number of the search.
             - ``<NR1>`` specifies the data string in a valid format. The minimum and default values
               are 1. The maximum value is 5.
         """
@@ -26800,6 +30805,9 @@ class SearchSearchItemTriggerABusManchester(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:DATa?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester:DATa:SIZe`` command.
@@ -27446,15 +31454,17 @@ class SearchSearchItemTriggerABusI3cTestmodeValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
-          for Binary format; and 0-9, A-F, and X for Hexadecimal format.
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,  or
+          X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cTestmode(SCPICmdRead):
@@ -27466,6 +31476,9 @@ class SearchSearchItemTriggerABusI3cTestmode(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue`` command.
@@ -27496,13 +31509,13 @@ class SearchSearchItemTriggerABusI3cTestmode(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -27526,15 +31539,17 @@ class SearchSearchItemTriggerABusI3cSupportbyteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cSupportbyte(SCPICmdRead):
@@ -27546,6 +31561,9 @@ class SearchSearchItemTriggerABusI3cSupportbyte(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue`` command.
@@ -27577,13 +31595,13 @@ class SearchSearchItemTriggerABusI3cSupportbyte(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -27607,15 +31625,17 @@ class SearchSearchItemTriggerABusI3cStaticAddress(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the address value for which to search. The valid characters are 0,
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the address value for which to search. The valid characters are 0,
           1, or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cStatic(SCPICmdRead):
@@ -27627,6 +31647,9 @@ class SearchSearchItemTriggerABusI3cStatic(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess`` command.
@@ -27658,13 +31681,13 @@ class SearchSearchItemTriggerABusI3cStatic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the address value for which to search. The valid characters
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the address value for which to search. The valid characters
               are 0, 1, or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._address
@@ -27675,7 +31698,7 @@ class SearchSearchItemTriggerABusI3cStatebyteValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary field string used for the I3C trigger if the
-          trigger condition is STATEBYTE. Requires purchase and installation of option SRI3C.
+          trigger condition is STATEBYTE.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -27688,15 +31711,17 @@ class SearchSearchItemTriggerABusI3cStatebyteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cStatebyte(SCPICmdRead):
@@ -27708,6 +31733,9 @@ class SearchSearchItemTriggerABusI3cStatebyte(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue`` command.
@@ -27725,7 +31753,7 @@ class SearchSearchItemTriggerABusI3cStatebyte(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary field string used for the I3C trigger if the
-              trigger condition is STATEBYTE. Requires purchase and installation of option SRI3C.
+              trigger condition is STATEBYTE.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -27738,16 +31766,249 @@ class SearchSearchItemTriggerABusI3cStatebyte(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
+
+
+class SearchSearchItemTriggerABusI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
+
+    Description:
+        - This command sets or queries the SDR direct packet types for the specified I3C bus trigger
+          search to determine where to place a mark. Requires purchase and installation of option
+          SRI3C.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
+        - ``ENSLave`` specifies the trigger condition as Enable Slave.
+        - ``DISLave`` specifies the trigger condition as Disable Slave.
+        - ``ENTasx`` specifies the trigger condition as Enter Activity State.
+        - ``RSTDya`` specifies the trigger condition as Reset Dynamic Address.
+        - ``SETMwrl`` specifies the trigger condition as Set Max Write Length.
+        - ``SETMrdl`` specifies the trigger condition as Set Max Read Length.
+        - ``SEText`` specifies the trigger condition as Set Exchange Time.
+        - ``SETDya`` specifies the trigger condition as Set Dynamic Address.
+        - ``SETNdya`` specifies the trigger condition as Set New Dynamic Address.
+        - ``GETMWrl`` specifies the trigger condition as Get Max Write Length.
+        - ``GETMRdl`` specifies the trigger condition as Get Max Read Length.
+        - ``GETPrid`` specifies the trigger condition as Get Provisional ID.
+        - ``GETBusch`` specifies the trigger condition as Get Provisional ID.
+        - ``GETDevch`` specifies the trigger condition as Get Dev Characteristics.
+        - ``GETSlave`` specifies the trigger condition as Get Slave Current Status.
+        - ``ACCM`` specifies the trigger condition as Get Accept Mastership.
+        - ``SETBrt`` specifies the trigger condition as Set Bridge Direct Target.
+        - ``MDATASpeed`` specifies the trigger condition as Get Max Data Speed.
+        - ``HDRCapability`` specifies the trigger condition as Get HDR Capability.
+        - ``GETXTime`` specifies the trigger condition as Get Exchange Time.
+        - ``GETCAPS`` specifies the trigger condition as Get Optional Feature Capabilities.
+        - ``ENDXFER`` specifies the trigger condition as Data Transfer Ending Procedure Control.
+        - ``SETGRPa`` specifies the trigger condition as Set Group Address.
+        - ``RSTACT`` specifies the trigger condition as Reset Group Address.
+        - ``DEFGRPa`` specifies the trigger condition as Define List of Group Addresses.
+        - ``RSTGRPa`` specifies the trigger condition as Reset Group Address.
+        - ``MLANe`` specifies the trigger condition as Multi-Lane Data Transfer Control.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket`` command.
+
+    Description:
+        - This command sets or queries the SDR broadcast packets for the specified I3C bus trigger
+          search to determine where to place a mark.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
+        - ``ENSLave`` specifies the I3C broadcast packet type as Enable Slave.
+        - ``DISLave`` specifies the I3C broadcast packet type as Disable Slave.
+        - ``ENTasx`` specifies the I3C broadcast packet type as Enter Activity State.
+        - ``RSTDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
+        - ``ENTRDya`` specifies the I3C broadcast packet type as Enter Dynamic Address.
+        - ``SETMwrl`` specifies the I3C broadcast packet type as Set Max Write Length.
+        - ``SETMrdl`` specifies the I3C broadcast packet type as Set Max Read Length.
+        - ``LSLave`` specifies the I3C broadcast packet type as Define List of Slaves.
+        - ``ENTRTSTMode`` specifies the I3C broadcast packet type as Enter Test Mode Broadcast.
+        - ``EXTime`` specifies the I3C broadcast packet type as Set Exchange Time.
+        - ``SETaasa`` specifies the I3C broadcast packet type as Set Static As Dynamic Address.
+        - ``ENDXFER`` specifies the I3C broadcast packet type as Data Transfer Ending Procedure
+          Control.
+        - ``SETGRPa`` specifies the I3C broadcast packet type as Set Group Address.
+        - ``RSTACT`` specifies the I3C broadcast packet type as Slave Reset Action.
+        - ``DEFGRPa`` specifies the I3C broadcast packet type as Define List of Group Addresses.
+        - ``RSTGRPa`` specifies the I3C broadcast packet type as Reset Group Address.
+        - ``MLANe`` specifies the I3C broadcast packet type as Multi-Lane Data Transfer Control.
+        - ``SETBUSCON`` specifies the I3C broadcast packet type as Set Bus Context.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusI3cSdr(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
+
+    Properties:
+        - ``.broadcastpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket``
+          command.
+        - ``.directpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._broadcastpacket = SearchSearchItemTriggerABusI3cSdrBroadcastpacket(
+            device, f"{self._cmd_syntax}:BROADCASTPacket"
+        )
+        self._directpacket = SearchSearchItemTriggerABusI3cSdrDirectpacket(
+            device, f"{self._cmd_syntax}:DIRECTPacket"
+        )
+
+    @property
+    def broadcastpacket(self) -> SearchSearchItemTriggerABusI3cSdrBroadcastpacket:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket`` command.
+
+        Description:
+            - This command sets or queries the SDR broadcast packets for the specified I3C bus
+              trigger search to determine where to place a mark.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+            - ``ENSLave`` specifies the I3C broadcast packet type as Enable Slave.
+            - ``DISLave`` specifies the I3C broadcast packet type as Disable Slave.
+            - ``ENTasx`` specifies the I3C broadcast packet type as Enter Activity State.
+            - ``RSTDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
+            - ``ENTRDya`` specifies the I3C broadcast packet type as Enter Dynamic Address.
+            - ``SETMwrl`` specifies the I3C broadcast packet type as Set Max Write Length.
+            - ``SETMrdl`` specifies the I3C broadcast packet type as Set Max Read Length.
+            - ``LSLave`` specifies the I3C broadcast packet type as Define List of Slaves.
+            - ``ENTRTSTMode`` specifies the I3C broadcast packet type as Enter Test Mode Broadcast.
+            - ``EXTime`` specifies the I3C broadcast packet type as Set Exchange Time.
+            - ``SETaasa`` specifies the I3C broadcast packet type as Set Static As Dynamic Address.
+            - ``ENDXFER`` specifies the I3C broadcast packet type as Data Transfer Ending Procedure
+              Control.
+            - ``SETGRPa`` specifies the I3C broadcast packet type as Set Group Address.
+            - ``RSTACT`` specifies the I3C broadcast packet type as Slave Reset Action.
+            - ``DEFGRPa`` specifies the I3C broadcast packet type as Define List of Group Addresses.
+            - ``RSTGRPa`` specifies the I3C broadcast packet type as Reset Group Address.
+            - ``MLANe`` specifies the I3C broadcast packet type as Multi-Lane Data Transfer Control.
+            - ``SETBUSCON`` specifies the I3C broadcast packet type as Set Bus Context.
+        """  # noqa: E501
+        return self._broadcastpacket
+
+    @property
+    def directpacket(self) -> SearchSearchItemTriggerABusI3cSdrDirectpacket:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
+
+        Description:
+            - This command sets or queries the SDR direct packet types for the specified I3C bus
+              trigger search to determine where to place a mark. Requires purchase and installation
+              of option SRI3C.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+            - ``ENSLave`` specifies the trigger condition as Enable Slave.
+            - ``DISLave`` specifies the trigger condition as Disable Slave.
+            - ``ENTasx`` specifies the trigger condition as Enter Activity State.
+            - ``RSTDya`` specifies the trigger condition as Reset Dynamic Address.
+            - ``SETMwrl`` specifies the trigger condition as Set Max Write Length.
+            - ``SETMrdl`` specifies the trigger condition as Set Max Read Length.
+            - ``SEText`` specifies the trigger condition as Set Exchange Time.
+            - ``SETDya`` specifies the trigger condition as Set Dynamic Address.
+            - ``SETNdya`` specifies the trigger condition as Set New Dynamic Address.
+            - ``GETMWrl`` specifies the trigger condition as Get Max Write Length.
+            - ``GETMRdl`` specifies the trigger condition as Get Max Read Length.
+            - ``GETPrid`` specifies the trigger condition as Get Provisional ID.
+            - ``GETBusch`` specifies the trigger condition as Get Provisional ID.
+            - ``GETDevch`` specifies the trigger condition as Get Dev Characteristics.
+            - ``GETSlave`` specifies the trigger condition as Get Slave Current Status.
+            - ``ACCM`` specifies the trigger condition as Get Accept Mastership.
+            - ``SETBrt`` specifies the trigger condition as Set Bridge Direct Target.
+            - ``MDATASpeed`` specifies the trigger condition as Get Max Data Speed.
+            - ``HDRCapability`` specifies the trigger condition as Get HDR Capability.
+            - ``GETXTime`` specifies the trigger condition as Get Exchange Time.
+            - ``GETCAPS`` specifies the trigger condition as Get Optional Feature Capabilities.
+            - ``ENDXFER`` specifies the trigger condition as Data Transfer Ending Procedure Control.
+            - ``SETGRPa`` specifies the trigger condition as Set Group Address.
+            - ``RSTACT`` specifies the trigger condition as Reset Group Address.
+            - ``DEFGRPa`` specifies the trigger condition as Define List of Group Addresses.
+            - ``RSTGRPa`` specifies the trigger condition as Reset Group Address.
+            - ``MLANe`` specifies the trigger condition as Multi-Lane Data Transfer Control.
+        """  # noqa: E501
+        return self._directpacket
 
 
 class SearchSearchItemTriggerABusI3cSaddressValue(SCPICmdWrite, SCPICmdRead):
@@ -27773,8 +32034,8 @@ class SearchSearchItemTriggerABusI3cSaddressValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the address value for which to search. The valid characters are 0,
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the address value for which to search. The valid characters are 0,
           1, or X for Binary format; and A-F, 0-9, and X for Hexadecimal format.
     """
 
@@ -27790,6 +32051,9 @@ class SearchSearchItemTriggerABusI3cSaddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue`` command.
@@ -27825,8 +32089,8 @@ class SearchSearchItemTriggerABusI3cSaddress(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the address value for which to search. The valid characters
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the address value for which to search. The valid characters
               are 0, 1, or X for Binary format; and A-F, 0-9, and X for Hexadecimal format.
         """
         return self._value
@@ -27855,9 +32119,9 @@ class SearchSearchItemTriggerABusI3cPackets(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``RESPonse`` specifies the packet address mode as Response.
-        - ``DIRect`` specifies the packet address mode as Direct.
+        - ``DIRec`` t specifies the packet address mode as Direct.
     """
 
 
@@ -27879,15 +32143,17 @@ class SearchSearchItemTriggerABusI3cMaxwriteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cMaxwrite(SCPICmdRead):
@@ -27899,6 +32165,9 @@ class SearchSearchItemTriggerABusI3cMaxwrite(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue`` command.
@@ -27929,13 +32198,13 @@ class SearchSearchItemTriggerABusI3cMaxwrite(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -27959,15 +32228,17 @@ class SearchSearchItemTriggerABusI3cMaxrturnValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cMaxrturn(SCPICmdRead):
@@ -27979,6 +32250,9 @@ class SearchSearchItemTriggerABusI3cMaxrturn(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue`` command.
@@ -28009,13 +32283,13 @@ class SearchSearchItemTriggerABusI3cMaxrturn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28039,15 +32313,17 @@ class SearchSearchItemTriggerABusI3cMaxreadValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cMaxread(SCPICmdRead):
@@ -28059,6 +32335,9 @@ class SearchSearchItemTriggerABusI3cMaxread(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue`` command.
@@ -28089,13 +32368,13 @@ class SearchSearchItemTriggerABusI3cMaxread(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28119,15 +32398,17 @@ class SearchSearchItemTriggerABusI3cInaccbyteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cInaccbyte(SCPICmdRead):
@@ -28139,6 +32420,9 @@ class SearchSearchItemTriggerABusI3cInaccbyte(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue`` command.
@@ -28170,13 +32454,13 @@ class SearchSearchItemTriggerABusI3cInaccbyte(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28200,15 +32484,17 @@ class SearchSearchItemTriggerABusI3cIdValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cId(SCPICmdRead):
@@ -28220,6 +32506,9 @@ class SearchSearchItemTriggerABusI3cId(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue`` command.
@@ -28249,13 +32538,13 @@ class SearchSearchItemTriggerABusI3cId(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28279,15 +32568,17 @@ class SearchSearchItemTriggerABusI3cGsmsbValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cGsmsb(SCPICmdRead):
@@ -28299,6 +32590,9 @@ class SearchSearchItemTriggerABusI3cGsmsb(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue`` command.
@@ -28327,13 +32621,13 @@ class SearchSearchItemTriggerABusI3cGsmsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28357,15 +32651,17 @@ class SearchSearchItemTriggerABusI3cGslsbValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cGslsb(SCPICmdRead):
@@ -28377,6 +32673,9 @@ class SearchSearchItemTriggerABusI3cGslsb(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue`` command.
@@ -28405,13 +32704,13 @@ class SearchSearchItemTriggerABusI3cGslsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28435,15 +32734,17 @@ class SearchSearchItemTriggerABusI3cFreqbyteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cFreqbyte(SCPICmdRead):
@@ -28455,6 +32756,9 @@ class SearchSearchItemTriggerABusI3cFreqbyte(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue`` command.
@@ -28486,13 +32790,13 @@ class SearchSearchItemTriggerABusI3cFreqbyte(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28516,15 +32820,17 @@ class SearchSearchItemTriggerABusI3cEventbyteValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cEventbyte(SCPICmdRead):
@@ -28536,6 +32842,9 @@ class SearchSearchItemTriggerABusI3cEventbyte(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue`` command.
@@ -28566,13 +32875,13 @@ class SearchSearchItemTriggerABusI3cEventbyte(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28601,7 +32910,7 @@ class SearchSearchItemTriggerABusI3cErrortype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``NACK`` specifies the error type on which to search as Missing Ack.
         - ``TBIT`` specifies the error type on which to search as T-Bit.
         - ``PARity`` specifies the error type on which to search as Parity.
@@ -28630,15 +32939,17 @@ class SearchSearchItemTriggerABusI3cDwordValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cDword(SCPICmdRead):
@@ -28650,6 +32961,9 @@ class SearchSearchItemTriggerABusI3cDword(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue`` command.
@@ -28678,13 +32992,13 @@ class SearchSearchItemTriggerABusI3cDword(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28708,15 +33022,17 @@ class SearchSearchItemTriggerABusI3cDcrtypeValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the data value for which to search. The valid characters are 0, 1,
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the data value for which to search. The valid characters are 0, 1,
           or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cDcrtype(SCPICmdRead):
@@ -28728,6 +33044,9 @@ class SearchSearchItemTriggerABusI3cDcrtype(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue`` command.
@@ -28758,13 +33077,13 @@ class SearchSearchItemTriggerABusI3cDcrtype(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the data value for which to search. The valid characters are
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the data value for which to search. The valid characters are
               0, 1, or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28788,13 +33107,13 @@ class SearchSearchItemTriggerABusI3cDcrValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <QString
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
 
@@ -28808,6 +33127,9 @@ class SearchSearchItemTriggerABusI3cDcr(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue`` command.
@@ -28836,13 +33158,13 @@ class SearchSearchItemTriggerABusI3cDcr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue <QString
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -28867,15 +33189,17 @@ class SearchSearchItemTriggerABusI3cDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the data value. The valid characters are 0, 1, or X for Binary
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the data value. The valid characters are 0, 1, or X for Binary
           format; and A-F, 0-9, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cDataSize(SCPICmdWrite, SCPICmdRead):
@@ -28883,8 +33207,7 @@ class SearchSearchItemTriggerABusI3cDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the length of the data string in bytes used for the specified
-          I3C bus trigger search to determine where to place a mark. Requires purchase and
-          installation of option SRI3C.
+          I3C bus trigger search to determine where to place a mark.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -28902,7 +33225,7 @@ class SearchSearchItemTriggerABusI3cDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``<NR1>`` specifies the data size in bytes.
     """
 
@@ -28930,7 +33253,7 @@ class SearchSearchItemTriggerABusI3cDataDirection(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``NOCARE`` specifies the data direction for which to search is Don't Care.
         - ``READ`` specifies the data direction for which to search is Read.
         - ``WRITE`` specifies the data direction for which to search is Write.
@@ -28946,6 +33269,9 @@ class SearchSearchItemTriggerABusI3cData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.direction``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:DIRection`` command.
@@ -28986,7 +33312,7 @@ class SearchSearchItemTriggerABusI3cData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``NOCARE`` specifies the data direction for which to search is Don't Care.
             - ``READ`` specifies the data direction for which to search is Read.
             - ``WRITE`` specifies the data direction for which to search is Write.
@@ -28999,8 +33325,7 @@ class SearchSearchItemTriggerABusI3cData(SCPICmdRead):
 
         Description:
             - This command sets or queries the length of the data string in bytes used for the
-              specified I3C bus trigger search to determine where to place a mark. Requires purchase
-              and installation of option SRI3C.
+              specified I3C bus trigger search to determine where to place a mark.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29018,7 +33343,7 @@ class SearchSearchItemTriggerABusI3cData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``<NR1>`` specifies the data size in bytes.
         """
         return self._size
@@ -29043,13 +33368,13 @@ class SearchSearchItemTriggerABusI3cData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the data value. The valid characters are 0, 1, or X for Binary
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the data value. The valid characters are 0, 1, or X for Binary
               format; and A-F, 0-9, and X for Hexadecimal format.
         """
         return self._value
@@ -29079,7 +33404,7 @@ class SearchSearchItemTriggerABusI3cCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``STARt`` specifies trigger condition as Start.
         - ``REPEATStart`` specifies trigger condition as Repeated Start.
         - ``ADDRess`` specifies trigger condition as Address.
@@ -29115,15 +33440,17 @@ class SearchSearchItemTriggerABusI3cCcodeValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and A-F, 0-9, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cCcode(SCPICmdRead):
@@ -29135,6 +33462,9 @@ class SearchSearchItemTriggerABusI3cCcode(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue`` command.
@@ -29164,13 +33494,13 @@ class SearchSearchItemTriggerABusI3cCcode(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and A-F, 0-9, and X for Hexadecimal format.
         """
         return self._value
@@ -29195,15 +33525,17 @@ class SearchSearchItemTriggerABusI3cBrgtidValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cBrgtid(SCPICmdRead):
@@ -29215,6 +33547,9 @@ class SearchSearchItemTriggerABusI3cBrgtid(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue`` command.
@@ -29244,13 +33579,13 @@ class SearchSearchItemTriggerABusI3cBrgtid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -29279,7 +33614,7 @@ class SearchSearchItemTriggerABusI3cBpackets(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``RESPonse`` specifies the broadcast address mode as Response.
         - ``BROadcast`` specifies the broadcast address mode as Broadcast.
     """
@@ -29303,15 +33638,17 @@ class SearchSearchItemTriggerABusI3cBcrtypeValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the data value for which to search. The valid characters are 0, 1,
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the data value for which to search. The valid characters are 0, 1,
           or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cBcrtype(SCPICmdRead):
@@ -29323,6 +33660,9 @@ class SearchSearchItemTriggerABusI3cBcrtype(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue`` command.
@@ -29353,13 +33693,13 @@ class SearchSearchItemTriggerABusI3cBcrtype(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the data value for which to search. The valid characters are
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the data value for which to search. The valid characters are
               0, 1, or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -29383,15 +33723,17 @@ class SearchSearchItemTriggerABusI3cBcrValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1, or X
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1, or X
           for Binary format; and 0-9, A-F, and X for Hexadecimal format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cBcr(SCPICmdRead):
@@ -29403,6 +33745,9 @@ class SearchSearchItemTriggerABusI3cBcr(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue`` command.
@@ -29431,13 +33776,13 @@ class SearchSearchItemTriggerABusI3cBcr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the value for which to search. The valid characters are 0, 1,
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the value for which to search. The valid characters are 0, 1,
               or X for Binary format; and 0-9, A-F, and X for Hexadecimal format.
         """
         return self._value
@@ -29461,17 +33806,19 @@ class SearchSearchItemTriggerABusI3cAddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue?
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
-        - ``<Qstring>`` specifies the address value for the specified Search <x>. This is either a
+        - ``SEARCH<x>`` specifies the search number.
+        - ``<QString>`` specifies the address value for the specified Search <x>. This is either a
           7-bit or 10-bit value depending on the address mode. The valid characters are 0-9, A-F,
           and X for Hexadecimal address format; and 0, 1, and X (don't care) for Binary address
           format.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusI3cAddressMode(SCPICmdWrite, SCPICmdRead):
@@ -29498,7 +33845,7 @@ class SearchSearchItemTriggerABusI3cAddressMode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Search<x>`` specifies the search number.
+        - ``SEARCH<x>`` specifies the search number.
         - ``ADDR10`` specifies the address mode as ADDR10.
         - ``ADDR7`` specifies the address mode as ADDR7.
     """
@@ -29513,6 +33860,9 @@ class SearchSearchItemTriggerABusI3cAddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.mode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:MODe`` command.
@@ -29551,7 +33901,7 @@ class SearchSearchItemTriggerABusI3cAddress(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``ADDR10`` specifies the address mode as ADDR10.
             - ``ADDR7`` specifies the address mode as ADDR7.
         """
@@ -29576,13 +33926,13 @@ class SearchSearchItemTriggerABusI3cAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue?
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
-            - ``<Qstring>`` specifies the address value for the specified Search <x>. This is either
+            - ``SEARCH<x>`` specifies the search number.
+            - ``<QString>`` specifies the address value for the specified Search <x>. This is either
               a 7-bit or 10-bit value depending on the address mode. The valid characters are 0-9,
               A-F, and X for Hexadecimal address format; and 0, 1, and X (don't care) for Binary
               address format.
@@ -29598,6 +33948,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C?`` query.
         - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` specifies the search number.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess`` command tree.
@@ -29623,6 +33976,7 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         - ``.maxwrite``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe`` command tree.
         - ``.packets``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets`` command.
         - ``.saddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress`` command tree.
+        - ``.sdr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
         - ``.statebyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe`` command tree.
         - ``.static``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic`` command tree.
         - ``.supportbyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe`` command tree.
@@ -29672,6 +34026,7 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         self._saddress = SearchSearchItemTriggerABusI3cSaddress(
             device, f"{self._cmd_syntax}:SADDress"
         )
+        self._sdr = SearchSearchItemTriggerABusI3cSdr(device, f"{self._cmd_syntax}:SDR")
         self._statebyte = SearchSearchItemTriggerABusI3cStatebyte(
             device, f"{self._cmd_syntax}:STATEBYTe"
         )
@@ -29694,6 +34049,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.mode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:MODe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess:VALue`` command.
@@ -29711,6 +34069,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR:VALue`` command.
         """
@@ -29726,6 +34087,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCRType:VALue`` command.
@@ -29756,7 +34120,7 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``RESPonse`` specifies the broadcast address mode as Response.
             - ``BROadcast`` specifies the broadcast address mode as Broadcast.
         """
@@ -29773,6 +34137,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BRGTID:VALue`` command.
         """
@@ -29788,6 +34155,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:CCODe:VALue`` command.
@@ -29819,7 +34189,7 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``STARt`` specifies trigger condition as Start.
             - ``REPEATStart`` specifies trigger condition as Repeated Start.
             - ``ADDRess`` specifies trigger condition as Address.
@@ -29847,6 +34217,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.direction``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:DIRection`` command.
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DATa:SIZe`` command.
@@ -29865,6 +34238,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCR:VALue`` command.
         """
@@ -29881,6 +34257,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DCRType:VALue`` command.
         """
@@ -29896,6 +34275,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:DWORd:VALue`` command.
@@ -29927,7 +34309,7 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``NACK`` specifies the error type on which to search as Missing Ack.
             - ``TBIT`` specifies the error type on which to search as T-Bit.
             - ``PARity`` specifies the error type on which to search as Parity.
@@ -29949,6 +34331,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:EVENTBYTe:VALue`` command.
         """
@@ -29964,6 +34349,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:FREQBYTe:VALue`` command.
@@ -29981,6 +34369,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSLSb:VALue`` command.
         """
@@ -29996,6 +34387,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:GSMSb:VALue`` command.
@@ -30013,6 +34407,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID:VALue`` command.
         """
@@ -30028,6 +34425,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:INACCBYTe:VALue`` command.
@@ -30045,6 +34445,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXREAD:VALue`` command.
         """
@@ -30061,6 +34464,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXRTURN:VALue`` command.
         """
@@ -30076,6 +34482,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe:VALue`` command.
@@ -30106,9 +34515,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` specifies the search number.
+            - ``SEARCH<x>`` specifies the search number.
             - ``RESPonse`` specifies the packet address mode as Response.
-            - ``DIRect`` specifies the packet address mode as Direct.
+            - ``DIRec`` t specifies the packet address mode as Direct.
         """
         return self._packets
 
@@ -30123,10 +34532,35 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue`` command.
         """
         return self._saddress
+
+    @property
+    def sdr(self) -> SearchSearchItemTriggerABusI3cSdr:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
+        Sub-properties:
+            - ``.broadcastpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket``
+              command.
+            - ``.directpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket``
+              command.
+        """
+        return self._sdr
 
     @property
     def statebyte(self) -> SearchSearchItemTriggerABusI3cStatebyte:
@@ -30138,6 +34572,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue`` command.
@@ -30155,6 +34592,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess`` command.
         """
@@ -30171,6 +34611,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe:VALue`` command.
         """
@@ -30186,6 +34629,9 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:TESTMODe:VALue`` command.
@@ -30420,7 +34866,7 @@ class SearchSearchItemTriggerABusI2cCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ADDress`` specifies the trigger condition as Address.
+        - ``ADDRess`` specifies the trigger condition as Address.
         - ``ADDRANDDATA`` specifies the trigger condition as Address and Data.
         - ``DATa`` specifies the trigger condition as Data.
         - ``ACKMISS`` specifies the trigger condition as Missing of Acknowledgement.
@@ -30635,7 +35081,7 @@ class SearchSearchItemTriggerABusI2c(SCPICmdRead):
             ```
 
         Info:
-            - ``ADDress`` specifies the trigger condition as Address.
+            - ``ADDRess`` specifies the trigger condition as Address.
             - ``ADDRANDDATA`` specifies the trigger condition as Address and Data.
             - ``DATa`` specifies the trigger condition as Data.
             - ``ACKMISS`` specifies the trigger condition as Missing of Acknowledgement.
@@ -31374,12 +35820,12 @@ class SearchSearchItemTriggerABusFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier?
         ```
 
     Info:
-        - ``EQUal`` specifies the qualifier as equal.
+        - ``EQual`` specifies the qualifier as equal.
         - ``LESSEQual`` specifies the qualifier as less equal.
         - ``MOREEQual`` specifies the qualifier as more equal.
         - ``UNEQual`` specifies the qualifier as unequal.
@@ -31561,12 +36007,12 @@ class SearchSearchItemTriggerABusFlexrayData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier?
             ```
 
         Info:
-            - ``EQUal`` specifies the qualifier as equal.
+            - ``EQual`` specifies the qualifier as equal.
             - ``LESSEQual`` specifies the qualifier as less equal.
             - ``MOREEQual`` specifies the qualifier as more equal.
             - ``UNEQual`` specifies the qualifier as unequal.
@@ -31685,12 +36131,12 @@ class SearchSearchItemTriggerABusFlexrayCyclecountQualifier(SCPICmdWrite, SCPICm
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier?
         ```
 
     Info:
-        - ``EQUal`` specifies the qualifier as equal.
+        - ``EQual`` specifies the qualifier as equal.
         - ``LESSEQual`` specifies the qualifier as less equal.
         - ``MOREEQual`` specifies the qualifier as more equal.
         - ``UNEQual`` specifies the qualifier as unequal.
@@ -31809,12 +36255,12 @@ class SearchSearchItemTriggerABusFlexrayCyclecount(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier?
             ```
 
         Info:
-            - ``EQUal`` specifies the qualifier as equal.
+            - ``EQual`` specifies the qualifier as equal.
             - ``LESSEQual`` specifies the qualifier as less equal.
             - ``MOREEQual`` specifies the qualifier as more equal.
             - ``UNEQual`` specifies the qualifier as unequal.
@@ -34064,7 +38510,7 @@ class SearchSearchItemTriggerABusEusbDataType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA0|DATA1|DATA2|MDATA}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA<x>|MDATA}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe?
         ```
 
@@ -34099,10 +38545,6 @@ class SearchSearchItemTriggerABusEusbDataSize(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe?
         ```
-
-    Info:
-        - ``<NR1>`` specifies the length of the data string. Default data size value is 1. The
-          argument range is 1 to 16 bytes.
     """
 
 
@@ -34352,10 +38794,6 @@ class SearchSearchItemTriggerABusEusbData(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:SIZe?
             ```
-
-        Info:
-            - ``<NR1>`` specifies the length of the data string. Default data size value is 1. The
-              argument range is 1 to 16 bytes.
         """
         return self._size
 
@@ -34378,7 +38816,7 @@ class SearchSearchItemTriggerABusEusbData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA0|DATA1|DATA2|MDATA}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe {ANY|DATA<x>|MDATA}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATa:TYPe?
             ```
 
@@ -35890,7 +40328,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressSourceValue(SCPICmdWrite, SCP
     Description:
         - This command specifies the binary MAC address source value to use when searching on an
           Ethernet bus signal. The search condition needs to be set to MACADDRess. The search number
-          is specified by x.
+          is specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+          hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -35944,7 +40383,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressSource(SCPICmdRead):
         Description:
             - This command specifies the binary MAC address source value to use when searching on an
               Ethernet bus signal. The search condition needs to be set to MACADDRess. The search
-              number is specified by x.
+              number is specified by x. Note: MAC Addresses are 48-bit values such as
+              ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35975,7 +40415,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressDestinationValue(SCPICmdWrite
     Description:
         - This command specifies the binary MAC address destination value to use when searching on
           an Ethernet bus signal. The search condition needs to be set to MACADDRess. The search
-          number is specified by x.
+          number is specified by x. Note: MAC Addresses are 48-bit values such as
+          ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -36029,7 +40470,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressDestination(SCPICmdRead):
         Description:
             - This command specifies the binary MAC address destination value to use when searching
               on an Ethernet bus signal. The search condition needs to be set to MACADDRess. The
-              search number is specified by x.
+              search number is specified by x. Note: MAC Addresses are 48-bit values such as
+              ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -36269,7 +40711,7 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocolValue(SCPICmdWrite, SCP
     Description:
         - This command specifies the binary protocol value to use when searching on the Ethernet bus
           signal. The search condition needs to be set to IPHeader. The search number is specified
-          by x.
+          by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -36323,7 +40765,8 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocol(SCPICmdRead):
         Description:
             - This command specifies the binary protocol value to use when searching on the Ethernet
               bus signal. The search condition needs to be set to IPHeader. The search number is
-              specified by x.
+              specified by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP)
+              and 17 (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -36542,7 +40985,7 @@ class SearchSearchItemTriggerABusEthernetDataValue(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
-          ``SEARCH:SEARCHX:TRIGGER:A:BUS:ETHERNET:DATA:SIZE``). The bits specified in the quoted
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe``). The bits specified in the quoted
           string replace the least significant bits, leaving any unspecified upper bits unchanged.
     """
 
@@ -36858,8 +41301,8 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
         Info:
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
-              ``SEARCH:SEARCHX:TRIGGER:A:BUS:ETHERNET:DATA:SIZE``). The bits specified in the quoted
-              string replace the least significant bits, leaving any unspecified upper bits
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe``). The bits specified in the
+              quoted string replace the least significant bits, leaving any unspecified upper bits
               unchanged.
         """
         return self._value
@@ -37178,7 +41621,7 @@ class SearchSearchItemTriggerABusEthercatTciValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the binary TCI value to be used when searching on an EtherCAT bus signal.
-          The default size and value of TCI is 16 bits and 'XXXXXXXX XXXXXXXX' respectively.
+          The default size and value of TCI is 16 bits and 'XXXXXXXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -37229,7 +41672,7 @@ class SearchSearchItemTriggerABusEthercatTci(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary TCI value to be used when searching on an EtherCAT bus
-              signal. The default size and value of TCI is 16 bits and 'XXXXXXXX XXXXXXXX'
+              signal. The default size and value of TCI is 16 bits and 'XXXXXXXXXXXXXXXX'
               respectively.
         """
         return self._value
@@ -37377,7 +41820,7 @@ class SearchSearchItemTriggerABusEthercatSourceaddressValue(SCPICmdWrite, SCPICm
     Info:
         - ``<QString>`` is the binary MAC source address value to be used when searching on an
           EtherCAT bus signal. The default size and value of MAC Source Address is 48 bits and
-          'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+          'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -37429,7 +41872,7 @@ class SearchSearchItemTriggerABusEthercatSourceaddress(SCPICmdRead):
         Info:
             - ``<QString>`` is the binary MAC source address value to be used when searching on an
               EtherCAT bus signal. The default size and value of MAC Source Address is 48 bits and
-              'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+              'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX' respectively.
         """
         return self._value
 
@@ -37705,7 +42148,7 @@ class SearchSearchItemTriggerABusEthercatQualityValue(SCPICmdWrite, SCPICmdRead)
 
     Info:
         - ``<QString>`` is the binary Quality value to be used when searching on an EtherCAT bus
-          signal. The default size and value of Quality is 16 bits and 'XXXXXXXX XXXXXXXX'
+          signal. The default size and value of Quality is 16 bits and 'XXXXXXXXXXXXXXXX'
           respectively.
     """
 
@@ -37757,7 +42200,7 @@ class SearchSearchItemTriggerABusEthercatQuality(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary Quality value to be used when searching on an EtherCAT bus
-              signal. The default size and value of Quality is 16 bits and 'XXXXXXXX XXXXXXXX'
+              signal. The default size and value of Quality is 16 bits and 'XXXXXXXXXXXXXXXX'
               respectively.
         """
         return self._value
@@ -37788,7 +42231,7 @@ class SearchSearchItemTriggerABusEthercatPubidValue(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<QString>`` is the binary Publisher ID value to be used when searching on an EtherCAT
           bus signal. The default size and value of Publisher ID is 48 bits and 'XXXXXXXX XXXXXXXX
-          XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+          XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -37840,7 +42283,7 @@ class SearchSearchItemTriggerABusEthercatPubid(SCPICmdRead):
         Info:
             - ``<QString>`` is the binary Publisher ID value to be used when searching on an
               EtherCAT bus signal. The default size and value of Publisher ID is 48 bits and
-              'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+              'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX' respectively.
         """
         return self._value
 
@@ -37980,7 +42423,7 @@ class SearchSearchItemTriggerABusEthercatOffsetValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the binary Address Offset data value to be used when searching on an
-          EtherCAT bus signal. The default size and value Address Offset is 16 bits and 'XXXXXXXX
+          EtherCAT bus signal. The default size and value Address Offset is 16 bits and'XXXXXXXX
           XXXXXXXX' respectively.
     """
 
@@ -38032,8 +42475,8 @@ class SearchSearchItemTriggerABusEthercatOffset(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary Address Offset data value to be used when searching on an
-              EtherCAT bus signal. The default size and value Address Offset is 16 bits and
-              'XXXXXXXX XXXXXXXX' respectively.
+              EtherCAT bus signal. The default size and value Address Offset is 16 bits and'XXXXXXXX
+              XXXXXXXX' respectively.
         """
         return self._value
 
@@ -38433,7 +42876,7 @@ class SearchSearchItemTriggerABusEthercatMailboxDetail(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``ONE`` specifies the Detail field as ONE. This is the default value.
+        - ``ON`` E specifies the Detail field as ONE. This is the default value.
         - ``TWO`` specifies the Detail field as TWO.
         - ``THRee`` specifies the Detail field as THRee.
         - ``FOUR`` specifies the Detail field as FOUR.
@@ -38713,7 +43156,7 @@ class SearchSearchItemTriggerABusEthercatMailbox(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``ONE`` specifies the Detail field as ONE. This is the default value.
+            - ``ON`` E specifies the Detail field as ONE. This is the default value.
             - ``TWO`` specifies the Detail field as TWO.
             - ``THRee`` specifies the Detail field as THRee.
             - ``FOUR`` specifies the Detail field as FOUR.
@@ -38899,7 +43342,7 @@ class SearchSearchItemTriggerABusEthercatLenValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the binary Length to be used when searching on an EtherCAT bus signal.
-          The default size and value of Length is 16 bits and 'XXXXXXXX XXXXXXXX' respectively.
+          The default size and value of Length is 16 bits and 'XXXXXXXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -38950,7 +43393,7 @@ class SearchSearchItemTriggerABusEthercatLen(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary Length to be used when searching on an EtherCAT bus
-              signal. The default size and value of Length is 16 bits and 'XXXXXXXX XXXXXXXX'
+              signal. The default size and value of Length is 16 bits and 'XXXXXXXXXXXXXXXX'
               respectively.
         """
         return self._value
@@ -39306,7 +43749,7 @@ class SearchSearchItemTriggerABusEthercatIndexValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the binary Index to be used when searching on an EtherCAT bus signal. The
-          default size and value of Index is 16 bits and 'XXXXXXXX XXXXXXXX' respectively.
+          default size and value of Index is 16 bits and 'XXXXXXXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -39357,7 +43800,7 @@ class SearchSearchItemTriggerABusEthercatIndex(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary Index to be used when searching on an EtherCAT bus signal.
-              The default size and value of Index is 16 bits and 'XXXXXXXX XXXXXXXX' respectively.
+              The default size and value of Index is 16 bits and 'XXXXXXXXXXXXXXXX' respectively.
         """
         return self._value
 
@@ -39548,7 +43991,7 @@ class SearchSearchItemTriggerABusEthercatHeaderLength(SCPICmdWrite, SCPICmdRead)
 
     Info:
         - ``<QString>`` is the binary header length to be used when searching on an EtherCAT bus
-          signal. The default size and value of Length is 11 bits and 'XXX XXXXXXXX' respectively.
+          signal. The default size and value of Length is 11 bits and 'XXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -39599,7 +44042,7 @@ class SearchSearchItemTriggerABusEthercatHeader(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary header length to be used when searching on an EtherCAT bus
-              signal. The default size and value of Length is 11 bits and 'XXX XXXXXXXX'
+              signal. The default size and value of Length is 11 bits and 'XXXXXXXXXXX'
               respectively.
         """
         return self._length
@@ -39629,8 +44072,7 @@ class SearchSearchItemTriggerABusEthercatHashValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the binary Hash value to be used when searching on an EtherCAT bus
-          signal. The default size and value of Hash is 16 bits and 'XXXXXXXX XXXXXXXX'
-          respectively.
+          signal. The default size and value of Hash is 16 bits and 'XXXXXXXXXXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -39681,7 +44123,7 @@ class SearchSearchItemTriggerABusEthercatHash(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the binary Hash value to be used when searching on an EtherCAT bus
-              signal. The default size and value of Hash is 16 bits and 'XXXXXXXX XXXXXXXX'
+              signal. The default size and value of Hash is 16 bits and 'XXXXXXXXXXXXXXXX'
               respectively.
         """
         return self._value
@@ -39924,7 +44366,7 @@ class SearchSearchItemTriggerABusEthercatDestinationaddressValue(SCPICmdWrite, S
     Info:
         - ``<QString>`` is the binary MAC destination address value to be used when searching on an
           EtherCAT bus signal. The default size and value of MAC Destination Address is 48 bits and
-          'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+          'XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX XXXXXXXX' respectively.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -39977,7 +44419,7 @@ class SearchSearchItemTriggerABusEthercatDestinationaddress(SCPICmdRead):
         Info:
             - ``<QString>`` is the binary MAC destination address value to be used when searching on
               an EtherCAT bus signal. The default size and value of MAC Destination Address is 48
-              bits and 'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX' respectively.
+              bits and 'XXXXXXXX XXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX XXXXXXXX' respectively.
         """
         return self._value
 
@@ -42793,7 +47235,7 @@ class SearchSearchItemTriggerABusEspiCommandOpcode(SCPICmdWrite, SCPICmdRead):
         - ``PUTOOB`` specifies PUTOOB as the command opcode in ESPI bus to search on.
         - ``GETOOB`` specifies GETOOB as the command opcode in ESPI bus to search on.
         - ``PUTFLASHC`` specifies PUTFLASHC as the command opcode in ESPI bus to search on.
-        - ``GETFLASHNP`` specifies GETFLASHNP as the command opcode in ESPI bus to search on.
+        - ``GETFLASHNP`` specifies GETFLASHNP as the command opcode in ESPI bus  to search on.
         - ``PUTVWIRe`` specifies put virtual wire as the command opcode in ESPI bus to search on.
         - ``GETVWIRe`` specifies get virtual wire as the command opcode in ESPI bus to search on.
     """  # noqa: E501
@@ -42863,7 +47305,7 @@ class SearchSearchItemTriggerABusEspiCommand(SCPICmdRead):
             - ``PUTOOB`` specifies PUTOOB as the command opcode in ESPI bus to search on.
             - ``GETOOB`` specifies GETOOB as the command opcode in ESPI bus to search on.
             - ``PUTFLASHC`` specifies PUTFLASHC as the command opcode in ESPI bus to search on.
-            - ``GETFLASHNP`` specifies GETFLASHNP as the command opcode in ESPI bus to search on.
+            - ``GETFLASHNP`` specifies GETFLASHNP as the command opcode in ESPI bus  to search on.
             - ``PUTVWIRe`` specifies put virtual wire as the command opcode in ESPI bus to search
               on.
             - ``GETVWIRe`` specifies get virtual wire as the command opcode in ESPI bus to search
@@ -44021,7 +48463,7 @@ class SearchSearchItemTriggerABusDphyPacketsList(SCPICmdWrite, SCPICmdRead):
         - ``GSW`` specifies GSW as the packet within DPHY frame to search on.
         - ``GR`` specifies GR as the packet within DPHY frame to search on.
         - ``COMPRESSION`` specifies COMPRESSION as the packet within DPHY frame to search on.
-        - ``SCRAMBLING`` specifies SCRAMBLING as the packet within DPHY frame to search on.
+        - ``SCRAMBLING`` specifies SCRAMBLING as the packet within DPHY frame tosearch on.
         - ``EXECUTEQUEue`` specifies EXECUTEQUEue as the packet within DPHY frame to search on.
         - ``DCSSW`` specifies DCSSW as the packet within DPHY frame to search on.
         - ``DCSR`` specifies DCSR as the packet within DPHY frame to search on.
@@ -44031,8 +48473,8 @@ class SearchSearchItemTriggerABusDphyPacketsList(SCPICmdWrite, SCPICmdRead):
         - ``MAXRETSIZE`` specifies MAXRETSIZE as the packet within DPHY frame to search on.
         - ``DCSGLONGWRITE`` specifies DCSGLONGWRITE as the packet within DPHY frame to search on.
         - ``PICPARameter`` specifies PICPARameter as the packet within DPHY frame to search on.
-        - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within DPHY frame to
-          search on.
+        - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within.
+        - ``DPHY`` frame to search on.
         - ``PPS101010`` specifies PPS101010 as the packet within DPHY frame to search on.
         - ``PPS121212`` specifies PPS121212 as the packet within DPHY frame to search on.
         - ``PPS565`` specifies PPS565 as the packet within DPHY frame to search on.
@@ -44134,7 +48576,7 @@ class SearchSearchItemTriggerABusDphyPackets(SCPICmdRead):
             - ``GSW`` specifies GSW as the packet within DPHY frame to search on.
             - ``GR`` specifies GR as the packet within DPHY frame to search on.
             - ``COMPRESSION`` specifies COMPRESSION as the packet within DPHY frame to search on.
-            - ``SCRAMBLING`` specifies SCRAMBLING as the packet within DPHY frame to search on.
+            - ``SCRAMBLING`` specifies SCRAMBLING as the packet within DPHY frame tosearch on.
             - ``EXECUTEQUEue`` specifies EXECUTEQUEue as the packet within DPHY frame to search on.
             - ``DCSSW`` specifies DCSSW as the packet within DPHY frame to search on.
             - ``DCSR`` specifies DCSR as the packet within DPHY frame to search on.
@@ -44145,8 +48587,8 @@ class SearchSearchItemTriggerABusDphyPackets(SCPICmdRead):
             - ``DCSGLONGWRITE`` specifies DCSGLONGWRITE as the packet within DPHY frame to search
               on.
             - ``PICPARameter`` specifies PICPARameter as the packet within DPHY frame to search on.
-            - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within DPHY frame to
-              search on.
+            - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within.
+            - ``DPHY`` frame to search on.
             - ``PPS101010`` specifies PPS101010 as the packet within DPHY frame to search on.
             - ``PPS121212`` specifies PPS121212 as the packet within DPHY frame to search on.
             - ``PPS565`` specifies PPS565 as the packet within DPHY frame to search on.
@@ -45652,7 +50094,7 @@ class SearchSearchItemTriggerABusCxpiDataValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is the identifier value. The default size and value for DATA is 8 bits and
+        - ``<QString>`` is the identifier value. The default size and value for DATA is 8bits and
           'XXXX XXXX' respectively.
     """
 
@@ -45760,7 +50202,7 @@ class SearchSearchItemTriggerABusCxpiData(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the identifier value. The default size and value for DATA is 8 bits
+            - ``<QString>`` is the identifier value. The default size and value for DATA is 8bits
               and 'XXXX XXXX' respectively.
         """
         return self._value
@@ -45784,14 +50226,16 @@ class SearchSearchItemTriggerABusCxpiCounterValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <Qstring>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue?
         ```
 
     Info:
-        - ``<Qstring>`` specifies the binary counter string. The default size and value Counter is 2
+        - ``<QString>`` specifies the binary counter string. The default size and value Counter is 2
           bits and 'XX' respectively.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusCxpiCounter(SCPICmdRead):
@@ -45833,12 +50277,12 @@ class SearchSearchItemTriggerABusCxpiCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <Qstring>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI:COUNter:VALue?
             ```
 
         Info:
-            - ``<Qstring>`` specifies the binary counter string. The default size and value Counter
+            - ``<QString>`` specifies the binary counter string. The default size and value Counter
               is 2 bits and 'XX' respectively.
         """
         return self._value
@@ -47142,29 +51586,31 @@ class SearchSearchItemTriggerABusCphyPacketsList(SCPICmdWrite, SCPICmdRead):
         - ``FRAMESTARt`` specifies FRAMESTARt as the packet within CPHY frame to search on.
         - ``FRAMEEND`` specifies FRAMEEND as the packet within CPHY frame to search on.
         - ``LINESTARt`` specifies LINESTARt as the packet within CPHY frame to search on.
-        - ``LINEEND`` specifies LINEEND as the packet within CPHY frame to search on.
-        - ``GSP`` specifies GSP as the packet within CPHY frame to search on.
-        - ``CSINULL`` specifies CSINULL as the packet within CPHY frame to search on.
-        - ``CSIBLANk`` specifies CSIBLANk as the packet within CPHY frame to search on.
-        - ``EMBEDDED`` specifies EMBEDDED as the packet within CPHY frame to search on.
-        - ``USEREIGHTB`` specifies USEREIGHTB as the packet within CPHY frame to search on.
-        - ``RGB565`` specifies RGB565 as the packet within CPHY frame to search on.
-        - ``RGB555`` specifies RGB555 as the packet within CPHY frame to search on.
-        - ``RGB444`` specifies RGB444 as the packet within CPHY frame to search on.
-        - ``RGB666`` specifies RGB666 as the packet within CPHY frame to search on.
-        - ``RAW6`` specifies RAW6 as the packet within CPHY frame to search on.
-        - ``RAW7`` specifies RAW7 as the packet within CPHY frame to search on.
-        - ``RAW8`` specifies RAW8 as the packet within CPHY frame to search on.
-        - ``RAW10`` specifies RAW10 as the packet within CPHY frame to search on.
-        - ``RAW12`` specifies RAW12 as the packet within CPHY frame to search on.
-        - ``RAW14`` specifies RAW14 as the packet within CPHY frame to search on.
-        - ``RAW16`` specifies RAW16 as the packet within CPHY frame to search on.
-        - ``RAW20`` specifies RAW20 as the packet within CPHY frame to search on.
-        - ``RGB888`` specifies RGB888 as the packet within CPHY frame to search on.
-        - ``YUV420L8`` specifies YUV420L8 as the packet within CPHY frame to search on.
-        - ``YUV8BIT`` specifies YUV8BIT as the packet within CPHY frame to search on.
-        - ``YUV422B10`` specifies YUV422B10 as the packet within CPHY frame to search on.
-        - ``YUV420B10`` specifies YUV420B10 as the packet within CPHY frame to search on.
+        - ``DSIBLANk`` specifies DSIBLANk as the packet within CPHY frame to search on.
+        - ``MAXRETSIZE`` specifies MAXRETSIZE as the packet within CPHY frame to search on.
+        - ``DCSGLONGWRITE`` specifies DCSGLONGWRITE as the packet within CPHY frame to search on.
+        - ``PICPARameter`` specifies PICPARameter as the packet within CPHY frame to search on.
+        - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within CPHY frame to
+          search on.
+        - ``PPS101010`` specifies PPS101010 as the packet within CPHY frame to search on.
+        - ``PPS121212`` specifies PPS121212 as the packet within CPHY frame to search on.
+        - ``PPS565`` specifies PPS565 as the packet within CPHY frame to search on.
+        - ``PPS666`` specifies PPS666 as the packet within CPHY frame to search on.
+        - ``LPS666`` specifies LPS666 as the packet within CPHY frame to search on.
+        - ``PPS888`` specifies LPS666 as the packet within CPHY frame to search on.
+        - ``YCBCR24`` specifies YCBCR24 as the packet within CPHY frame to search on.
+        - ``LPYCBCR24`` specifies LPYCBCR24 as the packet within CPHY frame to search on.
+        - ``YCBCR16`` specifies YCBCR16 as the packet within CPHY frame to search on.
+        - ``YCBCR12`` specifies YCBCR12 as the packet within CPHY frame to search on.
+        - ``ACKNowledge`` specifies ACKNowledge as the packet within CPHY frame to search on.
+        - ``ERRORREPort`` specifies ERRORREPort as the packet within CPHY frame to search on.
+        - ``GSRR`` specifies GSRR as the packet within CPHY frame to search on.
+        - ``GLONGREAD`` specifies GLONGREAD as the packet within CPHY frame to search on.
+        - ``DCSLONGREAD`` specifies DCSLONGREAD as the packet within CPHY frame to search on.
+        - ``DCSSRR`` specifies DCSSRR as the packet within CPHY frame to search on.
+        - ``FRAMESTARt`` specifies FRAMESTARt as the packet within CPHY frame to search on.
+        - ``FRAMEEND`` specifies FRAMEEND as the packet within CPHY frame to search on.
+        - ``LINESTARt`` specifies LINESTARt as the packet within CPHY frame to search on.
     """  # noqa: E501
 
 
@@ -47256,29 +51702,32 @@ class SearchSearchItemTriggerABusCphyPackets(SCPICmdRead):
             - ``FRAMESTARt`` specifies FRAMESTARt as the packet within CPHY frame to search on.
             - ``FRAMEEND`` specifies FRAMEEND as the packet within CPHY frame to search on.
             - ``LINESTARt`` specifies LINESTARt as the packet within CPHY frame to search on.
-            - ``LINEEND`` specifies LINEEND as the packet within CPHY frame to search on.
-            - ``GSP`` specifies GSP as the packet within CPHY frame to search on.
-            - ``CSINULL`` specifies CSINULL as the packet within CPHY frame to search on.
-            - ``CSIBLANk`` specifies CSIBLANk as the packet within CPHY frame to search on.
-            - ``EMBEDDED`` specifies EMBEDDED as the packet within CPHY frame to search on.
-            - ``USEREIGHTB`` specifies USEREIGHTB as the packet within CPHY frame to search on.
-            - ``RGB565`` specifies RGB565 as the packet within CPHY frame to search on.
-            - ``RGB555`` specifies RGB555 as the packet within CPHY frame to search on.
-            - ``RGB444`` specifies RGB444 as the packet within CPHY frame to search on.
-            - ``RGB666`` specifies RGB666 as the packet within CPHY frame to search on.
-            - ``RAW6`` specifies RAW6 as the packet within CPHY frame to search on.
-            - ``RAW7`` specifies RAW7 as the packet within CPHY frame to search on.
-            - ``RAW8`` specifies RAW8 as the packet within CPHY frame to search on.
-            - ``RAW10`` specifies RAW10 as the packet within CPHY frame to search on.
-            - ``RAW12`` specifies RAW12 as the packet within CPHY frame to search on.
-            - ``RAW14`` specifies RAW14 as the packet within CPHY frame to search on.
-            - ``RAW16`` specifies RAW16 as the packet within CPHY frame to search on.
-            - ``RAW20`` specifies RAW20 as the packet within CPHY frame to search on.
-            - ``RGB888`` specifies RGB888 as the packet within CPHY frame to search on.
-            - ``YUV420L8`` specifies YUV420L8 as the packet within CPHY frame to search on.
-            - ``YUV8BIT`` specifies YUV8BIT as the packet within CPHY frame to search on.
-            - ``YUV422B10`` specifies YUV422B10 as the packet within CPHY frame to search on.
-            - ``YUV420B10`` specifies YUV420B10 as the packet within CPHY frame to search on.
+            - ``DSIBLANk`` specifies DSIBLANk as the packet within CPHY frame to search on.
+            - ``MAXRETSIZE`` specifies MAXRETSIZE as the packet within CPHY frame to search on.
+            - ``DCSGLONGWRITE`` specifies DCSGLONGWRITE as the packet within CPHY frame to search
+              on.
+            - ``PICPARameter`` specifies PICPARameter as the packet within CPHY frame to search on.
+            - ``COMPRESSEDPSTReam`` specifies COMPRESSEDPSTReam as the packet within CPHY frame to
+              search on.
+            - ``PPS101010`` specifies PPS101010 as the packet within CPHY frame to search on.
+            - ``PPS121212`` specifies PPS121212 as the packet within CPHY frame to search on.
+            - ``PPS565`` specifies PPS565 as the packet within CPHY frame to search on.
+            - ``PPS666`` specifies PPS666 as the packet within CPHY frame to search on.
+            - ``LPS666`` specifies LPS666 as the packet within CPHY frame to search on.
+            - ``PPS888`` specifies LPS666 as the packet within CPHY frame to search on.
+            - ``YCBCR24`` specifies YCBCR24 as the packet within CPHY frame to search on.
+            - ``LPYCBCR24`` specifies LPYCBCR24 as the packet within CPHY frame to search on.
+            - ``YCBCR16`` specifies YCBCR16 as the packet within CPHY frame to search on.
+            - ``YCBCR12`` specifies YCBCR12 as the packet within CPHY frame to search on.
+            - ``ACKNowledge`` specifies ACKNowledge as the packet within CPHY frame to search on.
+            - ``ERRORREPort`` specifies ERRORREPort as the packet within CPHY frame to search on.
+            - ``GSRR`` specifies GSRR as the packet within CPHY frame to search on.
+            - ``GLONGREAD`` specifies GLONGREAD as the packet within CPHY frame to search on.
+            - ``DCSLONGREAD`` specifies DCSLONGREAD as the packet within CPHY frame to search on.
+            - ``DCSSRR`` specifies DCSSRR as the packet within CPHY frame to search on.
+            - ``FRAMESTARt`` specifies FRAMESTARt as the packet within CPHY frame to search on.
+            - ``FRAMEEND`` specifies FRAMEEND as the packet within CPHY frame to search on.
+            - ``LINESTARt`` specifies LINESTARt as the packet within CPHY frame to search on.
         """  # noqa: E501
         return self._list
 
@@ -48209,6 +52658,282 @@ class SearchSearchItemTriggerABusCphy(SCPICmdRead):
         return self._yuv
 
 
+class SearchSearchItemTriggerABusCanXldataValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue`` command.
+
+    Description:
+        - This command sets or queries the binary data value to be used when searching on a CAN bus
+          signal. The search condition must be set to IDANDDATA OR DATA. The search number is
+          specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the data value.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusCanXldataSize(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe`` command.
+
+    Description:
+        - This command sets or queries the length of the data string, in bytes, to be used when
+          searching on a CAN bus signal. The search condition must be set to IDANDDATA or DATA. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data size.
+    """
+
+
+class SearchSearchItemTriggerABusCanXldata(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe`` command.
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._size = SearchSearchItemTriggerABusCanXldataSize(device, f"{self._cmd_syntax}:SIZe")
+        self._value = SearchSearchItemTriggerABusCanXldataValue(device, f"{self._cmd_syntax}:VALue")
+
+    @property
+    def size(self) -> SearchSearchItemTriggerABusCanXldataSize:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe`` command.
+
+        Description:
+            - This command sets or queries the length of the data string, in bytes, to be used when
+              searching on a CAN bus signal. The search condition must be set to IDANDDATA or DATA.
+              The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data size.
+        """
+        return self._size
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusCanXldataValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue`` command.
+
+        Description:
+            - This command sets or queries the binary data value to be used when searching on a CAN
+              bus signal. The search condition must be set to IDANDDATA OR DATA. The search number
+              is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the data value.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusCanPidentifierValue(SCPICmdWriteNoArguments, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+
+    Description:
+        - This command sets the binary data value to use when triggering on a CAN bus signal when
+          standard is XL. The trigger condition must be set to Priority Identifier. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
+        ```
+
+    Info:
+        - ``<QString>`` specifies the identifier value.
+    """
+
+
+class SearchSearchItemTriggerABusCanPidentifierSize(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe`` command.
+
+    Description:
+        - This command sets the length of the data string, in bytes, to be used when triggering on a
+          CAN bus signal. The trigger condition must be set to Priority Identifier. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?
+        ```
+
+    Info:
+        - ``<NR1>`` specifies the data size.
+    """
+
+
+class SearchSearchItemTriggerABusCanPidentifier(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe`` command.
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._size = SearchSearchItemTriggerABusCanPidentifierSize(
+            device, f"{self._cmd_syntax}:SIZe"
+        )
+        self._value = SearchSearchItemTriggerABusCanPidentifierValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def size(self) -> SearchSearchItemTriggerABusCanPidentifierSize:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe`` command.
+
+        Description:
+            - This command sets the length of the data string, in bytes, to be used when triggering
+              on a CAN bus signal. The trigger condition must be set to Priority Identifier. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?
+            ```
+
+        Info:
+            - ``<NR1>`` specifies the data size.
+        """
+        return self._size
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusCanPidentifierValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+
+        Description:
+            - This command sets the binary data value to use when triggering on a CAN bus signal
+              when standard is XL. The trigger condition must be set to Priority Identifier. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
+            ```
+
+        Info:
+            - ``<QString>`` specifies the identifier value.
+        """
+        return self._value
+
+
 class SearchSearchItemTriggerABusCanIdentifierValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue`` command.
 
@@ -48371,7 +53096,7 @@ class SearchSearchItemTriggerABusCanFrametype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote|xldata}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype?
         ```
 
@@ -48380,6 +53105,7 @@ class SearchSearchItemTriggerABusCanFrametype(SCPICmdWrite, SCPICmdRead):
         - ``ERRor`` sets the frame type to error.
         - ``OVERLoad`` sets the frame type to overload.
         - ``REMote`` sets the frame type to remote.
+        - ``xldata`` sets the frame type to XL data.
     """
 
 
@@ -48552,7 +53278,7 @@ class SearchSearchItemTriggerABusCanErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|xlFormError|CRC|ANYERRor}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
         ```
 
@@ -48561,7 +53287,42 @@ class SearchSearchItemTriggerABusCanErrtype(SCPICmdWrite, SCPICmdRead):
         - ``BITSTUFFing`` specifies a search based on a bit stuffing error.
         - ``FORMERRor`` specifies a search based on a CAN FD form error. To use this option, the CAN
           standard must be set to FDISO or FDNONISO.
+        - ``xlFormError`` specifies a search based on a XL form error.
+        - ``CRC`` specifies a search based on a CRC error.
         - ``ANYERRor`` specifies a search based on any error type.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusCanDataXlbittype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for a CAN bus on the XL Data bits. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType {AF|VCID|SDT|SEC|SBC|ADS|DAS}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?
+        ```
+
+    Info:
+        - ``AF`` specifies the XL bit type to Acceptance Field.
+        - ``VCID`` specifies the XL bit type to Virtual CAN Network ID.
+        - ``SDT`` specifies the XL bit type to Device Data Unit type.
+        - ``SEC`` specifies the XL bit type to Simple extended content.
+        - ``SBC`` specifies the XL bit type to Stuff Bit Count.
+        - ``ADS`` specifies the XL bit type to Arbitration to Data sequence.
+        - ``DAS`` specifies the XL bit type to Data to Arbitration sequence.
     """
 
 
@@ -48634,12 +53395,12 @@ class SearchSearchItemTriggerABusCanDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQUal|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQual|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier?
         ```
 
     Info:
-        - ``EQUal`` sets the data qualifier to equal.
+        - ``EQual`` sets the data qualifier to equal.
         - ``LESSEQual`` sets the data qualifier to less equal.
         - ``MOREEQua`` sets the data qualifier to more equal.
         - ``UNEQual`` sets the data qualifier to unequal.
@@ -48727,6 +53488,7 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier`` command.
         - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe`` command.
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue`` command.
+        - ``.xlbittype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
@@ -48742,6 +53504,9 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         )
         self._size = SearchSearchItemTriggerABusCanDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = SearchSearchItemTriggerABusCanDataValue(device, f"{self._cmd_syntax}:VALue")
+        self._xlbittype = SearchSearchItemTriggerABusCanDataXlbittype(
+            device, f"{self._cmd_syntax}:XLBITType"
+        )
 
     @property
     def direction(self) -> SearchSearchItemTriggerABusCanDataDirection:
@@ -48828,12 +53593,12 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQUal|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier {EQual|LESSEQual|MOREEQua|UNEQual|LESSthan|MOREthan}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier?
             ```
 
         Info:
-            - ``EQUal`` sets the data qualifier to equal.
+            - ``EQual`` sets the data qualifier to equal.
             - ``LESSEQual`` sets the data qualifier to less equal.
             - ``MOREEQua`` sets the data qualifier to more equal.
             - ``UNEQual`` sets the data qualifier to unequal.
@@ -48893,6 +53658,148 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         """
         return self._value
 
+    @property
+    def xlbittype(self) -> SearchSearchItemTriggerABusCanDataXlbittype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for a CAN bus on the XL Data bits.
+              The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType {AF|VCID|SDT|SEC|SBC|ADS|DAS}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType?
+            ```
+
+        Info:
+            - ``AF`` specifies the XL bit type to Acceptance Field.
+            - ``VCID`` specifies the XL bit type to Virtual CAN Network ID.
+            - ``SDT`` specifies the XL bit type to Device Data Unit type.
+            - ``SEC`` specifies the XL bit type to Simple extended content.
+            - ``SBC`` specifies the XL bit type to Stuff Bit Count.
+            - ``ADS`` specifies the XL bit type to Arbitration to Data sequence.
+            - ``DAS`` specifies the XL bit type to Data to Arbitration sequence.
+        """
+        return self._xlbittype
+
+
+class SearchSearchItemTriggerABusCanDasType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for a CAN bus on the DAS bits. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe {DAH|AH<x>|AL1}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?
+        ```
+
+    Info:
+        - ``DAH`` specifies the DAS Type as Data to Arbitration High bit.
+        - ``AH1`` specifies the DAS Type as Arbitration High bit 1.
+        - ``AH2`` specifies the DAS Type as Arbitration High bit 2.
+        - ``AL1`` specifies the DAS Type as Arbitration Low bit 1.
+    """
+
+
+class SearchSearchItemTriggerABusCanDas(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._type = SearchSearchItemTriggerABusCanDasType(device, f"{self._cmd_syntax}:TYPe")
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusCanDasType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for a CAN bus on the DAS bits. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe {DAH|AH<x>|AL1}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe?
+            ```
+
+        Info:
+            - ``DAH`` specifies the DAS Type as Data to Arbitration High bit.
+            - ``AH1`` specifies the DAS Type as Arbitration High bit 1.
+            - ``AH2`` specifies the DAS Type as Arbitration High bit 2.
+            - ``AL1`` specifies the DAS Type as Arbitration Low bit 1.
+        """
+        return self._type
+
+
+class SearchSearchItemTriggerABusCanCrctype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType`` command.
+
+    Description:
+        - This command specifies the CAN XL trigger type to be valid on PCRC and FCRC. The search
+          number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType {PCRC|FCRC}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?
+        ```
+
+    Info:
+        - ``PCRC`` specifies error type as CRC13.
+        - ``FCRC`` FCRC specifies error type as CRC32.
+    """
+
 
 class SearchSearchItemTriggerABusCanCondition(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition`` command.
@@ -48920,6 +53827,7 @@ class SearchSearchItemTriggerABusCanCondition(SCPICmdWrite, SCPICmdRead):
         - ``SOF`` specifies the search condition for a CAN bus as start of frame.
         - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
         - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
+        - ``DATa`` specifies the search condition for a CAN bus as data.
         - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
         - ``EOF`` specifies the search condition for a CAN bus as end of frame.
         - ``ERRor`` specifies the search condition for a CAN bus as error.
@@ -48927,6 +53835,87 @@ class SearchSearchItemTriggerABusCanCondition(SCPICmdWrite, SCPICmdRead):
     """  # noqa: E501
 
 
+class SearchSearchItemTriggerABusCanAdsType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe`` command.
+
+    Description:
+        - This command sets or queries the trigger condition for a CAN bus on the ADS bits. The
+          search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe {ADH|DH<x>|DL1}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?
+        ```
+
+    Info:
+        - ``ADH`` specifies the ADS Type for a CAN bus as Arbitration to Data high.
+        - ``DH1`` specifies the ADS Type for a CAN bus as Data High bit 1.
+        - ``DH2`` specifies the ADS Type for a CAN bus as Data High bit 2.
+        - ``DL1`` specifies the ADS Type for a CAN bus as Data Low bit 1.
+    """
+
+
+class SearchSearchItemTriggerABusCanAds(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._type = SearchSearchItemTriggerABusCanAdsType(device, f"{self._cmd_syntax}:TYPe")
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusCanAdsType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe`` command.
+
+        Description:
+            - This command sets or queries the trigger condition for a CAN bus on the ADS bits. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe {ADH|DH<x>|DL1}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe?
+            ```
+
+        Info:
+            - ``ADH`` specifies the ADS Type for a CAN bus as Arbitration to Data high.
+            - ``DH1`` specifies the ADS Type for a CAN bus as Data High bit 1.
+            - ``DH2`` specifies the ADS Type for a CAN bus as Data High bit 2.
+            - ``DL1`` specifies the ADS Type for a CAN bus as Data Low bit 1.
+        """
+        return self._type
+
+
+#  pylint: disable=too-many-instance-attributes
 class SearchSearchItemTriggerABusCan(SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN`` command tree.
 
@@ -48936,19 +53925,27 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
           query and raise an AssertionError if the returned value does not match ``value``.
 
     Properties:
+        - ``.ads``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS`` command tree.
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition`` command.
+        - ``.crctype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType`` command.
+        - ``.das``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS`` command tree.
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa`` command tree.
         - ``.errtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType`` command.
         - ``.fd``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD`` command tree.
         - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype`` command.
         - ``.identifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier`` command tree.
+        - ``.pidentifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier`` command tree.
+        - ``.xldata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa`` command tree.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._ads = SearchSearchItemTriggerABusCanAds(device, f"{self._cmd_syntax}:ADS")
         self._condition = SearchSearchItemTriggerABusCanCondition(
             device, f"{self._cmd_syntax}:CONDition"
         )
+        self._crctype = SearchSearchItemTriggerABusCanCrctype(device, f"{self._cmd_syntax}:CRCType")
+        self._das = SearchSearchItemTriggerABusCanDas(device, f"{self._cmd_syntax}:DAS")
         self._data = SearchSearchItemTriggerABusCanData(device, f"{self._cmd_syntax}:DATa")
         self._errtype = SearchSearchItemTriggerABusCanErrtype(device, f"{self._cmd_syntax}:ERRType")
         self._fd = SearchSearchItemTriggerABusCanFd(device, f"{self._cmd_syntax}:FD")
@@ -48958,6 +53955,26 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
         self._identifier = SearchSearchItemTriggerABusCanIdentifier(
             device, f"{self._cmd_syntax}:IDentifier"
         )
+        self._pidentifier = SearchSearchItemTriggerABusCanPidentifier(
+            device, f"{self._cmd_syntax}:PIDentifier"
+        )
+        self._xldata = SearchSearchItemTriggerABusCanXldata(device, f"{self._cmd_syntax}:XLDATa")
+
+    @property
+    def ads(self) -> SearchSearchItemTriggerABusCanAds:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS:TYPe`` command.
+        """
+        return self._ads
 
     @property
     def condition(self) -> SearchSearchItemTriggerABusCanCondition:
@@ -48986,12 +54003,58 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             - ``SOF`` specifies the search condition for a CAN bus as start of frame.
             - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
             - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
+            - ``DATa`` specifies the search condition for a CAN bus as data.
             - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
             - ``EOF`` specifies the search condition for a CAN bus as end of frame.
             - ``ERRor`` specifies the search condition for a CAN bus as error.
             - ``FDBITS`` specifies the search condition for a CAN bus as FD bits.
         """  # noqa: E501
         return self._condition
+
+    @property
+    def crctype(self) -> SearchSearchItemTriggerABusCanCrctype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType`` command.
+
+        Description:
+            - This command specifies the CAN XL trigger type to be valid on PCRC and FCRC. The
+              search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType {PCRC|FCRC}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType?
+            ```
+
+        Info:
+            - ``PCRC`` specifies error type as CRC13.
+            - ``FCRC`` FCRC specifies error type as CRC32.
+        """
+        return self._crctype
+
+    @property
+    def das(self) -> SearchSearchItemTriggerABusCanDas:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS:TYPe`` command.
+        """
+        return self._das
 
     @property
     def data(self) -> SearchSearchItemTriggerABusCanData:
@@ -49010,6 +54073,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:QUALifier`` command.
             - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe`` command.
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue`` command.
+            - ``.xlbittype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:XLBITType`` command.
         """
         return self._data
 
@@ -49032,7 +54096,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|xlFormError|CRC|ANYERRor}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
             ```
 
@@ -49041,8 +54105,10 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             - ``BITSTUFFing`` specifies a search based on a bit stuffing error.
             - ``FORMERRor`` specifies a search based on a CAN FD form error. To use this option, the
               CAN standard must be set to FDISO or FDNONISO.
+            - ``xlFormError`` specifies a search based on a XL form error.
+            - ``CRC`` specifies a search based on a CRC error.
             - ``ANYERRor`` specifies a search based on any error type.
-        """
+        """  # noqa: E501
         return self._errtype
 
     @property
@@ -49082,7 +54148,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype {DATa|ERRor|OVERLoad|REMote|xldata}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype?
             ```
 
@@ -49091,6 +54157,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             - ``ERRor`` sets the frame type to error.
             - ``OVERLoad`` sets the frame type to overload.
             - ``REMote`` sets the frame type to remote.
+            - ``xldata`` sets the frame type to XL data.
         """
         return self._frametype
 
@@ -49110,6 +54177,40 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue`` command.
         """
         return self._identifier
+
+    @property
+    def pidentifier(self) -> SearchSearchItemTriggerABusCanPidentifier:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe`` command.
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+        """
+        return self._pidentifier
+
+    @property
+    def xldata(self) -> SearchSearchItemTriggerABusCanXldata:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe`` command.
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:VALue`` command.
+        """
+        return self._xldata
 
 
 class SearchSearchItemTriggerABusAutoethernetTcpheaderSourceportValue(SCPICmdWrite, SCPICmdRead):
@@ -49135,8 +54236,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSourceportValue(SCPICmdWri
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 16 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49153,6 +54254,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSourceport(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue``
@@ -49190,8 +54294,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSourceport(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 16 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -49222,8 +54326,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSeqnumValue(SCPICmdWrite, 
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 32 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49240,6 +54344,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSeqnum(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum:VALue``
@@ -49277,8 +54384,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderSeqnum(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 32 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -49312,8 +54419,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderDestinationportValue(
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 16 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49330,6 +54437,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderDestinationport(SCPICmdRea
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:DESTinationport?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The
@@ -49369,8 +54479,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderDestinationport(SCPICmdRea
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 16 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -49401,8 +54511,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderAcknumValue(SCPICmdWrite, 
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 32 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49419,6 +54529,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderAcknum(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum:VALue``
@@ -49456,8 +54569,8 @@ class SearchSearchItemTriggerABusAutoethernetTcpheaderAcknum(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 32 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -49473,6 +54586,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheader(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.acknum``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum`` command
@@ -49511,6 +54627,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum:VALue``
               command.
@@ -49527,6 +54646,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheader(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:DESTinationport?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
 
         Sub-properties:
             - ``.value``: The
@@ -49546,6 +54668,9 @@ class SearchSearchItemTriggerABusAutoethernetTcpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum:VALue``
               command.
@@ -49563,11 +54688,217 @@ class SearchSearchItemTriggerABusAutoethernetTcpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue`` command.
         """
         return self._sourceport
+
+
+class SearchSearchItemTriggerABusAutoethernetTbt1sDataValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue`` command.
+
+    Description:
+        - This command sets Data value for data string to be used when triggering on an Auto
+          Ethernet bus signal when speed is 10 Base-T1S and packet view is OFF.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``). The bits specified in
+          the quoted string replace the least significant bits (LSB), leaving any unspecified upper
+          bits unchanged.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusAutoethernetTbt1sDataLength(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` command.
+
+    Description:
+        - This command sets the length of the data (in bytes) for data pattern to be used when
+          triggering on an Auto Ethernet bus signal when speed is 10 Base-T1S and packet view is
+          OFF.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa: LENgth <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+        - ``<NR1>`` sets the data length, in bytes. It is an integer value whose minimum and default
+          values are 1, and the maximum value is 16.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusAutoethernetTbt1sData(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+
+    Properties:
+        - ``.length``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``
+          command.
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._length = SearchSearchItemTriggerABusAutoethernetTbt1sDataLength(
+            device, f"{self._cmd_syntax}:LENgth"
+        )
+        self._value = SearchSearchItemTriggerABusAutoethernetTbt1sDataValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def length(self) -> SearchSearchItemTriggerABusAutoethernetTbt1sDataLength:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` command.
+
+        Description:
+            - This command sets the length of the data (in bytes) for data pattern to be used when
+              triggering on an Auto Ethernet bus signal when speed is 10 Base-T1S and packet view is
+              OFF.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa: LENgth <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+            - ``<NR1>`` sets the data length, in bytes. It is an integer value whose minimum and
+              default values are 1, and the maximum value is 16.
+        """  # noqa: E501
+        return self._length
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusAutoethernetTbt1sDataValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue`` command.
+
+        Description:
+            - This command sets Data value for data string to be used when triggering on an Auto
+              Ethernet bus signal when speed is 10 Base-T1S and packet view is OFF.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``). The bits specified
+              in the quoted string replace the least significant bits (LSB), leaving any unspecified
+              upper bits unchanged.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusAutoethernetTbt1s(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+
+    Properties:
+        - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._data = SearchSearchItemTriggerABusAutoethernetTbt1sData(
+            device, f"{self._cmd_syntax}:DATa"
+        )
+
+    @property
+    def data(self) -> SearchSearchItemTriggerABusAutoethernetTbt1sData:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
+        Sub-properties:
+            - ``.length``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``
+              command.
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:VALue``
+              command.
+        """
+        return self._data
 
 
 class SearchSearchItemTriggerABusAutoethernetQualifier(SCPICmdWrite, SCPICmdRead):
@@ -49593,7 +54924,7 @@ class SearchSearchItemTriggerABusAutoethernetQualifier(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number.
         - ``LESSthan`` sets the qualifier to less than.
         - ``MOREthan`` sets the qualifier to greater than.
         - ``EQual`` sets the qualifier to equal.
@@ -49628,8 +54959,8 @@ class SearchSearchItemTriggerABusAutoethernetQtagValue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 32 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49646,6 +54977,9 @@ class SearchSearchItemTriggerABusAutoethernetQtag(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG:VALue`` command.
@@ -49681,10 +55015,155 @@ class SearchSearchItemTriggerABusAutoethernetQtag(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 32 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusAutoethernetPayloadValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue`` command.
+
+    Description:
+        - This command sets payload value to be used when triggering on an Auto Ethernet bus signal
+          when speed is 10 Base-T1S and packet view is ON.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?
+        ```
+
+    Info:
+        - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe``). The bits specified in the
+          quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
+          unchanged. The default value is XXXXXXXX.
+    """
+
+
+class SearchSearchItemTriggerABusAutoethernetPayloadSize(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` command.
+
+    Description:
+        - This command sets the length of the data string, in bytes, to be used when triggering on
+          an Auto Ethernet bus signal when speed is 10 Base-T1S and packet view is ON.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe <NR1>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?
+        ```
+
+    Info:
+        - ``<NR1>`` sets the payload length, in bytes. It is an integer value whose minimum and
+          default values are 1 and the maximum value is 16.
+    """
+
+
+class SearchSearchItemTriggerABusAutoethernetPayload(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` command.
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._size = SearchSearchItemTriggerABusAutoethernetPayloadSize(
+            device, f"{self._cmd_syntax}:SIZe"
+        )
+        self._value = SearchSearchItemTriggerABusAutoethernetPayloadValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def size(self) -> SearchSearchItemTriggerABusAutoethernetPayloadSize:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` command.
+
+        Description:
+            - This command sets the length of the data string, in bytes, to be used when triggering
+              on an Auto Ethernet bus signal when speed is 10 Base-T1S and packet view is ON.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe?
+            ```
+
+        Info:
+            - ``<NR1>`` sets the payload length, in bytes. It is an integer value whose minimum and
+              default values are 1 and the maximum value is 16.
+        """
+        return self._size
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusAutoethernetPayloadValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue`` command.
+
+        Description:
+            - This command sets payload value to be used when triggering on an Auto Ethernet bus
+              signal when speed is 10 Base-T1S and packet view is ON.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue <NR1>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue?
+            ```
+
+        Info:
+            - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe``). The bits specified in
+              the quoted string replace the least significant bits (LSB), leaving any unspecified
+              upper bits unchanged. The default value is XXXXXXXX.
         """
         return self._value
 
@@ -49712,8 +55191,8 @@ class SearchSearchItemTriggerABusAutoethernetMacLengthValue(SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 16 characters where the allowable characters are
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits
           (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -49744,10 +55223,9 @@ class SearchSearchItemTriggerABusAutoethernetMacLengthHivalue(SCPICmdWrite, SCPI
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 16 characters where the allowable characters are
-          0, 1, and X. The bits specified in the quoted string replace the least significant bits
-          (LSB), leaving any unspecified upper bits unchanged.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -49762,6 +55240,11 @@ class SearchSearchItemTriggerABusAutoethernetMacLength(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:HIVALue``
@@ -49802,10 +55285,10 @@ class SearchSearchItemTriggerABusAutoethernetMacLength(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 16 characters where the allowable characters
-              are 0, 1, and X. The bits specified in the quoted string replace the least significant
-              bits (LSB), leaving any unspecified upper bits unchanged.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._hivalue
 
@@ -49833,8 +55316,8 @@ class SearchSearchItemTriggerABusAutoethernetMacLength(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 16 characters where the allowable characters
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -49864,10 +55347,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSourceValue(SCPICmdWrite,
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 48 characters where the allowable characters are
-          0, 1, and X. The bits specified in the quoted string replace the least significant bits
-          (LSB), leaving any unspecified upper bits unchanged.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -49882,6 +55364,11 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSource(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:SOUrce?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:SOUrce:VALue``
@@ -49919,10 +55406,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSource(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 48 characters where the allowable characters
-              are 0, 1, and X. The bits specified in the quoted string replace the least significant
-              bits (LSB), leaving any unspecified upper bits unchanged.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -49952,10 +55439,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestinationValue(SCPICmdW
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 48 characters where the allowable characters are
-          0, 1, and X. The bits specified in the quoted string replace the least significant bits
-          (LSB), leaving any unspecified upper bits unchanged.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -49970,6 +55456,11 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestination(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:DESTination?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The
@@ -50008,10 +55499,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestination(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 48 characters where the allowable characters
-              are 0, 1, and X. The bits specified in the quoted string replace the least significant
-              bits (LSB), leaving any unspecified upper bits unchanged.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -50025,6 +55516,11 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.destination``: The
@@ -50053,6 +55549,12 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:DESTination?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:DESTination:VALue`` command.
@@ -50070,6 +55572,12 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:SOUrce?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:SOUrce:VALue`` command.
@@ -50086,6 +55594,11 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess`` command
@@ -50113,6 +55626,12 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
+
         Sub-properties:
             - ``.destination``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:DESTination`` command tree.
@@ -50131,6 +55650,12 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:HIVALue``
@@ -50164,10 +55689,9 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddrValue(SCPICmdWrit
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 32 characters, where the allowable characters are
-          0, 1, and X. The bits specified in the quoted string replace the least significant bits
-          (LSB), leaving any unspecified upper bits unchanged.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters,
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -50182,6 +55706,11 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddr(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:SOUrceaddr?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters,
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:SOUrceaddr:VALue``
@@ -50219,10 +55748,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddr(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 32 characters, where the allowable characters
-              are 0, 1, and X. The bits specified in the quoted string replace the least significant
-              bits (LSB), leaving any unspecified upper bits unchanged.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters, where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -50250,8 +55779,8 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderProtocolValue(SCPICmdWrite,
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to eight (8) characters where the allowable
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string of up to eight (8) characters where the allowable
           characters are 0, 1, and X. The bits specified in the quoted string replace the least
           significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
@@ -50268,6 +55797,9 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderProtocol(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:PROTOcol?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:PROTOcol:VALue``
@@ -50304,8 +55836,8 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderProtocol(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to eight (8) characters where the allowable
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string of up to eight (8) characters where the allowable
               characters are 0, 1, and X. The bits specified in the quoted string replace the least
               significant bits (LSB), leaving any unspecified upper bits unchanged.
         """
@@ -50338,10 +55870,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddrValue(
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string of up to 32 characters that sets the IP address, where the
-          allowable characters are 0, 1, and X. The bits specified in the quoted string replace the
-          least significant bits (LSB), leaving any unspecified upper bits unchanged.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -50356,6 +55888,12 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddr(SCPICmdRead
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:DESTinationaddr?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The
@@ -50394,11 +55932,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddr(SCPICmdRead
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string of up to 32 characters that sets the IP address, where
-              the allowable characters are 0, 1, and X. The bits specified in the quoted string
-              replace the least significant bits (LSB), leaving any unspecified upper bits
-              unchanged.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -50412,6 +55949,12 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
 
     Properties:
         - ``.destinationaddr``: The
@@ -50445,6 +55988,12 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:DESTinationaddr?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:DESTinationaddr:VALue``
@@ -50463,6 +56012,9 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:PROTOcol?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:PROTOcol:VALue`` command.
@@ -50480,11 +56032,197 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:SOUrceaddr?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters, where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
+
         Sub-properties:
             - ``.value``: The
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:SOUrceaddr:VALue`` command.
         """
         return self._sourceaddr
+
+
+class SearchSearchItemTriggerABusAutoethernetEtherType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe`` command.
+
+    Description:
+        - This command sets the Ether Type to be used when triggering on an Auto Ethernet bus signal
+          when speed is selected as 10 Base-T1S and packet view is ON.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe {IPV4|IPV6}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+        - ``IPV4`` specifies the ether type as IPv4.
+        - ``IPV6`` specifies the ether type as IPv6.
+    """
+
+
+class SearchSearchItemTriggerABusAutoethernetEtherHeader(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer`` command.
+
+    Description:
+        - This command sets the Header Type to be used when triggering for ether type on an Auto
+          Ethernet bus signal when speed is selected as 10 Base-T1S and packet view is ON.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer {TCP|ICMP|UDP}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+        - ``TCP`` specifies the header type as TCP header.
+        - ``ICMP`` specifies the header type as ICMP header.
+        - ``UDP`` specifies the header type as UDP header.
+    """
+
+
+class SearchSearchItemTriggerABusAutoethernetEther(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+
+    Properties:
+        - ``.header``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer`` command.
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._header = SearchSearchItemTriggerABusAutoethernetEtherHeader(
+            device, f"{self._cmd_syntax}:HEADer"
+        )
+        self._type = SearchSearchItemTriggerABusAutoethernetEtherType(
+            device, f"{self._cmd_syntax}:TYPe"
+        )
+
+    @property
+    def header(self) -> SearchSearchItemTriggerABusAutoethernetEtherHeader:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer`` command.
+
+        Description:
+            - This command sets the Header Type to be used when triggering for ether type on an Auto
+              Ethernet bus signal when speed is selected as 10 Base-T1S and packet view is ON.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer {TCP|ICMP|UDP}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+            - ``TCP`` specifies the header type as TCP header.
+            - ``ICMP`` specifies the header type as ICMP header.
+            - ``UDP`` specifies the header type as UDP header.
+        """
+        return self._header
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusAutoethernetEtherType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe`` command.
+
+        Description:
+            - This command sets the Ether Type to be used when triggering on an Auto Ethernet bus
+              signal when speed is selected as 10 Base-T1S and packet view is ON.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe {IPV4|IPV6}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+            - ``IPV4`` specifies the ether type as IPv4.
+            - ``IPV6`` specifies the ether type as IPv6.
+        """
+        return self._type
+
+
+class SearchSearchItemTriggerABusAutoethernetErrortype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe`` command.
+
+    Description:
+        - This command sets the Error Type to be used when triggering on an Auto Ethernet bus signal
+          when speed is selected as 10 Base-T1S and packet view is ON.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe {CRC|ESDERR|ESDJAB|CHECKSUM|ANY}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?
+        ```
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+        - ``CRC`` specifies the error type as CRC errors.
+        - ``ESDERR`` specifies the error type as ESDERR symbol.
+        - ``ESDJAB`` specifies the error type as ESDJAB symbol.
+        - ``CHECKSUM`` specifies the error type as checksum errors.
+        - ``ANYspecifies`` the error type as any type of error.
+    """
 
 
 class SearchSearchItemTriggerABusAutoethernetDataValue(SCPICmdWrite, SCPICmdRead):
@@ -50510,8 +56248,8 @@ class SearchSearchItemTriggerABusAutoethernetDataValue(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` is a quoted string where the allowable characters are 0, 1, and X. The
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe``). The bits specified in the
           quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
@@ -50544,7 +56282,7 @@ class SearchSearchItemTriggerABusAutoethernetDataSize(SCPICmdWrite, SCPICmdRead)
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number.
         - ``NR1`` sets the data length, in bytes. It is an integer value whose minimum and default
           values are 1, and the maximum value is 16.
     """
@@ -50573,7 +56311,7 @@ class SearchSearchItemTriggerABusAutoethernetDataOffset(SCPICmdWrite, SCPICmdRea
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number.
         - ``NR1`` sets the data offset value, in bytes. It is an integer value whose minimum and
           default values are -1 (don't care) and maximum is 1,499.
     """
@@ -50603,8 +56341,8 @@ class SearchSearchItemTriggerABusAutoethernetDataHivalue(SCPICmdWrite, SCPICmdRe
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
-        - ``QString`` specifies the binary data value to be used when searching on an AutoEthernet
+        - ``SEARCH<x>`` is the Search number.
+        - ``<QString>`` specifies the binary data value to be used when searching on an AutoEthernet
           bus signal.
     """
 
@@ -50620,6 +56358,9 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the Search number.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:HIVALue`` command.
@@ -50668,8 +56409,8 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` specifies the binary data value to be used when searching on an
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` specifies the binary data value to be used when searching on an
               AutoEthernet bus signal.
         """
         return self._hivalue
@@ -50698,7 +56439,7 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number.
             - ``NR1`` sets the data offset value, in bytes. It is an integer value whose minimum and
               default values are -1 (don't care) and maximum is 1,499.
         """
@@ -50729,7 +56470,7 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number.
             - ``NR1`` sets the data length, in bytes. It is an integer value whose minimum and
               default values are 1, and the maximum value is 16.
         """
@@ -50759,8 +56500,8 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
-            - ``QString`` is a quoted string where the allowable characters are 0, 1, and X. The
+            - ``SEARCH<x>`` is the Search number.
+            - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe``). The bits specified in the
               quoted string replace the least significant bits (LSB), leaving any unspecified upper
@@ -50791,7 +56532,7 @@ class SearchSearchItemTriggerABusAutoethernetCondition(SCPICmdWrite, SCPICmdRead
         ```
 
     Info:
-        - ``Search<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number.
         - ``SSD`` specifies to search for Start of frame.
         - ``SFD`` specifies to search for Start of frame delimiter.
         - ``MACADDRess`` specifies to search for MAC addresses field.
@@ -50805,6 +56546,7 @@ class SearchSearchItemTriggerABusAutoethernetCondition(SCPICmdWrite, SCPICmdRead
     """  # noqa: E501
 
 
+#  pylint: disable=too-many-instance-attributes
 class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet`` command tree.
 
@@ -50815,13 +56557,20 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet?`` query and raise an AssertionError if the
           returned value does not match ``value``.
 
+    Info:
+        - ``SEARCH<x>`` is the Search number.
+
     Properties:
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:CONDition`` command.
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa`` command tree.
+        - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe`` command.
+        - ``.ether``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer`` command tree.
         - ``.ipheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader`` command tree.
         - ``.mac``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC`` command tree.
+        - ``.payload``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad`` command tree.
         - ``.qtag``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG`` command tree.
         - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QUALifier`` command.
+        - ``.tbt1s``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s`` command tree.
         - ``.tcpheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader`` command
           tree.
     """
@@ -50832,13 +56581,25 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             device, f"{self._cmd_syntax}:CONDition"
         )
         self._data = SearchSearchItemTriggerABusAutoethernetData(device, f"{self._cmd_syntax}:DATa")
+        self._errortype = SearchSearchItemTriggerABusAutoethernetErrortype(
+            device, f"{self._cmd_syntax}:ERRORTYPe"
+        )
+        self._ether = SearchSearchItemTriggerABusAutoethernetEther(
+            device, f"{self._cmd_syntax}:ETHer"
+        )
         self._ipheader = SearchSearchItemTriggerABusAutoethernetIpheader(
             device, f"{self._cmd_syntax}:IPHeader"
         )
         self._mac = SearchSearchItemTriggerABusAutoethernetMac(device, f"{self._cmd_syntax}:MAC")
+        self._payload = SearchSearchItemTriggerABusAutoethernetPayload(
+            device, f"{self._cmd_syntax}:PAYLoad"
+        )
         self._qtag = SearchSearchItemTriggerABusAutoethernetQtag(device, f"{self._cmd_syntax}:QTAG")
         self._qualifier = SearchSearchItemTriggerABusAutoethernetQualifier(
             device, f"{self._cmd_syntax}:QUALifier"
+        )
+        self._tbt1s = SearchSearchItemTriggerABusAutoethernetTbt1s(
+            device, f"{self._cmd_syntax}:TBT1s"
         )
         self._tcpheader = SearchSearchItemTriggerABusAutoethernetTcpheader(
             device, f"{self._cmd_syntax}:TCPHeader"
@@ -50868,7 +56629,7 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number.
             - ``SSD`` specifies to search for Start of frame.
             - ``SFD`` specifies to search for Start of frame delimiter.
             - ``MACADDRess`` specifies to search for MAC addresses field.
@@ -50893,6 +56654,9 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:HIVALue``
               command.
@@ -50901,6 +56665,59 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:VALue`` command.
         """
         return self._data
+
+    @property
+    def errortype(self) -> SearchSearchItemTriggerABusAutoethernetErrortype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe`` command.
+
+        Description:
+            - This command sets the Error Type to be used when triggering on an Auto Ethernet bus
+              signal when speed is selected as 10 Base-T1S and packet view is ON.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe {CRC|ESDERR|ESDJAB|CHECKSUM|ANY}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe?
+            ```
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+            - ``CRC`` specifies the error type as CRC errors.
+            - ``ESDERR`` specifies the error type as ESDERR symbol.
+            - ``ESDJAB`` specifies the error type as ESDJAB symbol.
+            - ``CHECKSUM`` specifies the error type as checksum errors.
+            - ``ANYspecifies`` the error type as any type of error.
+        """
+        return self._errortype
+
+    @property
+    def ether(self) -> SearchSearchItemTriggerABusAutoethernetEther:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
+        Sub-properties:
+            - ``.header``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:HEADer`` command.
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer:TYPe`` command.
+        """
+        return self._ether
 
     @property
     def ipheader(self) -> SearchSearchItemTriggerABusAutoethernetIpheader:
@@ -50912,6 +56729,12 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
 
         Sub-properties:
             - ``.destinationaddr``: The
@@ -50934,6 +56757,12 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC?`` query and raise an AssertionError
               if the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
+
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess`` command
               tree.
@@ -50941,6 +56770,23 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
               tree.
         """
         return self._mac
+
+    @property
+    def payload(self) -> SearchSearchItemTriggerABusAutoethernetPayload:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.size``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` command.
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:VALue`` command.
+        """
+        return self._payload
 
     @property
     def qtag(self) -> SearchSearchItemTriggerABusAutoethernetQtag:
@@ -50952,6 +56798,9 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG:VALue`` command.
@@ -50983,7 +56832,7 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``Search<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number.
             - ``LESSthan`` sets the qualifier to less than.
             - ``MOREthan`` sets the qualifier to greater than.
             - ``EQual`` sets the qualifier to equal.
@@ -50996,6 +56845,26 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
         return self._qualifier
 
     @property
+    def tbt1s(self) -> SearchSearchItemTriggerABusAutoethernetTbt1s:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
+        Sub-properties:
+            - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa`` command
+              tree.
+        """
+        return self._tbt1s
+
+    @property
     def tcpheader(self) -> SearchSearchItemTriggerABusAutoethernetTcpheader:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader`` command tree.
 
@@ -51005,6 +56874,9 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the Search number.
 
         Sub-properties:
             - ``.acknum``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:ACKnum``
@@ -51154,8 +57026,8 @@ class SearchSearchItemTriggerABusAudioDataOffset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the data offset value (TDM channel) to be used when searching
-          on a TDM type audio bus signal. The search condition must be set to DATa using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``. The search number is specified by
+          on a TDM type audio bus signal. The search condition must be set to DATa using S
+          ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``. The search number is specified by
           x.
 
     Usage:
@@ -51346,7 +57218,7 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the data offset value (TDM channel) to be used when
               searching on a TDM type audio bus signal. The search condition must be set to DATa
-              using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``. The search number is
+              using S ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``. The search number is
               specified by x.
 
         Usage:
@@ -51523,7 +57395,7 @@ class SearchSearchItemTriggerABusAudioCondition(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``SOF`` specifies to search on a word select or start of frame (depending on Audio Type).
-        - ``DATA`` specifies to search on matching data.
+        - ``DATa`` specifies to search on matching data.
     """
 
 
@@ -51576,7 +57448,7 @@ class SearchSearchItemTriggerABusAudio(SCPICmdRead):
         Info:
             - ``SOF`` specifies to search on a word select or start of frame (depending on Audio
               Type).
-            - ``DATA`` specifies to search on matching data.
+            - ``DATa`` specifies to search on matching data.
         """
         return self._condition
 
@@ -51625,9 +57497,6 @@ class SearchSearchItemTriggerABusArinc429aSsmValue(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue?
         ```
-
-    Info:
-        - ``<QString>`` is the label value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -51676,9 +57545,6 @@ class SearchSearchItemTriggerABusArinc429aSsm(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue?
             ```
-
-        Info:
-            - ``<QString>`` is the label value.
         """
         return self._value
 
@@ -51689,7 +57555,9 @@ class SearchSearchItemTriggerABusArinc429aSdiValue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the label when searching on an ARINC429 SDI field. The search
           number is specified by x. The search condition must be set to DATa or LABELANDDATA, and
-          the data format must be set to DATA.
+          the data format must be set to DATA. Note: The SDI field is only present when the selected
+          data field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored
+          QString is reset to its default value whenever the data field format is changed.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -51740,7 +57608,10 @@ class SearchSearchItemTriggerABusArinc429aSdi(SCPICmdRead):
         Description:
             - This command sets or queries the label when searching on an ARINC429 SDI field. The
               search number is specified by x. The search condition must be set to DATa or
-              LABELANDDATA, and the data format must be set to DATA.
+              LABELANDDATA, and the data format must be set to DATA. Note: The SDI field is only
+              present when the selected data field format is DATA (using
+              ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString is reset to its default
+              value whenever the data field format is changed.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -51799,7 +57670,8 @@ class SearchSearchItemTriggerABusArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRe
     Description:
         - This command sets or queries the qualifier to be used when searching on label data for an
           ARINC429 bus signal. The search number is specified by x. The search condition must be set
-          to LABel or LABELANDDATA.
+          to LABel or LABELANDDATA. Note: If the search condition is set to LABELANDDATA, the label
+          qualifier will be locked to Equal until the search condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -51922,7 +57794,9 @@ class SearchSearchItemTriggerABusArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when searching on label data for
               an ARINC429 bus signal. The search number is specified by x. The search condition must
-              be set to LABel or LABELANDDATA.
+              be set to LABel or LABELANDDATA. Note: If the search condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the search condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -52049,7 +57923,8 @@ class SearchSearchItemTriggerABusArinc429aDataQualifier(SCPICmdWrite, SCPICmdRea
     Description:
         - This command sets or queries the qualifier to be used when searching on data in the DATA
           field for an ARINC429 bus signal. The search number is specified by x. The search
-          condition must be set to DATa or LABELANDDATA.
+          condition must be set to DATa or LABELANDDATA. Note: The search qualifier only applies to
+          the bits defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -52172,7 +58047,8 @@ class SearchSearchItemTriggerABusArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when searching on data in the
               DATA field for an ARINC429 bus signal. The search number is specified by x. The search
-              condition must be set to DATa or LABELANDDATA.
+              condition must be set to DATa or LABELANDDATA. Note: The search qualifier only applies
+              to the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -52236,7 +58112,7 @@ class SearchSearchItemTriggerABusArinc429aCondition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies a field or condition for an ARINC429 bus to search on. The search
-          number is specified by x.
+          number is specified by x. Note: ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -52302,7 +58178,8 @@ class SearchSearchItemTriggerABusArinc429a(SCPICmdRead):
 
         Description:
             - This command specifies a field or condition for an ARINC429 bus to search on. The
-              search number is specified by x.
+              search number is specified by x. Note:
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -52463,9 +58340,11 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         - ``.manchester``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester`` command tree.
         - ``.mdio``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MDIO`` command tree.
         - ``.mil1553b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B`` command tree.
+        - ``.nfc``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC`` command tree.
         - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
         - ``.onewire``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe`` command tree.
         - ``.parallel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel`` command tree.
+        - ``.pcie``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE`` command tree.
         - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
         - ``.rs232c``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C`` command tree.
         - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B`` command tree.
@@ -52506,9 +58385,11 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         )
         self._mdio = SearchSearchItemTriggerABusMdio(device, f"{self._cmd_syntax}:MDIO")
         self._mil1553b = SearchSearchItemTriggerABusMil1553b(device, f"{self._cmd_syntax}:MIL1553B")
+        self._nfc = SearchSearchItemTriggerABusNfc(device, f"{self._cmd_syntax}:NFC")
         self._nrz = SearchSearchItemTriggerABusNrz(device, f"{self._cmd_syntax}:NRZ")
         self._onewire = SearchSearchItemTriggerABusOnewire(device, f"{self._cmd_syntax}:ONEWIRe")
         self._parallel = SearchSearchItemTriggerABusParallel(device, f"{self._cmd_syntax}:PARallel")
+        self._pcie = SearchSearchItemTriggerABusPcie(device, f"{self._cmd_syntax}:PCIE")
         self._psifive = SearchSearchItemTriggerABusPsifive(device, f"{self._cmd_syntax}:PSIFIVe")
         self._rs232c = SearchSearchItemTriggerABusRs232c(device, f"{self._cmd_syntax}:RS232C")
         self._s8b10b = SearchSearchItemTriggerABusS8b10b(device, f"{self._cmd_syntax}:S8B10B")
@@ -52573,14 +58454,22 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet?`` query and raise an AssertionError if
               the returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the Search number.
+
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:CONDition`` command.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa`` command tree.
+            - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ERRORTYPe`` command.
+            - ``.ether``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:ETHer`` command tree.
             - ``.ipheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader`` command
               tree.
             - ``.mac``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC`` command tree.
+            - ``.payload``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad`` command
+              tree.
             - ``.qtag``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QTAG`` command tree.
             - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:QUALifier`` command.
+            - ``.tbt1s``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s`` command tree.
             - ``.tcpheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader`` command
               tree.
         """
@@ -52598,12 +58487,17 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               returned value does not match ``value``.
 
         Sub-properties:
+            - ``.ads``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ADS`` command tree.
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition`` command.
+            - ``.crctype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CRCType`` command.
+            - ``.das``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DAS`` command tree.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa`` command tree.
             - ``.errtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType`` command.
             - ``.fd``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD`` command tree.
             - ``.frametype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FRAMEtype`` command.
             - ``.identifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier`` command tree.
+            - ``.pidentifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier`` command tree.
+            - ``.xldata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa`` command tree.
         """
         return self._can
 
@@ -52886,6 +58780,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` specifies the search number.
+
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ADDRess`` command tree.
             - ``.bcr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:BCR`` command tree.
@@ -52910,6 +58807,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - ``.maxwrite``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe`` command tree.
             - ``.packets``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets`` command.
             - ``.saddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress`` command tree.
+            - ``.sdr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
             - ``.statebyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe`` command tree.
             - ``.static``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic`` command tree.
             - ``.supportbyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe`` command tree.
@@ -53005,6 +58903,32 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         return self._mil1553b
 
     @property
+    def nfc(self) -> SearchSearchItemTriggerABusNfc:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
+        Sub-properties:
+            - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:COMMand`` command tree.
+            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:CONDition`` command.
+            - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:DATa`` command tree.
+            - ``.error``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:ERRor`` command tree.
+            - ``.payloadbits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:PAYLOADBITS`` command.
+            - ``.response``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:RESPonse`` command tree.
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:TYPe`` command.
+            - ``.uid``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC:UID`` command tree.
+        """
+        return self._nfc
+
+    @property
     def nrz(self) -> SearchSearchItemTriggerABusNrz:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
 
@@ -53014,6 +58938,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
@@ -53031,6 +58958,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:COMMand`` command tree.
@@ -53058,6 +58988,27 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa`` command tree.
         """
         return self._parallel
+
+    @property
+    def pcie(self) -> SearchSearchItemTriggerABusPcie:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.cheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHEADer`` command.
+            - ``.custom``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CUSTom`` command tree.
+            - ``.dllp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DLLP`` command tree.
+            - ``.osettype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:OSETtype`` command.
+            - ``.sync``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:SYNC`` command.
+            - ``.tlp``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:TLP`` command tree.
+        """
+        return self._pcie
 
     @property
     def psifive(self) -> SearchSearchItemTriggerABusPsifive:
@@ -53116,6 +59067,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
             - ``.disparity``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity`` command.
@@ -53134,6 +59088,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC:ADDRess`` command tree.
@@ -53159,6 +59116,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
+
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:CONDition`` command.
             - ``.errtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:ERRType`` command.
@@ -53178,6 +59138,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:ADDRess`` command tree.
@@ -53210,14 +59173,13 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce B<x>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
             ```
 
         Info:
-            - ``B<x>`` specifies the bus source as a bus number from B01 to B16. x has a minimum of
-              0 and a maximum of 16.
-        """  # noqa: E501
+            - ``B<x>`` specifies the bus source as a bus number from B0 to B16.
+        """
         return self._source
 
     @property
@@ -53230,6 +59192,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search number.
 
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPACEWIRe:CONDition`` command.
@@ -53272,6 +59237,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:CONDition`` command.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPMI:DATa`` command tree.
@@ -53296,6 +59264,9 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+
         Sub-properties:
             - ``.command``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:COMMand`` command tree.
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SVID:CONDition`` command.
@@ -53318,11 +59289,20 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
 
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress`` command tree.
+            - ``.character``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter`` command.
+            - ``.compliance``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:COMPliance`` command.
             - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition`` command.
+            - ``.crctype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CRCTYPe`` command.
+            - ``.custom``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CUSTom`` command tree.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa`` command tree.
             - ``.endpoint``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint`` command tree.
+            - ``.err8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERR8B10B`` command tree.
             - ``.errtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERRTYPE`` command.
             - ``.handshaketype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType`` command.
+            - ``.keypadtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:KEYPADTYPe`` command.
+            - ``.ordered``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ORDered`` command tree.
+            - ``.packettype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKETTYPe`` command.
+            - ``.packet``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKet`` command tree.
             - ``.sofframenumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SOFFRAMENUMber``
               command.
             - ``.specialtype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPECIALType`` command.
@@ -53411,9 +59391,11 @@ class SearchSearchItemTriggerA(SCPICmdRead):
             - ``.manchester``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MANChester`` command tree.
             - ``.mdio``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MDIO`` command tree.
             - ``.mil1553b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B`` command tree.
+            - ``.nfc``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NFC`` command tree.
             - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
             - ``.onewire``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe`` command tree.
             - ``.parallel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel`` command tree.
+            - ``.pcie``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE`` command tree.
             - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
             - ``.rs232c``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C`` command tree.
             - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B`` command tree.
@@ -53689,7 +59671,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 1 enables the search. Any other character disables the search.
+            - ``<NR1> = 1`` enables the search. Any other character disables the search.
             - ``ON`` enables the search.
             - ``OFF`` disables the search.
         """
@@ -53721,7 +59703,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
         Info:
             - ``<x>`` is the number of the search on which to enable or disable the stop acquisition
               function.
-            - ``<NR1>`` = 1 enables stopping when a search hit is found. Any other character
+            - ``<NR1> = 1`` enables stopping when a search hit is found. Any other character
               disables the feature.
             - ``ON`` enables stopping when a search hit is found.
             - ``OFF`` disables stopping on a search hit.
@@ -53777,7 +59759,8 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Description:
             - This command sets or queries the trigger type setting for a search to determine where
-              to place a mark. The search number is specified by x.
+              to place a mark. The search number is specified by x. Note: Some trigger types are
+              optional.
 
         Usage:
             - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TYPe?``
@@ -53942,20 +59925,21 @@ class SearchSearchItemCopy(SCPICmdWrite):
     """The ``SEARCH:SEARCH<x>:COPy`` command.
 
     Description:
-        - This command (no query form) copies the search criteria to or from the trigger. The search
-          number is specified by x.
+        - This command (no query form) copies the search criteria to the trigger, the trigger
+          criteria to a search, or copy search to search. <x> is the search number.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``SEARCH:SEARCH<x>:COPy value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch}
+        - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch|FROMSearch<x>}
         ```
 
     Info:
         - ``SEARCHtotrigger`` copies the search criteria to the trigger.
         - ``TRIGgertosearch`` copies the trigger criteria to the search.
+        - ``FROMSearch<x>`` copies the search criteria to the search, where <x> is 1 to 8.
     """
 
 
@@ -53986,8 +59970,8 @@ class SearchSearchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:COPy`` command.
 
         Description:
-            - This command (no query form) copies the search criteria to or from the trigger. The
-              search number is specified by x.
+            - This command (no query form) copies the search criteria to the trigger, the trigger
+              criteria to a search, or copy search to search. <x> is the search number.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SEARCH:SEARCH<x>:COPy value``
@@ -53995,12 +59979,13 @@ class SearchSearchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch}
+            - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch|FROMSearch<x>}
             ```
 
         Info:
             - ``SEARCHtotrigger`` copies the search criteria to the trigger.
             - ``TRIGgertosearch`` copies the trigger criteria to the search.
+            - ``FROMSearch<x>`` copies the search criteria to the search, where <x> is 1 to 8.
         """
         return self._copy
 
@@ -54103,7 +60088,7 @@ class SearchDelete(SCPICmdWrite):
 
     Info:
         - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>', where
-          <NR1> is ≥ 1).
+          <NR1> is ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54232,7 +60217,7 @@ class Search(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>',
-              where <NR1> is ≥ 1).
+              where <NR1> is ≥ 1.
         """
         return self._delete
 

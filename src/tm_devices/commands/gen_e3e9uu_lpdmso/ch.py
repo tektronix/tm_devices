@@ -14,7 +14,7 @@ Commands and Queries:
     - CH<x>:BANdwidth:FILTer:OPTIMIZation?
     - CH<x>:BANdwidth?
     - CH<x>:CLIPping?
-    - CH<x>:COUPling {AC|DC|DCREJect}
+    - CH<x>:COUPling {AC|DC|DCR}
     - CH<x>:COUPling?
     - CH<x>:DESKew <NR3>
     - CH<x>:DESKew?
@@ -191,7 +191,7 @@ class ChannelDallLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off underline font.
         - ``ON`` argument turns on underline font.
-        - ``<NR1>`` = 0 turns off underline font; any other value turns on underline font.
+        - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
     """
 
 
@@ -273,7 +273,7 @@ class ChannelDallLabelFontItalic(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off italic font.
         - ``ON`` argument turns on italic font.
-        - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
+        - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
     """
 
 
@@ -301,7 +301,7 @@ class ChannelDallLabelFontBold(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off bold font.
         - ``ON`` argument turns on bold font.
-        - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
+        - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
     """
 
 
@@ -357,7 +357,7 @@ class ChannelDallLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off bold font.
             - ``ON`` argument turns on bold font.
-            - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
+            - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
         """
         return self._bold
 
@@ -386,7 +386,7 @@ class ChannelDallLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off italic font.
             - ``ON`` argument turns on italic font.
-            - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
+            - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
         """
         return self._italic
 
@@ -470,7 +470,7 @@ class ChannelDallLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off underline font.
             - ``ON`` argument turns on underline font.
-            - ``<NR1>`` = 0 turns off underline font; any other value turns on underline font.
+            - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
         """
         return self._underline
 
@@ -497,7 +497,7 @@ class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number.
         - ``<QString>`` is the color of the digital group label. To return the color to the default
-          color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
+          color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR``.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -550,7 +550,7 @@ class ChannelDallLabel(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number.
             - ``<QString>`` is the color of the digital group label. To return the color to the
-              default color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
+              default color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR``.
         """
         return self._color
 
@@ -692,7 +692,7 @@ class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off underline font.
         - ``ON`` argument turns on underline font.
-        - ``<NR1>`` = 0 turns off underline font; any other value turns on underline font.
+        - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
     """
 
 
@@ -774,7 +774,7 @@ class ChannelDigitalBitLabelFontItalic(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off italic font.
         - ``ON`` argument turns on italic font.
-        - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
+        - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
     """
 
 
@@ -802,7 +802,7 @@ class ChannelDigitalBitLabelFontBold(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``OFF`` argument turns off bold font.
         - ``ON`` argument turns on bold font.
-        - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
+        - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
     """
 
 
@@ -860,7 +860,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off bold font.
             - ``ON`` argument turns on bold font.
-            - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
+            - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
         """
         return self._bold
 
@@ -889,7 +889,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off italic font.
             - ``ON`` argument turns on italic font.
-            - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
+            - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
         """
         return self._italic
 
@@ -973,7 +973,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``OFF`` argument turns off underline font.
             - ``ON`` argument turns on underline font.
-            - ``<NR1>`` = 0 turns off underline font; any other value turns on underline font.
+            - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
         """
         return self._underline
 
@@ -1220,7 +1220,8 @@ class ChannelTermination(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical termination for the specified analog channel.
-          The channel is specified by x.
+          The channel is specified by x. Note: The available arguments depend on the instrument
+          model and the attached accessories.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:TERmination?`` query.
@@ -2090,7 +2091,8 @@ class ChannelProbeIdSernumber(SCPICmdRead):
 
     Description:
         - This query-only command returns the serial number of the probe that is attached to the
-          specified channel. The channel is specified by x.
+          specified channel. The channel is specified by x. Note: For Level 0 and 1 probes, the
+          serial number will be 'N/A'.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -2137,7 +2139,8 @@ class ChannelProbeId(SCPICmdRead):
 
         Description:
             - This query-only command returns the serial number of the probe that is attached to the
-              specified channel. The channel is specified by x.
+              specified channel. The channel is specified by x. Note: For Level 0 and 1 probes, the
+              serial number will be 'N/A'.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -2291,8 +2294,8 @@ class ChannelProbeCompensate(SCPICmdWriteNoArguments):
     """The ``CH<x>:PRObe:COMPensate`` command.
 
     Description:
-        - This command starts the probe compensation procedure for passive probes. The channel is
-          specified by x.
+        - This command starts the probe compensation (if available) for the specified channel.
+          procedure for passive probes. The channel is specified by x.
 
     Usage:
         - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -2403,8 +2406,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:COMPensate`` command.
 
         Description:
-            - This command starts the probe compensation procedure for passive probes. The channel
-              is specified by x.
+            - This command starts the probe compensation (if available) for the specified channel.
+              procedure for passive probes. The channel is specified by x.
 
         Usage:
             - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -2711,7 +2714,8 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets the unit of measurement for the external attenuator of the specified
           channel. The channel is specified by x. The alternate units are used if they are enabled.
-          Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the alternate units.
+          Use the ``CH<x>:PROBEFunc:EXTUnits:STATE`` command to enable or disable the alternate
+          units.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc:EXTUnits?`` query.
@@ -2912,7 +2916,7 @@ class ChannelProbefunc(SCPICmdRead):
         Description:
             - This command sets the unit of measurement for the external attenuator of the specified
               channel. The channel is specified by x. The alternate units are used if they are
-              enabled. Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the
+              enabled. Use the ``CH<x>:PROBEFunc:EXTUnits:STATE`` command to enable or disable the
               alternate units.
 
         Usage:
@@ -3573,7 +3577,7 @@ class ChannelInvert(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``OFF`` turns off the channel invert.
         - ``ON`` turns on the channel invert.
-        - ``<NR1>`` 0 turns off the channel invert; any other value turns on the channel invert.
+        - ``<NR1>`` = 0 turns off the channel invert; any other value turns on the channel invert.
     """
 
 
@@ -3641,7 +3645,7 @@ class ChannelCoupling(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CH<x>:COUPling {AC|DC|DCREJect}
+        - CH<x>:COUPling {AC|DC|DCR}
         - CH<x>:COUPling?
         ```
 
@@ -3649,7 +3653,7 @@ class ChannelCoupling(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number.
         - ``AC`` sets the specified channel to AC coupling.
         - ``DC`` sets the specified channel to DC coupling.
-        - ``DCREJect`` sets DC Reject coupling when probes are attached that support that feature.
+        - ``DCR`` sets DC Reject coupling when probes are attached that support that feature.
     """
 
 
@@ -3950,7 +3954,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CH<x>:COUPling {AC|DC|DCREJect}
+            - CH<x>:COUPling {AC|DC|DCR}
             - CH<x>:COUPling?
             ```
 
@@ -3958,8 +3962,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - ``CH<x>`` is the channel number.
             - ``AC`` sets the specified channel to AC coupling.
             - ``DC`` sets the specified channel to DC coupling.
-            - ``DCREJect`` sets DC Reject coupling when probes are attached that support that
-              feature.
+            - ``DCR`` sets DC Reject coupling when probes are attached that support that feature.
         """
         return self._coupling
 
@@ -4037,7 +4040,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
         Info:
             - ``OFF`` turns off the channel invert.
             - ``ON`` turns on the channel invert.
-            - ``<NR1>`` 0 turns off the channel invert; any other value turns on the channel invert.
+            - ``<NR1>`` = 0 turns off the channel invert; any other value turns on the channel
+              invert.
         """
         return self._invert
 
@@ -4305,7 +4309,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical termination for the specified analog
-              channel. The channel is specified by x.
+              channel. The channel is specified by x. Note: The available arguments depend on the
+              instrument model and the attached accessories.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:TERmination?`` query.

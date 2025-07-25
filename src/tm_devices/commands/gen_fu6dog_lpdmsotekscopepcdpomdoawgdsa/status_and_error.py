@@ -12,8 +12,6 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - *ESE <NR1>
-    - *ESE?
     - *SRE <NR1>
     - *SRE?
     ```
@@ -54,33 +52,4 @@ class Sre(SCPICmdWrite, SCPICmdRead):
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SRE") -> None:
-        super().__init__(device, cmd_syntax)
-
-
-class Ese(SCPICmdWrite, SCPICmdRead):
-    """The ``*ESE`` command.
-
-    Description:
-        - This command sets and queries the bits in the Event Status Enable Register (ESER). The
-          ESER prevents events from being reported to the Status Byte Register (STB). For a more
-          detailed discussion of the use of these registers, see Registers.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*ESE?`` query.
-        - Using the ``.verify(value)`` method will send the ``*ESE?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``*ESE value`` command.
-
-    SCPI Syntax:
-        ```
-        - *ESE <NR1>
-        - *ESE?
-        ```
-
-    Info:
-        - ``<NR1>`` specifies the binary bits of the ESER according to this value, which ranges from
-          0 through 255.
-    """
-
-    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*ESE") -> None:
         super().__init__(device, cmd_syntax)

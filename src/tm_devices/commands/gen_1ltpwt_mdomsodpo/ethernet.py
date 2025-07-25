@@ -22,9 +22,9 @@ Commands and Queries:
     - ETHERnet:HTTPPort?
     - ETHERnet:IPADDress <QString>
     - ETHERnet:IPADDress?
-    - ETHERnet:LXI:LAN:PASSWord:ENABle {0|1|ON|OFF}
+    - ETHERnet:LXI:LAN:PASSWord:ENABle {ON|OFF|1|0}
     - ETHERnet:LXI:LAN:PASSWord:ENABle?
-    - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {0|1|ON|OFF}
+    - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {ON|OFF|1|0}
     - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle?
     - ETHERnet:LXI:LAN:RESET
     - ETHERnet:LXI:LAN:SERVICENAMe QString
@@ -288,7 +288,7 @@ class EthernetLxiLanPasswordEscopeenable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {0|1|ON|OFF}
+        - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {ON|OFF|1|0}
         - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle?
         ```
 
@@ -314,7 +314,7 @@ class EthernetLxiLanPasswordEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ETHERnet:LXI:LAN:PASSWord:ENABle {0|1|ON|OFF}
+        - ETHERnet:LXI:LAN:PASSWord:ENABle {ON|OFF|1|0}
         - ETHERnet:LXI:LAN:PASSWord:ENABle?
         ```
 
@@ -363,7 +363,7 @@ class EthernetLxiLanPassword(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ETHERnet:LXI:LAN:PASSWord:ENABle {0|1|ON|OFF}
+            - ETHERnet:LXI:LAN:PASSWord:ENABle {ON|OFF|1|0}
             - ETHERnet:LXI:LAN:PASSWord:ENABle?
             ```
 
@@ -393,7 +393,7 @@ class EthernetLxiLanPassword(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {0|1|ON|OFF}
+            - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle {ON|OFF|1|0}
             - ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle?
             ```
 

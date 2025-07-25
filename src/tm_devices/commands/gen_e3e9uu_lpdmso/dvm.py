@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - DVM RESET
-    - DVM:AUTORange {0|1|OFF|ON}
+    - DVM:AUTORange {ON|OFF|1|0}
     - DVM:AUTORange?
     - DVM:MEASUrement:FREQuency?
     - DVM:MEASUrement:HIStory:AVErage?
@@ -23,7 +23,7 @@ Commands and Queries:
     - DVM:MODe?
     - DVM:SOUrce {CH<x>}
     - DVM:SOUrce?
-    - DVM:TRIGger:FREQuency:COUNTer {0|1|OFF|ON}
+    - DVM:TRIGger:FREQuency:COUNTer {ON|OFF|1|0}
     - DVM:TRIGger:FREQuency:COUNTer?
     ```
 """
@@ -52,13 +52,15 @@ class DvmTriggerFrequencyCounter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DVM:TRIGger:FREQuency:COUNTer {0|1|OFF|ON}
+        - DVM:TRIGger:FREQuency:COUNTer {ON|OFF|1|0}
         - DVM:TRIGger:FREQuency:COUNTer?
         ```
 
     Info:
-        - ``1`` or ON turns on the trigger frequency counter for the Digital Voltmeter.
-        - ``0`` or OFF turns it off.
+        - ``ON`` turns on the trigger frequency counter for the Digital Voltmeter.
+        - ``OFF`` turns it off.
+        - ``1`` turns on the trigger frequency counter for the Digital Voltmeter.
+        - ``0`` turns it off.
     """
 
 
@@ -95,13 +97,15 @@ class DvmTriggerFrequency(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DVM:TRIGger:FREQuency:COUNTer {0|1|OFF|ON}
+            - DVM:TRIGger:FREQuency:COUNTer {ON|OFF|1|0}
             - DVM:TRIGger:FREQuency:COUNTer?
             ```
 
         Info:
-            - ``1`` or ON turns on the trigger frequency counter for the Digital Voltmeter.
-            - ``0`` or OFF turns it off.
+            - ``ON`` turns on the trigger frequency counter for the Digital Voltmeter.
+            - ``OFF`` turns it off.
+            - ``1`` turns on the trigger frequency counter for the Digital Voltmeter.
+            - ``0`` turns it off.
         """
         return self._counter
 
@@ -183,7 +187,7 @@ class DvmMode(SCPICmdWrite, SCPICmdRead):
           component removed.
         - ``ACDCRMS`` - displays the RMS value of the acquired data.
         - ``DC`` - displays the DC value of the acquired data.
-        - ``OFF``
+        - ``OFF`` - turns the DVM off.
     """
 
 
@@ -210,7 +214,7 @@ class DvmMeasurementInfminimum(SCPICmdRead):
 
     Description:
         - Returns the minimum readout value of the DVM over the entire time that the DVM has been on
-          since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+          since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMINimum?`` query.
@@ -229,7 +233,7 @@ class DvmMeasurementInfmaximum(SCPICmdRead):
 
     Description:
         - Returns the maximum DVM readout value over the entire time that the DVM has been on since
-          the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+          the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -467,7 +471,7 @@ class DvmMeasurement(SCPICmdRead):
 
         Description:
             - Returns the maximum DVM readout value over the entire time that the DVM has been on
-              since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+              since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -487,7 +491,7 @@ class DvmMeasurement(SCPICmdRead):
 
         Description:
             - Returns the minimum readout value of the DVM over the entire time that the DVM has
-              been on since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM
+              been on since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM
               RESET.
 
         Usage:
@@ -527,7 +531,8 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
     """The ``DVM:AUTORange`` command.
 
     Description:
-        - Sets (or queries) the autorange state for the Digital Voltmeter.
+        - Sets (or queries) the autorange state for the Digital Voltmeter. Note: The DVM will not
+          autorange as long as the DVM source is the same channel as the trigger source.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -537,13 +542,15 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DVM:AUTORange {0|1|OFF|ON}
+        - DVM:AUTORange {ON|OFF|1|0}
         - DVM:AUTORange?
         ```
 
     Info:
-        - ``1`` or ON turns on autorange for the Digital Voltmeter.
-        - ``0`` or OFF turns autorange off.
+        - ``ON`` turns on autorange for the Digital Voltmeter.
+        - ``OFF`` turns autorange off.
+        - ``1`` turns on autorange for the Digital Voltmeter.
+        - ``0`` turns autorange off.
     """
 
 
@@ -585,7 +592,8 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         """Return the ``DVM:AUTORange`` command.
 
         Description:
-            - Sets (or queries) the autorange state for the Digital Voltmeter.
+            - Sets (or queries) the autorange state for the Digital Voltmeter. Note: The DVM will
+              not autorange as long as the DVM source is the same channel as the trigger source.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -595,13 +603,15 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DVM:AUTORange {0|1|OFF|ON}
+            - DVM:AUTORange {ON|OFF|1|0}
             - DVM:AUTORange?
             ```
 
         Info:
-            - ``1`` or ON turns on autorange for the Digital Voltmeter.
-            - ``0`` or OFF turns autorange off.
+            - ``ON`` turns on autorange for the Digital Voltmeter.
+            - ``OFF`` turns autorange off.
+            - ``1`` turns on autorange for the Digital Voltmeter.
+            - ``0`` turns autorange off.
         """
         return self._autorange
 
@@ -647,7 +657,7 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
               component removed.
             - ``ACDCRMS`` - displays the RMS value of the acquired data.
             - ``DC`` - displays the DC value of the acquired data.
-            - ``OFF``
+            - ``OFF`` - turns the DVM off.
         """
         return self._mode
 

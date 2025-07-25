@@ -12,26 +12,54 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 from .gen_e3e9uu_lpdmso.acquire import Acquire
 from .gen_e3e9uu_lpdmso.actonevent import Actonevent
+from .gen_e3e9uu_lpdmso.afg import Afg
+from .gen_e3e9uu_lpdmso.alias import Alias
 from .gen_e3e9uu_lpdmso.application import Application
+from .gen_e3e9uu_lpdmso.autosaveuitimeout import Autosaveuitimeout
+from .gen_e3e9uu_lpdmso.autoset import Autoset
 from .gen_e3e9uu_lpdmso.auxout import Auxout
 from .gen_e3e9uu_lpdmso.bus import Bus
+from .gen_e3e9uu_lpdmso.busy import Busy
+from .gen_e3e9uu_lpdmso.calibrate import Calibrate
+from .gen_e3e9uu_lpdmso.calibration import Cal
 from .gen_e3e9uu_lpdmso.callouts import Callouts
 from .gen_e3e9uu_lpdmso.ch import Channel
+from .gen_e3e9uu_lpdmso.curve import Curve
+from .gen_e3e9uu_lpdmso.curvestream import Curvestream
+from .gen_e3e9uu_lpdmso.customtable import Customtable
+from .gen_e3e9uu_lpdmso.data import Data
+from .gen_e3e9uu_lpdmso.dese import Dese
 from .gen_e3e9uu_lpdmso.diag import Diag
 from .gen_e3e9uu_lpdmso.diggrp import DiggrpItem
 from .gen_e3e9uu_lpdmso.display import Display
 from .gen_e3e9uu_lpdmso.dvm import Dvm
+from .gen_e3e9uu_lpdmso.ethernet import Ethernet
+from .gen_e3e9uu_lpdmso.event import Event
+from .gen_e3e9uu_lpdmso.evmsg import Evmsg
+from .gen_e3e9uu_lpdmso.evqty import Evqty
+from .gen_e3e9uu_lpdmso.eyemask import Eyemask
+from .gen_e3e9uu_lpdmso.filesystem import Filesystem
 from .gen_e3e9uu_lpdmso.fpanel import Fpanel
+from .gen_e3e9uu_lpdmso.header import Header
 from .gen_e3e9uu_lpdmso.histogram import Histogram
 from .gen_e3e9uu_lpdmso.horizontal import Horizontal
+from .gen_e3e9uu_lpdmso.hostprocessor import Hostprocessor
+from .gen_e3e9uu_lpdmso.hsinterface import Hsinterface
 from .gen_e3e9uu_lpdmso.license import License
+from .gen_e3e9uu_lpdmso.lock import Lock
+from .gen_e3e9uu_lpdmso.mainwindow import Mainwindow
 from .gen_e3e9uu_lpdmso.mask import Mask
 from .gen_e3e9uu_lpdmso.math import Math
+from .gen_e3e9uu_lpdmso.matharbflt import MatharbfltItem
 from .gen_e3e9uu_lpdmso.measurement import Measurement
+from .gen_e3e9uu_lpdmso.miscellaneous import Ddt, Lrn
+from .gen_e3e9uu_lpdmso.peakstable import Peakstable
 from .gen_e3e9uu_lpdmso.pilogger import Pilogger
 from .gen_e3e9uu_lpdmso.plot import Plot
 from .gen_e3e9uu_lpdmso.power import Power
+from .gen_e3e9uu_lpdmso.recall import Recall
 from .gen_e3e9uu_lpdmso.ref import Ref
+from .gen_e3e9uu_lpdmso.rem import Rem
 from .gen_e3e9uu_lpdmso.rosc import Rosc
 from .gen_e3e9uu_lpdmso.save import Save
 from .gen_e3e9uu_lpdmso.saveon import Saveon
@@ -39,77 +67,45 @@ from .gen_e3e9uu_lpdmso.saveonevent import Saveonevent
 from .gen_e3e9uu_lpdmso.search import Search
 from .gen_e3e9uu_lpdmso.searchtable import Searchtable
 from .gen_e3e9uu_lpdmso.select import Select
+from .gen_e3e9uu_lpdmso.set import Set
+from .gen_e3e9uu_lpdmso.socketserver import Socketserver
+from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst
 from .gen_e3e9uu_lpdmso.sv import Sv
+from .gen_e3e9uu_lpdmso.time import Time
 from .gen_e3e9uu_lpdmso.touchscreen import Touchscreen
 from .gen_e3e9uu_lpdmso.trigger import Trigger
 from .gen_e3e9uu_lpdmso.tstamptable import Tstamptable
-from .gen_e3h2zs_lpdmso.afg import Afg
-from .gen_e3h2zs_lpdmso.autoset import Autoset
-from .gen_e3h2zs_lpdmso.calibrate import Calibrate
+from .gen_e3e9uu_lpdmso.unlock import Unlock
+from .gen_e3e9uu_lpdmso.verbose import Verbose
+from .gen_e3e9uu_lpdmso.vertical import Vertical
+from .gen_e3e9uu_lpdmso.visual import Visual
+from .gen_e3e9uu_lpdmso.wfmoutpre import Wfmoutpre
 from .gen_e3h2zs_lpdmso.connected import Connected
-from .gen_e3h2zs_lpdmso.ethernet import Ethernet
 from .gen_e3h2zs_lpdmso.usbdevice import Usbdevice
+from .gen_e3h2zs_lpdmso.vxi import Vxi
 from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
-from .gen_e44yni_lpdmsotekscopepc.data import Data
-from .gen_e44yni_lpdmsotekscopepc.eyemask import Eyemask
-from .gen_e44yni_lpdmsotekscopepc.matharbflt import MatharbfltItem
-from .gen_e44yni_lpdmsotekscopepc.peakstable import Peakstable
 from .gen_e44yni_lpdmsotekscopepc.ref import RefItem
-from .gen_e44yni_lpdmsotekscopepc.visual import Visual
 from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
-from .gen_e47rsg_lpdmsotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
-from .gen_e47rsg_lpdmsotekscopepc.curve import Curve
-from .gen_e47rsg_lpdmsotekscopepc.curvestream import Curvestream
-from .gen_e47rsg_lpdmsotekscopepc.customtable import Customtable
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
-from .gen_e47rsg_lpdmsotekscopepc.filesystem import Filesystem
-from .gen_e47rsg_lpdmsotekscopepc.mainwindow import Mainwindow
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
-from .gen_e47rsg_lpdmsotekscopepc.recall import Recall
-from .gen_e47rsg_lpdmsotekscopepc.socketserver import Socketserver
-from .gen_e47rsg_lpdmsotekscopepc.time import Time
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
-from .gen_e47rsg_lpdmsotekscopepc.vertical import Vertical
-from .gen_e47rsg_lpdmsotekscopepc.wfmoutpre import Wfmoutpre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
-    Cls,
-    Esr,
-    Opc,
-    Rst,
-    Stb,
-    Wai,
-)
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
-from .gen_fuq1mi_lpdmsotekscopepcdpodsa.alias import Alias
-from .gen_fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt
+from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
 from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.busy import Busy
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.dese import Dese
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.event import Event
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evmsg import Evmsg
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evqty import Evqty
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
-from .gen_fzd77z_lpdmsotekscopepcdpomdodsa.header import Header
-from .gen_fzn174_lpdmsodpomdodsa.lock import Lock
-from .gen_fzn174_lpdmsodpomdodsa.unlock import Unlock
 from .helpers import DefaultDictPassKeyToFactory
 
 
@@ -142,24 +138,35 @@ class MSO4CommandConstants:
     ACRMS = "ACRMS"
     ADD = "ADD"
     ADDR10 = "ADDR10"
+    ADDR32 = "ADDR32"
+    ADDR64 = "ADDR64"
     ADDR7 = "ADDR7"
     ADDRANDDATA = "ADDRANDDATA"
     ADDRESS = "ADDRESS"  # ADDRess
+    ADH = "ADH"
+    ADS = "ADS"
     ADVANCED = "ADVANCED"  # ADVanced
+    AF = "AF"
     AFG = "AFG"
     AFG31000 = "AFG31000"
+    AFI = "AFI"
     AFREQUENCIES = "AFREQUENCIES"  # AFREQuencies
+    AL1 = "AL1"
     ALARMSEARCH = "ALARMSEARCH"  # ALARMSEARch
     ALL = "ALL"
     ALLBITS = "ALLBITS"  # ALLBits
     ALLFIELDS = "ALLFIELDS"  # ALLFields
     ALLLINES = "ALLLINES"  # ALLLines
+    ALLOCCURRENCES = "ALLOCCURRENCES"
+    ALWAYS = "ALWAYS"
     AMPLINEAR = "AMPLINEAR"  # AMPLINear
     AN = "AN"
     ANALOG = "ANALOG"
     AND = "AND"
     ANY = "ANY"
+    # ANY = "Any"
     ANYERROR = "ANYERROR"  # ANYERRor
+    AOPERATION = "AOPERATION"
     APASS = "APASS"  # APASs
     APPLY = "APPLY"
     APPPWR = "APPPWR"
@@ -175,8 +182,14 @@ class MSO4CommandConstants:
     # ASCII = "ASCIi"
     # ASCII = "ASCii"
     ASIC = "ASIC"
+    ATQBCOMP = "ATQBCOMP"
+    ATQBPROP = "ATQBPROP"
     ATRIGGER = "ATRIGGER"  # ATRIGger
+    ATRREQ = "ATRREQ"  # ATRReq
+    ATRRES = "ATRRES"  # ATRRes
+    ATTRIB = "ATTRIB"
     AUDIO = "AUDIO"  # AUDio
+    AUTHCRYPTO = "AUTHCRYPTO"  # AUTHCRYPto
     AUTHENTICATE = "AUTHENTICATE"  # AUTHenticate
     AUTO = "AUTO"
     # AUTO = "Auto"
@@ -223,12 +236,20 @@ class MSO4CommandConstants:
     BYTE = "BYTE"  # BYTe
     CAN = "CAN"
     CAN2X = "CAN2X"
+    CAN2X_FDISO_XL = "CAN2X_FDISO_XL"
+    CANH = "CANH"
+    CANL = "CANL"
+    CAN_XL = "CAN_XL"
+    CAS = "CAS"
     CDATA = "CDATA"  # CDATa
     CGS = "CGS"
+    CHALLENGE = "CHALLENGE"  # CHALlenge
     CHANNEL = "CHANNEL"  # CHANnel
+    CHARACTER = "CHARACTER"  # CHARacter
     CHEBYONE = "CHEBYONE"  # CHEBYONe
     CHEBYTWO = "CHEBYTWO"  # CHEBYTWo
-    CHECKSUM = "CHECKSUM"  # CHecksum
+    CHECKSUM = "CHECKSUM"
+    # CHECKSUM = "CHecksum"
     CHINDEPENDENT = "CHINDEPENDENT"  # CHINDependent
     CHIPSELECT = "CHIPSELECT"  # ChipSelect
     CIRCULATING = "CIRCULATING"  # CIRCulating
@@ -241,32 +262,49 @@ class MSO4CommandConstants:
     CLOCK = "CLOCK"
     CLOCKEDGE = "CLOCKEDGE"  # ClockEdge
     CMD = "CMD"
+    CMDCODE = "CMDCODE"  # CMDCODe
     CMDOPCODE = "CMDOPCODE"  # CMDOPCODe
     CN = "CN"
     CNT = "CNT"
+    COM = "COM"
+    COMM = "COMM"
     COMMAND = "COMMAND"
     # COMMAND = "COMMand"
     COMMONMODE = "COMMONMODE"
+    COMPATTERN = "COMPATTERN"  # COMPATTern
     COMPLETE = "COMPLETE"  # COMPlete
+    COMPLETION = "COMPLETION"
     COMPRESSION = "COMPRESSION"  # COMPression
+    CONFIG = "CONFIG"
     CONFIGURE = "CONFIGURE"  # CONFigure
     CONNECT = "CONNECT"
     # CONNECT = "CONNect"
     CONSTANT = "CONSTANT"  # CONSTant
     CONSTANTCLOCK = "CONSTANTCLOCK"
     CONTINUOUS = "CONTINUOUS"  # CONTinuous
-    CONTROL = "CONTROL"  # CONTrol
+    CONTROL = "CONTROL"
+    # CONTROL = "CONTrol"
+    CONTROLCH = "CONTROLCH"
     CONTROLCHAR = "CONTROLCHAR"
     CONTROLCODE = "CONTROLCODE"  # CONTROLCODe
     CONTROLMESSAGE = "CONTROLMESSAGE"  # CONTROLMESSage
     COUNTER = "COUNTER"  # COUNter
+    CP0 = "CP0"
+    CP1 = "CP1"
+    CP2 = "CP2"
+    CP3 = "CP3"
+    CP4 = "CP4"
+    CP56 = "CP56"
+    CP78 = "CP78"
     CR = "CR"
     CRC = "CRC"
     CRC16 = "CRC16"
+    CRC32 = "CRC32"
     CRC5 = "CRC5"
     CRCERROR = "CRCERROR"  # CRCERRor
     CRCHEADER = "CRCHEADER"  # CRCHeader
     CRCTRAILER = "CRCTRAILER"  # CRCTrailer
+    CRCTYPES = "CRCTYPES"  # CRCTYPes
     CSI = "CSI"
     CSPLIT = "CSPLIT"
     CURRENT = "CURRENT"
@@ -276,15 +314,15 @@ class MSO4CommandConstants:
     # CURSOR = "CURsor"
     CUSTOM = "CUSTOM"
     # CUSTOM = "CUSTom"
+    # CUSTOM = "custom"
     CYCLE = "CYCLE"
     CYCLECOUNT = "CYCLECOUNT"  # CYCLEcount
     CYCLETYPE = "CYCLETYPE"  # CYCLETYPe
     DADDR = "DADDR"  # DADDr
+    DAH = "DAH"
+    DAS = "DAS"
     DATA = "DATA"
     # DATA = "DATa"
-    DATA0 = "DATA0"
-    DATA1 = "DATA1"
-    DATA2 = "DATA2"
     DATAGRAM = "DATAGRAM"  # DATagram
     DATAPACKET = "DATAPACKET"  # DATAPacket
     DBDOWN = "DBDOWN"  # dBDown
@@ -298,7 +336,7 @@ class MSO4CommandConstants:
     DCDC = "DCDC"
     DCP1W2 = "DCP1W2"
     DCPWR = "DCPWR"
-    DCREJECT = "DCREJECT"  # DCREJect
+    DCR = "DCR"
     DDATA = "DDATA"  # DDATa
     DDR = "DDR"
     DDR3 = "DDR3"
@@ -311,7 +349,11 @@ class MSO4CommandConstants:
     DEFER = "DEFER"  # DEFer
     DEFGRPA = "DEFGRPA"  # DEFGRPa
     DEGREES = "DEGREES"
+    # DEGREES = "DEGrees"
     DELTA = "DELTA"
+    # DELTA = "DELta"
+    DEPREQ = "DEPREQ"  # DEPReq
+    DEPRES = "DEPRES"  # DEPRes
     DETAIL = "DETAIL"  # DETail
     DEVERROR = "DEVERROR"  # DEVERRor
     DEVICE = "DEVICE"  # DEVice
@@ -320,30 +362,37 @@ class MSO4CommandConstants:
     DEVICEDESCMASTERREAD = "DEVICEDESCMASTERREAD"  # DEVICEDESCMASTERREAd
     DEVICEDESCSLAVEREAD = "DEVICEDESCSLAVEREAD"  # DEVICEDESCSLAVEREAd
     DEVICETYPE = "DEVICETYPE"  # DEVICETYPe
+    DEVNOTIF = "DEVNOTIF"  # DEVNOTif
     DIFF = "DIFF"
     DIFFERENTIAL = "DIFFERENTIAL"
+    # DIFFERENTIAL = "DIFFerential"
     DIFFERENTIATOR = "DIFFERENTIATOR"  # DIFFerentiator
-    DIRECT = "DIRECT"  # DIRect
+    DIREC = "DIREC"  # DIRec
     DISABLED = "DISABLED"  # DISabled
     DISCMODE = "DISCMODE"  # DISCMODe
     DISCRETE = "DISCRETE"  # DISCrete
     DISLAVE = "DISLAVE"  # DISLave
     DISPARITY = "DISPARITY"  # DISParity
     DIVIDE = "DIVIDE"  # DIVide
+    DL1 = "DL1"
     DLC = "DLC"
     DLSLAVE = "DLSLAVE"  # DLSLave
     DMSGEND = "DMSGEND"  # DMSGEnd
     DONTCARE = "DONTCARE"  # DONTcare
     DONTINCLUDE = "DONTINCLUDE"  # DONTInclude
-    DOTS = "DOTS"  # DOTs
+    DOTSONLY = "DOTSONLY"  # DOTsonly
     DOUBLE = "DOUBLE"
-    DPMAUTOSET = "DPMAUTOSET"  # DPMAutoset
-    DPMPRESET = "DPMPRESET"  # DPMPReset
+    DP = "DP"
+    DPPABORT = "DPPABORT"
+    DPPEND = "DPPEND"
+    DPPSTART = "DPPSTART"
     DQ0 = "DQ0"
     DQDQS = "DQDQS"
     DRA = "DRA"
     DRB = "DRB"
     DSI = "DSI"
+    DSLREQ = "DSLREQ"  # DSLReq
+    DSLRES = "DSLRES"  # DSLRes
     DUAL = "DUAL"
     DYNAMIC = "DYNAMIC"
     # DYNAMIC = "DYNAMic"
@@ -353,19 +402,24 @@ class MSO4CommandConstants:
     ECC = "ECC"
     ECUDATA = "ECUDATA"  # ECUDATa
     ECUSENSOR = "ECUSENSOR"  # ECUSENSor
+    EDB = "EDB"
     EDGE = "EDGE"
     EEP = "EEP"
     EFFICIENCY = "EFFICIENCY"  # EFFiciency
+    EIEOS = "EIEOS"
     EIGHT = "EIGHT"  # EIGHt
     EIGHTBIT = "EIGHTBIT"
     EIGHTHUNDREDHZ = "EIGHTHUNDREDHZ"  # EIGHTHUNDREdhz
+    EIOS = "EIOS"
     EITHER = "EITHER"
     # EITHER = "EITHer"
     # EITHER = "EITher"
     ELLIPTICAL = "ELLIPTICAL"  # ELLiptical
+    EMULATED = "EMULATED"
     END = "END"
     ENDOFPACKET = "ENDOFPACKET"  # ENDOFPACKet
     ENDXFER = "ENDXFER"
+    ENEND = "ENEND"
     ENET100 = "ENET100"
     ENET1000 = "ENET1000"
     ENGINEERING = "ENGINEERING"  # ENGineering
@@ -375,21 +429,29 @@ class MSO4CommandConstants:
     ENTRDYA = "ENTRDYA"  # ENTRDya
     ENTRTSTMODE = "ENTRTSTMODE"  # ENTRTSTMode
     ENVELOPE = "ENVELOPE"  # ENVelope
+    EOC = "EOC"
     EOF = "EOF"
     EOP = "EOP"
     # EOP = "EOp"
+    EOS = "EOS"
     EOT = "EOT"
     EOTPDATA = "EOTPDATA"  # EOTPDATa
     EOW = "EOW"
-    EQUAL = "EQUAL"  # EQUal
-    # EQUAL = "EQual"
+    EPF = "EPF"
+    EQUAL = "EQUAL"  # EQual
     EQUALS = "EQUALS"  # Equals
+    ERDY = "ERDY"
+    ERR8B10B = "ERR8B10B"
     ERROR = "ERROR"  # ERROr
     # ERROR = "ERRor"
     ERRORS = "ERRORS"  # ERRors
     ERRSERVICEDATA = "ERRSERVICEDATA"  # ERRSERVICEDATa
     ESC = "ESC"
     ESCAPEMODE = "ESCAPEMODE"  # ESCAPEMODe
+    ESD = "ESD"
+    ESDERR = "ESDERR"
+    ESDJAB = "ESDJAB"
+    ESDOK = "ESDOK"
     ETHERNET = "ETHERNET"  # ETHernet
     EUSB = "EUSB"
     EVEN = "EVEN"
@@ -398,8 +460,13 @@ class MSO4CommandConstants:
     EXECUTE = "EXECUTE"
     # EXECUTE = "EXECute"
     # EXECUTE = "Execute"
+    EXGETMBSSTATUS = "EXGETMBSSTATUS"  # EXGETMBSSTATus
+    EXGETSYSTINFO = "EXGETSYSTINFO"  # EXGETSYSTINFo
     EXITSWINDOW = "EXITSWINDOW"  # EXITSWindow
+    EXLOCKBLOCK = "EXLOCKBLOCK"  # EXLOCKBLOCk
     EXPLICITCLOCK = "EXPLICITCLOCK"
+    EXRDMBLOCK = "EXRDMBLOCK"  # EXRDMBLOCk
+    EXRDSBLOCK = "EXRDSBLOCK"  # EXRDSBLOCk
     EXTDLC = "EXTDLC"
     EXTENDED = "EXTENDED"
     # EXTENDED = "EXTENDed"
@@ -407,9 +474,12 @@ class MSO4CommandConstants:
     EXTIME = "EXTIME"  # EXTime
     EXTREGREAD = "EXTREGREAD"  # EXTREGREAd
     EXTREGWRITE = "EXTREGWRITE"  # EXTREGWRIte
+    EXWRSBLOCK = "EXWRSBLOCK"  # EXWRSBLOCk
     EYEHISTOGRAM = "EYEHISTOGRAM"  # EYEhistogram
     FACHANNEL = "FACHANNEL"  # FACHANnel
-    FACTORY = "FACTORY"  # FACtory
+    FADD = "FADD"
+    FAIL = "FAIL"
+    FAILURES = "FAILURES"
     FALL = "FALL"
     FALLING = "FALLING"
     # FALLING = "FALLing"
@@ -436,6 +506,7 @@ class MSO4CommandConstants:
     FCDATA = "FCDATA"  # FCData
     FCDFIRST = "FCDFIRST"  # FCDFirst
     FCDTWO = "FCDTWO"  # FCDTwo
+    FCRC = "FCRC"
     FCS = "FCS"
     FCSERROR = "FCSERROR"  # FCSERRor
     # FCSERROR = "FCSError"
@@ -443,6 +514,7 @@ class MSO4CommandConstants:
     FDBITS = "FDBITS"
     FDISO = "FDISO"
     FDNONISO = "FDNONISO"
+    FEXRDMBLOCKS = "FEXRDMBLOCKS"  # FEXRDMBLOCks
     FFREQUENCY = "FFREQUENCY"  # FFREQuency
     FFT = "FFT"
     FIBRECHANNEL = "FIBRECHANNEL"  # FIBREchannel
@@ -494,9 +566,11 @@ class MSO4CommandConstants:
     FRAMES = "FRAMES"  # FRAMes
     FRAMETYPE = "FRAMETYPE"  # FRAMEType
     # FRAMETYPE = "FRAMEtype"
+    FRDMBLOCK = "FRDMBLOCK"  # FRDMBLOCk
     FREQUENCY = "FREQUENCY"  # FREQuency
     FRMW = "FRMW"
     FTLB = "FTLB"
+    FTS = "FTS"
     FULL = "FULL"
     FULLSCREEN = "FULLSCREEN"  # FULLScreen
     FULLSPEED = "FULLSPEED"
@@ -515,14 +589,14 @@ class MSO4CommandConstants:
     GETCONFIG = "GETCONFIG"  # GETCONFig
     GETDEVCH = "GETDEVCH"  # GETDevch
     GETFLASHNP = "GETFLASHNP"
+    GETMBSECSYSTEM = "GETMBSECSYSTEM"  # GETMBSECSYSTem
     GETMRDL = "GETMRDL"  # GETMRdl
     GETMWRL = "GETMWRL"  # GETMWrl
     GETNP = "GETNP"
     GETOOB = "GETOOB"
     GETPC = "GETPC"
     GETPRID = "GETPRID"  # GETPrid
-    GETREG = "GETREG"
-    # GETREG = "GETReg"
+    GETREG = "GETREG"  # GETReg
     GETREGPKTALERT = "GETREGPKTALERT"  # GETREGPKTALERt
     # GETREGPKTALERT = "GETRegpktalert"
     GETREGPKTBAD = "GETREGPKTBAD"
@@ -537,13 +611,13 @@ class MSO4CommandConstants:
     # GETREGVREVENT = "GETRegvrevent"
     GETSLAVE = "GETSLAVE"  # GETSlave
     GETSTATUS = "GETSTATUS"  # GETSTATus
+    GETSYSTEMINFO = "GETSYSTEMINFO"  # GETSYSTEMINFo
     GETVWIRE = "GETVWIRE"  # GETVWIRe
     GETXTIME = "GETXTIME"  # GETXTime
     GLOBAL = "GLOBAL"  # GLOBal
-    GPKNOB1 = "GPKNOB1"
-    GPKNOB2 = "GPKNOB2"
     GRATICULE = "GRATICULE"
     GREATERTHAN = "GREATERTHAN"  # GREATERthan
+    GROUPDELAY = "GROUPDELAY"  # GROUPDelay
     GRPDELAY = "GRPDELAY"
     H = "H"
     HAMMING = "HAMMING"  # HAMMing
@@ -565,6 +639,8 @@ class MSO4CommandConstants:
     HILBERT = "HILBERT"  # HILBert
     HIRES = "HIRES"  # HIRes
     HISTOGRAM = "HISTOGRAM"  # HISTogram
+    HLTA = "HLTA"  # HLTa
+    HLTB = "HLTB"
     HONLY = "HONLY"  # HONLy
     HORIZONTAL = "HORIZONTAL"  # HORizontal
     HORIZONTALSCALE = "HORIZONTALSCALE"  # HORIZontalscale
@@ -574,6 +650,7 @@ class MSO4CommandConstants:
     HOSTCHIRP = "HOSTCHIRP"  # HOSTChirp
     HOTJOIN = "HOTJOIN"  # HOTJoin
     HPASS = "HPASS"  # HPASs
+    HPSTART = "HPSTART"
     HS = "HS"
     HSENSOR = "HSENSOR"
     HUNDRED = "HUNDRED"  # HUNdred
@@ -587,9 +664,11 @@ class MSO4CommandConstants:
     IBA_GEN2 = "IBA_GEN2"
     IBS = "IBS"
     IC = "IC"
+    ICMP = "ICMP"
     ID = "ID"
     IDANDDATA = "IDANDDATA"
-    IDENTIFIER = "IDENTIFIER"  # IDentifier
+    IDENTIFIER = "IDENTIFIER"  # IDEntifier
+    # IDENTIFIER = "IDentifier"
     IDLE = "IDLE"
     # IDLE = "IDLe"
     IDX = "IDX"
@@ -612,6 +691,8 @@ class MSO4CommandConstants:
     # INRANGE = "Inrange"
     INSIDEGREATER = "INSIDEGREATER"  # INSIDEGreater
     INSIDERANGE = "INSIDERANGE"  # INSIDErange
+    INVALID = "INVALID"
+    INVENTORY = "INVENTORY"  # INVentory
     INVERT = "INVERT"  # INVert
     INVERTED = "INVERTED"  # INVERTed
     # INVERTED = "INVErted"
@@ -620,20 +701,26 @@ class MSO4CommandConstants:
     IPDATA = "IPDATA"  # IPData
     IPHEADER = "IPHEADER"  # IPHEADer
     # IPHEADER = "IPHeader"
+    IPV4 = "IPV4"
+    IPV6 = "IPV6"
     IRMS = "IRMS"
     IRQ = "IRQ"
     ISOALL = "ISOALL"
     ISOEND = "ISOEND"
     ISOMID = "ISOMID"
     ISOSTART = "ISOSTART"
+    ITP = "ITP"
     JPG = "JPG"
     KAISERBESSEL = "KAISERBESSEL"  # KAISERBessel
     # KAISERBESSEL = "KAISerbessel"
+    KCODE = "KCODE"  # KCODe
+    KEYUPDATE = "KEYUPDATE"  # KEYUPDate
     L = "L"
     LABEL = "LABEL"  # LABel
     LABELANDDATA = "LABELANDDATA"
     LATCH = "LATCH"  # LATCh
     LCHANNEL = "LCHANNEL"  # LCHannel
+    LCSTART = "LCSTART"
     LEFT = "LEFT"  # LEFt
     LEN = "LEN"
     LENGTH = "LENGTH"  # LENGth
@@ -647,6 +734,11 @@ class MSO4CommandConstants:
     # LINEAR = "LINEAr"
     # LINEAR = "LINear"
     LJ = "LJ"
+    LMP = "LMP"
+    LOCAL = "LOCAL"
+    LOCKAFI = "LOCKAFI"
+    LOCKBLOCK = "LOCKBLOCK"  # LOCKBLOCk
+    LOCKDSFID = "LOCKDSFID"
     LOG = "LOG"
     LOGARITHM = "LOGARITHM"
     LOGIC = "LOGIC"  # LOGIc
@@ -664,6 +756,7 @@ class MSO4CommandConstants:
     LRD = "LRD"
     LRW = "LRW"
     LSB = "LSB"
+    LSLAVE = "LSLAVE"  # LSLave
     LTR = "LTR"
     LWR = "LWR"
     MACADDRESS = "MACADDRESS"  # MACADDRess
@@ -690,7 +783,6 @@ class MSO4CommandConstants:
     MDIO = "MDIO"
     MEAN = "MEAN"
     MEANHISTOGRAM = "MEANHISTOGRAM"  # MEANhistogram
-    MEASURED = "MEASURED"  # MEASured
     MEDIAN = "MEDIAN"  # MEDian
     MEDIUM = "MEDIUM"  # MEDium
     MEMORY = "MEMORY"
@@ -700,7 +792,8 @@ class MSO4CommandConstants:
     MEMRDWR64 = "MEMRDWR64"
     MEMWR32 = "MEMWR32"
     MEMWR64 = "MEMWR64"
-    MESSAGE = "MESSAGE"  # MESSage
+    MESSAGE = "MESSAGE"
+    # MESSAGE = "MESSage"
     MID = "MID"
     MIL1553B = "MIL1553B"
     MINHOLD = "MINHOLD"  # MINHold
@@ -760,7 +853,8 @@ class MSO4CommandConstants:
     NOTE = "NOTE"
     NOTEQUAL = "NOTEQUAL"  # NOTEQual
     NOTEQUALS = "NOTEQUALS"  # NOTEQuals
-    NR3 = "NR3"
+    NRDY = "NRDY"
+    NTIMES = "NTIMES"
     NTSC = "NTSC"  # NTSc
     NULL = "NULL"
     # NULL = "NULl"
@@ -783,10 +877,12 @@ class MSO4CommandConstants:
     OFF = "OFF"
     OFFSET = "OFFSET"  # OFFSet
     ON = "ON"
+    ONCE = "ONCE"
     ONE = "ONE"
     ONEPAIRI = "ONEPAIRI"
     ONEPAIRV = "ONEPAIRV"
     ONEPAIRVI = "ONEPAIRVI"
+    ONFAIL = "ONFAIL"
     OOBCHANNEL = "OOBCHANNEL"  # OOBCHANnel
     OOBSMBUS = "OOBSMBUS"
     OPCODEERROR = "OPCODEERROR"  # OPCODEERRor
@@ -794,6 +890,9 @@ class MSO4CommandConstants:
     OPTIONAL = "OPTIONAL"  # OPTional
     OPTIONALPARAM = "OPTIONALPARAM"  # OPTIONALPARam
     OR = "OR"
+    ORDSET = "ORDSET"
+    ORIGINAL = "ORIGINAL"
+    OSET = "OSET"
     OTHER = "OTHER"
     OUT = "OUT"
     OUTPUT = "OUTPUT"
@@ -815,6 +914,7 @@ class MSO4CommandConstants:
     P3W3V3I3 = "P3W3V3I3"
     P3W4 = "P3W4"
     PACKET = "PACKET"
+    # PACKET = "PACKet"
     PACKETOFFDATA = "PACKETOFFDATA"  # packetOffData
     PACKETS = "PACKETS"  # PACKets
     PAL = "PAL"
@@ -825,10 +925,12 @@ class MSO4CommandConstants:
     PAUSE = "PAUSE"
     PAYLOAD = "PAYLOAD"  # PAYLoad
     # PAYLOAD = "PAYload"
+    PCIE = "PCIE"
     PCIEXPRESS = "PCIEXPRESS"  # PCIExpress
     PCIE_GEN1 = "PCIE_GEN1"
     PCIE_GEN2 = "PCIE_GEN2"
     PCIE_GEN3 = "PCIE_GEN3"
+    PCRC = "PCRC"
     PDU = "PDU"
     PEAKDETECT = "PEAKDETECT"  # PEAKdetect
     PEC = "PEC"
@@ -845,6 +947,7 @@ class MSO4CommandConstants:
     PHYSICALADDRESS = "PHYSICALADDRESS"  # PHYSICALADDRess
     PID = "PID"
     PING = "PING"
+    PINGRSP = "PINGRSP"
     PIXELNUMBER = "PIXELNUMBER"  # PIXELNUMBer
     PIXELVALUE = "PIXELVALUE"  # PIXELVALue
     PIXMAP = "PIXMAP"  # PIXmap
@@ -853,8 +956,11 @@ class MSO4CommandConstants:
     PNJUNCTION = "PNJUNCTION"
     POLLINGLONG = "POLLINGLONG"
     POLLINGNORMAL = "POLLINGNORMAL"  # POLLINGNORMal
+    PORTCAP = "PORTCAP"
+    PORTCFG = "PORTCFG"
     PORTCONFIGURATION = "PORTCONFIGURATION"  # PORTConfiguration
     PORTRESET = "PORTRESET"  # PORTReset
+    PORTRSP = "PORTRSP"
     POSITION = "POSITION"  # POSition
     POSITIVE = "POSITIVE"  # POSITIVe
     # POSITIVE = "POSitive"
@@ -863,15 +969,21 @@ class MSO4CommandConstants:
     POWLOG = "POWLOG"
     PREAMBLE = "PREAMBLE"  # PREamble
     PRECISE = "PRECISE"
+    PRECTM = "PRECTM"
+    PREFIX = "PREFIX"
     PRESENCE = "PRESENCE"  # PREsence
     PREV = "PREV"  # PREv
     PRIORITY = "PRIORITY"  # PRIority
     PROFILE = "PROFILE"  # PROFile
+    PROPRIETARY = "PROPRIETARY"  # PROPrietary
     PROTOCOL = "PROTOCOL"  # PROTocol
+    PSLREQ = "PSLREQ"  # PSLReq
+    PSLRES = "PSLRES"  # PSLRes
     PTYPE = "PTYPE"  # PTYPe
     PUBHEADER = "PUBHEADER"  # PUBHEADer
     PULSEWIDTH = "PULSEWIDTH"  # PULSEWIDTh
     # PULSEWIDTH = "PULSEWidth"
+    PUPI = "PUPI"  # PUPi
     PUTFLASHC = "PUTFLASHC"
     PUTIORDSHORT = "PUTIORDSHORT"  # PUTIORDSHORt
     PUTIOWRSHORT = "PUTIOWRSHORT"  # PUTIOWRSHORt
@@ -885,14 +997,60 @@ class MSO4CommandConstants:
     QEI = "QEI"
     QTAG = "QTAG"
     RADIANS = "RADIANS"
+    # RADIANS = "RADians"
     RANDOM = "RANDOM"  # RANDom
     RAP = "RAP"
     RAPDATA = "RAPDATA"  # RAPDATa
-    RATED = "RATED"  # RATed
+    RATE100K = "RATE100K"
+    RATE10K = "RATE10K"
+    RATE10M = "RATE10M"
+    RATE115K = "RATE115K"
+    RATE11M = "RATE11M"
+    RATE125K = "RATE125K"
+    RATE12M = "RATE12M"
+    RATE13M = "RATE13M"
+    RATE14M = "RATE14M"
+    RATE153K = "RATE153K"
+    RATE15M = "RATE15M"
+    RATE16M = "RATE16M"
+    RATE189K = "RATE189K"
+    RATE19K = "RATE19K"
+    RATE1K = "RATE1K"
+    RATE1M = "RATE1M"
+    RATE20K = "RATE20K"
+    RATE250K = "RATE250K"
+    RATE25K = "RATE25K"
+    RATE2K = "RATE2K"
+    RATE2M = "RATE2M"
+    RATE300 = "RATE300"
+    RATE31K = "RATE31K"
+    RATE33K = "RATE33K"
+    RATE38K = "RATE38K"
+    RATE3M = "RATE3M"
+    RATE400K = "RATE400K"
+    RATE4K = "RATE4K"
+    RATE4M = "RATE4M"
+    RATE500K = "RATE500K"
+    RATE50K = "RATE50K"
+    RATE5M = "RATE5M"
+    RATE62K = "RATE62K"
+    RATE68K = "RATE68K"
+    RATE6M = "RATE6M"
+    RATE7M = "RATE7M"
+    RATE800K = "RATE800K"
+    RATE83K = "RATE83K"
+    RATE8M = "RATE8M"
+    RATE921K = "RATE921K"
+    RATE92K = "RATE92K"
+    RATE9K = "RATE9K"
+    RATE9M = "RATE9M"
     RC = "RC"
     RCHANNEL = "RCHANNEL"  # RCHannel
     RDATA = "RDATA"  # RDATa
+    RDMBLOCK = "RDMBLOCK"  # RDMBLOCk
+    RDSBLOCK = "RDSBLOCK"  # RDSBLOCk
     READ = "READ"
+    READBUFFER = "READBUFFER"  # READBUFFer
     READROM = "READROM"
     READY = "READY"  # READy
     REAL = "REAL"
@@ -923,6 +1081,8 @@ class MSO4CommandConstants:
     # REPEATSTART = "REPEATstart"
     REPWR = "REPWR"
     REPWRSUM = "REPWRSUM"
+    REQA = "REQA"  # REQa
+    REQB = "REQB"
     REQDISCONNECT = "REQDISCONNECT"  # REQDISConnect
     REQSETINIT = "REQSETINIT"
     RERUN = "RERUN"
@@ -934,6 +1094,7 @@ class MSO4CommandConstants:
     RESETTRIGGER = "RESETTRIGGER"  # RESETTRIGger
     RESOLUTION = "RESOLUTION"  # RESOlution
     RESOLVER = "RESOLVER"
+    RESPCODE = "RESPCODE"  # RESPCODe
     RESPONSE = "RESPONSE"
     # RESPONSE = "RESPonse"
     RESPONSECODE = "RESPONSECODE"  # RESPONSECODe
@@ -941,6 +1102,7 @@ class MSO4CommandConstants:
     RESPONSENOHEADER = "RESPONSENOHEADER"  # RESPONSENOHEADer
     RESUME = "RESUME"
     REVERSE = "REVERSE"  # reverse
+    RFU = "RFU"
     RFVSTIME = "RFVSTIME"  # RFvsTime
     RI = "RI"
     RIBINARY = "RIBINARY"  # RIBinary
@@ -953,6 +1115,8 @@ class MSO4CommandConstants:
     RISING = "RISING"
     # RISING = "RISing"
     RJ = "RJ"
+    RLSREQ = "RLSREQ"  # RLSReq
+    RLSRES = "RLSRES"  # RLSRes
     RMS = "RMS"
     RNR = "RNR"
     ROTATION = "ROTATION"
@@ -965,12 +1129,14 @@ class MSO4CommandConstants:
     RSTACT = "RSTACT"
     RSTDYA = "RSTDYA"  # RSTDya
     RSTGRPA = "RSTGRPA"  # RSTGRPa
+    RSTTOREADY = "RSTTOREADY"  # RSTTOREADy
     RUN = "RUN"
     RUNSTOP = "RUNSTOP"  # RUNSTop
     RUNT = "RUNT"
     # RUNT = "RUNt"
     RX = "RX"
     RXDATA = "RXDATA"  # RXData
+    SAK = "SAK"
     SAME = "SAME"
     SAMEAS = "SAMEAS"  # SAMEas
     SAMPLE = "SAMPLE"  # SAMple
@@ -986,6 +1152,7 @@ class MSO4CommandConstants:
     SATA_GEN2 = "SATA_GEN2"
     SATA_GEN3 = "SATA_GEN3"
     SAVG = "SAVG"
+    SBC = "SBC"
     SCIENTIFIC = "SCIENTIFIC"  # SCIentific
     SCRAMBLING = "SCRAMBLING"  # SCRambling
     SCREEN = "SCREEN"
@@ -993,13 +1160,20 @@ class MSO4CommandConstants:
     SDATA = "SDATA"  # SDATa
     SDIDATA = "SDIDATA"
     SDIDATASSM = "SDIDATASSM"
+    SDP = "SDP"
     SDRBROADCAST = "SDRBROADCAST"  # SDRBroadcast
     SDRDIRECT = "SDRDIRECT"  # SDRDirect
+    SDS = "SDS"
+    SDT = "SDT"
     SEARCH1 = "SEARCH1"
     SEARCHROM = "SEARCHROM"
     SEARCHTOTRIGGER = "SEARCHTOTRIGGER"  # SEARCHtotrigger
+    SEC = "SEC"
     SECAM = "SECAM"
+    SECURECRYPTO = "SECURECRYPTO"  # SECURECRYPto
     SEGMENTS = "SEGMENTS"  # SEGments
+    SELECT14443A = "SELECT14443A"
+    SELECT15693SET = "SELECT15693SET"
     SELECTED = "SELECTED"
     SENSOR = "SENSOR"
     SENSORADDRESS = "SENSORADDRESS"  # SENSORADDRess
@@ -1022,6 +1196,7 @@ class MSO4CommandConstants:
     SETGRPA = "SETGRPA"  # SETGRPa
     SETHOLD = "SETHOLD"  # SETHold
     SETLEVEL = "SETLEVEL"  # SETLevel
+    SETLF = "SETLF"
     SETMRDL = "SETMRDL"  # SETMrdl
     SETMWRL = "SETMWRL"  # SETMwrl
     SETNDYA = "SETNDYA"  # SETNdya
@@ -1047,6 +1222,7 @@ class MSO4CommandConstants:
     SFD = "SFD"
     SFPBINARY = "SFPBINARY"  # SFPbinary
     SHORT = "SHORT"  # SHORt
+    SHP = "SHP"
     SHUTDOWN = "SHUTDOWN"  # SHUTdown
     SI = "SI"
     SIGNAL = "SIGNAL"
@@ -1059,13 +1235,17 @@ class MSO4CommandConstants:
     SIXBIT = "SIXBIT"
     SIXFIFTYHZ = "SIXFIFTYHZ"  # SIXFIFTyhz
     SIXTEENEIGHT = "SIXTEENEIGHT"  # SIXTEENeight
+    SIXTYFOURBIT = "SIXTYFOURBIT"
     SIXTYHZ = "SIXTYHZ"
     # SIXTYHZ = "SIXTyhz"
     SKIPROM = "SKIPROM"
+    SKP = "SKP"
     SLAVE = "SLAVE"  # SLAVe
     SLAVEADDRESS = "SLAVEADDRESS"  # SLAVEADDRess
+    SLC = "SLC"
     SLEEP = "SLEEP"
     # SLEEP = "SLEep"
+    SLOTMARKER = "SLOTMARKER"
     SLOW = "SLOW"
     SLOWER = "SLOWER"  # SLOWer
     SLOWERTHAN = "SLOWERTHAN"  # SLOWERthan
@@ -1073,7 +1253,10 @@ class MSO4CommandConstants:
     SNAP = "SNAP"  # SNAp
     SNRM = "SNRM"
     SNRME = "SNRME"
+    SOC = "SOC"
     SOF = "SOF"
+    SOS = "SOS"
+    SOSD = "SOSD"
     SOT = "SOT"
     SOW = "SOW"
     SPACE = "SPACE"  # SPace
@@ -1096,6 +1279,7 @@ class MSO4CommandConstants:
     SSPLIT = "SSPLIT"
     STACKED = "STACKED"  # STAcked
     STALL = "STALL"
+    # STALL = "STALl"
     STANDARD = "STANDARD"  # STAndard
     # STANDARD = "STandard"
     START = "START"
@@ -1111,12 +1295,14 @@ class MSO4CommandConstants:
     # STATIC = "STATic"
     STATIONADDR = "STATIONADDR"  # STATIONADDr
     STATUS = "STATUS"  # STATus
+    STAYQUIET = "STAYQUIET"  # STAYQUIet
     STAYSHIGH = "STAYSHIGH"  # STAYSHigh
     STAYSLOW = "STAYSLOW"  # STAYSLow
     STEPRESPONSE = "STEPRESPONSE"
     STOP = "STOP"
     # STOP = "STop"
     # STOP = "Stop"
+    SUB = "SUB"
     SUBTRACT = "SUBTRACT"  # SUBtract
     SUCCESSDATA = "SUCCESSDATA"  # SUCCESSDATa
     SUCCESSNODATA = "SUCCESSNODATA"  # SUCCESSNODATa
@@ -1124,6 +1310,7 @@ class MSO4CommandConstants:
     SUSPEND = "SUSPEND"
     SV = "SV"
     SVID = "SVID"
+    SWAP = "SWAP"
     SWITCHING = "SWITCHING"
     SYMB = "SYMB"
     SYMBOL = "SYMBOL"  # SYMBol
@@ -1136,6 +1323,7 @@ class MSO4CommandConstants:
     SYSTEM = "SYSTEM"
     TBIT = "TBIT"
     TCI = "TCI"
+    TCP = "TCP"
     TCPHEADER = "TCPHEADER"  # TCPHeader
     TDATA = "TDATA"  # TDATa
     TDM = "TDM"
@@ -1149,7 +1337,6 @@ class MSO4CommandConstants:
     # TESTMODE = "TESTmode"
     THREE = "THREE"
     # THREE = "THRee"
-    THREEPHASEAUTOSET = "THREEPHASEAUTOSET"  # THREEPHASEAUTOset
     THREESIXTYHZ = "THREESIXTYHZ"  # THREESIXTyhz
     TIME = "TIME"  # TIMe
     TIMECODE = "TIMECODE"  # TIMECODe
@@ -1159,6 +1346,7 @@ class MSO4CommandConstants:
     TOOTHGAP = "TOOTHGAP"
     TOTALEFFICIENCY = "TOTALEFFICIENCY"  # TOTALEFFiciency
     TOUCHSCREEN = "TOUCHSCREEN"  # TOUCHSCReen
+    TP = "TP"
     TRACK = "TRACK"
     TRAILER = "TRAILER"  # TRAiler
     TRANSFERBUSOWNERSHIP = "TRANSFERBUSOWNERSHIP"  # TRANSferbusownership
@@ -1175,6 +1363,7 @@ class MSO4CommandConstants:
     TRUE = "TRUE"  # TRUe
     # TRUE = "True"
     # TRUE = "true"
+    TSEQ = "TSEQ"
     TWELVETWELVE = "TWELVETWELVE"  # TWELVEtwelve
     TWENTYBIT = "TWENTYBIT"
     TWENTYEIGHTY = "TWENTYEIGHTY"  # TWENtyeighty
@@ -1188,11 +1377,14 @@ class MSO4CommandConstants:
     TXDATA = "TXDATA"  # TXData
     TXRX = "TXRX"
     TYPE = "TYPE"  # TYPe
+    U2IT = "U2IT"
     UACK = "UACK"
     UDIDDATA = "UDIDDATA"  # UDIDDATa
+    UDP = "UDP"
     UDPIP = "UDPIP"
     UDPIPHEADER = "UDPIPHEADER"  # UDPIPHEADer
     UI = "UI"
+    UID = "UID"
     ULPS = "ULPS"
     UNEQUAL = "UNEQUAL"  # UNEQual
     UNIQUE = "UNIQUE"  # UNIQue
@@ -1202,12 +1394,18 @@ class MSO4CommandConstants:
     UP = "UP"
     USB = "USB"
     USB3 = "USB3"
+    USB31G1 = "USB31G1"
+    USB32G1 = "USB32G1"
+    USB3O = "USB3O"
     USBTMC = "USBTMC"  # USBTmc
     USER = "USER"
     V1X = "V1X"
     V2X = "V2X"
+    VARPERSIST = "VARPERSIST"  # VARpersist
     VBARS = "VBARS"  # VBArs
     VCE = "VCE"
+    VCID = "VCID"
+    VDEVTEST = "VDEVTEST"
     VDS = "VDS"
     VECTOR = "VECTOR"  # VECtor
     VECTORS = "VECTORS"  # VECtors
@@ -1226,9 +1424,6 @@ class MSO4CommandConstants:
     WAVEFORM = "WAVEFORM"
     # WAVEFORM = "WAVEform"
     WAVEVIEW1 = "WAVEVIEW1"
-    WBGDESKEWEXEC = "WBGDESKEWEXEC"  # WBGDeskewexec
-    WBGGSTIM = "WBGGSTIM"
-    WBGPRESET = "WBGPRESET"  # WBGPREset
     WIDTH = "WIDTH"  # WIDth
     WINDOW = "WINDOW"  # WINdow
     WITHIN = "WITHIN"  # WIThin
@@ -1237,11 +1432,21 @@ class MSO4CommandConstants:
     # WORD = "Word"
     WRITE = "WRITE"
     # WRITE = "WRITe"
+    WRITEAFI = "WRITEAFI"
+    WRITEDSFID = "WRITEDSFID"
+    WRMBLOCK = "WRMBLOCK"  # WRMBLOCk
+    WRSBLOCK = "WRSBLOCK"  # WRSBLOCk
+    WUPA = "WUPA"  # WUPa
+    WUPB = "WUPB"
+    WUPREQ = "WUPREQ"  # WUPReq
+    WUPRES = "WUPRES"  # WUPRes
     X = "X"
     XAUI = "XAUI"
     XAUI_GEN2 = "XAUI_GEN2"
     XFF = "XFF"
     XID = "XID"
+    XLDATA = "XLDATA"  # xldata
+    XLFORMERROR = "XLFORMERROR"  # xlFormError
     XN = "XN"
     XYZY = "XYZY"
     XZYZ = "XZYZ"
@@ -1251,6 +1456,10 @@ class MSO4CommandConstants:
     ZERO = "ZERO"  # ZERo
     ZN = "ZN"
     ZOOM = "ZOOM"
+    _DALL = "_DALL"
+    _SV_AVERAGE = "_SV_AVERAGE"  # _SV_AVErage
+    _SV_MAXHOLD = "_SV_MAXHOLD"  # _SV_MAXHold
+    _SV_NORMAL = "_SV_NORMAL"  # _SV_NORMal
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods
@@ -1306,6 +1515,8 @@ class MSO4Commands:
         - ``.header``: The ``HEADer`` command.
         - ``.histogram``: The ``HISTogram`` command tree.
         - ``.horizontal``: The ``HORizontal`` command.
+        - ``.hostprocessor``: The ``HOSTProcessor`` command.
+        - ``.hsinterface``: The ``HSInterface`` command tree.
         - ``.id``: The ``ID`` command.
         - ``.idn``: The ``*IDN`` command.
         - ``.license``: The ``LICense`` command.
@@ -1359,6 +1570,7 @@ class MSO4Commands:
         - ``.verbose``: The ``VERBose`` command.
         - ``.vertical``: The ``VERTical`` command tree.
         - ``.visual``: The ``VISual`` command tree.
+        - ``.vxi``: The ``VXI`` command tree.
         - ``.wai``: The ``*WAI`` command.
         - ``.wavfrm``: The ``WAVFrm`` command.
         - ``.wfmoutpre``: The ``WFMOutpre`` command.
@@ -1415,6 +1627,8 @@ class MSO4Commands:
         self._header = Header(device)
         self._histogram = Histogram(device)
         self._horizontal = Horizontal(device)
+        self._hostprocessor = Hostprocessor(device)
+        self._hsinterface = Hsinterface(device)
         self._id = Id(device)
         self._idn = Idn(device)
         self._license = License(device)
@@ -1472,6 +1686,7 @@ class MSO4Commands:
         self._verbose = Verbose(device)
         self._vertical = Vertical(device)
         self._visual = Visual(device)
+        self._vxi = Vxi(device)
         self._wai = Wai(device)
         self._wavfrm = Wavfrm(device)
         self._wfmoutpre = Wfmoutpre(device)
@@ -1580,7 +1795,7 @@ class MSO4Commands:
             - ``OFF`` turns Alias expansion off.
             - ``ON`` turns Alias expansion on. When a defined alias is received, the specified
               command sequence is substituted for the alias and executed.
-            - ``<NR1>`` = 0 disables Alias mode; any other value enables Alias mode.
+            - ``<NR1> = 0`` disables Alias mode; any other value enables Alias mode.
 
         Sub-properties:
             - ``.catalog``: The ``ALIas:CATalog`` command.
@@ -1647,7 +1862,7 @@ class MSO4Commands:
             ```
 
         Info:
-            - ``<NR1>``
+            - ``<NR1>`` sets the timeout time.
         """
         return self._autosavepitimeout
 
@@ -1672,7 +1887,7 @@ class MSO4Commands:
             ```
 
         Info:
-            - ``<NR1>``
+            - ``<NR1>`` sets the timeout time.
         """
         return self._autosaveuitimeout
 
@@ -1693,8 +1908,8 @@ class MSO4Commands:
             ```
 
         Info:
-            - ``EXECute`` autosets the displayed waveform; this is equivalent to pressing the front
-              panel Autoset button.
+            - ``EXECute`` autosets the displayed waveform; this is equivalent to pressing the
+              frontpanel Autoset button.
 
         Sub-properties:
             - ``.acquisition``: The ``AUTOSet:ACQuisition`` command tree.
@@ -1770,6 +1985,12 @@ class MSO4Commands:
             ```
             - BUSY?
             ```
+
+        Info:
+            - ``<NR1> = 0`` means that the instrument is not busy processing a command whose
+              execution time is extensive.
+            - ``<NR1> = 1`` means that the instrument is busy processing Commands that Generate an
+              OPC Message.
         """
         return self._busy
 
@@ -1779,7 +2000,11 @@ class MSO4Commands:
 
         Description:
             - This query-only command starts signal path calibration (SPC) and returns the status
-              upon completion.
+              upon completion. Note: When running SPC through the remote interface, calibration
+              status cannot be obtained until after the SPC completes. SPC takes approximately 15
+              minutes per channel which means a total of 2 hours on an 8-channel model. Any remote
+              command that performs an action on the instrument is also disabled until the SPC is
+              complete.
 
         Usage:
             - Using the ``.query()`` method will send the ``*CAL?`` query.
@@ -1798,7 +2023,9 @@ class MSO4Commands:
         """Return the ``CALibrate`` command.
 
         Description:
-            - This query returns the status of signal path calibration.
+            - This query returns the status of signal path calibration. Note: When running SPC
+              through the remote interface, calibration status cannot be obtained until after the
+              SPC completes, which can take several minutes.
 
         Usage:
             - Using the ``.query()`` method will send the ``CALibrate?`` query.
@@ -1828,6 +2055,7 @@ class MSO4Commands:
         Sub-properties:
             - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
             - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
+            - ``.delete``: The ``CALLOUTS:DELete`` command.
         """
         return self._callouts
 
@@ -1953,8 +2181,8 @@ class MSO4Commands:
             - This command transfers waveform data from the instrument. Each waveform that is
               transferred has an associated waveform preamble that contains information such as data
               format and scale. The ``CURVe?`` query transfers data from the instrument. The data
-              source is specified by the ``DATA:SOURCE`` command. The first and last data points are
-              specified by the ``DATA:START`` and ``DATA:STOP`` commands. For digital sources,
+              source is specified by the ``DATa:SOUrce`` command. The first and last data points are
+              specified by the ``DATa:STARt`` and ``DATa:STOP`` commands. For digital sources,
               ``CH<x>_D<x>`` or CH<x> _DALL, when the ``:DATa:WIDth`` is 1, the returned data is
               state only. When the ``:DATa:WIDth`` is 2, the returned data is transition data with 2
               bits per digital channel representing the transition information as follows: 0 0 low 0
@@ -1986,6 +2214,12 @@ class MSO4Commands:
               are turned on (in group1) then 125 rows per channel. If Ch1 (in group1) and Ch8 (in
               group2) are turned on then 500 rows will be returned for each channel. To calculate
               the number of rows, you can use- (number of bytes from curve header/``BYT_NR``)/1000.
+              Note: Curve data is transferred from the instrument asynchronously and, depending upon
+              the length of the curve record, such transfers can require several seconds to
+              complete. During this time, the instrument will not respond to usercontrols. You can
+              interrupt these asynchronous data transfers by sending adevice clear message to the
+              instrument or by interrupting the query with another command or query. Verify that
+              curve data is completely transferred.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVe?`` query.
@@ -2007,23 +2241,28 @@ class MSO4Commands:
             - This query-only command continuously transfers waveform data from the instrument as it
               is acquired. This command puts the instrument into a streaming data mode, allowing the
               controller to receive waveform records as fast as they are acquired. Use the
-              ``DATA:SOURCE`` command to specify the waveform sources. The command supports all the
-              same data formatting options as the CURVE command. Control of the instrument through
+              ``DATa:SOUrce`` command to specify the waveform sources. The command supports all the
+              same data formatting options as the CURVe? command. Control of the instrument through
               the user interface or other external clients is not allowed while in streaming data
               mode. The GPIB controller must take the instrument out of this streaming data mode to
               terminate the query and allow other input sources to resume communication with the
               instrument. The following options are available to transition out of streaming data
               mode: Send a device clear over the bus Send another command or query to the instrument
-              Turning the waveform screen display mode off ( ``:DISplay:WAVEform OFF`` ) may
-              increase waveform throughput during streaming mode. Using a data encoding of SRIbinary
-              ( ``DATa:ENCdg SRIbinary`` ) may also increase the waveform throughput since that is
-              the raw native data format of the oscilloscope. While in streaming data mode, two
-              extreme conditions can occur. If the waveform records are being acquired slowly (high
+              Turning the waveform screen display mode off (``:DISplay:WAVEform OFF``) may increase
+              waveform throughput during streaming mode. Using a data encoding of SRIbinary
+              (``DATa:ENCdg SRIbinary``) may also increase the waveform throughput since that is the
+              raw native data format of the oscilloscope. While in streaming data mode, two extreme
+              conditions can occur. If the waveform records are being acquired slowly (high
               resolution), configure the controller for a long time-out threshold, as the data is
               not sent out until each complete record is acquired. If the waveform records are being
               acquired rapidly (low resolution), and the controller is not reading the data off the
               bus fast enough, the trigger rate is slowed to allow each waveform to be sent
-              sequentially.
+              sequentially Note:. Curve data is transferred from the instrument asynchronously
+              and,depending upon the length of the curve record, such transfers can require
+              severalseconds to complete. During this time, the instrument will not respond to
+              usercontrols. You can interrupt these asynchronous data transfers by sending adevice
+              clear message to the instrument or by interrupting the query with anothercommand or
+              query. Verify that curve data is completely transferred.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVEStream?`` query.
@@ -2059,7 +2298,7 @@ class MSO4Commands:
 
         Description:
             - This command sets or queries the format and location of the waveform data that is
-              transferred with the CURVE command.
+              transferred with the CURVe? command.
 
         Usage:
             - Using the ``.query()`` method will send the ``DATa?`` query.
@@ -2119,7 +2358,7 @@ class MSO4Commands:
 
         Description:
             - This command allows you to specify a command or a list of commands that are executed
-              when the instrument receives a TRG command. Define Device Trigger ( ``*DDT`` ) is a
+              when the instrument receives a ``*TRG`` command. Define Device Trigger (``*DDT``) is a
               special alias that the ``*TRG`` command uses.
 
         Usage:
@@ -2137,7 +2376,7 @@ class MSO4Commands:
         Info:
             - ``<Block>`` is a complete sequence of program messages. The messages can contain only
               valid commands that must be separated by semicolons and must follow all rules for
-              concatenating commands. The sequence must be less than or equal to 80 characters. The
+              concatenating commands. The sequence must be less than or equal to 80characters. The
               format of this argument is always returned as a query.
             - ``<QString>`` is a complete sequence of program messages. The messages can contain
               only valid commands that must be separated by semicolons and must follow all rules for
@@ -2153,7 +2392,10 @@ class MSO4Commands:
             - This command sets and queries the bits in the Device Event Status Enable Register
               (DESER). The DESER is the mask that determines whether events are reported to the
               Standard Event Status Register (SESR), and entered into the Event Queue. For a more
-              detailed discussion of the use of these registers, see Registers.
+              detailed discussion of the use of these registers, see Registers. Note: Setting the
+              DESER and ESER to the same value allows only those codes to be entered into the Event
+              Queue and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the
+              ``*ESE`` command to set the ESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``DESE?`` query.
@@ -2172,6 +2414,8 @@ class MSO4Commands:
               from 1 through 255. For example, ``DESE 209`` sets the DESER to the binary value
               11010001 (that is, the most significant bit in the register is set to 1, the next most
               significant bit to 1, the next bit to 0, etc.).
+            - ``DESER`` is all bits set if ``*PSC`` is 1. If ``*PSC`` is 0, the DESER maintains the
+              previous power cycle value through the current power cycle.
         """
         return self._dese
 
@@ -2232,6 +2476,7 @@ class MSO4Commands:
             - ``.global``: The ``DISplay:GLObal`` command tree.
             - ``.intensity``: The ``DISplay:INTENSITy`` command.
             - ``.mathfftview1``: The ``DISplay:MATHFFTView1`` command tree.
+            - ``.meas``: The ``DISplay:MEAS<x>`` command tree.
             - ``.persistence``: The ``DISplay:PERSistence`` command.
             - ``.plotview1``: The ``DISplay:PLOTView1`` command tree.
             - ``.reffftview``: The ``DISplay:REFFFTView<x>`` command tree.
@@ -2242,7 +2487,7 @@ class MSO4Commands:
             - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
             - ``.waveform``: The ``DISplay:WAVEform`` command.
             - ``.ch``: The ``DISplay:CH<x>`` command tree.
-            - ``.math``: The ``DISplay:Math<x>`` command tree.
+            - ``.math``: The ``DISplay:MATH<x>`` command tree.
             - ``.ref``: The ``DISplay:REF<x>`` command tree.
         """
         return self._display
@@ -2281,7 +2526,10 @@ class MSO4Commands:
         Description:
             - This command sets and queries the bits in the Event Status Enable Register (ESER). The
               ESER prevents events from being reported to the Status Byte Register (STB). For a more
-              detailed discussion of the use of these registers, see Registers.
+              detailed discussion of the use of these registers, see Registers. Note: Setting the
+              DESER and the ESER to the same values allows only those codes to be entered into the
+              Event Queue and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the
+              DESE command to set the DESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``*ESE?`` query.
@@ -2297,7 +2545,9 @@ class MSO4Commands:
 
         Info:
             - ``<NR1>`` specifies the binary bits of the ESER according to this value, which ranges
-              from 0 through 255.
+              from 0 through 255. The power-on default for the ESER is 0 if ``*PSC`` is 1. If
+              ``*PSC`` is 0, the ESER maintains the previous power cycle value through the current
+              power cycle.
         """
         return self._ese
 
@@ -2352,7 +2602,7 @@ class MSO4Commands:
 
         Description:
             - This query-only command returns an event code from the Event Queue that provides
-              information about the results of the last ESR read. ``EVENT?`` also removes the
+              information about the results of the last ``*ESR?`` read. ``EVENT?`` also removes the
               returned value from the Event Queue.
 
         Usage:
@@ -2373,8 +2623,8 @@ class MSO4Commands:
 
         Description:
             - This query-only command removes a single event code from the Event Queue that is
-              associated with the results of the last ESR read and returns the event code with an
-              explanatory message. For more information, see Event Handling.
+              associated with the results of the last ``*ESR?`` read and returns the event code with
+              an explanatory message. For more information, see Event Handling.
 
         Usage:
             - Using the ``.query()`` method will send the ``EVMsg?`` query.
@@ -2394,7 +2644,7 @@ class MSO4Commands:
 
         Description:
             - This query-only command returns the number of events that are enabled in the queue.
-              This is useful when using the ALLEV query, since it lets you know exactly how many
+              This is useful when using the ALLEv? query, since it lets you know exactly how many
               events will be returned.
 
         Usage:
@@ -2506,7 +2756,8 @@ class MSO4Commands:
             - This command sets or queries the Response Header Enable State that causes the
               instrument to either include or omit headers on query responses. Whether the long or
               short form of header keywords and enumerations are returned is dependent upon the
-              state of ``:VERBose``.
+              state of ``:VERBose``. Note: This command does not affect IEEE Std 488.2-1987 Common
+              Commands (those starting with an asterisk); these commands never return headers.
 
         Usage:
             - Using the ``.query()`` method will send the ``HEADer?`` query.
@@ -2582,6 +2833,41 @@ class MSO4Commands:
             - ``.scale``: The ``HORizontal:SCAle`` command.
         """
         return self._horizontal
+
+    @property
+    def hostprocessor(self) -> Hostprocessor:
+        """Return the ``HOSTProcessor`` command.
+
+        Description:
+            - This command queries the host processor that the instrument displays.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``HOSTProcessor?`` query.
+            - Using the ``.verify(value)`` method will send the ``HOSTProcessor?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        SCPI Syntax:
+            ```
+            - HOSTProcessor?
+            ```
+        """
+        return self._hostprocessor
+
+    @property
+    def hsinterface(self) -> Hsinterface:
+        """Return the ``HSInterface`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``HSInterface?`` query.
+            - Using the ``.verify(value)`` method will send the ``HSInterface?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.port``: The ``HSInterface:PORT`` command.
+            - ``.state``: The ``HSInterface:STATe`` command.
+            - ``.timeout``: The ``HSInterface:TIMeout`` command.
+        """
+        return self._hsinterface
 
     @property
     def id(self) -> Id:
@@ -2682,9 +2968,9 @@ class MSO4Commands:
             - ``ALL`` disables all front panel controls and the touch screen.
             - ``NONe`` enables all front panel controls and the touch screen. The UNLock ALL command
               only unlocks the front panel controls.
-            - ``NONe`` command has no effect. For more information, see the ANSI/IEEE Std 488.1-1987
-              Standard Digital Interface for Programmable Instrumentation, section 2.8.3 on RL State
-              Descriptions.
+            - ``LOCk NONe`` command has no effect. For more information, see the ANSI/IEEE Std
+              488.1-1987 Standard Digital Interface for Programmable Instrumentation, section 2.8.3
+              on RL State Descriptions.
         """
         return self._lock
 
@@ -2696,7 +2982,7 @@ class MSO4Commands:
             - This query-only command returns the commands that list the instrument settings,
               allowing you to record or 'learn' the current instrument settings. You can use these
               commands to return the instrument to the state it was in when you made the ``*LRN?``
-              query. This command is identical to the SET command.
+              query. This command is identical to the SET? command.
 
         Usage:
             - Using the ``.query()`` method will send the ``*LRN?`` query.
@@ -2707,6 +2993,9 @@ class MSO4Commands:
             ```
             - *LRN?
             ```
+
+        Info:
+            - ``<QString>`` is the license nomenclature.
         """
         return self._lrn
 
@@ -2723,6 +3012,7 @@ class MSO4Commands:
             - ``.badge``: The ``MAINWindow:BADGe`` command tree.
             - ``.fontsize``: The ``MAINWindow:FONTSize`` command.
             - ``.rrbdisplaystate``: The ``MAINWindow:RRBDisplaystate`` command.
+            - ``.rrbi``: The ``MAINWindow:RRBI`` command.
         """
         return self._mainwindow
 
@@ -2809,14 +3099,15 @@ class MSO4Commands:
             - ``.addmeas``: The ``MEASUrement:ADDMEAS`` command.
             - ``.addnew``: The ``MEASUrement:ADDNew`` command.
             - ``.annotate``: The ``MEASUrement:ANNOTate`` command.
-            - ``.autoset``: The ``MEASUrement:AUTOset`` command.
             - ``.ch``: The ``MEASUrement:CH<x>`` command tree.
             - ``.clockrecovery``: The ``MEASUrement:CLOCKRecovery`` command tree.
+            - ``.ddjmethod``: The ``MEASUrement:DDJMethod`` command.
             - ``.deleteall``: The ``MEASUrement:DELETEALL`` command.
             - ``.delete``: The ``MEASUrement:DELete`` command.
             - ``.diracmodel``: The ``MEASUrement:DIRacmodel`` command.
             - ``.displayunits``: The ``MEASUrement:DISPLAYUnits`` command.
             - ``.edge``: The ``MEASUrement:EDGE<x>`` command.
+            - ``.enablepjitter``: The ``MEASUrement:ENABLEPjitter`` command.
             - ``.eyerender``: The ``MEASUrement:EYERENDER`` command.
             - ``.filters``: The ``MEASUrement:FILTers`` command tree.
             - ``.gating``: The ``MEASUrement:GATing`` command.
@@ -2875,7 +3166,8 @@ class MSO4Commands:
               the output queue, see Registers and Queues. The ``*OPC`` command allows you to
               synchronize the operation of the instrument with your application program. For more
               information, see Synchronization Methods. Refer to the Oscilloscope operations that
-              can generate OPC table for a list of commands that generate an OPC message.
+              can generate OPC table for a list of commands that generate an OPC message. (See Table
+              3-3.)
 
         Usage:
             - Using the ``.query()`` method will send the ``*OPC?`` query.
@@ -3146,7 +3438,7 @@ class MSO4Commands:
 
         Description:
             - This command (no query form) embeds a comment within programs as a means of internally
-              documenting the programs. This is how to embed comments in a .set file. The instrument
+              documenting the programs. This is how to embed comments in a.set file. The instrument
               ignores these embedded comment lines.
 
         Usage:
@@ -3186,25 +3478,27 @@ class MSO4Commands:
               This command does the following: Recalls the default instrument setup. Clears the
               current ``*DDT`` command. Disables aliases (``:ALIAS:STATE 0``). Disables the user
               password (for the ``*PUD`` command). The ``*RST`` command does not change the
-              following: The current working directory ( ``:FILESystem:CWD`` command). The state of
-              command headers ( ``:HEADer`` command). The state of keyword and enumeration verbosity
-              ( ``:VERBose`` command). The Power-on Status Clear Flag ( ``*PSC`` command). The Event
-              Status Enable Register ( ``*ESE`` command). The Service Request Enable Register (
-              ``*SRE`` command). The Device Event Status Enable Register ( DESE command). The user
-              password for protected user data ( ``:PASSWord`` command). The content of protected
-              user data ( ``*PUD`` command). The enabled state of the socket server (
-              ``:SOCKETServer:ENAble`` command). The socket server port number (
-              ``:SOCKETServer:PORT`` command). The socket server protocol (
-              ``:SOCKETServer:PROTOCol`` command). The USBTMC port configuration (
-              ``:USBDevice:CONFigure`` command). The destination reference waveform or file path for
-              the ``:CURVe`` command ( ``:DATa:DESTination`` command). The source waveform for the
-              ``:CURVe?`` or ``:WAVFrm?`` queries ( ``:DATa:SOUrce`` command). The waveform data
-              encoding for the ``:CURVe`` command or query or the ``:WAVFrm?`` query (
-              ``:DATa:ENCdg`` command). The starting point for ``:CURVe?`` queries ( ``:DATa:STARt``
-              command). The ending point for ``:CURVe?`` queries ( ``:DATa:STOP`` command). All
-              settings associated the ``:WFMInpre`` commands. All user settable settings associated
-              with the WFMOutpre commands. ``*RST`` only resets the programmable interface settings,
-              it does not change the user interface settings.
+              following: The current working directory (: ``FILESystem:CWD`` command). The state of
+              command headers (: HEADer command). The state of keyword and enumeration verbosity (:
+              VERBose command). The Power-on Status Clear Flag ( ``*PSC`` command). The Event Status
+              Enable Register ( ``*ESE`` command). The Service Request Enable Register ( ``*SRE``
+              command). The Event Status Enable Register ( ``*ESE`` command). The Service Request
+              Enable Register ( ``*SRE`` command). The Device Event Status Enable Register ( DESE
+              command). The user password for protected user data (: PASSWord command). The content
+              of protected user data ( ``*PUD`` command). The enabled state of the socket server (:
+              ``SOCKETServer:ENAble`` command). The socket server port number (:
+              ``SOCKETServer:PORT`` command). The socket server protocol (:
+              ``SOCKETServer:PROTOCol`` command). The USBTMC port configuration (:
+              ``USBDevice:CONFigure`` command). The destination reference waveform or file path for
+              the : CURVe command (: ``DATa:DESTination`` command). The source waveform for the :
+              CURVe? or : WAVFrm? queries (: ``DATa:SOUrce`` command). The source waveform for the :
+              CURVe? or : WAVFrm? queries (: ``DATa:SOUrce`` command). The waveform data encoding
+              for the : CURVe command or query or the : WAVFrm? query (: ``DATa:ENCdg`` command).
+              The starting point for : CURVe? queries (: ``DATa:STARt`` command). The ending point
+              for : CURVe? queries (: ``DATa:STOP`` command). All settings associated the : WFMInpre
+              commands. All user settable settings associated with the WFMOutpre commands. ``*RST``
+              only resets the programmable interface settings, it does not change the user interface
+              settings.
 
         Usage:
             - Using the ``.write()`` method will send the ``*RST`` command.
@@ -3328,11 +3622,11 @@ class MSO4Commands:
             - This query-only command returns the commands that list the instrument settings, except
               for configuration information for the calibration values. You can use these commands
               to return the instrument to the state it was in when you made the ``SET?`` query. The
-              ``SET?`` query always returns command headers, regardless of the setting of the HEADER
+              ``SET?`` query always returns command headers, regardless of the setting of the HEADer
               command. This is because the returned commands are intended to be sent back to the
-              instrument as a command string. The VERBOSE command can still be used to specify
+              instrument as a command string. The VERBose command can still be used to specify
               whether the returned headers should be abbreviated or full-length. This command is
-              identical to the LRN command.
+              identical to the ``*LRN?`` command.
 
         Usage:
             - Using the ``.query()`` method will send the ``SET?`` query.
@@ -3631,7 +3925,10 @@ class MSO4Commands:
         Description:
             - This command (no query form) unlocks the front panel controls only. To unlock the
               front panel controls and the touch screen use the LOCk NONe command. The command
-              ``TOUCHSCReen:STATE ON`` enables the touch screen only.
+              ``TOUCHSCReen:STATE ON`` enables the touch screen only. Note: If the instrument is in
+              the Remote With Lockout State (RWLS), the ``UNLock`` command has no effect. For more
+              information, see the ANSI-IEEE Std 488.1-1987Standard Digital Interface for
+              Programmable Instrumentation, section 2.8.3 on RL State Descriptions.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``UNLock value`` command.
@@ -3682,6 +3979,8 @@ class MSO4Commands:
               applicable setting queries.
             - ``ON`` sets the Verbose state to true, which returns full-length keywords for
               applicable setting queries.
+            - ``0`` returns minimum-length keywords for applicable setting queries; any other value
+              returns full-length keywords.
         """
         return self._verbose
 
@@ -3718,6 +4017,21 @@ class MSO4Commands:
             - ``.showequation``: The ``VISual:SHOWEQuation`` command.
         """
         return self._visual
+
+    @property
+    def vxi(self) -> Vxi:
+        """Return the ``VXI`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``VXI?`` query.
+            - Using the ``.verify(value)`` method will send the ``VXI?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.enable``: The ``VXI:ENAble`` command.
+            - ``.port``: The ``VXI:PORT`` command tree.
+        """
+        return self._vxi
 
     @property
     def wai(self) -> Wai:
@@ -3766,7 +4080,7 @@ class MSO4Commands:
 
         Description:
             - This query-only command queries the waveform formatting data for the waveform
-              specified by the ``DATA:SOURCE`` command. The preamble components are considered to be
+              specified by the ``DATa:SOUrce`` command. The preamble components are considered to be
               of two types; formatting and interpretation. The formatting components are: ENCdg,
               ``BN_Fmt``, ``BYT_Or``, ``BYT_Nr``, ``BIT_Nr``. The interpretation components are
               derived from the ``DATa:SOUrce`` specified waveform.
@@ -3879,6 +4193,8 @@ class MSO4Mixin:
             - ``.header``: The ``HEADer`` command.
             - ``.histogram``: The ``HISTogram`` command tree.
             - ``.horizontal``: The ``HORizontal`` command.
+            - ``.hostprocessor``: The ``HOSTProcessor`` command.
+            - ``.hsinterface``: The ``HSInterface`` command tree.
             - ``.id``: The ``ID`` command.
             - ``.idn``: The ``*IDN`` command.
             - ``.license``: The ``LICense`` command.
@@ -3932,6 +4248,7 @@ class MSO4Mixin:
             - ``.verbose``: The ``VERBose`` command.
             - ``.vertical``: The ``VERTical`` command tree.
             - ``.visual``: The ``VISual`` command tree.
+            - ``.vxi``: The ``VXI`` command tree.
             - ``.wai``: The ``*WAI`` command.
             - ``.wavfrm``: The ``WAVFrm`` command.
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
