@@ -37,6 +37,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SDI:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition {SOF|DATa}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:DATa:HITDMVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:DATa:HITDMVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:DATa:HIVALue <QString>
@@ -56649,6 +56651,34 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         return self._word
 
 
+class SearchSearchItemTriggerABusAudioCondition(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` command.
+
+    Description:
+        - This command sets or queries the condition (word select / frame sync, or matching data) to
+          be used when searching on an audio bus signal. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition {SOF|DATa}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?
+        ```
+
+    Info:
+        - ``SOF`` specifies to search on a word select or start of frame (depending on Audio Type).
+        - ``DATa`` specifies to search on matching data.
+    """
+
+
 class SearchSearchItemTriggerABusAudio(SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio`` command tree.
 
@@ -56660,12 +56690,47 @@ class SearchSearchItemTriggerABusAudio(SCPICmdRead):
           returned value does not match ``value``.
 
     Properties:
+        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` command.
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:DATa`` command tree.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._condition = SearchSearchItemTriggerABusAudioCondition(
+            device, f"{self._cmd_syntax}:CONDition"
+        )
         self._data = SearchSearchItemTriggerABusAudioData(device, f"{self._cmd_syntax}:DATa")
+
+    @property
+    def condition(self) -> SearchSearchItemTriggerABusAudioCondition:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` command.
+
+        Description:
+            - This command sets or queries the condition (word select / frame sync, or matching
+              data) to be used when searching on an audio bus signal. The search number is specified
+              by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition {SOF|DATa}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition?
+            ```
+
+        Info:
+            - ``SOF`` specifies to search on a word select or start of frame (depending on Audio
+              Type).
+            - ``DATa`` specifies to search on matching data.
+        """
+        return self._condition
 
     @property
     def data(self) -> SearchSearchItemTriggerABusAudioData:
@@ -57653,6 +57718,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               returned value does not match ``value``.
 
         Sub-properties:
+            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` command.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:DATa`` command tree.
         """
         return self._audio

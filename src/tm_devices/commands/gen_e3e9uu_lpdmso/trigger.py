@@ -835,7 +835,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:USB:TOKENType?
     - TRIGger:B:BUS:SOUrce B<x>
     - TRIGger:B:BUS:SOUrce?
-    - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
+    - TRIGger:B:BY {EVENTS|TIMe}
     - TRIGger:B:BY?
     - TRIGger:B:EDGE:COUPling {DC|HFRej|LFRej|NOISErej}
     - TRIGger:B:EDGE:COUPling?
@@ -4931,7 +4931,7 @@ class TriggerBBy(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
+        - TRIGger:B:BY {EVENTS|TIMe}
         - TRIGger:B:BY?
         ```
 
@@ -4940,12 +4940,6 @@ class TriggerBBy(SCPICmdWrite, SCPICmdRead):
           the A trigger occurs. The number of events is specified by ``TRIGger:B:EVENTS:COUNt``.
         - ``TIMe`` sets the B trigger to occur a set time after the A trigger event. The time period
           is specified by ``TRIGger:B:TIMe``.
-        - ``ARMAtrigb`` arms the oscilloscope for triggering when the A-Event occurs (once) to
-          trigger on one or more B-Events.
-        - ``ACCepts`` sets the oscilloscope to trigger on the A Event if a B Event is found within
-          the specified timeout.
-        - ``REJects`` sets the oscilloscope to trigger on the A Event if a B Event is not found
-          within the specified timeout.
     """
 
 
@@ -20052,7 +20046,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
+            - TRIGger:B:BY {EVENTS|TIMe}
             - TRIGger:B:BY?
             ```
 
@@ -20062,12 +20056,6 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
               ``TRIGger:B:EVENTS:COUNt``.
             - ``TIMe`` sets the B trigger to occur a set time after the A trigger event. The time
               period is specified by ``TRIGger:B:TIMe``.
-            - ``ARMAtrigb`` arms the oscilloscope for triggering when the A-Event occurs (once) to
-              trigger on one or more B-Events.
-            - ``ACCepts`` sets the oscilloscope to trigger on the A Event if a B Event is found
-              within the specified timeout.
-            - ``REJects`` sets the oscilloscope to trigger on the A Event if a B Event is not found
-              within the specified timeout.
         """
         return self._by
 

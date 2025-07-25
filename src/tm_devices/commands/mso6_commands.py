@@ -129,7 +129,6 @@ class MSO6CommandConstants:
     AC = "AC"
     ACB = "ACB"
     ACBC = "ACBC"
-    ACCEPTS = "ACCEPTS"  # ACCepts
     ACCM = "ACCM"
     ACDC = "ACDC"
     ACDCRMS = "ACDCRMS"
@@ -177,7 +176,6 @@ class MSO6CommandConstants:
     APWR = "APWR"
     ARBITRARY = "ARBITRARY"  # ARBitrary
     ARINC429 = "ARINC429"
-    ARMATRIGB = "ARMATRIGB"  # ARMAtrigb
     ARMW = "ARMW"
     ARROW = "ARROW"
     ASCII = "ASCII"
@@ -1071,7 +1069,6 @@ class MSO6CommandConstants:
     REGWRITE = "REGWRITE"  # REGWRIte
     REJ = "REJ"
     REJECT = "REJECT"  # REJect
-    REJECTS = "REJECTS"  # REJects
     REMOTE = "REMOTE"  # REMote
     REPEATERHOST = "REPEATERHOST"  # REPEATERHOSt
     REPEATERPERIPHERAL = "REPEATERPERIPHERAL"

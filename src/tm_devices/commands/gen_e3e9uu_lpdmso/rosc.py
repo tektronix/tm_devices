@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
+    - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
     - ROSc:SOUrce?
     - ROSc:STATE?
     ```
@@ -67,7 +67,7 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
+        - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
         - ROSc:SOUrce?
         ```
 
@@ -120,7 +120,7 @@ class Rosc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
+            - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
             - ROSc:SOUrce?
             ```
 
