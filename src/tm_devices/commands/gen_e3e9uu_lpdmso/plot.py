@@ -65,6 +65,8 @@ Commands and Queries:
     - PLOT:PLOT<x>:PJHistogram?
     - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
     - PLOT:PLOT<x>:PREGion?
+    - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+    - PLOT:PLOT<x>:PSIJ?
     - PLOT:PLOT<x>:PTYPe {RMS|MAGNITUDE}
     - PLOT:PLOT<x>:PTYPe?
     - PLOT:PLOT<x>:RAILNUM RAIL<x>
@@ -462,6 +464,31 @@ class PlotPlotItemPtype(SCPICmdWrite, SCPICmdRead):
         - ``PLOT<x>`` is the plot number.
         - ``RMS`` sets the phasor type to RMS.
         - ``MAGNITUDE`` sets the phasor type to MAGNITUDE.
+    """
+
+
+class PlotPlotItemPsij(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:PSIJ`` command.
+
+    Description:
+        - This command sets or returns the plot data type for respective PSIJ plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PSIJ value`` command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+        - PLOT:PLOT<x>:PSIJ?
+        ```
+
+    Info:
+        - ``PLOT<x>`` is the plot number.
+        - ``ORIGINAL`` sets the plot data type to original.
+        - ``EMULATED`` sets the plot data type to emulated.
     """
 
 
@@ -1882,6 +1909,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.numbins``: The ``PLOT:PLOT<x>:NUMBins`` command.
         - ``.pjhistogram``: The ``PLOT:PLOT<x>:PJHistogram`` command.
         - ``.pregion``: The ``PLOT:PLOT<x>:PREGion`` command.
+        - ``.psij``: The ``PLOT:PLOT<x>:PSIJ`` command.
         - ``.ptype``: The ``PLOT:PLOT<x>:PTYPe`` command.
         - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
         - ``.rjhistogram``: The ``PLOT:PLOT<x>:RJHistogram`` command.
@@ -1914,6 +1942,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._numbins = PlotPlotItemNumbins(device, f"{self._cmd_syntax}:NUMBins")
         self._pjhistogram = PlotPlotItemPjhistogram(device, f"{self._cmd_syntax}:PJHistogram")
         self._pregion = PlotPlotItemPregion(device, f"{self._cmd_syntax}:PREGion")
+        self._psij = PlotPlotItemPsij(device, f"{self._cmd_syntax}:PSIJ")
         self._ptype = PlotPlotItemPtype(device, f"{self._cmd_syntax}:PTYPe")
         self._railnum = PlotPlotItemRailnum(device, f"{self._cmd_syntax}:RAILNUM")
         self._rjhistogram = PlotPlotItemRjhistogram(device, f"{self._cmd_syntax}:RJHistogram")
@@ -2333,6 +2362,32 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._pregion
 
     @property
+    def psij(self) -> PlotPlotItemPsij:
+        """Return the ``PLOT:PLOT<x>:PSIJ`` command.
+
+        Description:
+            - This command sets or returns the plot data type for respective PSIJ plot.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PSIJ value`` command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+            - PLOT:PLOT<x>:PSIJ?
+            ```
+
+        Info:
+            - ``PLOT<x>`` is the plot number.
+            - ``ORIGINAL`` sets the plot data type to original.
+            - ``EMULATED`` sets the plot data type to emulated.
+        """
+        return self._psij
+
+    @property
     def ptype(self) -> PlotPlotItemPtype:
         """Return the ``PLOT:PLOT<x>:PTYPe`` command.
 
@@ -2719,6 +2774,7 @@ class Plot(SCPICmdRead):
             - ``.numbins``: The ``PLOT:PLOT<x>:NUMBins`` command.
             - ``.pjhistogram``: The ``PLOT:PLOT<x>:PJHistogram`` command.
             - ``.pregion``: The ``PLOT:PLOT<x>:PREGion`` command.
+            - ``.psij``: The ``PLOT:PLOT<x>:PSIJ`` command.
             - ``.ptype``: The ``PLOT:PLOT<x>:PTYPe`` command.
             - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
             - ``.rjhistogram``: The ``PLOT:PLOT<x>:RJHistogram`` command.

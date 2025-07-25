@@ -1669,8 +1669,8 @@ class HistogramAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '
-          HIST<NR1> ', where NR1 is a number value ≥ 1.
+        - ``<QString>`` specifies the waveform histogram to add. The argument is of the form
+          'HIST<NR1>', where NR1 is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1718,8 +1718,8 @@ class Histogram(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '
-              HIST<NR1> ', where NR1 is a number value ≥ 1.
+            - ``<QString>`` specifies the waveform histogram to add. The argument is of the form
+              'HIST<NR1>', where NR1 is a number value ≥ 1.
         """
         return self._addnew
 

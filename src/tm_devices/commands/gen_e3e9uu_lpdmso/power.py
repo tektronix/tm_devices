@@ -5520,12 +5520,12 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+        - ``'OUTPUT1' - 'OUTPUT7'`` are the parameters for the Turn On Time and Turn Off Time
           measurements.
-        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+        - ``'GAINCROSSOVERFREQ', 'PHASECROSSOVERFREQ', 'GM', 'PM'`` are the parameters for the
           Control Loop Response measurement.
-        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
-          PSRR measurement.
+        - ``'MAXPSRR', 'MAXPSRRFREQ', 'MINPSRR', 'MINPSRRFREQ'`` are the parameters for the PSRR
+          measurement.
     """  # noqa: E501
 
 
@@ -6122,12 +6122,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+            - ``'OUTPUT1' - 'OUTPUT7'`` are the parameters for the Turn On Time and Turn Off Time
               measurements.
-            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
-              the Control Loop Response measurement.
-            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
-              the PSRR measurement.
+            - ``'GAINCROSSOVERFREQ', 'PHASECROSSOVERFREQ', 'GM', 'PM'`` are the parameters for the
+              Control Loop Response measurement.
+            - ``'MAXPSRR', 'MAXPSRRFREQ', 'MINPSRR', 'MINPSRRFREQ'`` are the parameters for the PSRR
+              measurement.
         """  # noqa: E501
         return self._minimum
 

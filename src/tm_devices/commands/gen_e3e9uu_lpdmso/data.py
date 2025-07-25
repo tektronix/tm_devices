@@ -374,8 +374,8 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
         - ``RPBinary`` specifies the positive integer data-point representation, with the most
           significant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through 255.
           When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are the DATa and
-          WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ; ``:BN_Fmt`` = RP
-          ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
+          WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` =
+          RP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
         - ``FPBinary`` specifies the floating point (width = 4) data. The range is from -3.4 ×1038
           to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the screen and
           the lower limit is the bottom of the screen. The FPBinary argument is only applicable to
@@ -488,7 +488,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
             - ``RPBinary`` specifies the positive integer data-point representation, with the most
               significant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through
               255. When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are the DATa
-              and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ;
+              and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = BIN ;
               ``:BN_Fmt`` = RP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
             - ``FPBinary`` specifies the floating point (width = 4) data. The range is from -3.4
               ×1038 to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the

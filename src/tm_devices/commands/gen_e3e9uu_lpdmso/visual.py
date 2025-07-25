@@ -312,7 +312,7 @@ class VisualAreaItemVertices(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
-        - ``<NR3>`` , <NR3> specifies the X, Y coordinate pair of each vertex in an area. The first
+        - ``<NR3>, <NR3>`` specifies the X, Y coordinate pair of each vertex in an area. The first
           value is X (time) and the second value is Y (amplitude). There must be a minimum of three
           vertex pairs to create an area. If the specified area exists, the area is changed to the
           shape specified in the arguments. If the specified area does not exist, a new area is
@@ -892,7 +892,7 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
-            - ``<NR3>`` , <NR3> specifies the X, Y coordinate pair of each vertex in an area. The
+            - ``<NR3>, <NR3>`` specifies the X, Y coordinate pair of each vertex in an area. The
               first value is X (time) and the second value is Y (amplitude). There must be a minimum
               of three vertex pairs to create an area. If the specified area exists, the area is
               changed to the shape specified in the arguments. If the specified area does not exist,

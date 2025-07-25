@@ -67,6 +67,8 @@ Commands and Queries:
     - BUS:B<x>:AUTOETHERnet:LOWDATAPLUS?
     - BUS:B<x>:AUTOETHERnet:LOWTHRESHold <NR3>
     - BUS:B<x>:AUTOETHERnet:LOWTHRESHold?
+    - BUS:B<x>:AUTOETHERnet:PACKetview {ON|OFF}
+    - BUS:B<x>:AUTOETHERnet:PACKetview?
     - BUS:B<x>:AUTOETHERnet:SIGNALTYpe {SINGLE|DIFF}
     - BUS:B<x>:AUTOETHERnet:SIGNALTYpe?
     - BUS:B<x>:AUTOETHERnet:SOUrce {CH<x>|MATH<x>|REF<x>}
@@ -75,6 +77,8 @@ Commands and Queries:
     - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs?
     - BUS:B<x>:AUTOETHERnet:SOUrce?
+    - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold <NR3>
+    - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?
     - BUS:B<x>:AUTOETHERnet:TENBASET1S:THRESHold <NR3>
     - BUS:B<x>:AUTOETHERnet:TENBASET1S:THRESHold?
     - BUS:B<x>:AUTOETHERnet:THRESHold <NR3>
@@ -451,6 +455,18 @@ Commands and Queries:
     - BUS:B<x>:PARallel:CLOCk:EDGE?
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
+    - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh <NR3>
+    - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?
+    - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh <NR3>
+    - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?
+    - BUS:B<x>:PCIE:MTHReshold <NR3>
+    - BUS:B<x>:PCIE:MTHReshold?
+    - BUS:B<x>:PCIE:SIGNALTYpe {SINGLE|DIFF}
+    - BUS:B<x>:PCIE:SIGNALTYpe?
+    - BUS:B<x>:PCIE:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
+    - BUS:B<x>:PCIE:SOUrce:DMINus?
+    - BUS:B<x>:PCIE:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
+    - BUS:B<x>:PCIE:SOUrce:DPLUs?
     - BUS:B<x>:PSIFIVe:BITPERiod <NR1>
     - BUS:B<x>:PSIFIVe:BITPERiod?
     - BUS:B<x>:PSIFIVe:BITRate {RATE125K|RATE189K|RATE83K}
@@ -7384,6 +7400,562 @@ class BusBItemPsifive(SCPICmdRead):
               range is -8 V to +8 V.
         """
         return self._threshold
+
+
+class BusBItemPcieSourceDplus(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:SOUrce:DPLUs`` command.
+
+    Description:
+        - This command sets or queries the PCIe dataPlus (SDATAPLUS) source for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
+        - BUS:B<x>:PCIE:SOUrce:DPLUs?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math waveform as the source.
+        - ``REF<x>`` specifies a digital reference waveform as the source.
+    """
+
+
+class BusBItemPcieSourceDminus(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:SOUrce:DMINus`` command.
+
+    Description:
+        - This command sets or queries the PCIe DataMinus (SDATAMINUS) source for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
+        - BUS:B<x>:PCIE:SOUrce:DMINus?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math waveform as the source.
+        - ``REF<x>`` specifies a digital reference waveform as the source.
+    """
+
+
+class BusBItemPcieSource(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:SOUrce`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.dminus``: The ``BUS:B<x>:PCIE:SOUrce:DMINus`` command.
+        - ``.dplus``: The ``BUS:B<x>:PCIE:SOUrce:DPLUs`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._dminus = BusBItemPcieSourceDminus(device, f"{self._cmd_syntax}:DMINus")
+        self._dplus = BusBItemPcieSourceDplus(device, f"{self._cmd_syntax}:DPLUs")
+
+    @property
+    def dminus(self) -> BusBItemPcieSourceDminus:
+        """Return the ``BUS:B<x>:PCIE:SOUrce:DMINus`` command.
+
+        Description:
+            - This command sets or queries the PCIe DataMinus (SDATAMINUS) source for the specified
+              bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DMINus value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
+            - BUS:B<x>:PCIE:SOUrce:DMINus?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math waveform as the source.
+            - ``REF<x>`` specifies a digital reference waveform as the source.
+        """
+        return self._dminus
+
+    @property
+    def dplus(self) -> BusBItemPcieSourceDplus:
+        """Return the ``BUS:B<x>:PCIE:SOUrce:DPLUs`` command.
+
+        Description:
+            - This command sets or queries the PCIe dataPlus (SDATAPLUS) source for the specified
+              bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce:DPLUs value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
+            - BUS:B<x>:PCIE:SOUrce:DPLUs?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math waveform as the source.
+            - ``REF<x>`` specifies a digital reference waveform as the source.
+        """
+        return self._dplus
+
+
+class BusBItemPcieSignaltype(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:SIGNALTYpe`` command.
+
+    Description:
+        - This command sets or queries the PCIe signal type for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:SIGNALTYpe {SINGLE|DIFF}
+        - BUS:B<x>:PCIE:SIGNALTYpe?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``SINGLE`` specifies the Signal Type for PCIE bus as single.
+        - ``DIFF`` specifies the Signal Type for PCIE bus as differential.
+    """
+
+
+class BusBItemPcieMthreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:MTHReshold`` command.
+
+    Description:
+        - This command sets or queries PCIe math source threshold for single ended for the specified
+          bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:MTHReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:MTHReshold?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:MTHReshold value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:MTHReshold <NR3>
+        - BUS:B<x>:PCIE:MTHReshold?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the specified PCIe math source threshold for the specified bus. The valid
+          range is -8.0 V to 8.0 V.
+    """
+
+
+class BusBItemPcieDataplusThresholdHigh(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh`` command.
+
+    Description:
+        - This command sets or queries the PCIe DATA Plus source threshold for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh value`` command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh <NR3>
+        - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the specified PCIe DATA Plus source threshold for the specified bus. The
+          valid range is -8.0 V to 8.0 V.
+    """
+
+
+class BusBItemPcieDataplusThreshold(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAPlus:THRESHold`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus:THRESHold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAPlus:THRESHold?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.high``: The ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._high = BusBItemPcieDataplusThresholdHigh(device, f"{self._cmd_syntax}:HIGh")
+
+    @property
+    def high(self) -> BusBItemPcieDataplusThresholdHigh:
+        """Return the ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh`` command.
+
+        Description:
+            - This command sets or queries the PCIe DATA Plus source threshold for the specified
+              bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh value`` command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh <NR3>
+            - BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the specified PCIe DATA Plus source threshold for the specified bus. The
+              valid range is -8.0 V to 8.0 V.
+        """
+        return self._high
+
+
+class BusBItemPcieDataplus(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAPlus`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAPlus?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.threshold``: The ``BUS:B<x>:PCIE:DATAPlus:THRESHold`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._threshold = BusBItemPcieDataplusThreshold(device, f"{self._cmd_syntax}:THRESHold")
+
+    @property
+    def threshold(self) -> BusBItemPcieDataplusThreshold:
+        """Return the ``BUS:B<x>:PCIE:DATAPlus:THRESHold`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus:THRESHold?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAPlus:THRESHold?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.high``: The ``BUS:B<x>:PCIE:DATAPlus:THRESHold:HIGh`` command.
+        """
+        return self._threshold
+
+
+class BusBItemPcieDataminusThresholdHigh(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh`` command.
+
+    Description:
+        - This command sets or queries the PCIe DATA Minus source threshold for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh value`` command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh <NR3>
+        - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?
+        ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the specified PCIe DATA Minus source threshold for the specified bus. The
+          valid range is -8.0 V to 8.0 V.
+    """
+
+
+class BusBItemPcieDataminusThreshold(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAMinus:THRESHold`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAMinus:THRESHold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAMinus:THRESHold?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.high``: The ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._high = BusBItemPcieDataminusThresholdHigh(device, f"{self._cmd_syntax}:HIGh")
+
+    @property
+    def high(self) -> BusBItemPcieDataminusThresholdHigh:
+        """Return the ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh`` command.
+
+        Description:
+            - This command sets or queries the PCIe DATA Minus source threshold for the specified
+              bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh value`` command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh <NR3>
+            - BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the specified PCIe DATA Minus source threshold for the specified bus. The
+              valid range is -8.0 V to 8.0 V.
+        """
+        return self._high
+
+
+class BusBItemPcieDataminus(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE:DATAMinus`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAMinus?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAMinus?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.threshold``: The ``BUS:B<x>:PCIE:DATAMinus:THRESHold`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._threshold = BusBItemPcieDataminusThreshold(device, f"{self._cmd_syntax}:THRESHold")
+
+    @property
+    def threshold(self) -> BusBItemPcieDataminusThreshold:
+        """Return the ``BUS:B<x>:PCIE:DATAMinus:THRESHold`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAMinus:THRESHold?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PCIE:DATAMinus:THRESHold?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.high``: The ``BUS:B<x>:PCIE:DATAMinus:THRESHold:HIGh`` command.
+        """
+        return self._threshold
+
+
+class BusBItemPcie(SCPICmdRead):
+    """The ``BUS:B<x>:PCIE`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.dataminus``: The ``BUS:B<x>:PCIE:DATAMinus`` command tree.
+        - ``.dataplus``: The ``BUS:B<x>:PCIE:DATAPlus`` command tree.
+        - ``.mthreshold``: The ``BUS:B<x>:PCIE:MTHReshold`` command.
+        - ``.signaltype``: The ``BUS:B<x>:PCIE:SIGNALTYpe`` command.
+        - ``.source``: The ``BUS:B<x>:PCIE:SOUrce`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._dataminus = BusBItemPcieDataminus(device, f"{self._cmd_syntax}:DATAMinus")
+        self._dataplus = BusBItemPcieDataplus(device, f"{self._cmd_syntax}:DATAPlus")
+        self._mthreshold = BusBItemPcieMthreshold(device, f"{self._cmd_syntax}:MTHReshold")
+        self._signaltype = BusBItemPcieSignaltype(device, f"{self._cmd_syntax}:SIGNALTYpe")
+        self._source = BusBItemPcieSource(device, f"{self._cmd_syntax}:SOUrce")
+
+    @property
+    def dataminus(self) -> BusBItemPcieDataminus:
+        """Return the ``BUS:B<x>:PCIE:DATAMinus`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAMinus?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAMinus?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.threshold``: The ``BUS:B<x>:PCIE:DATAMinus:THRESHold`` command tree.
+        """
+        return self._dataminus
+
+    @property
+    def dataplus(self) -> BusBItemPcieDataplus:
+        """Return the ``BUS:B<x>:PCIE:DATAPlus`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:DATAPlus?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:DATAPlus?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.threshold``: The ``BUS:B<x>:PCIE:DATAPlus:THRESHold`` command tree.
+        """
+        return self._dataplus
+
+    @property
+    def mthreshold(self) -> BusBItemPcieMthreshold:
+        """Return the ``BUS:B<x>:PCIE:MTHReshold`` command.
+
+        Description:
+            - This command sets or queries PCIe math source threshold for single ended for the
+              specified bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:MTHReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:MTHReshold?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:MTHReshold value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:MTHReshold <NR3>
+            - BUS:B<x>:PCIE:MTHReshold?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the specified PCIe math source threshold for the specified bus. The valid
+              range is -8.0 V to 8.0 V.
+        """
+        return self._mthreshold
+
+    @property
+    def signaltype(self) -> BusBItemPcieSignaltype:
+        """Return the ``BUS:B<x>:PCIE:SIGNALTYpe`` command.
+
+        Description:
+            - This command sets or queries the PCIe signal type for the specified bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:PCIE:SIGNALTYpe value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:PCIE:SIGNALTYpe {SINGLE|DIFF}
+            - BUS:B<x>:PCIE:SIGNALTYpe?
+            ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``SINGLE`` specifies the Signal Type for PCIE bus as single.
+            - ``DIFF`` specifies the Signal Type for PCIE bus as differential.
+        """
+        return self._signaltype
+
+    @property
+    def source(self) -> BusBItemPcieSource:
+        """Return the ``BUS:B<x>:PCIE:SOUrce`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE:SOUrce?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.dminus``: The ``BUS:B<x>:PCIE:SOUrce:DMINus`` command.
+            - ``.dplus``: The ``BUS:B<x>:PCIE:SOUrce:DPLUs`` command.
+        """
+        return self._source
 
 
 class BusBItemParallelClockIsclocked(SCPICmdWrite, SCPICmdRead):
@@ -21139,6 +21711,86 @@ class BusBItemAutoethernetTenbaset1s(SCPICmdRead):
         return self._threshold
 
 
+class BusBItemAutoethernetTbt1sMthreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold`` command.
+
+    Description:
+        - This command sets or queries Auto Ethernet Bus with speed 10 Base-T1S math source
+          threshold for single-ended for the specified bus.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold value`` command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold <NR3>
+        - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?
+        ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` specifies the AutoEthernet D+ source threshold for the specified bus, in volts.
+    """
+
+
+class BusBItemAutoethernetTbt1s(SCPICmdRead):
+    """The ``BUS:B<x>:AUTOETHERnet:TBT1s`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet:TBT1s?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUTOETHERnet:TBT1s?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
+
+    Properties:
+        - ``.mthreshold``: The ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._mthreshold = BusBItemAutoethernetTbt1sMthreshold(
+            device, f"{self._cmd_syntax}:MTHReshold"
+        )
+
+    @property
+    def mthreshold(self) -> BusBItemAutoethernetTbt1sMthreshold:
+        """Return the ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold`` command.
+
+        Description:
+            - This command sets or queries Auto Ethernet Bus with speed 10 Base-T1S math source
+              threshold for single-ended for the specified bus.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold value`` command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold <NR3>
+            - BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold?
+            ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` specifies the AutoEthernet D+ source threshold for the specified bus, in
+              volts.
+        """
+        return self._mthreshold
+
+
 class BusBItemAutoethernetSourceDplus(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs`` command.
 
@@ -21336,6 +21988,33 @@ class BusBItemAutoethernetSignaltype(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class BusBItemAutoethernetPacketview(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:AUTOETHERnet:PACKetview`` command.
+
+    Description:
+        - This command sets or queries the Auto Ethernet bus Packet View when speed is selected as
+          10 Base-T1S.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet:PACKetview?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUTOETHERnet:PACKetview?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:AUTOETHERnet:PACKetview value`` command.
+
+    SCPI Syntax:
+        ```
+        - BUS:B<x>:AUTOETHERnet:PACKetview {ON|OFF}
+        - BUS:B<x>:AUTOETHERnet:PACKetview?
+        ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``ON`` sets the packet view for the decode to on.
+        - ``OFF`` sets the packet view for the decode to off.
+    """
+
+
 class BusBItemAutoethernetLowthreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUTOETHERnet:LOWTHRESHold`` command.
 
@@ -21524,8 +22203,10 @@ class BusBItemAutoethernet(SCPICmdRead):
         - ``.lowdataminus``: The ``BUS:B<x>:AUTOETHERnet:LOWDATAMINus`` command.
         - ``.lowdataplus``: The ``BUS:B<x>:AUTOETHERnet:LOWDATAPLUS`` command.
         - ``.lowthreshold``: The ``BUS:B<x>:AUTOETHERnet:LOWTHRESHold`` command.
+        - ``.packetview``: The ``BUS:B<x>:AUTOETHERnet:PACKetview`` command.
         - ``.signaltype``: The ``BUS:B<x>:AUTOETHERnet:SIGNALTYpe`` command.
         - ``.source``: The ``BUS:B<x>:AUTOETHERnet:SOUrce`` command.
+        - ``.tbt1s``: The ``BUS:B<x>:AUTOETHERnet:TBT1s`` command tree.
         - ``.tenbaset1s``: The ``BUS:B<x>:AUTOETHERnet:TENBASET1S`` command tree.
         - ``.threshold``: The ``BUS:B<x>:AUTOETHERnet:THRESHold`` command.
         - ``.type``: The ``BUS:B<x>:AUTOETHERnet:TYPe`` command.
@@ -21549,8 +22230,10 @@ class BusBItemAutoethernet(SCPICmdRead):
         self._lowthreshold = BusBItemAutoethernetLowthreshold(
             device, f"{self._cmd_syntax}:LOWTHRESHold"
         )
+        self._packetview = BusBItemAutoethernetPacketview(device, f"{self._cmd_syntax}:PACKetview")
         self._signaltype = BusBItemAutoethernetSignaltype(device, f"{self._cmd_syntax}:SIGNALTYpe")
         self._source = BusBItemAutoethernetSource(device, f"{self._cmd_syntax}:SOUrce")
+        self._tbt1s = BusBItemAutoethernetTbt1s(device, f"{self._cmd_syntax}:TBT1s")
         self._tenbaset1s = BusBItemAutoethernetTenbaset1s(device, f"{self._cmd_syntax}:TENBASET1S")
         self._threshold = BusBItemAutoethernetThreshold(device, f"{self._cmd_syntax}:THRESHold")
         self._type = BusBItemAutoethernetType(device, f"{self._cmd_syntax}:TYPe")
@@ -21743,6 +22426,36 @@ class BusBItemAutoethernet(SCPICmdRead):
         return self._lowthreshold
 
     @property
+    def packetview(self) -> BusBItemAutoethernetPacketview:
+        """Return the ``BUS:B<x>:AUTOETHERnet:PACKetview`` command.
+
+        Description:
+            - This command sets or queries the Auto Ethernet bus Packet View when speed is selected
+              as 10 Base-T1S.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet:PACKetview?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:AUTOETHERnet:PACKetview?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:AUTOETHERnet:PACKetview value`` command.
+
+        SCPI Syntax:
+            ```
+            - BUS:B<x>:AUTOETHERnet:PACKetview {ON|OFF}
+            - BUS:B<x>:AUTOETHERnet:PACKetview?
+            ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``ON`` sets the packet view for the decode to on.
+            - ``OFF`` sets the packet view for the decode to off.
+        """
+        return self._packetview
+
+    @property
     def signaltype(self) -> BusBItemAutoethernetSignaltype:
         """Return the ``BUS:B<x>:AUTOETHERnet:SIGNALTYpe`` command.
 
@@ -21806,6 +22519,23 @@ class BusBItemAutoethernet(SCPICmdRead):
             - ``.dplus``: The ``BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs`` command.
         """
         return self._source
+
+    @property
+    def tbt1s(self) -> BusBItemAutoethernetTbt1s:
+        """Return the ``BUS:B<x>:AUTOETHERnet:TBT1s`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet:TBT1s?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUTOETHERnet:TBT1s?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
+
+        Sub-properties:
+            - ``.mthreshold``: The ``BUS:B<x>:AUTOETHERnet:TBT1s:MTHReshold`` command.
+        """
+        return self._tbt1s
 
     @property
     def tenbaset1s(self) -> BusBItemAutoethernetTenbaset1s:
@@ -23411,6 +24141,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.nrz``: The ``BUS:B<x>:NRZ`` command tree.
         - ``.onewire``: The ``BUS:B<x>:ONEWIRe`` command tree.
         - ``.parallel``: The ``BUS:B<x>:PARallel`` command tree.
+        - ``.pcie``: The ``BUS:B<x>:PCIE`` command tree.
         - ``.psifive``: The ``BUS:B<x>:PSIFIVe`` command tree.
         - ``.rs232c``: The ``BUS:B<x>:RS232C`` command tree.
         - ``.s8b10b``: The ``BUS:B<x>:S8B10B`` command tree.
@@ -23451,6 +24182,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._nrz = BusBItemNrz(device, f"{self._cmd_syntax}:NRZ")
         self._onewire = BusBItemOnewire(device, f"{self._cmd_syntax}:ONEWIRe")
         self._parallel = BusBItemParallel(device, f"{self._cmd_syntax}:PARallel")
+        self._pcie = BusBItemPcie(device, f"{self._cmd_syntax}:PCIE")
         self._psifive = BusBItemPsifive(device, f"{self._cmd_syntax}:PSIFIVe")
         self._rs232c = BusBItemRs232c(device, f"{self._cmd_syntax}:RS232C")
         self._s8b10b = BusBItemS8b10b(device, f"{self._cmd_syntax}:S8B10B")
@@ -23527,8 +24259,10 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.lowdataminus``: The ``BUS:B<x>:AUTOETHERnet:LOWDATAMINus`` command.
             - ``.lowdataplus``: The ``BUS:B<x>:AUTOETHERnet:LOWDATAPLUS`` command.
             - ``.lowthreshold``: The ``BUS:B<x>:AUTOETHERnet:LOWTHRESHold`` command.
+            - ``.packetview``: The ``BUS:B<x>:AUTOETHERnet:PACKetview`` command.
             - ``.signaltype``: The ``BUS:B<x>:AUTOETHERnet:SIGNALTYpe`` command.
             - ``.source``: The ``BUS:B<x>:AUTOETHERnet:SOUrce`` command.
+            - ``.tbt1s``: The ``BUS:B<x>:AUTOETHERnet:TBT1s`` command tree.
             - ``.tenbaset1s``: The ``BUS:B<x>:AUTOETHERnet:TENBASET1S`` command tree.
             - ``.threshold``: The ``BUS:B<x>:AUTOETHERnet:THRESHold`` command.
             - ``.type``: The ``BUS:B<x>:AUTOETHERnet:TYPe`` command.
@@ -23997,6 +24731,27 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._parallel
 
     @property
+    def pcie(self) -> BusBItemPcie:
+        """Return the ``BUS:B<x>:PCIE`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PCIE?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PCIE?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.dataminus``: The ``BUS:B<x>:PCIE:DATAMinus`` command tree.
+            - ``.dataplus``: The ``BUS:B<x>:PCIE:DATAPlus`` command tree.
+            - ``.mthreshold``: The ``BUS:B<x>:PCIE:MTHReshold`` command.
+            - ``.signaltype``: The ``BUS:B<x>:PCIE:SIGNALTYpe`` command.
+            - ``.source``: The ``BUS:B<x>:PCIE:SOUrce`` command tree.
+        """
+        return self._pcie
+
+    @property
     def psifive(self) -> BusBItemPsifive:
         """Return the ``BUS:B<x>:PSIFIVe`` command tree.
 
@@ -24392,6 +25147,7 @@ class Bus(SCPICmdRead):
             - ``.nrz``: The ``BUS:B<x>:NRZ`` command tree.
             - ``.onewire``: The ``BUS:B<x>:ONEWIRe`` command tree.
             - ``.parallel``: The ``BUS:B<x>:PARallel`` command tree.
+            - ``.pcie``: The ``BUS:B<x>:PCIE`` command tree.
             - ``.psifive``: The ``BUS:B<x>:PSIFIVe`` command tree.
             - ``.rs232c``: The ``BUS:B<x>:RS232C`` command tree.
             - ``.s8b10b``: The ``BUS:B<x>:S8B10B`` command tree.

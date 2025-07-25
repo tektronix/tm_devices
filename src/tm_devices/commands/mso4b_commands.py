@@ -415,6 +415,7 @@ class MSO4BCommandConstants:
     # EITHER = "EITHer"
     # EITHER = "EITher"
     ELLIPTICAL = "ELLIPTICAL"  # ELLiptical
+    EMULATED = "EMULATED"
     END = "END"
     ENDOFPACKET = "ENDOFPACKET"  # ENDOFPACKet
     ENDXFER = "ENDXFER"
@@ -850,6 +851,7 @@ class MSO4BCommandConstants:
     # NORMAL = "NORmal"
     NOSTATION = "NOSTATION"  # NOSTATion
     NOTE = "NOTE"
+    NOTEQUAL = "NOTEQUAL"  # NOTEQual
     NOTEQUALS = "NOTEQUALS"  # NOTEQuals
     NRDY = "NRDY"
     NTIMES = "NTIMES"
@@ -889,6 +891,7 @@ class MSO4BCommandConstants:
     OPTIONALPARAM = "OPTIONALPARAM"  # OPTIONALPARam
     OR = "OR"
     ORDSET = "ORDSET"
+    ORIGINAL = "ORIGINAL"
     OSET = "OSET"
     OTHER = "OTHER"
     OUT = "OUT"
