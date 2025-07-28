@@ -152,13 +152,13 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 6c5418a077bd954e7078087a655421b85772095b  # frozen: v0.12.4
+    rev: 73b0f6d59bbfcb75e17a4653d581c9dfaca13969  # frozen: v0.12.5
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
   - repo: https://github.com/PyCQA/docformatter
-    rev: e73b8ba0c1316be565983236c72e653ad44e6b66  # frozen: v1.7.7
+    rev: 3c8d549eb9d99221d06ce818510c51db0601b90f  # frozen: v1.7.8-rc1
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
