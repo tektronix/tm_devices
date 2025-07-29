@@ -13,7 +13,7 @@ Commands and Queries:
     - CUSTOM:GATE<x>:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4|REF1|REF2|REF3|REF4 }
     - CUSTOM:GATE<x>:START <NR3>
     - CUSTOM:GATE<x>:WIDth <NR3>
-    - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
+    - CUSTOM:SELECT:GATE<x> {ON|OFF|1|0}
     ```
 """
 
@@ -41,7 +41,7 @@ class CustomSelectGateItem(ValidatedDynamicNumberCmd, SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
+        - CUSTOM:SELECT:GATE<x> {ON|OFF|1|0}
         ```
 
     Info:
@@ -83,7 +83,7 @@ class CustomSelect(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
+            - CUSTOM:SELECT:GATE<x> {ON|OFF|1|0}
             ```
 
         Info:

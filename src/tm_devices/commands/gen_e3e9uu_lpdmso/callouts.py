@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - CALLOUTS:ADDNew <QString>
-    - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+    - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
     - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
     - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
     - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
@@ -34,6 +34,7 @@ Commands and Queries:
     - CALLOUTS:CALLOUT<x>:TEXT?
     - CALLOUTS:CALLOUT<x>:TYPE {NOTE|ARROW|RECTANGLE|BOOKMARK}
     - CALLOUTS:CALLOUT<x>:TYPE?
+    - CALLOUTS:DELete <QString>
     ```
 """
 
@@ -48,6 +49,28 @@ from ..helpers import (
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
+
+
+class CalloutsDelete(SCPICmdWrite):
+    """The ``CALLOUTS:DELete`` command.
+
+    Description:
+        - This command deletes the specified callout. A Note is the default callout type.
+
+    Usage:
+        - Using the ``.write(value)`` method will send the ``CALLOUTS:DELete value`` command.
+
+    SCPI Syntax:
+        ```
+        - CALLOUTS:DELete <QString>
+        ```
+
+    Info:
+        - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+          <NR1> is a number value ≥ 1.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class CalloutsCalloutItemType(SCPICmdWrite, SCPICmdRead):
@@ -580,7 +603,7 @@ class CalloutsCalloutItemBookmarkSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+        - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
         - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
         ```
 
@@ -628,7 +651,7 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+            - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
             - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
             ```
 
@@ -859,6 +882,7 @@ class Callouts(SCPICmdRead):
     Properties:
         - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
         - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
+        - ``.delete``: The ``CALLOUTS:DELete`` command.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALLOUTS") -> None:
@@ -867,6 +891,7 @@ class Callouts(SCPICmdRead):
         self._callout: Dict[int, CalloutsCalloutItem] = DefaultDictPassKeyToFactory(
             lambda x: CalloutsCalloutItem(device, f"{self._cmd_syntax}:CALLOUT{x}")
         )
+        self._delete = CalloutsDelete(device, f"{self._cmd_syntax}:DELete")
 
     @property
     def addnew(self) -> CalloutsAddnew:
@@ -907,3 +932,24 @@ class Callouts(SCPICmdRead):
             - ``.type``: The ``CALLOUTS:CALLOUT<x>:TYPE`` command.
         """
         return self._callout
+
+    @property
+    def delete(self) -> CalloutsDelete:
+        """Return the ``CALLOUTS:DELete`` command.
+
+        Description:
+            - This command deletes the specified callout. A Note is the default callout type.
+
+        Usage:
+            - Using the ``.write(value)`` method will send the ``CALLOUTS:DELete value`` command.
+
+        SCPI Syntax:
+            ```
+            - CALLOUTS:DELete <QString>
+            ```
+
+        Info:
+            - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+              <NR1> is a number value ≥ 1.
+        """
+        return self._delete

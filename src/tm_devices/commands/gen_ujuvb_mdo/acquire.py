@@ -12,7 +12,7 @@ Commands and Queries:
     - ACQuire:FASTAcq
     - ACQuire:FASTAcq:PALEtte {NORMal|TEMPErature|SPECTral|INVERTed}
     - ACQuire:FASTAcq:PALEtte?
-    - ACQuire:FASTAcq:STATE {0|1|OFF|ON}
+    - ACQuire:FASTAcq:STATE {ON|OFF|1|0}
     - ACQuire:FASTAcq:STATE?
     - ACQuire:MAGnivu {ON|OFF|<NR1>}
     - ACQuire:MAGnivu?
@@ -384,7 +384,7 @@ class AcquireFastacqState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:FASTAcq:STATE {0|1|OFF|ON}
+        - ACQuire:FASTAcq:STATE {ON|OFF|1|0}
         - ACQuire:FASTAcq:STATE?
         ```
 
@@ -502,7 +502,7 @@ class AcquireFastacq(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:FASTAcq:STATE {0|1|OFF|ON}
+            - ACQuire:FASTAcq:STATE {ON|OFF|1|0}
             - ACQuire:FASTAcq:STATE?
             ```
 

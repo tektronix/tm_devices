@@ -61,7 +61,8 @@ class DataWidth(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR1>`` is an integer that indicates the number of bytes per point for the outgoing
-          waveform data when queried using the CURVe? command.
+          waveform data when queried using the CURVe? command. For analog channels, NR1 can be 1 or
+          2.
     """
 
 
@@ -70,19 +71,12 @@ class DataStop(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the last data point that will be transferred when using the
-          CURVE? query. When using the CURVE command, ``DATa:STOP`` is ignored. This command allows
-          for the transfer of partial waveforms to the controller. If <NR1> is greater than the
-          record length, then data will be transferred up to the record length. If both
-          ``DATa:STARt`` and ``DATa:STOP`` are greater than the record length, the last data point
-          in the record is returned. ``DATa:STARt`` and ``DATa:STOP`` are order independent. When
-          ``DATa:STOP`` is less than ``DATa:STARt``, the values will be swapped internally for the
-          CURVE? query. If you always want to transfer complete waveforms, set ``DATa:STARt`` to 1
-          and ``DATa:STOP`` to the maximum record length, or larger. Changes to the record length
-          value are not automatically reflected in the ``DATa:STOP`` value. As record length is
-          varied, the ``DATa:STOP`` value must be explicitly changed to ensure the entire record is
-          transmitted. In other words, curve results will not automatically and correctly reflect
-          increases in record length if the distance from ``DATa:STARt`` to ``DATa:STOP`` stays
-          smaller than the increased record length.
+          CURVE? query. This command allows for the transfer of partial waveforms to the controller.
+          Changes to the record length value are not automatically reflected in the ``data:stop``
+          value. As record length is varied, the ``DATa:STOP`` value must be explicitly changed to
+          ensure the entire record is transmitted. In other words, curve results will not
+          automatically and correctly reflect increases in record length if the distance from
+          ``DATa:STARt`` to ``DATa:STOP`` stays smaller than the increased record length.
 
     Usage:
         - Using the ``.query()`` method will send the ``DATa:STOP?`` query.
@@ -98,7 +92,9 @@ class DataStop(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR1>`` is the last data point that will be transferred, which ranges from 1 to the
-          record length.
+          record length. If <NR1> is greater than the record length, then data will be transferred
+          up to the record length. If both ``DATa:STARt`` and ``DATa:STOP`` are greater than the
+          record length, the last data point in the record is returned.
     """
 
 
@@ -107,11 +103,7 @@ class DataStart(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the starting data point for waveform transfer. This command
-          allows for the transfer of partial waveforms to and from the instrument. Data will be
-          transferred from <NR1> to ``DATa:STOP`` or the record length, whichever is less. If <NR1>
-          is greater than the record length, the last data point in the record is transferred.
-          ``DATa:STARt`` and ``DATa:STOP`` are order independent. When ``DATa:STOP`` is greater than
-          ``DATa:STARt``, the values will be swapped internally for the CURVE? query.
+          allows for the transfer of partial waveforms to and from the instrument.
 
     Usage:
         - Using the ``.query()`` method will send the ``DATa:STARt?`` query.
@@ -127,7 +119,11 @@ class DataStart(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR1>`` is the first data point that will be transferred, which ranges from 1 to the
-          record length.
+          record length. Data will be transferred from <NR1> to ``DATa:STOP`` or the record length,
+          whichever is less. If <NR1> is greater than the record length, the last data point in the
+          record is transferred.
+        - ``DATa:STARt`` and ``DATa:STOP`` are order independent. When ``DATa:STOP`` is greater than
+          ``DATa:STARt``, the values will be swapped internally for the CURVE? query.
     """
 
 
@@ -560,12 +556,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command sets or queries the starting data point for waveform transfer. This
-              command allows for the transfer of partial waveforms to and from the instrument. Data
-              will be transferred from <NR1> to ``DATa:STOP`` or the record length, whichever is
-              less. If <NR1> is greater than the record length, the last data point in the record is
-              transferred. ``DATa:STARt`` and ``DATa:STOP`` are order independent. When
-              ``DATa:STOP`` is greater than ``DATa:STARt``, the values will be swapped internally
-              for the CURVE? query.
+              command allows for the transfer of partial waveforms to and from the instrument.
 
         Usage:
             - Using the ``.query()`` method will send the ``DATa:STARt?`` query.
@@ -581,7 +572,11 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``<NR1>`` is the first data point that will be transferred, which ranges from 1 to the
-              record length.
+              record length. Data will be transferred from <NR1> to ``DATa:STOP`` or the record
+              length, whichever is less. If <NR1> is greater than the record length, the last data
+              point in the record is transferred.
+            - ``DATa:STARt`` and ``DATa:STOP`` are order independent. When ``DATa:STOP`` is greater
+              than ``DATa:STARt``, the values will be swapped internally for the CURVE? query.
         """
         return self._start
 
@@ -591,16 +586,9 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command sets or queries the last data point that will be transferred when using
-              the CURVE? query. When using the CURVE command, ``DATa:STOP`` is ignored. This command
-              allows for the transfer of partial waveforms to the controller. If <NR1> is greater
-              than the record length, then data will be transferred up to the record length. If both
-              ``DATa:STARt`` and ``DATa:STOP`` are greater than the record length, the last data
-              point in the record is returned. ``DATa:STARt`` and ``DATa:STOP`` are order
-              independent. When ``DATa:STOP`` is less than ``DATa:STARt``, the values will be
-              swapped internally for the CURVE? query. If you always want to transfer complete
-              waveforms, set ``DATa:STARt`` to 1 and ``DATa:STOP`` to the maximum record length, or
-              larger. Changes to the record length value are not automatically reflected in the
-              ``DATa:STOP`` value. As record length is varied, the ``DATa:STOP`` value must be
+              the CURVE? query. This command allows for the transfer of partial waveforms to the
+              controller. Changes to the record length value are not automatically reflected in the
+              ``data:stop`` value. As record length is varied, the ``DATa:STOP`` value must be
               explicitly changed to ensure the entire record is transmitted. In other words, curve
               results will not automatically and correctly reflect increases in record length if the
               distance from ``DATa:STARt`` to ``DATa:STOP`` stays smaller than the increased record
@@ -620,7 +608,9 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``<NR1>`` is the last data point that will be transferred, which ranges from 1 to the
-              record length.
+              record length. If <NR1> is greater than the record length, then data will be
+              transferred up to the record length. If both ``DATa:STARt`` and ``DATa:STOP`` are
+              greater than the record length, the last data point in the record is returned.
         """
         return self._stop
 
@@ -647,6 +637,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``<NR1>`` is an integer that indicates the number of bytes per point for the outgoing
-              waveform data when queried using the CURVe? command.
+              waveform data when queried using the CURVe? command. For analog channels, NR1 can be 1
+              or 2.
         """
         return self._width

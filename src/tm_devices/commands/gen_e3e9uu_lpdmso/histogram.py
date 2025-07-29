@@ -42,7 +42,7 @@ Commands and Queries:
     - HISTogram:HISTogram<x>:MEASurement:PHITs?
     - HISTogram:HISTogram<x>:MEASurement:PK2PK {ON|OFF}
     - HISTogram:HISTogram<x>:MEASurement:PK2PK?
-    - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt| HITS| MAX| MIN| PK2PK| MODE| MEAN| MEDian| PHITs| STDDev| ONESigma| TWOSigma| THRSigma},{ALLAcqs| CURRentacq| HISTory},{MAXimum| MEAN| MINimum| PK2PK| POPUlation| STDDev}
+    - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt|HITS|MAX|MIN|PK2PK|MODE|MEAN|MEDian|PHITs|STDDev|ONESigma|TWOSigma|THRSigma,ALLAcqs|CURRentacq|HISTory,MAXimum|MEAN|MINimum|PK2PK|POPUlation|STDDev}
     - HISTogram:HISTogram<x>:MEASurement:STDDev {ON|OFF}
     - HISTogram:HISTogram<x>:MEASurement:STDDev?
     - HISTogram:HISTogram<x>:MEASurement:THRSigma {ON|OFF}
@@ -222,7 +222,7 @@ class HistogramHistogramItemSave(SCPICmdWrite):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``<QString>`` is the file path to save the .csv file to.
+        - ``<QString>`` is the file path to save the.csv file to.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -232,7 +232,7 @@ class HistogramHistogramItemMeasurementTwosigma(SCPICmdWrite, SCPICmdRead):
     """The ``HISTogram:HISTogram<x>:MEASurement:TWOSigma`` command.
 
     Description:
-        - This command sets or queries whether the µ±2(sigma) measurement is enabled on the
+        - This command sets or queries whether the μ±2(sigma) measurement is enabled on the
           histogram.
 
     Usage:
@@ -252,8 +252,8 @@ class HistogramHistogramItemMeasurementTwosigma(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the µ±2(sigma) measurement.
-        - ``OFF`` disables the µ±2(sigma) measurement.
+        - ``ON`` enables the μ±2(sigma) measurement.
+        - ``OFF`` disables the μ±2(sigma) measurement.
     """
 
 
@@ -261,7 +261,7 @@ class HistogramHistogramItemMeasurementThrsigma(SCPICmdWrite, SCPICmdRead):
     """The ``HISTogram:HISTogram<x>:MEASurement:THRSigma`` command.
 
     Description:
-        - This command sets or queries whether the µ±3(sigma) measurement is enabled on the
+        - This command sets or queries whether the μ±3(sigma) measurement is enabled on the
           histogram.
 
     Usage:
@@ -281,8 +281,8 @@ class HistogramHistogramItemMeasurementThrsigma(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the µ±3(sigma) measurement.
-        - ``OFF`` disables the µ±3(sigma) measurement.
+        - ``ON`` enables the μ±3(sigma) measurement.
+        - ``OFF`` disables the μ±3(sigma) measurement.
     """
 
 
@@ -334,7 +334,7 @@ class HistogramHistogramItemMeasurementResults(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt| HITS| MAX| MIN| PK2PK| MODE| MEAN| MEDian| PHITs| STDDev| ONESigma| TWOSigma| THRSigma},{ALLAcqs| CURRentacq| HISTory},{MAXimum| MEAN| MINimum| PK2PK| POPUlation| STDDev}
+        - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt|HITS|MAX|MIN|PK2PK|MODE|MEAN|MEDian|PHITs|STDDev|ONESigma|TWOSigma|THRSigma,ALLAcqs|CURRentacq|HISTory,MAXimum|MEAN|MINimum|PK2PK|POPUlation|STDDev}
         ```
 
     Info:
@@ -345,16 +345,16 @@ class HistogramHistogramItemMeasurementResults(SCPICmdReadWithArguments):
         - ``MIN`` specifies the Min as the histogram measurement to return results for.
         - ``PK2PK`` specifies the Peak-to-peak as the histogram measurement or statistic to return
           results for.
-        - ``MODE`` specifies the Mode as the histogram measurement to return results for.
+        - ``MODE`` specifies the Mode as the histogrammeasurement to return results for.
         - ``MEAN`` specifies the Mean as the histogram measurement or statistic to return results
           for.
         - ``MEDian`` specifies the Median as the histogram measurement to return results for.
         - ``PHITs`` specifies the Peak Hits as the histogram measurement to return results for.
         - ``STDDev`` specifies the Standard Deviation as the histogram measurement or statistic to
           return results for.
-        - ``ONESigma`` specifies the µ±1(sigma) as the histogram measurement to return results for.
-        - ``TWOSigma`` specifies the µ±2(sigma) as the histogram measurement to return results for.
-        - ``THRSigma`` specifies the µ±3(sigma) as the histogram measurement to return results for.
+        - ``ONESigma`` specifies the μ±1(sigma) as the histogram measurement to return results for.
+        - ``TWOSigma`` specifies the μ±2(sigma) as the histogram measurement to return results for.
+        - ``THRSigma`` specifies the μ±3(sigma) as the histogram measurement to return results for.
         - ``ALLAcqs`` specifies the All Acquisitions as the acquisitions to return results for.
         - ``CURRentacq`` specifies the Current Acquisitions as the acquisitions to return results
           for.
@@ -427,7 +427,7 @@ class HistogramHistogramItemMeasurementOnesigma(SCPICmdWrite, SCPICmdRead):
     """The ``HISTogram:HISTogram<x>:MEASurement:ONESigma`` command.
 
     Description:
-        - This command sets or queries whether the µ±1(sigma) measurement is enabled on the
+        - This command sets or queries whether the μ±1(sigma) measurement is enabled on the
           histogram.
 
     Usage:
@@ -447,8 +447,8 @@ class HistogramHistogramItemMeasurementOnesigma(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the µ±1(sigma) measurement.
-        - ``OFF`` disables the µ±1(sigma) measurement.
+        - ``ON`` enables the μ±1(sigma) measurement.
+        - ``OFF`` disables the μ±1(sigma) measurement.
     """
 
 
@@ -475,8 +475,8 @@ class HistogramHistogramItemMeasurementMode(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the Mode measurement.
-        - ``OFF`` disables the Mode measurement.
+        - ``HORizontal`` sets the histogram mode to horizontal.
+        - ``VERTical`` sets the histogram mode to vertical.
     """
 
 
@@ -905,8 +905,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the Mode measurement.
-            - ``OFF`` disables the Mode measurement.
+            - ``HORizontal`` sets the histogram mode to horizontal.
+            - ``VERTical`` sets the histogram mode to vertical.
         """
         return self._mode
 
@@ -915,7 +915,7 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
         """Return the ``HISTogram:HISTogram<x>:MEASurement:ONESigma`` command.
 
         Description:
-            - This command sets or queries whether the µ±1(sigma) measurement is enabled on the
+            - This command sets or queries whether the μ±1(sigma) measurement is enabled on the
               histogram.
 
         Usage:
@@ -935,8 +935,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the µ±1(sigma) measurement.
-            - ``OFF`` disables the µ±1(sigma) measurement.
+            - ``ON`` enables the μ±1(sigma) measurement.
+            - ``OFF`` disables the μ±1(sigma) measurement.
         """
         return self._onesigma
 
@@ -1020,7 +1020,7 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt| HITS| MAX| MIN| PK2PK| MODE| MEAN| MEDian| PHITs| STDDev| ONESigma| TWOSigma| THRSigma},{ALLAcqs| CURRentacq| HISTory},{MAXimum| MEAN| MINimum| PK2PK| POPUlation| STDDev}
+            - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt|HITS|MAX|MIN|PK2PK|MODE|MEAN|MEDian|PHITs|STDDev|ONESigma|TWOSigma|THRSigma,ALLAcqs|CURRentacq|HISTory,MAXimum|MEAN|MINimum|PK2PK|POPUlation|STDDev}
             ```
 
         Info:
@@ -1031,18 +1031,18 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - ``MIN`` specifies the Min as the histogram measurement to return results for.
             - ``PK2PK`` specifies the Peak-to-peak as the histogram measurement or statistic to
               return results for.
-            - ``MODE`` specifies the Mode as the histogram measurement to return results for.
+            - ``MODE`` specifies the Mode as the histogrammeasurement to return results for.
             - ``MEAN`` specifies the Mean as the histogram measurement or statistic to return
               results for.
             - ``MEDian`` specifies the Median as the histogram measurement to return results for.
             - ``PHITs`` specifies the Peak Hits as the histogram measurement to return results for.
             - ``STDDev`` specifies the Standard Deviation as the histogram measurement or statistic
               to return results for.
-            - ``ONESigma`` specifies the µ±1(sigma) as the histogram measurement to return results
+            - ``ONESigma`` specifies the μ±1(sigma) as the histogram measurement to return results
               for.
-            - ``TWOSigma`` specifies the µ±2(sigma) as the histogram measurement to return results
+            - ``TWOSigma`` specifies the μ±2(sigma) as the histogram measurement to return results
               for.
-            - ``THRSigma`` specifies the µ±3(sigma) as the histogram measurement to return results
+            - ``THRSigma`` specifies the μ±3(sigma) as the histogram measurement to return results
               for.
             - ``ALLAcqs`` specifies the All Acquisitions as the acquisitions to return results for.
             - ``CURRentacq`` specifies the Current Acquisitions as the acquisitions to return
@@ -1089,7 +1089,7 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
         """Return the ``HISTogram:HISTogram<x>:MEASurement:THRSigma`` command.
 
         Description:
-            - This command sets or queries whether the µ±3(sigma) measurement is enabled on the
+            - This command sets or queries whether the μ±3(sigma) measurement is enabled on the
               histogram.
 
         Usage:
@@ -1109,8 +1109,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the µ±3(sigma) measurement.
-            - ``OFF`` disables the µ±3(sigma) measurement.
+            - ``ON`` enables the μ±3(sigma) measurement.
+            - ``OFF`` disables the μ±3(sigma) measurement.
         """
         return self._thrsigma
 
@@ -1119,7 +1119,7 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
         """Return the ``HISTogram:HISTogram<x>:MEASurement:TWOSigma`` command.
 
         Description:
-            - This command sets or queries whether the µ±2(sigma) measurement is enabled on the
+            - This command sets or queries whether the μ±2(sigma) measurement is enabled on the
               histogram.
 
         Usage:
@@ -1139,8 +1139,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the µ±2(sigma) measurement.
-            - ``OFF`` disables the µ±2(sigma) measurement.
+            - ``ON`` enables the μ±2(sigma) measurement.
+            - ``OFF`` disables the μ±2(sigma) measurement.
         """
         return self._twosigma
 
@@ -1495,7 +1495,7 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``<QString>`` is the file path to save the .csv file to.
+            - ``<QString>`` is the file path to save the.csv file to.
         """
         return self._save
 
@@ -1630,8 +1630,8 @@ class HistogramDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form
-          'HIST<NR1>', where NR1 is a number value ≥ 1.
+        - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form '
+          HIST<NR1> ', where NR1 is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1758,7 +1758,7 @@ class Histogram(SCPICmdRead):
 
         Info:
             - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form
-              'HIST<NR1>', where NR1 is a number value ≥ 1.
+              ' HIST<NR1> ', where NR1 is a number value ≥ 1.
         """
         return self._delete
 

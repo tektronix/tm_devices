@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - DISPlay:PLOT:STATe {0|1|OFF|ON}
+    - DISPlay:PLOT:STATe {ON|OFF|1|0}
     - DISPlay:PLOT:STATe?
     ```
 """
@@ -38,7 +38,7 @@ class DisplayPlotState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISPlay:PLOT:STATe {0|1|OFF|ON}
+        - DISPlay:PLOT:STATe {ON|OFF|1|0}
         - DISPlay:PLOT:STATe?
         ```
 
@@ -80,7 +80,7 @@ class DisplayPlot(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISPlay:PLOT:STATe {0|1|OFF|ON}
+            - DISPlay:PLOT:STATe {ON|OFF|1|0}
             - DISPlay:PLOT:STATe?
             ```
 

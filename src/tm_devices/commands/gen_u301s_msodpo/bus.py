@@ -2127,8 +2127,7 @@ class BusBItemRs232cDatabits(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:RS232C:DATABits`` command.
 
     Description:
-        - This command sets or queries the RS-232C data width for bus<x>, where the bus number is
-          specified by x.
+        - This command specifies the number of bits in the data frame for the RS-232 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -2238,8 +2237,7 @@ class BusBItemRs232c(SCPICmdRead):
         """Return the ``BUS:B<x>:RS232C:DATABits`` command.
 
         Description:
-            - This command sets or queries the RS-232C data width for bus<x>, where the bus number
-              is specified by x.
+            - This command specifies the number of bits in the data frame for the RS-232 bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -3619,8 +3617,7 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:SIGnal`` command.
 
     Description:
-        - This command sets or queries the FlexRay signal type for the specified bus. The bus number
-          is specified by x.
+        - Specifies the FlexRay bus standard.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -3637,9 +3634,9 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-        - ``BM`` sets the FlexRay signal type to BM.
-        - ``TXRX`` sets the FlexRay signal type to TXRX.
+        - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+        - ``BM`` sets the FlexRay standard to BM.
+        - ``TXRX`` sets the FlexRay standard to TXRX.
     """
 
 
@@ -3647,8 +3644,7 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:CHannel`` command.
 
     Description:
-        - This command sets or queries the FlexRay channel type for the specified bus. The bus
-          number is specified by x.
+        - Specifies the FlexRay bus ID format.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -3665,8 +3661,8 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``A`` specifies the A channel.
-        - ``B`` specifies the B channel.
+        - ``A`` sets the FlexRay ID format to channel A.
+        - ``B`` sets the FlexRay ID format to channel B.
     """
 
 
@@ -3748,8 +3744,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:CHannel`` command.
 
         Description:
-            - This command sets or queries the FlexRay channel type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus ID format.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -3766,8 +3761,8 @@ class BusBItemFlexray(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``A`` specifies the A channel.
-            - ``B`` specifies the B channel.
+            - ``A`` sets the FlexRay ID format to channel A.
+            - ``B`` sets the FlexRay ID format to channel B.
         """
         return self._channel
 
@@ -3776,8 +3771,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:SIGnal`` command.
 
         Description:
-            - This command sets or queries the FlexRay signal type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus standard.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -3794,9 +3788,9 @@ class BusBItemFlexray(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-            - ``BM`` sets the FlexRay signal type to BM.
-            - ``TXRX`` sets the FlexRay signal type to TXRX.
+            - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+            - ``BM`` sets the FlexRay standard to BM.
+            - ``TXRX`` sets the FlexRay standard to TXRX.
         """
         return self._signal
 

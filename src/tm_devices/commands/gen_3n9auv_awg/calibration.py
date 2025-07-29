@@ -14,7 +14,7 @@ Commands and Queries:
     - CALibration:ALL?
     - CALibration:CATalog? [{ALL|<subsystem>}[,{ALL|<area>}]]
     - CALibration:LOG:CLEar
-    - CALibration:LOG:FAILuresonly {OFF|ON|0|1}
+    - CALibration:LOG:FAILuresonly {ON|OFF|1|0}
     - CALibration:LOG:FAILuresonly?
     - CALibration:LOG?
     - CALibration:RESTore
@@ -385,7 +385,7 @@ class CalibrationLogFailuresonly(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CALibration:LOG:FAILuresonly {OFF|ON|0|1}
+        - CALibration:LOG:FAILuresonly {ON|OFF|1|0}
         - CALibration:LOG:FAILuresonly?
         ```
 
@@ -478,7 +478,7 @@ class CalibrationLog(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CALibration:LOG:FAILuresonly {OFF|ON|0|1}
+            - CALibration:LOG:FAILuresonly {ON|OFF|1|0}
             - CALibration:LOG:FAILuresonly?
             ```
 

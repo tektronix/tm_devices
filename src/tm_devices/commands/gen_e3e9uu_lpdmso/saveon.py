@@ -40,7 +40,7 @@ class SaveonWaveformSource(SCPICmdWrite, SCPICmdRead):
     """The ``SAVEON:WAVEform:SOURce`` command.
 
     Description:
-        - This command sets or queries the sources for saving waveforms when ``SAVEON:TRIGGER`` is
+        - This command sets or queries the sources for saving waveforms when ``SAVEON:TRIGger`` is
           ON.
 
     Usage:
@@ -94,7 +94,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
     """The ``SAVEON:WAVEform`` command.
 
     Description:
-        - Sets or queries whether to save a waveform when a trigger occurs when ``SAVEON:TRIGGER``
+        - Sets or queries whether to save a waveform when a trigger occurs when ``SAVEON:TRIGger``
           is ON. The waveform will be saved to the file you selected with ``SAVEON:FILE:NAME``, in
           the location that you selected using ``SAVEON:FILE:DEST``. You can set options for file
           storage (such as file name, file destination, and autoincrement), using the
@@ -113,7 +113,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables Save On Waveform; any other value turns this feature on.
+        - ``<NR1> = 0`` disables Save On Waveform; any other value turns this feature on.
         - ``OFF`` disables Save On Waveform.
         - ``ON`` enables Save On Waveform.
 
@@ -159,7 +159,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
         """Return the ``SAVEON:WAVEform:SOURce`` command.
 
         Description:
-            - This command sets or queries the sources for saving waveforms when ``SAVEON:TRIGGER``
+            - This command sets or queries the sources for saving waveforms when ``SAVEON:TRIGger``
               is ON.
 
         Usage:
@@ -193,7 +193,7 @@ class SaveonTrigger(SCPICmdWrite, SCPICmdRead):
           using Trigger commands or the instrument user interface. This command is longer necessary.
           Please see Act On Event commands for future development. The trigger will cause the
           instrument to save an image or a waveform to a file, depending on what you specified. For
-          example, if you have set ``SAVEON:IMAGE`` to On, and a trigger event occurs, the
+          example, if you have set ``SAVEON:IMAGe`` to On, and a trigger event occurs, the
           instrument will save a screen capture. You can set options for file storage (such as file
           name, file destination, and auto increment), using the ``SAVEON:FILE`` commands. Use the
           instrument interface to select whether to save one or more analog channels, digital
@@ -213,7 +213,7 @@ class SaveonTrigger(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables Save On Trigger; any other value turns this feature on.
+        - ``<NR1> = 0`` disables Save On Trigger; any other value turns this feature on.
         - ``OFF`` disables Save On Trigger.
         - ``ON`` enables Save On Trigger.
     """
@@ -266,7 +266,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables Save On Image; any other value turns this feature on.
+        - ``<NR1> = 0`` disables Save On Image; any other value turns this feature on.
         - ``OFF`` disables Save On Image.
         - ``ON`` enables Save On Image.
 
@@ -488,7 +488,7 @@ class Saveon(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables Save On Image; any other value turns this feature on.
+            - ``<NR1> = 0`` disables Save On Image; any other value turns this feature on.
             - ``OFF`` disables Save On Image.
             - ``ON`` enables Save On Image.
 
@@ -506,7 +506,7 @@ class Saveon(SCPICmdRead):
               trigger using Trigger commands or the instrument user interface. This command is
               longer necessary. Please see Act On Event commands for future development. The trigger
               will cause the instrument to save an image or a waveform to a file, depending on what
-              you specified. For example, if you have set ``SAVEON:IMAGE`` to On, and a trigger
+              you specified. For example, if you have set ``SAVEON:IMAGe`` to On, and a trigger
               event occurs, the instrument will save a screen capture. You can set options for file
               storage (such as file name, file destination, and auto increment), using the
               ``SAVEON:FILE`` commands. Use the instrument interface to select whether to save one
@@ -527,7 +527,7 @@ class Saveon(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables Save On Trigger; any other value turns this feature on.
+            - ``<NR1> = 0`` disables Save On Trigger; any other value turns this feature on.
             - ``OFF`` disables Save On Trigger.
             - ``ON`` enables Save On Trigger.
         """
@@ -539,7 +539,7 @@ class Saveon(SCPICmdRead):
 
         Description:
             - Sets or queries whether to save a waveform when a trigger occurs when
-              ``SAVEON:TRIGGER`` is ON. The waveform will be saved to the file you selected with
+              ``SAVEON:TRIGger`` is ON. The waveform will be saved to the file you selected with
               ``SAVEON:FILE:NAME``, in the location that you selected using ``SAVEON:FILE:DEST``.
               You can set options for file storage (such as file name, file destination, and
               autoincrement), using the ``SAVEON:FILE`` commands.
@@ -557,7 +557,7 @@ class Saveon(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables Save On Waveform; any other value turns this feature on.
+            - ``<NR1> = 0`` disables Save On Waveform; any other value turns this feature on.
             - ``OFF`` disables Save On Waveform.
             - ``ON`` enables Save On Waveform.
 

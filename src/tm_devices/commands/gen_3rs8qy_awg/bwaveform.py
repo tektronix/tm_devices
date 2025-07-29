@@ -14,17 +14,17 @@ Commands and Queries:
     - BWAVeform:AUTO {length|cycle|duration|freqency|sample rate}
     - BWAVeform:AUTO?
     - BWAVeform:COMPile
-    - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+    - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
     - BWAVeform:COMPile:CASSign?
     - BWAVeform:COMPile:CHANnel {NONE|<channel_number>}
     - BWAVeform:COMPile:CHANnel?
     - BWAVeform:COMPile:NAME <waveform_name>
     - BWAVeform:COMPile:NAME?
-    - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+    - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
     - BWAVeform:COMPile:PLAY?
     - BWAVeform:CYCLe <cycle>
     - BWAVeform:CYCLe?
-    - BWAVeform:FDRange {OFF|ON|0|1}
+    - BWAVeform:FDRange {ON|OFF|1|0}
     - BWAVeform:FDRange?
     - BWAVeform:FREQuency <frequency>
     - BWAVeform:FREQuency?
@@ -245,7 +245,7 @@ class BwaveformFdrange(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BWAVeform:FDRange {OFF|ON|0|1}
+        - BWAVeform:FDRange {ON|OFF|1|0}
         - BWAVeform:FDRange?
         ```
     """
@@ -287,7 +287,7 @@ class BwaveformCompilePlay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+        - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
         - BWAVeform:COMPile:PLAY?
         ```
     """
@@ -355,7 +355,7 @@ class BwaveformCompileCassign(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+        - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
         - BWAVeform:COMPile:CASSign?
         ```
     """
@@ -408,7 +408,7 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+            - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
             - BWAVeform:COMPile:CASSign?
             ```
         """
@@ -479,7 +479,7 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+            - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
             - BWAVeform:COMPile:PLAY?
             ```
         """
@@ -698,7 +698,7 @@ class Bwaveform(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:FDRange {OFF|ON|0|1}
+            - BWAVeform:FDRange {ON|OFF|1|0}
             - BWAVeform:FDRange?
             ```
         """

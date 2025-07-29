@@ -192,7 +192,11 @@ class AcquireNumframesacquired(SCPICmdRead):
     """The ``ACQuire:NUMFRAMESACQuired`` command.
 
     Description:
-        - This query returns the number of FastFrame frames which have been acquired.
+        - This query-only command returns the number of frames acquired when in FastFrame Single
+          Sequence and acquisitions are running. When the FastFrame single sequence stop condition
+          is set to Stop Manually, this number counts past the number of frames which were requested
+          as new frames are acquired, until STOP is pushed. When not in FastFrame Single Sequence,
+          this value is the same number reported by ``ACQ:NUMACQ``.
 
     Usage:
         - Using the ``.query()`` method will send the ``ACQuire:NUMFRAMESACQuired?`` query.
@@ -778,7 +782,11 @@ class Acquire(SCPICmdRead):
         """Return the ``ACQuire:NUMFRAMESACQuired`` command.
 
         Description:
-            - This query returns the number of FastFrame frames which have been acquired.
+            - This query-only command returns the number of frames acquired when in FastFrame Single
+              Sequence and acquisitions are running. When the FastFrame single sequence stop
+              condition is set to Stop Manually, this number counts past the number of frames which
+              were requested as new frames are acquired, until STOP is pushed. When not in FastFrame
+              Single Sequence, this value is the same number reported by ``ACQ:NUMACQ``.
 
         Usage:
             - Using the ``.query()`` method will send the ``ACQuire:NUMFRAMESACQuired?`` query.

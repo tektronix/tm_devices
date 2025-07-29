@@ -19,6 +19,8 @@ Commands and Queries:
     - PLOT:PLOT<x>:BATHtub:XAXISUnits?
     - PLOT:PLOT<x>:BITType {ALLBits|TRANSition|NONTRANsition}
     - PLOT:PLOT<x>:BITType?
+    - PLOT:PLOT<x>:DDJHistogram {ON|OFF|1|0}
+    - PLOT:PLOT<x>:DDJHistogram?
     - PLOT:PLOT<x>:EINTerpolation {ON|OFF}
     - PLOT:PLOT<x>:EINTerpolation?
     - PLOT:PLOT<x>:EXPORTRaw?
@@ -59,18 +61,26 @@ Commands and Queries:
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:TO?
     - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
     - PLOT:PLOT<x>:NUMBins?
+    - PLOT:PLOT<x>:PJHistogram {ON|OFF|1|0}
+    - PLOT:PLOT<x>:PJHistogram?
     - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
     - PLOT:PLOT<x>:PREGion?
+    - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+    - PLOT:PLOT<x>:PSIJ?
     - PLOT:PLOT<x>:PTYPe {RMS|MAGNITUDE}
     - PLOT:PLOT<x>:PTYPe?
     - PLOT:PLOT<x>:RAILNUM RAIL<x>
     - PLOT:PLOT<x>:RAILNUM?
+    - PLOT:PLOT<x>:RJHistogram {ON|OFF|1|0}
+    - PLOT:PLOT<x>:RJHistogram?
     - PLOT:PLOT<x>:SOUrce1 MEAS<x>
     - PLOT:PLOT<x>:SOUrce1?
     - PLOT:PLOT<x>:SPECtrum:BASE <NR1>
     - PLOT:PLOT<x>:SPECtrum:BASE?
     - PLOT:PLOT<x>:SPECtrum:DYNRange <NR3>
     - PLOT:PLOT<x>:SPECtrum:DYNRange?
+    - PLOT:PLOT<x>:TJHistogram {ON|OFF|1|0}
+    - PLOT:PLOT<x>:TJHistogram?
     - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE|GRPDELAY|GDELAY}
     - PLOT:PLOT<x>:TRESponse:RTYPe?
     - PLOT:PLOT<x>:TYPe {NONE|BATHTUB|EYEDIAGRAM|HARMONICS|HISTOGRAM|IMDATIMETREND|IMDAACQTREND|INDUCTANCE|IVSINTEGRALV|MAGPROPERTY|PHASENOISE|PHASOR|RECOVERY|SOA|SPECTRUM|SSCPROFILE|SWL|TIEHISTOGRAM|TIETIMETREND|TIESPECTRUM|TIMETREND|TRESPONSE|XY|XYZ}
@@ -214,6 +224,33 @@ class PlotPlotItemTresponse(SCPICmdRead):
         return self._rtype
 
 
+class PlotPlotItemTjhistogram(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:TJHistogram`` command.
+
+    Description:
+        - Sets or queries the status of TJ Histogram in composite histogram plot
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TJHistogram?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TJHistogram?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:TJHistogram value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:TJHistogram {ON|OFF|1|0}
+        - PLOT:PLOT<x>:TJHistogram?
+        ```
+
+    Info:
+        - ``ON`` indicates that TJHistogram is active.
+        - ``OFF`` indicates that TJHistogram is off.
+        - ``1`` turns on TJHistogram. Any number value other than 0 will turn TJHistogram on.
+        - ``0`` turns off TJHistogram.
+    """
+
+
 class PlotPlotItemSpectrumDynrange(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:SPECtrum:DYNRange`` command.
 
@@ -354,6 +391,33 @@ class PlotPlotItemSource1(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class PlotPlotItemRjhistogram(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:RJHistogram`` command.
+
+    Description:
+        - Sets or queries the status of RJ Histogram in composite histogram plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:RJHistogram?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:RJHistogram?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:RJHistogram value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:RJHistogram {ON|OFF|1|0}
+        - PLOT:PLOT<x>:RJHistogram?
+        ```
+
+    Info:
+        - ``ON`` indicates that RJHistogram is active.
+        - ``OFF`` indicates that RJHistogram is off.
+        - ``1`` turns on RJHistogram. Any number value other than 0 will turn RJHistogram on.
+        - ``0`` turns off RJHistogram.
+    """
+
+
 class PlotPlotItemRailnum(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:RAILNUM`` command.
 
@@ -374,7 +438,7 @@ class PlotPlotItemRailnum(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PLOT<x>`` is the plot number.
-        - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+        - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
     """
 
 
@@ -403,6 +467,31 @@ class PlotPlotItemPtype(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class PlotPlotItemPsij(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:PSIJ`` command.
+
+    Description:
+        - This command sets or returns the plot data type for respective PSIJ plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PSIJ value`` command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+        - PLOT:PLOT<x>:PSIJ?
+        ```
+
+    Info:
+        - ``PLOT<x>`` is the plot number.
+        - ``ORIGINAL`` sets the plot data type to original.
+        - ``EMULATED`` sets the plot data type to emulated.
+    """
+
+
 class PlotPlotItemPregion(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:PREGion`` command.
 
@@ -428,11 +517,38 @@ class PlotPlotItemPregion(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class PlotPlotItemPjhistogram(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:PJHistogram`` command.
+
+    Description:
+        - Sets or queries the status of PJ Histogram in composite histogram plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PJHistogram?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PJHistogram?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PJHistogram value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:PJHistogram {ON|OFF|1|0}
+        - PLOT:PLOT<x>:PJHistogram?
+        ```
+
+    Info:
+        - ``ON`` indicates that PJHistogram is active.
+        - ``OFF`` indicates that PJHistogram is off.
+        - ``1`` turns on PJHistogram. Any number value other than 0 will turn PJHistogram on.
+        - ``0`` turns off PJHistogram.
+    """
+
+
 class PlotPlotItemNumbins(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:NUMBins`` command.
 
     Description:
-        - This command sets or queries the current histogram resolution.
+        - This command sets or queries the current histogram/composite jitter histogram resolution.
 
     Usage:
         - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query.
@@ -780,7 +896,7 @@ class PlotPlotItemLabelYpos(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of the
+        - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of the
           label.
     """
 
@@ -1310,7 +1426,7 @@ class PlotPlotItemLabel(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of
+            - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of
               the label.
         """
         return self._ypos
@@ -1587,8 +1703,35 @@ class PlotPlotItemEinterpolation(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PLOT<x>`` is the plot number.
-        - ``ON`` enables interpolation between samples .
-        - ``OFF`` disables interpolation between samples .
+        - ``ON`` enables interpolation between samples.
+        - ``OFF`` disables interpolation between samples.
+    """
+
+
+class PlotPlotItemDdjhistogram(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:DDJHistogram`` command.
+
+    Description:
+        - Sets or queries the status of DDJ Histogram in composite histogram plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:DDJHistogram value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:DDJHistogram {ON|OFF|1|0}
+        - PLOT:PLOT<x>:DDJHistogram?
+        ```
+
+    Info:
+        - ``ON`` indicates that  DDJHistogram is active.
+        - ``OFF`` indicates that  DDJHistogram is off.
+        - ``1`` turns on  DDJHistogram. Any number value other than 0 will turn  DDJHistogram on.
+        - ``0`` turns off  DDJHistogram.
     """
 
 
@@ -1740,7 +1883,7 @@ class PlotPlotItemBathtub(SCPICmdRead):
         return self._xaxisunits
 
 
-#  pylint: disable=too-many-instance-attributes
+#  pylint: disable=too-many-instance-attributes,too-many-public-methods
 class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     """The ``PLOT:PLOT<x>`` command tree.
 
@@ -1752,6 +1895,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     Properties:
         - ``.bathtub``: The ``PLOT:PLOT<x>:BATHtub`` command tree.
         - ``.bittype``: The ``PLOT:PLOT<x>:BITType`` command.
+        - ``.ddjhistogram``: The ``PLOT:PLOT<x>:DDJHistogram`` command.
         - ``.einterpolation``: The ``PLOT:PLOT<x>:EINTerpolation`` command.
         - ``.exportraw``: The ``PLOT:PLOT<x>:EXPORTRaw`` command.
         - ``.extenduis``: The ``PLOT:PLOT<x>:EXTENDuis`` command.
@@ -1763,11 +1907,15 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.mask``: The ``PLOT:PLOT<x>:MASK`` command.
         - ``.maskoffset``: The ``PLOT:PLOT<x>:MASKOffset`` command tree.
         - ``.numbins``: The ``PLOT:PLOT<x>:NUMBins`` command.
+        - ``.pjhistogram``: The ``PLOT:PLOT<x>:PJHistogram`` command.
         - ``.pregion``: The ``PLOT:PLOT<x>:PREGion`` command.
+        - ``.psij``: The ``PLOT:PLOT<x>:PSIJ`` command.
         - ``.ptype``: The ``PLOT:PLOT<x>:PTYPe`` command.
         - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
+        - ``.rjhistogram``: The ``PLOT:PLOT<x>:RJHistogram`` command.
         - ``.source1``: The ``PLOT:PLOT<x>:SOUrce1`` command.
         - ``.spectrum``: The ``PLOT:PLOT<x>:SPECtrum`` command tree.
+        - ``.tjhistogram``: The ``PLOT:PLOT<x>:TJHistogram`` command.
         - ``.tresponse``: The ``PLOT:PLOT<x>:TRESponse`` command tree.
         - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
     """
@@ -1776,6 +1924,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._bathtub = PlotPlotItemBathtub(device, f"{self._cmd_syntax}:BATHtub")
         self._bittype = PlotPlotItemBittype(device, f"{self._cmd_syntax}:BITType")
+        self._ddjhistogram = PlotPlotItemDdjhistogram(device, f"{self._cmd_syntax}:DDJHistogram")
         self._einterpolation = PlotPlotItemEinterpolation(
             device, f"{self._cmd_syntax}:EINTerpolation"
         )
@@ -1791,11 +1940,15 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._mask = PlotPlotItemMask(device, f"{self._cmd_syntax}:MASK")
         self._maskoffset = PlotPlotItemMaskoffset(device, f"{self._cmd_syntax}:MASKOffset")
         self._numbins = PlotPlotItemNumbins(device, f"{self._cmd_syntax}:NUMBins")
+        self._pjhistogram = PlotPlotItemPjhistogram(device, f"{self._cmd_syntax}:PJHistogram")
         self._pregion = PlotPlotItemPregion(device, f"{self._cmd_syntax}:PREGion")
+        self._psij = PlotPlotItemPsij(device, f"{self._cmd_syntax}:PSIJ")
         self._ptype = PlotPlotItemPtype(device, f"{self._cmd_syntax}:PTYPe")
         self._railnum = PlotPlotItemRailnum(device, f"{self._cmd_syntax}:RAILNUM")
+        self._rjhistogram = PlotPlotItemRjhistogram(device, f"{self._cmd_syntax}:RJHistogram")
         self._source1 = PlotPlotItemSource1(device, f"{self._cmd_syntax}:SOUrce1")
         self._spectrum = PlotPlotItemSpectrum(device, f"{self._cmd_syntax}:SPECtrum")
+        self._tjhistogram = PlotPlotItemTjhistogram(device, f"{self._cmd_syntax}:TJHistogram")
         self._tresponse = PlotPlotItemTresponse(device, f"{self._cmd_syntax}:TRESponse")
         self._type = PlotPlotItemType(device, f"{self._cmd_syntax}:TYPe")
 
@@ -1846,6 +1999,35 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._bittype
 
     @property
+    def ddjhistogram(self) -> PlotPlotItemDdjhistogram:
+        """Return the ``PLOT:PLOT<x>:DDJHistogram`` command.
+
+        Description:
+            - Sets or queries the status of DDJ Histogram in composite histogram plot.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:DDJHistogram value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:DDJHistogram {ON|OFF|1|0}
+            - PLOT:PLOT<x>:DDJHistogram?
+            ```
+
+        Info:
+            - ``ON`` indicates that  DDJHistogram is active.
+            - ``OFF`` indicates that  DDJHistogram is off.
+            - ``1`` turns on  DDJHistogram. Any number value other than 0 will turn  DDJHistogram
+              on.
+            - ``0`` turns off  DDJHistogram.
+        """
+        return self._ddjhistogram
+
+    @property
     def einterpolation(self) -> PlotPlotItemEinterpolation:
         """Return the ``PLOT:PLOT<x>:EINTerpolation`` command.
 
@@ -1867,8 +2049,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``ON`` enables interpolation between samples .
-            - ``OFF`` disables interpolation between samples .
+            - ``ON`` enables interpolation between samples.
+            - ``OFF`` disables interpolation between samples.
         """
         return self._einterpolation
 
@@ -2097,7 +2279,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``PLOT:PLOT<x>:NUMBins`` command.
 
         Description:
-            - This command sets or queries the current histogram resolution.
+            - This command sets or queries the current histogram/composite jitter histogram
+              resolution.
 
         Usage:
             - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query.
@@ -2122,6 +2305,34 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``MAXimum`` sets the number of bins to the maximum value.
         """  # noqa: E501
         return self._numbins
+
+    @property
+    def pjhistogram(self) -> PlotPlotItemPjhistogram:
+        """Return the ``PLOT:PLOT<x>:PJHistogram`` command.
+
+        Description:
+            - Sets or queries the status of PJ Histogram in composite histogram plot.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PJHistogram?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PJHistogram?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PJHistogram value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:PJHistogram {ON|OFF|1|0}
+            - PLOT:PLOT<x>:PJHistogram?
+            ```
+
+        Info:
+            - ``ON`` indicates that PJHistogram is active.
+            - ``OFF`` indicates that PJHistogram is off.
+            - ``1`` turns on PJHistogram. Any number value other than 0 will turn PJHistogram on.
+            - ``0`` turns off PJHistogram.
+        """
+        return self._pjhistogram
 
     @property
     def pregion(self) -> PlotPlotItemPregion:
@@ -2149,6 +2360,32 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``ALL`` specifies the pulse region for recovery plot as all.
         """
         return self._pregion
+
+    @property
+    def psij(self) -> PlotPlotItemPsij:
+        """Return the ``PLOT:PLOT<x>:PSIJ`` command.
+
+        Description:
+            - This command sets or returns the plot data type for respective PSIJ plot.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PSIJ?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PSIJ value`` command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:PSIJ {ORIGINAL|EMULATED}
+            - PLOT:PLOT<x>:PSIJ?
+            ```
+
+        Info:
+            - ``PLOT<x>`` is the plot number.
+            - ``ORIGINAL`` sets the plot data type to original.
+            - ``EMULATED`` sets the plot data type to emulated.
+        """
+        return self._psij
 
     @property
     def ptype(self) -> PlotPlotItemPtype:
@@ -2198,9 +2435,37 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+            - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
         """
         return self._railnum
+
+    @property
+    def rjhistogram(self) -> PlotPlotItemRjhistogram:
+        """Return the ``PLOT:PLOT<x>:RJHistogram`` command.
+
+        Description:
+            - Sets or queries the status of RJ Histogram in composite histogram plot.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:RJHistogram?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:RJHistogram?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:RJHistogram value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:RJHistogram {ON|OFF|1|0}
+            - PLOT:PLOT<x>:RJHistogram?
+            ```
+
+        Info:
+            - ``ON`` indicates that RJHistogram is active.
+            - ``OFF`` indicates that RJHistogram is off.
+            - ``1`` turns on RJHistogram. Any number value other than 0 will turn RJHistogram on.
+            - ``0`` turns off RJHistogram.
+        """
+        return self._rjhistogram
 
     @property
     def source1(self) -> PlotPlotItemSource1:
@@ -2241,6 +2506,34 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.dynrange``: The ``PLOT:PLOT<x>:SPECtrum:DYNRange`` command.
         """
         return self._spectrum
+
+    @property
+    def tjhistogram(self) -> PlotPlotItemTjhistogram:
+        """Return the ``PLOT:PLOT<x>:TJHistogram`` command.
+
+        Description:
+            - Sets or queries the status of TJ Histogram in composite histogram plot
+
+        Usage:
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TJHistogram?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TJHistogram?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:TJHistogram value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - PLOT:PLOT<x>:TJHistogram {ON|OFF|1|0}
+            - PLOT:PLOT<x>:TJHistogram?
+            ```
+
+        Info:
+            - ``ON`` indicates that TJHistogram is active.
+            - ``OFF`` indicates that TJHistogram is off.
+            - ``1`` turns on TJHistogram. Any number value other than 0 will turn TJHistogram on.
+            - ``0`` turns off TJHistogram.
+        """
+        return self._tjhistogram
 
     @property
     def tresponse(self) -> PlotPlotItemTresponse:
@@ -2341,7 +2634,7 @@ class PlotDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1> is ≥
+        - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>', where <NR1> is ≥
           1).
     """
 
@@ -2363,8 +2656,8 @@ class PlotAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where <NR1>
-          ≥ 1.
+        - ``<QString>`` is the specified plot. The argument is of the form ' PLOT<NR1> ', where
+          <NR1> ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2410,7 +2703,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where
+            - ``<QString>`` is the specified plot. The argument is of the form ' PLOT<NR1> ', where
               <NR1> ≥ 1.
         """
         return self._addnew
@@ -2431,7 +2724,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1>
+            - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>', where <NR1>
               is ≥ 1).
         """
         return self._delete
@@ -2467,6 +2760,7 @@ class Plot(SCPICmdRead):
         Sub-properties:
             - ``.bathtub``: The ``PLOT:PLOT<x>:BATHtub`` command tree.
             - ``.bittype``: The ``PLOT:PLOT<x>:BITType`` command.
+            - ``.ddjhistogram``: The ``PLOT:PLOT<x>:DDJHistogram`` command.
             - ``.einterpolation``: The ``PLOT:PLOT<x>:EINTerpolation`` command.
             - ``.exportraw``: The ``PLOT:PLOT<x>:EXPORTRaw`` command.
             - ``.extenduis``: The ``PLOT:PLOT<x>:EXTENDuis`` command.
@@ -2478,11 +2772,15 @@ class Plot(SCPICmdRead):
             - ``.mask``: The ``PLOT:PLOT<x>:MASK`` command.
             - ``.maskoffset``: The ``PLOT:PLOT<x>:MASKOffset`` command tree.
             - ``.numbins``: The ``PLOT:PLOT<x>:NUMBins`` command.
+            - ``.pjhistogram``: The ``PLOT:PLOT<x>:PJHistogram`` command.
             - ``.pregion``: The ``PLOT:PLOT<x>:PREGion`` command.
+            - ``.psij``: The ``PLOT:PLOT<x>:PSIJ`` command.
             - ``.ptype``: The ``PLOT:PLOT<x>:PTYPe`` command.
             - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
+            - ``.rjhistogram``: The ``PLOT:PLOT<x>:RJHistogram`` command.
             - ``.source1``: The ``PLOT:PLOT<x>:SOUrce1`` command.
             - ``.spectrum``: The ``PLOT:PLOT<x>:SPECtrum`` command tree.
+            - ``.tjhistogram``: The ``PLOT:PLOT<x>:TJHistogram`` command.
             - ``.tresponse``: The ``PLOT:PLOT<x>:TRESponse`` command tree.
             - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
         """

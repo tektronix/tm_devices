@@ -15,14 +15,14 @@ Commands and Queries:
     - DISplay:COLor:MODe?
     - DISplay:CONFIGure:READOut {NORMal ! TRANSParent}
     - DISplay:CONFIGure:READOut?
-    - DISplay:DIGital:ACTIVity {0|1|OFF|ON}
+    - DISplay:DIGital:ACTIVity {ON|OFF|1|0}
     - DISplay:DIGital:ACTIVity?
     - DISplay:DIGital:HEIght {SMAll|MEDium|LARge}
     - DISplay:DIGital:HEIght?
     - DISplay:GRAticule {CROSSHair|FRAme|FULl|GRId|SOLid}
     - DISplay:GRAticule?
     - DISplay:INTENSITy:BACKLight {LOW|MEDium|HIGH}
-    - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {OFF|ON|0|1}
+    - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF|1|0}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble?
     - DISplay:INTENSITy:BACKLight:AUTODim:TIMe <NR1>
     - DISplay:INTENSITy:BACKLight:AUTODim:TIMe?
@@ -36,10 +36,10 @@ Commands and Queries:
     - DISplay:PERSistence?
     - DISplay:STYle:DOTsonly {ON|OFF|<NR1>}
     - DISplay:STYle:DOTsonly?
-    - DISplay:TRIGFrequency {OFF|ON|0|1}
+    - DISplay:TRIGFrequency {ON|OFF|1|0}
     - DISplay:TRIGFrequency?
     - DISplay:XY {OFF|TRIGgered}
-    - DISplay:XY:WITHYT {0|1|OFF|ON}
+    - DISplay:XY:WITHYT {ON|OFF|1|0}
     - DISplay:XY:WITHYT?
     - DISplay:XY?
     - DISplay?
@@ -72,7 +72,7 @@ class DisplayXyWithyt(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:XY:WITHYT {0|1|OFF|ON}
+        - DISplay:XY:WITHYT {ON|OFF|1|0}
         - DISplay:XY:WITHYT?
         ```
 
@@ -133,7 +133,7 @@ class DisplayXy(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:XY:WITHYT {0|1|OFF|ON}
+            - DISplay:XY:WITHYT {ON|OFF|1|0}
             - DISplay:XY:WITHYT?
             ```
 
@@ -159,7 +159,7 @@ class DisplayTrigfrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:TRIGFrequency {OFF|ON|0|1}
+        - DISplay:TRIGFrequency {ON|OFF|1|0}
         - DISplay:TRIGFrequency?
         ```
     """
@@ -360,7 +360,7 @@ class DisplayIntensityBacklightAutodimEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {OFF|ON|0|1}
+        - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF|1|0}
         - DISplay:INTENSITy:BACKLight:AUTODim:ENAble?
         ```
 
@@ -409,7 +409,7 @@ class DisplayIntensityBacklightAutodim(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {OFF|ON|0|1}
+            - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF|1|0}
             - DISplay:INTENSITy:BACKLight:AUTODim:ENAble?
             ```
 
@@ -681,7 +681,7 @@ class DisplayDigitalActivity(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:DIGital:ACTIVity {0|1|OFF|ON}
+        - DISplay:DIGital:ACTIVity {ON|OFF|1|0}
         - DISplay:DIGital:ACTIVity?
         ```
 
@@ -730,7 +730,7 @@ class DisplayDigital(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:DIGital:ACTIVity {0|1|OFF|ON}
+            - DISplay:DIGital:ACTIVity {ON|OFF|1|0}
             - DISplay:DIGital:ACTIVity?
             ```
 
@@ -1163,7 +1163,7 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:TRIGFrequency {OFF|ON|0|1}
+            - DISplay:TRIGFrequency {ON|OFF|1|0}
             - DISplay:TRIGFrequency?
             ```
         """

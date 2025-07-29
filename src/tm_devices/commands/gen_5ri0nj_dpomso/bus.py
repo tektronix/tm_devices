@@ -714,6 +714,7 @@ class BusBItemUsbProbe(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``DIFFerential`` indicates the bus probe is a differential probe.
         - ``SINGleended`` indicates the bus probe is not a differential probe.
     """
@@ -723,8 +724,7 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:USB:BITRate`` command.
 
     Description:
-        - This command sets or queries the USB data rate for bus <x>, where the bus number is
-          specified by x.
+        - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -774,8 +774,7 @@ class BusBItemUsb(SCPICmdRead):
         """Return the ``BUS:B<x>:USB:BITRate`` command.
 
         Description:
-            - This command sets or queries the USB data rate for bus <x>, where the bus number is
-              specified by x.
+            - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -818,6 +817,7 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``DIFFerential`` indicates the bus probe is a differential probe.
             - ``SINGleended`` indicates the bus probe is not a differential probe.
         """
@@ -4203,8 +4203,8 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
     Description:
-        - This command sets or queries the minimum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the minimum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum?``
@@ -4231,8 +4231,8 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
     Description:
-        - This command sets or queries the maximum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the maximum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?``
@@ -4281,8 +4281,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
         Description:
-            - This command sets or queries the maximum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the maximum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4311,8 +4311,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
         Description:
-            - This command sets or queries the minimum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the minimum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the

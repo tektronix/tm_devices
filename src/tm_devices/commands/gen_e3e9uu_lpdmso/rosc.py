@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+    - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
     - ROSc:SOUrce?
     - ROSc:STATE?
     ```
@@ -39,6 +39,10 @@ class RoscState(SCPICmdRead):
         ```
         - ROSc:STATE?
         ```
+
+    Info:
+        - ``LOCKED`` indicates the reference oscillator is locked.
+        - ``UNLOCKED`` indicates the reference oscillator is not locked.
     """
 
 
@@ -49,7 +53,11 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
         - This command sets or queries the selected source for the time base reference oscillator.
           The reference oscillator locks to this source. Depending on the command argument that you
           specify, you can use an external reference or use the internal crystal oscillator as the
-          time base reference.
+          time base reference. Switching between certain settings is supported at runtime (INTERnal
+          and EXTernal). Switching either into or out of other settings (TRACking and SAMPle)
+          requires a restart of the instrument. Setting a mode that requires a restart will trigger
+          the switch on the next reboot. The query won't reflect the requested time base setting
+          until the switch is complete.
 
     Usage:
         - Using the ``.query()`` method will send the ``ROSc:SOUrce?`` query.
@@ -59,13 +67,13 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+        - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
         - ROSc:SOUrce?
         ```
 
     Info:
         - ``INTERnal`` specifies the internal 10 MHz crystal oscillator as the time base reference.
-        - ``EXTernal`` specifies the user-supplied external signal at ±1 ppm as the time base
+        - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
           reference.
         - ``TRACking`` specifies the user-supplied external signal at ±1000 ppm as the time base
           reference.
@@ -98,7 +106,11 @@ class Rosc(SCPICmdRead):
             - This command sets or queries the selected source for the time base reference
               oscillator. The reference oscillator locks to this source. Depending on the command
               argument that you specify, you can use an external reference or use the internal
-              crystal oscillator as the time base reference.
+              crystal oscillator as the time base reference. Switching between certain settings is
+              supported at runtime (INTERnal and EXTernal). Switching either into or out of other
+              settings (TRACking and SAMPle) requires a restart of the instrument. Setting a mode
+              that requires a restart will trigger the switch on the next reboot. The query won't
+              reflect the requested time base setting until the switch is complete.
 
         Usage:
             - Using the ``.query()`` method will send the ``ROSc:SOUrce?`` query.
@@ -108,14 +120,14 @@ class Rosc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+            - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
             - ROSc:SOUrce?
             ```
 
         Info:
             - ``INTERnal`` specifies the internal 10 MHz crystal oscillator as the time base
               reference.
-            - ``EXTernal`` specifies the user-supplied external signal at ±1 ppm as the time base
+            - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
               reference.
             - ``TRACking`` specifies the user-supplied external signal at ±1000 ppm as the time base
               reference.
@@ -139,5 +151,9 @@ class Rosc(SCPICmdRead):
             ```
             - ROSc:STATE?
             ```
+
+        Info:
+            - ``LOCKED`` indicates the reference oscillator is locked.
+            - ``UNLOCKED`` indicates the reference oscillator is not locked.
         """
         return self._state

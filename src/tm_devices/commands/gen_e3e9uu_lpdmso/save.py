@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The save commands module.
 
 These commands are used in the following models:
@@ -12,7 +11,7 @@ Commands and Queries:
     ```
     - SAVe:EVENTtable:BUS <QString>
     - SAVe:EVENTtable:CUSTom <QString>
-    - SAVe:EVENTtable:CUSTom:COMMents <Qstring>
+    - SAVe:EVENTtable:CUSTom:COMMents <QString>
     - SAVe:EVENTtable:CUSTom:COMMents?
     - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
     - SAVe:EVENTtable:CUSTom:DATAFormat?
@@ -26,23 +25,24 @@ Commands and Queries:
     - SAVe:IMAGe:COMPosition?
     - SAVe:IMAGe:VIEWTYpe {FULLScreen}
     - SAVe:IMAGe:VIEWTYpe?
-    - SAVe:MASK <Qstring>
-    - SAVe:PLOTData <Qstring>
+    - SAVe:MASK <QString>
+    - SAVe:PLOTData <QString>
     - SAVe:REPOrt <QString>
     - SAVe:REPOrt:COMMents <QString>
     - SAVe:REPOrt:COMMents?
     - SAVe:SESsion <QString>
     - SAVe:SETUp <QString>
-    - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+    - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
     - SAVe:SETUp:INCLUDEREFs?
-    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
     - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
     - SAVe:WAVEform:GATing:RESAMPLErate?
     - SAVe:WAVEform:GATing?
     - SAVe:WAVEform:SOURCELIst?
+    - SAVe:WAVEform?
     ```
-"""  # noqa: E501
+"""
 
 from typing import Optional, TYPE_CHECKING
 
@@ -171,11 +171,15 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - This command saves the specified waveform(s) to the specified destination file.
 
     Usage:
+        - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
+        - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
+        - SAVe:WAVEform?
         ```
 
     Info:
@@ -192,17 +196,13 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``_FREQ_VS_TIME`` saves the Freuency vs.
         - ``_PHASE_VS_TIME`` saves the Phase vs.
         - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
-        - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
-        - ``<Qstring>`` is a quoted string that defines the path and file name to use to save the
+        - ``<QString>`` is a quoted string that defines the path and file name to use to save the
           specified file, in the format '[<path>]<filename.
-        - ``<path>`` uses the form '<drive>/<dir>.
-        - ``<filename>`` sets the file name to use to create the file.
-        - ``<.ext>`` sets the file format to which to save the data.
 
     Properties:
         - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
         - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
-    """  # noqa: E501
+    """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
@@ -283,7 +283,7 @@ class SaveSetupIncluderefs(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+        - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
         - SAVe:SETUp:INCLUDEREFs?
         ```
 
@@ -312,7 +312,7 @@ class SaveSetup(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<QString>`` is a quoted string that is the complete path specification. If a file name
           or path is specified, the file is expected to be located in a directory relative to the
-          current working directory (specified by ``FILESYSTEM:CWD``) unless a complete path is
+          current working directory (specified by ``FILESystem:CWD``) unless a complete path is
           specified.
 
     Properties:
@@ -342,7 +342,7 @@ class SaveSetup(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+            - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
             - SAVe:SETUp:INCLUDEREFs?
             ```
 
@@ -372,7 +372,8 @@ class SaveSession(SCPICmdWrite):
     Info:
         - ``<QString>`` is the file path that specifies the location to save the specified
           instrument session file. If a file name or path is specified, the file is expected to be
-          located in a directory relative to the current working directory (specified by.
+          located in a directory relative to the current working directory (specified by
+          ``FILESystem:CWDFILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -420,7 +421,7 @@ class SaveReport(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the complete path specification. When specifying the file name with this
-          command, use the correct file extension (.pdf for PDF format, or .mht for MHT format).
+          command, use the correct file extension (.pdf for PDF format, or.mht for MHT format).
 
     Properties:
         - ``.comments``: The ``SAVe:REPOrt:COMMents`` command.
@@ -465,12 +466,12 @@ class SavePlotdata(SCPICmdWrite):
         - Saves the plot data of the currently selected plot to a specified file. Supported file
           format is CSV. When specifying the file name with this command, use the correct file
           extension (.CSV). If a file name or path is specified, the file is expected to be located
-          in a directory relative to the current working directory (specified by ``FILESYSTEM:CWD``)
+          in a directory relative to the current working directory (specified by ``FILESystem:CWD``)
           unless a complete path is specified. If the file argument begins with a drive designator
           (such as C:), then the file name is interpreted as a full path. If the file argument
           begins with '.' or '', or has a file path separator appearing anywhere other than the
           first character position, then the file name is treated as a path that is relative to the
-          current working directory. To export an eye diagram plot data to a .csv file, the
+          current working directory. To export an eye diagram plot data to a.csv file, the
           prerequisite command is ``MEASUrement:ADDMEAS TIE``
 
     Usage:
@@ -478,12 +479,14 @@ class SavePlotdata(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - SAVe:PLOTData <Qstring>
+        - SAVe:PLOTData <QString>
         ```
 
     Info:
-        - ``<Qstring>`` sets the file name and location used to store the plot data.
+        - ``<QString>`` sets the file name and location used to store the plot data.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SaveMask(SCPICmdWrite):
@@ -501,21 +504,23 @@ class SaveMask(SCPICmdWrite):
           character) or a drive designator (such as C:), then the file name is interpreted as a full
           path from the specified drive. <filename> sets the file name to use to create the file. A
           file can have up to 125 characters. <.ext> sets the file format for saving the mask data.
-          Segment-based masks must be saved with a .xml extension, while tolerance masks must be
-          saved with a .tol extension.
+          Segment-based masks must be saved with a.xml extension, while tolerance masks must be
+          saved with a.tol extension.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``SAVe:MASK value`` command.
 
     SCPI Syntax:
         ```
-        - SAVe:MASK <Qstring>
+        - SAVe:MASK <QString>
         ```
 
     Info:
-        - ``<Qstring>`` is a quoted string that defines the path and file name used to save the
+        - ``<QString>`` is a quoted string that defines the path and file name used to save the
           specified file, in the format [<path>]'<filename><.ext>'.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SaveImageViewtype(SCPICmdWrite, SCPICmdRead):
@@ -581,7 +586,9 @@ class SaveImage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is the file name and location used to store the image file.
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file
+          isexpected to be located in a directory relative to the current working
+          directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
 
     Properties:
         - ``.composition``: The ``SAVe:IMAGe:COMPosition`` command.
@@ -664,9 +671,9 @@ class SaveEventtableSearchtable(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-          expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file
+          isexpected to be located in a directory relative to the current working
+          directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -687,9 +694,9 @@ class SaveEventtablePeaks(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-          expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file
+          isexpected to be located in a directory relative to the current working
+          directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -711,9 +718,9 @@ class SaveEventtableMeasurement(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-          expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file
+          isexpected to be located in a directory relative to the current working
+          directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -789,14 +796,16 @@ class SaveEventtableCustomComments(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:EVENTtable:CUSTom:COMMents <Qstring>
+        - SAVe:EVENTtable:CUSTom:COMMents <QString>
         - SAVe:EVENTtable:CUSTom:COMMents?
         ```
 
     Info:
-        - ``<Qstring>`` sets the instrument to save the quoted string as a comment in the saved
+        - ``<QString>`` sets the instrument to save the quoted string as a comment in the saved
           results table file.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
@@ -816,7 +825,7 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<QString>`` is the specified file. If a file name or path is specified, the file is
           expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
+          by ``FILESystem:CWD``) unless a complete path is specified.
 
     Properties:
         - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
@@ -851,12 +860,12 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:EVENTtable:CUSTom:COMMents <Qstring>
+            - SAVe:EVENTtable:CUSTom:COMMents <QString>
             - SAVe:EVENTtable:CUSTom:COMMents?
             ```
 
         Info:
-            - ``<Qstring>`` sets the instrument to save the quoted string as a comment in the saved
+            - ``<QString>`` sets the instrument to save the quoted string as a comment in the saved
               results table file.
         """
         return self._comments
@@ -940,7 +949,7 @@ class SaveEventtableBus(SCPICmdWrite):
     Info:
         - ``<QString>`` is the specified file. If a file name or path is specified, the file is
           expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
+          by ``FILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -989,7 +998,7 @@ class SaveEventtable(SCPICmdRead):
         Info:
             - ``<QString>`` is the specified file. If a file name or path is specified, the file is
               expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
+              (specified by ``FILESystem:CWD``) unless a complete path is specified.
         """
         return self._bus
 
@@ -1012,7 +1021,7 @@ class SaveEventtable(SCPICmdRead):
         Info:
             - ``<QString>`` is the specified file. If a file name or path is specified, the file is
               expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
+              (specified by ``FILESystem:CWD``) unless a complete path is specified.
 
         Sub-properties:
             - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
@@ -1038,9 +1047,9 @@ class SaveEventtable(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-              expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file
+              isexpected to be located in a directory relative to the current working
+              directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
         """
         return self._measurement
 
@@ -1061,9 +1070,9 @@ class SaveEventtable(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-              expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file
+              isexpected to be located in a directory relative to the current working
+              directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
         """
         return self._peaks
 
@@ -1084,9 +1093,9 @@ class SaveEventtable(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-              expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file
+              isexpected to be located in a directory relative to the current working
+              directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
         """
         return self._searchtable
 
@@ -1157,7 +1166,9 @@ class Save(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the file name and location used to store the image file.
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file
+              isexpected to be located in a directory relative to the current working
+              directory(specified by ``FILESystem:CWD``) unless a complete path is specified.
 
         Sub-properties:
             - ``.composition``: The ``SAVe:IMAGe:COMPosition`` command.
@@ -1182,19 +1193,19 @@ class Save(SCPICmdRead):
               (such as C:), then the file name is interpreted as a full path from the specified
               drive. <filename> sets the file name to use to create the file. A file can have up to
               125 characters. <.ext> sets the file format for saving the mask data. Segment-based
-              masks must be saved with a .xml extension, while tolerance masks must be saved with a
-              .tol extension.
+              masks must be saved with a.xml extension, while tolerance masks must be saved with
+              a.tol extension.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SAVe:MASK value`` command.
 
         SCPI Syntax:
             ```
-            - SAVe:MASK <Qstring>
+            - SAVe:MASK <QString>
             ```
 
         Info:
-            - ``<Qstring>`` is a quoted string that defines the path and file name used to save the
+            - ``<QString>`` is a quoted string that defines the path and file name used to save the
               specified file, in the format [<path>]'<filename><.ext>'.
         """
         return self._mask
@@ -1208,12 +1219,12 @@ class Save(SCPICmdRead):
               format is CSV. When specifying the file name with this command, use the correct file
               extension (.CSV). If a file name or path is specified, the file is expected to be
               located in a directory relative to the current working directory (specified by
-              ``FILESYSTEM:CWD``) unless a complete path is specified. If the file argument begins
+              ``FILESystem:CWD``) unless a complete path is specified. If the file argument begins
               with a drive designator (such as C:), then the file name is interpreted as a full
               path. If the file argument begins with '.' or '', or has a file path separator
               appearing anywhere other than the first character position, then the file name is
               treated as a path that is relative to the current working directory. To export an eye
-              diagram plot data to a .csv file, the prerequisite command is
+              diagram plot data to a.csv file, the prerequisite command is
               ``MEASUrement:ADDMEAS TIE``
 
         Usage:
@@ -1221,11 +1232,11 @@ class Save(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:PLOTData <Qstring>
+            - SAVe:PLOTData <QString>
             ```
 
         Info:
-            - ``<Qstring>`` sets the file name and location used to store the plot data.
+            - ``<QString>`` sets the file name and location used to store the plot data.
         """
         return self._plotdata
 
@@ -1247,7 +1258,7 @@ class Save(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the complete path specification. When specifying the file name with
-              this command, use the correct file extension (.pdf for PDF format, or .mht for MHT
+              this command, use the correct file extension (.pdf for PDF format, or.mht for MHT
               format).
 
         Sub-properties:
@@ -1274,7 +1285,8 @@ class Save(SCPICmdRead):
         Info:
             - ``<QString>`` is the file path that specifies the location to save the specified
               instrument session file. If a file name or path is specified, the file is expected to
-              be located in a directory relative to the current working directory (specified by.
+              be located in a directory relative to the current working directory (specified by
+              ``FILESystem:CWDFILESystem:CWD``) unless a complete path is specified.
         """
         return self._session
 
@@ -1296,7 +1308,7 @@ class Save(SCPICmdRead):
         Info:
             - ``<QString>`` is a quoted string that is the complete path specification. If a file
               name or path is specified, the file is expected to be located in a directory relative
-              to the current working directory (specified by ``FILESYSTEM:CWD``) unless a complete
+              to the current working directory (specified by ``FILESystem:CWD``) unless a complete
               path is specified.
 
         Sub-properties:
@@ -1312,11 +1324,15 @@ class Save(SCPICmdRead):
             - This command saves the specified waveform(s) to the specified destination file.
 
         Usage:
+            - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
+            - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
+            - SAVe:WAVEform?
             ```
 
         Info:
@@ -1336,15 +1352,11 @@ class Save(SCPICmdRead):
             - ``_FREQ_VS_TIME`` saves the Freuency vs.
             - ``_PHASE_VS_TIME`` saves the Phase vs.
             - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
-            - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
-            - ``<Qstring>`` is a quoted string that defines the path and file name to use to save
+            - ``<QString>`` is a quoted string that defines the path and file name to use to save
               the specified file, in the format '[<path>]<filename.
-            - ``<path>`` uses the form '<drive>/<dir>.
-            - ``<filename>`` sets the file name to use to create the file.
-            - ``<.ext>`` sets the file format to which to save the data.
 
         Sub-properties:
             - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
             - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
-        """  # noqa: E501
+        """
         return self._waveform

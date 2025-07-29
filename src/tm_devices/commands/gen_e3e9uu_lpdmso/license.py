@@ -116,6 +116,9 @@ class LicenseItem(SCPICmdReadWithArguments):
         ```
         - LICense:ITEM? <NR1>
         ```
+
+    Info:
+        - ``<NR1>`` is the zero-indexed argument specifying a specific license.
     """
 
 
@@ -420,6 +423,9 @@ class License(SCPICmdRead):
             ```
             - LICense:ITEM? <NR1>
             ```
+
+        Info:
+            - ``<NR1>`` is the zero-indexed argument specifying a specific license.
         """
         return self._item
 

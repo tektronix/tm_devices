@@ -30,17 +30,11 @@ from .gen_22daqs_afg.system import System
 from .gen_22daqs_afg.trigger import Trigger
 from .gen_33ijgq_afgawg.abort import Abort
 from .gen_33ijgq_afgawg.calibration import Calibration
+from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
+from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
-    Cls,
-    Esr,
-    Opc,
-    Rst,
-    Stb,
-    Wai,
-)
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 
 

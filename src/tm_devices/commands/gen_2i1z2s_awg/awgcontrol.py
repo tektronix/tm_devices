@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - AWGControl:ARSettings {0|1|ON|OFF}
+    - AWGControl:ARSettings {ON|OFF|1|0}
     - AWGControl:CLOCk:DRATe <NR1>
     - AWGControl:CLOCk:DRATe?
     - AWGControl:CLOCk:PHASe:ADJust <NR1>
@@ -18,7 +18,7 @@ Commands and Queries:
     - AWGControl:CLOCk:SOURce?
     - AWGControl:COMPile <filename>
     - AWGControl:CONFigure:CNUMber?
-    - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+    - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
     - AWGControl:PJUMp:JSTRobe?
     - AWGControl:PJUMp:SEDGe {FALLing|RISing}
     - AWGControl:PJUMp:SEDGe?
@@ -288,7 +288,7 @@ class AwgcontrolPjumpJstrobe(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+        - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
         - AWGControl:PJUMp:JSTRobe?
         ```
     """
@@ -332,7 +332,7 @@ class AwgcontrolPjump(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+            - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
             - AWGControl:PJUMp:JSTRobe?
             ```
         """
@@ -661,7 +661,7 @@ class AwgcontrolArsettings(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - AWGControl:ARSettings {0|1|ON|OFF}
+        - AWGControl:ARSettings {ON|OFF|1|0}
         ```
     """
 
@@ -725,7 +725,7 @@ class Awgcontrol(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:ARSettings {0|1|ON|OFF}
+            - AWGControl:ARSettings {ON|OFF|1|0}
             ```
         """
         return self._arsettings

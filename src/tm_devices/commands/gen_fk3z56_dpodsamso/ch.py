@@ -400,8 +400,8 @@ class ChannelProbeUnits(SCPICmdRead):
     """The ``CH<x>:PRObe:UNIts`` command.
 
     Description:
-        - This query-only command returns a string describing the units of measure for the probe
-          attached to the specified channel. The channel is specified by x.
+        - Returns a string describing the units of measure for the probe attached to channel <x>,
+          where x is the channel number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:UNIts?`` query.
@@ -473,9 +473,14 @@ class ChannelProbeSet(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries aspects of probe accessory user interfaces, for example probe
-          attenuation factors or probe audible over range. The available arguments for this command
-          will vary depending on the accessory you attach to the instrument. The channel is
-          specified by x.
+          attenuation factors. The available arguments for this command will vary depending on the
+          accessory you attach to the instrument. For the P7260 probe, you can select between two
+          attenuation factors using either this GPIB command or the push switch on the probe. The
+          probe enables the relevant path and adjusts the set of available vertical settings based
+          on the characteristics of the path in use. The probe signal path selection is not kept in
+          persistent storage. The probe will lose the selection if you reboot the instrument or
+          remove the probe. Also, the instrument does not store the selection in the save/recall
+          setup operation.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:SET?`` query.
@@ -492,6 +497,14 @@ class ChannelProbeSet(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number.
         - ``<QString>`` is a quoted string representing a settable aspect of the attached accessory.
+          Example strings for some probes are shown as follows.
+        - ``ATTENuation 5X`` sets the P7260 probe to ±0.75 V dynamic range with 6 GHz bandwidth and
+          5X attenuation.
+        - ``ATTENuation 25X`` sets the P7260 probe to ±3 V dynamic range with 6 GHz bandwidth and
+          25X attenuation.
+        - ``VTERMsource AUTO`` sets the P7380SMA probe voltage termination source to auto.
+        - ``VTERMsource INTernal`` sets the P7380SMA probe voltage termination source to internal.
+        - ``VTERMsource EXTernal`` sets the P7380SMA probe voltage termination source to external.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -501,8 +514,8 @@ class ChannelProbeResistance(SCPICmdRead):
     """The ``CH<x>:PRObe:RESistance`` command.
 
     Description:
-        - This query-only command returns the resistance of the probe that is attached to the
-          specified channel. The channel is specified by x.
+        - Returns the resistance factor of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:RESistance?`` query.
@@ -600,8 +613,8 @@ class ChannelProbeInputmodeBoffset(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PRObe:INPUTMode:BOFFSet`` command.
 
     Description:
-        - Sets or queries the B mode offset control of the probe that is attached to the specified
-          channel.
+        - This command sets or queries the requested B mode offset control of the probe that is
+          attached to the specified channel.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:INPUTMode:BOFFSet?`` query.
@@ -618,7 +631,7 @@ class ChannelProbeInputmodeBoffset(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number.
-        - ``<NR3>`` sets the B mode offset value, in vertical units (V or A).
+        - ``<NR3>`` specifies the B mode offset control.
     """
 
 
@@ -626,8 +639,8 @@ class ChannelProbeInputmodeAoffset(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PRObe:INPUTMode:AOFFSet`` command.
 
     Description:
-        - Sets or queries the A mode offset control of the probe that is attached to the specified
-          channel.
+        - This command sets or queries the requested A mode offset control of the probe that is
+          attached to the specified channel.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:INPUTMode:AOFFSet?`` query.
@@ -644,7 +657,7 @@ class ChannelProbeInputmodeAoffset(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number.
-        - ``<NR3>`` sets the A mode offset value, in vertical units (V or A).
+        - ``<NR3>`` specifies the A mode offset control.
     """
 
 
@@ -693,8 +706,8 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
         """Return the ``CH<x>:PRObe:INPUTMode:AOFFSet`` command.
 
         Description:
-            - Sets or queries the A mode offset control of the probe that is attached to the
-              specified channel.
+            - This command sets or queries the requested A mode offset control of the probe that is
+              attached to the specified channel.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:INPUTMode:AOFFSet?`` query.
@@ -711,7 +724,7 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number.
-            - ``<NR3>`` sets the A mode offset value, in vertical units (V or A).
+            - ``<NR3>`` specifies the A mode offset control.
         """
         return self._aoffset
 
@@ -720,8 +733,8 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
         """Return the ``CH<x>:PRObe:INPUTMode:BOFFSet`` command.
 
         Description:
-            - Sets or queries the B mode offset control of the probe that is attached to the
-              specified channel.
+            - This command sets or queries the requested B mode offset control of the probe that is
+              attached to the specified channel.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:INPUTMode:BOFFSet?`` query.
@@ -738,7 +751,7 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number.
-            - ``<NR3>`` sets the B mode offset value, in vertical units (V or A).
+            - ``<NR3>`` specifies the B mode offset control.
         """
         return self._boffset
 
@@ -799,8 +812,9 @@ class ChannelProbeIdType(SCPICmdRead):
     """The ``CH<x>:PRObe:ID:TYPe`` command.
 
     Description:
-        - This query-only command returns the type of probe that is attached to the specified
-          channel. The channel is specified by x.
+        - Returns the type of probe attached to the channel specified by <x>, where x is the channel
+          number. Level 2 (or higher) probes supply their exact product nomenclature; for Level 0 or
+          1 probes, a generic 'No Probe Detected message is returned.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:TYPe?`` query.
@@ -818,8 +832,8 @@ class ChannelProbeIdSernumber(SCPICmdRead):
     """The ``CH<x>:PRObe:ID:SERnumber`` command.
 
     Description:
-        - This query-only command returns the serial number of the probe that is attached to the
-          specified channel. The channel is specified by x.
+        - Returns the serial number of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -837,8 +851,8 @@ class ChannelProbeId(SCPICmdRead):
     """The ``CH<x>:PRObe:ID`` command.
 
     Description:
-        - This query-only command returns the type and serial number of the probe that is attached
-          to the specified channel. The channel is specified by x.
+        - Returns the type and serial number of the probe attached to channel <x>, where x is the
+          channel number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID?`` query.
@@ -865,8 +879,8 @@ class ChannelProbeId(SCPICmdRead):
         """Return the ``CH<x>:PRObe:ID:SERnumber`` command.
 
         Description:
-            - This query-only command returns the serial number of the probe that is attached to the
-              specified channel. The channel is specified by x.
+            - Returns the serial number of the probe attached to channel <x>, where x is the channel
+              number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -885,8 +899,9 @@ class ChannelProbeId(SCPICmdRead):
         """Return the ``CH<x>:PRObe:ID:TYPe`` command.
 
         Description:
-            - This query-only command returns the type of probe that is attached to the specified
-              channel. The channel is specified by x.
+            - Returns the type of probe attached to the channel specified by <x>, where x is the
+              channel number. Level 2 (or higher) probes supply their exact product nomenclature;
+              for Level 0 or 1 probes, a generic 'No Probe Detected message is returned.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:TYPe?`` query.
@@ -906,8 +921,9 @@ class ChannelProbeGain(SCPICmdRead):
 
     Description:
         - This query-only command returns the gain factor of the probe that is attached to the
-          specified channel. The channel is specified by x. The gain of a probe is the output
-          divided by the input transfer ratio. For example, a common 10x probe has a gain of 0.1.
+          specified channel. The channel is specified by x. The value of x can range from 1 through
+          4. The 'gain' of a probe is the output divided by the input transfer ratio. For example, a
+          common 10x probe has a gain of 0.1.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:GAIN?`` query.
@@ -952,6 +968,8 @@ class ChannelProbeForcedrange(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` specifies the probe dynamic range.
         - ``<dynamicRangeNR3>`` specifies the probe range.
     """
 
@@ -960,8 +978,7 @@ class ChannelProbeDegaussState(SCPICmdRead):
     """The ``CH<x>:PRObe:DEGAUSS:STATE`` command.
 
     Description:
-        - This command queries whether the probe attached to the specified channel requires a
-          degauss operation. The channel is specified by x.
+        - This command queries whether the probe attached to the specified channel is degaussed.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:DEGAUSS:STATE?`` query.
@@ -979,8 +996,8 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PRObe:DEGAUSS`` command.
 
     Description:
-        - This command starts a degauss cycle of the TekVPI probe attached to the specified channel.
-          The channel is specified by x.
+        - This command starts a degauss cycle of the probe attached to the specified channel. The
+          channel is specified by x. The value of x can range from 1 through 4.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:DEGAUSS value`` command.
@@ -1007,8 +1024,7 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         """Return the ``CH<x>:PRObe:DEGAUSS:STATE`` command.
 
         Description:
-            - This command queries whether the probe attached to the specified channel requires a
-              degauss operation. The channel is specified by x.
+            - This command queries whether the probe attached to the specified channel is degaussed.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:DEGAUSS:STATE?`` query.
@@ -1197,8 +1213,7 @@ class ChannelProbeAutozero(SCPICmdWrite):
 
     Description:
         - This command executes the attached probe's Auto Zero function, for probes that support
-          this feature. See your probe documentation for more details. The channel is specified by
-          x.
+          this feature. See your probe documentation for more details.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:AUTOZero value`` command.
@@ -1219,8 +1234,8 @@ class ChannelProbe(SCPICmdRead):
     """The ``CH<x>:PRObe`` command.
 
     Description:
-        - This query-only command returns all information concerning the probe that is attached to
-          the specified channel. The channel is specified by x.
+        - Returns the gain factor of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe?`` query.
@@ -1270,8 +1285,7 @@ class ChannelProbe(SCPICmdRead):
 
         Description:
             - This command executes the attached probe's Auto Zero function, for probes that support
-              this feature. See your probe documentation for more details. The channel is specified
-              by x.
+              this feature. See your probe documentation for more details.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:AUTOZero value``
@@ -1307,8 +1321,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:DEGAUSS`` command.
 
         Description:
-            - This command starts a degauss cycle of the TekVPI probe attached to the specified
-              channel. The channel is specified by x.
+            - This command starts a degauss cycle of the probe attached to the specified channel.
+              The channel is specified by x. The value of x can range from 1 through 4.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:DEGAUSS value``
@@ -1361,6 +1375,8 @@ class ChannelProbe(SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` specifies the probe dynamic range.
             - ``<dynamicRangeNR3>`` specifies the probe range.
         """
         return self._forcedrange
@@ -1371,9 +1387,9 @@ class ChannelProbe(SCPICmdRead):
 
         Description:
             - This query-only command returns the gain factor of the probe that is attached to the
-              specified channel. The channel is specified by x. The gain of a probe is the output
-              divided by the input transfer ratio. For example, a common 10x probe has a gain of
-              0.1.
+              specified channel. The channel is specified by x. The value of x can range from 1
+              through 4. The 'gain' of a probe is the output divided by the input transfer ratio.
+              For example, a common 10x probe has a gain of 0.1.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:GAIN?`` query.
@@ -1392,8 +1408,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:ID`` command.
 
         Description:
-            - This query-only command returns the type and serial number of the probe that is
-              attached to the specified channel. The channel is specified by x.
+            - Returns the type and serial number of the probe attached to channel <x>, where x is
+              the channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID?`` query.
@@ -1483,8 +1499,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:RESistance`` command.
 
         Description:
-            - This query-only command returns the resistance of the probe that is attached to the
-              specified channel. The channel is specified by x.
+            - Returns the resistance factor of the probe attached to channel <x>, where x is the
+              channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:RESistance?`` query.
@@ -1504,9 +1520,14 @@ class ChannelProbe(SCPICmdRead):
 
         Description:
             - This command sets or queries aspects of probe accessory user interfaces, for example
-              probe attenuation factors or probe audible over range. The available arguments for
-              this command will vary depending on the accessory you attach to the instrument. The
-              channel is specified by x.
+              probe attenuation factors. The available arguments for this command will vary
+              depending on the accessory you attach to the instrument. For the P7260 probe, you can
+              select between two attenuation factors using either this GPIB command or the push
+              switch on the probe. The probe enables the relevant path and adjusts the set of
+              available vertical settings based on the characteristics of the path in use. The probe
+              signal path selection is not kept in persistent storage. The probe will lose the
+              selection if you reboot the instrument or remove the probe. Also, the instrument does
+              not store the selection in the save/recall setup operation.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:SET?`` query.
@@ -1523,7 +1544,16 @@ class ChannelProbe(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number.
             - ``<QString>`` is a quoted string representing a settable aspect of the attached
-              accessory.
+              accessory. Example strings for some probes are shown as follows.
+            - ``ATTENuation 5X`` sets the P7260 probe to ±0.75 V dynamic range with 6 GHz bandwidth
+              and 5X attenuation.
+            - ``ATTENuation 25X`` sets the P7260 probe to ±3 V dynamic range with 6 GHz bandwidth
+              and 25X attenuation.
+            - ``VTERMsource AUTO`` sets the P7380SMA probe voltage termination source to auto.
+            - ``VTERMsource INTernal`` sets the P7380SMA probe voltage termination source to
+              internal.
+            - ``VTERMsource EXTernal`` sets the P7380SMA probe voltage termination source to
+              external.
         """
         return self._set
 
@@ -1589,8 +1619,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:UNIts`` command.
 
         Description:
-            - This query-only command returns a string describing the units of measure for the probe
-              attached to the specified channel. The channel is specified by x.
+            - Returns a string describing the units of measure for the probe attached to channel
+              <x>, where x is the channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:UNIts?`` query.
@@ -1609,9 +1639,10 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PROBEFunc:EXTUnits`` command.
 
     Description:
-        - This command sets the unit of measurement for the external attenuator of the specified
-          channel. The channel is specified by x. The alternate units are used if they are enabled.
-          Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the alternate units.
+        - This command Sets or queries the units of the specified channel. The channel is specified
+          by x. This command can only be set to 'V' or 'A', which corresponds to selecting a voltage
+          or current probe respectively. The ``CHX:PROBEFUNC:EXTUNITS`` command can only select 'V'
+          if the ``CHX:PROBEFUNC:EXTUNITS:STATE`` is disabled (set to 0).
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc:EXTUnits?`` query.
@@ -1628,7 +1659,8 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number.
-        - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
+        - ``<QString>`` a quoted string that indicates the units of the specified channel. Only
+          units 'V' or 'A' are supported. This command is case sensitive.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1778,10 +1810,11 @@ class ChannelProbefunc(SCPICmdRead):
         """Return the ``CH<x>:PROBEFunc:EXTUnits`` command.
 
         Description:
-            - This command sets the unit of measurement for the external attenuator of the specified
-              channel. The channel is specified by x. The alternate units are used if they are
-              enabled. Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the
-              alternate units.
+            - This command Sets or queries the units of the specified channel. The channel is
+              specified by x. This command can only be set to 'V' or 'A', which corresponds to
+              selecting a voltage or current probe respectively. The ``CHX:PROBEFUNC:EXTUNITS``
+              command can only select 'V' if the ``CHX:PROBEFUNC:EXTUNITS:STATE`` is disabled (set
+              to 0).
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc:EXTUnits?`` query.
@@ -1798,7 +1831,8 @@ class ChannelProbefunc(SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number.
-            - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
+            - ``<QString>`` a quoted string that indicates the units of the specified channel. Only
+              units 'V' or 'A' are supported. This command is case sensitive.
         """
         return self._extunits
 
@@ -1807,8 +1841,9 @@ class ChannelProbecal(SCPICmdRead):
     """The ``CH<x>:PROBECal`` command.
 
     Description:
-        - This query-only command returns the probe calibration state for the specified channel. The
-          channel is specified by x.
+        - This query-only command returns the probe calibration state for the selected channel. The
+          channel is specified by x. The value of x can range from 1 through 4. This command is
+          equivalent to selecting Probe Cal from the Vertical menu.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PROBECal?`` query.
@@ -1826,8 +1861,7 @@ class ChannelProbecontrol(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PROBECOntrol`` command.
 
     Description:
-        - This command sets or queries multirange probe range-control policy preference of the probe
-          that is attached to CH<x>. The channel number is specified by x.
+        - This command allows you to set or query the probe range.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PROBECOntrol?`` query.
@@ -3384,8 +3418,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``CH<x>:PROBECOntrol`` command.
 
         Description:
-            - This command sets or queries multirange probe range-control policy preference of the
-              probe that is attached to CH<x>. The channel number is specified by x.
+            - This command allows you to set or query the probe range.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PROBECOntrol?`` query.
@@ -3412,8 +3445,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``CH<x>:PROBECal`` command.
 
         Description:
-            - This query-only command returns the probe calibration state for the specified channel.
-              The channel is specified by x.
+            - This query-only command returns the probe calibration state for the selected channel.
+              The channel is specified by x. The value of x can range from 1 through 4. This command
+              is equivalent to selecting Probe Cal from the Vertical menu.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PROBECal?`` query.
@@ -3451,8 +3485,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``CH<x>:PRObe`` command.
 
         Description:
-            - This query-only command returns all information concerning the probe that is attached
-              to the specified channel. The channel is specified by x.
+            - Returns the gain factor of the probe attached to channel <x>, where x is the channel
+              number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe?`` query.

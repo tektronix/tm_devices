@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SELect:B<x> {0|1|OFF|ON}
+    - SELect:B<x> {ON|OFF|1|0}
     - SELect:B<x>?
     - SELect:CH<x> {ON|OFF|<NR1>}
     - SELect:CH<x>?
@@ -337,7 +337,7 @@ class SelectBItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:B<x> {0|1|OFF|ON}
+        - SELect:B<x> {ON|OFF|1|0}
         - SELect:B<x>?
         ```
 
@@ -415,7 +415,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:B<x> {0|1|OFF|ON}
+            - SELect:B<x> {ON|OFF|1|0}
             - SELect:B<x>?
             ```
 
