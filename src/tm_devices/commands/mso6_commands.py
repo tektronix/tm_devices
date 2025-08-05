@@ -383,6 +383,8 @@ class MSO6CommandConstants:
     DOTSONLY = "DOTSONLY"  # DOTsonly
     DOUBLE = "DOUBLE"
     DP = "DP"
+    DPMAUTOSET = "DPMAUTOSET"  # DPMAutoset
+    DPMPRESET = "DPMPRESET"  # DPMPReset
     DPPABORT = "DPPABORT"
     DPPEND = "DPPEND"
     DPPSTART = "DPPSTART"
@@ -1337,6 +1339,7 @@ class MSO6CommandConstants:
     # TESTMODE = "TESTmode"
     THREE = "THREE"
     # THREE = "THRee"
+    THREEPHASEAUTOSET = "THREEPHASEAUTOSET"  # THREEPHASEAUTOset
     THREESIXTYHZ = "THREESIXTYHZ"  # THREESIXTyhz
     TIME = "TIME"  # TIMe
     TIMECODE = "TIMECODE"  # TIMECODe
@@ -1424,6 +1427,9 @@ class MSO6CommandConstants:
     WAVEFORM = "WAVEFORM"
     # WAVEFORM = "WAVEform"
     WAVEVIEW1 = "WAVEVIEW1"
+    WBGDESKEWEXEC = "WBGDESKEWEXEC"  # WBGDeskewexec
+    WBGGSTIM = "WBGGSTIM"
+    WBGPRESET = "WBGPRESET"  # WBGPREset
     WIDTH = "WIDTH"  # WIDth
     WINDOW = "WINDOW"  # WINdow
     WITHIN = "WITHIN"  # WIThin
@@ -3099,6 +3105,7 @@ class MSO6Commands:
             - ``.addmeas``: The ``MEASUrement:ADDMEAS`` command.
             - ``.addnew``: The ``MEASUrement:ADDNew`` command.
             - ``.annotate``: The ``MEASUrement:ANNOTate`` command.
+            - ``.autoset``: The ``MEASUrement:AUTOset`` command.
             - ``.ch``: The ``MEASUrement:CH<x>`` command tree.
             - ``.clockrecovery``: The ``MEASUrement:CLOCKRecovery`` command tree.
             - ``.ddjmethod``: The ``MEASUrement:DDJMethod`` command.

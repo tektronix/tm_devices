@@ -303,6 +303,8 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SPI:DATa:VALue?
     - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:A:BUS:B<x>:SPMI:CONDition?
+    - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+    - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
     - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?
     - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?
     - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <QString>
@@ -769,6 +771,8 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SPI:DATa:VALue?
     - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:B:BUS:B<x>:SPMI:CONDition?
+    - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+    - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
     - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?
     - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?
     - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <QString>
@@ -7538,6 +7542,32 @@ class TriggerBBusBItemSpmiDataValue(SCPICmdRead):
     """
 
 
+class TriggerBBusBItemSpmiDataSize(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
+
+    Description:
+        - This command sets or queries the length of the data string, in bytes, to be used when
+          triggering on an SPMI bus signal.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+        - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
+        ```
+
+    Info:
+        - ``B<x>`` is the bus identifier number.
+        - ``<NR2>`` is the size of the data string in bytes.
+    """
+
+
 class TriggerBBusBItemSpmiData(SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:SPMI:DATa`` command tree.
 
@@ -7550,12 +7580,43 @@ class TriggerBBusBItemSpmiData(SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
 
     Properties:
+        - ``.size``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
         - ``.value``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._size = TriggerBBusBItemSpmiDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerBBusBItemSpmiDataValue(device, f"{self._cmd_syntax}:VALue")
+
+    @property
+    def size(self) -> TriggerBBusBItemSpmiDataSize:
+        """Return the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
+
+        Description:
+            - This command sets or queries the length of the data string, in bytes, to be used when
+              triggering on an SPMI bus signal.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+            - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
+            ```
+
+        Info:
+            - ``B<x>`` is the bus identifier number.
+            - ``<NR2>`` is the size of the data string in bytes.
+        """
+        return self._size
 
     @property
     def value(self) -> TriggerBBusBItemSpmiDataValue:
@@ -7731,6 +7792,7 @@ class TriggerBBusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
 
         Sub-properties:
+            - ``.size``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
             - ``.value``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue`` command.
         """
         return self._data
@@ -26443,6 +26505,32 @@ class TriggerABusBItemSpmiDataValue(SCPICmdRead):
     """
 
 
+class TriggerABusBItemSpmiDataSize(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
+
+    Description:
+        - This command sets or queries the length of the data string, in bytes, to be used when
+          triggering on an SPMI bus signal.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe value`` command.
+
+    SCPI Syntax:
+        ```
+        - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+        - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
+        ```
+
+    Info:
+        - ``B<x>`` is the bus identifier number.
+        - ``<NR2>`` is the size of the data string in bytes.
+    """
+
+
 class TriggerABusBItemSpmiData(SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:SPMI:DATa`` command tree.
 
@@ -26455,12 +26543,43 @@ class TriggerABusBItemSpmiData(SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
 
     Properties:
+        - ``.size``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._size = TriggerABusBItemSpmiDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerABusBItemSpmiDataValue(device, f"{self._cmd_syntax}:VALue")
+
+    @property
+    def size(self) -> TriggerABusBItemSpmiDataSize:
+        """Return the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
+
+        Description:
+            - This command sets or queries the length of the data string, in bytes, to be used when
+              triggering on an SPMI bus signal.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe value`` command.
+
+        SCPI Syntax:
+            ```
+            - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
+            - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
+            ```
+
+        Info:
+            - ``B<x>`` is the bus identifier number.
+            - ``<NR2>`` is the size of the data string in bytes.
+        """
+        return self._size
 
     @property
     def value(self) -> TriggerABusBItemSpmiDataValue:
@@ -26636,6 +26755,7 @@ class TriggerABusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
 
         Sub-properties:
+            - ``.size``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
             - ``.value``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue`` command.
         """
         return self._data
