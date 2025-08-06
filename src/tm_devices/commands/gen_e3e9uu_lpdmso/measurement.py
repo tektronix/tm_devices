@@ -12603,8 +12603,6 @@ class MeasurementMeasItemMaxg2voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``MAXG<x>Voltage`` specifies the maximum gate voltage number. The valid values for x are 1
-          or 2.
         - ``<NR3>`` specifies the maximum gate voltage.
     """
 
@@ -12630,8 +12628,6 @@ class MeasurementMeasItemMaxg1voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``MAXG<x>Voltage`` specifies the maximum gate voltage number. The valid values for x are 1
-          or 2.
         - ``<NR3>`` specifies the maximum gate voltage.
     """
 
@@ -22732,8 +22728,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``MAXG<x>Voltage`` specifies the maximum gate voltage number. The valid values for x
-              are 1 or 2.
             - ``<NR3>`` specifies the maximum gate voltage.
         """
         return self._maxg1voltage
@@ -22762,8 +22756,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``MAXG<x>Voltage`` specifies the maximum gate voltage number. The valid values for x
-              are 1 or 2.
             - ``<NR3>`` specifies the maximum gate voltage.
         """
         return self._maxg2voltage
