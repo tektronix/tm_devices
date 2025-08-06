@@ -14,6 +14,7 @@ Commands and Queries:
     - MEASUrement:ADDNew <QString>
     - MEASUrement:ANNOTate {OFF|AUTO}
     - MEASUrement:ANNOTate?
+    - MEASUrement:AUTOset {DPMAutoset|DPMPReset|EXECute|THREEPHASEAUTOset|WBGDeskewexec|WBGPREset|WBGGSTIM}
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLHigh M <NR3>
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLHigh?
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLLow <NR3>
@@ -491,6 +492,10 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MAXCUrrent?
     - MEASUrement:MEAS<x>:MAXCycle <NR1>
     - MEASUrement:MEAS<x>:MAXCycle?
+    - MEASUrement:MEAS<x>:MAXG1Voltage <NR3>
+    - MEASUrement:MEAS<x>:MAXG1Voltage?
+    - MEASUrement:MEAS<x>:MAXG2Voltage <NR3>
+    - MEASUrement:MEAS<x>:MAXG2Voltage?
     - MEASUrement:MEAS<x>:MAXGVoltage <NR3>
     - MEASUrement:MEAS<x>:MAXGVoltage?
     - MEASUrement:MEAS<x>:MAXVoltage <NR2>
@@ -12577,6 +12582,56 @@ class MeasurementMeasItemMaxgvoltage(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemMaxg2voltage(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:MAXG2Voltage`` command.
+
+    Description:
+        - This command sets or returns the maximum gate voltage 1 or 2 value for Tdt measurement.
+          Measurements are specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:MAXG2Voltage?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:MAXG2Voltage?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:MAXG2Voltage value`` command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:MEAS<x>:MAXG2Voltage <NR3>
+        - MEASUrement:MEAS<x>:MAXG2Voltage?
+        ```
+
+    Info:
+        - ``<NR3>`` specifies the maximum gate voltage.
+    """
+
+
+class MeasurementMeasItemMaxg1voltage(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:MAXG1Voltage`` command.
+
+    Description:
+        - This command sets or returns the maximum gate voltage 1 or 2 value for Tdt measurement.
+          Measurements are specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:MAXG1Voltage?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:MAXG1Voltage?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:MAXG1Voltage value`` command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:MEAS<x>:MAXG1Voltage <NR3>
+        - MEASUrement:MEAS<x>:MAXG1Voltage?
+        ```
+
+    Info:
+        - ``<NR3>`` specifies the maximum gate voltage.
+    """
+
+
 class MeasurementMeasItemMaxcycle(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:MAXCycle`` command.
 
@@ -20131,6 +20186,8 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.matime``: The ``MEASUrement:MEAS<x>:MATime`` command.
         - ``.maxcurrent``: The ``MEASUrement:MEAS<x>:MAXCUrrent`` command.
         - ``.maxcycle``: The ``MEASUrement:MEAS<x>:MAXCycle`` command.
+        - ``.maxg1voltage``: The ``MEASUrement:MEAS<x>:MAXG1Voltage`` command.
+        - ``.maxg2voltage``: The ``MEASUrement:MEAS<x>:MAXG2Voltage`` command.
         - ``.maxgvoltage``: The ``MEASUrement:MEAS<x>:MAXGVoltage`` command.
         - ``.maxvoltage``: The ``MEASUrement:MEAS<x>:MAXVoltage`` command.
         - ``.measrange``: The ``MEASUrement:MEAS<x>:MEASRange`` command tree.
@@ -20348,6 +20405,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._matime = MeasurementMeasItemMatime(device, f"{self._cmd_syntax}:MATime")
         self._maxcurrent = MeasurementMeasItemMaxcurrent(device, f"{self._cmd_syntax}:MAXCUrrent")
         self._maxcycle = MeasurementMeasItemMaxcycle(device, f"{self._cmd_syntax}:MAXCycle")
+        self._maxg1voltage = MeasurementMeasItemMaxg1voltage(
+            device, f"{self._cmd_syntax}:MAXG1Voltage"
+        )
+        self._maxg2voltage = MeasurementMeasItemMaxg2voltage(
+            device, f"{self._cmd_syntax}:MAXG2Voltage"
+        )
         self._maxgvoltage = MeasurementMeasItemMaxgvoltage(
             device, f"{self._cmd_syntax}:MAXGVoltage"
         )
@@ -22640,6 +22703,62 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``<NR1>`` is the maximum cycle range limit value in the range or 2 to 50.
         """
         return self._maxcycle
+
+    @property
+    def maxg1voltage(self) -> MeasurementMeasItemMaxg1voltage:
+        """Return the ``MEASUrement:MEAS<x>:MAXG1Voltage`` command.
+
+        Description:
+            - This command sets or returns the maximum gate voltage 1 or 2 value for Tdt
+              measurement. Measurements are specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:MAXG1Voltage?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:MAXG1Voltage?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:MAXG1Voltage value`` command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:MEAS<x>:MAXG1Voltage <NR3>
+            - MEASUrement:MEAS<x>:MAXG1Voltage?
+            ```
+
+        Info:
+            - ``<NR3>`` specifies the maximum gate voltage.
+        """
+        return self._maxg1voltage
+
+    @property
+    def maxg2voltage(self) -> MeasurementMeasItemMaxg2voltage:
+        """Return the ``MEASUrement:MEAS<x>:MAXG2Voltage`` command.
+
+        Description:
+            - This command sets or returns the maximum gate voltage 1 or 2 value for Tdt
+              measurement. Measurements are specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:MAXG2Voltage?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:MAXG2Voltage?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:MAXG2Voltage value`` command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:MEAS<x>:MAXG2Voltage <NR3>
+            - MEASUrement:MEAS<x>:MAXG2Voltage?
+            ```
+
+        Info:
+            - ``<NR3>`` specifies the maximum gate voltage.
+        """
+        return self._maxg2voltage
 
     @property
     def maxgvoltage(self) -> MeasurementMeasItemMaxgvoltage:
@@ -31058,6 +31177,32 @@ class MeasurementChannel(ValidatedChannel, SCPICmdRead):
         return self._reflevels
 
 
+class MeasurementAutoset(SCPICmdWrite):
+    """The ``MEASUrement:AUTOset`` command.
+
+    Description:
+        - This command performs a specified autoset.
+
+    Usage:
+        - Using the ``.write(value)`` method will send the ``MEASUrement:AUTOset value`` command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:AUTOset {DPMAutoset|DPMPReset|EXECute|THREEPHASEAUTOset|WBGDeskewexec|WBGPREset|WBGGSTIM}
+        ```
+
+    Info:
+        - ``DPMAutoset`` performs a power rail autoset operation. Requires a DPM license.
+        - ``DPMPReset`` performs a power rail preset operation. Requires a DPM license.
+        - ``EXECute`` performs an analysis jitter autoset.
+        - ``THREEPHASEAUTOset`` performs an IMDA 3 phase autoset.
+        - ``WBGDeskewexec`` performs WBG deskew on specific measurements. Requires a WBG-DPT
+          license.
+        - ``WBGPREset`` performs a measurement specific preset. Requires a WBG-DPT license.
+        - ``WBGGSTIM`` performs gate stimulus forWBG measurement. Requires aWBG-DPT license.
+    """  # noqa: E501
+
+
 class MeasurementAnnotate(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:ANNOTate`` command.
 
@@ -31514,6 +31659,7 @@ class Measurement(SCPICmdRead):
         - ``.addmeas``: The ``MEASUrement:ADDMEAS`` command.
         - ``.addnew``: The ``MEASUrement:ADDNew`` command.
         - ``.annotate``: The ``MEASUrement:ANNOTate`` command.
+        - ``.autoset``: The ``MEASUrement:AUTOset`` command.
         - ``.ch``: The ``MEASUrement:CH<x>`` command tree.
         - ``.clockrecovery``: The ``MEASUrement:CLOCKRecovery`` command tree.
         - ``.ddjmethod``: The ``MEASUrement:DDJMethod`` command.
@@ -31552,6 +31698,7 @@ class Measurement(SCPICmdRead):
         self._addmeas = MeasurementAddmeas(device, f"{self._cmd_syntax}:ADDMEAS")
         self._addnew = MeasurementAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._annotate = MeasurementAnnotate(device, f"{self._cmd_syntax}:ANNOTate")
+        self._autoset = MeasurementAutoset(device, f"{self._cmd_syntax}:AUTOset")
         self._ch: Dict[int, MeasurementChannel] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
@@ -32039,6 +32186,34 @@ class Measurement(SCPICmdRead):
             - ``AUTO`` turns on visible measurement annotations.
         """
         return self._annotate
+
+    @property
+    def autoset(self) -> MeasurementAutoset:
+        """Return the ``MEASUrement:AUTOset`` command.
+
+        Description:
+            - This command performs a specified autoset.
+
+        Usage:
+            - Using the ``.write(value)`` method will send the ``MEASUrement:AUTOset value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:AUTOset {DPMAutoset|DPMPReset|EXECute|THREEPHASEAUTOset|WBGDeskewexec|WBGPREset|WBGGSTIM}
+            ```
+
+        Info:
+            - ``DPMAutoset`` performs a power rail autoset operation. Requires a DPM license.
+            - ``DPMPReset`` performs a power rail preset operation. Requires a DPM license.
+            - ``EXECute`` performs an analysis jitter autoset.
+            - ``THREEPHASEAUTOset`` performs an IMDA 3 phase autoset.
+            - ``WBGDeskewexec`` performs WBG deskew on specific measurements. Requires a WBG-DPT
+              license.
+            - ``WBGPREset`` performs a measurement specific preset. Requires a WBG-DPT license.
+            - ``WBGGSTIM`` performs gate stimulus forWBG measurement. Requires aWBG-DPT license.
+        """  # noqa: E501
+        return self._autoset
 
     @property
     def ch(self) -> Dict[int, MeasurementChannel]:
@@ -32600,6 +32775,8 @@ class Measurement(SCPICmdRead):
             - ``.matime``: The ``MEASUrement:MEAS<x>:MATime`` command.
             - ``.maxcurrent``: The ``MEASUrement:MEAS<x>:MAXCUrrent`` command.
             - ``.maxcycle``: The ``MEASUrement:MEAS<x>:MAXCycle`` command.
+            - ``.maxg1voltage``: The ``MEASUrement:MEAS<x>:MAXG1Voltage`` command.
+            - ``.maxg2voltage``: The ``MEASUrement:MEAS<x>:MAXG2Voltage`` command.
             - ``.maxgvoltage``: The ``MEASUrement:MEAS<x>:MAXGVoltage`` command.
             - ``.maxvoltage``: The ``MEASUrement:MEAS<x>:MAXVoltage`` command.
             - ``.measrange``: The ``MEASUrement:MEAS<x>:MEASRange`` command tree.
