@@ -136,7 +136,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:XLDATa:SIZe?
@@ -52795,7 +52795,7 @@ class SearchSearchItemTriggerABusCanXldata(SCPICmdRead):
         return self._value
 
 
-class SearchSearchItemTriggerABusCanPidentifierValue(SCPICmdWriteNoArguments, SCPICmdRead):
+class SearchSearchItemTriggerABusCanPidentifierValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
 
     Description:
@@ -52809,18 +52809,20 @@ class SearchSearchItemTriggerABusCanPidentifierValue(SCPICmdWriteNoArguments, SC
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
         ```
 
     Info:
         - ``<QString>`` specifies the identifier value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SearchSearchItemTriggerABusCanPidentifierSize(SCPICmdWrite, SCPICmdRead):
@@ -52919,12 +52921,12 @@ class SearchSearchItemTriggerABusCanPidentifier(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:PIDentifier:VALue?
             ```
 
