@@ -109,7 +109,7 @@ poetry-audit-plugin = "^0.4.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "3.3.7"
+pylint = "3.3.8"
 pyright = {extras = ["nodejs"], version = "1.1.403"}
 pyroma = "^5.0"
 tox = "^4.0"
@@ -157,7 +157,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.12.7"
+ruff = "0.12.8"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
