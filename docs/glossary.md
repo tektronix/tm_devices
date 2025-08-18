@@ -3,109 +3,109 @@
 A collection of terms and symbols used throughout the documentation and their definitions.
 
 🚧
-: Work in Progress
+:   Work in Progress
 
 ✅
-: Implemented
+:   Implemented
 
 ❌
-: Not Supported
+:   Not Supported
 
 AFG
-: Arbitrary Function Generator
+:   Arbitrary Function Generator
 
 API
-: Application Programming Interface
+:   Application Programming Interface
 
 AWG
-: Arbitrary Waveform Generator
+:   Arbitrary Waveform Generator
 
 DAC
-: Digital to Analog Converter
+:   Digital to Analog Converter
 
 DAQ
-: Digital Acquisition System
+:   Digital Acquisition System
 
 DCA
-: Direct-Coupled Amplifier
+:   Direct-Coupled Amplifier
 
 DMM
-: Digital Multimeter
+:   Digital Multimeter
 
 DPOJET
-: A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
+:   A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
 
 GPIB
-: General Purpose Interface Bus
+:   General Purpose Interface Bus
 
 IAFG
-: Internal Arbitrary Function Generator.
+:   Internal Arbitrary Function Generator.
 
 IDE
-: Integrated Development Environment
+:   Integrated Development Environment
 
 LP
-: Low Profile
+:   Low Profile
 
 LPD
-: Low Profile Digitizer
+:   Low Profile Digitizer
 
 MDO
-: Mixed Domain Oscilloscope
+:   Mixed Domain Oscilloscope
 
 MSO
-: Mixed Signal Oscilloscope
+:   Mixed Signal Oscilloscope
 
 MT
-: Margin Tester
+:   Margin Tester
 
 OCR
-: Operation Condition Register
+:   Operation Condition Register
 
 OPC
-: Operation Complete
+:   Operation Complete
 
 PI
-: Programmable Interface
+:   Programmable Interface
 
 PSU
-: Power Supply Unit
+:   Power Supply Unit
 
 Scope
-: Oscilloscope
+:   Oscilloscope
 
 SCPI
-: Standard Commands for Programmable Instruments
+:   Standard Commands for Programmable Instruments
 
 SESR
-: Standard Event Status Register
+:   Standard Event Status Register
 
 SMU
-: Source Measure Unit
+:   Source Measure Unit
 
 SourceXpress
-: An application to load and play waveforms remotely for Tektronix Arbitrary Waveform Generators
+:   An application to load and play waveforms remotely for Tektronix Arbitrary Waveform Generators
 
 SRQ
-: Service Request
+:   Service Request
 
 SS
-: System Switch
+:   System Switch
 
 TCPIP
-: Transmission Control Protocol/Internet Protocol
+:   Transmission Control Protocol/Internet Protocol
 
 TekScopePC
-: A PC software application to view and analyze waveforms anywhere, anytime, with remote access to a Tektronix oscilloscope
+:   A PC software application to view and analyze waveforms anywhere, anytime, with remote access to a Tektronix oscilloscope
 
 TSP
-: Test Script Processor
+:   Test Script Processor
 
 USB
-: Universal Serial Bus
+:   Universal Serial Bus
 
 VISA
-: Virtual Instrument Software Architecture
+:   Virtual Instrument Software Architecture
 
 WAI
-: Wait
+:   Wait
