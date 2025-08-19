@@ -18,6 +18,43 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.3.0 (2025-08-19)
+
+### Merged Pull Requests
+
+- python-deps(deps): bump the python-dependencies group across 1 directory with 7 updates ([#488](https://github.com/tektronix/tm_devices/pull/488))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#431](https://github.com/tektronix/tm_devices/pull/431))
+- fix: standardize formatting of glossary entries for consistency ([#487](https://github.com/tektronix/tm_devices/pull/487))
+- python-deps(deps): bump the python-dependencies group with 7 updates ([#436](https://github.com/tektronix/tm_devices/pull/436))
+- gh-actions(deps): bump the gh-actions-dependencies group across 1 directory with 2 updates ([#483](https://github.com/tektronix/tm_devices/pull/483))
+- fix: Generated the APIs to add missing argument in the command. ([#482](https://github.com/tektronix/tm_devices/pull/482))
+- fix: generated the APIs for Previously missing commands to the MSO4/5/6 and LPD6 models. ([#479](https://github.com/tektronix/tm_devices/pull/479))
+- feat: Added support for new commands in the MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B, and LPD6 models. ([#456](https://github.com/tektronix/tm_devices/pull/456))
+- python-deps(deps): bump the python-dependencies group with 5 updates ([#477](https://github.com/tektronix/tm_devices/pull/477))
+- docs: add troubleshooting guide for packaging tm_devices with PyInstaller ([#473](https://github.com/tektronix/tm_devices/pull/473))
+- python-deps(deps): bump the python-dependencies group with 2 updates ([#442](https://github.com/tektronix/tm_devices/pull/442))
+- fix: Attempt to grab the ip_address for all connection types ([#471](https://github.com/tektronix/tm_devices/pull/471))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#469](https://github.com/tektronix/tm_devices/pull/469))
+- ci: update Python version requirement and pre-commit hook skip list in a github workflow ([#467](https://github.com/tektronix/tm_devices/pull/467))
+- fix: add Python 3.9 classifier to pyproject.toml for compatibility ([#464](https://github.com/tektronix/tm_devices/pull/464))
+- python-deps(deps-dev): update ruff requirement from 0.12.0 to 0.12.1 in the python-dependencies group ([#463](https://github.com/tektronix/tm_devices/pull/463))
+- python-deps(deps-dev): update ruff requirement from 0.11.13 to 0.12.0 in the python-dependencies group ([#462](https://github.com/tektronix/tm_devices/pull/462))
+- test: Make sure coverage always uses the `src/` path ([#460](https://github.com/tektronix/tm_devices/pull/460))
+- feat: Add the ability to disable logging under a level to the disable logging context manager ([#458](https://github.com/tektronix/tm_devices/pull/458))
+- python-deps(deps-dev): update pyright requirement from 1.1.401 to 1.1.402 in the python-dependencies group ([#457](https://github.com/tektronix/tm_devices/pull/457))
+- Fix the behavior of the `DeviceManager`'s open/close methods ([#455](https://github.com/tektronix/tm_devices/pull/455))
+- ci: Change the schema download link to work around issues with the schemastore domain ([#451](https://github.com/tektronix/tm_devices/pull/451))
+- feat: enable graceful exits for DeviceManager and improve logging control ([#450](https://github.com/tektronix/tm_devices/pull/450))
+- feat: add PyVISA-compatible args to query_binary method. ([#445](https://github.com/tektronix/tm_devices/pull/445))
+- chore: Update test dependencies ([#443](https://github.com/tektronix/tm_devices/pull/443))
+- python-deps(deps): bump the python-dependencies group with 3 updates ([#439](https://github.com/tektronix/tm_devices/pull/439))
+- Add a schema file for the configuration file ([#435](https://github.com/tektronix/tm_devices/pull/435))
+- fix: Update docs to avoid mdformat failures ([#434](https://github.com/tektronix/tm_devices/pull/434))
+- Drop support for Python 3.8 ([#430](https://github.com/tektronix/tm_devices/pull/430))
+- python-deps(deps-dev): update ruff requirement from 0.11.8 to 0.11.9 in the python-dependencies group ([#432](https://github.com/tektronix/tm_devices/pull/432))
+
 ### Added
 
 - Added a new utility context manager, `disable_all_loggers()` which can be used to temporarily disable all logging within the current context.
