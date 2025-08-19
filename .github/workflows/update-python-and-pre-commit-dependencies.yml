@@ -13,7 +13,7 @@ jobs:
       dependency-dict: '{"tests": ["ruff"]}'
       update-pre-commit: true
       run-pre-commit: true
-      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,poetry-audit,poetry-check
+      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,poetry-audit,poetry-check,check-tm-devices-schema-file
       pre-commit-repo-update-skip-list: ''
       export-dependency-groups: docs,tests
     permissions:
