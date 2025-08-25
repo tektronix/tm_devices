@@ -1,4 +1,4 @@
-beautifulsoup4==4.13.4 ; python_full_version >= "3.9.2" and python_version < "3.14"
+beautifulsoup4==4.13.5 ; python_full_version >= "3.9.2" and python_version < "3.14"
 black==25.1.0 ; python_full_version >= "3.9.2" and python_version < "3.14"
 bracex==2.6 ; python_full_version >= "3.9.2" and python_version < "3.14"
 certifi==2025.8.3 ; python_full_version >= "3.9.2" and python_version < "3.14"
