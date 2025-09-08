@@ -54,12 +54,12 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: c710c9f541ae452547fdce5c360929f007ec4867  # frozen: v4.8.3
+    rev: 186dd18042ad30269e157e17db271a34b71e3bcd  # frozen: v4.8.4
     hooks:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 8072181c0f2eab9f2dd8db2eb3b9556d7cd0bd74  # frozen: 1.17.0
+    rev: 881308160e4589cf886919438a3ed0acba42ea0e  # frozen: 1.18.0
     hooks:
       - id: yamlfix
   - repo: https://github.com/thibaudcolas/curlylint
@@ -152,7 +152,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: db90487f48a9dd992d243ef63c156eaffddeaf28  # frozen: v0.12.11
+    rev: 60ef368a6f48dfb4317651017f66dbb055241a6c  # frozen: v0.12.12
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
