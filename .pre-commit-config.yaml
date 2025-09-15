@@ -54,7 +54,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 186dd18042ad30269e157e17db271a34b71e3bcd  # frozen: v4.8.4
+    rev: 98bba31fe6c9214cd49767e41802fa099d0c47a4  # frozen: v4.9.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -88,7 +88,7 @@ repos:
           - mdformat-web
           - mdformat-wikilink
   - repo: https://github.com/pappasam/toml-sort
-    rev: 4ec24891e200ae663aa2a7cecd19516080777133  # frozen: v0.24.2
+    rev: 8c5db1c8081310adb476e1661c4d5d1fb6dbd96e  # frozen: v0.24.3
     hooks:
       - id: toml-sort-fix
   - repo: local
@@ -152,7 +152,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 60ef368a6f48dfb4317651017f66dbb055241a6c  # frozen: v0.12.12
+    rev: 13a6bda8ea7612b3aec844ded16569d424b9a1ab  # frozen: v0.13.0
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
