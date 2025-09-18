@@ -34,10 +34,10 @@ from .gen_dbqd7k_dmm.tspnet import Tspnet
 from .gen_dbqd7k_dmm.upgrade import Upgrade
 from .gen_dcpheg_daqdmm.smu import Smu
 from .gen_dd4xnb_smudaqdmm.script import Script
-from .gen_eat5s3_smudaqdmmss.dataqueue import Dataqueue
 from .gen_eat5s3_smudaqdmmss.fs import Fs
-from .gen_eat5s3_smudaqdmmss.userstring import Userstring
 from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
+from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
+from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 

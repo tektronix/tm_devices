@@ -91,7 +91,7 @@ plugins:
       inline_refs: none
       markdown_links: true
   - mermaid2:
-      javascript: https://unpkg.com/mermaid@11.3.0/dist/mermaid.min.js
+      javascript: https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.3.0/mermaid.min.js
   - mkdocstrings:  # additional customization takes place in docs/generate_api_pages.py
       # noinspection YAMLIncompatibleTypes
       enabled: !ENV [TM_DEVICES_API_GENERATION, true]

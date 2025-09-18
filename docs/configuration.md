@@ -130,8 +130,9 @@ devices:
 - Valid options for `<device_type>`:
     - `AFG`: An Arbitrary Function Generator
     - `AWG`: An Arbitrary Waveform Generator
-    - `DAQ`: An Data Acquisition Unit
-    - `DMM`: An Digital Multimeter
+    - `DAQ`: A Data Acquisition Unit
+    - `DMM`: A Digital Multimeter
+    - `MF`: A Mainframe
     - `MT`: A Margin Tester
     - `PSU`: A Power Supply Unit
     - `SCOPE`: An Oscilloscope

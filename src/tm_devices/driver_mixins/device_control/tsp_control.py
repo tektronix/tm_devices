@@ -15,6 +15,10 @@ from tm_devices.helpers import verify_values
 if TYPE_CHECKING:
     import os
 
+    import pyvisa as visa
+
+    from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
+
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
@@ -29,6 +33,26 @@ class TSPControl(PIControl, ABC):
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
+
+    def __init__(
+        self,
+        config_entry: DeviceConfigEntry,
+        verbose: bool,
+        visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
+    ) -> None:
+        """Create an instance of a TSP Control class.
+
+        Args:
+            config_entry: A config entry object parsed by the DMConfigParser.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
+            visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
+        """
+        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
+        self._user_created_custom_buffers: List[str] = []
 
     ################################################################################################
     # Magic Methods
@@ -254,4 +278,6 @@ class TSPControl(PIControl, ABC):
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""
         super()._cleanup()
+        for buffer_name in self._user_created_custom_buffers:
+            self.write(f"{buffer_name} = nil")
         self.write("collectgarbage()")

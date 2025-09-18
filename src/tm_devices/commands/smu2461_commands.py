@@ -31,10 +31,10 @@ from .gen_dbdq3i_smudaqdmm.scriptvar import Scriptvar
 from .gen_dbdq3i_smudaqdmm.timer import Timer
 from .gen_dd4xnb_smudaqdmm.script import Script
 from .gen_e7aqno_smudaqss.node import NodeItem
-from .gen_eat5s3_smudaqdmmss.dataqueue import Dataqueue
 from .gen_eat5s3_smudaqdmmss.fs import Fs
-from .gen_eat5s3_smudaqdmmss.userstring import Userstring
 from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
+from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
+from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 

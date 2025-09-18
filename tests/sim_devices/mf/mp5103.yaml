@@ -1,0 +1,56 @@
+---
+spec: '1.1'
+devices:
+  mp5103:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,MP5103,0,1.0.0
+      - q: errorqueue.clear()
+      - q: status.reset()
+      - q: status.standard.enable = 1
+      - q: print(status.standard.enable)
+        r: 1
+      - q: opc()
+      - q: print(slot[3].model)
+        r: VPSU50-2ST
+      - q: print(slot[1].model)
+        r: TBD-xxx
+      - q: print(slot[2].model)
+        r: TBD
+      - q: print([[1]])
+        r: 1
+      - q: reset()
+      - q: status.request_enable = 1
+      - q: print(status.request_enable)
+        r: 1
+      - q: print(status.condition)
+        r: 1
+      - q: print([[0]])
+        r: 0
+      - q: waitcomplete()
+      - q: waitcomplete() print([[1]])
+        r: 1
+      - q: collectgarbage()
+      - q: buff_name = slot[3].psu[1].makebuffer(10)
+      - q: buff_name = nil
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(errorqueue.count)
+          default: 0
+          command_error: 2
+        - q: print(errorqueue.next())
+          default: No Error
+          command_error: Command error

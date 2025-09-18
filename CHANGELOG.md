@@ -18,6 +18,11 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added full python API support for DPO7xxAX (7 series DPO) scopes.
+- Added support for the MP5103 modular precision test system (referred to as a mainframe in this package).
+
 ---
 
 ## v3.3.0 (2025-08-19)

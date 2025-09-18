@@ -18,7 +18,7 @@ from .gen_canxny_daq.channel import Channel
 from .gen_canxny_daq.display import Display
 from .gen_canxny_daq.dmm import Dmm
 from .gen_canxny_daq.scan import Scan
-from .gen_canxny_daq.slot import Slot, SlotItem
+from .gen_canxny_daq.slot import SlotItem
 from .gen_canxny_daq.trigger import Trigger
 from .gen_canxny_daq.tsplink import Tsplink
 from .gen_canxny_daq.upgrade import Upgrade
@@ -33,11 +33,11 @@ from .gen_dbdq3i_smudaqdmm.timer import Timer
 from .gen_dcpheg_daqdmm.smu import Smu
 from .gen_dd4xnb_smudaqdmm.script import Script
 from .gen_e7aqno_smudaqss.node import NodeItem
-from .gen_eat5s3_smudaqdmmss.dataqueue import Dataqueue
 from .gen_eat5s3_smudaqdmmss.fs import Fs
-from .gen_eat5s3_smudaqdmmss.userstring import Userstring
 from .gen_ed9nkc_daqss.tspnet import Tspnet
 from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
+from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
+from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 
@@ -475,7 +475,6 @@ class DAQ6510CommandConstants:
     SCAN_WRITE_AFTER_STEP = "scan.WRITE_AFTER_STEP"
     SCAN_WRITE_AT_END = "scan.WRITE_AT_END"
     SCAN_WRITE_NEVER = "scan.WRITE_NEVER"
-    SLOT_PSEUDO_NONE = "slot.PSEUDO_NONE"
     SMU_AUDIBLE_FAIL = "smu.AUDIBLE_FAIL"
     SMU_AUDIBLE_NONE = "smu.AUDIBLE_NONE"
     SMU_AUDIBLE_PASS = "smu.AUDIBLE_PASS"
@@ -618,8 +617,7 @@ class DAQ6510Commands:
         - ``.scan``: The ``scan`` command tree.
         - ``.script_var``: The ``scriptVar`` command tree.
         - ``.script``: The ``script`` command tree.
-        - ``.slot``: The ``slot`` command tree.
-        - ``.slotx``: The ``slot[slot]`` command tree.
+        - ``.slot``: The ``slot[slot]`` command tree.
         - ``.smu``: The ``smu`` command tree.
         - ``.status``: The ``status`` command tree.
         - ``.timer``: The ``timer`` command tree.
@@ -658,8 +656,7 @@ class DAQ6510Commands:
         self._script_var: Dict[str, Scriptvar] = DefaultDictPassKeyToFactory(
             lambda x: Scriptvar(device, str(x))
         )
-        self._slot = Slot(device)
-        self._slotx: Dict[int, SlotItem] = DefaultDictPassKeyToFactory(
+        self._slot: Dict[int, SlotItem] = DefaultDictPassKeyToFactory(
             lambda x: SlotItem(device, f"slot[{x}]")
         )
         self._smu = Smu(device)
@@ -1503,16 +1500,7 @@ class DAQ6510Commands:
         return self._script_var
 
     @property
-    def slot(self) -> Slot:
-        """Return the ``slot`` command tree.
-
-        Constants:
-            - ``.PSEUDO_NONE``: No pseudocard.
-        """
-        return self._slot
-
-    @property
-    def slotx(self) -> Dict[int, SlotItem]:
+    def slot(self) -> Dict[int, SlotItem]:
         """Return the ``slot[slot]`` command tree.
 
         Info:
@@ -1532,7 +1520,7 @@ class DAQ6510Commands:
             - ``.totalizer``: The ``slot[slot].totalizer`` command tree.
             - ``.voltage``: The ``slot[slot].voltage`` command tree.
         """
-        return self._slotx
+        return self._slot
 
     @property
     def smu(self) -> Smu:
@@ -2123,8 +2111,7 @@ class DAQ6510Mixin:
             - ``.scan``: The ``scan`` command tree.
             - ``.script_var``: The ``scriptVar`` command tree.
             - ``.script``: The ``script`` command tree.
-            - ``.slot``: The ``slot`` command tree.
-            - ``.slotx``: The ``slot[slot]`` command tree.
+            - ``.slot``: The ``slot[slot]`` command tree.
             - ``.smu``: The ``smu`` command tree.
             - ``.status``: The ``status`` command tree.
             - ``.timer``: The ``timer`` command tree.

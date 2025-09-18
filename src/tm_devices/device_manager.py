@@ -28,6 +28,7 @@ from tm_devices.drivers.data_acquisition_systems.data_acquisition_system import 
 )
 from tm_devices.drivers.device import Device
 from tm_devices.drivers.digital_multimeters.digital_multimeter import DigitalMultimeter
+from tm_devices.drivers.mainframes.mainframe import Mainframe
 from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.drivers.scopes.scope import Scope
@@ -84,6 +85,8 @@ DigitalMultimeterAlias = TypeVar(
 """An alias to a specific Digital Multimeter Python driver."""
 ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)
 """An alias to a specific Scope driver."""
+MainframeAlias = TypeVar("MainframeAlias", bound=Mainframe, default=Mainframe)
+"""An alias to a specific Mainframe driver."""
 MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)
 """An alias to a specific Margin Tester Python driver."""
 PowerSupplyUnitAlias = TypeVar(
@@ -466,6 +469,41 @@ class DeviceManager(metaclass=Singleton):
                 port=port,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
+            ),
+        )
+
+    def add_mf(
+        self,
+        address: str,
+        *,
+        alias: Optional[str] = None,
+        connection_type: Optional[str] = None,
+        port: Optional[int] = None,
+    ) -> MainframeAlias:
+        """Add a Mainframe to the DeviceManager.
+
+        Args:
+            address: The address of the device, either an IP address or hostname. If the connection
+                     type is ``"USB"`` then the address must be specified as ``"<model>-<serial>"``.
+            alias: An optional alias to use to refer to the Mainframe. If no alias is provided,
+                   the device type and number can be used to access the Mainframe instead.
+            connection_type: The type of connection to use for VISA, defaults to TCPIP, not needed
+                when the address is a visa resource expression since the connection type is parsed
+                from the address string.
+            port: The port to use when creating a socket connection.
+
+        Returns:
+            The Mainframe device driver.
+        """
+        self.__protect_access()
+        return cast(
+            "MainframeAlias",
+            self._add_device(
+                device_type=DeviceTypes.MF.value,
+                address=address,
+                alias=alias,
+                connection_type=connection_type,
+                port=port,
             ),
         )
 
@@ -931,6 +969,28 @@ class DeviceManager(metaclass=Singleton):
             raise TypeError(message)
 
         return device
+
+    def get_mf(self, number_or_alias: Union[int, str]) -> MainframeAlias:
+        """Get the Mainframe driver for the given device number or alias.
+
+        Integers are treated as a device number, strings are treated as an alias.
+
+        Args:
+            number_or_alias: The number or alias of the Mainframe to get.
+
+        Returns:
+            The Mainframe device driver.
+        """
+        self.__protect_access()
+        if isinstance(number_or_alias, int):
+            return cast(
+                "MainframeAlias",
+                self.get_device(device_type=DeviceTypes.MF.value, device_number=number_or_alias),
+            )
+        return cast(
+            "MainframeAlias",
+            self.get_device(device_type=DeviceTypes.MF.value, alias=number_or_alias),
+        )
 
     def get_mt(self, number_or_alias: Union[int, str]) -> MarginTesterAlias:
         """Get the Margin Tester Python driver for the given Margin Tester number or alias.

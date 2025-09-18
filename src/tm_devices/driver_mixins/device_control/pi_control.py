@@ -80,7 +80,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         visa_resource: visa.resources.MessageBasedResource,
         default_visa_timeout: int,
     ) -> None:
-        """Create a PI device.
+        """Create an instance of a PI Control class.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.

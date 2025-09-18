@@ -48,6 +48,10 @@ with DeviceManager(
     # it auto-detects the connection type is TCPIP.
     scope_2: MSO6B = device_manager.add_scope("TCPIP0::192.168.0.3::inst0::INSTR")
 
+    # Add a device using a VISA resource address string involving a socket connection
+    mf_1 = device_manager.add_mf("TCPIP0::192.168.0.4::4000::SOCKET")
+    print(mf_1)
+
     # Add a device using an IP address and optional alias and socket port
     mt: TMT4 = device_manager.add_mt("192.168.0.2", "TMT4", alias="margin tester", port=5000)
 

@@ -24,6 +24,7 @@ Attributes and Functions:
 from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
+from .buffervar import Buffervar
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
@@ -398,6 +399,7 @@ class Buffer(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "buffer") -> None:
         super().__init__(device, cmd_syntax)
+        self._buffer_count = 1
         self._write = BufferWrite(device, f"{self._cmd_syntax}.write")
 
     @property
@@ -529,7 +531,9 @@ class Buffer(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def make(self, buffer_size: int, style: Optional[str] = None) -> str:
+    def make(
+        self, buffer_size: int, style: Optional[str] = None, *, buffer_name: Optional[str] = None
+    ) -> Buffervar:
         """Run the ``buffer.make()`` function.
 
         Description:
@@ -544,13 +548,18 @@ class Buffer(BaseTSPCmd):
             buffer_size: The maximum number of readings that can be stored in bufferVar; minimum is
                 10; 0 to maximize buffer size (see Details).
             style (optional): The type of reading buffer to create.
+            buffer_name (optional): The name of the buffer variable to create. If not provided, an
+                auto-generated variable will be used.
 
         Returns:
-            The result of the function call.
+            The created buffer object.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
+        if buffer_name is None:
+            buffer_name = f"private_custom_buffer_{self._buffer_count}"
+            self._buffer_count += 1
         try:
             function_args = ", ".join(
                 str(x)
@@ -560,12 +569,14 @@ class Buffer(BaseTSPCmd):
                 )
                 if x is not None
             )
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.make({function_args}))"
+            self._device.write(  # type: ignore[union-attr]
+                f"{buffer_name} = {self._cmd_syntax}.make({function_args})"
             )
+            self._device._user_created_custom_buffers.append(buffer_name)  # pyright: ignore[reportOptionalMemberAccess,reportPrivateUsage]  # noqa: SLF001
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.make()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+        return Buffervar(self._device, buffer_name)
 
     def save(
         self,

@@ -921,6 +921,12 @@ VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes,
                 ConnectionTypes.SERIAL,
                 ConnectionTypes.GPIB,
             ),
+            # Connection type added for MF.
+            DeviceTypes.MF: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+            ),
             DeviceTypes.MT: (ConnectionTypes.REST_API,),
             DeviceTypes.PSU: (
                 ConnectionTypes.TCPIP,
@@ -1002,6 +1008,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = Mapp
         ),
         SupportedModels.LPD6: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x052F"
+        ),
+        SupportedModels.DPO7AX: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0532"
         ),
         SupportedModels.AFG3K: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0345"
@@ -1110,6 +1119,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = Mapp
         ),
         SupportedModels.SS3706A: USBTMCConfiguration(
             vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x3706"
+        ),
+        SupportedModels.MP5103: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x5103"
         ),
     }
 )

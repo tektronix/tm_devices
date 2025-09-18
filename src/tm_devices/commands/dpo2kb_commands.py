@@ -18,7 +18,6 @@ from .gen_1nmc1o_msodpomdo.errlog import Errlog
 from .gen_1nmc1o_msodpomdo.language import Language
 from .gen_1nmc1o_msodpomdo.usbdevice import Usbdevice
 from .gen_1nmc1o_msodpomdo.usbtmc import Usbtmc
-from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_fhrp27_msodpomdodsa.curve import Curve
 from .gen_fhrp27_msodpomdodsa.date import Date
 from .gen_fhrp27_msodpomdodsa.mathvar import Mathvar
@@ -40,18 +39,19 @@ from .gen_fkcejz_msodpomdodsa.lock import Lock
 from .gen_fkcejz_msodpomdodsa.unlock import Unlock
 from .gen_fkjfe8_msodpodsa.time import Time
 from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
-from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
-from .gen_fx54ua_lpdmsodpomdodsa.password import Password
-from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
+from .gen_gx1fc1_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
+from .gen_h0pgq1_lpdmsotekscopepcdpomdodsa.allev import Allev
+from .gen_h0pgq1_lpdmsotekscopepcdpomdodsa.factory import Factory
+from .gen_h0pgq1_lpdmsotekscopepcdpomdodsa.id import Id
+from .gen_h0pgq1_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
+from .gen_h0pgq1_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
+from .gen_h0zap6_lpdmsodpomdodsa.newpass import Newpass
+from .gen_h0zap6_lpdmsodpomdodsa.password import Password
+from .gen_h0zap6_lpdmsodpomdodsa.teksecure import Teksecure
+from .gen_h2kvzl_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
+from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
+from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
+from .gen_h26ub5_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
 from .gen_u301s_msodpo.acquire import Acquire
 from .gen_u301s_msodpo.alias import Alias
 from .gen_u301s_msodpo.autoset import Autoset

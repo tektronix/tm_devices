@@ -899,18 +899,3 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             - ``.startchannel``: The ``slot[slot].voltage.startchannel`` attribute.
         """
         return self._voltage
-
-
-# pylint: disable=too-few-public-methods
-class Slot(BaseTSPCmd):
-    """The ``slot`` command tree.
-
-    Constants:
-        - ``.PSEUDO_NONE``: No pseudocard.
-    """
-
-    PSEUDO_NONE = "slot.PSEUDO_NONE"
-    """str: No pseudocard."""
-
-    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "slot") -> None:
-        super().__init__(device, cmd_syntax)
