@@ -26,6 +26,7 @@ from tm_devices.drivers.scopes.tekscope.mso5lp import MSO5LP
 from tm_devices.drivers.scopes.tekscope.mso6 import MSO6
 from tm_devices.drivers.scopes.tekscope.mso6b import MSO6B
 from tm_devices.drivers.scopes.tekscope.tekscopepc import TekScopePC
+from tm_devices.drivers.scopes.tekscope.dpo7ax import DPO7AX
 from tm_devices.drivers.scopes.tekscope_2k.dpo2k import DPO2K
 from tm_devices.drivers.scopes.tekscope_2k.dpo2kb import DPO2KB
 from tm_devices.drivers.scopes.tekscope_2k.mso2k import MSO2K
@@ -101,6 +102,7 @@ from tm_devices.drivers.source_measure_units.smu60xx.smu6430 import SMU6430
 from tm_devices.drivers.source_measure_units.smu60xx.smu6514 import SMU6514
 from tm_devices.drivers.source_measure_units.smu60xx.smu6517b import SMU6517B
 from tm_devices.drivers.systems_switches.ss3706a import SS3706A
+from tm_devices.drivers.mainframes.mp5xxx.mp5103 import MP5103
 from tm_devices.drivers.margin_testers.tmt4 import TMT4
 
 
@@ -128,6 +130,7 @@ __all__ = [
     "DPO4KB",
     "DPO5K",
     "DPO5KB",
+    "DPO7AX",
     "DPO7K",
     "DPO7KC",
     "DPO70K",
@@ -144,6 +147,7 @@ __all__ = [
     "MDO4K",
     "MDO4KB",
     "MDO4KC",
+    "MP5103",
     "MSO2",
     "MSO2K",
     "MSO2KB",

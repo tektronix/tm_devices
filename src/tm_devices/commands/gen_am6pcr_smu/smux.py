@@ -116,6 +116,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
+from ..gen_ahkybr_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 
 if TYPE_CHECKING:
@@ -6240,6 +6241,7 @@ reading at index bufferVar.fillcount."""
         self, device: Optional["TSPControl"] = None, cmd_syntax: str = "smuX"
     ) -> None:
         super().__init__(device, cmd_syntax)
+        self._buffer_count = 1
         # pylint: disable=invalid-name
         self.ASYNC = self.ASYNC.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
@@ -6639,7 +6641,7 @@ reading at index bufferVar.fillcount."""
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str) -> str:
+    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
         """Run the ``smuX.makebuffer()`` function.
 
         Description:
@@ -6652,20 +6654,27 @@ reading at index bufferVar.fillcount."""
 
         Args:
             buffer_size: Maximum number of readings that can be stored.
+            buffer_name (optional): The name of the buffer variable to create. If not provided, an
+                auto-generated variable will be used.
 
         Returns:
-            The result of the function call.
+            The created buffer object.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
+        if buffer_name is None:
+            buffer_name = f"private_custom_smu_buffer_{self._buffer_count}"
+            self._buffer_count += 1
         try:
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.makebuffer({buffer_size}))"
+            self._device.write(  # type: ignore[union-attr]
+                f"{buffer_name} = {self._cmd_syntax}.makebuffer({buffer_size})"
             )
+            self._device._user_created_custom_buffers.append(buffer_name)  # pyright: ignore[reportOptionalMemberAccess,reportPrivateUsage]  # noqa: SLF001
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.makebuffer()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+        return Buffervar(self._device, buffer_name)
 
     def measureiandstep(self, source_value: float) -> str:
         """Run the ``smuX.measureiandstep()`` function.

@@ -641,7 +641,7 @@ the instrument."""  # noqa: E501
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def prompt(self, button_id: str, prompt_text: str) -> str:
+    def prompt(self, button_id: str, prompt_text: str) -> None:
         """Run the ``display.prompt()`` function.
 
         Description:
@@ -657,15 +657,12 @@ the instrument."""  # noqa: E501
             button_id: The type of prompt to display; choose one of the following options.
             prompt_text: A string that contains the text that is displayed above the prompts.
 
-        Returns:
-            The result of the function call.
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(  # type: ignore[union-attr]
-                f'print({self._cmd_syntax}.prompt({button_id}, "{prompt_text}"))'
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.prompt({button_id}, "{prompt_text}")'
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501

@@ -29,6 +29,7 @@ from tm_devices.helpers.constants_and_dataclasses import TEKTRONIX_USBTMC_VENDOR
 from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
 
 if TYPE_CHECKING:
+    from tm_devices.drivers.scopes.tekscope.dpo7 import DPO7
     from tm_devices.drivers.scopes.tekscope_5k_7k_70k.tekscope_5k_7k_70k import TekScope5k7k70k
 
 
@@ -626,3 +627,12 @@ def test_tsovu(device_manager: DeviceManager) -> None:
     scope: TSOVu = device_manager.add_scope("TSOVU-HOSTNAME")
     assert scope.hostname == "TSOVU-HOSTNAME"
     assert scope.total_channels == 0  # pylint: disable=use-implicit-booleaness-not-comparison-to-zero
+
+
+def test_dpo714ax(device_manager: DeviceManager) -> None:
+    """Test the DPO714AX device driver."""
+    scope: DPO7 = device_manager.add_scope("DPO7AX-HOSTNAME")
+    assert scope.hostname == "DPO7AX-100008"
+    assert scope.total_channels == 4
+    assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4")
+    assert scope._get_driver_specific_multipliers() == 2.0  # noqa: SLF001

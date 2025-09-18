@@ -243,7 +243,7 @@ resources:
     device: tekscopepc
     filename: scope/tekscopepc.yaml
 
-  # --- TSOvu---
+    # --- TSOvu---
   TCPIP::TSOVU-HOSTNAME::INSTR:
     device: tsovu
     filename: scope/tsovu.yaml
@@ -362,6 +362,11 @@ resources:
   TCPIP::DPO70KD-HOSTNAME::INSTR:
     device: dpo70kd
     filename: scope/dpo70kd.yaml
+
+  # DPO
+  TCPIP::DPO7AX-HOSTNAME::INSTR:
+    device: dpo7ax
+    filename: scope/dpo7ax.yaml
 
   # --- smu ---
   #   smu24xx
@@ -533,3 +538,8 @@ resources:
   TCPIP::PSU2281-HOSTNAME::INSTR:
     device: psu2281
     filename: psu/psu2281.yaml
+
+  # ---mainframes---
+  TCPIP::MP5103-HOSTNAME::10002::SOCKET:
+    device: mp5103
+    filename: mf/mp5103.yaml

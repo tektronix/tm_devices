@@ -20,6 +20,7 @@ from tm_devices.drivers.data_acquisition_systems.daq6510 import DAQ6510
 from tm_devices.drivers.digital_multimeters.dmm75xx.dmm7510 import DMM7510
 from tm_devices.drivers.digital_multimeters.dmm75xx.dmm7512 import DMM7512
 from tm_devices.drivers.digital_multimeters.dmm6500 import DMM6500
+from tm_devices.drivers.mainframes.mp5xxx.mp5103 import MP5103
 from tm_devices.drivers.margin_testers.tmt4 import TMT4
 from tm_devices.drivers.power_supplies.psu22xx.psu2200 import PSU2200
 from tm_devices.drivers.power_supplies.psu22xx.psu2220 import PSU2220
@@ -28,6 +29,7 @@ from tm_devices.drivers.power_supplies.psu22xx.psu2231 import PSU2231
 from tm_devices.drivers.power_supplies.psu22xx.psu2231a import PSU2231A
 from tm_devices.drivers.power_supplies.psu22xx.psu2280 import PSU2280
 from tm_devices.drivers.power_supplies.psu22xx.psu2281 import PSU2281
+from tm_devices.drivers.scopes.tekscope.dpo7ax import DPO7AX
 from tm_devices.drivers.scopes.tekscope.lpd6 import LPD6
 from tm_devices.drivers.scopes.tekscope.mso2 import MSO2
 from tm_devices.drivers.scopes.tekscope.mso4 import MSO4
@@ -170,6 +172,7 @@ _DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, Type[Device]]" = MappingProxyTyp
         SupportedModels.MSO70KC.value: MSO70KC,
         SupportedModels.MSO70KDX.value: MSO70KDX,
         SupportedModels.TEKSCOPEPC.value: TekScopePC,
+        SupportedModels.DPO7AX.value: DPO7AX,
         SupportedModels.TSOVU.value: TSOVu,
         # Margin Testers
         SupportedModels.TMT4.value: TMT4,
@@ -222,5 +225,7 @@ _DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, Type[Device]]" = MappingProxyTyp
         SupportedModels.DAQ6510.value: DAQ6510,
         # Systems Switches
         SupportedModels.SS3706A.value: SS3706A,
+        # Mainframes
+        SupportedModels.MP5103.value: MP5103,
     }
 )

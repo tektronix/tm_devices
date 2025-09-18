@@ -70,6 +70,8 @@ class DeviceTypes(CustomStrEnum):
     """An enum member representing a Data Acquisition system."""
     DMM = "DMM"
     """An enum member representing a Digital Multimeter."""
+    MF = "MF"
+    """An enum member representing a Mainframe."""
     MT = "MT"
     """An enum member representing a Margin Tester."""
     PSU = "PSU"
@@ -116,15 +118,17 @@ class SupportedModels(CustomStrEnum):
     DSA70K = "DSA70K"
     DSA70KC = "DSA70KC"
     DSA70KD = "DSA70KD"
-    LPD6 = "LPD6"
     MSO2 = "MSO2"
     MSO4 = "MSO4"
     MSO4B = "MSO4B"
     MSO5 = "MSO5"
     MSO5B = "MSO5B"
     MSO5LP = "MSO5LP"
+    LPD6 = "LPD6"
     MSO6 = "MSO6"
     MSO6B = "MSO6B"
+    DPO7AX = "DPO7AX"
+    TEKSCOPEPC = "TekScopePC"
     MSO2K = "MSO2K"
     MSO2KB = "MSO2KB"
     DPO2K = "DPO2K"
@@ -143,7 +147,6 @@ class SupportedModels(CustomStrEnum):
     MSO70K = "MSO70K"
     MSO70KC = "MSO70KC"
     MSO70KDX = "MSO70KDX"
-    TEKSCOPEPC = "TekScopePC"
     TSOVU = "TSOVu"
     # Margin Testers
     TMT4 = "TMT4"
@@ -196,6 +199,8 @@ class SupportedModels(CustomStrEnum):
     DMM7512 = "DMM7512"
     # SSs
     SS3706A = "SS3706A"
+    # MFs
+    MP5103 = "MP5103"
 
 
 class SupportedRequestTypes(CustomStrEnum):

@@ -56,6 +56,9 @@ MDO
 MSO
 :   Mixed Signal Oscilloscope
 
+MF
+:   Mainframe
+
 MT
 :   Margin Tester
 

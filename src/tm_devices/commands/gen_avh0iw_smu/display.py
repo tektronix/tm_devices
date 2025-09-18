@@ -1090,7 +1090,7 @@ For two-channel products, this is the SRC key for Channel A."""
         default: Optional[str] = None,
         minimum: Optional[str] = None,
         maximum: Optional[str] = None,
-    ) -> str:
+    ) -> None:
         """Run the ``display.inputvalue()`` function.
 
         Description:
@@ -1109,9 +1109,6 @@ For two-channel products, this is the SRC key for Channel A."""
             minimum (optional): The minimum input value.
             maximum (optional): The maximum input value.
 
-        Returns:
-            The result of the function call.
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1126,8 +1123,8 @@ For two-channel products, this is the SRC key for Channel A."""
                 )
                 if x is not None
             )
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.inputvalue({function_args}))"
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.inputvalue({function_args})"
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.inputvalue()`` function."  # noqa: E501
@@ -1170,7 +1167,7 @@ For two-channel products, this is the SRC key for Channel A."""
         default: Optional[str] = None,
         minimum: Optional[str] = None,
         maximum: Optional[str] = None,
-    ) -> str:
+    ) -> None:
         """Run the ``display.prompt()`` function.
 
         Description:
@@ -1193,9 +1190,6 @@ For two-channel products, this is the SRC key for Channel A."""
             maximum (optional): The maximum input value that can be entered (must be more than
                 minimum).
 
-        Returns:
-            The result of the function call.
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1212,8 +1206,8 @@ For two-channel products, this is the SRC key for Channel A."""
                 )
                 if x is not None
             )
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.prompt({function_args}))"
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.prompt({function_args})"
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501

@@ -29,6 +29,15 @@ configure devices to connect with.
 --8<-- "examples/miscellaneous/adding_devices.py"
 ```
 
+## Access a module in a mainframe
+
+The `DeviceManager` can be used to connect to a Mainframe, and then its modules' commands can be accessed via the Mainframe driver object.
+
+```python
+# fmt: off
+--8<-- "examples/mainframes/psu_modules/access_mainframe_and_psu_module.py"
+```
+
 ## VISA backend selection
 
 The [`DeviceManager`][tm_devices.DeviceManager] can be configured to use VISA backends from different VISA implementations.

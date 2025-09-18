@@ -79,15 +79,17 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"|(?P<{SupportedModels.DSA70K.value}>^DSA7\d\d\d\d$)"
     rf"|(?P<{SupportedModels.DSA70KC.value}>^DSA7\d\d\d\dC$)"
     rf"|(?P<{SupportedModels.DSA70KD.value}>^DSA7\d\d\d\dD$)"
-    rf"|(?P<{SupportedModels.LPD6.value}>^LPD6\d$)"
     rf"|(?P<{SupportedModels.MSO2.value}>^MSO2\d$)"
     rf"|(?P<{SupportedModels.MSO4.value}>^MSO4\d$)"
     rf"|(?P<{SupportedModels.MSO4B.value}>^MSO4\dB$)"
     rf"|(?P<{SupportedModels.MSO5.value}>^MSO5\d$)"
     rf"|(?P<{SupportedModels.MSO5B.value}>^MSO5\dB$)"
     rf"|(?P<{SupportedModels.MSO5LP.value}>^MSO5\dLP$)"
+    rf"|(?P<{SupportedModels.LPD6.value}>^LPD6\d$)"
     rf"|(?P<{SupportedModels.MSO6.value}>^MSO6\d$)"
     rf"|(?P<{SupportedModels.MSO6B.value}>^MSO6\dB$)"
+    rf"|(?P<{SupportedModels.DPO7AX.value}>^DPO7\d\dAX$)"
+    rf"|(?P<{SupportedModels.TEKSCOPEPC.value}>^TEKSCOPE(?:SW|PC)$)"
     rf"|(?P<{SupportedModels.MSO2K.value}>^MSO2\d\d\d$)"
     rf"|(?P<{SupportedModels.MSO2KB.value}>^MSO2\d\d\dB$)"
     rf"|(?P<{SupportedModels.DPO2K.value}>^DPO2\d\d\d$)"
@@ -106,7 +108,6 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"|(?P<{SupportedModels.MSO70K.value}>^MSO7\d\d\d\d$)"
     rf"|(?P<{SupportedModels.MSO70KC.value}>^MSO7\d\d\d\dC$)"
     rf"|(?P<{SupportedModels.MSO70KDX.value}>^MSO7\d\d\d\dDX$)"
-    rf"|(?P<{SupportedModels.TEKSCOPEPC.value}>^TEKSCOPE(?:SW|PC)$)"
     rf"|(?P<{SupportedModels.TSOVU.value}>^TSOVU$)"
     rf"|(?P<{SupportedModels.TMT4.value}>^TMT4$)"
     # SMUs
@@ -158,6 +159,8 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"|(?P<{SupportedModels.DMM7512.value}>^DMM7512$)"
     # SSs
     rf"|(?P<{SupportedModels.SS3706A.value}>^3706A$)"
+    # MFs
+    rf"|(?P<{SupportedModels.MP5103.value}>^MP5103$)"
 )
 # NOTE: This regex would show as having a bunch of errors in the PyCharm IDE due to an
 # open bug affecting f-strings in regex: https://youtrack.jetbrains.com/issue/PY-52140.

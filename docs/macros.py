@@ -22,6 +22,7 @@ PAGE_REPLACEMENTS = {
         (" Scopes ", r" [Scopes](default:Scope) "),
         (" PSUs ", r" [PSUs](default:PSU) "),
         (" SMUs ", r" [SMUs](default:SMU) "),
+        (" MFs ", r" [MFs](default:MF) "),
         (" MTs ", r" [MTs](default:MT) "),
         (" DMMs ", r" [DMMs](default:DMM) "),
         (" DAQs ", r" [DAQs](default:DAQ) "),

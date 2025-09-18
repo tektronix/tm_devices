@@ -115,6 +115,8 @@ SIMULATED_DEVICE_LIST = (
     ("SCOPE", "MSO5K-HOSTNAME", None, None, None),
     ("SCOPE", "MSO5KB-HOSTNAME", None, None, None),
     ("SCOPE", "MSO70KC-HOSTNAME", None, None, None),
+    ("SCOPE", "DPO7AX-HOSTNAME", None, None, None),
+    ("MF", "MP5103-HOSTNAME", 10002, "SOCKET", None),
 )
 
 # Global variables for this test module

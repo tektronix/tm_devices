@@ -93,6 +93,7 @@ from ..helpers import (
     NoDeviceProvidedError,
     ValidatedDynamicNumberCmd,
 )
+from .buffervar import Buffervar
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
@@ -1921,6 +1922,7 @@ class Dmm(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "dmm") -> None:
         super().__init__(device, cmd_syntax)
+        self._buffer_count = 1
         self._adjustment = DmmAdjustment(device, f"{self._cmd_syntax}.adjustment")
         self._buffer = DmmBuffer(device, f"{self._cmd_syntax}.buffer")
         self._calibration = DmmCalibration(device, f"{self._cmd_syntax}.calibration")
@@ -3859,7 +3861,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getconfig()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str) -> str:
+    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
         """Run the ``dmm.makebuffer()`` function.
 
         Description:
@@ -3873,20 +3875,27 @@ class Dmm(BaseTSPCmd):
 
         Args:
             buffer_size: Maximum number of readings that the buffer can store.
+            buffer_name (optional): The name of the buffer variable to create. If not provided, an
+                auto-generated variable will be used.
 
         Returns:
-            The result of the function call.
+            The created buffer object.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
+        if buffer_name is None:
+            buffer_name = f"private_custom_dmm_buffer_{self._buffer_count}"
+            self._buffer_count += 1
         try:
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.makebuffer({buffer_size}))"
+            self._device.write(  # type: ignore[union-attr]
+                f"{buffer_name} = {self._cmd_syntax}.makebuffer({buffer_size})"
             )
+            self._device._user_created_custom_buffers.append(buffer_name)  # pyright: ignore[reportOptionalMemberAccess,reportPrivateUsage]  # noqa: SLF001
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.makebuffer()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+        return Buffervar(self._device, buffer_name)
 
     def measure(self, buffer_var: Optional[str] = None) -> str:
         """Run the ``dmm.measure()`` function.

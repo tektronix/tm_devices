@@ -85,7 +85,9 @@ def main() -> None:
         python_executable = files[0]
         commands_to_send = (
             f'"{python_executable}" -m pip install -U pip wheel poetry',
-            f'"{python_executable}" -m poetry install',
+            f'"{python_executable}" -m poetry install --no-root',
+            f'"{python_executable}" -m poetry update --sync',
+            f'"{python_executable}" -m poetry install --only-root',
             f'"{python_executable}" -m nodeenv --python-virtualenv --clean-src',
             f'"{python_executable}" -m pre_commit install --install-hooks',
             f'"{python_executable}" -m tox -e tests',

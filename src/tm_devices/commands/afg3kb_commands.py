@@ -32,10 +32,10 @@ from .gen_33ijgq_afgawg.abort import Abort
 from .gen_33ijgq_afgawg.calibration import Calibration
 from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
 from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
-from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
+from .gen_h1iyne_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
+from .gen_h2kvzl_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
+from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
+from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 
 
 # pylint: disable=too-few-public-methods
