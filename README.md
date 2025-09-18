@@ -135,7 +135,7 @@ _Device Support Levels_
 |        | **DMM7512**                | TSP             | ✅               |                                    |
 | DAQs   | **DAQ6510**                | TSP             | ✅               |                                    |
 | SSs    | **3706A**                  | TSP             | ✅               |                                    |
-| MFs    | **MP5103 ⭐ NEW ⭐**       | TSP             | ✅               | 🚧                                 |
+| MFs    | **MP5000 Series ⭐ NEW ⭐**       | TSP             | ✅               | 🚧                                 |
 
 </div>
 
