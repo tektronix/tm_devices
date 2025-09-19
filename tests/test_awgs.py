@@ -140,7 +140,7 @@ def test_awg5200(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
     assert sasset_waveform_cmd in stdout
 
     # Invalid file type for waveform file.
-    with pytest.raises(ValueError, match=".txt is an invalid waveform file extension."):
+    with pytest.raises(ValueError, match=r"\.txt is an invalid waveform file extension\."):
         awg520050.load_waveform_set(
             "unittest.txt",
         )
@@ -224,7 +224,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
         )
 
     # Invalid output signal path.
-    with pytest.raises(ValueError, match="DCHB is an invalid output signal path for AWG70001."):
+    with pytest.raises(ValueError, match=r"DCHB is an invalid output signal path for AWG70001."):
         awg70ka150.source_channel["SOURCE1"].set_output_signal_path(
             SignalGeneratorOutputPaths5200.DCHB
         )
@@ -241,7 +241,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
     # Cannot set offset with output signal path set to DIR.
     with pytest.raises(
         ValueError,
-        match="The offset can only be set with an output signal path of DCA.",
+        match=r"The offset can only be set with an output signal path of DCA\.",
     ):
         awg70ka150.source_channel["SOURCE1"].set_offset(0.1)
 
@@ -278,7 +278,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
     assert sasset_waveform_cmd in stdout
 
     # Invalid file type for waveform file.
-    with pytest.raises(ValueError, match=".txt is an invalid waveform file extension."):
+    with pytest.raises(ValueError, match=r"\.txt is an invalid waveform file extension\."):
         awg70ka150.load_waveform_set(
             "unittest.txt",
         )

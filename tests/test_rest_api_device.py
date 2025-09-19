@@ -166,7 +166,7 @@ def test_unsupported_request_type(rest_api_control: CustomRestApiDevice) -> None
     Args:
         rest_api_control: Rest API Device.
     """
-    with pytest.raises(ValueError, match="UNSUPPORTED is an unsupported request type."):
+    with pytest.raises(ValueError, match=r"UNSUPPORTED is an unsupported request type\."):
         rest_api_control._send_request(  # noqa: SLF001
             request_type="UNSUPPORTED",  # type: ignore[arg-type]
             url="/api",

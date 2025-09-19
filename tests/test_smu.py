@@ -114,7 +114,7 @@ def test_smu(  # noqa: PLR0915
     # Currently there is no way to unit test the cls function. Called to get full coverage.
     tspieee.cls()
     with pytest.raises(
-        ValueError, match="value=300 is not a valid value. The value must be between 0 and 255."
+        ValueError, match=r"value=300 is not a valid value\. The value must be between 0 and 255\."
     ):
         tspieee.ese(300)
     assert tspieee.ese(1) == "1"
@@ -125,7 +125,7 @@ def test_smu(  # noqa: PLR0915
     # Currently there is no way to unit test the rst function. Called to get full coverage.
     tspieee.rst()
     with pytest.raises(
-        ValueError, match="value=300 is not a valid value. The value must be between 0 and 255."
+        ValueError, match=r"value=300 is not a valid value\. The value must be between 0 and 255\."
     ):
         tspieee.sre(300)
     assert tspieee.sre(1) == "1"

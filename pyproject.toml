@@ -30,6 +30,7 @@ skip_empty = true
 [tool.coverage.run]
 branch = true
 cover_pylib = false
+patch = ["subprocess"]
 plugins = ["coverage_conditional_plugin"]
 source = ["tm_devices"]
 
@@ -144,7 +145,7 @@ symspellpy = "^6.7.7"
 tomli = "^2.0.1"
 
 [tool.poetry.group.tests.dependencies]
-coverage = "^7.5.0"
+coverage = "^7.10.6"
 coverage-conditional-plugin = "^0.9.0"
 flask = "^3.0.3"
 http-server-mock = "^1.7"

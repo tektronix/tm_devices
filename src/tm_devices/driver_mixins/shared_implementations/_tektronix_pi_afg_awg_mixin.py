@@ -19,10 +19,10 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
     CommonPISystemErrorCheckMixin,
-    Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar],
     SignalGeneratorMixin[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar],
     _ExtendableMixin,
     ABC,
+    Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar],
 ):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices.
 

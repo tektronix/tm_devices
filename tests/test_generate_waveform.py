@@ -53,14 +53,14 @@ def test_awg5200_gen_waveform(
     # Frequency is too high to produce CLOCK function on this AWG.
     with pytest.raises(
         ValueError,
-        match="Unable to generate Clock waveform with provided frequency of 10000000000.0 Hz.",
+        match=r"Unable to generate Clock waveform with provided frequency of 10000000000\.0 Hz\.",
     ):
         awg520050.generate_function(
             10e9, awg520050.source_device_constants.functions.CLOCK, 1.0, 0.0, channel="SOURCE1"
         )
 
     # Invalid output signal path.
-    with pytest.raises(ValueError, match="DIR is an invalid output signal path for AWG5204."):
+    with pytest.raises(ValueError, match=r"DIR is an invalid output signal path for AWG5204\."):
         awg520050.generate_function(
             10e3,
             awg520050.source_device_constants.functions.SIN,
@@ -193,7 +193,7 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
         )
 
     # DCHB is not a valid output signal path for AWG7k's.
-    with pytest.raises(ValueError, match="DCHB is an invalid output signal path for AWG7051."):
+    with pytest.raises(ValueError, match=r"DCHB is an invalid output signal path for AWG7051\."):
         awg7k01.generate_function(
             10e3,
             awg7k01.source_device_constants.functions.SIN,
@@ -427,8 +427,8 @@ def test_internal_afg_gen_waveform(
 
     with pytest.raises(
         TypeError,
-        match="Generate Waveform does not accept functions as non Enums. "
-        "Please use 'source_device_constants.functions'.",
+        match=r"Generate Waveform does not accept functions as non Enums\. "
+        r"Please use 'source_device_constants\.functions'\.",
     ):
         scope.generate_function(
             25e6,
@@ -442,6 +442,6 @@ def test_internal_afg_gen_waveform(
 
     with pytest.raises(
         AttributeError,
-        match="No AFG License, the class instance attributes are not accessible.",
+        match=r"No AFG License, the class instance attributes are not accessible\.",
     ):
         mso2_scope.internal_afg.set_offset(1.0)

@@ -71,8 +71,8 @@ def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylin
 
     with pytest.raises(
         TypeError,
-        match="Generate Waveform does not accept functions as non Enums. "
-        "Please use 'source_device_constants.functions'.",
+        match=r"Generate Waveform does not accept functions as non Enums\. "
+        r"Please use 'source_device_constants\.functions'\.",
     ):
         afg3252c.generate_function(
             25e6,
@@ -180,7 +180,7 @@ def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylin
         ramp_symmetry_range=None,
     )
 
-    with pytest.raises(ValueError, match="AFGs must have a function defined."):
+    with pytest.raises(ValueError, match=r"AFGs must have a function defined\."):
         afg3252c.get_waveform_constraints()
 
     with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):

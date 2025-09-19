@@ -28,13 +28,13 @@ def test_ieee_scpi_cmds(device: AFG) -> None:
     assert device.ieee_cmds.ese() == "0"
     device.ieee_cmds.ese(255)
     with pytest.raises(
-        ValueError, match="value=256 is not a valid value. The value must be between 0 and 255."
+        ValueError, match=r"value=256 is not a valid value\. The value must be between 0 and 255\."
     ):
         device.ieee_cmds.ese(256)
     assert device.ieee_cmds.sre() == "0"
     device.ieee_cmds.sre(255)
     with pytest.raises(
-        ValueError, match="value=256 is not a valid value. The value must be between 0 and 255."
+        ValueError, match=r"value=256 is not a valid value\. The value must be between 0 and 255\."
     ):
         device.ieee_cmds.sre(256)
     assert device.ieee_cmds.opc(write=True) == ""

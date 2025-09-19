@@ -361,7 +361,7 @@ options:
         assert device_manager.is_open
         with pytest.raises(
             AssertionError,
-            match="The .* method should only be used if the DeviceManager has already been closed",
+            match=r"The .* method should only be used if the DeviceManager has already been closed",
         ):
             device_manager.open()
 
