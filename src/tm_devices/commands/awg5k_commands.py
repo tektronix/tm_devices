@@ -10,30 +10,30 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_32dszm_awg.awgcontrol import Awgcontrol
-from .gen_32dszm_awg.diagnostic import Diagnostic
-from .gen_32dszm_awg.display import Display
-from .gen_32dszm_awg.event import Event
-from .gen_32dszm_awg.instrument import Instrument
-from .gen_32dszm_awg.mmemory import Mmemory
-from .gen_32dszm_awg.output import OutputItem
-from .gen_32dszm_awg.sequence import Sequence
-from .gen_32dszm_awg.slist import Slist
-from .gen_32dszm_awg.source import SourceItem
-from .gen_32dszm_awg.status import Status
-from .gen_32dszm_awg.system import System
-from .gen_32dszm_awg.trigger import Trigger
-from .gen_32dszm_awg.wlist import Wlist
-from .gen_33ijgq_afgawg.abort import Abort
-from .gen_33ijgq_afgawg.calibration import Calibration
-from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
-from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
-from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese
-from .gen_h1iyne_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_h2kvzl_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
-from .gen_h26ub5_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
+from .gen_8n7m9m_afgawgdpodsalpdmdomso.miscellaneous import Trg
+from .gen_8rp5l3_afgawgdpodsamdomso.calibration import Cal
+from .gen_gnbnx3_awgdpodsamdomsotekscopepc.status_and_error import Ese
+from .gen_gnk3bw_afgawgdpodsamdomsotekscopepc.status_and_error import Opc, Rst
+from .gen_gthlnl_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Opt
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.miscellaneous import Idn, Tst
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Cls, Esr, Stb, Wai
+from .gen_gz6oku_awgdpodsalpdmdomsotekscopepc.status_and_error import Sre
+from .gen_k2025_awg.awgcontrol import Awgcontrol
+from .gen_k2025_awg.diagnostic import Diagnostic
+from .gen_k2025_awg.display import Display
+from .gen_k2025_awg.event import Event
+from .gen_k2025_awg.instrument import Instrument
+from .gen_k2025_awg.mmemory import Mmemory
+from .gen_k2025_awg.output import OutputItem
+from .gen_k2025_awg.sequence import Sequence
+from .gen_k2025_awg.slist import Slist
+from .gen_k2025_awg.source import SourceItem
+from .gen_k2025_awg.status import Status
+from .gen_k2025_awg.system import System
+from .gen_k2025_awg.trigger import Trigger
+from .gen_k2025_awg.wlist import Wlist
+from .gen_kafgy_afgawg.abort import Abort
+from .gen_kafgy_afgawg.calibration import Calibration
 from .helpers import DefaultDictPassKeyToFactory
 
 

@@ -1,4 +1,4 @@
-"""The PSU50ST commands module.
+"""The MPSU50_2ST commands module.
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -7,30 +7,30 @@ Please report an issue if one is found.
 
 from typing import Any, Dict
 
-from .gen_fwlgvv_psu.firmware import Firmware
-from .gen_fwlgvv_psu.psu import PsuItem
-from .gen_fwlgvv_psu.status import Status
-from .gen_fwlgvv_psu.trigger import Trigger
-from .gen_h52sc3_mppsu.buffervar import Buffervar
+from .gen_3vhopd_mpsu.firmware import Firmware
+from .gen_3vhopd_mpsu.psu import PsuItem
+from .gen_3vhopd_mpsu.status import Status
+from .gen_3vhopd_mpsu.trigger import Trigger
+from .gen_4ajvxe_mpmpsu.buffervar import Buffervar
 
 
-class PSU50STMeta(type):
+class MPSU50_2STMeta(type):  # noqa: N801
     """A metaclass that prevents instantiation of the class it's applied to."""
 
     def __call__(cls, *_: Any, **__: Any) -> None:
         """Raises a NotImplementedError when an attempt is made to instantiate the class."""
         instantiation_error_msg = (
-            "This provides access to all the commands for the PSU50ST device."
+            "This provides access to all the commands for the MPSU50_2ST device."
             "It serves only for type-hinting purposes and should not be instantiated."
         )
         raise NotImplementedError(instantiation_error_msg)
 
 
-class PSU50STCommands(metaclass=PSU50STMeta):
-    """The PSU50ST commands.
+class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
+    """The MPSU50-2ST commands.
 
-    This provides access to all the commands for the PSU50ST device. See the documentation of each
-    property for more usage information.
+    This provides access to all the commands for the MPSU50-2ST device. See the documentation of
+    each property for more usage information.
 
     Properties and methods:
         - ``.buffer_var``: The ``bufferVar`` command tree.

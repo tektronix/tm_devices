@@ -6,7 +6,7 @@ from tm_devices import DeviceManager
 from tm_devices.drivers import MP5103
 
 if TYPE_CHECKING:
-    from tm_devices.commands import PSU50STCommands
+    from tm_devices.commands import MPSU50_2STCommands
 
 with DeviceManager(verbose=True) as device_manager:
     # Add a mainframe to the device manager and access its commands.
@@ -17,7 +17,7 @@ with DeviceManager(verbose=True) as device_manager:
     value = mainframe.commands.eventlog.count
 
     # Get access to the psu module command object available in third slot of the mainframe.
-    modular_psu = cast("PSU50STCommands", mainframe.get_module_commands_psu(slot=3))
+    modular_psu = cast("MPSU50_2STCommands", mainframe.get_module_commands_psu(slot=3))
     # Some examples demonstrating the usage of module level commands.
     # Get the psu model and version
     psu_model = modular_psu.model

@@ -38,7 +38,7 @@ if TYPE_CHECKING:
         (
             1,
             TypeError,
-            r"No supported PSU module found in slot 1. The supported PSU modules are: PSU50ST.",
+            r"No supported PSU module found in slot 1. The supported PSU modules are: MPSU50-2ST.",
         ),
     ],
 )
@@ -91,7 +91,7 @@ def test_mainframe_psu_exception(
             mainframe.get_module_commands_psu(slot)
     else:
         psu_commands = mainframe.get_module_commands_psu(slot)
-        assert psu_commands.model == "VPSU50-2ST"
+        assert psu_commands.model == "MPSU50-2ST"
         assert mainframe.total_channels == 2
 
 

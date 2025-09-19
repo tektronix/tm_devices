@@ -2,7 +2,7 @@
 """The status commands module.
 
 These commands are used in the following models:
-SMU2601B
+SMU2651A
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -41,6 +41,11 @@ Attributes and Functions:
     - status.measurement.reading_overflow.event
     - status.measurement.reading_overflow.ntr
     - status.measurement.reading_overflow.ptr
+    - status.measurement.sink_limit.condition
+    - status.measurement.sink_limit.enable
+    - status.measurement.sink_limit.event
+    - status.measurement.sink_limit.ntr
+    - status.measurement.sink_limit.ptr
     - status.measurement.voltage_limit.condition
     - status.measurement.voltage_limit.enable
     - status.measurement.voltage_limit.event
@@ -279,8 +284,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.condition)`` query.
@@ -309,8 +313,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.enable)`` query.
@@ -342,8 +345,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.enable)`` query.
@@ -378,8 +380,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.event)`` query.
@@ -408,8 +409,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.ntr)`` query.
@@ -440,8 +440,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.ntr)`` query.
@@ -475,8 +474,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.ptr)`` query.
@@ -507,8 +505,7 @@ class StatusSystem5(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 57 through 64.
 
         Usage:
             - Accessing this property will send the ``print(status.system5.ptr)`` query.
@@ -621,8 +618,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.condition)`` query.
@@ -651,8 +647,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.enable)`` query.
@@ -684,8 +679,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.enable)`` query.
@@ -720,8 +714,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.event)`` query.
@@ -750,8 +743,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.ntr)`` query.
@@ -782,8 +774,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.ntr)`` query.
@@ -817,8 +808,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.ptr)`` query.
@@ -849,8 +839,7 @@ class StatusSystem4(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 43 through 56.
 
         Usage:
             - Accessing this property will send the ``print(status.system4.ptr)`` query.
@@ -963,8 +952,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.condition)`` query.
@@ -993,8 +981,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.enable)`` query.
@@ -1026,8 +1013,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.enable)`` query.
@@ -1062,8 +1048,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.event)`` query.
@@ -1092,8 +1077,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.ntr)`` query.
@@ -1124,8 +1108,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.ntr)`` query.
@@ -1159,8 +1142,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.ptr)`` query.
@@ -1191,8 +1173,7 @@ class StatusSystem3(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 29 through 42.
 
         Usage:
             - Accessing this property will send the ``print(status.system3.ptr)`` query.
@@ -1305,8 +1286,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.condition)`` query.
@@ -1335,8 +1315,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.enable)`` query.
@@ -1368,8 +1347,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.enable)`` query.
@@ -1404,8 +1382,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.event)`` query.
@@ -1434,8 +1411,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.ntr)`` query.
@@ -1466,8 +1442,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.ntr)`` query.
@@ -1501,8 +1476,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.ptr)`` query.
@@ -1533,8 +1507,7 @@ class StatusSystem2(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 15 through 28.
 
         Usage:
             - Accessing this property will send the ``print(status.system2.ptr)`` query.
@@ -1647,8 +1620,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.condition)`` query.
@@ -1677,8 +1649,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.enable)`` query.
@@ -1710,8 +1681,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.enable)`` query.
@@ -1746,8 +1716,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.event)`` query.
@@ -1776,8 +1745,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.ntr)`` query.
@@ -1808,8 +1776,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.ntr)`` query.
@@ -1843,8 +1810,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.ptr)`` query.
@@ -1875,8 +1841,7 @@ class StatusSystem(BaseTSPCmd):
 
         Description:
             - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14. These commands are not available on the 2604B, 2614B, or
-              2634B.
+              for nodes 1 through 14.
 
         Usage:
             - Accessing this property will send the ``print(status.system.ptr)`` query.
@@ -2232,6 +2197,10 @@ class StatusStandard(BaseTSPCmd):
 class StatusQuestionableUnstableOutput(BaseTSPCmd):
     """The ``status.questionable.unstable_output`` command tree.
 
+    Constants:
+        - ``.SMUA``: B1. Set bit indicates that an unstable output
+          condition was detected on SMU A.
+
     Properties and methods:
         - ``.condition``: The ``status.questionable.unstable_output.condition`` attribute.
         - ``.enable``: The ``status.questionable.unstable_output.enable`` attribute.
@@ -2239,6 +2208,10 @@ class StatusQuestionableUnstableOutput(BaseTSPCmd):
         - ``.ntr``: The ``status.questionable.unstable_output.ntr`` attribute.
         - ``.ptr``: The ``status.questionable.unstable_output.ptr`` attribute.
     """
+
+    SMUA = "status.questionable.unstable_output.SMUA"
+    """str: B1. Set bit indicates that an unstable output
+condition was detected on SMU A."""
 
     @property
     def condition(self) -> str:
@@ -2503,6 +2476,9 @@ class StatusQuestionableUnstableOutput(BaseTSPCmd):
 class StatusQuestionableOverTemperature(BaseTSPCmd):
     """The ``status.questionable.over_temperature`` command tree.
 
+    Constants:
+        - ``.SMUA``: B1. Set bit indicates that an overtemperature condition was detected on SMU A.
+
     Properties and methods:
         - ``.condition``: The ``status.questionable.over_temperature.condition`` attribute.
         - ``.enable``: The ``status.questionable.over_temperature.enable`` attribute.
@@ -2510,6 +2486,9 @@ class StatusQuestionableOverTemperature(BaseTSPCmd):
         - ``.ntr``: The ``status.questionable.over_temperature.ntr`` attribute.
         - ``.ptr``: The ``status.questionable.over_temperature.ptr`` attribute.
     """
+
+    SMUA = "status.questionable.over_temperature.SMUA"
+    """str: B1. Set bit indicates that an overtemperature condition was detected on SMU A."""
 
     @property
     def condition(self) -> str:
@@ -2834,7 +2813,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.condition`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2844,10 +2823,6 @@ was detected."""
             ```
             - print(status.questionable.instrument.smuX.condition)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2867,7 +2842,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2880,10 +2855,6 @@ was detected."""
             - status.questionable.instrument.smuX.enable = value
             - print(status.questionable.instrument.smuX.enable)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2903,7 +2874,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2916,10 +2887,6 @@ was detected."""
             - status.questionable.instrument.smuX.enable = value
             - print(status.questionable.instrument.smuX.enable)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2942,7 +2909,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.event`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2952,10 +2919,6 @@ was detected."""
             ```
             - print(status.questionable.instrument.smuX.event)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2975,7 +2938,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2988,10 +2951,6 @@ was detected."""
             - status.questionable.instrument.smuX.ntr = value
             - print(status.questionable.instrument.smuX.ntr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3011,7 +2970,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -3024,10 +2983,6 @@ was detected."""
             - status.questionable.instrument.smuX.ntr = value
             - print(status.questionable.instrument.smuX.ntr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3050,7 +3005,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -3063,10 +3018,6 @@ was detected."""
             - status.questionable.instrument.smuX.ptr = value
             - print(status.questionable.instrument.smuX.ptr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3086,7 +3037,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU X summary register set.
+            - This attribute contains the questionable status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -3099,10 +3050,6 @@ was detected."""
             - status.questionable.instrument.smuX.ptr = value
             - print(status.questionable.instrument.smuX.ptr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.questionable.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3721,6 +3668,18 @@ class StatusQuestionable(BaseTSPCmd):
           is set.
         - ``.CALIBRATION``: B8. An enabled bit in the questionable status calibration summary event
           register is set.
+        - ``.INST``: B13. An enabled bit in the questionable status instrument summary event
+          register is set.
+        - ``.INSTRUMENT_SUMMARY``: B13. An enabled bit in the questionable status instrument summary
+          event register is set.
+        - ``.OTEMP``: B12. An enabled bit in the questionable status over temperature summary event
+          register is set.
+        - ``.OVER_TEMPERATURE``: B12. An enabled bit in the questionable status over temperature
+          summary event register is set.
+        - ``.UNSTABLE_OUTPUT``: B9. An enabled bit in the questionable status unstable output
+          summary event register is set.
+        - ``.UO``: B9. An enabled bit in the questionable status unstable output summary event
+          register is set.
 
     Properties and methods:
         - ``.calibration``: The ``status.questionable.calibration`` command tree.
@@ -3738,6 +3697,18 @@ class StatusQuestionable(BaseTSPCmd):
     """str: B8. An enabled bit in the questionable status calibration summary event register is set."""  # noqa: E501
     CALIBRATION = "status.questionable.CALIBRATION"
     """str: B8. An enabled bit in the questionable status calibration summary event register is set."""  # noqa: E501
+    INST = "status.questionable.INST"
+    """str: B13. An enabled bit in the questionable status instrument summary event register is set."""  # noqa: E501
+    INSTRUMENT_SUMMARY = "status.questionable.INSTRUMENT_SUMMARY"
+    """str: B13. An enabled bit in the questionable status instrument summary event register is set."""  # noqa: E501
+    OTEMP = "status.questionable.OTEMP"
+    """str: B12. An enabled bit in the questionable status over temperature summary event register is set."""  # noqa: E501
+    OVER_TEMPERATURE = "status.questionable.OVER_TEMPERATURE"
+    """str: B12. An enabled bit in the questionable status over temperature summary event register is set."""  # noqa: E501
+    UNSTABLE_OUTPUT = "status.questionable.UNSTABLE_OUTPUT"
+    """str: B9. An enabled bit in the questionable status unstable output summary event register is set."""  # noqa: E501
+    UO = "status.questionable.UO"
+    """str: B9. An enabled bit in the questionable status unstable output summary event register is set."""  # noqa: E501
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
@@ -3976,6 +3947,10 @@ class StatusQuestionable(BaseTSPCmd):
     def over_temperature(self) -> StatusQuestionableOverTemperature:
         """Return the ``status.questionable.over_temperature`` command tree.
 
+        Constants:
+            - ``.SMUA``: B1. Set bit indicates that an overtemperature condition was detected on SMU
+              A.
+
         Sub-properties and sub-methods:
             - ``.condition``: The ``status.questionable.over_temperature.condition`` attribute.
             - ``.enable``: The ``status.questionable.over_temperature.enable`` attribute.
@@ -4054,6 +4029,10 @@ class StatusQuestionable(BaseTSPCmd):
     def unstable_output(self) -> StatusQuestionableUnstableOutput:
         """Return the ``status.questionable.unstable_output`` command tree.
 
+        Constants:
+            - ``.SMUA``: B1. Set bit indicates that an unstable output
+              condition was detected on SMU A.
+
         Sub-properties and sub-methods:
             - ``.condition``: The ``status.questionable.unstable_output.condition`` attribute.
             - ``.enable``: The ``status.questionable.unstable_output.enable`` attribute.
@@ -4067,6 +4046,23 @@ class StatusQuestionable(BaseTSPCmd):
 class StatusOperationUser(BaseTSPCmd):
     """The ``status.operation.user`` command tree.
 
+    Constants:
+        - ``.BIT0``: B0. Read or write bit 0 of the operation status user register.
+        - ``.BIT1``: B1. Read or write bit 1 of the operation status user register.
+        - ``.BIT10``: B10. Read or write bit 10 of the operation status user register.
+        - ``.BIT11``: B11. Read or write bit 11 of the operation status user register.
+        - ``.BIT12``: B12. Read or write bit 12 of the operation status user register.
+        - ``.BIT13``: B13. Read or write bit 13 of the operation status user register.
+        - ``.BIT14``: B14. Read or write bit 14 of the operation status user register.
+        - ``.BIT2``: B2. Read or write bit 2 of the operation status user register.
+        - ``.BIT3``: B3. Read or write bit 3 of the operation status user register.
+        - ``.BIT4``: B4. Read or write bit 4 of the operation status user register.
+        - ``.BIT5``: B5. Read or write bit 5 of the operation status user register.
+        - ``.BIT6``: B6. Read or write bit 6 of the operation status user register.
+        - ``.BIT7``: B7. Read or write bit 7 of the operation status user register.
+        - ``.BIT8``: B8. Read or write bit 8 of the operation status user register.
+        - ``.BIT9``: B9. Read or write bit 9 of the operation status user register.
+
     Properties and methods:
         - ``.condition``: The ``status.operation.user.condition`` attribute.
         - ``.enable``: The ``status.operation.user.enable`` attribute.
@@ -4074,6 +4070,37 @@ class StatusOperationUser(BaseTSPCmd):
         - ``.ntr``: The ``status.operation.user.ntr`` attribute.
         - ``.ptr``: The ``status.operation.user.ptr`` attribute.
     """
+
+    BIT0 = "status.operation.user.BIT0"
+    """str: B0. Read or write bit 0 of the operation status user register."""
+    BIT1 = "status.operation.user.BIT1"
+    """str: B1. Read or write bit 1 of the operation status user register."""
+    BIT10 = "status.operation.user.BIT10"
+    """str: B10. Read or write bit 10 of the operation status user register."""
+    BIT11 = "status.operation.user.BIT11"
+    """str: B11. Read or write bit 11 of the operation status user register."""
+    BIT12 = "status.operation.user.BIT12"
+    """str: B12. Read or write bit 12 of the operation status user register."""
+    BIT13 = "status.operation.user.BIT13"
+    """str: B13. Read or write bit 13 of the operation status user register."""
+    BIT14 = "status.operation.user.BIT14"
+    """str: B14. Read or write bit 14 of the operation status user register."""
+    BIT2 = "status.operation.user.BIT2"
+    """str: B2. Read or write bit 2 of the operation status user register."""
+    BIT3 = "status.operation.user.BIT3"
+    """str: B3. Read or write bit 3 of the operation status user register."""
+    BIT4 = "status.operation.user.BIT4"
+    """str: B4. Read or write bit 4 of the operation status user register."""
+    BIT5 = "status.operation.user.BIT5"
+    """str: B5. Read or write bit 5 of the operation status user register."""
+    BIT6 = "status.operation.user.BIT6"
+    """str: B6. Read or write bit 6 of the operation status user register."""
+    BIT7 = "status.operation.user.BIT7"
+    """str: B7. Read or write bit 7 of the operation status user register."""
+    BIT8 = "status.operation.user.BIT8"
+    """str: B8. Read or write bit 8 of the operation status user register."""
+    BIT9 = "status.operation.user.BIT9"
+    """str: B9. Read or write bit 9 of the operation status user register."""
 
     @property
     def condition(self) -> str:
@@ -5535,8 +5562,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5565,8 +5591,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5598,8 +5623,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5634,8 +5658,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.event`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5664,8 +5687,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5697,8 +5719,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5733,8 +5754,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5766,8 +5786,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -5833,8 +5852,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -5863,8 +5881,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -5896,8 +5913,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -5932,8 +5948,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.event`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -5962,8 +5977,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -5995,8 +6009,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -6031,8 +6044,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -6064,8 +6076,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         """Access the ``status.operation.instrument.tsplink.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status TSP-Link summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status TSP-Link summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -7436,7 +7447,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7465,7 +7476,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7497,7 +7508,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7532,7 +7543,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.event`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7561,7 +7572,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7593,7 +7604,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7628,7 +7639,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7660,7 +7671,7 @@ class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X trigger overrun register set.
+            - This attribute contains the operation status SMU trigger overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -7768,7 +7779,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -7778,10 +7789,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             ```
             - print(status.operation.instrument.smuX.condition)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7801,7 +7808,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -7814,10 +7821,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.enable = value
             - print(status.operation.instrument.smuX.enable)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7837,7 +7840,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -7850,10 +7853,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.enable = value
             - print(status.operation.instrument.smuX.enable)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7876,7 +7875,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.event`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -7886,10 +7885,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             ```
             - print(status.operation.instrument.smuX.event)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7909,7 +7904,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.smuX.ntr)``
@@ -7922,10 +7917,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.ntr = value
             - print(status.operation.instrument.smuX.ntr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7945,7 +7936,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.smuX.ntr)``
@@ -7958,10 +7949,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.ntr = value
             - print(status.operation.instrument.smuX.ntr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -7984,7 +7971,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.smuX.ptr)``
@@ -7997,10 +7984,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.ptr = value
             - print(status.operation.instrument.smuX.ptr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -8020,7 +8003,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.operation.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status SMU X summary register set.
+            - This attribute contains the operation status SMU summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.smuX.ptr)``
@@ -8033,10 +8016,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.operation.instrument.smuX.ptr = value
             - print(status.operation.instrument.smuX.ptr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.operation.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -8805,8 +8784,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -8835,8 +8813,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -8868,8 +8845,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -8904,8 +8880,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.event`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -8934,8 +8909,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -8967,8 +8941,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -9003,8 +8976,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -9036,8 +9008,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O overrun register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O overrun register set.
 
         Usage:
             - Accessing this property will send the
@@ -9103,8 +9074,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.condition`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -9133,8 +9103,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -9166,8 +9135,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.enable`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -9202,8 +9170,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.event`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -9232,8 +9199,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.digio.ntr)``
@@ -9265,8 +9231,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.ntr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.digio.ntr)``
@@ -9301,8 +9266,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.digio.ptr)``
@@ -9334,8 +9298,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         """Access the ``status.operation.instrument.digio.ptr`` attribute.
 
         Description:
-            - This attribute contains the operation status digital I/O summary register set. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This attribute contains the operation status digital I/O summary register set.
 
         Usage:
             - Accessing this property will send the ``print(status.operation.instrument.digio.ptr)``
@@ -10651,6 +10614,23 @@ class StatusOperation(BaseTSPCmd):
     def user(self) -> StatusOperationUser:
         """Return the ``status.operation.user`` command tree.
 
+        Constants:
+            - ``.BIT0``: B0. Read or write bit 0 of the operation status user register.
+            - ``.BIT1``: B1. Read or write bit 1 of the operation status user register.
+            - ``.BIT10``: B10. Read or write bit 10 of the operation status user register.
+            - ``.BIT11``: B11. Read or write bit 11 of the operation status user register.
+            - ``.BIT12``: B12. Read or write bit 12 of the operation status user register.
+            - ``.BIT13``: B13. Read or write bit 13 of the operation status user register.
+            - ``.BIT14``: B14. Read or write bit 14 of the operation status user register.
+            - ``.BIT2``: B2. Read or write bit 2 of the operation status user register.
+            - ``.BIT3``: B3. Read or write bit 3 of the operation status user register.
+            - ``.BIT4``: B4. Read or write bit 4 of the operation status user register.
+            - ``.BIT5``: B5. Read or write bit 5 of the operation status user register.
+            - ``.BIT6``: B6. Read or write bit 6 of the operation status user register.
+            - ``.BIT7``: B7. Read or write bit 7 of the operation status user register.
+            - ``.BIT8``: B8. Read or write bit 8 of the operation status user register.
+            - ``.BIT9``: B9. Read or write bit 9 of the operation status user register.
+
         Sub-properties and sub-methods:
             - ``.condition``: The ``status.operation.user.condition`` attribute.
             - ``.enable``: The ``status.operation.user.enable`` attribute.
@@ -10920,6 +10900,277 @@ class StatusMeasurementVoltageLimit(BaseTSPCmd):
             ```
             - status.measurement.voltage_limit.ptr = value
             - print(status.measurement.voltage_limit.ptr)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".ptr", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class StatusMeasurementSinkLimit(BaseTSPCmd):
+    """The ``status.measurement.sink_limit`` command tree.
+
+    Properties and methods:
+        - ``.condition``: The ``status.measurement.sink_limit.condition`` attribute.
+        - ``.enable``: The ``status.measurement.sink_limit.enable`` attribute.
+        - ``.event``: The ``status.measurement.sink_limit.event`` attribute.
+        - ``.ntr``: The ``status.measurement.sink_limit.ntr`` attribute.
+        - ``.ptr``: The ``status.measurement.sink_limit.ptr`` attribute.
+    """
+
+    @property
+    def condition(self) -> str:
+        """Access the ``status.measurement.sink_limit.condition`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the
+              ``print(status.measurement.sink_limit.condition)`` query.
+
+        TSP Syntax:
+            ```
+            - print(status.measurement.sink_limit.condition)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".condition"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.condition)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def enable(self) -> str:
+        """Access the ``status.measurement.sink_limit.enable`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.enable)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.enable = value
+            - print(status.measurement.sink_limit.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``status.measurement.sink_limit.enable`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.enable)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.enable = value
+            - print(status.measurement.sink_limit.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def event(self) -> str:
+        """Access the ``status.measurement.sink_limit.event`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.event)``
+              query.
+
+        TSP Syntax:
+            ```
+            - print(status.measurement.sink_limit.event)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".event"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.event)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def ntr(self) -> str:
+        """Access the ``status.measurement.sink_limit.ntr`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.ntr)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.ntr = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.ntr = value
+            - print(status.measurement.sink_limit.ntr)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".ntr"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @ntr.setter
+    def ntr(self, value: Union[str, float]) -> None:
+        """Access the ``status.measurement.sink_limit.ntr`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.ntr)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.ntr = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.ntr = value
+            - print(status.measurement.sink_limit.ntr)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".ntr", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def ptr(self) -> str:
+        """Access the ``status.measurement.sink_limit.ptr`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.ptr)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.ptr = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.ptr = value
+            - print(status.measurement.sink_limit.ptr)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".ptr"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @ptr.setter
+    def ptr(self, value: Union[str, float]) -> None:
+        """Access the ``status.measurement.sink_limit.ptr`` attribute.
+
+        Description:
+            - This attribute contains the measurement sink limit summary register set.
+
+        Usage:
+            - Accessing this property will send the ``print(status.measurement.sink_limit.ptr)``
+              query.
+            - Setting this property to a value will send the
+              ``status.measurement.sink_limit.ptr = value`` command.
+
+        TSP Syntax:
+            ```
+            - status.measurement.sink_limit.ptr = value
+            - print(status.measurement.sink_limit.ptr)
             ```
 
         Raises:
@@ -11297,10 +11548,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - print(status.measurement.instrument.smuX.condition)
             ```
 
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -11333,10 +11580,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.measurement.instrument.smuX.enable = value
             - print(status.measurement.instrument.smuX.enable)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -11371,10 +11614,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - print(status.measurement.instrument.smuX.enable)
             ```
 
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -11407,10 +11646,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             ```
             - print(status.measurement.instrument.smuX.event)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -11445,10 +11680,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - print(status.measurement.instrument.smuX.ntr)
             ```
 
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -11481,10 +11712,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.measurement.instrument.smuX.ntr = value
             - print(status.measurement.instrument.smuX.ntr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -11522,10 +11749,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - print(status.measurement.instrument.smuX.ptr)
             ```
 
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
-
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -11558,10 +11781,6 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
             - status.measurement.instrument.smuX.ptr = value
             - print(status.measurement.instrument.smuX.ptr)
             ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example
-              status.measurement.instrument.smua.enable applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -12497,6 +12716,7 @@ class StatusMeasurement(BaseTSPCmd):
         - ``.ntr``: The ``status.measurement.ntr`` attribute.
         - ``.ptr``: The ``status.measurement.ptr`` attribute.
         - ``.reading_overflow``: The ``status.measurement.reading_overflow`` command tree.
+        - ``.sink_limit``: The ``status.measurement.sink_limit`` command tree.
         - ``.voltage_limit``: The ``status.measurement.voltage_limit`` command tree.
     """
 
@@ -12541,6 +12761,7 @@ register."""
         self._reading_overflow = StatusMeasurementReadingOverflow(
             device, f"{self._cmd_syntax}.reading_overflow"
         )
+        self._sink_limit = StatusMeasurementSinkLimit(device, f"{self._cmd_syntax}.sink_limit")
         self._voltage_limit = StatusMeasurementVoltageLimit(
             device, f"{self._cmd_syntax}.voltage_limit"
         )
@@ -12568,7 +12789,7 @@ register."""
         """Access the ``status.measurement.condition`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.condition)`` query.
@@ -12612,7 +12833,7 @@ register."""
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.enable)`` query.
@@ -12643,7 +12864,7 @@ register."""
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.enable)`` query.
@@ -12677,7 +12898,7 @@ register."""
         """Access the ``status.measurement.event`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.event)`` query.
@@ -12723,7 +12944,7 @@ register."""
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ntr)`` query.
@@ -12754,7 +12975,7 @@ register."""
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ntr)`` query.
@@ -12788,7 +13009,7 @@ register."""
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ptr)`` query.
@@ -12819,7 +13040,7 @@ register."""
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:
-            - This attribute contains the measurement event register set.
+            - These attributes contain the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ptr)`` query.
@@ -12863,6 +13084,19 @@ register."""
             - ``.ptr``: The ``status.measurement.reading_overflow.ptr`` attribute.
         """
         return self._reading_overflow
+
+    @property
+    def sink_limit(self) -> StatusMeasurementSinkLimit:
+        """Return the ``status.measurement.sink_limit`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``status.measurement.sink_limit.condition`` attribute.
+            - ``.enable``: The ``status.measurement.sink_limit.enable`` attribute.
+            - ``.event``: The ``status.measurement.sink_limit.event`` attribute.
+            - ``.ntr``: The ``status.measurement.sink_limit.ntr`` attribute.
+            - ``.ptr``: The ``status.measurement.sink_limit.ptr`` attribute.
+        """
+        return self._sink_limit
 
     @property
     def voltage_limit(self) -> StatusMeasurementVoltageLimit:
@@ -13045,6 +13279,7 @@ class Status(BaseTSPCmd):
             - ``.ntr``: The ``status.measurement.ntr`` attribute.
             - ``.ptr``: The ``status.measurement.ptr`` attribute.
             - ``.reading_overflow``: The ``status.measurement.reading_overflow`` command tree.
+            - ``.sink_limit``: The ``status.measurement.sink_limit`` command tree.
             - ``.voltage_limit``: The ``status.measurement.voltage_limit`` command tree.
         """
         return self._measurement
@@ -13054,8 +13289,7 @@ class Status(BaseTSPCmd):
         """Access the ``status.node_enable`` attribute.
 
         Description:
-            - This attribute stores the system node enable register. This command is not available
-              on the 2604B, 2614B, or 2634B.
+            - This attribute stores the system node enable register.
 
         Usage:
             - Accessing this property will send the ``print(status.node_enable)`` query.
@@ -13085,8 +13319,7 @@ class Status(BaseTSPCmd):
         """Access the ``status.node_enable`` attribute.
 
         Description:
-            - This attribute stores the system node enable register. This command is not available
-              on the 2604B, 2614B, or 2634B.
+            - This attribute stores the system node enable register.
 
         Usage:
             - Accessing this property will send the ``print(status.node_enable)`` query.
@@ -13201,6 +13434,18 @@ class Status(BaseTSPCmd):
               register is set.
             - ``.CALIBRATION``: B8. An enabled bit in the questionable status calibration summary
               event register is set.
+            - ``.INST``: B13. An enabled bit in the questionable status instrument summary event
+              register is set.
+            - ``.INSTRUMENT_SUMMARY``: B13. An enabled bit in the questionable status instrument
+              summary event register is set.
+            - ``.OTEMP``: B12. An enabled bit in the questionable status over temperature summary
+              event register is set.
+            - ``.OVER_TEMPERATURE``: B12. An enabled bit in the questionable status over temperature
+              summary event register is set.
+            - ``.UNSTABLE_OUTPUT``: B9. An enabled bit in the questionable status unstable output
+              summary event register is set.
+            - ``.UO``: B9. An enabled bit in the questionable status unstable output summary event
+              register is set.
 
         Sub-properties and sub-methods:
             - ``.calibration``: The ``status.questionable.calibration`` command tree.

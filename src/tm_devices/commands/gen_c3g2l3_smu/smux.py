@@ -2,7 +2,7 @@
 """The smux commands module.
 
 These commands are used in the following models:
-SMU2611B, SMU2612B, SMU2614B
+SMU2606B
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -31,7 +31,6 @@ Attributes and Functions:
     - smuX.contact.threshold
     - smuX.makebuffer()
     - smuX.measure.Y()
-    - smuX.measure.analogfilter
     - smuX.measure.autorangei
     - smuX.measure.autorangev
     - smuX.measure.autozero
@@ -87,7 +86,6 @@ Attributes and Functions:
     - smuX.source.rangei
     - smuX.source.rangev
     - smuX.source.settling
-    - smuX.source.sink
     - smuX.trigger.arm.count
     - smuX.trigger.arm.set()
     - smuX.trigger.arm.stimulus
@@ -115,7 +113,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
-from ..gen_ahkybr_smu.buffervar import Buffervar
+from ..gen_ftsc04_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 
 if TYPE_CHECKING:
@@ -1126,8 +1124,8 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
         """Access the ``smuX.trigger.endpulse.stimulus`` attribute.
 
         Description:
-            - This attribute defines which event causes the end pulse event detector to enter the
-              detected state.
+            - This attribute defines which event will cause the end pulse event detector to enter
+              the detected state.
 
         Usage:
             - Accessing this property will send the ``print(smuX.trigger.endpulse.stimulus)`` query.
@@ -1162,8 +1160,8 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
         """Access the ``smuX.trigger.endpulse.stimulus`` attribute.
 
         Description:
-            - This attribute defines which event causes the end pulse event detector to enter the
-              detected state.
+            - This attribute defines which event will cause the end pulse event detector to enter
+              the detected state.
 
         Usage:
             - Accessing this property will send the ``print(smuX.trigger.endpulse.stimulus)`` query.
@@ -1314,7 +1312,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
         """Access the ``smuX.trigger.arm.stimulus`` attribute.
 
         Description:
-            - This attribute selects the event that causes the arm event detector to enter the
+            - This attribute selects the event that will cause the arm event detector to enter the
               detected state.
 
         Usage:
@@ -1350,7 +1348,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
         """Access the ``smuX.trigger.arm.stimulus`` attribute.
 
         Description:
-            - This attribute selects the event that causes the arm event detector to enter the
+            - This attribute selects the event that will cause the arm event detector to enter the
               detected state.
 
         Usage:
@@ -1772,7 +1770,6 @@ class SmuxItemSource(BaseTSPCmd):
         - ``.rangei``: The ``smuX.source.rangei`` attribute.
         - ``.rangev``: The ``smuX.source.rangev`` attribute.
         - ``.settling``: The ``smuX.source.settling`` attribute.
-        - ``.sink``: The ``smuX.source.sink`` attribute.
     """
 
     @property
@@ -3328,77 +3325,6 @@ class SmuxItemSource(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.settling`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    @property
-    def sink(self) -> str:
-        """Access the ``smuX.source.sink`` attribute.
-
-        Description:
-            - This attribute turns sink mode on or off.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.source.sink)`` query.
-            - Setting this property to a value will send the ``smuX.source.sink = value`` command.
-
-        TSP Syntax:
-            ```
-            - smuX.source.sink = value
-            - print(smuX.source.sink)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.sink applies to
-              SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".sink"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.sink)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @sink.setter
-    def sink(self, value: Union[str, float]) -> None:
-        """Access the ``smuX.source.sink`` attribute.
-
-        Description:
-            - This attribute turns sink mode on or off.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.source.sink)`` query.
-            - Setting this property to a value will send the ``smuX.source.sink = value`` command.
-
-        TSP Syntax:
-            ```
-            - smuX.source.sink = value
-            - print(smuX.source.sink)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.sink applies to
-              SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".sink", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.sink = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
     def calibratei(
         self,
         range_: str,
@@ -4340,7 +4266,6 @@ class SmuxItemMeasure(BaseTSPCmd):
         - ``.p()``: The ``smuX.measure.p()`` function.
         - ``.r()``: The ``smuX.measure.r()`` function.
         - ``.v()``: The ``smuX.measure.v()`` function.
-        - ``.analogfilter``: The ``smuX.measure.analogfilter`` attribute.
         - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
         - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
         - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -4369,81 +4294,6 @@ class SmuxItemMeasure(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._filter = SmuxItemMeasureFilter(device, f"{self._cmd_syntax}.filter")
         self._rel = SmuxItemMeasureRel(device, f"{self._cmd_syntax}.rel")
-
-    @property
-    def analogfilter(self) -> str:
-        """Access the ``smuX.measure.analogfilter`` attribute.
-
-        Description:
-            - This attribute controls the use of an analog filter when measuring on the lowest
-              current ranges (2634B, 2635B, and 2636B only).
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.measure.analogfilter)`` query.
-            - Setting this property to a value will send the ``smuX.measure.analogfilter = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - smuX.measure.analogfilter = value
-            - print(smuX.measure.analogfilter)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.analogfilter
-              applies to SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".analogfilter"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.analogfilter)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.analogfilter`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @analogfilter.setter
-    def analogfilter(self, value: Union[str, float]) -> None:
-        """Access the ``smuX.measure.analogfilter`` attribute.
-
-        Description:
-            - This attribute controls the use of an analog filter when measuring on the lowest
-              current ranges (2634B, 2635B, and 2636B only).
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.measure.analogfilter)`` query.
-            - Setting this property to a value will send the ``smuX.measure.analogfilter = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - smuX.measure.analogfilter = value
-            - print(smuX.measure.analogfilter)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.analogfilter
-              applies to SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".analogfilter", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.analogfilter = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.analogfilter`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def autorangei(self) -> str:
@@ -5826,8 +5676,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.speed`` attribute.
 
         Description:
-            - This attribute stores the speed setting for contact check measurements. This command
-              is not available on the 2604B, 2614B, or 2634B.
+            - This attribute stores the speed setting for contact check measurements.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.speed)`` query.
@@ -5861,8 +5710,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.speed`` attribute.
 
         Description:
-            - This attribute stores the speed setting for contact check measurements. This command
-              is not available on the 2604B, 2614B, or 2634B.
+            - This attribute stores the speed setting for contact check measurements.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.speed)`` query.
@@ -5900,7 +5748,6 @@ class SmuxItemContact(BaseTSPCmd):
 
         Description:
             - This attribute stores the resistance threshold for the smuX.contact.check() function.
-              This command is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.threshold)`` query.
@@ -5936,7 +5783,6 @@ class SmuxItemContact(BaseTSPCmd):
 
         Description:
             - This attribute stores the resistance threshold for the smuX.contact.check() function.
-              This command is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.threshold)`` query.
@@ -5975,8 +5821,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.calibratehi()`` function.
 
         Description:
-            - This function adjusts the high/sense high contact check measurement. This command is
-              not available on the 2604B, 2614B, or 2634B.
+            - This function adjusts the high/sense high contact check measurement.
 
         TSP Syntax:
             ```
@@ -6009,8 +5854,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.calibratelo()`` function.
 
         Description:
-            - This function adjusts the low/sense low contact check measurement. This command is not
-              available on the 2604B, 2614B, or 2634B.
+            - This function adjusts the low/sense low contact check measurement.
 
         TSP Syntax:
             ```
@@ -6041,8 +5885,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.check()`` function.
 
         Description:
-            - This function determines if contact resistance is lower than the threshold. This
-              command is not available on the 2604B, 2614B, or 2634B.
+            - This function determines if contact resistance is lower than the threshold.
 
         TSP Syntax:
             ```
@@ -6068,8 +5911,7 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.r()`` function.
 
         Description:
-            - This function measures aggregate contact resistance. This command is not available on
-              the 2604B, 2614B, or 2634B.
+            - This function measures aggregate contact resistance.
 
         TSP Syntax:
             ```
@@ -6707,6 +6549,8 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.FILTER_ON``: Enable filter measurements.
         - ``.FILTER_REPEAT_AVG``: Selects the repeating filter when measurement filter is enabled.
         - ``.LIMIT_AUTO``: Set the sweep source limit to automatic.
+        - ``.OE_NONE``: When output enable is deasserted, take no action.
+        - ``.OE_OUTPUT_OFF``: When output enable is deasserted, turn the source output off.
         - ``.OUTPUT_DCAMPS``: Select the current function for the pulse.
         - ``.OUTPUT_DCVOLTS``: Select the voltage function for the pulse.
         - ``.OUTPUT_HIGH_Z``: Opens the output relay when the output is turned off.
@@ -6819,6 +6663,10 @@ reading at index bufferVar.fillcount."""
     """str: Selects the repeating filter when measurement filter is enabled."""
     LIMIT_AUTO = "smuX.LIMIT_AUTO"
     """str: Set the sweep source limit to automatic."""
+    OE_NONE = "smuX.OE_NONE"
+    """str: When output enable is deasserted, take no action."""
+    OE_OUTPUT_OFF = "smuX.OE_OUTPUT_OFF"
+    """str: When output enable is deasserted, turn the source output off."""
     OUTPUT_DCAMPS = "smuX.OUTPUT_DCAMPS"
     """str: Select the current function for the pulse."""
     OUTPUT_DCVOLTS = "smuX.OUTPUT_DCVOLTS"
@@ -6932,6 +6780,10 @@ reading at index bufferVar.fillcount."""
         self.FILTER_REPEAT_AVG = self.FILTER_REPEAT_AVG.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
         self.LIMIT_AUTO = self.LIMIT_AUTO.replace("smuX", f"smu{self._cmd_syntax[3]}")
+        # pylint: disable=invalid-name
+        self.OE_NONE = self.OE_NONE.replace("smuX", f"smu{self._cmd_syntax[3]}")
+        # pylint: disable=invalid-name
+        self.OE_OUTPUT_OFF = self.OE_OUTPUT_OFF.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
         self.OUTPUT_DCAMPS = self.OUTPUT_DCAMPS.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
@@ -7049,7 +6901,6 @@ reading at index bufferVar.fillcount."""
             - ``.p()``: The ``smuX.measure.p()`` function.
             - ``.r()``: The ``smuX.measure.r()`` function.
             - ``.v()``: The ``smuX.measure.v()`` function.
-            - ``.analogfilter``: The ``smuX.measure.analogfilter`` attribute.
             - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
             - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
             - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -7243,7 +7094,6 @@ reading at index bufferVar.fillcount."""
             - ``.rangei``: The ``smuX.source.rangei`` attribute.
             - ``.rangev``: The ``smuX.source.rangev`` attribute.
             - ``.settling``: The ``smuX.source.settling`` attribute.
-            - ``.sink``: The ``smuX.source.sink`` attribute.
         """
         return self._source
 
@@ -7496,7 +7346,7 @@ reading at index bufferVar.fillcount."""
             ```
 
         Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.reset() applies to SMU
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.reset()applies to SMU
               channel A).
 
         Raises:

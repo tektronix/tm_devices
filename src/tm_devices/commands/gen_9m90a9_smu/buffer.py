@@ -2,7 +2,7 @@
 """The buffer commands module.
 
 These commands are used in the following models:
-SMU2470
+SMU2450
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -23,7 +23,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, TYPE_CHECKING
 
-from ..gen_7kqm9p_smu.buffervar import Buffervar
+from ..gen_aon74s_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
@@ -552,7 +552,7 @@ class Buffer(BaseTSPCmd):
         self,
         buffer_var: str,
         file_name: str,
-        what: Optional[str] = None,
+        time_format: Optional[str] = None,
         start: Optional[str] = None,
         end: Optional[str] = None,
     ) -> None:
@@ -571,7 +571,8 @@ class Buffer(BaseTSPCmd):
                 defbuffer2) or a user-defined buffer.
             file_name: A string that indicates the name of the file on the USB flash drive in which
                 to save the reading buffer.
-            what (optional): Defines which information is saved in the file on the USB flash drive.
+            time_format (optional): Defines how date and time information from the buffer is saved
+                in the file on the USB flash drive; the options are.
             start (optional): Defines the starting point in the buffer to start saving data.
             end (optional): Defines the ending point in the buffer to stop saving data.
 
@@ -584,7 +585,7 @@ class Buffer(BaseTSPCmd):
                 for x in (
                     buffer_var,
                     f'"{file_name}"',
-                    what,
+                    time_format,
                     start,
                     end,
                 )

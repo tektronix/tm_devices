@@ -28,12 +28,12 @@
     border-top-style: solid;
 }
 
-.device-support-table tbody td[rowspan] {
+.first-row-no-background tbody td[rowspan] {
     background-color: transparent !important;
 }
 
-.device-support-table table td:first-child,
-.device-support-table table th:first-child {
+.first-row-no-background table td:first-child,
+.first-row-no-background table th:first-child {
     font-weight: bolder;
     background-color: transparent !important;
 }

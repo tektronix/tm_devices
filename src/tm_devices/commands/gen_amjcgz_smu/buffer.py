@@ -2,7 +2,7 @@
 """The buffer commands module.
 
 These commands are used in the following models:
-SMU2460, SMU2461
+SMU2470
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -23,7 +23,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, TYPE_CHECKING
 
-from ..gen_7kqm9p_smu.buffervar import Buffervar
+from ..gen_aon74s_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
@@ -147,37 +147,6 @@ class Buffer(BaseTSPCmd):
     """The ``buffer`` command tree.
 
     Constants:
-        - ``.COL_ALL``: Save all data from the specified reading buffer.
-        - ``.COL_BRIEF``: Save reading and relative time data from the specified reading buffer.
-        - ``.COL_DISPLAY_DIGITS``: Save display digits from the specified reading buffer.
-        - ``.COL_EXTRA``: Relative time and additional values if they exist (such as the sense
-          voltage from a dc voltage ratio measurement).
-        - ``.COL_EXTRA_RANGE``: Save sxtra value range digits from the specified reading buffer.
-        - ``.COL_EXTRA_UNIT``: Save extra value units from the specified reading buffer.
-        - ``.COL_EXTRA_VALUE``: Save extra values from the specified reading buffer.
-        - ``.COL_INDEX``: Save index into buffer from the specified reading buffer.
-        - ``.COL_LIMITS``: The status of all limits.
-        - ``.COL_MATH``: Math enabled (F is math is not enabled; T if math is enabled) and relative
-          time.
-        - ``.COL_ORIGIN``: Save origin status from the specified reading buffer.
-        - ``.COL_QUESTIONABLE``: Save questionable status from the specified reading buffer.
-        - ``.COL_RANGE_DIGITS``: Save range digits from the specified reading buffer.
-        - ``.COL_READING``: Save the measurement reading from the specified reading buffer.
-        - ``.COL_STANDARD``: Save the relative time, reading, channel, and source value from the
-          specified reading buffer.
-        - ``.COL_START``: Save the status of the start group from the specified reading buffer.
-        - ``.COL_STATUS``: Save the status information associated with the measurement from the
-          specified reading buffer.
-        - ``.COL_TERMINAL``: Save the terminal status from the specified reading buffer.
-        - ``.COL_TIMESTAMP_READING``: Save the timestamp reading from the specified reading buffer.
-        - ``.COL_TIME_ABSOLUTE``: Save the time when the data point was measured as an absolute from
-          the specified reading buffer.
-        - ``.COL_TIME_PARTS``: Save absolute time in multiple columns from the specified reading
-          buffer.
-        - ``.COL_TIME_RAW``: Save absolute time in seconds from the specified reading buffer.
-        - ``.COL_TIME_RELATIVE``: Save the relative time when the data point was measured in seconds
-          from the specified reading buffer.
-        - ``.COL_UNIT``: Save the reading and the unit of measure from the specified reading buffer.
         - ``.DIGITS_3_5``: The number of digits to use for the  first measurement.
         - ``.DIGITS_4_5``: The number of digits to use for the  first measurement.
         - ``.DIGITS_5_5``: The number of digits to use for the  first measurement.
@@ -266,54 +235,6 @@ class Buffer(BaseTSPCmd):
         - ``.write``: The ``buffer.write`` command tree.
     """
 
-    COL_ALL = "buffer.COL_ALL"
-    """str: Save all data from the specified reading buffer."""
-    COL_BRIEF = "buffer.COL_BRIEF"
-    """str: Save reading and relative time data from the specified reading buffer."""
-    COL_DISPLAY_DIGITS = "buffer.COL_DISPLAY_DIGITS"
-    """str: Save display digits from the specified reading buffer."""
-    COL_EXTRA = "buffer.COL_EXTRA"
-    """str: Relative time and additional values if they exist (such as the sense voltage from a dc voltage ratio measurement)."""  # noqa: E501
-    COL_EXTRA_RANGE = "buffer.COL_EXTRA_RANGE"
-    """str: Save sxtra value range digits from the specified reading buffer."""
-    COL_EXTRA_UNIT = "buffer.COL_EXTRA_UNIT"
-    """str: Save extra value units from the specified reading buffer."""
-    COL_EXTRA_VALUE = "buffer.COL_EXTRA_VALUE"
-    """str: Save extra values from the specified reading buffer."""
-    COL_INDEX = "buffer.COL_INDEX"
-    """str: Save index into buffer from the specified reading buffer."""
-    COL_LIMITS = "buffer.COL_LIMITS"
-    """str: The status of all limits."""
-    COL_MATH = "buffer.COL_MATH"
-    """str: Math enabled (F is math is not enabled; T if math is enabled) and relative time."""
-    COL_ORIGIN = "buffer.COL_ORIGIN"
-    """str: Save origin status from the specified reading buffer."""
-    COL_QUESTIONABLE = "buffer.COL_QUESTIONABLE"
-    """str: Save questionable status from the specified reading buffer."""
-    COL_RANGE_DIGITS = "buffer.COL_RANGE_DIGITS"
-    """str: Save range digits from the specified reading buffer."""
-    COL_READING = "buffer.COL_READING"
-    """str: Save the measurement reading from the specified reading buffer."""
-    COL_STANDARD = "buffer.COL_STANDARD"
-    """str: Save the relative time, reading, channel, and source value from the specified reading buffer."""  # noqa: E501
-    COL_START = "buffer.COL_START"
-    """str: Save the status of the start group from the specified reading buffer."""
-    COL_STATUS = "buffer.COL_STATUS"
-    """str: Save the status information associated with the measurement from the specified reading buffer."""  # noqa: E501
-    COL_TERMINAL = "buffer.COL_TERMINAL"
-    """str: Save the terminal status from the specified reading buffer."""
-    COL_TIMESTAMP_READING = "buffer.COL_TIMESTAMP_READING"
-    """str: Save the timestamp reading from the specified reading buffer."""
-    COL_TIME_ABSOLUTE = "buffer.COL_TIME_ABSOLUTE"
-    """str: Save the time when the data point was measured as an absolute from the specified reading buffer."""  # noqa: E501
-    COL_TIME_PARTS = "buffer.COL_TIME_PARTS"
-    """str: Save absolute time in multiple columns from the specified reading buffer."""
-    COL_TIME_RAW = "buffer.COL_TIME_RAW"
-    """str: Save absolute time in seconds from the specified reading buffer."""
-    COL_TIME_RELATIVE = "buffer.COL_TIME_RELATIVE"
-    """str: Save the relative time when the data point was measured in seconds from the specified reading buffer."""  # noqa: E501
-    COL_UNIT = "buffer.COL_UNIT"
-    """str: Save the reading and the unit of measure from the specified reading buffer."""
     DIGITS_3_5 = "buffer.DIGITS_3_5"
     """str: The number of digits to use for the  first measurement."""
     DIGITS_4_5 = "buffer.DIGITS_4_5"

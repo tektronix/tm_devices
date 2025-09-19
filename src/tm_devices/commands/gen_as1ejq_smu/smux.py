@@ -2,7 +2,7 @@
 """The smux commands module.
 
 These commands are used in the following models:
-SMU2657A
+SMU2601B_Pulse
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -16,9 +16,7 @@ Attributes and Functions:
     - smuX.cal.adjustdate
     - smuX.cal.date
     - smuX.cal.due
-    - smuX.cal.fastadc()
     - smuX.cal.lock()
-    - smuX.cal.ovp()
     - smuX.cal.password
     - smuX.cal.polarity
     - smuX.cal.restore()
@@ -31,9 +29,9 @@ Attributes and Functions:
     - smuX.contact.r()
     - smuX.contact.speed
     - smuX.contact.threshold
+    - smuX.interlock.enable
     - smuX.makebuffer()
     - smuX.measure.Y()
-    - smuX.measure.adc
     - smuX.measure.autorangei
     - smuX.measure.autorangev
     - smuX.measure.autozero
@@ -44,6 +42,7 @@ Attributes and Functions:
     - smuX.measure.filter.count
     - smuX.measure.filter.enable
     - smuX.measure.filter.type
+    - smuX.measure.highcrangedelayfactor
     - smuX.measure.interval
     - smuX.measure.lowrangei
     - smuX.measure.lowrangev
@@ -62,6 +61,15 @@ Attributes and Functions:
     - smuX.measureYandstep()
     - smuX.nvbuffer1
     - smuX.nvbuffer2
+    - smuX.pulser.enable
+    - smuX.pulser.measure.aperture
+    - smuX.pulser.measure.calibrateY()
+    - smuX.pulser.measure.delay
+    - smuX.pulser.protect.sensev
+    - smuX.pulser.protect.sourcev
+    - smuX.pulser.protect.tripped
+    - smuX.pulser.source.calibratebiasi()
+    - smuX.pulser.source.calibratei()
     - smuX.reset()
     - smuX.savebuffer()
     - smuX.sense
@@ -84,7 +92,6 @@ Attributes and Functions:
     - smuX.source.offlimitv
     - smuX.source.offmode
     - smuX.source.output
-    - smuX.source.protectv
     - smuX.source.rangei
     - smuX.source.rangev
     - smuX.source.settling
@@ -109,6 +116,7 @@ Attributes and Functions:
     - smuX.trigger.source.linearY()
     - smuX.trigger.source.listY()
     - smuX.trigger.source.logY()
+    - smuX.trigger.source.pulsewidth
     - smuX.trigger.source.set()
     - smuX.trigger.source.stimulus
     ```
@@ -116,8 +124,8 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
-from ..gen_ahkybr_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
+from .buffervar import Buffervar
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
@@ -136,6 +144,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
         - ``.listv()``: The ``smuX.trigger.source.listv()`` function.
         - ``.logi()``: The ``smuX.trigger.source.logi()`` function.
         - ``.logv()``: The ``smuX.trigger.source.logv()`` function.
+        - ``.pulsewidth``: The ``smuX.trigger.source.pulsewidth`` attribute.
         - ``.set()``: The ``smuX.trigger.source.set()`` function.
         - ``.stimulus``: The ``smuX.trigger.source.stimulus`` attribute.
     """
@@ -333,6 +342,73 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def pulsewidth(self) -> str:
+        """Access the ``smuX.trigger.source.pulsewidth`` attribute.
+
+        Description:
+            - This attribute sets the source pulse width when using a trigger model sweep when the
+              pulser is enabled
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.trigger.source.pulsewidth)`` query.
+            - Setting this property to a value will send the
+              ``smuX.trigger.source.pulsewidth = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.trigger.source.pulsewidth = value
+            - print(smuX.trigger.source.pulsewidth)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".pulsewidth"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.pulsewidth)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @pulsewidth.setter
+    def pulsewidth(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.trigger.source.pulsewidth`` attribute.
+
+        Description:
+            - This attribute sets the source pulse width when using a trigger model sweep when the
+              pulser is enabled
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.trigger.source.pulsewidth)`` query.
+            - Setting this property to a value will send the
+              ``smuX.trigger.source.pulsewidth = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.trigger.source.pulsewidth = value
+            - print(smuX.trigger.source.pulsewidth)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".pulsewidth", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.pulsewidth = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -974,7 +1050,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
         """Access the ``smuX.trigger.endpulse.action`` attribute.
 
         Description:
-            - This attribute enables or disables pulse mode sweeps.
+            - This attribute enables or disables pulse sweeps when the pulser is disabled.
 
         Usage:
             - Accessing this property will send the ``print(smuX.trigger.endpulse.action)`` query.
@@ -1005,7 +1081,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
         """Access the ``smuX.trigger.endpulse.action`` attribute.
 
         Description:
-            - This attribute enables or disables pulse mode sweeps.
+            - This attribute enables or disables pulse sweeps when the pulser is disabled.
 
         Usage:
             - Accessing this property will send the ``print(smuX.trigger.endpulse.action)`` query.
@@ -1546,6 +1622,7 @@ class SmuxItemTrigger(BaseTSPCmd):
             - ``.listv()``: The ``smuX.trigger.source.listv()`` function.
             - ``.logi()``: The ``smuX.trigger.source.logi()`` function.
             - ``.logv()``: The ``smuX.trigger.source.logv()`` function.
+            - ``.pulsewidth``: The ``smuX.trigger.source.pulsewidth`` attribute.
             - ``.set()``: The ``smuX.trigger.source.set()`` function.
             - ``.stimulus``: The ``smuX.trigger.source.stimulus`` attribute.
         """
@@ -1599,7 +1676,6 @@ class SmuxItemSource(BaseTSPCmd):
         - ``.offlimitv``: The ``smuX.source.offlimitv`` attribute.
         - ``.offmode``: The ``smuX.source.offmode`` attribute.
         - ``.output``: The ``smuX.source.output`` attribute.
-        - ``.protectv``: The ``smuX.source.protectv`` attribute.
         - ``.rangei``: The ``smuX.source.rangei`` attribute.
         - ``.rangev``: The ``smuX.source.rangev`` attribute.
         - ``.settling``: The ``smuX.source.settling`` attribute.
@@ -2736,71 +2812,6 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def protectv(self) -> str:
-        """Access the ``smuX.source.protectv`` attribute.
-
-        Description:
-            - This attribute controls the overvoltage protection limit.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.source.protectv)`` query.
-            - Setting this property to a value will send the ``smuX.source.protectv = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - smuX.source.protectv = value
-            - print(smuX.source.protectv)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".protectv"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.protectv)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protectv`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @protectv.setter
-    def protectv(self, value: Union[str, float]) -> None:
-        """Access the ``smuX.source.protectv`` attribute.
-
-        Description:
-            - This attribute controls the overvoltage protection limit.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.source.protectv)`` query.
-            - Setting this property to a value will send the ``smuX.source.protectv = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - smuX.source.protectv = value
-            - print(smuX.source.protectv)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".protectv", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.protectv = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protectv`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def rangei(self) -> str:
         """Access the ``smuX.source.rangei`` attribute.
 
@@ -3135,6 +3146,603 @@ class SmuxItemSource(BaseTSPCmd):
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+
+
+class SmuxItemPulserSource(BaseTSPCmd):
+    """The ``smuX.pulser.source`` command tree.
+
+    Properties and methods:
+        - ``.calibratebiasi()``: The ``smuX.pulser.source.calibratebiasi()`` function.
+        - ``.calibratei()``: The ``smuX.pulser.source.calibratei()`` function.
+    """
+
+    def calibratebiasi(
+        self,
+        range_: str,
+        cp1_expected: str,
+        cp1_reference: str,
+        cp2_expected: str,
+        cp2_reference: str,
+    ) -> None:
+        """Run the ``smuX.pulser.source.calibratebiasi()`` function.
+
+        Description:
+            - This function adjusts the new bias source calibration constants for the pulser.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.source.calibratebiasi()
+            ```
+
+        Args:
+            range_: The pulser bias-current range to adjust.
+            cp1_expected: The source value set for point 1.
+            cp1_reference: The reference measurement for point 1 as measured externally.
+            cp2_expected: The source value set for point 2.
+            cp2_reference: The reference measurement for point 2 as measured externally.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.calibratebiasi({range_}, "
+                f"{cp1_expected}, "
+                f"{cp1_reference}, "
+                f"{cp2_expected}, "
+                f"{cp2_reference})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratebiasi()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    def calibratei(
+        self,
+        range_: str,
+        cp1_expected: str,
+        cp1_reference: str,
+        cp2_expected: str,
+        cp2_reference: str,
+    ) -> None:
+        """Run the ``smuX.pulser.source.calibratei()`` function.
+
+        Description:
+            - This function generates and activates new source calibration constants for the pulser.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.source.calibratei()
+            ```
+
+        Args:
+            range_: The pulser current range to adjust.
+            cp1_expected: The source value set for point 1.
+            cp1_reference: The reference measurement for point 1 as measured externally.
+            cp2_expected: The source value set for point 2.
+            cp2_reference: The reference measurement for point 2 as measured externally.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.calibratei({range_}, "
+                f"{cp1_expected}, "
+                f"{cp1_reference}, "
+                f"{cp2_expected}, "
+                f"{cp2_reference})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuxItemPulserProtect(BaseTSPCmd):
+    """The ``smuX.pulser.protect`` command tree.
+
+    Properties and methods:
+        - ``.sensev``: The ``smuX.pulser.protect.sensev`` attribute.
+        - ``.sourcev``: The ``smuX.pulser.protect.sourcev`` attribute.
+        - ``.tripped``: The ``smuX.pulser.protect.tripped`` attribute.
+    """
+
+    @property
+    def sensev(self) -> str:
+        """Access the ``smuX.pulser.protect.sensev`` attribute.
+
+        Description:
+            - This attribute sets a voltage protection level used to monitor the sense terminals
+              when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.protect.sensev)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.protect.sensev = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.protect.sensev = value
+            - print(smuX.pulser.protect.sensev)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".sensev"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.sensev)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @sensev.setter
+    def sensev(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.pulser.protect.sensev`` attribute.
+
+        Description:
+            - This attribute sets a voltage protection level used to monitor the sense terminals
+              when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.protect.sensev)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.protect.sensev = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.protect.sensev = value
+            - print(smuX.pulser.protect.sensev)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".sensev", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.sensev = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def sourcev(self) -> str:
+        """Access the ``smuX.pulser.protect.sourcev`` attribute.
+
+        Description:
+            - This attribute sets an absolute voltage protection level used to monitor the force
+              terminals when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.protect.sourcev)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.protect.sourcev = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.protect.sourcev = value
+            - print(smuX.pulser.protect.sourcev)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".sourcev"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.sourcev)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @sourcev.setter
+    def sourcev(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.pulser.protect.sourcev`` attribute.
+
+        Description:
+            - This attribute sets an absolute voltage protection level used to monitor the force
+              terminals when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.protect.sourcev)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.protect.sourcev = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.protect.sourcev = value
+            - print(smuX.pulser.protect.sourcev)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".sourcev", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.sourcev = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def tripped(self) -> str:
+        """Access the ``smuX.pulser.protect.tripped`` attribute.
+
+        Description:
+            - This attribute indicates if the protection circuit was tripped.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.protect.tripped)`` query.
+
+        TSP Syntax:
+            ```
+            - print(smuX.pulser.protect.tripped)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".tripped"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.tripped)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tripped`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuxItemPulserMeasure(BaseTSPCmd):
+    """The ``smuX.pulser.measure`` command tree.
+
+    Properties and methods:
+        - ``.aperture``: The ``smuX.pulser.measure.aperture`` attribute.
+        - ``.calibratei()``: The ``smuX.pulser.measure.calibratei()`` function.
+        - ``.calibratev()``: The ``smuX.pulser.measure.calibratev()`` function.
+        - ``.delay``: The ``smuX.pulser.measure.delay`` attribute.
+    """
+
+    @property
+    def aperture(self) -> str:
+        """Access the ``smuX.pulser.measure.aperture`` attribute.
+
+        Description:
+            - This attribute specifies the pulse measurement aperture when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.measure.aperture)`` query.
+            - Setting this property to a value will send the
+              ``smuX.pulser.measure.aperture = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.aperture = value
+            - print(smuX.pulser.measure.aperture)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".aperture"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.aperture)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @aperture.setter
+    def aperture(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.pulser.measure.aperture`` attribute.
+
+        Description:
+            - This attribute specifies the pulse measurement aperture when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.measure.aperture)`` query.
+            - Setting this property to a value will send the
+              ``smuX.pulser.measure.aperture = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.aperture = value
+            - print(smuX.pulser.measure.aperture)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".aperture", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.aperture = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def delay(self) -> str:
+        """Access the ``smuX.pulser.measure.delay`` attribute.
+
+        Description:
+            - This attribute sets the measurement delay when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.measure.delay)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.measure.delay = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.delay = value
+            - print(smuX.pulser.measure.delay)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".delay"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.delay)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @delay.setter
+    def delay(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.pulser.measure.delay`` attribute.
+
+        Description:
+            - This attribute sets the measurement delay when the pulser is enabled.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.measure.delay)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.measure.delay = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.delay = value
+            - print(smuX.pulser.measure.delay)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".delay", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.delay = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    def calibratei(
+        self,
+        range_: str,
+        cp1_measured: str,
+        cp1_reference: str,
+        cp2_measured: str,
+        cp2_reference: str,
+    ) -> None:
+        """Run the ``smuX.pulser.measure.calibratei()`` function.
+
+        Description:
+            - This function generates and activates new measurement calibration constants for the
+              pulser. (i = current in amperes)
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.calibratei()
+            ```
+
+        Args:
+            range_: The pulse measurement range to adjust.
+            cp1_measured: The value measured by this SMU for point 1.
+            cp1_reference: The reference measurement for point 1 as measured externally.
+            cp2_measured: The value measured by this SMU for point 2.
+            cp2_reference: The reference measurement for point 2 as measured externally.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.calibratei({range_}, "
+                f"{cp1_measured}, "
+                f"{cp1_reference}, "
+                f"{cp2_measured}, "
+                f"{cp2_reference})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    def calibratev(
+        self,
+        range_: str,
+        cp1_measured: str,
+        cp1_reference: str,
+        cp2_measured: str,
+        cp2_reference: str,
+    ) -> None:
+        """Run the ``smuX.pulser.measure.calibratev()`` function.
+
+        Description:
+            - This function generates and activates new measurement calibration constants for the
+              pulser. (v = voltage in volts)
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.measure.calibratev()
+            ```
+
+        Args:
+            range_: The pulse measurement range to adjust.
+            cp1_measured: The value measured by this SMU for point 1.
+            cp1_reference: The reference measurement for point 1 as measured externally.
+            cp2_measured: The value measured by this SMU for point 2.
+            cp2_reference: The reference measurement for point 2 as measured externally.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.calibratev({range_}, "
+                f"{cp1_measured}, "
+                f"{cp1_reference}, "
+                f"{cp2_measured}, "
+                f"{cp2_reference})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuxItemPulser(BaseTSPCmd):
+    """The ``smuX.pulser`` command tree.
+
+    Properties and methods:
+        - ``.enable``: The ``smuX.pulser.enable`` attribute.
+        - ``.measure``: The ``smuX.pulser.measure`` command tree.
+        - ``.protect``: The ``smuX.pulser.protect`` command tree.
+        - ``.source``: The ``smuX.pulser.source`` command tree.
+    """
+
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._measure = SmuxItemPulserMeasure(device, f"{self._cmd_syntax}.measure")
+        self._protect = SmuxItemPulserProtect(device, f"{self._cmd_syntax}.protect")
+        self._source = SmuxItemPulserSource(device, f"{self._cmd_syntax}.source")
+
+    @property
+    def enable(self) -> str:
+        """Access the ``smuX.pulser.enable`` attribute.
+
+        Description:
+            - This attribute enables or disables the 2601B-PULSE pulser.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.enable)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.enable = value
+            - print(smuX.pulser.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.pulser.enable`` attribute.
+
+        Description:
+            - This attribute enables or disables the 2601B-PULSE pulser.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.pulser.enable)`` query.
+            - Setting this property to a value will send the ``smuX.pulser.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.pulser.enable = value
+            - print(smuX.pulser.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def measure(self) -> SmuxItemPulserMeasure:
+        """Return the ``smuX.pulser.measure`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.aperture``: The ``smuX.pulser.measure.aperture`` attribute.
+            - ``.calibratei()``: The ``smuX.pulser.measure.calibratei()`` function.
+            - ``.calibratev()``: The ``smuX.pulser.measure.calibratev()`` function.
+            - ``.delay``: The ``smuX.pulser.measure.delay`` attribute.
+        """
+        return self._measure
+
+    @property
+    def protect(self) -> SmuxItemPulserProtect:
+        """Return the ``smuX.pulser.protect`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.sensev``: The ``smuX.pulser.protect.sensev`` attribute.
+            - ``.sourcev``: The ``smuX.pulser.protect.sourcev`` attribute.
+            - ``.tripped``: The ``smuX.pulser.protect.tripped`` attribute.
+        """
+        return self._protect
+
+    @property
+    def source(self) -> SmuxItemPulserSource:
+        """Return the ``smuX.pulser.source`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.calibratebiasi()``: The ``smuX.pulser.source.calibratebiasi()`` function.
+            - ``.calibratei()``: The ``smuX.pulser.source.calibratei()`` function.
+        """
+        return self._source
 
 
 class SmuxItemMeasureRel(BaseTSPCmd):
@@ -3895,7 +4503,6 @@ class SmuxItemMeasure(BaseTSPCmd):
         - ``.p()``: The ``smuX.measure.p()`` function.
         - ``.r()``: The ``smuX.measure.r()`` function.
         - ``.v()``: The ``smuX.measure.v()`` function.
-        - ``.adc``: The ``smuX.measure.adc`` attribute.
         - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
         - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
         - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -3905,6 +4512,7 @@ class SmuxItemMeasure(BaseTSPCmd):
         - ``.delay``: The ``smuX.measure.delay`` attribute.
         - ``.delayfactor``: The ``smuX.measure.delayfactor`` attribute.
         - ``.filter``: The ``smuX.measure.filter`` command tree.
+        - ``.highcrangedelayfactor``: The ``smuX.measure.highcrangedelayfactor`` attribute.
         - ``.interval``: The ``smuX.measure.interval`` attribute.
         - ``.lowrangei``: The ``smuX.measure.lowrangei`` attribute.
         - ``.lowrangev``: The ``smuX.measure.lowrangev`` attribute.
@@ -3923,77 +4531,6 @@ class SmuxItemMeasure(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._filter = SmuxItemMeasureFilter(device, f"{self._cmd_syntax}.filter")
         self._rel = SmuxItemMeasureRel(device, f"{self._cmd_syntax}.rel")
-
-    @property
-    def adc(self) -> str:
-        """Access the ``smuX.measure.adc`` attribute.
-
-        Description:
-            - This attribute contains the analog-to-digital converter selection.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.measure.adc)`` query.
-            - Setting this property to a value will send the ``smuX.measure.adc = value`` command.
-
-        TSP Syntax:
-            ```
-            - smuX.measure.adc = value
-            - print(smuX.measure.adc)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.adc applies to
-              SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".adc"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.adc)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adc`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @adc.setter
-    def adc(self, value: Union[str, float]) -> None:
-        """Access the ``smuX.measure.adc`` attribute.
-
-        Description:
-            - This attribute contains the analog-to-digital converter selection.
-
-        Usage:
-            - Accessing this property will send the ``print(smuX.measure.adc)`` query.
-            - Setting this property to a value will send the ``smuX.measure.adc = value`` command.
-
-        TSP Syntax:
-            ```
-            - smuX.measure.adc = value
-            - print(smuX.measure.adc)
-            ```
-
-        Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.adc applies to
-              SMU channel A).
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".adc", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.adc = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adc`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def autorangei(self) -> str:
@@ -4397,6 +4934,75 @@ class SmuxItemMeasure(BaseTSPCmd):
         return self._filter
 
     @property
+    def highcrangedelayfactor(self) -> str:
+        """Access the ``smuX.measure.highcrangedelayfactor`` attribute.
+
+        Description:
+            - This attribute contains a delay multiplier that is only used during range changes when
+              the high-capacitance mode is active.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.measure.highcrangedelayfactor)``
+              query.
+            - Setting this property to a value will send the
+              ``smuX.measure.highcrangedelayfactor = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.measure.highcrangedelayfactor = value
+            - print(smuX.measure.highcrangedelayfactor)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".highcrangedelayfactor"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.highcrangedelayfactor)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @highcrangedelayfactor.setter
+    def highcrangedelayfactor(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.measure.highcrangedelayfactor`` attribute.
+
+        Description:
+            - This attribute contains a delay multiplier that is only used during range changes when
+              the high-capacitance mode is active.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.measure.highcrangedelayfactor)``
+              query.
+            - Setting this property to a value will send the
+              ``smuX.measure.highcrangedelayfactor = value`` command.
+
+        TSP Syntax:
+            ```
+            - smuX.measure.highcrangedelayfactor = value
+            - print(smuX.measure.highcrangedelayfactor)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".highcrangedelayfactor", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.highcrangedelayfactor = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
     def interval(self) -> str:
         """Access the ``smuX.measure.interval`` attribute.
 
@@ -4600,7 +5206,8 @@ class SmuxItemMeasure(BaseTSPCmd):
         """Access the ``smuX.measure.nplc`` attribute.
 
         Description:
-            - This command sets the integration aperture for measurements.
+            - This command sets the integration aperture for measurements when the pulser is
+              disabled.
 
         Usage:
             - Accessing this property will send the ``print(smuX.measure.nplc)`` query.
@@ -4630,7 +5237,8 @@ class SmuxItemMeasure(BaseTSPCmd):
         """Access the ``smuX.measure.nplc`` attribute.
 
         Description:
-            - This command sets the integration aperture for measurements.
+            - This command sets the integration aperture for measurements when the pulser is
+              disabled.
 
         Usage:
             - Accessing this property will send the ``print(smuX.measure.nplc)`` query.
@@ -5176,6 +5784,79 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+class SmuxItemInterlock(BaseTSPCmd):
+    """The ``smuX.interlock`` command tree.
+
+    Properties and methods:
+        - ``.enable``: The ``smuX.interlock.enable`` attribute.
+    """
+
+    @property
+    def enable(self) -> str:
+        """Access the ``smuX.interlock.enable`` attribute.
+
+        Description:
+            - This attribute enables or disables use of the interlock signal.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.interlock.enable)`` query.
+            - Setting this property to a value will send the ``smuX.interlock.enable = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.interlock.enable = value
+            - print(smuX.interlock.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.interlock.enable`` attribute.
+
+        Description:
+            - This attribute enables or disables use of the interlock signal.
+
+        Usage:
+            - Accessing this property will send the ``print(smuX.interlock.enable)`` query.
+            - Setting this property to a value will send the ``smuX.interlock.enable = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - smuX.interlock.enable = value
+            - print(smuX.interlock.enable)
+            ```
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
 class SmuxItemContact(BaseTSPCmd):
     """The ``smuX.contact`` command tree.
 
@@ -5437,9 +6118,7 @@ class SmuxItemCal(BaseTSPCmd):
         - ``.adjustdate``: The ``smuX.cal.adjustdate`` attribute.
         - ``.date``: The ``smuX.cal.date`` attribute.
         - ``.due``: The ``smuX.cal.due`` attribute.
-        - ``.fastadc()``: The ``smuX.cal.fastadc()`` function.
         - ``.lock()``: The ``smuX.cal.lock()`` function.
-        - ``.ovp()``: The ``smuX.cal.ovp()`` function.
         - ``.password``: The ``smuX.cal.password`` attribute.
         - ``.polarity``: The ``smuX.cal.polarity`` attribute.
         - ``.restore()``: The ``smuX.cal.restore()`` function.
@@ -5781,28 +6460,6 @@ class SmuxItemCal(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def fastadc(self) -> None:
-        """Run the ``smuX.cal.fastadc()`` function.
-
-        Description:
-            - This function performs calibration of the fast analog-to-digital converter (fast ADC).
-
-        TSP Syntax:
-            ```
-            - smuX.cal.fastadc()
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            self._device.write(  # type: ignore[union-attr]
-                f"{self._cmd_syntax}.fastadc()"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.fastadc()`` function."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
     def lock(self) -> None:
         """Run the ``smuX.cal.lock()`` function.
 
@@ -5823,28 +6480,6 @@ class SmuxItemCal(BaseTSPCmd):
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.lock()`` function."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    def ovp(self) -> None:
-        """Run the ``smuX.cal.ovp()`` function.
-
-        Description:
-            - This function performs calibration of the overvoltage protection limit (OVP).
-
-        TSP Syntax:
-            ```
-            - smuX.cal.ovp()
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            self._device.write(  # type: ignore[union-attr]
-                f"{self._cmd_syntax}.ovp()"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.ovp()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def restore(self, calset: Optional[str] = None) -> None:
@@ -6032,8 +6667,6 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.FILTER_ON``: Enable filter measurements.
         - ``.FILTER_REPEAT_AVG``: Selects the repeating filter when measurement filter is enabled.
         - ``.LIMIT_AUTO``: Set the sweep source limit to automatic.
-        - ``.OE_NONE``: When output enable is deasserted, take no action.
-        - ``.OE_OUTPUT_OFF``: When output enable is deasserted, turn the source output off.
         - ``.OUTPUT_DCAMPS``: Select the current function for the pulse.
         - ``.OUTPUT_DCVOLTS``: Select the voltage function for the pulse.
         - ``.OUTPUT_HIGH_Z``: Opens the output relay when the output is turned off.
@@ -6065,6 +6698,7 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.buffer``: The ``smuX.buffer`` command tree.
         - ``.cal``: The ``smuX.cal`` command tree.
         - ``.contact``: The ``smuX.contact`` command tree.
+        - ``.interlock``: The ``smuX.interlock`` command tree.
         - ``.makebuffer()``: The ``smuX.makebuffer()`` function.
         - ``.measure``: The ``smuX.measure`` command tree.
         - ``.measureiandstep()``: The ``smuX.measureiandstep()`` function.
@@ -6074,6 +6708,7 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.measurevandstep()``: The ``smuX.measurevandstep()`` function.
         - ``.nvbuffer1``: The ``smuX.nvbuffer1`` attribute.
         - ``.nvbuffer2``: The ``smuX.nvbuffer2`` attribute.
+        - ``.pulser``: The ``smuX.pulser`` command tree.
         - ``.reset()``: The ``smuX.reset()`` function.
         - ``.savebuffer()``: The ``smuX.savebuffer()`` function.
         - ``.sense``: The ``smuX.sense`` attribute.
@@ -6146,10 +6781,6 @@ reading at index bufferVar.fillcount."""
     """str: Selects the repeating filter when measurement filter is enabled."""
     LIMIT_AUTO = "smuX.LIMIT_AUTO"
     """str: Set the sweep source limit to automatic."""
-    OE_NONE = "smuX.OE_NONE"
-    """str: When output enable is deasserted, take no action."""
-    OE_OUTPUT_OFF = "smuX.OE_OUTPUT_OFF"
-    """str: When output enable is deasserted, turn the source output off."""
     OUTPUT_DCAMPS = "smuX.OUTPUT_DCAMPS"
     """str: Select the current function for the pulse."""
     OUTPUT_DCVOLTS = "smuX.OUTPUT_DCVOLTS"
@@ -6264,10 +6895,6 @@ reading at index bufferVar.fillcount."""
         # pylint: disable=invalid-name
         self.LIMIT_AUTO = self.LIMIT_AUTO.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
-        self.OE_NONE = self.OE_NONE.replace("smuX", f"smu{self._cmd_syntax[3]}")
-        # pylint: disable=invalid-name
-        self.OE_OUTPUT_OFF = self.OE_OUTPUT_OFF.replace("smuX", f"smu{self._cmd_syntax[3]}")
-        # pylint: disable=invalid-name
         self.OUTPUT_DCAMPS = self.OUTPUT_DCAMPS.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
         self.OUTPUT_DCVOLTS = self.OUTPUT_DCVOLTS.replace("smuX", f"smu{self._cmd_syntax[3]}")
@@ -6312,7 +6939,9 @@ reading at index bufferVar.fillcount."""
         self._buffer = SmuxItemBuffer(device, f"{self._cmd_syntax}.buffer")
         self._cal = SmuxItemCal(device, f"{self._cmd_syntax}.cal")
         self._contact = SmuxItemContact(device, f"{self._cmd_syntax}.contact")
+        self._interlock = SmuxItemInterlock(device, f"{self._cmd_syntax}.interlock")
         self._measure = SmuxItemMeasure(device, f"{self._cmd_syntax}.measure")
+        self._pulser = SmuxItemPulser(device, f"{self._cmd_syntax}.pulser")
         self._source = SmuxItemSource(device, f"{self._cmd_syntax}.source")
         self._trigger = SmuxItemTrigger(device, f"{self._cmd_syntax}.trigger")
 
@@ -6334,9 +6963,7 @@ reading at index bufferVar.fillcount."""
             - ``.adjustdate``: The ``smuX.cal.adjustdate`` attribute.
             - ``.date``: The ``smuX.cal.date`` attribute.
             - ``.due``: The ``smuX.cal.due`` attribute.
-            - ``.fastadc()``: The ``smuX.cal.fastadc()`` function.
             - ``.lock()``: The ``smuX.cal.lock()`` function.
-            - ``.ovp()``: The ``smuX.cal.ovp()`` function.
             - ``.password``: The ``smuX.cal.password`` attribute.
             - ``.polarity``: The ``smuX.cal.polarity`` attribute.
             - ``.restore()``: The ``smuX.cal.restore()`` function.
@@ -6361,6 +6988,15 @@ reading at index bufferVar.fillcount."""
         return self._contact
 
     @property
+    def interlock(self) -> SmuxItemInterlock:
+        """Return the ``smuX.interlock`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.enable``: The ``smuX.interlock.enable`` attribute.
+        """
+        return self._interlock
+
+    @property
     def measure(self) -> SmuxItemMeasure:
         """Return the ``smuX.measure`` command tree.
 
@@ -6370,7 +7006,6 @@ reading at index bufferVar.fillcount."""
             - ``.p()``: The ``smuX.measure.p()`` function.
             - ``.r()``: The ``smuX.measure.r()`` function.
             - ``.v()``: The ``smuX.measure.v()`` function.
-            - ``.adc``: The ``smuX.measure.adc`` attribute.
             - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
             - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
             - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -6380,6 +7015,7 @@ reading at index bufferVar.fillcount."""
             - ``.delay``: The ``smuX.measure.delay`` attribute.
             - ``.delayfactor``: The ``smuX.measure.delayfactor`` attribute.
             - ``.filter``: The ``smuX.measure.filter`` command tree.
+            - ``.highcrangedelayfactor``: The ``smuX.measure.highcrangedelayfactor`` attribute.
             - ``.interval``: The ``smuX.measure.interval`` attribute.
             - ``.lowrangei``: The ``smuX.measure.lowrangei`` attribute.
             - ``.lowrangev``: The ``smuX.measure.lowrangev`` attribute.
@@ -6450,6 +7086,18 @@ reading at index bufferVar.fillcount."""
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer2`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def pulser(self) -> SmuxItemPulser:
+        """Return the ``smuX.pulser`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.enable``: The ``smuX.pulser.enable`` attribute.
+            - ``.measure``: The ``smuX.pulser.measure`` command tree.
+            - ``.protect``: The ``smuX.pulser.protect`` command tree.
+            - ``.source``: The ``smuX.pulser.source`` command tree.
+        """
+        return self._pulser
 
     @property
     def sense(self) -> str:
@@ -6539,7 +7187,6 @@ reading at index bufferVar.fillcount."""
             - ``.offlimitv``: The ``smuX.source.offlimitv`` attribute.
             - ``.offmode``: The ``smuX.source.offmode`` attribute.
             - ``.output``: The ``smuX.source.output`` attribute.
-            - ``.protectv``: The ``smuX.source.protectv`` attribute.
             - ``.rangei``: The ``smuX.source.rangei`` attribute.
             - ``.rangev``: The ``smuX.source.rangev`` attribute.
             - ``.settling``: The ``smuX.source.settling`` attribute.

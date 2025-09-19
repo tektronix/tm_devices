@@ -115,7 +115,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
-from ..gen_ahkybr_smu.buffervar import Buffervar
+from ..gen_ftsc04_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 
 if TYPE_CHECKING:

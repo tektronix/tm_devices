@@ -3,7 +3,7 @@
 """The trigger commands module.
 
 These commands are used in the following models:
-PSU50ST
+MPSU50_2ST
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 

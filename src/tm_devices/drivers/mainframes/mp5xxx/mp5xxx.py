@@ -17,11 +17,11 @@ from tm_devices.drivers.mainframes.mainframe import Mainframe
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 if TYPE_CHECKING:
-    from tm_devices.commands import PSU50STCommands
-    from tm_devices.commands.gen_g1jv0u_mp.slot import SlotItem
+    from tm_devices.commands import MPSU50_2STCommands
+    from tm_devices.commands.gen_3skc3w_mp.slot import SlotItem
 
 
-_POWER_SUPPLY_UNIT_MODULES = ["PSU50ST"]
+_POWER_SUPPLY_UNIT_MODULES = ["MPSU50-2ST"]
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
@@ -68,7 +68,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def get_module_commands_psu(self, slot: int) -> Union[PSU50STCommands, SlotItem]:
+    def get_module_commands_psu(self, slot: int) -> Union[MPSU50_2STCommands, SlotItem]:
         """Get a power supply unit (PSU) module commands object from the mainframe.
 
         Args:
@@ -125,9 +125,8 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
                 msg = f"{model_returned} Module in slot {slot} is an invalid module."
                 raise ValueError(msg)  # noqa: TRY301
 
-            module_name = model_returned.split("-")[0][1:] + model_returned.split("-")[1][1:]
-            if module_name in module_alias:
-                _logger.debug("Module '%s' commands are accessible.", module_name)
+            if model_returned in module_alias:
+                _logger.debug("Module '%s' commands are accessible.", model_returned)
                 return self.commands.slot[slot]
 
             supported_modules = ", ".join(module_alias)

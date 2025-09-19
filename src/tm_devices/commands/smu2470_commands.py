@@ -10,30 +10,30 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_6w7311_smu.trigger import Trigger
-from .gen_6xiuc2_smu.buffer import Buffer
-from .gen_6xiuc2_smu.smu import Smu
-from .gen_6xiuc2_smu.upgrade import Upgrade
-from .gen_7kqm9p_smu.buffervar import Buffervar
-from .gen_7kqm9p_smu.display import Display
-from .gen_7kqm9p_smu.tsplink import Tsplink
-from .gen_7kqm9p_smu.tspnet import Tspnet
-from .gen_by991s_smudaq.digio import Digio
-from .gen_by991s_smudaq.status import Status
-from .gen_dawv9y_smudaqdmm.localnode import Localnode
-from .gen_dbdq3i_smudaqdmm.beeper import Beeper
-from .gen_dbdq3i_smudaqdmm.eventlog import Eventlog
-from .gen_dbdq3i_smudaqdmm.file import File
-from .gen_dbdq3i_smudaqdmm.format import Format
-from .gen_dbdq3i_smudaqdmm.lan import Lan
-from .gen_dbdq3i_smudaqdmm.scriptvar import Scriptvar
-from .gen_dbdq3i_smudaqdmm.timer import Timer
-from .gen_dd4xnb_smudaqdmm.script import Script
-from .gen_e7aqno_smudaqss.node import NodeItem
-from .gen_eat5s3_smudaqdmmss.fs import Fs
-from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
-from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
-from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
+from .gen_alg0kc_daqdmmsmu.script import Script
+from .gen_amjcgz_smu.buffer import Buffer
+from .gen_amjcgz_smu.smu import Smu
+from .gen_amjcgz_smu.upgrade import Upgrade
+from .gen_anjv88_daqsmu.digio import Digio
+from .gen_anjv88_daqsmu.status import Status
+from .gen_ao4xqx_daqdmmsmu.localnode import Localnode
+from .gen_ao95gb_daqdmmsmu.beeper import Beeper
+from .gen_ao95gb_daqdmmsmu.eventlog import Eventlog
+from .gen_ao95gb_daqdmmsmu.file import File
+from .gen_ao95gb_daqdmmsmu.format import Format
+from .gen_ao95gb_daqdmmsmu.lan import Lan
+from .gen_ao95gb_daqdmmsmu.scriptvar import Scriptvar
+from .gen_ao95gb_daqdmmsmu.timer import Timer
+from .gen_aon74s_smu.buffervar import Buffervar
+from .gen_aon74s_smu.display import Display
+from .gen_aon74s_smu.tsplink import Tsplink
+from .gen_aon74s_smu.tspnet import Tspnet
+from .gen_auxckp_smu.trigger import Trigger
+from .gen_flzeeg_daqsmuss.node import NodeItem
+from .gen_frwwqg_daqdmmsmuss.fs import Fs
+from .gen_fs14fx_daqdmmmpsmuss.dataqueue import Dataqueue
+from .gen_fs14fx_daqdmmmpsmuss.userstring import Userstring
+from .gen_fwpolc_daqdmmsmuss.gpib import Gpib
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 

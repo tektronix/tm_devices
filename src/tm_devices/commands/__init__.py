@@ -41,6 +41,7 @@ from .mdo4k_commands import MDO4KCommandConstants, MDO4KCommands, MDO4KMixin
 from .mdo4kb_commands import MDO4KBCommandConstants, MDO4KBCommands, MDO4KBMixin
 from .mdo4kc_commands import MDO4KCCommandConstants, MDO4KCCommands, MDO4KCMixin
 from .mp5103_commands import MP5103CommandConstants, MP5103Commands, MP5103Mixin
+from .mpsu50_2st_commands import MPSU50_2STCommands
 from .mso2_commands import MSO2CommandConstants, MSO2Commands, MSO2Mixin
 from .mso2k_commands import MSO2KCommandConstants, MSO2KCommands, MSO2KMixin
 from .mso2kb_commands import MSO2KBCommandConstants, MSO2KBCommands, MSO2KBMixin
@@ -57,7 +58,6 @@ from .mso6_commands import MSO6CommandConstants, MSO6Commands, MSO6Mixin
 from .mso6b_commands import MSO6BCommandConstants, MSO6BCommands, MSO6BMixin
 from .mso70kc_commands import MSO70KCCommandConstants, MSO70KCCommands, MSO70KCMixin
 from .mso70kdx_commands import MSO70KDXCommandConstants, MSO70KDXCommands, MSO70KDXMixin
-from .psu50st_commands import PSU50STCommands
 from .smu2450_commands import SMU2450CommandConstants, SMU2450Commands, SMU2450Mixin
 from .smu2460_commands import SMU2460CommandConstants, SMU2460Commands, SMU2460Mixin
 from .smu2461_commands import SMU2461CommandConstants, SMU2461Commands, SMU2461Mixin
@@ -188,6 +188,7 @@ __all__ = [
     "MP5103CommandConstants",
     "MP5103Commands",
     "MP5103Mixin",
+    "MPSU50_2STCommands",
     "MSO2CommandConstants",
     "MSO2Commands",
     "MSO2KBCommandConstants",
@@ -237,7 +238,6 @@ __all__ = [
     "MSO70KDXCommands",
     "MSO70KDXMixin",
     "NoDeviceProvidedError",
-    "PSU50STCommands",
     "SMU2450CommandConstants",
     "SMU2450Commands",
     "SMU2450Mixin",

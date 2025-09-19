@@ -22,7 +22,7 @@ devices:
         r: 1
       - q: opc()
       - q: print(slot[3].model)
-        r: VPSU50-2ST
+        r: MPSU50-2ST
       - q: print(slot[1].model)
         r: TBD-xxx
       - q: print(slot[2].model)

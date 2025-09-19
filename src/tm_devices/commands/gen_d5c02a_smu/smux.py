@@ -2,7 +2,7 @@
 """The smux commands module.
 
 These commands are used in the following models:
-SMU2651A
+SMU2611B, SMU2612B, SMU2614B
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -16,7 +16,6 @@ Attributes and Functions:
     - smuX.cal.adjustdate
     - smuX.cal.date
     - smuX.cal.due
-    - smuX.cal.fastadc()
     - smuX.cal.lock()
     - smuX.cal.password
     - smuX.cal.polarity
@@ -32,7 +31,7 @@ Attributes and Functions:
     - smuX.contact.threshold
     - smuX.makebuffer()
     - smuX.measure.Y()
-    - smuX.measure.adc
+    - smuX.measure.analogfilter
     - smuX.measure.autorangei
     - smuX.measure.autorangev
     - smuX.measure.autozero
@@ -116,7 +115,7 @@ Attributes and Functions:
 
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
-from ..gen_ahkybr_smu.buffervar import Buffervar
+from ..gen_ftsc04_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 
 if TYPE_CHECKING:
@@ -125,6 +124,10 @@ if TYPE_CHECKING:
 
 class SmuxItemTriggerSource(BaseTSPCmd):
     """The ``smuX.trigger.source`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.action
+          applies to SMU channel A).
 
     Properties and methods:
         - ``.action``: The ``smuX.trigger.source.action`` attribute.
@@ -158,6 +161,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - print(smuX.trigger.source.action)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.action
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -188,6 +195,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - smuX.trigger.source.action = value
             - print(smuX.trigger.source.action)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.action
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -223,6 +234,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - print(smuX.trigger.source.limiti)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.limitv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -253,6 +268,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - smuX.trigger.source.limiti = value
             - print(smuX.trigger.source.limiti)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.limitv
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -288,6 +307,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - print(smuX.trigger.source.limitv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.limitv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -318,6 +341,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - smuX.trigger.source.limitv = value
             - print(smuX.trigger.source.limitv)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.limitv
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -354,6 +381,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - print(smuX.trigger.source.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure (SMU) channel (for example, smua.trigger.source.stimulus
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -385,6 +416,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - smuX.trigger.source.stimulus = value
             - print(smuX.trigger.source.stimulus)
             ```
+
+        Info:
+            - ``X``, the source-measure (SMU) channel (for example, smua.trigger.source.stimulus
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -575,6 +610,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             - smuX.trigger.source.set()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.set()
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -589,6 +628,10 @@ class SmuxItemTriggerSource(BaseTSPCmd):
 
 class SmuxItemTriggerMeasure(BaseTSPCmd):
     """The ``smuX.trigger.measure`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.measure.v()
+          applies to SMU channel A).
 
     Properties and methods:
         - ``.i()``: The ``smuX.trigger.measure.i()`` function.
@@ -618,6 +661,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             - smuX.trigger.measure.action = value
             - print(smuX.trigger.measure.action)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.measure.action
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -649,6 +696,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             - smuX.trigger.measure.action = value
             - print(smuX.trigger.measure.action)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.measure.action
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -685,6 +736,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             - print(smuX.trigger.measure.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.measure.stimulus applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -716,6 +771,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             - smuX.trigger.measure.stimulus = value
             - print(smuX.trigger.measure.stimulus)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.measure.stimulus applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -875,6 +934,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             - smuX.trigger.measure.set()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.measure.set()
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -889,6 +952,10 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
 
 class SmuxItemTriggerEndsweep(BaseTSPCmd):
     """The ``smuX.trigger.endsweep`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.endsweep.action
+          applies to SMU channel A).
 
     Properties and methods:
         - ``.action``: The ``smuX.trigger.endsweep.action`` attribute.
@@ -911,6 +978,10 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
             - smuX.trigger.endsweep.action = value
             - print(smuX.trigger.endsweep.action)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endsweep.action applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -943,6 +1014,10 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
             - print(smuX.trigger.endsweep.action)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endsweep.action applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -962,6 +1037,10 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
 
 class SmuxItemTriggerEndpulse(BaseTSPCmd):
     """The ``smuX.trigger.endpulse`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.endpulse.action
+          applies to SMU channel A).
 
     Properties and methods:
         - ``.action``: The ``smuX.trigger.endpulse.action`` attribute.
@@ -987,6 +1066,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             - print(smuX.trigger.endpulse.action)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endpulse.action applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1017,6 +1100,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             - smuX.trigger.endpulse.action = value
             - print(smuX.trigger.endpulse.action)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endpulse.action applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1053,6 +1140,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             - print(smuX.trigger.endpulse.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endpulse.stimulus applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1085,6 +1176,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             - print(smuX.trigger.endpulse.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endpulse.stimulus applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1112,6 +1207,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             - smuX.trigger.endpulse.set()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.endpulse.set()
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1126,6 +1225,10 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
 
 class SmuxItemTriggerArm(BaseTSPCmd):
     """The ``smuX.trigger.arm`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.count applies
+          to SMU channel A).
 
     Properties and methods:
         - ``.count``: The ``smuX.trigger.arm.count`` attribute.
@@ -1150,6 +1253,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             - smuX.trigger.arm.count = value
             - print(smuX.trigger.arm.count)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.count
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1181,6 +1288,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             - smuX.trigger.arm.count = value
             - print(smuX.trigger.arm.count)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.count
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1217,6 +1328,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             - print(smuX.trigger.arm.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.stimulus
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1249,6 +1364,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             - print(smuX.trigger.arm.stimulus)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.stimulus
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1276,6 +1395,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             - smuX.trigger.arm.set()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.set()
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1291,6 +1414,10 @@ class SmuxItemTriggerArm(BaseTSPCmd):
 #  pylint: disable=too-many-instance-attributes
 class SmuxItemTrigger(BaseTSPCmd):
     """The ``smuX.trigger`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.ARMED_EVENT_ID
+          applies to SMU channel A).
 
     Constants:
         - ``.ARMED_EVENT_ID``: The number of the armed event.
@@ -1361,6 +1488,10 @@ class SmuxItemTrigger(BaseTSPCmd):
     def arm(self) -> SmuxItemTriggerArm:
         """Return the ``smuX.trigger.arm`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.arm.count
+              applies to SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.count``: The ``smuX.trigger.arm.count`` attribute.
             - ``.set()``: The ``smuX.trigger.arm.set()`` function.
@@ -1385,6 +1516,10 @@ class SmuxItemTrigger(BaseTSPCmd):
             - smuX.trigger.autoclear = value
             - print(smuX.trigger.autoclear)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.autoclear
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1416,6 +1551,10 @@ class SmuxItemTrigger(BaseTSPCmd):
             - smuX.trigger.autoclear = value
             - print(smuX.trigger.autoclear)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.autoclear
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1450,6 +1589,9 @@ class SmuxItemTrigger(BaseTSPCmd):
             - print(smuX.trigger.count)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.trigger.count applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1480,6 +1622,9 @@ class SmuxItemTrigger(BaseTSPCmd):
             - print(smuX.trigger.count)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.trigger.count applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1500,6 +1645,10 @@ class SmuxItemTrigger(BaseTSPCmd):
     def endpulse(self) -> SmuxItemTriggerEndpulse:
         """Return the ``smuX.trigger.endpulse`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endpulse.action applies to SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.action``: The ``smuX.trigger.endpulse.action`` attribute.
             - ``.set()``: The ``smuX.trigger.endpulse.set()`` function.
@@ -1511,6 +1660,10 @@ class SmuxItemTrigger(BaseTSPCmd):
     def endsweep(self) -> SmuxItemTriggerEndsweep:
         """Return the ``smuX.trigger.endsweep`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.trigger.endsweep.action applies to SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.action``: The ``smuX.trigger.endsweep.action`` attribute.
         """
@@ -1519,6 +1672,10 @@ class SmuxItemTrigger(BaseTSPCmd):
     @property
     def measure(self) -> SmuxItemTriggerMeasure:
         """Return the ``smuX.trigger.measure`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.measure.v()
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.i()``: The ``smuX.trigger.measure.i()`` function.
@@ -1535,6 +1692,10 @@ class SmuxItemTrigger(BaseTSPCmd):
     @property
     def source(self) -> SmuxItemTriggerSource:
         """Return the ``smuX.trigger.source`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.source.action
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.action``: The ``smuX.trigger.source.action`` attribute.
@@ -1562,6 +1723,10 @@ class SmuxItemTrigger(BaseTSPCmd):
             - smuX.trigger.initiate()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.initiate()
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1577,6 +1742,10 @@ class SmuxItemTrigger(BaseTSPCmd):
 #  pylint: disable=too-many-public-methods
 class SmuxItemSource(BaseTSPCmd):
     """The ``smuX.source`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev applies
+          to SMU channel A).
 
     Properties and methods:
         - ``.autorangei``: The ``smuX.source.autorangei`` attribute.
@@ -1625,6 +1794,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.autorangei)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1656,6 +1829,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.autorangei = value
             - print(smuX.source.autorangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1692,6 +1869,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.autorangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1724,6 +1905,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.autorangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1755,6 +1940,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.compliance)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.compliance
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1785,6 +1974,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.delay)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.delay applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1814,6 +2007,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.delay = value
             - print(smuX.source.delay)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.delay applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1848,6 +2045,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.func)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.func applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1877,6 +2078,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.func = value
             - print(smuX.source.func)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.func applies to
+              SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1911,6 +2116,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.highc)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.highc applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -1940,6 +2149,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.highc = value
             - print(smuX.source.highc)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.highc applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1974,6 +2187,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.leveli)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.levelv applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2003,6 +2220,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.leveli = value
             - print(smuX.source.leveli)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.levelv applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2037,6 +2258,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.levelv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.levelv applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2066,6 +2291,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.levelv = value
             - print(smuX.source.levelv)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.levelv applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2100,6 +2329,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.limiti)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2129,6 +2362,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.limiti = value
             - print(smuX.source.limiti)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2163,6 +2400,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.limitp)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2192,6 +2433,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.limitp = value
             - print(smuX.source.limitp)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2226,6 +2471,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.limitv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2255,6 +2504,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.limitv = value
             - print(smuX.source.limitv)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.limitv applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2291,6 +2544,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.lowrangei)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.lowrangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2322,6 +2579,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.lowrangei = value
             - print(smuX.source.lowrangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.lowrangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2358,6 +2619,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.lowrangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.lowrangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2389,6 +2654,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.lowrangev = value
             - print(smuX.source.lowrangev)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.lowrangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2425,6 +2694,9 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.offfunc)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.source.offfunc applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2456,6 +2728,9 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.offfunc = value
             - print(smuX.source.offfunc)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.source.offfunc applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2492,6 +2767,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.offlimiti)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offlimiti
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2523,6 +2802,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.offlimiti = value
             - print(smuX.source.offlimiti)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offlimiti
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2559,6 +2842,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.offlimitv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offlimiti
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2590,6 +2877,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.offlimitv = value
             - print(smuX.source.offlimitv)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offlimiti
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2625,6 +2916,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.offmode)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offmode applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2655,6 +2950,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.offmode = value
             - print(smuX.source.offmode)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.offmode applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2689,6 +2988,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.output)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.output applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2718,6 +3021,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.output = value
             - print(smuX.source.output)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.output applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2753,6 +3060,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.outputenableaction)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.source.outputenableaction applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2783,6 +3094,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.outputenableaction = value
             - print(smuX.source.outputenableaction)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example,
+              smua.source.outputenableaction applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2817,6 +3132,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.rangei)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2846,6 +3165,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.rangei = value
             - print(smuX.source.rangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2880,6 +3203,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.rangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2909,6 +3236,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.rangev = value
             - print(smuX.source.rangev)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2944,6 +3275,9 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.settling)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.source.settling applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -2974,6 +3308,9 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.settling = value
             - print(smuX.source.settling)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.source.settling applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3008,6 +3345,10 @@ class SmuxItemSource(BaseTSPCmd):
             - print(smuX.source.sink)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.sink applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3037,6 +3378,10 @@ class SmuxItemSource(BaseTSPCmd):
             - smuX.source.sink = value
             - print(smuX.source.sink)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.sink applies to
+              SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3140,6 +3485,10 @@ class SmuxItemSource(BaseTSPCmd):
 class SmuxItemMeasureRel(BaseTSPCmd):
     """The ``smuX.measure.rel`` command tree.
 
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+          applies to SMU channel A).
+
     Properties and methods:
         - ``.enablei``: The ``smuX.measure.rel.enablei`` attribute.
         - ``.enablep``: The ``smuX.measure.rel.enablep`` attribute.
@@ -3168,6 +3517,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.enablei = value
             - print(smuX.measure.rel.enablei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3199,6 +3552,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.enablei = value
             - print(smuX.measure.rel.enablei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3234,6 +3591,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.enablep)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3264,6 +3625,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.enablep = value
             - print(smuX.measure.rel.enablep)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3299,6 +3664,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.enabler)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3329,6 +3698,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.enabler = value
             - print(smuX.measure.rel.enabler)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3364,6 +3737,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.enablev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3394,6 +3771,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.enablev = value
             - print(smuX.measure.rel.enablev)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3430,6 +3811,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.leveli)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3461,6 +3846,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.leveli = value
             - print(smuX.measure.rel.leveli)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3496,6 +3885,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.levelp)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3526,6 +3919,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.levelp = value
             - print(smuX.measure.rel.levelp)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3562,6 +3959,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.levelr)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3593,6 +3994,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - smuX.measure.rel.levelr = value
             - print(smuX.measure.rel.levelr)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3628,6 +4033,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.levelv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3659,6 +4068,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             - print(smuX.measure.rel.levelv)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.levelv
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3678,6 +4091,10 @@ class SmuxItemMeasureRel(BaseTSPCmd):
 
 class SmuxItemMeasureFilter(BaseTSPCmd):
     """The ``smuX.measure.filter`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.filter.count
+          applies to SMU channel A).
 
     Properties and methods:
         - ``.count``: The ``smuX.measure.filter.count`` attribute.
@@ -3703,6 +4120,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - smuX.measure.filter.count = value
             - print(smuX.measure.filter.count)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.filter.count
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3735,6 +4156,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - smuX.measure.filter.count = value
             - print(smuX.measure.filter.count)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.filter.count
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3770,6 +4195,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - print(smuX.measure.filter.enable)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.filter.enable applies to SMU channel
+              A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3800,6 +4229,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - smuX.measure.filter.enable = value
             - print(smuX.measure.filter.enable)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.filter.enable applies to SMU channel
+              A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3836,6 +4269,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - print(smuX.measure.filter.type)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.filter.type applies to SMU Channel
+              A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3868,6 +4305,10 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             - print(smuX.measure.filter.type)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.filter.type applies to SMU Channel
+              A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -3889,13 +4330,17 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
 class SmuxItemMeasure(BaseTSPCmd):
     """The ``smuX.measure`` command tree.
 
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.v() applies to SMU
+          channel A).
+
     Properties and methods:
         - ``.i()``: The ``smuX.measure.i()`` function.
         - ``.iv()``: The ``smuX.measure.iv()`` function.
         - ``.p()``: The ``smuX.measure.p()`` function.
         - ``.r()``: The ``smuX.measure.r()`` function.
         - ``.v()``: The ``smuX.measure.v()`` function.
-        - ``.adc``: The ``smuX.measure.adc`` attribute.
+        - ``.analogfilter``: The ``smuX.measure.analogfilter`` attribute.
         - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
         - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
         - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -3926,59 +4371,63 @@ class SmuxItemMeasure(BaseTSPCmd):
         self._rel = SmuxItemMeasureRel(device, f"{self._cmd_syntax}.rel")
 
     @property
-    def adc(self) -> str:
-        """Access the ``smuX.measure.adc`` attribute.
+    def analogfilter(self) -> str:
+        """Access the ``smuX.measure.analogfilter`` attribute.
 
         Description:
-            - This attribute contains the analog-to-digital converter selection.
+            - This attribute controls the use of an analog filter when measuring on the lowest
+              current ranges (2634B, 2635B, and 2636B only).
 
         Usage:
-            - Accessing this property will send the ``print(smuX.measure.adc)`` query.
-            - Setting this property to a value will send the ``smuX.measure.adc = value`` command.
+            - Accessing this property will send the ``print(smuX.measure.analogfilter)`` query.
+            - Setting this property to a value will send the ``smuX.measure.analogfilter = value``
+              command.
 
         TSP Syntax:
             ```
-            - smuX.measure.adc = value
-            - print(smuX.measure.adc)
+            - smuX.measure.analogfilter = value
+            - print(smuX.measure.analogfilter)
             ```
 
         Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.adc applies to
-              SMU channel A).
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.analogfilter
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".adc"
+                return self._cmd_syntax + ".analogfilter"
             return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.adc)"
+                f"print({self._cmd_syntax}.analogfilter)"
             )
         except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.analogfilter`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    @adc.setter
-    def adc(self, value: Union[str, float]) -> None:
-        """Access the ``smuX.measure.adc`` attribute.
+    @analogfilter.setter
+    def analogfilter(self, value: Union[str, float]) -> None:
+        """Access the ``smuX.measure.analogfilter`` attribute.
 
         Description:
-            - This attribute contains the analog-to-digital converter selection.
+            - This attribute controls the use of an analog filter when measuring on the lowest
+              current ranges (2634B, 2635B, and 2636B only).
 
         Usage:
-            - Accessing this property will send the ``print(smuX.measure.adc)`` query.
-            - Setting this property to a value will send the ``smuX.measure.adc = value`` command.
+            - Accessing this property will send the ``print(smuX.measure.analogfilter)`` query.
+            - Setting this property to a value will send the ``smuX.measure.analogfilter = value``
+              command.
 
         TSP Syntax:
             ```
-            - smuX.measure.adc = value
-            - print(smuX.measure.adc)
+            - smuX.measure.analogfilter = value
+            - print(smuX.measure.analogfilter)
             ```
 
         Info:
-            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.adc applies to
-              SMU channel A).
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.analogfilter
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3986,14 +4435,14 @@ class SmuxItemMeasure(BaseTSPCmd):
         try:
             if self._device.command_verification_enabled:  # type: ignore[union-attr]
                 self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".adc", value
+                    self._cmd_syntax + ".analogfilter", value
                 )
             else:
                 self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.adc = {value}"
+                    f"{self._cmd_syntax}.analogfilter = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.analogfilter`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4013,6 +4462,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.autorangei = value
             - print(smuX.measure.autorangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autorangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4044,6 +4497,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.autorangei = value
             - print(smuX.measure.autorangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autorangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4079,6 +4536,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.autorangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autorangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4109,6 +4570,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.autorangev = value
             - print(smuX.measure.autorangev)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autorangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4145,6 +4610,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.autozero)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autozero
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4176,6 +4645,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.autozero = value
             - print(smuX.measure.autozero)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.autozero
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4210,6 +4683,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.count)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.count applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4239,6 +4716,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.count = value
             - print(smuX.measure.count)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.count applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4273,6 +4754,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.delay)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.delay applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4303,6 +4788,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.delay)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.delay applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4324,8 +4813,8 @@ class SmuxItemMeasure(BaseTSPCmd):
         """Access the ``smuX.measure.delayfactor`` attribute.
 
         Description:
-            - This attribute stores a multiplier to the delays that are used when smua.measure.delay
-              is set to smua.DELAY_AUTO.
+            - This attribute stores a multiplier to the delays that are used when smuX.measure.delay
+              is set to smuX.DELAY_AUTO.
 
         Usage:
             - Accessing this property will send the ``print(smuX.measure.delayfactor)`` query.
@@ -4337,6 +4826,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.delayfactor = value
             - print(smuX.measure.delayfactor)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.delayfactor
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4356,8 +4849,8 @@ class SmuxItemMeasure(BaseTSPCmd):
         """Access the ``smuX.measure.delayfactor`` attribute.
 
         Description:
-            - This attribute stores a multiplier to the delays that are used when smua.measure.delay
-              is set to smua.DELAY_AUTO.
+            - This attribute stores a multiplier to the delays that are used when smuX.measure.delay
+              is set to smuX.DELAY_AUTO.
 
         Usage:
             - Accessing this property will send the ``print(smuX.measure.delayfactor)`` query.
@@ -4369,6 +4862,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.delayfactor = value
             - print(smuX.measure.delayfactor)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.delayfactor
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4389,6 +4886,10 @@ class SmuxItemMeasure(BaseTSPCmd):
     @property
     def filter(self) -> SmuxItemMeasureFilter:
         """Return the ``smuX.measure.filter`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.filter.count
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.count``: The ``smuX.measure.filter.count`` attribute.
@@ -4416,6 +4917,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.highcrangedelayfactor = value
             - print(smuX.measure.highcrangedelayfactor)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.highcrangedelayfactor applies to SMU
+              Channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4449,6 +4954,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.highcrangedelayfactor = value
             - print(smuX.measure.highcrangedelayfactor)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.highcrangedelayfactor applies to SMU
+              Channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4484,6 +4993,9 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.interval)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.interval applies to SMU Channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4514,6 +5026,9 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.interval = value
             - print(smuX.measure.interval)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.measure.interval applies to SMU Channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4550,6 +5065,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.lowrangei)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.lowrangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4581,6 +5100,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.lowrangei = value
             - print(smuX.measure.lowrangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.lowrangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4617,6 +5140,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.lowrangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.lowrangev
+              applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4648,6 +5175,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.lowrangev = value
             - print(smuX.measure.lowrangev)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.lowrangev
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4682,6 +5213,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.nplc)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.nplc applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4711,6 +5246,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.nplc = value
             - print(smuX.measure.nplc)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.nplc applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4747,6 +5286,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.rangei)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4778,6 +5321,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - smuX.measure.rangei = value
             - print(smuX.measure.rangei)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -4814,6 +5361,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.rangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4846,6 +5397,10 @@ class SmuxItemMeasure(BaseTSPCmd):
             - print(smuX.measure.rangev)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rangev applies
+              to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -4865,6 +5420,10 @@ class SmuxItemMeasure(BaseTSPCmd):
     @property
     def rel(self) -> SmuxItemMeasureRel:
         """Return the ``smuX.measure.rel`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.rel.enablev
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.enablei``: The ``smuX.measure.rel.enablei`` attribute.
@@ -5249,6 +5808,10 @@ class SmuxItemMeasure(BaseTSPCmd):
 class SmuxItemContact(BaseTSPCmd):
     """The ``smuX.contact`` command tree.
 
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.calibratehi()
+          applies to SMU channel A).
+
     Properties and methods:
         - ``.calibratehi()``: The ``smuX.contact.calibratehi()`` function.
         - ``.calibratelo()``: The ``smuX.contact.calibratelo()`` function.
@@ -5263,7 +5826,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.speed`` attribute.
 
         Description:
-            - This attribute stores the speed setting for contact check measurements.
+            - This attribute stores the speed setting for contact check measurements. This command
+              is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.speed)`` query.
@@ -5274,6 +5838,10 @@ class SmuxItemContact(BaseTSPCmd):
             - smuX.contact.speed = value
             - print(smuX.contact.speed)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.speed applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5293,7 +5861,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.speed`` attribute.
 
         Description:
-            - This attribute stores the speed setting for contact check measurements.
+            - This attribute stores the speed setting for contact check measurements. This command
+              is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.speed)`` query.
@@ -5304,6 +5873,10 @@ class SmuxItemContact(BaseTSPCmd):
             - smuX.contact.speed = value
             - print(smuX.contact.speed)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.speed applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5326,7 +5899,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.threshold`` attribute.
 
         Description:
-            - This attribute stores the resistance threshold for the smua.contact.check() function.
+            - This attribute stores the resistance threshold for the smuX.contact.check() function.
+              This command is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.threshold)`` query.
@@ -5338,6 +5912,10 @@ class SmuxItemContact(BaseTSPCmd):
             - smuX.contact.threshold = value
             - print(smuX.contact.threshold)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.threshold
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5357,7 +5935,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Access the ``smuX.contact.threshold`` attribute.
 
         Description:
-            - This attribute stores the resistance threshold for the smua.contact.check() function.
+            - This attribute stores the resistance threshold for the smuX.contact.check() function.
+              This command is not available on the 2604B, 2614B, or 2634B.
 
         Usage:
             - Accessing this property will send the ``print(smuX.contact.threshold)`` query.
@@ -5369,6 +5948,10 @@ class SmuxItemContact(BaseTSPCmd):
             - smuX.contact.threshold = value
             - print(smuX.contact.threshold)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.threshold
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5392,7 +5975,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.calibratehi()`` function.
 
         Description:
-            - This function adjusts the high/sense high contact check measurement.
+            - This function adjusts the high/sense high contact check measurement. This command is
+              not available on the 2604B, 2614B, or 2634B.
 
         TSP Syntax:
             ```
@@ -5425,7 +6009,8 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.calibratelo()`` function.
 
         Description:
-            - This function adjusts the low/sense low contact check measurement.
+            - This function adjusts the low/sense low contact check measurement. This command is not
+              available on the 2604B, 2614B, or 2634B.
 
         TSP Syntax:
             ```
@@ -5456,12 +6041,17 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.check()`` function.
 
         Description:
-            - This function determines if contact resistance is lower than the threshold.
+            - This function determines if contact resistance is lower than the threshold. This
+              command is not available on the 2604B, 2614B, or 2634B.
 
         TSP Syntax:
             ```
             - smuX.contact.check()
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.check()
+              applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5478,12 +6068,17 @@ class SmuxItemContact(BaseTSPCmd):
         """Run the ``smuX.contact.r()`` function.
 
         Description:
-            - This function measures aggregate contact resistance.
+            - This function measures aggregate contact resistance. This command is not available on
+              the 2604B, 2614B, or 2634B.
 
         TSP Syntax:
             ```
             - smuX.contact.r()
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.r() applies to
+              SMU channel A).
 
         Returns:
             The result of the function call.
@@ -5503,11 +6098,14 @@ class SmuxItemContact(BaseTSPCmd):
 class SmuxItemCal(BaseTSPCmd):
     """The ``smuX.cal`` command tree.
 
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.adjustdate applies to
+          SMU channel A).
+
     Properties and methods:
         - ``.adjustdate``: The ``smuX.cal.adjustdate`` attribute.
         - ``.date``: The ``smuX.cal.date`` attribute.
         - ``.due``: The ``smuX.cal.due`` attribute.
-        - ``.fastadc()``: The ``smuX.cal.fastadc()`` function.
         - ``.lock()``: The ``smuX.cal.lock()`` function.
         - ``.password``: The ``smuX.cal.password`` attribute.
         - ``.polarity``: The ``smuX.cal.polarity`` attribute.
@@ -5534,6 +6132,10 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.adjustdate = value
             - print(smuX.cal.adjustdate)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.adjustdate applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5565,6 +6167,10 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.adjustdate = value
             - print(smuX.cal.adjustdate)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.adjustdate applies
+              to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5599,6 +6205,10 @@ class SmuxItemCal(BaseTSPCmd):
             - print(smuX.cal.date)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.date applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -5628,6 +6238,10 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.date = value
             - print(smuX.cal.date)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.date applies to
+              SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5662,6 +6276,10 @@ class SmuxItemCal(BaseTSPCmd):
             - print(smuX.cal.due)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.due applies to SMU
+              channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -5691,6 +6309,10 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.due = value
             - print(smuX.cal.due)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.due applies to SMU
+              channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5723,6 +6345,9 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.password = value
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.cal.password applies to SMU channel A).
+
         Raises:
             AttributeError: Indicates that this attribute is write-only.
         """
@@ -5745,6 +6370,9 @@ class SmuxItemCal(BaseTSPCmd):
             ```
             - smuX.cal.password = value
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.cal.password applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5774,6 +6402,9 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.polarity = value
             - print(smuX.cal.polarity)
             ```
+
+        Info:
+            - ``X``, the sMU channel (for example, smua.cal.polarity applies to SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5806,6 +6437,9 @@ class SmuxItemCal(BaseTSPCmd):
             - print(smuX.cal.polarity)
             ```
 
+        Info:
+            - ``X``, the sMU channel (for example, smua.cal.polarity applies to SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -5837,6 +6471,10 @@ class SmuxItemCal(BaseTSPCmd):
             - print(smuX.cal.state)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.state applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -5850,28 +6488,6 @@ class SmuxItemCal(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def fastadc(self) -> None:
-        """Run the ``smuX.cal.fastadc()`` function.
-
-        Description:
-            - This function performs calibration of the fast analog-to-digital converter (fast ADC).
-
-        TSP Syntax:
-            ```
-            - smuX.cal.fastadc()
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            self._device.write(  # type: ignore[union-attr]
-                f"{self._cmd_syntax}.fastadc()"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.fastadc()`` function."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
     def lock(self) -> None:
         """Run the ``smuX.cal.lock()`` function.
 
@@ -5882,6 +6498,10 @@ class SmuxItemCal(BaseTSPCmd):
             ```
             - smuX.cal.lock()
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.lock() specifies
+              SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -5932,6 +6552,10 @@ class SmuxItemCal(BaseTSPCmd):
             - smuX.cal.save()
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.save() applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -5971,6 +6595,10 @@ class SmuxItemCal(BaseTSPCmd):
 
 class SmuxItemBuffer(BaseTSPCmd):
     """The ``smuX.buffer`` command tree.
+
+    Info:
+        - ``X``, the source-measure unit (SMU) channel (for example, smua.buffer.getstats()
+          specifies SMU channel A).
 
     Properties and methods:
         - ``.getstats()``: The ``smuX.buffer.getstats()`` function.
@@ -6079,8 +6707,6 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.FILTER_ON``: Enable filter measurements.
         - ``.FILTER_REPEAT_AVG``: Selects the repeating filter when measurement filter is enabled.
         - ``.LIMIT_AUTO``: Set the sweep source limit to automatic.
-        - ``.OE_NONE``: When output enable is deasserted, take no action.
-        - ``.OE_OUTPUT_OFF``: When output enable is deasserted, turn the source output off.
         - ``.OUTPUT_DCAMPS``: Select the current function for the pulse.
         - ``.OUTPUT_DCVOLTS``: Select the voltage function for the pulse.
         - ``.OUTPUT_HIGH_Z``: Opens the output relay when the output is turned off.
@@ -6193,10 +6819,6 @@ reading at index bufferVar.fillcount."""
     """str: Selects the repeating filter when measurement filter is enabled."""
     LIMIT_AUTO = "smuX.LIMIT_AUTO"
     """str: Set the sweep source limit to automatic."""
-    OE_NONE = "smuX.OE_NONE"
-    """str: When output enable is deasserted, take no action."""
-    OE_OUTPUT_OFF = "smuX.OE_OUTPUT_OFF"
-    """str: When output enable is deasserted, turn the source output off."""
     OUTPUT_DCAMPS = "smuX.OUTPUT_DCAMPS"
     """str: Select the current function for the pulse."""
     OUTPUT_DCVOLTS = "smuX.OUTPUT_DCVOLTS"
@@ -6311,10 +6933,6 @@ reading at index bufferVar.fillcount."""
         # pylint: disable=invalid-name
         self.LIMIT_AUTO = self.LIMIT_AUTO.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
-        self.OE_NONE = self.OE_NONE.replace("smuX", f"smu{self._cmd_syntax[3]}")
-        # pylint: disable=invalid-name
-        self.OE_OUTPUT_OFF = self.OE_OUTPUT_OFF.replace("smuX", f"smu{self._cmd_syntax[3]}")
-        # pylint: disable=invalid-name
         self.OUTPUT_DCAMPS = self.OUTPUT_DCAMPS.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
         self.OUTPUT_DCVOLTS = self.OUTPUT_DCVOLTS.replace("smuX", f"smu{self._cmd_syntax[3]}")
@@ -6367,6 +6985,10 @@ reading at index bufferVar.fillcount."""
     def buffer(self) -> SmuxItemBuffer:
         """Return the ``smuX.buffer`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.buffer.getstats()
+              specifies SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.getstats()``: The ``smuX.buffer.getstats()`` function.
             - ``.recalculatestats()``: The ``smuX.buffer.recalculatestats()`` function.
@@ -6377,11 +6999,14 @@ reading at index bufferVar.fillcount."""
     def cal(self) -> SmuxItemCal:
         """Return the ``smuX.cal`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.cal.adjustdate applies
+              to SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.adjustdate``: The ``smuX.cal.adjustdate`` attribute.
             - ``.date``: The ``smuX.cal.date`` attribute.
             - ``.due``: The ``smuX.cal.due`` attribute.
-            - ``.fastadc()``: The ``smuX.cal.fastadc()`` function.
             - ``.lock()``: The ``smuX.cal.lock()`` function.
             - ``.password``: The ``smuX.cal.password`` attribute.
             - ``.polarity``: The ``smuX.cal.polarity`` attribute.
@@ -6395,6 +7020,10 @@ reading at index bufferVar.fillcount."""
     @property
     def contact(self) -> SmuxItemContact:
         """Return the ``smuX.contact`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.contact.calibratehi()
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.calibratehi()``: The ``smuX.contact.calibratehi()`` function.
@@ -6410,13 +7039,17 @@ reading at index bufferVar.fillcount."""
     def measure(self) -> SmuxItemMeasure:
         """Return the ``smuX.measure`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.measure.v() applies to
+              SMU channel A).
+
         Sub-properties and sub-methods:
             - ``.i()``: The ``smuX.measure.i()`` function.
             - ``.iv()``: The ``smuX.measure.iv()`` function.
             - ``.p()``: The ``smuX.measure.p()`` function.
             - ``.r()``: The ``smuX.measure.r()`` function.
             - ``.v()``: The ``smuX.measure.v()`` function.
-            - ``.adc``: The ``smuX.measure.adc`` attribute.
+            - ``.analogfilter``: The ``smuX.measure.analogfilter`` attribute.
             - ``.autorangei``: The ``smuX.measure.autorangei`` attribute.
             - ``.autorangev``: The ``smuX.measure.autorangev`` attribute.
             - ``.autozero``: The ``smuX.measure.autozero`` attribute.
@@ -6457,6 +7090,10 @@ reading at index bufferVar.fillcount."""
             - print(smuX.nvbuffer1)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.nvbuffer1 applies to
+              SMU channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -6484,6 +7121,10 @@ reading at index bufferVar.fillcount."""
             ```
             - print(smuX.nvbuffer2)
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.nvbuffer1 applies to
+              SMU channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -6515,6 +7156,10 @@ reading at index bufferVar.fillcount."""
             - print(smuX.sense)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.sense applies to SMU
+              channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -6545,6 +7190,10 @@ reading at index bufferVar.fillcount."""
             - print(smuX.sense)
             ```
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.sense applies to SMU
+              channel A).
+
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
@@ -6564,6 +7213,10 @@ reading at index bufferVar.fillcount."""
     @property
     def source(self) -> SmuxItemSource:
         """Return the ``smuX.source`` command tree.
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.source.autorangev
+              applies to SMU channel A).
 
         Sub-properties and sub-methods:
             - ``.autorangei``: The ``smuX.source.autorangei`` attribute.
@@ -6598,6 +7251,10 @@ reading at index bufferVar.fillcount."""
     def trigger(self) -> SmuxItemTrigger:
         """Return the ``smuX.trigger`` command tree.
 
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.trigger.ARMED_EVENT_ID
+              applies to SMU channel A).
+
         Constants:
             - ``.ARMED_EVENT_ID``: The number of the armed event.
             - ``.IDLE_EVENT_ID``: The idle event number.
@@ -6623,12 +7280,17 @@ reading at index bufferVar.fillcount."""
         """Run the ``smuX.abort()`` function.
 
         Description:
-            - This function terminates all overlapped operations on the source-measure unit (SMU).
+            - This function terminates all overlapped operations on the specified source-measure
+              unit (SMU).
 
         TSP Syntax:
             ```
             - smuX.abort()
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.abort() applies to SMU
+              channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -6825,13 +7487,17 @@ reading at index bufferVar.fillcount."""
         """Run the ``smuX.reset()`` function.
 
         Description:
-            - This function turns off the output and resets the commands that begin with smua. to
+            - This function turns off the output and resets the commands that begin with smuX. to
               their default settings.
 
         TSP Syntax:
             ```
             - smuX.reset()
             ```
+
+        Info:
+            - ``X``, the source-measure unit (SMU) channel (for example, smua.reset() applies to SMU
+              channel A).
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -6849,7 +7515,7 @@ reading at index bufferVar.fillcount."""
 
         Description:
             - This function saves one source-measure unit (SMU) dedicated reading buffer to
-              nonvolatile memory.
+              nonvolatile memory (there are two dedicated reading buffers for each SMU).
 
         TSP Syntax:
             ```

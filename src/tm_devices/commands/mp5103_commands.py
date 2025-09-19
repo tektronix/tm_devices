@@ -10,30 +10,30 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_fug7n7_smump.scriptvar import Scriptvar
-from .gen_furg6p_smussmp.io import Io
-from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
-from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
-from .gen_g1jv0u_mp.bit import Bit
-from .gen_g1jv0u_mp.digio import Digio
-from .gen_g1jv0u_mp.eventlog import Eventlog
-from .gen_g1jv0u_mp.firmware import Firmware
-from .gen_g1jv0u_mp.format import Format
-from .gen_g1jv0u_mp.fs import Fs
-from .gen_g1jv0u_mp.lan import Lan
-from .gen_g1jv0u_mp.localnode import Localnode
-from .gen_g1jv0u_mp.node import NodeItem
-from .gen_g1jv0u_mp.os import Os
-from .gen_g1jv0u_mp.script import Script
-from .gen_g1jv0u_mp.slot import SlotItem
-from .gen_g1jv0u_mp.status import Status
-from .gen_g1jv0u_mp.timer import Timer
-from .gen_g1jv0u_mp.trigger import Trigger
-from .gen_g1jv0u_mp.tsplink import Tsplink
-from .gen_g1jv0u_mp.tspnet import Tspnet
-from .gen_g1jv0u_mp.usbtmc import Usbtmc
-from .gen_g1jv0u_mp.user import User
-from .gen_h52sc3_mppsu.buffervar import Buffervar
+from .gen_3skc3w_mp.bit import Bit
+from .gen_3skc3w_mp.digio import Digio
+from .gen_3skc3w_mp.eventlog import Eventlog
+from .gen_3skc3w_mp.firmware import Firmware
+from .gen_3skc3w_mp.format import Format
+from .gen_3skc3w_mp.fs import Fs
+from .gen_3skc3w_mp.lan import Lan
+from .gen_3skc3w_mp.localnode import Localnode
+from .gen_3skc3w_mp.node import NodeItem
+from .gen_3skc3w_mp.os import Os
+from .gen_3skc3w_mp.script import Script
+from .gen_3skc3w_mp.slot import SlotItem
+from .gen_3skc3w_mp.status import Status
+from .gen_3skc3w_mp.timer import Timer
+from .gen_3skc3w_mp.trigger import Trigger
+from .gen_3skc3w_mp.tsplink import Tsplink
+from .gen_3skc3w_mp.tspnet import Tspnet
+from .gen_3skc3w_mp.usbtmc import Usbtmc
+from .gen_3skc3w_mp.user import User
+from .gen_4ajvxe_mpmpsu.buffervar import Buffervar
+from .gen_fnz1de_mpsmuss.io import Io
+from .gen_fs14fx_daqdmmmpsmuss.dataqueue import Dataqueue
+from .gen_fs14fx_daqdmmmpsmuss.userstring import Userstring
+from .gen_fualds_mpsmu.scriptvar import Scriptvar
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 

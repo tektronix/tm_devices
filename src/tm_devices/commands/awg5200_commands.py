@@ -10,38 +10,38 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_2i1z2s_awg.abort import Abort
-from .gen_2i1z2s_awg.auxoutput import AuxoutputItem
-from .gen_2i1z2s_awg.awgcontrol import Awgcontrol
-from .gen_2i1z2s_awg.bwaveform import Bwaveform
-from .gen_2i1z2s_awg.clock import Clock
-from .gen_2i1z2s_awg.cplayback import Cplayback
-from .gen_2i1z2s_awg.diagnostic import Diagnostic
-from .gen_2i1z2s_awg.fgen import Fgen
-from .gen_2i1z2s_awg.instrument import Instrument
-from .gen_2i1z2s_awg.mmemory import Mmemory
-from .gen_2i1z2s_awg.output import OutputItem
-from .gen_2i1z2s_awg.source import Source, SourceItem
-from .gen_2i1z2s_awg.synchronize import Synchronize
-from .gen_2i1z2s_awg.system import System
-from .gen_2i1z2s_awg.trigger import Trigger
-from .gen_2i1z2s_awg.wlist import Wlist
-from .gen_3n9auv_awg.active import Active
-from .gen_3n9auv_awg.calibration import Calibration
-from .gen_3n9auv_awg.connectivity import Connectivity
-from .gen_3n9auv_awg.display import Display
-from .gen_3n9auv_awg.output import Output
-from .gen_3n9auv_awg.slist import Slist
-from .gen_3n9auv_awg.status import Status
-from .gen_3n9auv_awg.wplugin import Wplugin
-from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
-from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
-from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese
-from .gen_h1iyne_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_h2kvzl_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
-from .gen_h26ub5_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
+from .gen_8n7m9m_afgawgdpodsalpdmdomso.miscellaneous import Trg
+from .gen_8rp5l3_afgawgdpodsamdomso.calibration import Cal
+from .gen_60bjc_awg.abort import Abort
+from .gen_60bjc_awg.auxoutput import AuxoutputItem
+from .gen_60bjc_awg.awgcontrol import Awgcontrol
+from .gen_60bjc_awg.bwaveform import Bwaveform
+from .gen_60bjc_awg.clock import Clock
+from .gen_60bjc_awg.cplayback import Cplayback
+from .gen_60bjc_awg.diagnostic import Diagnostic
+from .gen_60bjc_awg.fgen import Fgen
+from .gen_60bjc_awg.instrument import Instrument
+from .gen_60bjc_awg.mmemory import Mmemory
+from .gen_60bjc_awg.output import OutputItem
+from .gen_60bjc_awg.source import Source, SourceItem
+from .gen_60bjc_awg.synchronize import Synchronize
+from .gen_60bjc_awg.system import System
+from .gen_60bjc_awg.trigger import Trigger
+from .gen_60bjc_awg.wlist import Wlist
+from .gen_btm6t_awg.active import Active
+from .gen_btm6t_awg.calibration import Calibration
+from .gen_btm6t_awg.connectivity import Connectivity
+from .gen_btm6t_awg.display import Display
+from .gen_btm6t_awg.output import Output
+from .gen_btm6t_awg.slist import Slist
+from .gen_btm6t_awg.status import Status
+from .gen_btm6t_awg.wplugin import Wplugin
+from .gen_gnbnx3_awgdpodsamdomsotekscopepc.status_and_error import Ese
+from .gen_gnk3bw_afgawgdpodsamdomsotekscopepc.status_and_error import Opc, Rst
+from .gen_gthlnl_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Opt
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.miscellaneous import Idn, Tst
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Cls, Esr, Stb, Wai
+from .gen_gz6oku_awgdpodsalpdmdomsotekscopepc.status_and_error import Sre
 from .helpers import DefaultDictPassKeyToFactory
 
 
