@@ -139,8 +139,8 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.setup_burst(10e3, scope.source_device_constants.functions.RAMP, 0.5, 0.0, burst_count=1)
     with pytest.raises(
         TypeError,
-        match="Generate Waveform does not accept functions as non Enums. "
-        "Please use 'source_device_constants.functions'.",
+        match=r"Generate Waveform does not accept functions as non Enums\. "
+        r"Please use 'source_device_constants\.functions'\.",
     ):
         scope.generate_function(
             25e6,
@@ -226,7 +226,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert scope.visa_timeout == UNIT_TEST_TIMEOUT
 
     # test some internal assertions
-    with pytest.raises(AssertionError, match="none is not a valid item.*"):
+    with pytest.raises(AssertionError, match=r"none is not a valid item.*"):
         scope._add_or_delete_dynamic_item("none", 1)  # noqa: SLF001
 
     # Assert no errors after completing testing
@@ -354,7 +354,7 @@ def test_iafg(device_manager: DeviceManager) -> None:
         ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
     )
 
-    with pytest.raises(ValueError, match="IAFGs must have a function defined."):
+    with pytest.raises(ValueError, match=r"IAFGs must have a function defined\."):
         mso56b.get_waveform_constraints()
 
     with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):
@@ -514,10 +514,10 @@ def test_tekscopepc(
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
     assert scope.total_channels == 8
-    with pytest.warns(UserWarning, match="Rebooting is not supported for the TekScopePC driver."):
+    with pytest.warns(UserWarning, match=r"Rebooting is not supported for the TekScopePC driver.*"):
         scope.reboot()
 
-    with pytest.raises(ValueError, match="Invalid image extension: '.txt', valid extensions are"):
+    with pytest.raises(ValueError, match=r"Invalid image extension: '\.txt', valid extensions are"):
         scope.save_screenshot("temp.txt")
     with pytest.raises(
         ValueError, match=r"Local folder path \(filename.txt\) is a file, not a directory."

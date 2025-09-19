@@ -52,7 +52,7 @@ class SourceDeviceConstants:
 
 
 class SignalGeneratorMixin(
-    _ExtendableMixin, Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar], ABC
+    _ExtendableMixin, ABC, Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar]
 ):
     """A mixin class which adds methods and properties for generating signals."""
 
