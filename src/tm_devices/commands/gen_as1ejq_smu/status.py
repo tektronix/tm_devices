@@ -2,7 +2,7 @@
 """The status commands module.
 
 These commands are used in the following models:
-SMU2657A
+SMU2601B_Pulse
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -10,7 +10,6 @@ Please report an issue if one is found.
 
 Attributes and Functions:
     ```
-    - status.condition
     - status.measurement.buffer_available.condition
     - status.measurement.buffer_available.enable
     - status.measurement.buffer_available.event
@@ -35,114 +34,37 @@ Attributes and Functions:
     - status.measurement.instrument.smuX.ntr
     - status.measurement.instrument.smuX.ptr
     - status.measurement.ntr
-    - status.measurement.overvoltage.condition
-    - status.measurement.overvoltage.enable
-    - status.measurement.overvoltage.event
-    - status.measurement.overvoltage.ntr
-    - status.measurement.overvoltage.ptr
+    - status.measurement.protection.condition
+    - status.measurement.protection.enable
+    - status.measurement.protection.event
+    - status.measurement.protection.ntr
+    - status.measurement.protection.ptr
     - status.measurement.ptr
     - status.measurement.reading_overflow.condition
     - status.measurement.reading_overflow.enable
     - status.measurement.reading_overflow.event
     - status.measurement.reading_overflow.ntr
     - status.measurement.reading_overflow.ptr
-    - status.measurement.sink_limit.condition
-    - status.measurement.sink_limit.enable
-    - status.measurement.sink_limit.event
-    - status.measurement.sink_limit.ntr
-    - status.measurement.sink_limit.ptr
     - status.measurement.voltage_limit.condition
     - status.measurement.voltage_limit.enable
     - status.measurement.voltage_limit.event
     - status.measurement.voltage_limit.ntr
     - status.measurement.voltage_limit.ptr
-    - status.node_enable
-    - status.node_event
     - status.operation.calibrating.condition
     - status.operation.calibrating.enable
     - status.operation.calibrating.event
     - status.operation.calibrating.ntr
     - status.operation.calibrating.ptr
-    - status.operation.condition
-    - status.operation.enable
-    - status.operation.event
     - status.operation.instrument.condition
-    - status.operation.instrument.digio.condition
-    - status.operation.instrument.digio.enable
-    - status.operation.instrument.digio.event
-    - status.operation.instrument.digio.ntr
-    - status.operation.instrument.digio.ptr
-    - status.operation.instrument.digio.trigger_overrun.condition
-    - status.operation.instrument.digio.trigger_overrun.enable
-    - status.operation.instrument.digio.trigger_overrun.event
-    - status.operation.instrument.digio.trigger_overrun.ntr
-    - status.operation.instrument.digio.trigger_overrun.ptr
     - status.operation.instrument.enable
     - status.operation.instrument.event
-    - status.operation.instrument.lan.condition
-    - status.operation.instrument.lan.enable
-    - status.operation.instrument.lan.event
-    - status.operation.instrument.lan.ntr
-    - status.operation.instrument.lan.ptr
-    - status.operation.instrument.lan.trigger_overrun.condition
-    - status.operation.instrument.lan.trigger_overrun.enable
-    - status.operation.instrument.lan.trigger_overrun.event
-    - status.operation.instrument.lan.trigger_overrun.ntr
-    - status.operation.instrument.lan.trigger_overrun.ptr
     - status.operation.instrument.ntr
     - status.operation.instrument.ptr
-    - status.operation.instrument.smuX.condition
-    - status.operation.instrument.smuX.enable
-    - status.operation.instrument.smuX.event
-    - status.operation.instrument.smuX.ntr
-    - status.operation.instrument.smuX.ptr
-    - status.operation.instrument.smuX.trigger_overrrun.condition
-    - status.operation.instrument.smuX.trigger_overrrun.enable
-    - status.operation.instrument.smuX.trigger_overrrun.event
-    - status.operation.instrument.smuX.trigger_overrrun.ntr
-    - status.operation.instrument.smuX.trigger_overrrun.ptr
-    - status.operation.instrument.trigger_blender.condition
-    - status.operation.instrument.trigger_blender.enable
-    - status.operation.instrument.trigger_blender.event
-    - status.operation.instrument.trigger_blender.ntr
-    - status.operation.instrument.trigger_blender.ptr
-    - status.operation.instrument.trigger_blender.trigger_overrun.condition
-    - status.operation.instrument.trigger_blender.trigger_overrun.enable
-    - status.operation.instrument.trigger_blender.trigger_overrun.event
-    - status.operation.instrument.trigger_blender.trigger_overrun.ntr
-    - status.operation.instrument.trigger_blender.trigger_overrun.ptr
-    - status.operation.instrument.trigger_timer.condition
-    - status.operation.instrument.trigger_timer.enable
-    - status.operation.instrument.trigger_timer.event
-    - status.operation.instrument.trigger_timer.ntr
-    - status.operation.instrument.trigger_timer.ptr
-    - status.operation.instrument.trigger_timer.trigger_overrun.condition
-    - status.operation.instrument.trigger_timer.trigger_overrun.enable
-    - status.operation.instrument.trigger_timer.trigger_overrun.event
-    - status.operation.instrument.trigger_timer.trigger_overrun.ntr
-    - status.operation.instrument.trigger_timer.trigger_overrun.ptr
-    - status.operation.instrument.tsplink.condition
-    - status.operation.instrument.tsplink.enable
-    - status.operation.instrument.tsplink.event
-    - status.operation.instrument.tsplink.ntr
-    - status.operation.instrument.tsplink.ptr
-    - status.operation.instrument.tsplink.trigger_overrun.condition
-    - status.operation.instrument.tsplink.trigger_overrun.enable
-    - status.operation.instrument.tsplink.trigger_overrun.event
-    - status.operation.instrument.tsplink.trigger_overrun.ntr
-    - status.operation.instrument.tsplink.trigger_overrun.ptr
     - status.operation.measuring.condition
     - status.operation.measuring.enable
     - status.operation.measuring.event
     - status.operation.measuring.ntr
     - status.operation.measuring.ptr
-    - status.operation.ntr
-    - status.operation.ptr
-    - status.operation.remote.condition
-    - status.operation.remote.enable
-    - status.operation.remote.event
-    - status.operation.remote.ntr
-    - status.operation.remote.ptr
     - status.operation.sweeping.condition
     - status.operation.sweeping.enable
     - status.operation.sweeping.event
@@ -153,11 +75,6 @@ Attributes and Functions:
     - status.operation.trigger_overrun.event
     - status.operation.trigger_overrun.ntr
     - status.operation.trigger_overrun.ptr
-    - status.operation.user.condition
-    - status.operation.user.enable
-    - status.operation.user.event
-    - status.operation.user.ntr
-    - status.operation.user.ptr
     - status.questionable.calibration.condition
     - status.questionable.calibration.enable
     - status.questionable.calibration.event
@@ -190,37 +107,6 @@ Attributes and Functions:
     - status.questionable.unstable_output.ptr
     - status.request_enable
     - status.request_event
-    - status.reset()
-    - status.standard.condition
-    - status.standard.enable
-    - status.standard.event
-    - status.standard.ntr
-    - status.standard.ptr
-    - status.system.condition
-    - status.system.enable
-    - status.system.event
-    - status.system.ntr
-    - status.system.ptr
-    - status.system2.condition
-    - status.system2.enable
-    - status.system2.event
-    - status.system2.ntr
-    - status.system2.ptr
-    - status.system3.condition
-    - status.system3.enable
-    - status.system3.event
-    - status.system3.ntr
-    - status.system3.ptr
-    - status.system4.condition
-    - status.system4.enable
-    - status.system4.event
-    - status.system4.ntr
-    - status.system4.ptr
-    - status.system5.condition
-    - status.system5.enable
-    - status.system5.event
-    - status.system5.ntr
-    - status.system5.ptr
     ```
 """
 
@@ -237,6 +123,7 @@ if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
+# pylint: disable=too-few-public-methods
 class StatusSystem5(BaseTSPCmd):
     """The ``status.system5`` command tree.
 
@@ -257,13 +144,6 @@ class StatusSystem5(BaseTSPCmd):
           status model for node.
         - ``.NODE64``: B8. This attributes manages the TSP-Link system summary register of the
           status model for node.
-
-    Properties and methods:
-        - ``.condition``: The ``status.system5.condition`` attribute.
-        - ``.enable``: The ``status.system5.enable`` attribute.
-        - ``.event``: The ``status.system5.event`` attribute.
-        - ``.ntr``: The ``status.system5.ntr`` attribute.
-        - ``.ptr``: The ``status.system5.ptr`` attribute.
     """
 
     NODE57 = "status.system5.NODE57"
@@ -283,262 +163,8 @@ class StatusSystem5(BaseTSPCmd):
     NODE64 = "status.system5.NODE64"
     """str: B8. This attributes manages the TSP-Link system summary register of the status model for node."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.system5.condition`` attribute.
 
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system5.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.system5.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.enable)`` query.
-            - Setting this property to a value will send the ``status.system5.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system5.enable = value
-            - print(status.system5.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.system5.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.enable)`` query.
-            - Setting this property to a value will send the ``status.system5.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system5.enable = value
-            - print(status.system5.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.system5.event`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system5.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.system5.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.ntr)`` query.
-            - Setting this property to a value will send the ``status.system5.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system5.ntr = value
-            - print(status.system5.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system5.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.ntr)`` query.
-            - Setting this property to a value will send the ``status.system5.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system5.ntr = value
-            - print(status.system5.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.system5.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.ptr)`` query.
-            - Setting this property to a value will send the ``status.system5.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system5.ptr = value
-            - print(status.system5.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system5.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 57 through 64.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system5.ptr)`` query.
-            - Setting this property to a value will send the ``status.system5.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system5.ptr = value
-            - print(status.system5.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
+# pylint: disable=too-few-public-methods
 class StatusSystem4(BaseTSPCmd):
     """The ``status.system4`` command tree.
 
@@ -575,13 +201,6 @@ class StatusSystem4(BaseTSPCmd):
           status model for node 55.
         - ``.NODE56``: B14. This attributes manages the TSP-Link system summary register of the
           status model for node 56.
-
-    Properties and methods:
-        - ``.condition``: The ``status.system4.condition`` attribute.
-        - ``.enable``: The ``status.system4.enable`` attribute.
-        - ``.event``: The ``status.system4.event`` attribute.
-        - ``.ntr``: The ``status.system4.ntr`` attribute.
-        - ``.ptr``: The ``status.system4.ptr`` attribute.
     """
 
     EXT = "status.system4.EXT"
@@ -617,262 +236,8 @@ class StatusSystem4(BaseTSPCmd):
     NODE56 = "status.system4.NODE56"
     """str: B14. This attributes manages the TSP-Link system summary register of the status model for node 56."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.system4.condition`` attribute.
 
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system4.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.system4.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.enable)`` query.
-            - Setting this property to a value will send the ``status.system4.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system4.enable = value
-            - print(status.system4.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.system4.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.enable)`` query.
-            - Setting this property to a value will send the ``status.system4.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system4.enable = value
-            - print(status.system4.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.system4.event`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system4.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.system4.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.ntr)`` query.
-            - Setting this property to a value will send the ``status.system4.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system4.ntr = value
-            - print(status.system4.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system4.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.ntr)`` query.
-            - Setting this property to a value will send the ``status.system4.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system4.ntr = value
-            - print(status.system4.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.system4.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.ptr)`` query.
-            - Setting this property to a value will send the ``status.system4.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system4.ptr = value
-            - print(status.system4.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system4.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 43 through 56.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system4.ptr)`` query.
-            - Setting this property to a value will send the ``status.system4.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system4.ptr = value
-            - print(status.system4.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
+# pylint: disable=too-few-public-methods
 class StatusSystem3(BaseTSPCmd):
     """The ``status.system3`` command tree.
 
@@ -909,13 +274,6 @@ class StatusSystem3(BaseTSPCmd):
           status model for node 41.
         - ``.NODE42``: B13. This attribute manages the TSP-Link system summary register of the
           status model for node 42.
-
-    Properties and methods:
-        - ``.condition``: The ``status.system3.condition`` attribute.
-        - ``.enable``: The ``status.system3.enable`` attribute.
-        - ``.event``: The ``status.system3.event`` attribute.
-        - ``.ntr``: The ``status.system3.ntr`` attribute.
-        - ``.ptr``: The ``status.system3.ptr`` attribute.
     """
 
     EXT = "status.system3.EXT"
@@ -951,262 +309,8 @@ class StatusSystem3(BaseTSPCmd):
     NODE42 = "status.system3.NODE42"
     """str: B13. This attribute manages the TSP-Link system summary register of the status model for node 42."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.system3.condition`` attribute.
 
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system3.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.system3.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.enable)`` query.
-            - Setting this property to a value will send the ``status.system3.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system3.enable = value
-            - print(status.system3.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.system3.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.enable)`` query.
-            - Setting this property to a value will send the ``status.system3.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system3.enable = value
-            - print(status.system3.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.system3.event`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system3.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.system3.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.ntr)`` query.
-            - Setting this property to a value will send the ``status.system3.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system3.ntr = value
-            - print(status.system3.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system3.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.ntr)`` query.
-            - Setting this property to a value will send the ``status.system3.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system3.ntr = value
-            - print(status.system3.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.system3.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.ptr)`` query.
-            - Setting this property to a value will send the ``status.system3.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system3.ptr = value
-            - print(status.system3.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system3.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 29 through 42.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system3.ptr)`` query.
-            - Setting this property to a value will send the ``status.system3.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system3.ptr = value
-            - print(status.system3.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
+# pylint: disable=too-few-public-methods
 class StatusSystem2(BaseTSPCmd):
     """The ``status.system2`` command tree.
 
@@ -1243,13 +347,6 @@ class StatusSystem2(BaseTSPCmd):
           node 27.
         - ``.NODE28``: B14. Manages the TSP-Link system summary register of the status model for
           node 28.
-
-    Properties and methods:
-        - ``.condition``: The ``status.system2.condition`` attribute.
-        - ``.enable``: The ``status.system2.enable`` attribute.
-        - ``.event``: The ``status.system2.event`` attribute.
-        - ``.ntr``: The ``status.system2.ntr`` attribute.
-        - ``.ptr``: The ``status.system2.ptr`` attribute.
     """
 
     EXT = "status.system2.EXT"
@@ -1285,262 +382,8 @@ class StatusSystem2(BaseTSPCmd):
     NODE28 = "status.system2.NODE28"
     """str: B14. Manages the TSP-Link system summary register of the status model for node 28."""
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.system2.condition`` attribute.
 
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system2.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.system2.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.enable)`` query.
-            - Setting this property to a value will send the ``status.system2.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system2.enable = value
-            - print(status.system2.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.system2.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.enable)`` query.
-            - Setting this property to a value will send the ``status.system2.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system2.enable = value
-            - print(status.system2.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.system2.event`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system2.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.system2.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.ntr)`` query.
-            - Setting this property to a value will send the ``status.system2.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system2.ntr = value
-            - print(status.system2.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system2.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.ntr)`` query.
-            - Setting this property to a value will send the ``status.system2.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system2.ntr = value
-            - print(status.system2.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.system2.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.ptr)`` query.
-            - Setting this property to a value will send the ``status.system2.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system2.ptr = value
-            - print(status.system2.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system2.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 15 through 28.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system2.ptr)`` query.
-            - Setting this property to a value will send the ``status.system2.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system2.ptr = value
-            - print(status.system2.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
+# pylint: disable=too-few-public-methods
 class StatusSystem(BaseTSPCmd):
     """The ``status.system`` command tree.
 
@@ -1577,13 +420,6 @@ class StatusSystem(BaseTSPCmd):
           system summary register.
         - ``.NODE9``: B9. In an expanded system (TSP-Link), this is used to read or write to the
           system summary register.
-
-    Properties and methods:
-        - ``.condition``: The ``status.system.condition`` attribute.
-        - ``.enable``: The ``status.system.enable`` attribute.
-        - ``.event``: The ``status.system.event`` attribute.
-        - ``.ntr``: The ``status.system.ntr`` attribute.
-        - ``.ptr``: The ``status.system.ptr`` attribute.
     """
 
     EXT = "status.system.EXT"
@@ -1619,262 +455,8 @@ class StatusSystem(BaseTSPCmd):
     NODE9 = "status.system.NODE9"
     """str: B9. In an expanded system (TSP-Link), this is used to read or write to the system summary register."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.system.condition`` attribute.
 
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.system.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.enable)`` query.
-            - Setting this property to a value will send the ``status.system.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system.enable = value
-            - print(status.system.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.system.enable`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.enable)`` query.
-            - Setting this property to a value will send the ``status.system.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.system.enable = value
-            - print(status.system.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.system.event`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.system.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.system.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.ntr)`` query.
-            - Setting this property to a value will send the ``status.system.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system.ntr = value
-            - print(status.system.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system.ntr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.ntr)`` query.
-            - Setting this property to a value will send the ``status.system.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system.ntr = value
-            - print(status.system.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.system.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.ptr)`` query.
-            - Setting this property to a value will send the ``status.system.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system.ptr = value
-            - print(status.system.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.system.ptr`` attribute.
-
-        Description:
-            - These attributes manage the TSP-Link&reg; system summary register of the status model
-              for nodes 1 through 14.
-
-        Usage:
-            - Accessing this property will send the ``print(status.system.ptr)`` query.
-            - Setting this property to a value will send the ``status.system.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.system.ptr = value
-            - print(status.system.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
+# pylint: disable=too-few-public-methods
 class StatusStandard(BaseTSPCmd):
     r"""The ``status.standard`` command tree.
 
@@ -1909,13 +491,6 @@ class StatusStandard(BaseTSPCmd):
           pressed.
         - ``.USER_REQUEST``: B6. Set bit indicates that the LOCAL key on the instrument front panel
           was pressed.
-
-    Properties and methods:
-        - ``.condition``: The ``status.standard.condition`` attribute.
-        - ``.enable``: The ``status.standard.enable`` attribute.
-        - ``.event``: The ``status.standard.event`` attribute.
-        - ``.ntr``: The ``status.standard.ntr`` attribute.
-        - ``.ptr``: The ``status.standard.ptr`` attribute.
     """
 
     CME = "status.standard.CME"
@@ -1946,257 +521,6 @@ class StatusStandard(BaseTSPCmd):
     """str: B6. Set bit indicates that the LOCAL key on the instrument front panel was pressed."""
     USER_REQUEST = "status.standard.USER_REQUEST"
     """str: B6. Set bit indicates that the LOCAL key on the instrument front panel was pressed."""
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.standard.condition`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.standard.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.standard.enable`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.enable)`` query.
-            - Setting this property to a value will send the ``status.standard.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.enable = value
-            - print(status.standard.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.standard.enable`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.enable)`` query.
-            - Setting this property to a value will send the ``status.standard.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.enable = value
-            - print(status.standard.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.standard.event`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.standard.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.standard.ntr`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.ntr)`` query.
-            - Setting this property to a value will send the ``status.standard.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.ntr = value
-            - print(status.standard.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.standard.ntr`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.ntr)`` query.
-            - Setting this property to a value will send the ``status.standard.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.ntr = value
-            - print(status.standard.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.standard.ptr`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.ptr)`` query.
-            - Setting this property to a value will send the ``status.standard.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.ptr = value
-            - print(status.standard.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.standard.ptr`` attribute.
-
-        Description:
-            - These attributes manage the standard event status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.standard.ptr)`` query.
-            - Setting this property to a value will send the ``status.standard.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.standard.ptr = value
-            - print(status.standard.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
 
 class StatusQuestionableUnstableOutput(BaseTSPCmd):
@@ -2818,7 +1142,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.condition`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2847,7 +1171,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2879,7 +1203,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2914,7 +1238,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.event`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2943,7 +1267,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -2975,7 +1299,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -3010,7 +1334,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -3042,7 +1366,7 @@ was detected."""
         """Access the ``status.questionable.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the questionable status SMU summary register set.
+            - This attribute contains the questionable status SMU A summary register set.
 
         Usage:
             - Accessing this property will send the
@@ -4048,6 +2372,7 @@ class StatusQuestionable(BaseTSPCmd):
         return self._unstable_output
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationUser(BaseTSPCmd):
     """The ``status.operation.user`` command tree.
 
@@ -4067,13 +2392,6 @@ class StatusOperationUser(BaseTSPCmd):
         - ``.BIT7``: B7. Read or write bit 7 of the operation status user register.
         - ``.BIT8``: B8. Read or write bit 8 of the operation status user register.
         - ``.BIT9``: B9. Read or write bit 9 of the operation status user register.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.user.condition`` attribute.
-        - ``.enable``: The ``status.operation.user.enable`` attribute.
-        - ``.event``: The ``status.operation.user.event`` attribute.
-        - ``.ntr``: The ``status.operation.user.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.user.ptr`` attribute.
     """
 
     BIT0 = "status.operation.user.BIT0"
@@ -4106,296 +2424,6 @@ class StatusOperationUser(BaseTSPCmd):
     """str: B8. Read or write bit 8 of the operation status user register."""
     BIT9 = "status.operation.user.BIT9"
     """str: B9. Read or write bit 9 of the operation status user register."""
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.user.condition`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.condition)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.user.condition = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.condition = value
-            - print(status.operation.user.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @condition.setter
-    def condition(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.user.condition`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.condition)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.user.condition = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.condition = value
-            - print(status.operation.user.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".condition", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.condition = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.user.enable`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.user.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.enable = value
-            - print(status.operation.user.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.user.enable`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.user.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.enable = value
-            - print(status.operation.user.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.user.event`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.user.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.user.ntr`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.user.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.ntr = value
-            - print(status.operation.user.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.user.ntr`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.user.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.ntr = value
-            - print(status.operation.user.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.user.ptr`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.user.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.ptr = value
-            - print(status.operation.user.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.user.ptr`` attribute.
-
-        Description:
-            - These attributes manage the operation status user register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.user.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.user.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.user.ptr = value
-            - print(status.operation.user.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
 
 class StatusOperationTriggerOverrun(BaseTSPCmd):
@@ -4981,6 +3009,7 @@ class StatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationRemote(BaseTSPCmd):
     """The ``status.operation.remote`` command tree.
 
@@ -4990,13 +3019,6 @@ class StatusOperationRemote(BaseTSPCmd):
           execution queue.
         - ``.PRMPT``: B11. Set bit indicates command prompts are enabled.
         - ``.PROMPTS_ENABLED``: B11. Set bit indicates command prompts are enabled.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.remote.condition`` attribute.
-        - ``.enable``: The ``status.operation.remote.enable`` attribute.
-        - ``.event``: The ``status.operation.remote.event`` attribute.
-        - ``.ntr``: The ``status.operation.remote.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.remote.ptr`` attribute.
     """
 
     CAV = "status.operation.remote.CAV"
@@ -5007,258 +3029,6 @@ class StatusOperationRemote(BaseTSPCmd):
     """str: B11. Set bit indicates command prompts are enabled."""
     PROMPTS_ENABLED = "status.operation.remote.PROMPTS_ENABLED"
     """str: B11. Set bit indicates command prompts are enabled."""
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.remote.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.condition)``
-              query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.remote.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.remote.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.remote.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.enable = value
-            - print(status.operation.remote.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.remote.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.remote.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.enable = value
-            - print(status.operation.remote.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.remote.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.remote.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.remote.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.remote.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.ntr = value
-            - print(status.operation.remote.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.remote.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.remote.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.ntr = value
-            - print(status.operation.remote.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.remote.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.remote.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.ptr = value
-            - print(status.operation.remote.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.remote.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status remote summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.remote.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.remote.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.remote.ptr = value
-            - print(status.operation.remote.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
 
 class StatusOperationMeasuring(BaseTSPCmd):
@@ -5535,6 +3305,7 @@ class StatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
     """The ``status.operation.instrument.tsplink.trigger_overrun`` command tree.
 
@@ -5545,14 +3316,6 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
           to generate an output trigger.
         - ``.LINE3``: B3. A set bit indicates that line 3 generated an action overrun when triggered
           to generate an output trigger.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.tsplink.trigger_overrun.condition``
-          attribute.
-        - ``.enable``: The ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.tsplink.trigger_overrun.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
     """
 
     LINE1 = "status.operation.instrument.tsplink.trigger_overrun.LINE1"
@@ -5561,265 +3324,6 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
     """str: B2. A set bit indicates that line 2 generated an action overrun when triggered to generate an output trigger."""  # noqa: E501
     LINE3 = "status.operation.instrument.tsplink.trigger_overrun.LINE3"
     """str: B3. A set bit indicates that line 3 generated an action overrun when triggered to generate an output trigger."""  # noqa: E501
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.tsplink.trigger_overrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.enable = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.enable = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.tsplink.trigger_overrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.ntr = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.ntr = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.ptr = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.trigger_overrun.ptr = value
-            - print(status.operation.instrument.tsplink.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
 
 class StatusOperationInstrumentTsplink(BaseTSPCmd):
@@ -5832,11 +3336,6 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
           status TSP-Link overrun register is set.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.tsplink.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.tsplink.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.tsplink.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.tsplink.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.tsplink.ptr`` attribute.
         - ``.trigger_overrun``: The ``status.operation.instrument.tsplink.trigger_overrun`` command
           tree.
     """
@@ -5853,265 +3352,6 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
         )
 
     @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.tsplink.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.enable = value
-            - print(status.operation.instrument.tsplink.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.enable = value
-            - print(status.operation.instrument.tsplink.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.tsplink.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.ntr = value
-            - print(status.operation.instrument.tsplink.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.ntr = value
-            - print(status.operation.instrument.tsplink.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.tsplink.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.ptr = value
-            - print(status.operation.instrument.tsplink.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.tsplink.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status TSP-Link summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.tsplink.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.tsplink.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.tsplink.ptr = value
-            - print(status.operation.instrument.tsplink.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def trigger_overrun(self) -> StatusOperationInstrumentTsplinkTriggerOverrun:
         """Return the ``status.operation.instrument.tsplink.trigger_overrun`` command tree.
 
@@ -6122,20 +3362,11 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
               triggered to generate an output trigger.
             - ``.LINE3``: B3. A set bit indicates that line 3 generated an action overrun when
               triggered to generate an output trigger.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.tsplink.trigger_overrun.condition``
-              attribute.
-            - ``.enable``: The ``status.operation.instrument.tsplink.trigger_overrun.enable``
-              attribute.
-            - ``.event``: The ``status.operation.instrument.tsplink.trigger_overrun.event``
-              attribute.
-            - ``.ntr``: The ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
         """
         return self._trigger_overrun
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
     """The ``status.operation.instrument.trigger_timer.trigger_overrun`` command tree.
 
@@ -6156,16 +3387,6 @@ class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
           still processing a delay from a previous trigger when a new trigger was received.
         - ``.TMR8``: B8. A set bit indicates that timer 8 generated an action overrun because it was
           still processing a delay from a previous trigger when a new trigger was received.
-
-    Properties and methods:
-        - ``.condition``: The
-          ``status.operation.instrument.trigger_timer.trigger_overrun.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.trigger_timer.trigger_overrun.enable``
-          attribute.
-        - ``.event``: The ``status.operation.instrument.trigger_timer.trigger_overrun.event``
-          attribute.
-        - ``.ntr``: The ``status.operation.instrument.trigger_timer.trigger_overrun.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.trigger_timer.trigger_overrun.ptr`` attribute.
     """
 
     TMR1 = "status.operation.instrument.trigger_timer.trigger_overrun.TMR1"
@@ -6185,265 +3406,6 @@ class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
     TMR8 = "status.operation.instrument.trigger_timer.trigger_overrun.TMR8"
     """str: B8. A set bit indicates that timer 8 generated an action overrun because it was still processing a delay from a previous trigger when a new trigger was received."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """``status.operation.instrument.trigger_timer.trigger_overrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """``status.operation.instrument.trigger_timer.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.enable = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """``status.operation.instrument.trigger_timer.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.enable = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.ntr = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.ntr = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.ptr = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.trigger_overrun.ptr = value
-            - print(status.operation.instrument.trigger_timer.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
 
 class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
     """The ``status.operation.instrument.trigger_timer`` command tree.
@@ -6455,11 +3417,6 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
           status trigger timer overrun register is set.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.trigger_timer.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.trigger_timer.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.trigger_timer.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.trigger_timer.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.trigger_timer.ptr`` attribute.
         - ``.trigger_overrun``: The ``status.operation.instrument.trigger_timer.trigger_overrun``
           command tree.
     """
@@ -6474,265 +3431,6 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
         self._trigger_overrun = StatusOperationInstrumentTriggerTimerTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_timer.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.enable = value
-            - print(status.operation.instrument.trigger_timer.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_timer.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.enable = value
-            - print(status.operation.instrument.trigger_timer.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_timer.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.ntr = value
-            - print(status.operation.instrument.trigger_timer.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_timer.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.ntr = value
-            - print(status.operation.instrument.trigger_timer.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_timer.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.ptr = value
-            - print(status.operation.instrument.trigger_timer.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_timer.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger timer summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_timer.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_timer.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_timer.ptr = value
-            - print(status.operation.instrument.trigger_timer.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def trigger_overrun(self) -> StatusOperationInstrumentTriggerTimerTriggerOverrun:
@@ -6755,22 +3453,11 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
               was still processing a delay from a previous trigger when a new trigger was received.
             - ``.TMR8``: B8. A set bit indicates that timer 8 generated an action overrun because it
               was still processing a delay from a previous trigger when a new trigger was received.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The
-              ``status.operation.instrument.trigger_timer.trigger_overrun.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.trigger_timer.trigger_overrun.enable``
-              attribute.
-            - ``.event``: The ``status.operation.instrument.trigger_timer.trigger_overrun.event``
-              attribute.
-            - ``.ntr``: The ``status.operation.instrument.trigger_timer.trigger_overrun.ntr``
-              attribute.
-            - ``.ptr``: The ``status.operation.instrument.trigger_timer.trigger_overrun.ptr``
-              attribute.
         """
         return self._trigger_overrun
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationInstrumentTriggerBlenderTriggerOverrun(BaseTSPCmd):
     """The ``status.operation.instrument.trigger_blender.trigger_overrun`` command tree.
 
@@ -6787,18 +3474,6 @@ class StatusOperationInstrumentTriggerBlenderTriggerOverrun(BaseTSPCmd):
           overrun.
         - ``.BLND6``: B6. A set bit value indicates that trigger blender 6 generated an action
           overrun.
-
-    Properties and methods:
-        - ``.condition``: The
-          ``status.operation.instrument.trigger_blender.trigger_overrun.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.trigger_blender.trigger_overrun.enable``
-          attribute.
-        - ``.event``: The ``status.operation.instrument.trigger_blender.trigger_overrun.event``
-          attribute.
-        - ``.ntr``: The ``status.operation.instrument.trigger_blender.trigger_overrun.ntr``
-          attribute.
-        - ``.ptr``: The ``status.operation.instrument.trigger_blender.trigger_overrun.ptr``
-          attribute.
     """
 
     BLND1 = "status.operation.instrument.trigger_blender.trigger_overrun.BLND1"
@@ -6814,268 +3489,6 @@ class StatusOperationInstrumentTriggerBlenderTriggerOverrun(BaseTSPCmd):
     BLND6 = "status.operation.instrument.trigger_blender.trigger_overrun.BLND6"
     """str: B6. A set bit value indicates that trigger blender 6 generated an action overrun."""
 
-    @property
-    def condition(self) -> str:
-        """``status.operation.instrument.trigger_blender.trigger_overrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.condition)``
-              query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """``status.operation.instrument.trigger_blender.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.enable = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """``status.operation.instrument.trigger_blender.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.enable = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """``status.operation.instrument.trigger_blender.trigger_overrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.ntr = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_blender.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.ntr = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.ptr = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_blender.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.trigger_overrun.ptr = value
-            - print(status.operation.instrument.trigger_blender.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
 
 class StatusOperationInstrumentTriggerBlender(BaseTSPCmd):
     """The ``status.operation.instrument.trigger_blender`` command tree.
@@ -7087,11 +3500,6 @@ class StatusOperationInstrumentTriggerBlender(BaseTSPCmd):
           trigger blender overrun register is set.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.trigger_blender.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.trigger_blender.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.trigger_blender.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.trigger_blender.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.trigger_blender.ptr`` attribute.
         - ``.trigger_overrun``: The ``status.operation.instrument.trigger_blender.trigger_overrun``
           command tree.
     """
@@ -7106,265 +3514,6 @@ class StatusOperationInstrumentTriggerBlender(BaseTSPCmd):
         self._trigger_overrun = StatusOperationInstrumentTriggerBlenderTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_blender.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.enable = value
-            - print(status.operation.instrument.trigger_blender.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_blender.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.enable = value
-            - print(status.operation.instrument.trigger_blender.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.trigger_blender.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.ntr = value
-            - print(status.operation.instrument.trigger_blender.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_blender.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.ntr = value
-            - print(status.operation.instrument.trigger_blender.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.trigger_blender.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.ptr = value
-            - print(status.operation.instrument.trigger_blender.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.trigger_blender.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status trigger blender summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.trigger_blender.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.trigger_blender.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.trigger_blender.ptr = value
-            - print(status.operation.instrument.trigger_blender.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def trigger_overrun(self) -> StatusOperationInstrumentTriggerBlenderTriggerOverrun:
@@ -7383,18 +3532,6 @@ class StatusOperationInstrumentTriggerBlender(BaseTSPCmd):
               overrun.
             - ``.BLND6``: B6. A set bit value indicates that trigger blender 6 generated an action
               overrun.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The
-              ``status.operation.instrument.trigger_blender.trigger_overrun.condition`` attribute.
-            - ``.enable``: The
-              ``status.operation.instrument.trigger_blender.trigger_overrun.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.trigger_blender.trigger_overrun.event``
-              attribute.
-            - ``.ntr``: The ``status.operation.instrument.trigger_blender.trigger_overrun.ntr``
-              attribute.
-            - ``.ptr``: The ``status.operation.instrument.trigger_blender.trigger_overrun.ptr``
-              attribute.
         """
         return self._trigger_overrun
 
@@ -7435,278 +3572,6 @@ class StatusOperationInstrumentSmuxItemTriggerOverrun(BaseTSPCmd):
         self.SRC = self.SRC.replace("smuX", f"smu{self._cmd_syntax[3]}")
 
 
-class StatusOperationInstrumentSmuxItemTriggerOverrrun(BaseTSPCmd):
-    """The ``status.operation.instrument.smuX.trigger_overrrun`` command tree.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.smuX.trigger_overrrun.condition``
-          attribute.
-        - ``.enable``: The ``status.operation.instrument.smuX.trigger_overrrun.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.smuX.trigger_overrrun.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
-    """
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.smuX.trigger_overrrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.enable = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.enable = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.smuX.trigger_overrrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.ntr = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.ntr = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.ptr = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.trigger_overrrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.trigger_overrrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.trigger_overrrun.ptr = value
-            - print(status.operation.instrument.smuX.trigger_overrrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
 #  pylint: disable=too-many-instance-attributes
 class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
     """The ``status.operation.instrument.smuX`` command tree.
@@ -7726,13 +3591,6 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
           status smuX trigger overrun event register.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.smuX.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.smuX.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.smuX.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.smuX.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.smuX.ptr`` attribute.
-        - ``.trigger_overrrun``: The ``status.operation.instrument.smuX.trigger_overrrun`` command
-          tree.
         - ``.trigger_overrun``: The ``status.operation.instrument.smuX.trigger_overrun`` command
           tree.
     """
@@ -7772,286 +3630,9 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         self.TRGOVR = self.TRGOVR.replace("smuX", f"smu{self._cmd_syntax[3]}")
         # pylint: disable=invalid-name
         self.TRIGGER_OVERRUN = self.TRIGGER_OVERRUN.replace("smuX", f"smu{self._cmd_syntax[3]}")
-        self._trigger_overrrun = StatusOperationInstrumentSmuxItemTriggerOverrrun(
-            device, f"{self._cmd_syntax}.trigger_overrrun"
-        )
         self._trigger_overrun = StatusOperationInstrumentSmuxItemTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.smuX.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.smuX.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.smuX.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.enable = value
-            - print(status.operation.instrument.smuX.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.enable = value
-            - print(status.operation.instrument.smuX.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.smuX.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.smuX.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.smuX.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.smuX.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.smuX.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.ntr = value
-            - print(status.operation.instrument.smuX.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.smuX.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.ntr = value
-            - print(status.operation.instrument.smuX.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.smuX.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.smuX.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.ptr = value
-            - print(status.operation.instrument.smuX.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.smuX.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status SMU summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.smuX.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.smuX.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.smuX.ptr = value
-            - print(status.operation.instrument.smuX.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def trigger_overrrun(self) -> StatusOperationInstrumentSmuxItemTriggerOverrrun:
-        """Return the ``status.operation.instrument.smuX.trigger_overrrun`` command tree.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.smuX.trigger_overrrun.condition``
-              attribute.
-            - ``.enable``: The ``status.operation.instrument.smuX.trigger_overrrun.enable``
-              attribute.
-            - ``.event``: The ``status.operation.instrument.smuX.trigger_overrrun.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.smuX.trigger_overrrun.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.smuX.trigger_overrrun.ptr`` attribute.
-        """
-        return self._trigger_overrrun
 
     @property
     def trigger_overrun(self) -> StatusOperationInstrumentSmuxItemTriggerOverrun:
@@ -8070,6 +3651,7 @@ class StatusOperationInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         return self._trigger_overrun
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationInstrumentLanTriggerOverrun(BaseTSPCmd):
     """The ``status.operation.instrument.lan.trigger_overrun`` command tree.
 
@@ -8090,14 +3672,6 @@ class StatusOperationInstrumentLanTriggerOverrun(BaseTSPCmd):
           triggered to generate a trigger packet.
         - ``.LAN8``: B8. A set bit indicates that LAN trigger 8 generated an action overrun when
           triggered to generate a trigger packet.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.lan.trigger_overrun.condition``
-          attribute.
-        - ``.enable``: The ``status.operation.instrument.lan.trigger_overrun.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.lan.trigger_overrun.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.lan.trigger_overrun.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.lan.trigger_overrun.ptr`` attribute.
     """
 
     LAN1 = "status.operation.instrument.lan.trigger_overrun.LAN1"
@@ -8117,265 +3691,6 @@ class StatusOperationInstrumentLanTriggerOverrun(BaseTSPCmd):
     LAN8 = "status.operation.instrument.lan.trigger_overrun.LAN8"
     """str: B8. A set bit indicates that LAN trigger 8 generated an action overrun when triggered to generate a trigger packet."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.lan.trigger_overrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.enable = value
-            - print(status.operation.instrument.lan.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.enable = value
-            - print(status.operation.instrument.lan.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.lan.trigger_overrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.ntr = value
-            - print(status.operation.instrument.lan.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.ntr = value
-            - print(status.operation.instrument.lan.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.ptr = value
-            - print(status.operation.instrument.lan.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN trigger overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.trigger_overrun.ptr = value
-            - print(status.operation.instrument.lan.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
 
 class StatusOperationInstrumentLan(BaseTSPCmd):
     """The ``status.operation.instrument.lan`` command tree.
@@ -8393,11 +3708,6 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
           status LAN trigger overrun register is set.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.lan.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.lan.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.lan.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.lan.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.lan.ptr`` attribute.
         - ``.trigger_overrun``: The ``status.operation.instrument.lan.trigger_overrun`` command
           tree.
     """
@@ -8422,265 +3732,6 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
         )
 
     @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.lan.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.lan.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.lan.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.enable = value
-            - print(status.operation.instrument.lan.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.lan.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.enable = value
-            - print(status.operation.instrument.lan.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.lan.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.lan.event)``
-              query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.lan.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.lan.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.lan.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.ntr = value
-            - print(status.operation.instrument.lan.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.lan.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.ntr = value
-            - print(status.operation.instrument.lan.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.lan.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.lan.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.ptr = value
-            - print(status.operation.instrument.lan.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.lan.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status LAN summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.lan.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.lan.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.lan.ptr = value
-            - print(status.operation.instrument.lan.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def trigger_overrun(self) -> StatusOperationInstrumentLanTriggerOverrun:
         """Return the ``status.operation.instrument.lan.trigger_overrun`` command tree.
 
@@ -8701,18 +3752,11 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
               triggered to generate a trigger packet.
             - ``.LAN8``: B8. A set bit indicates that LAN trigger 8 generated an action overrun when
               triggered to generate a trigger packet.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.lan.trigger_overrun.condition``
-              attribute.
-            - ``.enable``: The ``status.operation.instrument.lan.trigger_overrun.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.lan.trigger_overrun.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.lan.trigger_overrun.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.lan.trigger_overrun.ptr`` attribute.
         """
         return self._trigger_overrun
 
 
+# pylint: disable=too-few-public-methods
 class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
     """The ``status.operation.instrument.digio.trigger_overrun`` command tree.
 
@@ -8745,14 +3789,6 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
           when it was triggered to generate an output trigger.
         - ``.LINE9``: B9. A set bit indicates that digital I/O line 9 generated an action overrun
           when it was triggered to generate an output trigger.
-
-    Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.digio.trigger_overrun.condition``
-          attribute.
-        - ``.enable``: The ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.digio.trigger_overrun.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
     """
 
     LINE1 = "status.operation.instrument.digio.trigger_overrun.LINE1"
@@ -8784,265 +3820,6 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
     LINE9 = "status.operation.instrument.digio.trigger_overrun.LINE9"
     """str: B9. A set bit indicates that digital I/O line 9 generated an action overrun when it was triggered to generate an output trigger."""  # noqa: E501
 
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.digio.trigger_overrun.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.enable = value
-            - print(status.operation.instrument.digio.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.enable = value
-            - print(status.operation.instrument.digio.trigger_overrun.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.digio.trigger_overrun.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.ntr = value
-            - print(status.operation.instrument.digio.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.ntr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.ntr = value
-            - print(status.operation.instrument.digio.trigger_overrun.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.ptr = value
-            - print(status.operation.instrument.digio.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O overrun register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.trigger_overrun.ptr)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.trigger_overrun.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.trigger_overrun.ptr = value
-            - print(status.operation.instrument.digio.trigger_overrun.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
 
 class StatusOperationInstrumentDigio(BaseTSPCmd):
     """The ``status.operation.instrument.digio`` command tree.
@@ -9054,11 +3831,6 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
           Digital I/O Overrun Register is set.
 
     Properties and methods:
-        - ``.condition``: The ``status.operation.instrument.digio.condition`` attribute.
-        - ``.enable``: The ``status.operation.instrument.digio.enable`` attribute.
-        - ``.event``: The ``status.operation.instrument.digio.event`` attribute.
-        - ``.ntr``: The ``status.operation.instrument.digio.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.instrument.digio.ptr`` attribute.
         - ``.trigger_overrun``: The ``status.operation.instrument.digio.trigger_overrun`` command
           tree.
     """
@@ -9073,265 +3845,6 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         self._trigger_overrun = StatusOperationInstrumentDigioTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.operation.instrument.digio.condition`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.digio.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.instrument.digio.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.enable = value
-            - print(status.operation.instrument.digio.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.enable`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.enable)`` query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.enable = value
-            - print(status.operation.instrument.digio.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.instrument.digio.event`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.operation.instrument.digio.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.instrument.digio.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.instrument.digio.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.digio.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.ntr = value
-            - print(status.operation.instrument.digio.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.ntr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.digio.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.ntr = value
-            - print(status.operation.instrument.digio.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.instrument.digio.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.digio.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.ptr = value
-            - print(status.operation.instrument.digio.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.instrument.digio.ptr`` attribute.
-
-        Description:
-            - This attribute contains the operation status digital I/O summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.instrument.digio.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.operation.instrument.digio.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.operation.instrument.digio.ptr = value
-            - print(status.operation.instrument.digio.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def trigger_overrun(self) -> StatusOperationInstrumentDigioTriggerOverrun:
@@ -9366,15 +3879,6 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
               overrun when it was triggered to generate an output trigger.
             - ``.LINE9``: B9. A set bit indicates that digital I/O line 9 generated an action
               overrun when it was triggered to generate an output trigger.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.digio.trigger_overrun.condition``
-              attribute.
-            - ``.enable``: The ``status.operation.instrument.digio.trigger_overrun.enable``
-              attribute.
-            - ``.event``: The ``status.operation.instrument.digio.trigger_overrun.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
         """
         return self._trigger_overrun
 
@@ -9490,11 +3994,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               Digital I/O Overrun Register is set.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.digio.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.digio.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.digio.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.digio.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.digio.ptr`` attribute.
             - ``.trigger_overrun``: The ``status.operation.instrument.digio.trigger_overrun``
               command tree.
         """
@@ -9614,11 +4113,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               operation status LAN trigger overrun register is set.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.lan.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.lan.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.lan.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.lan.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.lan.ptr`` attribute.
             - ``.trigger_overrun``: The ``status.operation.instrument.lan.trigger_overrun`` command
               tree.
         """
@@ -9777,13 +4271,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               operation status smuX trigger overrun event register.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.smuX.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.smuX.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.smuX.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.smuX.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.smuX.ptr`` attribute.
-            - ``.trigger_overrrun``: The ``status.operation.instrument.smuX.trigger_overrrun``
-              command tree.
             - ``.trigger_overrun``: The ``status.operation.instrument.smuX.trigger_overrun`` command
               tree.
         """
@@ -9800,12 +4287,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               status trigger blender overrun register is set.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.trigger_blender.condition``
-              attribute.
-            - ``.enable``: The ``status.operation.instrument.trigger_blender.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.trigger_blender.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.trigger_blender.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.trigger_blender.ptr`` attribute.
             - ``.trigger_overrun``: The
               ``status.operation.instrument.trigger_blender.trigger_overrun`` command tree.
         """
@@ -9822,11 +4303,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               operation status trigger timer overrun register is set.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.trigger_timer.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.trigger_timer.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.trigger_timer.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.trigger_timer.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.trigger_timer.ptr`` attribute.
             - ``.trigger_overrun``: The
               ``status.operation.instrument.trigger_timer.trigger_overrun`` command tree.
         """
@@ -9843,11 +4319,6 @@ class StatusOperationInstrument(BaseTSPCmd):
               operation status TSP-Link overrun register is set.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.instrument.tsplink.condition`` attribute.
-            - ``.enable``: The ``status.operation.instrument.tsplink.enable`` attribute.
-            - ``.event``: The ``status.operation.instrument.tsplink.event`` attribute.
-            - ``.ntr``: The ``status.operation.instrument.tsplink.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.instrument.tsplink.ptr`` attribute.
             - ``.trigger_overrun``: The ``status.operation.instrument.tsplink.trigger_overrun``
               command tree.
         """
@@ -10166,13 +4637,8 @@ class StatusOperation(BaseTSPCmd):
 
     Properties and methods:
         - ``.calibrating``: The ``status.operation.calibrating`` command tree.
-        - ``.condition``: The ``status.operation.condition`` attribute.
-        - ``.enable``: The ``status.operation.enable`` attribute.
-        - ``.event``: The ``status.operation.event`` attribute.
         - ``.instrument``: The ``status.operation.instrument`` command tree.
         - ``.measuring``: The ``status.operation.measuring`` command tree.
-        - ``.ntr``: The ``status.operation.ntr`` attribute.
-        - ``.ptr``: The ``status.operation.ptr`` attribute.
         - ``.remote``: The ``status.operation.remote`` command tree.
         - ``.sweeping``: The ``status.operation.sweeping`` command tree.
         - ``.trigger_overrun``: The ``status.operation.trigger_overrun`` command tree.
@@ -10239,127 +4705,6 @@ class StatusOperation(BaseTSPCmd):
         return self._calibrating
 
     @property
-    def condition(self) -> str:
-        """Access the ``status.operation.condition`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.operation.enable`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.enable)`` query.
-            - Setting this property to a value will send the ``status.operation.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.enable = value
-            - print(status.operation.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.enable`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.enable)`` query.
-            - Setting this property to a value will send the ``status.operation.enable = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.enable = value
-            - print(status.operation.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.operation.event`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.operation.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def instrument(self) -> StatusOperationInstrument:
         """Return the ``status.operation.instrument`` command tree.
 
@@ -10417,136 +4762,6 @@ class StatusOperation(BaseTSPCmd):
         return self._measuring
 
     @property
-    def ntr(self) -> str:
-        """Access the ``status.operation.ntr`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.ntr = value
-            - print(status.operation.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.ntr`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.ntr)`` query.
-            - Setting this property to a value will send the ``status.operation.ntr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.ntr = value
-            - print(status.operation.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.operation.ptr`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.ptr = value
-            - print(status.operation.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.operation.ptr`` attribute.
-
-        Description:
-            - These attributes manage the operation status register set of the status model.
-
-        Usage:
-            - Accessing this property will send the ``print(status.operation.ptr)`` query.
-            - Setting this property to a value will send the ``status.operation.ptr = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - status.operation.ptr = value
-            - print(status.operation.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def remote(self) -> StatusOperationRemote:
         """Return the ``status.operation.remote`` command tree.
 
@@ -10556,13 +4771,6 @@ class StatusOperation(BaseTSPCmd):
               execution queue.
             - ``.PRMPT``: B11. Set bit indicates command prompts are enabled.
             - ``.PROMPTS_ENABLED``: B11. Set bit indicates command prompts are enabled.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.remote.condition`` attribute.
-            - ``.enable``: The ``status.operation.remote.enable`` attribute.
-            - ``.event``: The ``status.operation.remote.event`` attribute.
-            - ``.ntr``: The ``status.operation.remote.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.remote.ptr`` attribute.
         """
         return self._remote
 
@@ -10635,13 +4843,6 @@ class StatusOperation(BaseTSPCmd):
             - ``.BIT7``: B7. Read or write bit 7 of the operation status user register.
             - ``.BIT8``: B8. Read or write bit 8 of the operation status user register.
             - ``.BIT9``: B9. Read or write bit 9 of the operation status user register.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.operation.user.condition`` attribute.
-            - ``.enable``: The ``status.operation.user.enable`` attribute.
-            - ``.event``: The ``status.operation.user.event`` attribute.
-            - ``.ntr``: The ``status.operation.user.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.user.ptr`` attribute.
         """
         return self._user
 
@@ -10905,277 +5106,6 @@ class StatusMeasurementVoltageLimit(BaseTSPCmd):
             ```
             - status.measurement.voltage_limit.ptr = value
             - print(status.measurement.voltage_limit.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ptr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ptr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-
-class StatusMeasurementSinkLimit(BaseTSPCmd):
-    """The ``status.measurement.sink_limit`` command tree.
-
-    Properties and methods:
-        - ``.condition``: The ``status.measurement.sink_limit.condition`` attribute.
-        - ``.enable``: The ``status.measurement.sink_limit.enable`` attribute.
-        - ``.event``: The ``status.measurement.sink_limit.event`` attribute.
-        - ``.ntr``: The ``status.measurement.sink_limit.ntr`` attribute.
-        - ``.ptr``: The ``status.measurement.sink_limit.ptr`` attribute.
-    """
-
-    @property
-    def condition(self) -> str:
-        """Access the ``status.measurement.sink_limit.condition`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the
-              ``print(status.measurement.sink_limit.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.measurement.sink_limit.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def enable(self) -> str:
-        """Access the ``status.measurement.sink_limit.enable`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.enable)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.enable = value
-            - print(status.measurement.sink_limit.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.sink_limit.enable`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.enable)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.enable = value
-            - print(status.measurement.sink_limit.enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def event(self) -> str:
-        """Access the ``status.measurement.sink_limit.event`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.event)``
-              query.
-
-        TSP Syntax:
-            ```
-            - print(status.measurement.sink_limit.event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ntr(self) -> str:
-        """Access the ``status.measurement.sink_limit.ntr`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.ntr = value
-            - print(status.measurement.sink_limit.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ntr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ntr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.sink_limit.ntr`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.ntr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.ntr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.ntr = value
-            - print(status.measurement.sink_limit.ntr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".ntr", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.ntr = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def ptr(self) -> str:
-        """Access the ``status.measurement.sink_limit.ptr`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.ptr = value
-            - print(status.measurement.sink_limit.ptr)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".ptr"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.ptr)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.sink_limit.ptr`` attribute.
-
-        Description:
-            - This attribute contains the measurement sink limit summary register set.
-
-        Usage:
-            - Accessing this property will send the ``print(status.measurement.sink_limit.ptr)``
-              query.
-            - Setting this property to a value will send the
-              ``status.measurement.sink_limit.ptr = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.measurement.sink_limit.ptr = value
-            - print(status.measurement.sink_limit.ptr)
             ```
 
         Raises:
@@ -11472,31 +5402,32 @@ class StatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
-class StatusMeasurementOvervoltage(BaseTSPCmd):
-    """The ``status.measurement.overvoltage`` command tree.
+class StatusMeasurementProtection(BaseTSPCmd):
+    """The ``status.measurement.protection`` command tree.
 
     Properties and methods:
-        - ``.condition``: The ``status.measurement.overvoltage.condition`` attribute.
-        - ``.enable``: The ``status.measurement.overvoltage.enable`` attribute.
-        - ``.event``: The ``status.measurement.overvoltage.event`` attribute.
-        - ``.ntr``: The ``status.measurement.overvoltage.ntr`` attribute.
-        - ``.ptr``: The ``status.measurement.overvoltage.ptr`` attribute.
+        - ``.condition``: The ``status.measurement.protection.condition`` attribute.
+        - ``.enable``: The ``status.measurement.protection.enable`` attribute.
+        - ``.event``: The ``status.measurement.protection.event`` attribute.
+        - ``.ntr``: The ``status.measurement.protection.ntr`` attribute.
+        - ``.ptr``: The ``status.measurement.protection.ptr`` attribute.
     """
 
     @property
     def condition(self) -> str:
-        """Access the ``status.measurement.overvoltage.condition`` attribute.
+        """Access the ``status.measurement.protection.condition`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
             - Accessing this property will send the
-              ``print(status.measurement.overvoltage.condition)`` query.
+              ``print(status.measurement.protection.condition)`` query.
 
         TSP Syntax:
             ```
-            - print(status.measurement.overvoltage.condition)
+            - print(status.measurement.protection.condition)
             ```
 
         Raises:
@@ -11514,21 +5445,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @property
     def enable(self) -> str:
-        """Access the ``status.measurement.overvoltage.enable`` attribute.
+        """Access the ``status.measurement.protection.enable`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.enable)``
+            - Accessing this property will send the ``print(status.measurement.protection.enable)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.enable = value`` command.
+              ``status.measurement.protection.enable = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.enable = value
-            - print(status.measurement.overvoltage.enable)
+            - status.measurement.protection.enable = value
+            - print(status.measurement.protection.enable)
             ```
 
         Raises:
@@ -11546,21 +5478,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @enable.setter
     def enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.overvoltage.enable`` attribute.
+        """Access the ``status.measurement.protection.enable`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.enable)``
+            - Accessing this property will send the ``print(status.measurement.protection.enable)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.enable = value`` command.
+              ``status.measurement.protection.enable = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.enable = value
-            - print(status.measurement.overvoltage.enable)
+            - status.measurement.protection.enable = value
+            - print(status.measurement.protection.enable)
             ```
 
         Raises:
@@ -11581,18 +5514,19 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @property
     def event(self) -> str:
-        """Access the ``status.measurement.overvoltage.event`` attribute.
+        """Access the ``status.measurement.protection.event`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.event)``
+            - Accessing this property will send the ``print(status.measurement.protection.event)``
               query.
 
         TSP Syntax:
             ```
-            - print(status.measurement.overvoltage.event)
+            - print(status.measurement.protection.event)
             ```
 
         Raises:
@@ -11610,21 +5544,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @property
     def ntr(self) -> str:
-        """Access the ``status.measurement.overvoltage.ntr`` attribute.
+        """Access the ``status.measurement.protection.ntr`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.ntr)``
+            - Accessing this property will send the ``print(status.measurement.protection.ntr)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.ntr = value`` command.
+              ``status.measurement.protection.ntr = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.ntr = value
-            - print(status.measurement.overvoltage.ntr)
+            - status.measurement.protection.ntr = value
+            - print(status.measurement.protection.ntr)
             ```
 
         Raises:
@@ -11642,21 +5577,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @ntr.setter
     def ntr(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.overvoltage.ntr`` attribute.
+        """Access the ``status.measurement.protection.ntr`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.ntr)``
+            - Accessing this property will send the ``print(status.measurement.protection.ntr)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.ntr = value`` command.
+              ``status.measurement.protection.ntr = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.ntr = value
-            - print(status.measurement.overvoltage.ntr)
+            - status.measurement.protection.ntr = value
+            - print(status.measurement.protection.ntr)
             ```
 
         Raises:
@@ -11677,21 +5613,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @property
     def ptr(self) -> str:
-        """Access the ``status.measurement.overvoltage.ptr`` attribute.
+        """Access the ``status.measurement.protection.ptr`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.ptr)``
+            - Accessing this property will send the ``print(status.measurement.protection.ptr)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.ptr = value`` command.
+              ``status.measurement.protection.ptr = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.ptr = value
-            - print(status.measurement.overvoltage.ptr)
+            - status.measurement.protection.ptr = value
+            - print(status.measurement.protection.ptr)
             ```
 
         Raises:
@@ -11709,21 +5646,22 @@ class StatusMeasurementOvervoltage(BaseTSPCmd):
 
     @ptr.setter
     def ptr(self, value: Union[str, float]) -> None:
-        """Access the ``status.measurement.overvoltage.ptr`` attribute.
+        """Access the ``status.measurement.protection.ptr`` attribute.
 
         Description:
-            - This attribute contains the measurement event overvoltage summary register set.
+            - This attribute contains the registers of the measurement event protection summary
+              register set.
 
         Usage:
-            - Accessing this property will send the ``print(status.measurement.overvoltage.ptr)``
+            - Accessing this property will send the ``print(status.measurement.protection.ptr)``
               query.
             - Setting this property to a value will send the
-              ``status.measurement.overvoltage.ptr = value`` command.
+              ``status.measurement.protection.ptr = value`` command.
 
         TSP Syntax:
             ```
-            - status.measurement.overvoltage.ptr = value
-            - print(status.measurement.overvoltage.ptr)
+            - status.measurement.protection.ptr = value
+            - print(status.measurement.protection.ptr)
             ```
 
         Raises:
@@ -11812,7 +5750,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.condition`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -11842,7 +5780,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -11875,7 +5813,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.enable`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -11911,7 +5849,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.event`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -11941,7 +5879,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -11974,7 +5912,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.ntr`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -12010,7 +5948,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -12043,7 +5981,7 @@ class StatusMeasurementInstrumentSmuxItem(ValidatedChannel, BaseTSPCmd):
         """Access the ``status.measurement.instrument.smuX.ptr`` attribute.
 
         Description:
-            - This attribute contains the registers of the measurement event SMU X summary register
+            - This attribute contains the registers of the measurement event SMU A summary register
               set.
 
         Usage:
@@ -12973,8 +6911,8 @@ class StatusMeasurement(BaseTSPCmd):
           register is set.
         - ``.INSTRUMENT_SUMMARY``: B13. Set bit indicates that a bit in the measurement instrument
           summary register is set.
-        - ``.OE``: B11.
-        - ``.OUTPUT_ENABLE``: B11.
+        - ``.INT``: B11.
+        - ``.INTERLOCK``: B11.
         - ``.READING_OVERFLOW``: B7. Set bit is a summary of the status.measurement.reading_overflow
           register.
         - ``.ROF``: B7. Set bit is a summary of the status.measurement.reading_overflow register.
@@ -12990,10 +6928,9 @@ class StatusMeasurement(BaseTSPCmd):
         - ``.event``: The ``status.measurement.event`` attribute.
         - ``.instrument``: The ``status.measurement.instrument`` command tree.
         - ``.ntr``: The ``status.measurement.ntr`` attribute.
-        - ``.overvoltage``: The ``status.measurement.overvoltage`` command tree.
+        - ``.protection``: The ``status.measurement.protection`` command tree.
         - ``.ptr``: The ``status.measurement.ptr`` attribute.
         - ``.reading_overflow``: The ``status.measurement.reading_overflow`` command tree.
-        - ``.sink_limit``: The ``status.measurement.sink_limit`` command tree.
         - ``.voltage_limit``: The ``status.measurement.voltage_limit`` command tree.
     """
 
@@ -13013,9 +6950,9 @@ register."""
     """str: B13. Set bit indicates that a bit in the measurement instrument summary register is set."""  # noqa: E501
     INSTRUMENT_SUMMARY = "status.measurement.INSTRUMENT_SUMMARY"
     """str: B13. Set bit indicates that a bit in the measurement instrument summary register is set."""  # noqa: E501
-    OE = "status.measurement.OE"
+    INT = "status.measurement.INT"
     """str: B11."""
-    OUTPUT_ENABLE = "status.measurement.OUTPUT_ENABLE"
+    INTERLOCK = "status.measurement.INTERLOCK"
     """str: B11."""
     READING_OVERFLOW = "status.measurement.READING_OVERFLOW"
     """str: B7. Set bit is a summary of the status.measurement.reading_overflow register."""
@@ -13035,11 +6972,10 @@ register."""
             device, f"{self._cmd_syntax}.current_limit"
         )
         self._instrument = StatusMeasurementInstrument(device, f"{self._cmd_syntax}.instrument")
-        self._overvoltage = StatusMeasurementOvervoltage(device, f"{self._cmd_syntax}.overvoltage")
+        self._protection = StatusMeasurementProtection(device, f"{self._cmd_syntax}.protection")
         self._reading_overflow = StatusMeasurementReadingOverflow(
             device, f"{self._cmd_syntax}.reading_overflow"
         )
-        self._sink_limit = StatusMeasurementSinkLimit(device, f"{self._cmd_syntax}.sink_limit")
         self._voltage_limit = StatusMeasurementVoltageLimit(
             device, f"{self._cmd_syntax}.voltage_limit"
         )
@@ -13067,7 +7003,7 @@ register."""
         """Access the ``status.measurement.condition`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.condition)`` query.
@@ -13111,7 +7047,7 @@ register."""
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.enable)`` query.
@@ -13142,7 +7078,7 @@ register."""
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.enable)`` query.
@@ -13176,7 +7112,7 @@ register."""
         """Access the ``status.measurement.event`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.event)`` query.
@@ -13222,7 +7158,7 @@ register."""
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ntr)`` query.
@@ -13253,7 +7189,7 @@ register."""
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ntr)`` query.
@@ -13283,24 +7219,24 @@ register."""
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def overvoltage(self) -> StatusMeasurementOvervoltage:
-        """Return the ``status.measurement.overvoltage`` command tree.
+    def protection(self) -> StatusMeasurementProtection:
+        """Return the ``status.measurement.protection`` command tree.
 
         Sub-properties and sub-methods:
-            - ``.condition``: The ``status.measurement.overvoltage.condition`` attribute.
-            - ``.enable``: The ``status.measurement.overvoltage.enable`` attribute.
-            - ``.event``: The ``status.measurement.overvoltage.event`` attribute.
-            - ``.ntr``: The ``status.measurement.overvoltage.ntr`` attribute.
-            - ``.ptr``: The ``status.measurement.overvoltage.ptr`` attribute.
+            - ``.condition``: The ``status.measurement.protection.condition`` attribute.
+            - ``.enable``: The ``status.measurement.protection.enable`` attribute.
+            - ``.event``: The ``status.measurement.protection.event`` attribute.
+            - ``.ntr``: The ``status.measurement.protection.ntr`` attribute.
+            - ``.ptr``: The ``status.measurement.protection.ptr`` attribute.
         """
-        return self._overvoltage
+        return self._protection
 
     @property
     def ptr(self) -> str:
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ptr)`` query.
@@ -13331,7 +7267,7 @@ register."""
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:
-            - These attributes contain the measurement event register set.
+            - This attribute contains the measurement event register set.
 
         Usage:
             - Accessing this property will send the ``print(status.measurement.ptr)`` query.
@@ -13375,19 +7311,6 @@ register."""
             - ``.ptr``: The ``status.measurement.reading_overflow.ptr`` attribute.
         """
         return self._reading_overflow
-
-    @property
-    def sink_limit(self) -> StatusMeasurementSinkLimit:
-        """Return the ``status.measurement.sink_limit`` command tree.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.measurement.sink_limit.condition`` attribute.
-            - ``.enable``: The ``status.measurement.sink_limit.enable`` attribute.
-            - ``.event``: The ``status.measurement.sink_limit.event`` attribute.
-            - ``.ntr``: The ``status.measurement.sink_limit.ntr`` attribute.
-            - ``.ptr``: The ``status.measurement.sink_limit.ptr`` attribute.
-        """
-        return self._sink_limit
 
     @property
     def voltage_limit(self) -> StatusMeasurementVoltageLimit:
@@ -13441,15 +7364,11 @@ class Status(BaseTSPCmd):
           occurred.
 
     Properties and methods:
-        - ``.condition``: The ``status.condition`` attribute.
         - ``.measurement``: The ``status.measurement`` command tree.
-        - ``.node_enable``: The ``status.node_enable`` attribute.
-        - ``.node_event``: The ``status.node_event`` attribute.
         - ``.operation``: The ``status.operation`` command tree.
         - ``.questionable``: The ``status.questionable`` command tree.
         - ``.request_enable``: The ``status.request_enable`` attribute.
         - ``.request_event``: The ``status.request_event`` attribute.
-        - ``.reset()``: The ``status.reset()`` function.
         - ``.standard``: The ``status.standard`` command tree.
         - ``.system``: The ``status.system`` command tree.
         - ``.system2``: The ``status.system2`` command tree.
@@ -13504,34 +7423,6 @@ class Status(BaseTSPCmd):
         self._system5 = StatusSystem5(device, f"{self._cmd_syntax}.system5")
 
     @property
-    def condition(self) -> str:
-        """Access the ``status.condition`` attribute.
-
-        Description:
-            - This attribute stores the status byte condition register.
-
-        Usage:
-            - Accessing this property will send the ``print(status.condition)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.condition)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".condition"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.condition)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
     def measurement(self) -> StatusMeasurement:
         """Return the ``status.measurement`` command tree.
 
@@ -13550,8 +7441,8 @@ class Status(BaseTSPCmd):
               register is set.
             - ``.INSTRUMENT_SUMMARY``: B13. Set bit indicates that a bit in the measurement
               instrument summary register is set.
-            - ``.OE``: B11.
-            - ``.OUTPUT_ENABLE``: B11.
+            - ``.INT``: B11.
+            - ``.INTERLOCK``: B11.
             - ``.READING_OVERFLOW``: B7. Set bit is a summary of the
               status.measurement.reading_overflow register.
             - ``.ROF``: B7. Set bit is a summary of the status.measurement.reading_overflow
@@ -13568,104 +7459,12 @@ class Status(BaseTSPCmd):
             - ``.event``: The ``status.measurement.event`` attribute.
             - ``.instrument``: The ``status.measurement.instrument`` command tree.
             - ``.ntr``: The ``status.measurement.ntr`` attribute.
-            - ``.overvoltage``: The ``status.measurement.overvoltage`` command tree.
+            - ``.protection``: The ``status.measurement.protection`` command tree.
             - ``.ptr``: The ``status.measurement.ptr`` attribute.
             - ``.reading_overflow``: The ``status.measurement.reading_overflow`` command tree.
-            - ``.sink_limit``: The ``status.measurement.sink_limit`` command tree.
             - ``.voltage_limit``: The ``status.measurement.voltage_limit`` command tree.
         """
         return self._measurement
-
-    @property
-    def node_enable(self) -> str:
-        """Access the ``status.node_enable`` attribute.
-
-        Description:
-            - This attribute stores the system node enable register.
-
-        Usage:
-            - Accessing this property will send the ``print(status.node_enable)`` query.
-            - Setting this property to a value will send the ``status.node_enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.node_enable = value
-            - print(status.node_enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".node_enable"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.node_enable)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.node_enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @node_enable.setter
-    def node_enable(self, value: Union[str, float]) -> None:
-        """Access the ``status.node_enable`` attribute.
-
-        Description:
-            - This attribute stores the system node enable register.
-
-        Usage:
-            - Accessing this property will send the ``print(status.node_enable)`` query.
-            - Setting this property to a value will send the ``status.node_enable = value`` command.
-
-        TSP Syntax:
-            ```
-            - status.node_enable = value
-            - print(status.node_enable)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".node_enable", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.node_enable = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.node_enable`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @property
-    def node_event(self) -> str:
-        """Access the ``status.node_event`` attribute.
-
-        Description:
-            - This attribute stores the status node event register.
-
-        Usage:
-            - Accessing this property will send the ``print(status.node_event)`` query.
-
-        TSP Syntax:
-            ```
-            - print(status.node_event)
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".node_event"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.node_event)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.node_event`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
 
     @property
     def operation(self) -> StatusOperation:
@@ -13703,13 +7502,8 @@ class Status(BaseTSPCmd):
 
         Sub-properties and sub-methods:
             - ``.calibrating``: The ``status.operation.calibrating`` command tree.
-            - ``.condition``: The ``status.operation.condition`` attribute.
-            - ``.enable``: The ``status.operation.enable`` attribute.
-            - ``.event``: The ``status.operation.event`` attribute.
             - ``.instrument``: The ``status.operation.instrument`` command tree.
             - ``.measuring``: The ``status.operation.measuring`` command tree.
-            - ``.ntr``: The ``status.operation.ntr`` attribute.
-            - ``.ptr``: The ``status.operation.ptr`` attribute.
             - ``.remote``: The ``status.operation.remote`` command tree.
             - ``.sweeping``: The ``status.operation.sweeping`` command tree.
             - ``.trigger_overrun``: The ``status.operation.trigger_overrun`` command tree.
@@ -13882,13 +7676,6 @@ class Status(BaseTSPCmd):
               pressed.
             - ``.USER_REQUEST``: B6. Set bit indicates that the LOCAL key on the instrument front
               panel was pressed.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.standard.condition`` attribute.
-            - ``.enable``: The ``status.standard.enable`` attribute.
-            - ``.event``: The ``status.standard.event`` attribute.
-            - ``.ntr``: The ``status.standard.ntr`` attribute.
-            - ``.ptr``: The ``status.standard.ptr`` attribute.
         """
         return self._standard
 
@@ -13929,13 +7716,6 @@ class Status(BaseTSPCmd):
               system summary register.
             - ``.NODE9``: B9. In an expanded system (TSP-Link), this is used to read or write to the
               system summary register.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.system.condition`` attribute.
-            - ``.enable``: The ``status.system.enable`` attribute.
-            - ``.event``: The ``status.system.event`` attribute.
-            - ``.ntr``: The ``status.system.ntr`` attribute.
-            - ``.ptr``: The ``status.system.ptr`` attribute.
         """
         return self._system
 
@@ -13976,13 +7756,6 @@ class Status(BaseTSPCmd):
               node 27.
             - ``.NODE28``: B14. Manages the TSP-Link system summary register of the status model for
               node 28.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.system2.condition`` attribute.
-            - ``.enable``: The ``status.system2.enable`` attribute.
-            - ``.event``: The ``status.system2.event`` attribute.
-            - ``.ntr``: The ``status.system2.ntr`` attribute.
-            - ``.ptr``: The ``status.system2.ptr`` attribute.
         """
         return self._system2
 
@@ -14023,13 +7796,6 @@ class Status(BaseTSPCmd):
               status model for node 41.
             - ``.NODE42``: B13. This attribute manages the TSP-Link system summary register of the
               status model for node 42.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.system3.condition`` attribute.
-            - ``.enable``: The ``status.system3.enable`` attribute.
-            - ``.event``: The ``status.system3.event`` attribute.
-            - ``.ntr``: The ``status.system3.ntr`` attribute.
-            - ``.ptr``: The ``status.system3.ptr`` attribute.
         """
         return self._system3
 
@@ -14070,13 +7836,6 @@ class Status(BaseTSPCmd):
               status model for node 55.
             - ``.NODE56``: B14. This attributes manages the TSP-Link system summary register of the
               status model for node 56.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.system4.condition`` attribute.
-            - ``.enable``: The ``status.system4.enable`` attribute.
-            - ``.event``: The ``status.system4.event`` attribute.
-            - ``.ntr``: The ``status.system4.ntr`` attribute.
-            - ``.ptr``: The ``status.system4.ptr`` attribute.
         """
         return self._system4
 
@@ -14101,34 +7860,5 @@ class Status(BaseTSPCmd):
               status model for node.
             - ``.NODE64``: B8. This attributes manages the TSP-Link system summary register of the
               status model for node.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``status.system5.condition`` attribute.
-            - ``.enable``: The ``status.system5.enable`` attribute.
-            - ``.event``: The ``status.system5.event`` attribute.
-            - ``.ntr``: The ``status.system5.ntr`` attribute.
-            - ``.ptr``: The ``status.system5.ptr`` attribute.
         """
         return self._system5
-
-    def reset(self) -> None:
-        """Run the ``status.reset()`` function.
-
-        Description:
-            - This function resets all bits in the status model.
-
-        TSP Syntax:
-            ```
-            - status.reset()
-            ```
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            self._device.write(  # type: ignore[union-attr]
-                f"{self._cmd_syntax}.reset()"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error

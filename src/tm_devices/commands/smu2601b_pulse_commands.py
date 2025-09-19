@@ -11,23 +11,23 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_7s2p1p_smu.beeper import Beeper
-from .gen_7s2p1p_smu.buffervar import Buffervar
-from .gen_7s2p1p_smu.dataqueue import Dataqueue
-from .gen_7s2p1p_smu.digio import Digio
-from .gen_7s2p1p_smu.display import Display
-from .gen_7s2p1p_smu.errorqueue import Errorqueue
-from .gen_7s2p1p_smu.eventlog import Eventlog
-from .gen_7s2p1p_smu.format import Format
-from .gen_7s2p1p_smu.lan import Lan
-from .gen_7s2p1p_smu.localnode import Localnode
-from .gen_7s2p1p_smu.serial import Serial
-from .gen_7s2p1p_smu.smux import SmuxItem
-from .gen_7s2p1p_smu.status import Status
-from .gen_7s2p1p_smu.trigger import Trigger
-from .gen_7s2p1p_smu.tsplink import Tsplink
-from .gen_7s2p1p_smu.tspnet import Tspnet
-from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
+from .gen_as1ejq_smu.beeper import Beeper
+from .gen_as1ejq_smu.buffervar import Buffervar
+from .gen_as1ejq_smu.dataqueue import Dataqueue
+from .gen_as1ejq_smu.digio import Digio
+from .gen_as1ejq_smu.display import Display
+from .gen_as1ejq_smu.errorqueue import Errorqueue
+from .gen_as1ejq_smu.eventlog import Eventlog
+from .gen_as1ejq_smu.format import Format
+from .gen_as1ejq_smu.lan import Lan
+from .gen_as1ejq_smu.localnode import Localnode
+from .gen_as1ejq_smu.serial import Serial
+from .gen_as1ejq_smu.smux import SmuxItem
+from .gen_as1ejq_smu.status import Status
+from .gen_as1ejq_smu.trigger import Trigger
+from .gen_as1ejq_smu.tsplink import Tsplink
+from .gen_as1ejq_smu.tspnet import Tspnet
+from .gen_fwpolc_daqdmmsmuss.gpib import Gpib
 from .helpers import DefaultDictPassKeyToFactory
 
 

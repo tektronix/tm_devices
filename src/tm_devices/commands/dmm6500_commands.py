@@ -10,34 +10,34 @@ from typing import Dict, Optional
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_d83qe0_dmm.buffer import Buffer
-from .gen_d83qe0_dmm.buffervar import Buffervar
-from .gen_d83qe0_dmm.channel import Channel
-from .gen_d83qe0_dmm.display import Display
-from .gen_d83qe0_dmm.dmm import Dmm
-from .gen_d83qe0_dmm.scan import Scan
-from .gen_d83qe0_dmm.slot import SlotItem
-from .gen_d83qe0_dmm.trigger import Trigger
-from .gen_dawv9y_smudaqdmm.localnode import Localnode
-from .gen_dbdq3i_smudaqdmm.beeper import Beeper
-from .gen_dbdq3i_smudaqdmm.eventlog import Eventlog
-from .gen_dbdq3i_smudaqdmm.file import File
-from .gen_dbdq3i_smudaqdmm.format import Format
-from .gen_dbdq3i_smudaqdmm.lan import Lan
-from .gen_dbdq3i_smudaqdmm.scriptvar import Scriptvar
-from .gen_dbdq3i_smudaqdmm.timer import Timer
-from .gen_dbqd7k_dmm.digio import Digio
-from .gen_dbqd7k_dmm.node import NodeItem
-from .gen_dbqd7k_dmm.status import Status
-from .gen_dbqd7k_dmm.tsplink import Tsplink
-from .gen_dbqd7k_dmm.tspnet import Tspnet
-from .gen_dbqd7k_dmm.upgrade import Upgrade
-from .gen_dcpheg_daqdmm.smu import Smu
-from .gen_dd4xnb_smudaqdmm.script import Script
-from .gen_eat5s3_smudaqdmmss.fs import Fs
-from .gen_eg5ll2_smudaqdmmss.gpib import Gpib
-from .gen_g0cbes_smudaqdmmssmp.dataqueue import Dataqueue
-from .gen_g0cbes_smudaqdmmssmp.userstring import Userstring
+from .gen_alg0kc_daqdmmsmu.script import Script
+from .gen_ao4xqx_daqdmmsmu.localnode import Localnode
+from .gen_ao95gb_daqdmmsmu.beeper import Beeper
+from .gen_ao95gb_daqdmmsmu.eventlog import Eventlog
+from .gen_ao95gb_daqdmmsmu.file import File
+from .gen_ao95gb_daqdmmsmu.format import Format
+from .gen_ao95gb_daqdmmsmu.lan import Lan
+from .gen_ao95gb_daqdmmsmu.scriptvar import Scriptvar
+from .gen_ao95gb_daqdmmsmu.timer import Timer
+from .gen_frwwqg_daqdmmsmuss.fs import Fs
+from .gen_fs14fx_daqdmmmpsmuss.dataqueue import Dataqueue
+from .gen_fs14fx_daqdmmmpsmuss.userstring import Userstring
+from .gen_fwpolc_daqdmmsmuss.gpib import Gpib
+from .gen_kg1qs_dmm.buffer import Buffer
+from .gen_kg1qs_dmm.buffervar import Buffervar
+from .gen_kg1qs_dmm.channel import Channel
+from .gen_kg1qs_dmm.display import Display
+from .gen_kg1qs_dmm.dmm import Dmm
+from .gen_kg1qs_dmm.scan import Scan
+from .gen_kg1qs_dmm.slot import SlotItem
+from .gen_kg1qs_dmm.trigger import Trigger
+from .gen_txds2_daqdmm.smu import Smu
+from .gen_tyscm_dmm.digio import Digio
+from .gen_tyscm_dmm.node import NodeItem
+from .gen_tyscm_dmm.status import Status
+from .gen_tyscm_dmm.tsplink import Tsplink
+from .gen_tyscm_dmm.tspnet import Tspnet
+from .gen_tyscm_dmm.upgrade import Upgrade
 from .helpers import DefaultDictPassKeyToFactory, NoDeviceProvidedError
 
 

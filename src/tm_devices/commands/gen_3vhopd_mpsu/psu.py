@@ -2,7 +2,7 @@
 """The psu commands module.
 
 These commands are used in the following models:
-PSU50ST
+MPSU50_2ST
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -76,7 +76,7 @@ from typing import Optional, TYPE_CHECKING, Union
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from ..gen_h52sc3_mppsu.buffervar import Buffervar
+from ..gen_4ajvxe_mpmpsu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:

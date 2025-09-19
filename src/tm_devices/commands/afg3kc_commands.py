@@ -10,32 +10,32 @@ from typing import Optional
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from .gen_22daqs_afg.afgcontrol import Afgcontrol
-from .gen_22daqs_afg.data import Data
-from .gen_22daqs_afg.diagnostic import Diagnostic
-from .gen_22daqs_afg.display import Display
-from .gen_22daqs_afg.hcopy import Hcopy
-from .gen_22daqs_afg.memory import Memory, Rcl, Sav
-from .gen_22daqs_afg.mmemory import Mmemory
-from .gen_22daqs_afg.output import Output
-from .gen_22daqs_afg.output1 import Output1
-from .gen_22daqs_afg.output2 import Output2
-from .gen_22daqs_afg.source import Source
-from .gen_22daqs_afg.source1 import Source1
-from .gen_22daqs_afg.source2 import Source2
-from .gen_22daqs_afg.source3 import Source3
-from .gen_22daqs_afg.source4 import Source4
-from .gen_22daqs_afg.status import Ese, Psc, Sre, Status
-from .gen_22daqs_afg.system import System
-from .gen_22daqs_afg.trigger import Trigger
-from .gen_33ijgq_afgawg.abort import Abort
-from .gen_33ijgq_afgawg.calibration import Calibration
-from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
-from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
-from .gen_h1iyne_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_h2kvzl_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_h3bks9_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
+from .gen_5xiee_afg.afgcontrol import Afgcontrol
+from .gen_5xiee_afg.data import Data
+from .gen_5xiee_afg.diagnostic import Diagnostic
+from .gen_5xiee_afg.display import Display
+from .gen_5xiee_afg.hcopy import Hcopy
+from .gen_5xiee_afg.memory import Memory, Rcl, Sav
+from .gen_5xiee_afg.mmemory import Mmemory
+from .gen_5xiee_afg.output import Output
+from .gen_5xiee_afg.output1 import Output1
+from .gen_5xiee_afg.output2 import Output2
+from .gen_5xiee_afg.source import Source
+from .gen_5xiee_afg.source1 import Source1
+from .gen_5xiee_afg.source2 import Source2
+from .gen_5xiee_afg.source3 import Source3
+from .gen_5xiee_afg.source4 import Source4
+from .gen_5xiee_afg.status import Ese, Psc, Sre, Status
+from .gen_5xiee_afg.system import System
+from .gen_5xiee_afg.trigger import Trigger
+from .gen_8n7m9m_afgawgdpodsalpdmdomso.miscellaneous import Trg
+from .gen_8rp5l3_afgawgdpodsamdomso.calibration import Cal
+from .gen_gnk3bw_afgawgdpodsamdomsotekscopepc.status_and_error import Opc, Rst
+from .gen_gthlnl_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Opt
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.miscellaneous import Idn, Tst
+from .gen_gz3vfu_afgawgdpodsalpdmdomsotekscopepc.status_and_error import Cls, Esr, Stb, Wai
+from .gen_kafgy_afgawg.abort import Abort
+from .gen_kafgy_afgawg.calibration import Calibration
 
 
 # pylint: disable=too-few-public-methods

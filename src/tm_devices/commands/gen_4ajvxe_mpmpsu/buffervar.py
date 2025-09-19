@@ -2,7 +2,7 @@
 """The buffervar commands module.
 
 These commands are used in the following models:
-MP5103, PSU50ST
+MP5103, MPSU50_2ST
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 

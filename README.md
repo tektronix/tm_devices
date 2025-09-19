@@ -71,7 +71,7 @@ with DeviceManager() as device_manager:
 > [!TIP]
 > Visit the [Glossary](https://github.com/tektronix/tm_devices/blob/main/docs/glossary.md) to see definitions for all symbols and abbreviations.
 
-<div markdown="1" class="custom-table-center-cells device-support-table">
+<div markdown="1" class="custom-table-center-cells device-support-table first-row-no-background">
 
 <div markdown="1" class="custom-table-title">
 
@@ -143,14 +143,28 @@ _Device Support Levels_
 
 <div markdown="1" class="custom-table-title">
 
+_Mainframe Module Support Levels_
+
+</div>
+
+| Module         | Applicable<br>Mainframes | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
+| -------------- | ------------------------ | --------------- | ---------------- | ---------------------------------- |
+| **MPSU50-2ST** | MP5000 Series            | TSP             | ✅               | 🚧                                 |
+
+</div>
+
+<div markdown="1" class="custom-table-center-cells device-support-table">
+
+<div markdown="1" class="custom-table-title">
+
 _Software Solution Support Levels_
 
 </div>
 
 | Software<br>Solution | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
 | -------------------- | --------------- | ---------------- | ---------------------------------- |
-| DPOJET               | PI              | ✅               | ✅                                 |
-| SourceXpress         | PI              | ✅               | ✅                                 |
+| **DPOJET**           | PI              | ✅               | ✅                                 |
+| **SourceXpress**     | PI              | ✅               | ✅                                 |
 
 </div>
 
