@@ -18,6 +18,20 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.4.0 (2025-09-20)
+
+### Merged Pull Requests
+
+- python-deps(deps): bump the python-dependencies group across 1 directory with 5 updates ([#497](https://github.com/tektronix/tm_devices/pull/497))
+- refactor: re-organize the commands subpackage ([#496](https://github.com/tektronix/tm_devices/pull/496))
+- feat: Add support for 7 Series DPO scope and MP5000 Series mainframe ([#494](https://github.com/tektronix/tm_devices/pull/494))
+- chore: update Node.js and Ubuntu versions in CI configuration for consistency ([#495](https://github.com/tektronix/tm_devices/pull/495))
+- python-deps(deps): bump the python-dependencies group with 7 updates ([#492](https://github.com/tektronix/tm_devices/pull/492))
+- python-deps(deps): bump the python-dependencies group with 11 updates ([#491](https://github.com/tektronix/tm_devices/pull/491))
+- python-deps(deps): bump the python-dependencies group with 6 updates ([#489](https://github.com/tektronix/tm_devices/pull/489))
+
 ### Added
 
 - Added full python API support for DPO7xxAX (7 series DPO) scopes.
