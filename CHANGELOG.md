@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the `TekScope.curve_query()` method to properly create a csv file without any trailing commas that previously caused csv parsing issues.
+
 ---
 
 ## v3.4.0 (2025-09-20)

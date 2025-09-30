@@ -401,9 +401,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
 
         if output_csv_file:
             with Path(output_csv_file).open("w", encoding="UTF-8") as csv_file:
-                for frame in frames:
-                    csv_file.write(frame)
-                    csv_file.write(",")
+                csv_file.write(",".join(frames))
 
         if len(wfm_data) == 1:
             return wfm_data[0]  # return single frame

@@ -8,7 +8,9 @@ from tm_devices.drivers import AFG3KC, MSO5
 EXAMPLE_CSV_FILE = Path("example_curve_query.csv")
 
 with DeviceManager(verbose=True) as dm:
+    # Add a scope via hostname (use IP address if necessary)
     scope: MSO5 = dm.add_scope("MSO56-100083")
+    # Add an AFG via IP address
     afg: AFG3KC = dm.add_afg("192.168.0.1")
 
     # Turn on AFG

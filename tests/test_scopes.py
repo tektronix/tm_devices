@@ -168,8 +168,8 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         ):
             curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
         with filepath.open(encoding="utf8") as curve_csv:
-            # Remove trailing command a format string as list of ints based on commas
-            curve_reformatted_from_file = list(map(int, curve_csv.read()[:-1].split(",")))
+            # Format string as list of ints based on commas
+            curve_reformatted_from_file = list(map(int, curve_csv.read().split(",")))
             # Flatten list of lists returned from multi-frame curve query
             curve_flattened_return_list = [item for child_list in curve for item in child_list]
             # Assert what was saved in file matches what was returned, after formatting is applied
