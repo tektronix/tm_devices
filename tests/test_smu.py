@@ -270,7 +270,7 @@ def test_smu(  # noqa: PLR0915
     smu.enable_verification = False
     assert smu.set_and_check("status.request_enable", 1) == ""
 
-    with pytest.raises(AssertionError, match="error code 0 != 1"):
+    with pytest.raises(AssertionError, match="ESR value mismatch \\(Expected: 1, Actual: 0\\)"):
         smu.expect_esr(1)
 
 
