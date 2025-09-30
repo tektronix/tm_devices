@@ -1081,6 +1081,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                         # It shouldn't be able to reconnect on the first try.
                         # If it does, it most certainly did not reboot.
                         opened = False
+                        msg = (
+                            f"A VISA connection was established with {self._resource_expression} "
+                            "on the first attempt, cannot guarantee a reboot occurred unless "
+                            "connection attempt fails at least once."
+                        )
+                        _logger.warning(msg)  # TODO: add unit test check
                     break
                 except ConnectionError:
                     # raised by the create_visa_connection() function

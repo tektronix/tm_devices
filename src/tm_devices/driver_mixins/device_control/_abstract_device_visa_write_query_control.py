@@ -3,6 +3,7 @@
 import logging
 
 from abc import abstractmethod
+from itertools import zip_longest
 from typing import Any, final, Tuple
 
 from tm_devices.driver_mixins.device_control._abstract_device_control import (
@@ -30,35 +31,42 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
         """Write to the device."""
 
     @final
-    def expect_esr(
+    def expect_esr(  # noqa: C901
         self, esr: int, error_messages: Tuple[str, ...] = (), *, use_regex_match: bool = False
     ) -> bool:
-        r"""Check for the expected error code and messages.
+        r"""Checks for the expected esr value and queued error messages.
 
         Args:
-            esr: Expected ``*ESR?`` value
+            esr: Expected ``*ESR?`` value as decimal-weighted integer.
             error_messages: Expected error buffer messages in a tuple.
-            use_regex_match: A boolean indicating if the error messages should be matched
-                using regular expressions.
+            use_regex_match: A boolean indicating if the messages should be compared
+                using regular expressions. Does not affect the esr value comparison.
 
         Returns:
-            A boolean indicating if the check passed or failed, True means the check passed,
-                False means the check failed (however, failing the check will always result in an
-                AssertionError being raised, so the result will not really be usable).
+            Boolean ``True`` when all checks pass. ``False`` means the checks failed (however,
+                failing a check will always result in an AssertionError being raised, so the
+                result will not really be usable).
 
         Raises:
             AssertionError: Indicating that the device's error code and messages don't match the
                 expected values.
         """
         check_passed = True
-
-        if not error_messages:
-            error_messages = tuple(filter(None, (self._no_error_string,)))
-
         actual_esr, actual_error_messages = self._get_errors()
+
+        failure_message = (
+            f"expect_esr() failed; ESR value {'mis' if esr != actual_esr else ''}match "
+            f"(Expected: {esr!r}, Actual: {actual_esr!r})"
+        )
 
         # Compare the esr value
         try:
+            # assert actual_esr == esr, (
+            #     "ESR value check: mismatch (Expected: {expected!r}, Actual: {actual!r})".format(
+            #         expected=esr,
+            #         actual=actual_esr,
+            #     )
+            # )
             verify_values(
                 self.name_and_alias,
                 esr,
@@ -68,28 +76,81 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
             )
         except AssertionError as exc:
             check_passed &= False
+            # failure_message += "; " + exc.args[0]
             _logger.warning(exc)
 
+        index_to_check_zero_error_string = len(error_messages)  # index after last expected message
+        # can only check for "No Errors" at end of queue if string pattern defined
+        if (check_zero_error_string_once := bool(self._no_error_string)) and error_messages:
+            check_zero_error_string_once = error_messages[-1] != self._no_error_string
+
+        # allow zip_longest to pad with None so we can handle it in the loop.
+        message_pairs = list(zip_longest(error_messages, actual_error_messages))
+
+        # If ESR is non-zero, there should always be at least one error message pair to check.
+        if not message_pairs and actual_esr:
+            # Force one loop to use same validation logic
+            message_pairs = [(None, None)]
+            if not self._no_error_string:
+                failure_message += (
+                    f"; expected `error_messages` argument defined (or {self.__class__.__name__}"
+                    "._no_error_string defined) when ESR is non-zero"
+                )
+
         # Compare the error messages
-        for expected_message, actual_message in zip(error_messages, actual_error_messages):
+        for pair_index, (expected_message, actual_message) in enumerate(message_pairs):
+            if expected_message is None:
+                # Handle the case where there are more actual messages than expected.
+                expected_message = (
+                    f"{self.__class__.__name__}._get_errors() returned more error messages "
+                    "than expected"
+                )
+                if pair_index == index_to_check_zero_error_string and check_zero_error_string_once:
+                    # TODO: #437 use _no_error_string with regex matching by default
+
+                    # If _no_error_string is defined, use it ONCE (with regex matching enabled).
+                    # This allows for implicit handling of the "No Errors" string, but only for
+                    # the first unmatched "actual" message after expected_messages is exhausted.
+                    # Helpful when "No Errors" is always at the end of the error queue, and as
+                    # the default when expected_messages is left empty.
+                    expected_message = self._no_error_string
+                    check_zero_error_string_once = False
+
+                if actual_message is None:
+                    # Non-zero ESR iff both messages are None
+                    # so force a failure with a meaningful message.
+                    expected_message = "None"
+                    actual_message = (
+                        f"{self.__class__.__name__}._get_errors() must return the response "
+                        "from the error message queue query for any non-zero ESR"
+                    )
+
+            elif actual_message is None:
+                # Handle the case where there are fewer actual messages than expected.
+                actual_message = (
+                    f"{self.__class__.__name__}._get_errors() did not return enough error messages"
+                )
+
             try:
                 verify_values(
                     self.name_and_alias,
                     expected_message,
                     actual_message,
-                    use_regex_match=use_regex_match,
-                    custom_message_prefix="expect_esr() error message check:",
+                    use_regex_match=bool(
+                        use_regex_match
+                        or (self._no_error_string and expected_message == self._no_error_string)
+                    ),
+                    custom_message_prefix=f"expect_esr() error message check #{pair_index + 1}:",
                     condense_printout=False,
                 )
-            except AssertionError as exc:  # noqa: PERF203
+            except AssertionError as exc:
                 check_passed &= False
+                # pad the failure messages with spaces for better readability of multi-line messages
+                failure_message += "\n" + exc.args[0].replace("\n", "\n  ")
                 _logger.warning(exc)
 
         if not check_passed:
-            failure_message = (
-                f"expect_esr() failed: error code {actual_esr!r} != {esr!r}; "
-                f"error messages {actual_error_messages!r} != {error_messages!r}"
-            )
+            # TODO: mark #433 as dealt with for better reporting
             raise_failure(self.name_and_alias, failure_message, condense_printout=False)
 
         return check_passed
