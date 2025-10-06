@@ -1,6 +1,6 @@
 beautifulsoup4==4.14.2 ; python_full_version >= "3.9.2" and python_version < "3.14"
 blinker==1.9.0 ; python_full_version >= "3.9.2" and python_version < "3.14"
-certifi==2025.8.3 ; python_full_version >= "3.9.2" and python_version < "3.14"
+certifi==2025.10.5 ; python_full_version >= "3.9.2" and python_version < "3.14"
 chardet==5.2.0 ; python_full_version >= "3.9.2" and python_version < "3.14"
 charset-normalizer==3.4.3 ; python_full_version >= "3.9.2" and python_version < "3.14"
 click==8.1.8 ; python_full_version >= "3.9.2" and python_version < "3.14"
