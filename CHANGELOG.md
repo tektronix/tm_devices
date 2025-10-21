@@ -21,6 +21,8 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the `TekScope.curve_query()` method to properly create a csv file without any trailing commas that previously caused csv parsing issues.
+- Updated `_AbstractDeviceVISAWriteQueryControl.expect_esr()` to properly handle when not enough error messages are returned from the device.
+- Updated `tsp_control.get_buffers()` to use subindex rather than improperly strip characters for buffer_size_name.
 
 ---
 
