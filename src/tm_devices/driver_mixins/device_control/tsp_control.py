@@ -97,7 +97,7 @@ class TSPControl(PIControl, ABC):
                 for index in range(column_length)
             )
 
-    def get_buffers(self, *args: str) -> Dict[str, List[float]]:
+    def get_buffers(self, *args: str) -> Dict[str, List[float | str]]:
         """Get the contents of one or more buffers on the device.
 
         Args:
@@ -131,12 +131,12 @@ class TSPControl(PIControl, ABC):
             ".units",
         )
 
-        buffer_data: Dict[str, List[float]] = {}
+        buffer_data: Dict[str, List[float | str]] = {}
         for buffer_name in args:
             buffer_size_name = buffer_name
             for attr_name in buffer_attributes:
                 if buffer_name.endswith(attr_name):
-                    buffer_size_name = buffer_name.rstrip(attr_name)
+                    buffer_size_name = buffer_name[: -len(attr_name)]
                     break
             empty_str = f"{buffer_size_name} was found to be empty"
             buffer_str = self.query(
@@ -147,7 +147,14 @@ class TSPControl(PIControl, ABC):
                 _logger.warning(empty_str)
                 buffer_data[buffer_name] = []
             else:
-                buffer_data[buffer_name] = [float(data) for data in buffer_str.split(", ") if data]
+
+                def _to_float_or_str(data: str) -> float | str:
+                    try:
+                        return float(data)
+                    except ValueError:
+                        return data.strip()
+
+                buffer_data[buffer_name] = list(map(_to_float_or_str, buffer_str.split(", ")))
         return buffer_data
 
     def load_script(
