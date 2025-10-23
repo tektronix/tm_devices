@@ -49,7 +49,7 @@ for path in file_list:
     nav[parts] = doc_path.as_posix()
 
     with mkdocs_gen_files.open(full_doc_path, "w") as fd:
-        ident = ".".join(parts)  # pylint: disable=invalid-name
+        ident = ".".join(parts)
         source_link = (
             f'<div class="top-right-link" markdown="1">'
             f'<a href="{{{{ config.repo_url }}}}'

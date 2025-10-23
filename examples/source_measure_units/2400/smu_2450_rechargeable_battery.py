@@ -41,7 +41,7 @@ with DeviceManager() as device_manager:
     VOLTLIMIT = 1.0
 
     # Set the variable for the number of iterations.
-    iteration = 1  # pylint:disable = invalid-name
+    iteration = 1
 
     # Turn on the source output.
     inst.commands.smu.source.output = inst.commands.smu.ON
