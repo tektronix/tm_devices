@@ -110,7 +110,10 @@ poetry-audit-plugin = "^0.4.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "3.3.9"
+pylint = [
+  {python = "~=3.9.2", version = "3.3.9"},  # TODO: Drop Python 3.9: remove this entry
+  {python = ">=3.10", version = "4.0.2"},
+]
 pyright = {extras = ["nodejs"], version = "1.1.406"}
 pyroma = "^5.0"
 tox = "^4.0"

@@ -1,0 +1,4 @@
+---
+ignore:
+  - vulnerability: GHSA-4xh5-x5gv-qwph
+    reason: Ignored because it is a development dependency
