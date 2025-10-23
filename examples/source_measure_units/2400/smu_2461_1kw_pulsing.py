@@ -58,8 +58,8 @@ with DeviceManager() as device_manager:
     # (See Operation Event Register section of manual for more info)
     BIT = 8
     smu2461.commands.status.operation.setmap(BIT, 2731, 2732)
-    is_sweeping = True  # pylint: disable=invalid-name
-    wait = 0.2  # pylint: disable=invalid-name
+    is_sweeping = True
+    wait = 0.2
     smu2461.commands.trigger.model.initiate()
     # Wait for the measurements to complete. waitcomplete()
     _ = smu2461.commands.status.operation.condition  # throw away first read of status byte
