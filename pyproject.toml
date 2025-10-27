@@ -114,7 +114,7 @@ pylint = [
   {python = "~=3.9.2", version = "3.3.9"},  # TODO: Drop Python 3.9: remove this entry
   {python = ">=3.10", version = "4.0.2"},
 ]
-pyright = {extras = ["nodejs"], version = "1.1.406"}
+pyright = {extras = ["nodejs"], version = "1.1.407"}
 pyroma = "^5.0"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -161,7 +161,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.14.1"
+ruff = "0.14.2"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
