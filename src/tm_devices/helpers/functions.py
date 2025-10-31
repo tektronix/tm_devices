@@ -617,7 +617,7 @@ def get_visa_backend(visa_lib_path: str) -> str:
             for (
                 visa_implementation_name,
                 visa_implementation_details,
-            ) in visa_implementation_dict.items():
+            ) in visa_implementation_dict.items():  # pragma: no cover
                 if visa_lib_path in visa_implementation_name:
                     vendor = visa_implementation_details["Vendor"]
                     visa_name = "NI-VISA" if "National Instruments" in vendor else f"{vendor} VISA"
