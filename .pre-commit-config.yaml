@@ -74,7 +74,8 @@ repos:
         additional_dependencies:
           - setuptools==80.9.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
-          - mdformat-beautysh
+          - mdformat-beautysh==0.1.1  # TODO: Drop Python 3.9: Remove the pinned version
+          - beautysh==6.3.3  # TODO: Drop Python 3.9: Remove this line
           - mdformat-config
           - mdformat-footnote
           - mdformat-frontmatter
