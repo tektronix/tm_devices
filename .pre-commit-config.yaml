@@ -78,7 +78,7 @@ repos:
           - beautysh==6.3.3  # TODO: Drop Python 3.9: Remove this line
           - mdformat-config
           - mdformat-footnote
-          - mdformat-frontmatter
+          - mdformat-front-matters
           - mdformat-gfm
           - mdformat-gfm-alerts
           - mdformat-mkdocs
