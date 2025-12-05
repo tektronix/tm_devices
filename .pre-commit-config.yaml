@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 83987cd6ad8943c7f029b500b14aaf82c00a01fa  # frozen: 0.34.0
+    rev: 16a6ad2fead09286ee6eb6b0a3fab55655a6c22a  # frozen: 0.35.0
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -49,17 +49,17 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: f999ae59ac949d9b57aaa5569c2d60eb846b3a00  # frozen: v1.7.7.24
+    rev: 381d5e68de9fe958938da811f2e094a8f90e8195  # frozen: v1.7.9.24
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: cc981fcb065527b6de0033b0cbf0432e69781901  # frozen: v4.9.1
+    rev: 9f3ec868c0429155a46b4819b625d47a8522a3d5  # frozen: v4.10.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 881308160e4589cf886919438a3ed0acba42ea0e  # frozen: 1.18.0
+    rev: 4193c8de6dbd35819d3404925f7aee6b79368591  # frozen: 1.19.0
     hooks:
       - id: yamlfix
   - repo: https://github.com/thibaudcolas/curlylint
@@ -74,16 +74,16 @@ repos:
         additional_dependencies:
           - setuptools==80.9.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
-          - mdformat-beautysh
+          - mdformat-beautysh==0.1.1  # TODO: Drop Python 3.9: Remove the pinned version
+          - beautysh==6.3.3  # TODO: Drop Python 3.9: Remove this line
           - mdformat-config
           - mdformat-footnote
-          - mdformat-frontmatter
+          - mdformat-front-matters
           - mdformat-gfm
           - mdformat-gfm-alerts
           - mdformat-mkdocs
           - mdformat-shfmt
           - mdformat-simple-breaks
-          - mdformat-tables
           - mdformat-toc
           - mdformat-web
           - mdformat-wikilink
@@ -152,7 +152,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: f298305809c552671cc47e0fec0ba43e96c146a2  # frozen: v0.13.2
+    rev: 36243b70e5ce219623c3503f5afba0f8c96fda55  # frozen: v0.14.7
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]

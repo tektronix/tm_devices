@@ -57,11 +57,11 @@ with DeviceManager() as device_manager:
 
     # Define initial values.
     isc = float(inst.commands.buffer_var["defbuffer1"].readings[1])
-    imax = 0  # pylint:disable = invalid-name
+    imax = 0
     MIN_CURR = 0
-    pmax = 0  # pylint:disable = invalid-name
-    vmax = 0  # pylint:disable = invalid-name
-    voc = 0  # pylint:disable = invalid-name
+    pmax = 0
+    vmax = 0
+    voc = 0
 
     for i in range(POINTS):
         current = float(inst.commands.buffer_var["defbuffer1"].readings[i + 1])

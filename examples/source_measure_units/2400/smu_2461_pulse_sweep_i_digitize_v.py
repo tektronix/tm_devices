@@ -78,7 +78,7 @@ with DeviceManager() as device_manager:
     # (See Operation Event Register section of manual for more info)
     BIT = 8
     smu2461.commands.status.operation.setmap(BIT, 2731, 2732)
-    is_sweeping = True  # pylint: disable=invalid-name
+    is_sweeping = True
 
     # Run trigger model and wait for it to complete
     smu2461.commands.trigger.model.initiate()

@@ -32,7 +32,7 @@ with DeviceManager(verbose=False) as device_manager:
     # (See Operation Event Register section of manual for more info)
     BIT = 8
     smu2470.commands.status.operation.setmap(BIT, 2731, 2732)
-    is_sweeping = True  # pylint: disable=invalid-name
+    is_sweeping = True
 
     smu2470.commands.trigger.model.initiate()
     # Wait for the measurements to complete. waitcomplete()
