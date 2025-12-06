@@ -67,7 +67,7 @@ repos:
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: ff29be1a1ba8029d9375882aa2c812b62112a593  # frozen: 0.7.22
+    rev: 2d496dbc18e31b83a1596685347ffe0b6041daf0  # frozen: 1.0.0
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
@@ -152,7 +152,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 36243b70e5ce219623c3503f5afba0f8c96fda55  # frozen: v0.14.7
+    rev: 1a1f58ba4c35362efe8fed2279715a905baee93d  # frozen: v0.14.8
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
