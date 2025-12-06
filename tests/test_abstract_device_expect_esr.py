@@ -109,7 +109,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
         )
 
         if not esr_match and log_msgs[0].startswith(
-            "Actual result does not match the expected result within a tolerance of 0"
+            "Actual result does not match the expected result"
         ):
             # Remove the ESR mismatch warning log, already handled above in the assertion message
             log_msgs = log_msgs[1:]
@@ -186,10 +186,9 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
 
     # Test the ESR mismatch + logging
     expected_log_warning = [
-        """Actual result does not match the expected result within a tolerance of 0
-  max: 8.0
-  act: 1.0
-  min: 8.0""",
+        """Actual result does not match the expected result
+  exp: 8
+  act: 1""",
         """Actual result does not match the expected result
   exp: None
   act: DummyDevice._get_errors() must return the response from the error message queue query for any non-zero ESR""",  # noqa: E501
@@ -198,7 +197,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     expected_assertion_msg = get_assertion_msg(
         expected_log_warning,
         esr=(8, 1),
-        extra_assert_msg="; expected `error_messages` argument defined (or DummyDevice._no_error_string defined) when ESR is non-zero",  # noqa: E501
+        extra_assert_msg="; expected `error_messages` parameter defined (or DummyDevice._no_error_string defined) when ESR is non-zero",  # noqa: E501
     )
     match_str = get_raised_assert_match(expected_assertion_msg)
     with pytest.raises(AssertionError, match=match_str):
