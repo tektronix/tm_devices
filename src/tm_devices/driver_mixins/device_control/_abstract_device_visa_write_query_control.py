@@ -61,12 +61,6 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
 
         # Compare the esr value
         try:
-            # assert actual_esr == esr, (
-            #     "ESR value check: mismatch (Expected: {expected!r}, Actual: {actual!r})".format(
-            #         expected=esr,
-            #         actual=actual_esr,
-            #     )
-            # )
             verify_values(
                 self.name_and_alias,
                 esr,
@@ -76,7 +70,6 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
             )
         except AssertionError as exc:
             check_passed &= False
-            # failure_message += "; " + exc.args[0]
             _logger.warning(exc)
 
         index_to_check_zero_error_string = len(error_messages)  # index after last expected message
@@ -93,11 +86,11 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
             message_pairs = [(None, None)]
             if not self._no_error_string:
                 failure_message += (
-                    f"; expected `error_messages` argument defined (or {self.__class__.__name__}"
+                    f"; expected `error_messages` parameter defined (or {self.__class__.__name__}"
                     "._no_error_string defined) when ESR is non-zero"
                 )
 
-        # Compare the error messages
+        # Compare the error messages sequentially
         for pair_index, (expected_message, actual_message) in enumerate(message_pairs):
             if expected_message is None:
                 # Handle the case where there are more actual messages than expected.

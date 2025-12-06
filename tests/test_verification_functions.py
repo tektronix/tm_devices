@@ -1,5 +1,7 @@
 """Tests for the verification_functions.py module."""
 
+from typing import Union
+
 import pytest
 
 from tm_devices.helpers import verify_values
@@ -12,20 +14,125 @@ def test_verify_values_pass() -> None:
     )
 
 
-def test_verify_values_fail() -> None:
-    """Test the verify_values function with an expected failing check."""
+@pytest.mark.parametrize(
+    (
+        "expected_value",
+        "actual_value",
+        "tolerance",
+        "percentage",
+        "expect_fail",
+        "expected_message",
+    ),
+    [
+        (
+            0.1,
+            0.1,
+            0,
+            False,
+            True,
+            "matches the expected result, exp != 0.1, act == 0.1",
+        ),
+        (
+            0.1,
+            0.2,
+            0.05,
+            False,
+            False,
+            "does not match the expected result within a tolerance of 0.05, "
+            "max: 0.15, act: 0.2, min: 0.05",
+        ),
+        (
+            0.1,
+            0.2,
+            0.1,
+            False,
+            True,
+            "matches the expected result within a tolerance of 0.1, max: 0.2, act: 0.2, min: 0.0",
+        ),
+        (
+            0.1,
+            "0.2",
+            0,
+            True,
+            False,
+            "does not match the expected result, exp: 0.1, act: 0.2",
+        ),
+        (
+            "0.100",
+            "0.1",
+            0,
+            False,
+            False,
+            "does not match the expected result, exp: 0.100, act: 0.1",
+        ),
+        (
+            "0.1",
+            "0.2",
+            5,
+            True,
+            False,
+            "does not match the expected result within a tolerance of 0.005, "
+            "max: 0.105, act: 0.2, min: 0.095",
+        ),
+        (
+            "0.1",
+            "0.1",
+            0.01,
+            False,
+            True,
+            "matches the expected result within a tolerance of 0.01, "
+            "max: 0.11, act: 0.1, min: 0.09",
+        ),
+        (
+            "0.1",
+            "0.1",
+            0,
+            False,
+            True,
+            "matches the expected result, exp != 0.1, act == 0.1",
+        ),
+    ],
+)
+def test_verify_values_fail(
+    expected_value: Union[float, str],
+    actual_value: Union[float, str],
+    tolerance: float,
+    percentage: bool,
+    expect_fail: bool,
+    expected_message: str,
+) -> None:
+    """Test the verify_values function with an expected failing check (parameterized)."""
+    expected_message_condensed = "ERROR: (failing-check) : Actual result " + expected_message
     with pytest.raises(AssertionError) as assertion_info:
         verify_values(
             unique_identifier="failing-check",
-            expected_value="0.1",
-            actual_value="0.2",
-            percentage=True,
+            expected_value=expected_value,
+            actual_value=actual_value,
+            tolerance=tolerance,
+            percentage=percentage,
+            expect_fail=expect_fail,
             log_error=True,
+            condense_printout=True,
         )
-    assert (
-        "ERROR: (failing-check) : Actual result does not match the expected "
-        "result within a tolerance of 0.0, max: 0.1, act: 0.2, min: 0.1"
-    ) in str(assertion_info.value)
+    assert expected_message_condensed in str(assertion_info.value)
+
+    # just for fun check it again with condense_printout=False
+    expected_message_uncondensed = (
+        "ERROR: (failing-check-uncondensed) : Actual result "
+        + expected_message.replace(", ", "\n  ")
+    )
+    with pytest.raises(AssertionError) as assertion_info:
+        verify_values(
+            unique_identifier="failing-check-uncondensed",
+            expected_value=expected_value,
+            actual_value=actual_value,
+            tolerance=tolerance,
+            percentage=percentage,
+            expect_fail=expect_fail,
+            log_error=True,
+            condense_printout=False,
+        )
+    assert expected_message_uncondensed in str(assertion_info.value)
 
 
 def test_verify_values_regex_match_pass() -> None:

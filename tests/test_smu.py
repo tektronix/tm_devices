@@ -6,7 +6,7 @@ import socket
 import sys
 
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
 from unittest import mock
 
 import pytest
@@ -226,7 +226,7 @@ def test_smu(  # noqa: PLR0915
         assert caplog.records[-1].levelname == "WARNING"
 
     buffer = smu.get_buffers("smub.nvbuffer1")
-    expected_buffer: Dict[str, List[float]] = {"smub.nvbuffer1": []}
+    expected_buffer: Dict[str, List[Union[float, str]]] = {"smub.nvbuffer1": []}
     assert caplog.records[-1].message == "smub.nvbuffer1 was found to be empty"
     assert caplog.records[-1].levelname == "WARNING"
     assert buffer == expected_buffer
@@ -237,6 +237,12 @@ def test_smu(  # noqa: PLR0915
 
     buffer = smu.get_buffers("smua.nvbuffer1.timestamps")
     expected_buffer = {"smua.nvbuffer1.timestamps": [0.0, 0.1, 0.2, 0.3, 0.4]}
+    assert buffer == expected_buffer
+
+    buffer = smu.get_buffers("smua.nvbuffer1.measurefunctions")
+    expected_buffer = {
+        "smua.nvbuffer1.measurefunctions": ["Voltage", "Voltage", "Voltage", "Voltage", "Voltage"]
+    }
     assert buffer == expected_buffer
 
     smu.print_buffers("smua.nvbuffer1")
@@ -264,8 +270,7 @@ def test_smu(  # noqa: PLR0915
     assert (
         str(error.value.args[0]).rsplit("SMU-DEVICE", maxsplit=1)[-1]
         == '") : Custom prefix, Failed to set status.request_enable to 2, '
-        "Actual result does not match the expected result within a tolerance of 0, "
-        "max: 2.0, act: 1.0, min: 2.0"
+        "Actual result does not match the expected result, exp: 2, act: 1"
     )
     smu.enable_verification = False
     assert smu.set_and_check("status.request_enable", 1) == ""
