@@ -386,7 +386,6 @@ order-by-type = false
   "TID252",  # Relative imports from parent modules are banned
 ]
 "src/tm_devices/driver_mixins/device_control/_abstract_device_visa_write_query_control.py" = [
-  "ERA001",  # Found commented-out code  # TODO: remove this
   "PLW2901",  # 'for' loop variable overwritten by assignment target
 ]
 "tests/**" = [
