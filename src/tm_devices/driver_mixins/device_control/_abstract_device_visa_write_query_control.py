@@ -99,8 +99,6 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
                     "than expected"
                 )
                 if pair_index == index_to_check_zero_error_string and check_zero_error_string_once:
-                    # TODO: #437 use _no_error_string with regex matching by default
-
                     # If _no_error_string is defined, use it ONCE (with regex matching enabled).
                     # This allows for implicit handling of the "No Errors" string, but only for
                     # the first unmatched "actual" message after expected_messages is exhausted.
@@ -143,7 +141,6 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
                 _logger.warning(exc)
 
         if not check_passed:
-            # TODO: mark #433 as dealt with for better reporting
             raise_failure(self.name_and_alias, failure_message, condense_printout=False)
 
         return check_passed
