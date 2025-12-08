@@ -14,7 +14,7 @@ jobs:
       update-pre-commit: true
       run-pre-commit: true
       pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,poetry-audit,poetry-check,check-tm-devices-schema-file
-      pre-commit-repo-update-skip-list: ''
+      pre-commit-repo-update-skip-list: https://github.com/executablebooks/mdformat  # TODO: Drop Python 3.9: Remove this skip entry
       export-dependency-groups: docs,tests
     permissions:
       contents: write
