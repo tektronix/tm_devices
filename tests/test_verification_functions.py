@@ -124,9 +124,8 @@ def test_verify_values_fail(
 
     def replace_outside_brackets(match: re.Match[str]) -> str:
         """Replace ', ' with indented newline, but only if not inside []."""
-        # Count '[' and ']' before this match
+        # Count open brackets '[' minus close brackets ']' before the match
         prefix = match.string[: match.start()]
-        # Count open brackets minus close brackets
         open_brackets = prefix.count("[") - prefix.count("]")
         # Only replace if not inside brackets
         return "\n  " if not open_brackets else match.group(0)
@@ -167,10 +166,10 @@ def test_verify_values_regex_match_fail() -> None:
             actual_value="fail123value",
             use_regex_match=True,
         )
-    assert (
+    assert assertion_info.value.args[0] == (
         "FAILURE: (regex-fail-check) : Actual result does not match the expected result, "
         "expect: ^test.*value$, actual: fail123value"
-    ) in str(assertion_info.value)
+    )
 
 
 @pytest.mark.parametrize(
@@ -190,9 +189,9 @@ def test_verify_values_condense_printout(log_error: bool, message_level: str) ->
             condense_printout=False,
             log_error=log_error,
         )
-    assert (
+    assert assertion_info.value.args[0] == (
         f"{message_level}: (condense-printout-check) : "
         f"Actual result does not match the expected result"
         "\n  expect: expect"
         "\n  actual: actual"
-    ) in str(assertion_info.value)
+    )
