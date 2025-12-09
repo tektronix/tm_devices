@@ -37,7 +37,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
         r"""Checks for the expected esr value and queued error messages.
 
         Args:
-            esr: Expected ``*ESR?`` value as decimal-weighted integer.
+            esr: Expected ``*ESR?`` value as a decimal-weighted integer.
             error_messages: Expected error buffer messages in a tuple.
             use_regex_match: A boolean indicating if the messages should be compared
                 using regular expressions. Does not affect the esr value comparison.
