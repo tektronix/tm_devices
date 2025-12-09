@@ -2,6 +2,7 @@
 
 import re
 
+from decimal import Decimal, InvalidOperation
 from typing import Tuple, Union
 
 
@@ -77,26 +78,26 @@ def verify_values(  # noqa: PLR0913
     message = custom_message_prefix + "\n" if custom_message_prefix else ""
 
     try:
-        _ = float(tolerance)
-        _ = float(expected_value)
-        _ = float(actual_value)
-        number_comparison = True
-    except ValueError:
-        number_comparison = False
+        if not tolerance and isinstance(expected_value, str) and isinstance(actual_value, str):
+            # treat "1.000" vs "1" as pure string comparison when no tolerance is given
+            raise ValueError  # noqa: TRY301
 
-    if number_comparison:
-        expected_value = float(expected_value)
-        actual_value = float(actual_value)
+        # Try to convert to Decimal for number comparison
+        tolerance_decimal = Decimal(str(tolerance))
+        expected_value_decimal = Decimal(str(expected_value))
+        actual_value_decimal = Decimal(str(actual_value))
+
+        # Made it this far without an exception, do number comparison
         if percentage:
-            tolerance = abs((tolerance / 100.0) * expected_value)
+            tolerance_decimal = abs((tolerance_decimal / Decimal("100.0")) * expected_value_decimal)
         message, verify_passed = _verify_numerical_value(
-            expected_value, actual_value, tolerance, message, expect_fail
+            expected_value_decimal, actual_value_decimal, tolerance_decimal, message, expect_fail
         )
-    else:
-        expected_value = str(expected_value)
-        actual_value = str(actual_value)
+
+    except (ValueError, InvalidOperation):
+        # Not a number, do string comparison
         message, verify_passed = _verify_string_value(
-            expected_value, actual_value, message, expect_fail, use_regex_match
+            str(expected_value), str(actual_value), message, expect_fail, use_regex_match
         )
     # Mark as pass/fail
     if not verify_passed:
@@ -112,9 +113,9 @@ def verify_values(  # noqa: PLR0913
 # Private Methods
 ################################################################################################
 def _verify_numerical_value(
-    expected_value: float,
-    actual_value: float,
-    tolerance: float,
+    expected_value: Decimal,
+    actual_value: Decimal,
+    tolerance: Decimal,
     message: str,
     expect_fail: bool,
 ) -> Tuple[str, bool]:
@@ -132,34 +133,32 @@ def _verify_numerical_value(
     """
     max_value = expected_value + tolerance
     min_value = expected_value - tolerance
-    # Verify that the number is within the tolerance.
-    # Also check to make sure that the string of each number is
-    # identical, this prevents issues from returned values that have
-    # a trailing zero or some other non-contributing character that
-    # will cause comparison issues.
-    if (
-        not expect_fail
-        and (
-            abs(expected_value - actual_value) <= tolerance
-            or str(expected_value) == str(actual_value)
-        )
-    ) or (
-        expect_fail
-        and not (
-            abs(expected_value - actual_value) <= tolerance
-            or str(expected_value) == str(actual_value)
-        )
-    ):
-        verify_passed = True
-    else:
-        message += (
-            f"Actual result {'does not match' if not expect_fail else 'matches'} "
-            f"the expected result within a tolerance of {tolerance}"
-            f"\n  max: {max_value}"
-            f"\n  act: {actual_value}"
-            f"\n  min: {min_value}"
-        )
-        verify_passed = False
+
+    # Use min/max for tolerance check
+    match = min_value <= actual_value <= max_value
+
+    if not (verify_passed := (not expect_fail and match) or (expect_fail and not match)):
+        if max_value == min_value:
+            # No tolerance, mirror string comparison message for consistency
+            message += (
+                f"Actual result {'does not match' if not expect_fail else 'matches'} "
+                f"the expected result"
+                f"\n  expect{' != ' if expect_fail else ': '}{expected_value}"
+                f"\n  actual{' == ' if expect_fail else ': '}{actual_value}"
+            )
+        else:
+            # Visual range format
+            in_range = match and expect_fail
+            inside_outside = (
+                "INSIDE" if in_range else "BELOW" if actual_value < min_value else "ABOVE"
+            )
+            message += (
+                f"Actual result {'does not match' if not expect_fail else 'matches'} "
+                f"the expected result within a tolerance of {tolerance}"
+                f"\n  range: [{min_value}, {max_value}]"
+                f"\n  expect: {expected_value}"
+                f"\n  actual: {actual_value}  <-- {inside_outside} range"
+            )
 
     return message, verify_passed
 
@@ -195,8 +194,8 @@ def _verify_string_value(
         message += (
             f"Actual result {'does not match' if not expect_fail else 'matches'} "
             f"the expected result"
-            f"\n  exp{' != ' if expect_fail else ': '}{expected_value}"
-            f"\n  act{' == ' if expect_fail else ': '}{actual_value}"
+            f"\n  expect{' != ' if expect_fail else ': '}{expected_value}"
+            f"\n  actual{' == ' if expect_fail else ': '}{actual_value}"
         )
         verify_passed = False
 

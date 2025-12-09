@@ -41,6 +41,9 @@ devices:
       - q: if smua.nvbuffer1.n == 0 then print('smua.nvbuffer1 was found to be empty')
           else printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1.timestamps) end
         r: 0.0, 0.1, 0.2, 0.3, 0.4
+      - q: if smua.nvbuffer1.n == 0 then print('smua.nvbuffer1 was found to be empty')
+          else printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1.measurefunctions) end
+        r: Voltage, Voltage, Voltage, Voltage, Voltage
       - q: if smub.nvbuffer1.n == 0 then print('smub.nvbuffer1 was found to be empty')
           else printbuffer(1, smub.nvbuffer1.n, smub.nvbuffer1) end
         r: smub.nvbuffer1 was found to be empty

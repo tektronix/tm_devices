@@ -11,6 +11,8 @@ Converted to Python tm_devices script. DCA 4.7.23
 
 import time
 
+from typing import Dict, List
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2460
 
@@ -59,7 +61,7 @@ with DeviceManager(verbose=False) as dm:
             break
 
     # Get the data from the buffers:
-    buffer_data = inst.get_buffers("defbuffer1.sourcevalues", "defbuffer1")
+    buffer_data: Dict[str, List[float]] = inst.get_buffers("defbuffer1.sourcevalues", "defbuffer1")  # pyright: ignore[reportAssignmentType]
     voltage = buffer_data["defbuffer1.sourcevalues"]
     current = buffer_data["defbuffer1"]
 
