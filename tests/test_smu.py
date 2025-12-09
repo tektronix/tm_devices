@@ -270,7 +270,7 @@ def test_smu(  # noqa: PLR0915
     assert (
         str(error.value.args[0]).rsplit("SMU-DEVICE", maxsplit=1)[-1]
         == '") : Custom prefix, Failed to set status.request_enable to 2, '
-        "Actual result does not match the expected result, exp: 2, act: 1"
+        "Actual result does not match the expected result, expect: 2, actual: 1"
     )
     smu.enable_verification = False
     assert smu.set_and_check("status.request_enable", 1) == ""

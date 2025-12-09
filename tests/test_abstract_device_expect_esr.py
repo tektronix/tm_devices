@@ -167,8 +167,8 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     # it should fail with AssertionError and log a warning
     expected_log_warning = [
         """Actual result does not match the expected result
-  exp: DummyDevice._get_errors() returned more error messages than expected
-  act: No Errors"""
+  expect: DummyDevice._get_errors() returned more error messages than expected
+  actual: No Errors"""
     ]
 
     expected_assertion_msg = get_assertion_msg(expected_log_warning)
@@ -187,11 +187,11 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     # Test the ESR mismatch + logging
     expected_log_warning = [
         """Actual result does not match the expected result
-  exp: 8
-  act: 1""",
+  expect: 8
+  actual: 1""",
         """Actual result does not match the expected result
-  exp: None
-  act: DummyDevice._get_errors() must return the response from the error message queue query for any non-zero ESR""",  # noqa: E501
+  expect: None
+  actual: DummyDevice._get_errors() must return the response from the error message queue query for any non-zero ESR""",  # noqa: E501
     ]
 
     expected_assertion_msg = get_assertion_msg(
@@ -208,8 +208,8 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     expected_log_warning = convert_log_msgs_for_device2(expected_log_warning)
     # Want "exp: None" instead of "No E\w+s" to better highlight the missing return from error query
     expected_log_warning[1] = """Actual result does not match the expected result
-  exp: None
-  act: DummyDeviceCustomNoError._get_errors() must return the response from the error message queue query for any non-zero ESR"""  # noqa: E501
+  expect: None
+  actual: DummyDeviceCustomNoError._get_errors() must return the response from the error message queue query for any non-zero ESR"""  # noqa: E501
 
     # Note: the extra_assert_msg is not included since device2 has a _no_error_string defined
     expected_assertion_msg = get_assertion_msg(expected_log_warning, esr=(8, 1))
@@ -226,14 +226,14 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     # Now test that assertion message works with multiple error messages
     expected_log_warning = [
         """Actual result does not match the expected result
-  exp: error A
-  act: error 1""",
+  expect: error A
+  actual: error 1""",
         """Actual result does not match the expected result
-  exp: error B
-  act: error 2""",
+  expect: error B
+  actual: error 2""",
         """Actual result does not match the expected result
-  exp: error C
-  act: error 3""",
+  expect: error C
+  actual: error 3""",
     ]
     expected_assertion_msg = get_assertion_msg(expected_log_warning, esr=(1, 1))
     match_str = get_raised_assert_match(expected_assertion_msg)
@@ -250,11 +250,11 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     expected_log_warning = [
         "",
         """Actual result does not match the expected result
-  exp: DummyDevice._get_errors() returned more error messages than expected
-  act: error 2""",
+  expect: DummyDevice._get_errors() returned more error messages than expected
+  actual: error 2""",
         """Actual result does not match the expected result
-  exp: DummyDevice._get_errors() returned more error messages than expected
-  act: error 3""",
+  expect: DummyDevice._get_errors() returned more error messages than expected
+  actual: error 3""",
     ]
     expected_assertion_msg = get_assertion_msg(expected_log_warning, esr=(1, 1))
     match_str = get_raised_assert_match(expected_assertion_msg)
@@ -264,11 +264,11 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     expected_log_warning = [
         "",
         """Actual result does not match the expected result
-  exp: No E\\w+s
-  act: error 2""",
+  expect: No E\\w+s
+  actual: error 2""",
         """Actual result does not match the expected result
-  exp: DummyDeviceCustomNoError._get_errors() returned more error messages than expected
-  act: error 3""",
+  expect: DummyDeviceCustomNoError._get_errors() returned more error messages than expected
+  actual: error 3""",
     ]
     expected_assertion_msg = get_assertion_msg(expected_log_warning, esr=(1, 1))
     match_str = get_raised_assert_match(expected_assertion_msg)
@@ -288,8 +288,8 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
         f"""{failure_msg_start}expect_esr() failed; ESR value match (Expected: 1, Actual: 1)
 {failure_msg_start}expect_esr() error message check #5:
   Actual result does not match the expected result
-    exp: DummyDeviceCustomNoError._get_errors() returned more error messages than expected
-    act: No Errors"""
+    expect: DummyDeviceCustomNoError._get_errors() returned more error messages than expected
+    actual: No Errors"""
     )
     with pytest.raises(AssertionError, match=match_str):
         device2.expect_esr(1, ("error 1", "error 2", "error 3"))

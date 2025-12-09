@@ -1086,7 +1086,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                             "on the first attempt, cannot guarantee a reboot occurred unless "
                             "connection attempt fails at least once."
                         )
-                        _logger.warning(msg)  # TODO: add unit test check
+                        _logger.warning(msg)
                     break
                 except ConnectionError:
                     # raised by the create_visa_connection() function

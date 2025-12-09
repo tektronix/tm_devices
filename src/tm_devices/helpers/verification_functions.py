@@ -143,16 +143,21 @@ def _verify_numerical_value(
             message += (
                 f"Actual result {'does not match' if not expect_fail else 'matches'} "
                 f"the expected result"
-                f"\n  exp{' != ' if expect_fail else ': '}{expected_value}"
-                f"\n  act{' == ' if expect_fail else ': '}{actual_value}"
+                f"\n  expect{' != ' if expect_fail else ': '}{expected_value}"
+                f"\n  actual{' == ' if expect_fail else ': '}{actual_value}"
             )
         else:
+            # Visual range format
+            in_range = match and expect_fail
+            inside_outside = (
+                "INSIDE" if in_range else "BELOW" if actual_value < min_value else "ABOVE"
+            )
             message += (
                 f"Actual result {'does not match' if not expect_fail else 'matches'} "
                 f"the expected result within a tolerance of {tolerance}"
-                f"\n  max: {max_value}"
-                f"\n  act: {actual_value}"
-                f"\n  min: {min_value}"
+                f"\n  range: [{min_value}, {max_value}]"
+                f"\n  expect: {expected_value}"
+                f"\n  actual: {actual_value}  <-- {inside_outside} range"
             )
 
     return message, verify_passed
@@ -189,8 +194,8 @@ def _verify_string_value(
         message += (
             f"Actual result {'does not match' if not expect_fail else 'matches'} "
             f"the expected result"
-            f"\n  exp{' != ' if expect_fail else ': '}{expected_value}"
-            f"\n  act{' == ' if expect_fail else ': '}{actual_value}"
+            f"\n  expect{' != ' if expect_fail else ': '}{expected_value}"
+            f"\n  actual{' == ' if expect_fail else ': '}{actual_value}"
         )
         verify_passed = False
 

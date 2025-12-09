@@ -1,5 +1,7 @@
 """Tests for the verification_functions.py module."""
 
+import re
+
 from typing import Union
 
 import pytest
@@ -30,7 +32,7 @@ def test_verify_values_pass() -> None:
             0,
             False,
             True,
-            "matches the expected result, exp != 0.1, act == 0.1",
+            "matches the expected result, expect != 0.1, actual == 0.1",
         ),
         (
             0.1,
@@ -39,7 +41,7 @@ def test_verify_values_pass() -> None:
             False,
             False,
             "does not match the expected result within a tolerance of 0.05, "
-            "max: 0.15, act: 0.2, min: 0.05",
+            "range: [0.05, 0.15], expect: 0.1, actual: 0.2  <-- ABOVE range",
         ),
         (
             0.1,
@@ -47,7 +49,8 @@ def test_verify_values_pass() -> None:
             0.1,
             False,
             True,
-            "matches the expected result within a tolerance of 0.1, max: 0.2, act: 0.2, min: 0.0",
+            "matches the expected result within a tolerance of 0.1, "
+            "range: [0.0, 0.2], expect: 0.1, actual: 0.2  <-- INSIDE range",
         ),
         (
             0.1,
@@ -55,24 +58,25 @@ def test_verify_values_pass() -> None:
             0,
             True,
             False,
-            "does not match the expected result, exp: 0.1, act: 0.2",
+            "does not match the expected result, expect: 0.1, actual: 0.2",
         ),
+        # Test strings with different decimal places, zero tolerance means treated as string match
         (
             "0.100",
             "0.1",
             0,
             False,
             False,
-            "does not match the expected result, exp: 0.100, act: 0.1",
+            "does not match the expected result, expect: 0.100, actual: 0.1",
         ),
         (
             "0.1",
-            "0.2",
+            "0.05",
             5,
             True,
             False,
             "does not match the expected result within a tolerance of 0.005, "
-            "max: 0.105, act: 0.2, min: 0.095",
+            "range: [0.095, 0.105], expect: 0.1, actual: 0.05  <-- BELOW range",
         ),
         (
             "0.1",
@@ -81,7 +85,7 @@ def test_verify_values_pass() -> None:
             False,
             True,
             "matches the expected result within a tolerance of 0.01, "
-            "max: 0.11, act: 0.1, min: 0.09",
+            "range: [0.09, 0.11], expect: 0.1, actual: 0.1  <-- INSIDE range",
         ),
         (
             "0.1",
@@ -89,7 +93,7 @@ def test_verify_values_pass() -> None:
             0,
             False,
             True,
-            "matches the expected result, exp != 0.1, act == 0.1",
+            "matches the expected result, expect != 0.1, actual == 0.1",
         ),
     ],
 )
@@ -114,12 +118,21 @@ def test_verify_values_fail(
             log_error=True,
             condense_printout=True,
         )
-    assert expected_message_condensed in str(assertion_info.value)
+    assert assertion_info.value.args[0] == expected_message_condensed
 
-    # just for fun check it again with condense_printout=False
-    expected_message_uncondensed = (
-        "ERROR: (failing-check-uncondensed) : Actual result "
-        + expected_message.replace(", ", "\n  ")
+    # check it again with condense_printout=False
+
+    def replace_outside_brackets(match: re.Match[str]) -> str:
+        """Replace ', ' with indented newline, but only if not inside []."""
+        # Count '[' and ']' before this match
+        prefix = match.string[: match.start()]
+        # Count open brackets minus close brackets
+        open_brackets = prefix.count("[") - prefix.count("]")
+        # Only replace if not inside brackets
+        return "\n  " if not open_brackets else match.group(0)
+
+    expected_message_uncondensed = "ERROR: (failing-check-uncondensed) : Actual result " + re.sub(
+        r", ", replace_outside_brackets, expected_message
     )
     with pytest.raises(AssertionError) as assertion_info:
         verify_values(
@@ -132,7 +145,7 @@ def test_verify_values_fail(
             log_error=True,
             condense_printout=False,
         )
-    assert expected_message_uncondensed in str(assertion_info.value)
+    assert assertion_info.value.args[0] == expected_message_uncondensed
 
 
 def test_verify_values_regex_match_pass() -> None:
@@ -156,7 +169,7 @@ def test_verify_values_regex_match_fail() -> None:
         )
     assert (
         "FAILURE: (regex-fail-check) : Actual result does not match the expected result, "
-        "exp: ^test.*value$, act: fail123value"
+        "expect: ^test.*value$, actual: fail123value"
     ) in str(assertion_info.value)
 
 
@@ -172,7 +185,7 @@ def test_verify_values_condense_printout(log_error: bool, message_level: str) ->
     with pytest.raises(AssertionError) as assertion_info:
         verify_values(
             unique_identifier="condense-printout-check",
-            expected_value="expected",
+            expected_value="expect",
             actual_value="actual",
             condense_printout=False,
             log_error=log_error,
@@ -180,6 +193,6 @@ def test_verify_values_condense_printout(log_error: bool, message_level: str) ->
     assert (
         f"{message_level}: (condense-printout-check) : "
         f"Actual result does not match the expected result"
-        "\n  exp: expected"
-        "\n  act: actual"
+        "\n  expect: expect"
+        "\n  actual: actual"
     ) in str(assertion_info.value)
