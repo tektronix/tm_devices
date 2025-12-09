@@ -31,7 +31,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
         """Write to the device."""
 
     @final
-    def expect_esr(  # noqa: C901
+    def expect_esr(  # noqa: C901, # pylint: disable=too-many-locals
         self, esr: int, error_messages: Tuple[str, ...] = (), *, use_regex_match: bool = False
     ) -> bool:
         r"""Checks for the expected esr value and queued error messages.
@@ -92,9 +92,12 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
 
         # Compare the error messages sequentially
         for pair_index, (expected_message, actual_message) in enumerate(message_pairs):
-            if expected_message is None:
+            # Avoid overwriting loop variables directly
+            exp_msg = expected_message
+            act_msg = actual_message
+            if exp_msg is None:
                 # Handle the case where there are more actual messages than expected.
-                expected_message = (
+                exp_msg = (
                     f"{self.__class__.__name__}._get_errors() returned more error messages "
                     "than expected"
                 )
@@ -104,32 +107,32 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
                     # the first unmatched "actual" message after expected_messages is exhausted.
                     # Helpful when "No Errors" is always at the end of the error queue, and as
                     # the default when expected_messages is left empty.
-                    expected_message = self._no_error_string
+                    exp_msg = self._no_error_string
                     check_zero_error_string_once = False
 
-                if actual_message is None:
+                if act_msg is None:
                     # Non-zero ESR iff both messages are None
                     # so force a failure with a meaningful message.
-                    expected_message = "None"
-                    actual_message = (
+                    exp_msg = "None"
+                    act_msg = (
                         f"{self.__class__.__name__}._get_errors() must return the response "
                         "from the error message queue query for any non-zero ESR"
                     )
 
-            elif actual_message is None:
+            elif act_msg is None:
                 # Handle the case where there are fewer actual messages than expected.
-                actual_message = (
+                act_msg = (
                     f"{self.__class__.__name__}._get_errors() did not return enough error messages"
                 )
 
             try:
                 verify_values(
                     self.name_and_alias,
-                    expected_message,
-                    actual_message,
+                    exp_msg,
+                    act_msg,
                     use_regex_match=bool(
                         use_regex_match
-                        or (self._no_error_string and expected_message == self._no_error_string)
+                        or (self._no_error_string and exp_msg == self._no_error_string)
                     ),
                     custom_message_prefix=f"expect_esr() error message check #{pair_index + 1}:",
                     condense_printout=False,
