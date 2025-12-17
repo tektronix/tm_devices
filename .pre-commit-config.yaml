@@ -160,5 +160,4 @@ repos:
     rev: e73b8ba0c1316be565983236c72e653ad44e6b66  # frozen: v1.7.7
     hooks:
       - id: docformatter
-        language_version: python3.13  # TODO: remove this once https://github.com/PyCQA/docformatter/issues/327 is resolved
         additional_dependencies: [tomli]
