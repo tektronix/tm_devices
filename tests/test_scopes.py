@@ -12,8 +12,8 @@ from unittest import mock
 import pytest
 import pyvisa as visa
 
-from dateutil.tz import tzlocal
 from packaging.version import Version
+from tzlocal import get_localzone
 
 from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
@@ -544,7 +544,9 @@ def test_tekscopepc(
     ):
         scope.enable_verification = False
         filename = pathlib.Path(
-            datetime.now(tz=tzlocal()).strftime(f"%Y%m%d_%H%M%S{scope.valid_image_extensions[0]}")
+            datetime.now(tz=get_localzone()).strftime(
+                f"%Y%m%d_%H%M%S{scope.valid_image_extensions[0]}"
+            )
         )
         local_file = tmp_path / filename
         scope.save_screenshot(local_folder=tmp_path)

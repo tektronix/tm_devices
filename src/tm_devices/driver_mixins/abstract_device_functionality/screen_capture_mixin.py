@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import final, Optional, Tuple, TYPE_CHECKING, Union
 
-from dateutil.tz import tzlocal
+from tzlocal import get_localzone
 
 if TYPE_CHECKING:
     import os
@@ -53,7 +53,7 @@ class ScreenCaptureMixin(ABC):
         """
         if not filename:
             filename_path = Path(
-                datetime.now(tz=tzlocal()).strftime(
+                datetime.now(tz=get_localzone()).strftime(
                     f"%Y%m%d_%H%M%S{self.valid_image_extensions[0]}"
                 )
             )

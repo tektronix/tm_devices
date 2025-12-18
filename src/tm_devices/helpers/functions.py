@@ -41,11 +41,15 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
     import pyvisa as visa
 
-    from gpib_ctypes import make_default_gpib  # pyright: ignore[reportMissingTypeStubs]
     from pyvisa import util as pyvisa_util
     from pyvisa.resources import MessageBasedResource
 
-    make_default_gpib()
+    with contextlib.suppress(ImportError):  # pragma: no cover
+        from gpib_ctypes import (  # pyright: ignore  # noqa: PGH003
+            make_default_gpib,  # pyright: ignore  # noqa: PGH003
+        )
+
+        make_default_gpib()
 
 ####################################################################################################
 # Private Constants

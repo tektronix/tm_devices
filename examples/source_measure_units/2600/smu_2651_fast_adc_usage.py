@@ -14,12 +14,12 @@ Converted to Python tm_devices script. DCA 4.12.23
 
 from datetime import datetime
 
-from dateutil.tz import tzlocal
+from tzlocal import get_localzone
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2651A
 
-TODAY_DATE = datetime.now(tz=tzlocal()).date()
+TODAY_DATE = datetime.now(tz=get_localzone()).date()
 RESOURCE_ID = "192.168.0.1"
 V_FILENAME = "CapturePulseV_" + str(TODAY_DATE) + ".csv"
 I_FILENAME = "CapturePulseI_" + str(TODAY_DATE) + ".csv"

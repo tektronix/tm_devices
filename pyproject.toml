@@ -78,18 +78,16 @@ repository = "https://github.com/tektronix/tm_devices"
 version = "3.4.0"
 
 [tool.poetry.dependencies]
-colorlog = "^6.9.0"
+colorlog = "^6.9.0"  # TODO: make optional [colored-logging]
 dc-schema = "^0.0.8"
-gpib-ctypes = "^0.3.0"
-jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
-libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
+# gpib-ctypes = "^0.3.0"  # TODO: make optional [more-resources]
+# libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12  # TODO: make optional [more-resources]
 packaging = ">=24.0"
-psutil = ">=6.0.0"
-pyserial = "^3.5"
+# psutil = ">=6.0.0"  # TODO: make optional [more-resources]
+# pyserial = "^3.5"  # TODO: make optional [more-resources]
 python = ">=3.9.2,<3.14"  # This is the main Python version requirement
-python-dateutil = "^2.8.2"
-pyusb = "^1.2.1"
-pyvicp = "^1.1.0"
+# pyusb = "^1.2.1"  # TODO: make optional [more-resources]
+# pyvicp = "^1.1.0"  # TODO: make optional [more-resources]
 pyvisa = "^1.12.0"
 pyvisa-py = "^0.7.2"
 pyvisa-sim = "^0.6.0"
@@ -100,9 +98,9 @@ tomli-w = "^1.0.0"
 typing-extensions = "^4.10.0"
 tzlocal = "^5.2"
 urllib3 = "^2.0"
-zeroconf = "^0.148.0"
 
 [tool.poetry.group.dev.dependencies]
+jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}  # make optional [schema]
 nodeenv = "^1.9.1"
 pip = "^25.0"
 poetry = "^1.8.0"
@@ -280,7 +278,6 @@ reportImplicitStringConcatenation = "none"  # this is allowed by this project's 
 reportImportCycles = "none"  # other analysis tools catch these more effectively
 reportMissingSuperCall = "none"  # this can be ignored since this would break unit tests if handled incorrectly
 reportPropertyTypeMismatch = "none"  # the auto-generated properties can have mismatches
-reportShadowedImports = "error"
 reportUninitializedInstanceVariable = "error"
 reportUnnecessaryTypeIgnoreComment = "error"
 reportUnusedCallResult = "none"  # this can be ignored since this would break unit tests if handled incorrectly
