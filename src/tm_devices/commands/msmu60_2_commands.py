@@ -1,4 +1,4 @@
-"""The MPSU50_2ST commands module.
+"""The MSMU60_2 commands module.
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -7,30 +7,30 @@ Please report an issue if one is found.
 
 from typing import Any, Dict
 
-from .gen_3vhopd_mpsu.psu import PsuItem
-from .gen_3vhopd_mpsu.status import Status
-from .gen_3vhopd_mpsu.trigger import Trigger
 from .gen_4bzuy0_mpsumsmu.firmware import Firmware
 from .gen_4dh8ja_mpmpsumsmu.buffervar import Buffervar
+from .gen_4g7kah_msmu.smu import SmuItem
+from .gen_4g7kah_msmu.status import Status
+from .gen_4g7kah_msmu.trigger import Trigger
 
 
-class MPSU50_2STMeta(type):  # noqa: N801
+class MSMU60_2Meta(type):  # noqa: N801
     """A metaclass that prevents instantiation of the class it's applied to."""
 
     def __call__(cls, *_: Any, **__: Any) -> None:
         """Raises a NotImplementedError when an attempt is made to instantiate the class."""
         instantiation_error_msg = (
-            "This provides access to all the commands for the MPSU50_2ST device."
+            "This provides access to all the commands for the MSMU60_2 device."
             "It serves only for type-hinting purposes and should not be instantiated."
         )
         raise NotImplementedError(instantiation_error_msg)
 
 
-class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
-    """The MPSU50-2ST commands.
+class MSMU60_2Commands(metaclass=MSMU60_2Meta):  # noqa: N801
+    """The MSMU60-2 commands.
 
-    This provides access to all the commands for the MPSU50-2ST device. See the documentation of
-    each property for more usage information.
+    This provides access to all the commands for the MSMU60-2 device. See the documentation of each
+    property for more usage information.
 
     Properties and methods:
         - ``.buffer_var``: The ``bufferVar`` command tree.
@@ -38,8 +38,8 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
         - ``.license``: The ``license`` attribute.
         - ``.manufacturer``: The ``manufacturer`` attribute.
         - ``.model``: The ``model`` attribute.
-        - ``.psu``: The ``psu[X]`` command tree.
         - ``.serialno``: The ``serialno`` attribute.
+        - ``.smu``: The ``smu[X]`` command tree.
         - ``.status``: The ``status`` command tree.
         - ``.trigger``: The ``trigger`` command tree.
         - ``.version``: The ``version`` attribute.
@@ -156,27 +156,6 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
         """
 
     @property
-    def psu(self) -> Dict[int, PsuItem]:  # pyright: ignore[reportReturnType]
-        """Return the ``psu[X]`` command tree.
-
-        Info:
-            - ``X``, the module channel number.
-
-        Sub-properties and sub-methods:
-            - ``.abort()``: The ``psu[X].abort()`` function.
-            - ``.configlist``: The ``psu[X].configlist`` command tree.
-            - ``.defbuffer1``: The ``psu[X].defbuffer1`` attribute.
-            - ``.defbuffer2``: The ``psu[X].defbuffer2`` attribute.
-            - ``.makebuffer()``: The ``psu[X].makebuffer()`` function.
-            - ``.measure``: The ``psu[X].measure`` command tree.
-            - ``.overlapped``: The ``psu[X].overlapped`` attribute.
-            - ``.reset()``: The ``psu[X].reset()`` function.
-            - ``.source``: The ``psu[X].source`` command tree.
-            - ``.trigger``: The ``psu[X].trigger`` command tree.
-            - ``.waitcomplete()``: The ``psu[X].waitcomplete()`` function.
-        """
-
-    @property
     def serialno(self) -> str:  # pyright: ignore[reportReturnType]
         """Return the ``serialno`` attribute.
 
@@ -199,6 +178,30 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
         """
 
     @property
+    def smu(self) -> Dict[int, SmuItem]:  # pyright: ignore[reportReturnType]
+        """Return the ``smu[X]`` command tree.
+
+        Info:
+            - ``X``, the module channel number.
+
+        Sub-properties and sub-methods:
+            - ``.abort()``: The ``smu[X].abort()`` function.
+            - ``.configlist``: The ``smu[X].configlist`` command tree.
+            - ``.contact``: The ``smu[X].contact`` command tree.
+            - ``.defbuffer1``: The ``smu[X].defbuffer1`` attribute.
+            - ``.defbuffer2``: The ``smu[X].defbuffer2`` attribute.
+            - ``.guard``: The ``smu[X].guard`` command tree.
+            - ``.makebuffer()``: The ``smu[X].makebuffer()`` function.
+            - ``.measure``: The ``smu[X].measure`` command tree.
+            - ``.overlapped``: The ``smu[X].overlapped`` attribute.
+            - ``.reset()``: The ``smu[X].reset()`` function.
+            - ``.sense``: The ``smu[X].sense`` attribute.
+            - ``.source``: The ``smu[X].source`` command tree.
+            - ``.trigger``: The ``smu[X].trigger`` command tree.
+            - ``.waitcomplete()``: The ``smu[X].waitcomplete()`` function.
+        """
+
+    @property
     def status(self) -> Status:  # pyright: ignore[reportReturnType]
         """Return the ``status`` command tree.
 
@@ -206,7 +209,6 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
             - ``.measurement``: The ``status.measurement`` command tree.
             - ``.operation``: The ``status.operation`` command tree.
             - ``.questionable``: The ``status.questionable`` command tree.
-            - ``.reset()``: The ``status.reset()`` function.
         """
 
     @property

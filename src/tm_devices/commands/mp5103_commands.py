@@ -29,7 +29,7 @@ from .gen_3skc3w_mp.tsplink import Tsplink
 from .gen_3skc3w_mp.tspnet import Tspnet
 from .gen_3skc3w_mp.usbtmc import Usbtmc
 from .gen_3skc3w_mp.user import User
-from .gen_4ajvxe_mpmpsu.buffervar import Buffervar
+from .gen_4dh8ja_mpmpsumsmu.buffervar import Buffervar
 from .gen_fnz1de_mpsmuss.io import Io
 from .gen_fs14fx_daqdmmmpsmuss.dataqueue import Dataqueue
 from .gen_fs14fx_daqdmmmpsmuss.userstring import Userstring

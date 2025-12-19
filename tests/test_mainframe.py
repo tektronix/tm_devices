@@ -106,3 +106,57 @@ def test_tsp_buffer_cleanup(
     mainframe.commands.slot[3].psu[1].makebuffer("10", buffer_name="buff_name")
     mainframe.cleanup()
     assert any("buff_name = nil" in rec.message for rec in caplog.records)
+
+
+@pytest.mark.parametrize(
+    ("slot", "expected_exception", "match_msg"),
+    [
+        # Test valid slot
+        (
+            3,
+            TypeError,
+            r"No supported SMU module found in slot 3. The supported SMU modules are: MSMU60-2",
+        ),
+        # Test invalid slot number (low)
+        (0, ValueError, r"Slot number 0 is out of range. It must be between 1 and 3."),
+        # Test invalid slot number (high)
+        (4, ValueError, r"Slot number 4 is out of range. It must be between 1 and 3."),
+        # Test invalid module
+        (
+            2,
+            ValueError,
+            r"Error encountered while accessing module commands object: TBD Module "
+            r"in slot 2 is an invalid module.",
+        ),
+        # Test slot with a non-integer type
+        (
+            "2",
+            TypeError,
+            r"2 of type str is not a valid slot number. A valid slot number must be an integer.",
+        ),
+        # Test unsupported module.
+        (
+            1,
+            TypeError,
+            r"No supported SMU module found in slot 1. The supported SMU modules are: MSMU60-2",
+        ),
+    ],
+)
+def test_mainframe_smu_exception(
+    device_manager: DeviceManager,
+    slot: int,
+    expected_exception: Optional[Type[BaseException]],
+    match_msg: str,
+) -> None:
+    """Test the MP5103 driver for PSU modules."""
+    device_manager.remove_all_devices()
+    mainframe: MP5103 = device_manager.add_mf(
+        "TCPIP::MP5103-HOSTNAME::10002::SOCKET", alias="mainframe-device"
+    )
+    if expected_exception:
+        with pytest.raises(expected_exception, match=match_msg):
+            mainframe.get_module_commands_smu(slot)
+    else:
+        smu_commands = mainframe.get_module_commands_smu(slot)
+        assert smu_commands.model == "MSMU60-2"
+        assert mainframe.total_channels == 2

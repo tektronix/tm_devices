@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added Python API support for the MSMU60-2 module.
+
 ### Fixed
 
 - Updated the `TekScope.curve_query()` method to properly create a csv file without any trailing commas that previously caused csv parsing issues.

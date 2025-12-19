@@ -142,7 +142,6 @@ Attributes and Functions:
     - slot[Z].smu[X].trigger.source.listY()
     - slot[Z].smu[X].trigger.source.logY()
     - slot[Z].smu[X].waitcomplete()
-    - slot[Z].status.measurement
     - slot[Z].status.measurement.condition
     - slot[Z].status.measurement.current_limit.condition
     - slot[Z].status.measurement.current_limit.enable
@@ -281,7 +280,7 @@ from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from ..gen_4ajvxe_mpmpsu.buffervar import Buffervar
+from ..gen_4dh8ja_mpmpsumsmu.buffervar import Buffervar
 from ..helpers import (
     BaseTSPCmd,
     DefaultDictPassKeyToFactory,
@@ -7587,6 +7586,403 @@ class SlotItemStatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+class SlotItemStatusMeasurement(BaseTSPCmd):
+    """The ``slot[Z].status.measurement`` command tree.
+
+    Info:
+        - ``Z``, the module slot number.
+
+    Properties and methods:
+        - ``.condition``: The ``slot[Z].status.measurement.condition`` attribute.
+        - ``.current_limit``: The ``slot[Z].status.measurement.current_limit`` command tree.
+        - ``.enable``: The ``slot[Z].status.measurement.enable`` attribute.
+        - ``.event``: The ``slot[Z].status.measurement.event`` attribute.
+        - ``.instrument``: The ``slot[Z].status.measurement.instrument`` command tree.
+        - ``.ntr``: The ``slot[Z].status.measurement.ntr`` attribute.
+        - ``.protection``: The ``slot[Z].status.measurement.protection`` command tree.
+        - ``.ptr``: The ``slot[Z].status.measurement.ptr`` attribute.
+        - ``.reading_overflow``: The ``slot[Z].status.measurement.reading_overflow`` command tree.
+        - ``.voltage_limit``: The ``slot[Z].status.measurement.voltage_limit`` command tree.
+    """
+
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._current_limit = SlotItemStatusMeasurementCurrentLimit(
+            device, f"{self._cmd_syntax}.current_limit"
+        )
+        self._instrument = SlotItemStatusMeasurementInstrument(
+            device, f"{self._cmd_syntax}.instrument"
+        )
+        self._protection = SlotItemStatusMeasurementProtection(
+            device, f"{self._cmd_syntax}.protection"
+        )
+        self._reading_overflow = SlotItemStatusMeasurementReadingOverflow(
+            device, f"{self._cmd_syntax}.reading_overflow"
+        )
+        self._voltage_limit = SlotItemStatusMeasurementVoltageLimit(
+            device, f"{self._cmd_syntax}.voltage_limit"
+        )
+
+    @property
+    def condition(self) -> str:
+        """Access the ``slot[Z].status.measurement.condition`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.condition)``
+              query.
+
+        TSP Syntax:
+            ```
+            - print(slot[Z].status.measurement.condition)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".condition"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.condition)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def current_limit(self) -> SlotItemStatusMeasurementCurrentLimit:
+        """Return the ``slot[Z].status.measurement.current_limit`` command tree.
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``slot[Z].status.measurement.current_limit.condition`` attribute.
+            - ``.enable``: The ``slot[Z].status.measurement.current_limit.enable`` attribute.
+            - ``.event``: The ``slot[Z].status.measurement.current_limit.event`` attribute.
+            - ``.ntr``: The ``slot[Z].status.measurement.current_limit.ntr`` attribute.
+            - ``.ptr``: The ``slot[Z].status.measurement.current_limit.ptr`` attribute.
+        """
+        return self._current_limit
+
+    @property
+    def enable(self) -> str:
+        """Access the ``slot[Z].status.measurement.enable`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.enable)``
+              query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.enable = value
+            - print(slot[Z].status.measurement.enable)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``slot[Z].status.measurement.enable`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.enable)``
+              query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.enable = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.enable = value
+            - print(slot[Z].status.measurement.enable)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def event(self) -> str:
+        """Access the ``slot[Z].status.measurement.event`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.event)``
+              query.
+
+        TSP Syntax:
+            ```
+            - print(slot[Z].status.measurement.event)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".event"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.event)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def instrument(self) -> SlotItemStatusMeasurementInstrument:
+        """Return the ``slot[Z].status.measurement.instrument`` command tree.
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``slot[Z].status.measurement.instrument.condition`` attribute.
+            - ``.enable``: The ``slot[Z].status.measurement.instrument.enable`` attribute.
+            - ``.event``: The ``slot[Z].status.measurement.instrument.event`` attribute.
+            - ``.ntr``: The ``slot[Z].status.measurement.instrument.ntr`` attribute.
+            - ``.psu``: The ``slot[Z].status.measurement.instrument.psu[X]`` command tree.
+            - ``.ptr``: The ``slot[Z].status.measurement.instrument.ptr`` attribute.
+            - ``.smu``: The ``slot[Z].status.measurement.instrument.smu[X]`` command tree.
+        """
+        return self._instrument
+
+    @property
+    def ntr(self) -> str:
+        """Access the ``slot[Z].status.measurement.ntr`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.ntr)`` query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.ntr = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.ntr = value
+            - print(slot[Z].status.measurement.ntr)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".ntr"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @ntr.setter
+    def ntr(self, value: Union[str, float]) -> None:
+        """Access the ``slot[Z].status.measurement.ntr`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.ntr)`` query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.ntr = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.ntr = value
+            - print(slot[Z].status.measurement.ntr)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".ntr", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def protection(self) -> SlotItemStatusMeasurementProtection:
+        """Return the ``slot[Z].status.measurement.protection`` command tree.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``slot[Z].status.measurement.protection.condition`` attribute.
+            - ``.enable``: The ``slot[Z].status.measurement.protection.enable`` attribute.
+            - ``.event``: The ``slot[Z].status.measurement.protection.event`` attribute.
+            - ``.ntr``: The ``slot[Z].status.measurement.protection.ntr`` attribute.
+            - ``.ptr``: The ``slot[Z].status.measurement.protection.ptr`` attribute.
+        """
+        return self._protection
+
+    @property
+    def ptr(self) -> str:
+        """Access the ``slot[Z].status.measurement.ptr`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.ptr)`` query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.ptr = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.ptr = value
+            - print(slot[Z].status.measurement.ptr)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".ptr"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @ptr.setter
+    def ptr(self, value: Union[str, float]) -> None:
+        """Access the ``slot[Z].status.measurement.ptr`` attribute.
+
+        Description:
+            - This attribute contains the Measurement Event register set.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].status.measurement.ptr)`` query.
+            - Setting this property to a value will send the
+              ``slot[Z].status.measurement.ptr = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].status.measurement.ptr = value
+            - print(slot[Z].status.measurement.ptr)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".ptr", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def reading_overflow(self) -> SlotItemStatusMeasurementReadingOverflow:
+        """Return the ``slot[Z].status.measurement.reading_overflow`` command tree.
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``slot[Z].status.measurement.reading_overflow.condition``
+              attribute.
+            - ``.enable``: The ``slot[Z].status.measurement.reading_overflow.enable`` attribute.
+            - ``.event``: The ``slot[Z].status.measurement.reading_overflow.event`` attribute.
+            - ``.ntr``: The ``slot[Z].status.measurement.reading_overflow.ntr`` attribute.
+            - ``.ptr``: The ``slot[Z].status.measurement.reading_overflow.ptr`` attribute.
+        """
+        return self._reading_overflow
+
+    @property
+    def voltage_limit(self) -> SlotItemStatusMeasurementVoltageLimit:
+        """Return the ``slot[Z].status.measurement.voltage_limit`` command tree.
+
+        Info:
+            - ``Z``, the module slot number.
+
+        Sub-properties and sub-methods:
+            - ``.condition``: The ``slot[Z].status.measurement.voltage_limit.condition`` attribute.
+            - ``.enable``: The ``slot[Z].status.measurement.voltage_limit.enable`` attribute.
+            - ``.event``: The ``slot[Z].status.measurement.voltage_limit.event`` attribute.
+            - ``.ntr``: The ``slot[Z].status.measurement.voltage_limit.ntr`` attribute.
+            - ``.ptr``: The ``slot[Z].status.measurement.voltage_limit.ptr`` attribute.
+        """
+        return self._voltage_limit
+
+
 class SlotItemStatus(BaseTSPCmd):
     """The ``slot[Z].status`` command tree.
 
@@ -7594,7 +7990,7 @@ class SlotItemStatus(BaseTSPCmd):
         - ``Z``, the module slot number.
 
     Properties and methods:
-        - ``.measurement``: The ``slot[Z].status.measurement`` attribute.
+        - ``.measurement``: The ``slot[Z].status.measurement`` command tree.
         - ``.operation``: The ``slot[Z].status.operation`` command tree.
         - ``.questionable``: The ``slot[Z].status.questionable`` command tree.
         - ``.reset()``: The ``slot[Z].status.reset()`` function.
@@ -7602,32 +7998,16 @@ class SlotItemStatus(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._measurement = SlotItemStatusMeasurement(device, f"{self._cmd_syntax}.measurement")
         self._operation = SlotItemStatusOperation(device, f"{self._cmd_syntax}.operation")
         self._questionable = SlotItemStatusQuestionable(device, f"{self._cmd_syntax}.questionable")
 
     @property
-    def measurement(self) -> str:
-        """Access the ``slot[Z].status.measurement`` attribute.
-
-        Description:
-            - This attribute contains the measurement event register set.
-
-        Usage:
-            - Accessing this property will send the ``print(slot[Z].status.measurement)`` query.
-            - Setting this property to a value will send the ``slot[Z].status.measurement = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - slot[Z].status.measurement = value
-            - print(slot[Z].status.measurement)
-            ```
+    def measurement(self) -> SlotItemStatusMeasurement:
+        """Return the ``slot[Z].status.measurement`` command tree.
 
         Info:
             - ``Z``, the module slot number.
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
 
         Sub-properties and sub-methods:
             - ``.condition``: The ``slot[Z].status.measurement.condition`` attribute.
@@ -7642,65 +8022,7 @@ class SlotItemStatus(BaseTSPCmd):
               tree.
             - ``.voltage_limit``: The ``slot[Z].status.measurement.voltage_limit`` command tree.
         """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".measurement"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.measurement)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.measurement`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @measurement.setter
-    def measurement(self, value: Union[str, float]) -> None:
-        """Access the ``slot[Z].status.measurement`` attribute.
-
-        Description:
-            - This attribute contains the measurement event register set.
-
-        Usage:
-            - Accessing this property will send the ``print(slot[Z].status.measurement)`` query.
-            - Setting this property to a value will send the ``slot[Z].status.measurement = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - slot[Z].status.measurement = value
-            - print(slot[Z].status.measurement)
-            ```
-
-        Info:
-            - ``Z``, the module slot number.
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-
-        Sub-properties and sub-methods:
-            - ``.condition``: The ``slot[Z].status.measurement.condition`` attribute.
-            - ``.current_limit``: The ``slot[Z].status.measurement.current_limit`` command tree.
-            - ``.enable``: The ``slot[Z].status.measurement.enable`` attribute.
-            - ``.event``: The ``slot[Z].status.measurement.event`` attribute.
-            - ``.instrument``: The ``slot[Z].status.measurement.instrument`` command tree.
-            - ``.ntr``: The ``slot[Z].status.measurement.ntr`` attribute.
-            - ``.protection``: The ``slot[Z].status.measurement.protection`` command tree.
-            - ``.ptr``: The ``slot[Z].status.measurement.ptr`` attribute.
-            - ``.reading_overflow``: The ``slot[Z].status.measurement.reading_overflow`` command
-              tree.
-            - ``.voltage_limit``: The ``slot[Z].status.measurement.voltage_limit`` command tree.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".measurement", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.measurement = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.measurement`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
+        return self._measurement
 
     @property
     def operation(self) -> SlotItemStatusOperation:
@@ -15973,7 +16295,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             - ``Z``, the module slot number.
 
         Sub-properties and sub-methods:
-            - ``.measurement``: The ``slot[Z].status.measurement`` attribute.
+            - ``.measurement``: The ``slot[Z].status.measurement`` command tree.
             - ``.operation``: The ``slot[Z].status.operation`` command tree.
             - ``.questionable``: The ``slot[Z].status.questionable`` command tree.
             - ``.reset()``: The ``slot[Z].status.reset()`` function.

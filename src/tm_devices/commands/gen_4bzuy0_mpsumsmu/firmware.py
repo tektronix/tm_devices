@@ -2,7 +2,7 @@
 """The firmware commands module.
 
 These commands are used in the following models:
-MPSU50_2ST
+MPSU50_2ST, MSMU60_2
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
