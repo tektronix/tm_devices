@@ -76,7 +76,7 @@ from typing import Optional, TYPE_CHECKING, Union
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-from ..gen_4ajvxe_mpmpsu.buffervar import Buffervar
+from ..gen_4dh8ja_mpmpsumsmu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:

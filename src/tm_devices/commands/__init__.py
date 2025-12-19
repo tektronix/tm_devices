@@ -42,6 +42,7 @@ from .mdo4kb_commands import MDO4KBCommandConstants, MDO4KBCommands, MDO4KBMixin
 from .mdo4kc_commands import MDO4KCCommandConstants, MDO4KCCommands, MDO4KCMixin
 from .mp5103_commands import MP5103CommandConstants, MP5103Commands, MP5103Mixin
 from .mpsu50_2st_commands import MPSU50_2STCommands
+from .msmu60_2_commands import MSMU60_2Commands
 from .mso2_commands import MSO2CommandConstants, MSO2Commands, MSO2Mixin
 from .mso2k_commands import MSO2KCommandConstants, MSO2KCommands, MSO2KMixin
 from .mso2kb_commands import MSO2KBCommandConstants, MSO2KBCommands, MSO2KBMixin
@@ -189,6 +190,7 @@ __all__ = [
     "MP5103Commands",
     "MP5103Mixin",
     "MPSU50_2STCommands",
+    "MSMU60_2Commands",
     "MSO2CommandConstants",
     "MSO2Commands",
     "MSO2KBCommandConstants",

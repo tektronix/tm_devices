@@ -17,11 +17,12 @@ from tm_devices.drivers.mainframes.mainframe import Mainframe
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 if TYPE_CHECKING:
-    from tm_devices.commands import MPSU50_2STCommands
+    from tm_devices.commands import MPSU50_2STCommands, MSMU60_2Commands
     from tm_devices.commands.gen_3skc3w_mp.slot import SlotItem
 
 
 _POWER_SUPPLY_UNIT_MODULES = ["MPSU50-2ST"]
+_SOURCE_MEASUREMENT_UNIT_MODULES = ["MSMU60-2"]
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
@@ -82,6 +83,21 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
             TypeError: If the module in the slot is not one of the supported PSU modules.
         """
         return self._get_module_commands_api("PSU", _POWER_SUPPLY_UNIT_MODULES, slot)
+
+    def get_module_commands_smu(self, slot: int) -> Union[MSMU60_2Commands, SlotItem]:
+        """Get a Source Measure Unit (SMU) module commands object from the mainframe.
+
+        Args:
+            slot (int): The slot number of the SMU module.
+
+        Returns:
+            The SMU commands associated with the specified slot.
+
+        Raises:
+            ValueError: If no module is available in the specified slot.
+            TypeError: If the module in the slot is not one of the supported SMU modules.
+        """
+        return self._get_module_commands_api("SMU", _SOURCE_MEASUREMENT_UNIT_MODULES, slot)
 
     ################################################################################################
     # Private Methods

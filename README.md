@@ -150,6 +150,7 @@ _Mainframe Module Support Levels_
 | Module         | Applicable<br>Mainframes | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
 | -------------- | ------------------------ | --------------- | ---------------- | ---------------------------------- |
 | **MPSU50-2ST** | MP5000 Series            | TSP             | ✅               | 🚧                                 |
+| **MSMU60-2**   | MP5000 Series            | TSP             | ✅               | 🚧                                 |
 
 </div>
 
