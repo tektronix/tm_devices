@@ -18,6 +18,25 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.5.0 (2025-12-19)
+
+### Merged Pull Requests
+
+- feat: Added Python API support for the MSMU60-2 module. ([#525](https://github.com/tektronix/tm_devices/pull/525))
+- python-deps(deps): bump the python-dependencies group with 3 updates ([#511](https://github.com/tektronix/tm_devices/pull/511))
+- Enhanced expect_esr ([#523](https://github.com/tektronix/tm_devices/pull/523))
+- gh-actions(deps): bump the gh-actions-dependencies group with 12 updates ([#521](https://github.com/tektronix/tm_devices/pull/521))
+- python-deps(deps): bump the python-dependencies group with 4 updates ([#519](https://github.com/tektronix/tm_devices/pull/519))
+- gh-actions(deps): bump actions/checkout ([#517](https://github.com/tektronix/tm_devices/pull/517))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 8 updates ([#518](https://github.com/tektronix/tm_devices/pull/518))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#501](https://github.com/tektronix/tm_devices/pull/501))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 11 updates ([#510](https://github.com/tektronix/tm_devices/pull/510))
+- fix: remove trailing comma when writing frames to CSV to avoid CSV parsing errors ([#504](https://github.com/tektronix/tm_devices/pull/504))
+- python-deps(deps): bump the python-dependencies group with 8 updates ([#502](https://github.com/tektronix/tm_devices/pull/502))
+- python-deps(deps): bump the python-dependencies group with 2 updates ([#499](https://github.com/tektronix/tm_devices/pull/499))
+
 ### Added
 
 - Added Python API support for the MSMU60-2 module for the MP5103 modular precision test system (mainframe).
