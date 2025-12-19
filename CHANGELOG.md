@@ -20,7 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Added Python API support for the MSMU60-2 module.
+- Added Python API support for the MSMU60-2 module for the MP5103 modular precision test system (mainframe).
 
 ### Fixed
 
