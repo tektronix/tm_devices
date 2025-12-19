@@ -2,5 +2,5 @@
 ignore:
   - vulnerability: GHSA-4xh5-x5gv-qwph
     reason: Ignored because it is a development dependency
-  - vulnerability: GHSA-w853-jp5j-5j7f
+  - vulnerability: GHSA-w853-jp5j-5j7f  # TODO: Drop Python 3.8: Remove this vulnerability ignore once support for Python 3.9 is removed
     reason: Ignored until Python 3.9 support is removed
