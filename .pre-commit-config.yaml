@@ -49,12 +49,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 381d5e68de9fe958938da811f2e094a8f90e8195  # frozen: v1.7.9.24
+    rev: 85c37735ea69e5baf0681530e57e63deee0ce733  # frozen: v1.7.10.24
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 9f3ec868c0429155a46b4819b625d47a8522a3d5  # frozen: v4.10.0
+    rev: 2e4f4b26b5b0a0c0ebc660c1f78aca1e28d912bd  # frozen: v4.11.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -67,7 +67,7 @@ repos:
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: ff29be1a1ba8029d9375882aa2c812b62112a593  # frozen: 0.7.22
+    rev: 2d496dbc18e31b83a1596685347ffe0b6041daf0  # frozen: 1.0.0
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
