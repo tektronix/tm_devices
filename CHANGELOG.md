@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added support for Python 3.14.
+
 ---
 
 ## v3.5.0 (2025-12-19)
