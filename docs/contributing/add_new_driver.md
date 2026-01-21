@@ -71,6 +71,7 @@ defines abstract functions that all device drivers must implement.
 ```python
 ### drivers/power_supplies/new_series_psu/fancy_power_supply.py
 """Fancy PSU Base device driver for the new series/family of fancy power supplies."""
+
 from abc import ABC
 from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.drivers.device import family_base_class
@@ -86,6 +87,7 @@ class BaseFancyPSU(PowerSupplyUnit, ABC):
 ```python
 ### drivers/ower_supplies/new_series_psu/fancy_psu_123.py
 """BaseFancyPSU device driver."""
+
 from tm_devices.drivers.power_supplies.new_series_psu.fancy_power_supply import (
     BaseFancyPSU,
 )
