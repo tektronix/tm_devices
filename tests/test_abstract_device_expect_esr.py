@@ -133,7 +133,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
         """Helper to verify caplog records match expected log messages."""
         log_msgs = [msg for msg in log_msgs if msg]  # Filter out empty messages
         assert len(caplog.records) == len(log_msgs)
-        for record, expected_msg in zip(caplog.records, log_msgs):
+        for record, expected_msg in zip(caplog.records, log_msgs, strict=True):
             assert record.levelname == "WARNING"
             assert record.message.endswith(expected_msg), (
                 f"logged message:\n{record.message!r}\n was expected to end with:\n{expected_msg!r}"

@@ -24,7 +24,7 @@ jobs:
       commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
       release-level: ${{ inputs.release-level }}
       build-and-publish-python-package: true
-      python-versions-array: '["3.9", "3.10", "3.11", "3.12", "3.13"]'  # when updating this, make sure to update all workflows that use this strategy
+      python-versions-array: '["3.10", "3.11", "3.12", "3.13"]'  # when updating this, make sure to update all workflows that use this strategy  # PYTHON VERSION MARKER
       operating-systems-array: '["ubuntu", "windows", "macos"]'
       previous-changelog-filepath: python_semantic_release_templates/.previous_changelog_for_template.md
       previous-release-notes-filepath: python_semantic_release_templates/.previous_release_notes_for_template.md

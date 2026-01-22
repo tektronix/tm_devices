@@ -49,15 +49,6 @@ def main() -> None:
     try:
         if RUNNING_IN_VIRTUALENV:
             raise IndexError  # noqa: TRY301
-        # This requires contributors to use newer versions of Python even
-        # though the package supports older versions.
-        if sys.version_info < (3, 10):
-            msg = (
-                "Unable to set up the environment. "
-                "Please use a Python version greater than 3.9 for "
-                "local development on this package."
-            )
-            raise SystemExit(msg)
         # Windows systems require the 64 bit python
         if platform.system().lower() == "windows" and sys.maxsize <= 2**32:
             msg = "Unable to set up the environment. Please use a 64-bit Python version."

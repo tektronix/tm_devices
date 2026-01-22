@@ -14,7 +14,7 @@ jobs:
     with:
       repo-name: tektronix/tm_devices
       operating-systems-array: '["ubuntu", "windows", "macos"]'
-      python-versions-array: '["3.9", "3.10", "3.11", "3.12", "3.13"]'  # when updating this, make sure to update all workflows that use this strategy
+      python-versions-array: '["3.10", "3.11", "3.12", "3.13"]'  # when updating this, make sure to update all workflows that use this strategy  # PYTHON VERSION MARKER
       upload-to-codecov: true
       enable-retry-os-array: '["macos"]'
     secrets:

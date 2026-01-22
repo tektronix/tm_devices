@@ -4,10 +4,6 @@ requires = ["poetry-core~=2.2.1"]
 
 [tool]
 
-[tool.coverage.coverage_conditional_plugin.rules]
-py-gte-39 = "sys_version_info >= (3, 9)"
-py-lt-39 = "sys_version_info < (3, 9)"
-
 [tool.coverage.paths]
 source = [
   "src/tm_devices",
@@ -31,7 +27,6 @@ skip_empty = true
 branch = true
 cover_pylib = false
 patch = ["subprocess"]
-plugins = ["coverage_conditional_plugin"]
 source = ["tm_devices"]
 
 [tool.docformatter]
@@ -51,7 +46,6 @@ classifiers = [
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.9",  # manually add this classifier since Poetry won't add it automatically due to the mimimum Python version being 3.9.2  # TODO: Drop Python 3.9: Remove this classifier
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",
@@ -86,7 +80,7 @@ libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.1
 packaging = ">=24.0"
 psutil = ">=6.0.0"
 pyserial = "^3.5"
-python = ">=3.9.2,<3.14"  # This is the main Python version requirement
+python = ">=3.10,<3.14"  # PYTHON VERSION MARKER
 python-dateutil = "^2.8.2"
 pyusb = "^1.2.1"
 pyvicp = "^1.1.0"
@@ -110,10 +104,7 @@ poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = [
-  {python = "~=3.9.2", version = "3.3.9"},  # TODO: Drop Python 3.9: remove this entry
-  {python = ">=3.10", version = "4.0.2"},
-]
+pylint = "4.0.2"
 pyright = {extras = ["nodejs"], version = "1.1.408"}
 pyroma = "^5.0"
 tox = "^4.0"
@@ -149,7 +140,6 @@ tomli = "^2.0.1"
 
 [tool.poetry.group.tests.dependencies]
 coverage = "^7.10.6"
-coverage-conditional-plugin = "^0.9.0"
 flask = "^3.0.3"
 http-server-mock = "^1.7"
 linkchecker = "^10.0.0"
@@ -214,13 +204,14 @@ pylint.extensions.set_membership,
 pylint.extensions.typing,
 pylint.extensions.while_used
 """
-py-version = "3.9"
+py-version = "3.10"  # PYTHON VERSION MARKER
 recursive = true
 
 [tool.pylint."messages control"]
 enable = ["all"]
 disable = [
   "broad-exception-caught",  # caught by ruff
+  "consider-alternative-union-syntax",  # caught by ruff
   "deprecated-typing-alias",  # caught by ruff
   "duplicate-code",
   "fixme",  # caught by ruff
@@ -273,7 +264,7 @@ ignore = [
   "temp_*.py",
 ]
 pythonPlatform = "All"
-pythonVersion = "3.9"
+pythonVersion = "3.10"  # PYTHON VERSION MARKER
 reportCallInDefaultInitializer = "error"
 reportImplicitOverride = "none"  # this check is not needed
 reportImplicitStringConcatenation = "none"  # this is allowed by this project's formatting standard
@@ -322,7 +313,7 @@ line-length = 100
 namespace-packages = ["docs/**", "examples/**", "scripts/**", "tests/**"]
 output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
-target-version = "py39"  # always generate Python 3.9 compatible code
+target-version = "py310"  # always generate Python 3.10 compatible code  # PYTHON VERSION MARKER
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
@@ -431,15 +422,14 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py39,py310,py311,py312,py313,tests,docs,doctests
+envlist = py310,py311,py312,py313,tests,docs,doctests  # PYTHON VERSION MARKER
 skip_missing_interpreters = True
 labels =
-  basic = py39,py310,py311,py312,py313,tests
+  basic = py310,py311,py312,py313,tests  # PYTHON VERSION MARKER
   documentation = docs,doctests
 
 [gh-actions]
-python =
-    3.9: py39
+python =  # PYTHON VERSION MARKER
     3.10: py310
     3.11: py311
     3.12: py312
