@@ -548,7 +548,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            # Set the LAN device endpoint to "inst0" if one is not provided/
+            # Set the LAN device endpoint to "inst0" if one is not provided
             lan_device_endpoint = (
                 "inst0" if self.lan_device_endpoint is None else self.lan_device_endpoint
             )
