@@ -4024,7 +4024,7 @@ class DmmMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.measure.read()`` function.
 
         Description:

@@ -13,7 +13,7 @@ import traceback
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Generator, Literal, Optional, Tuple, Type, TYPE_CHECKING, TypeVar, Union
+from typing import Generator, Literal, Tuple, Type, TYPE_CHECKING, TypeVar, Union
 
 import colorlog
 import pyvisa
@@ -118,8 +118,8 @@ def configure_logging(
     *,
     log_console_level: Union[str, LoggingLevels] = LoggingLevels.INFO,
     log_file_level: Union[str, LoggingLevels] = LoggingLevels.DEBUG,
-    log_file_directory: Optional[Union[str, os.PathLike[str], Path]] = None,
-    log_file_name: Optional[str] = None,
+    log_file_directory: Union[str, os.PathLike[str], Path] | None = None,
+    log_file_name: str | None = None,
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
     log_uncaught_exceptions: bool = True,
@@ -263,8 +263,8 @@ def __log_to_specific_handler_type_only(
     message: str,
     logging_level_str: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "EXCEPTION"],
     *,
-    exc_info: Optional[Tuple[Type[BaseException], BaseException, TracebackType]] = None,
-) -> Optional[_T]:  # pragma: no cover
+    exc_info: Tuple[Type[BaseException], BaseException, TracebackType] | None = None,
+) -> _T | None:  # pragma: no cover
     """Log a message to handlers of a specific type only.
 
     This should only be used when absolutely necessary, usually during custom error handling.
@@ -278,13 +278,10 @@ def __log_to_specific_handler_type_only(
     Returns:
         A pointer to the handler that it logged the message to.
     """
-    handler_used: Optional[_T] = None
-    exception_info: Optional[
-        Union[
-            Tuple[Type[BaseException], BaseException, TracebackType],
-            str,
-        ]
-    ] = None
+    handler_used: _T | None = None
+    exception_info: Union[Tuple[Type[BaseException], BaseException, TracebackType], str] | None = (
+        None
+    )
     if exc_info:
         exception_info = exc_info
     elif logging_level_str == "EXCEPTION" and sys.exc_info() == (None, None, None):
@@ -322,9 +319,9 @@ def __log_to_specific_handler_type_only(
 def __log_message_to_console_and_traceback_to_file(
     message: str,
     *,
-    message_for_console: Optional[str] = None,
+    message_for_console: str | None = None,
     additional_message_for_file: str = "",
-    exc_info: Optional[Tuple[Type[BaseException], BaseException, TracebackType]] = None,
+    exc_info: Tuple[Type[BaseException], BaseException, TracebackType] | None = None,
 ) -> str:  # pyright: ignore[reportUnusedFunction]  # pragma: no cover
     """Log a message to the console and the current traceback to the log file.
 

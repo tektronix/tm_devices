@@ -377,7 +377,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.adjustcount()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def adjustdate(self, x: str, date: Optional[str] = None) -> str:
+    def adjustdate(self, x: str, date: str | None = None) -> str:
         """Run the ``channel.calibration.adjustdate()`` function.
 
         Description:
@@ -485,7 +485,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def step(self, channel: str, step: str, value: Optional[str] = None) -> None:
+    def step(self, channel: str, step: str, value: str | None = None) -> None:
         """Run the ``channel.calibration.step()`` function.
 
         Description:
@@ -548,7 +548,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.unlock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def verifydate(self, x: str, date: Optional[str] = None) -> str:
+    def verifydate(self, x: str, date: str | None = None) -> str:
         """Run the ``channel.calibration.verifydate()`` function.
 
         Description:
@@ -1301,7 +1301,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getpowerstate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def getstate(self, channel_list: str, indicator_mask: Optional[str] = None) -> str:
+    def getstate(self, channel_list: str, indicator_mask: str | None = None) -> str:
         """Run the ``channel.getstate()`` function.
 
         Description:
@@ -1424,7 +1424,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def read(
-        self, channel_list: str, width: Optional[str] = None, reading_buffer: Optional[str] = None
+        self, channel_list: str, width: str | None = None, reading_buffer: str | None = None
     ) -> str:
         """Run the ``channel.read()`` function.
 
@@ -1629,8 +1629,8 @@ class Channel(BaseTSPCmd):
         self,
         channel_list: str,
         match_value: str,
-        mask: Optional[str] = None,
-        width: Optional[str] = None,
+        mask: str | None = None,
+        width: str | None = None,
     ) -> None:
         """Run the ``channel.setmatch()`` function.
 
@@ -1801,7 +1801,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setstatelatch()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def write(self, channel_list: str, value: str, width: Optional[str] = None) -> None:
+    def write(self, channel_list: str, value: str, width: str | None = None) -> None:
         """Run the ``channel.write()`` function.
 
         Description:

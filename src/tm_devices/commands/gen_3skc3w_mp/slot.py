@@ -537,8 +537,8 @@ class SlotItemTriggerModelAddblockDelay(BaseTSPCmd):
         self,
         trigger_model_name: str,
         block_name: str,
-        delay_time: Optional[str] = None,
-        reference_block_name: Optional[str] = None,
+        delay_time: str | None = None,
+        reference_block_name: str | None = None,
     ) -> None:
         """Run the ``slot[Z].trigger.model.addblock.delay.constant()`` function.
 
@@ -974,7 +974,7 @@ class SlotItemTriggerModelAddblock(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def measure(
-        self, trigger_model_name: str, block_name: str, channel: str, count: Optional[str] = None
+        self, trigger_model_name: str, block_name: str, channel: str, count: str | None = None
     ) -> None:
         """Run the ``slot[Z].trigger.model.addblock.measure()`` function.
 
@@ -1014,7 +1014,7 @@ class SlotItemTriggerModelAddblock(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def measureoverlapped(
-        self, trigger_model_name: str, block_name: str, channel: str, count: Optional[str] = None
+        self, trigger_model_name: str, block_name: str, channel: str, count: str | None = None
     ) -> None:
         """Run the ``slot[Z].trigger.model.addblock.measureoverlapped()`` function.
 
@@ -1088,11 +1088,11 @@ class SlotItemTriggerModelAddblock(BaseTSPCmd):
         trigger_model_name: str,
         block_name: str,
         event: str,
-        clear: Optional[str] = None,
-        logic: Optional[str] = None,
-        event_2: Optional[str] = None,
-        event_3: Optional[str] = None,
-        event_4: Optional[str] = None,
+        clear: str | None = None,
+        logic: str | None = None,
+        event_2: str | None = None,
+        event_3: str | None = None,
+        event_4: str | None = None,
     ) -> None:
         """Run the ``slot[Z].trigger.model.addblock.wait()`` function.
 
@@ -11771,7 +11771,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tempcomp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def i(self, reading_buffer: Optional[str] = None) -> str:
+    def i(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].smu[X].measure.i()`` function.
 
         Description:
@@ -11801,7 +11801,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def p(self, reading_buffer: Optional[str] = None) -> str:
+    def p(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].smu[X].measure.p()`` function.
 
         Description:
@@ -11831,7 +11831,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def r(self, reading_buffer: Optional[str] = None) -> str:
+    def r(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].smu[X].measure.r()`` function.
 
         Description:
@@ -11861,7 +11861,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def v(self, reading_buffer: Optional[str] = None) -> str:
+    def v(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].smu[X].measure.v()`` function.
 
         Description:
@@ -12425,7 +12425,7 @@ class SlotItemSmuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``slot[Z].smu[X].configlist.delete()`` function.
 
         Description:
@@ -12460,9 +12460,7 @@ class SlotItemSmuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(
-        self, config_list_name: str, index: int, field_separator: Optional[str] = None
-    ) -> str:
+    def query(self, config_list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``slot[Z].smu[X].configlist.query()`` function.
 
         Description:
@@ -12560,7 +12558,7 @@ class SlotItemSmuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def store(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``slot[Z].smu[X].configlist.store()`` function.
 
         Description:
@@ -13009,7 +13007,7 @@ class SlotItemSmuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
+    def makebuffer(self, buffer_size: str, *, buffer_name: str | None = None) -> Buffervar:
         """Run the ``slot[Z].smu[X].makebuffer()`` function.
 
         Description:
@@ -15179,7 +15177,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tempcomp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def i(self, reading_buffer: Optional[str] = None) -> str:
+    def i(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].psu[X].measure.i()`` function.
 
         Description:
@@ -15209,7 +15207,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def p(self, reading_buffer: Optional[str] = None) -> str:
+    def p(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].psu[X].measure.p()`` function.
 
         Description:
@@ -15239,7 +15237,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def r(self, reading_buffer: Optional[str] = None) -> str:
+    def r(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].psu[X].measure.r()`` function.
 
         Description:
@@ -15269,7 +15267,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def v(self, reading_buffer: Optional[str] = None) -> str:
+    def v(self, reading_buffer: str | None = None) -> str:
         """Run the ``slot[Z].psu[X].measure.v()`` function.
 
         Description:
@@ -15471,7 +15469,7 @@ class SlotItemPsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``slot[Z].psu[X].configlist.delete()`` function.
 
         Description:
@@ -15506,9 +15504,7 @@ class SlotItemPsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(
-        self, config_list_name: str, index: int, field_separator: Optional[str] = None
-    ) -> str:
+    def query(self, config_list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``slot[Z].psu[X].configlist.query()`` function.
 
         Description:
@@ -15606,7 +15602,7 @@ class SlotItemPsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def store(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``slot[Z].psu[X].configlist.store()`` function.
 
         Description:
@@ -15912,7 +15908,7 @@ class SlotItemPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
+    def makebuffer(self, buffer_size: str, *, buffer_name: str | None = None) -> Buffervar:
         """Run the ``slot[Z].psu[X].makebuffer()`` function.
 
         Description:

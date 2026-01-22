@@ -428,7 +428,7 @@ class DisplayLoadmenu(BaseTSPCmd):
         - ``.delete()``: The ``display.loadmenu.delete()`` function.
     """
 
-    def add(self, display_name: str, code: str, memory: Optional[str] = None) -> None:
+    def add(self, display_name: str, code: str, memory: str | None = None) -> None:
         """Run the ``display.loadmenu.add()`` function.
 
         Description:
@@ -1110,10 +1110,10 @@ For two-channel products, this is the SRC key for Channel A."""
 
     def gettext(
         self,
-        embellished: Optional[str] = None,
-        row: Optional[str] = None,
-        column_start: Optional[str] = None,
-        column_end: Optional[int] = None,
+        embellished: str | None = None,
+        row: str | None = None,
+        column_start: str | None = None,
+        column_end: int | None = None,
     ) -> str:
         """Run the ``display.gettext()`` function.
 
@@ -1162,9 +1162,9 @@ For two-channel products, this is the SRC key for Channel A."""
     def inputvalue(
         self,
         format_: str,
-        default: Optional[str] = None,
-        minimum: Optional[str] = None,
-        maximum: Optional[str] = None,
+        default: str | None = None,
+        minimum: str | None = None,
+        maximum: str | None = None,
     ) -> None:
         """Run the ``display.inputvalue()`` function.
 
@@ -1239,9 +1239,9 @@ For two-channel products, this is the SRC key for Channel A."""
         format_: str,
         units: str,
         help_: str,
-        default: Optional[str] = None,
-        minimum: Optional[str] = None,
-        maximum: Optional[str] = None,
+        default: str | None = None,
+        minimum: str | None = None,
+        maximum: str | None = None,
     ) -> None:
         """Run the ``display.prompt()`` function.
 
@@ -1314,7 +1314,7 @@ For two-channel products, this is the SRC key for Channel A."""
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def setcursor(self, row: str, column: str, style: Optional[str] = None) -> None:
+    def setcursor(self, row: str, column: str, style: str | None = None) -> None:
         """Run the ``display.setcursor()`` function.
 
         Description:

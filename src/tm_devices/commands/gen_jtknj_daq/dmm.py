@@ -1794,7 +1794,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.delete()`` function.
 
         Description:
@@ -1829,7 +1829,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(self, list_name: str, index: int, field_separator: Optional[str] = None) -> str:
+    def query(self, list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``dmm.measure.configlist.query()`` function.
 
         Description:
@@ -1870,7 +1870,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.query()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def recall(self, list_name: str, index: Optional[int] = None) -> None:
+    def recall(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.recall()`` function.
 
         Description:
@@ -1934,7 +1934,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, list_name: str, index: Optional[int] = None) -> None:
+    def store(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.store()`` function.
 
         Description:
@@ -1970,7 +1970,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.store()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def storefunc(self, list_name: str, function: str, index: Optional[int] = None) -> None:
+    def storefunc(self, list_name: str, function: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.storefunc()`` function.
 
         Description:
@@ -4637,7 +4637,7 @@ class DmmMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getattribute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.measure.read()`` function.
 
         Description:
@@ -4669,7 +4669,7 @@ class DmmMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def readwithtime(self, buffer_name: Optional[str] = None) -> str:
+    def readwithtime(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.measure.readwithtime()`` function.
 
         Description:
@@ -6960,7 +6960,7 @@ class DmmDigitize(BaseTSPCmd):
         """
         return self._userdelay
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.digitize.read()`` function.
 
         Description:
@@ -6992,7 +6992,7 @@ class DmmDigitize(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def readwithtime(self, buffer_name: Optional[str] = None) -> str:
+    def readwithtime(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.digitize.readwithtime()`` function.
 
         Description:

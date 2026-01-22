@@ -17,7 +17,6 @@ from typing import (
     Generator,
     Iterable,
     List,
-    Optional,
     Sequence,
     Tuple,
     Type,
@@ -394,11 +393,11 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         datatype: util.BINARY_DATATYPES = "f",
         is_big_endian: bool = False,
         container: Union[Type[T], Callable[[Iterable[Any]], T]] = list,
-        delay: Optional[float] = None,
+        delay: float | None = None,
         header_fmt: util.BINARY_HEADERS = "ieee",
         expect_termination: bool = True,
         data_points: int = 0,
-        chunk_size: Optional[int] = None,
+        chunk_size: int | None = None,
     ) -> T:
         """Send a query to the device and return the binary values.
 
@@ -679,7 +678,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """Return the read results from the VISA resource."""
         return self._visa_resource.read()
 
-    def read_raw(self, size: Optional[int] = None) -> bytes:
+    def read_raw(self, size: int | None = None) -> bytes:
         """Return the read_raw results from the VISA resource.
 
         Args:
@@ -704,7 +703,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Optional[Union[str, float]] = None,
+        expected_value: Union[str, float] | None = None,
         opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
@@ -754,7 +753,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Optional[Union[str, float]] = None,
+        expected_value: Union[str, float] | None = None,
         opc: bool = False,
         allow_empty: bool = False,
         verify_value: bool = False,

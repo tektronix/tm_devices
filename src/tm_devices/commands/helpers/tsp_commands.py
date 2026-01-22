@@ -21,7 +21,7 @@ class BaseTSPCmd(BaseCmd):  # pylint: disable=too-few-public-methods
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._device: Optional["TSPControl"] = device
+        self._device: TSPControl | None = device
 
     def _get_tsp_table_dict(self, table: str) -> Dict[Any, Any]:
         """Get the full content of a TSP table variable.

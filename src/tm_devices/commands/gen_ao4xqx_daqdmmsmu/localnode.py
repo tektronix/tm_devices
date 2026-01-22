@@ -528,12 +528,12 @@ class Localnode(BaseTSPCmd):
 
     def settime(
         self,
-        year: Optional[str] = None,
-        month: Optional[int] = None,
-        day: Optional[int] = None,
-        hour: Optional[int] = None,
-        minute: Optional[int] = None,
-        second: Optional[int] = None,
+        year: str | None = None,
+        month: int | None = None,
+        day: int | None = None,
+        hour: int | None = None,
+        minute: int | None = None,
+        second: int | None = None,
     ) -> None:
         """Run the ``localnode.settime()`` function.
 

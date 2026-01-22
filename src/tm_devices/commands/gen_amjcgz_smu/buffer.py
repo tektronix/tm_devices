@@ -43,8 +43,8 @@ class BufferWrite(BaseTSPCmd):
         buffer_var: str,
         units: str,
         display_digits: int,
-        extra_units: Optional[str] = None,
-        extra_digits: Optional[int] = None,
+        extra_units: str | None = None,
+        extra_digits: int | None = None,
     ) -> None:
         """Run the ``buffer.write.format()`` function.
 
@@ -94,10 +94,10 @@ class BufferWrite(BaseTSPCmd):
         self,
         buffer_var: str,
         reading_value: str,
-        extra_value: Optional[str] = None,
-        seconds: Optional[str] = None,
-        fractional_seconds: Optional[str] = None,
-        status: Optional[str] = None,
+        extra_value: str | None = None,
+        seconds: str | None = None,
+        fractional_seconds: str | None = None,
+        status: str | None = None,
     ) -> None:
         """Run the ``buffer.write.reading()`` function.
 
@@ -397,7 +397,7 @@ class Buffer(BaseTSPCmd):
         """
         return self._write
 
-    def clearstats(self, buffer_var: Optional[str] = None) -> None:
+    def clearstats(self, buffer_var: str | None = None) -> None:
         """Run the ``buffer.clearstats()`` function.
 
         Description:
@@ -452,9 +452,9 @@ class Buffer(BaseTSPCmd):
 
     def getstats(
         self,
-        buffer_var: Optional[str] = None,
-        rel_start_time: Optional[str] = None,
-        rel_end_time: Optional[str] = None,
+        buffer_var: str | None = None,
+        rel_start_time: str | None = None,
+        rel_end_time: str | None = None,
     ) -> Dict[Any, Any]:
         """Run the ``buffer.getstats()`` function.
 
@@ -502,7 +502,7 @@ class Buffer(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def make(
-        self, buffer_size: int, style: Optional[str] = None, *, buffer_name: Optional[str] = None
+        self, buffer_size: int, style: str | None = None, *, buffer_name: str | None = None
     ) -> Buffervar:
         """Run the ``buffer.make()`` function.
 
@@ -552,9 +552,9 @@ class Buffer(BaseTSPCmd):
         self,
         buffer_var: str,
         file_name: str,
-        what: Optional[str] = None,
-        start: Optional[str] = None,
-        end: Optional[str] = None,
+        what: str | None = None,
+        start: str | None = None,
+        end: str | None = None,
     ) -> None:
         """Run the ``buffer.save()`` function.
 
@@ -601,9 +601,9 @@ class Buffer(BaseTSPCmd):
         self,
         buffer_var: str,
         file_name: str,
-        time_format: Optional[str] = None,
-        start: Optional[str] = None,
-        end: Optional[str] = None,
+        time_format: str | None = None,
+        start: str | None = None,
+        end: str | None = None,
     ) -> None:
         """Run the ``buffer.saveappend()`` function.
 

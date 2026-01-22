@@ -1485,8 +1485,8 @@ class TriggerModel(BaseTSPCmd):
         self,
         measure_config_list: str,
         source_config_list: str,
-        delay: Optional[float] = None,
-        buffer_name: Optional[str] = None,
+        delay: float | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - ConfigList`` function.
 
@@ -1532,7 +1532,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def load_duration_loop(
-        self, duration: float, delay: Optional[float] = None, buffer_name: Optional[str] = None
+        self, duration: float, delay: float | None = None, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.load() - DurationLoop`` function.
 
@@ -1604,18 +1604,18 @@ class TriggerModel(BaseTSPCmd):
         end_delay: float,
         limit1_high: float,
         limit1_low: float,
-        limit1_pattern: Optional[int] = None,
-        all_pattern: Optional[int] = None,
-        limit2_high: Optional[float] = None,
-        limit2_low: Optional[float] = None,
-        limit2_pattern: Optional[int] = None,
-        limit3_high: Optional[float] = None,
-        limit3_low: Optional[float] = None,
-        limit3_pattern: Optional[int] = None,
-        limit4_high: Optional[float] = None,
-        limit4_low: Optional[float] = None,
-        limit4_pattern: Optional[int] = None,
-        buffer_name: Optional[str] = None,
+        limit1_pattern: int | None = None,
+        all_pattern: int | None = None,
+        limit2_high: float | None = None,
+        limit2_low: float | None = None,
+        limit2_pattern: int | None = None,
+        limit3_high: float | None = None,
+        limit3_low: float | None = None,
+        limit3_pattern: int | None = None,
+        limit4_high: float | None = None,
+        limit4_low: float | None = None,
+        limit4_pattern: int | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - GradeBinning`` function.
 
@@ -1707,8 +1707,8 @@ class TriggerModel(BaseTSPCmd):
         dig_out_line: int,
         count: int,
         clear: str,
-        delay: Optional[float] = None,
-        buffer_name: Optional[str] = None,
+        delay: float | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - LogicTrigger`` function.
 
@@ -1761,8 +1761,8 @@ class TriggerModel(BaseTSPCmd):
         trigger_event: str,
         position: int,
         clear: str,
-        delay: Optional[float] = None,
-        buffer_name: Optional[str] = None,
+        delay: float | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - LoopUntilEvent`` function.
 
@@ -1811,7 +1811,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def load_simple_loop(
-        self, count: int, delay: Optional[float] = None, buffer_name: Optional[str] = None
+        self, count: int, delay: float | None = None, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.load() - SimpleLoop`` function.
 
@@ -1862,18 +1862,18 @@ class TriggerModel(BaseTSPCmd):
         end_delay: float,
         limit1_high: float,
         limit1_low: float,
-        limit1_pattern: Optional[int] = None,
-        all_pattern: Optional[int] = None,
-        limit2_high: Optional[float] = None,
-        limit2_low: Optional[float] = None,
-        limit2_pattern: Optional[int] = None,
-        limit3_high: Optional[float] = None,
-        limit3_low: Optional[float] = None,
-        limit3_pattern: Optional[int] = None,
-        limit4_high: Optional[float] = None,
-        limit4_low: Optional[float] = None,
-        limit4_pattern: Optional[int] = None,
-        buffer_name: Optional[str] = None,
+        limit1_pattern: int | None = None,
+        all_pattern: int | None = None,
+        limit2_high: float | None = None,
+        limit2_low: float | None = None,
+        limit2_pattern: int | None = None,
+        limit3_high: float | None = None,
+        limit3_low: float | None = None,
+        limit3_pattern: int | None = None,
+        limit4_high: float | None = None,
+        limit4_low: float | None = None,
+        limit4_pattern: int | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - SortBinning`` function.
 
@@ -2071,7 +2071,7 @@ class TriggerModel(BaseTSPCmd):
         block_number: int,
         target_difference: str,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_DELTA`` function.
 
@@ -2123,7 +2123,7 @@ class TriggerModel(BaseTSPCmd):
         limit_a: float,
         limit_b: float,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_LIMIT_CONSTANT`` function.
 
@@ -2177,7 +2177,7 @@ class TriggerModel(BaseTSPCmd):
         limit_type: float,
         limit_number: float,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_LIMIT_DYNAMIC`` function.
 
@@ -2320,7 +2320,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_buffer_clear(
-        self, block_number: int, buffer_name: Optional[str] = None
+        self, block_number: int, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BUFFER_CLEAR`` function.
 
@@ -2358,7 +2358,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_config_next(
-        self, block_number: int, configuration_list: str, optional_config_list: Optional[str] = None
+        self, block_number: int, configuration_list: str, optional_config_list: str | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_CONFIG_NEXT`` function.
 
@@ -2402,7 +2402,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_config_prev(
-        self, block_number: int, configuration_list: str, optional_config_list: Optional[str] = None
+        self, block_number: int, configuration_list: str, optional_config_list: str | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_CONFIG_PREV`` function.
 
@@ -2450,9 +2450,9 @@ class TriggerModel(BaseTSPCmd):
         self,
         block_number: int,
         configuration_list: str,
-        index: Optional[int] = None,
-        optional_config_list: Optional[str] = None,
-        optional_index: Optional[int] = None,
+        index: int | None = None,
+        optional_config_list: str | None = None,
+        optional_index: int | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_CONFIG_RECALL`` function.
 
@@ -2593,7 +2593,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_measure_digitize(
-        self, block_number: int, buffer_name: Optional[str] = None, count: Optional[int] = None
+        self, block_number: int, buffer_name: str | None = None, count: int | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_MEASURE_DIGITIZE`` function.
 
@@ -2772,10 +2772,10 @@ class TriggerModel(BaseTSPCmd):
         self,
         block_number: int,
         event: str,
-        clear: Optional[str] = None,
-        logic: Optional[str] = None,
-        event_2: Optional[str] = None,
-        event_3: Optional[str] = None,
+        clear: str | None = None,
+        logic: str | None = None,
+        event_2: str | None = None,
+        event_3: str | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_WAIT`` function.
 

@@ -12,7 +12,6 @@ from functools import cached_property as functools_cached_property
 from typing import (
     Any,
     final,
-    Optional,
     Tuple,
     TypeVar,
 )
@@ -214,7 +213,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         return f"{self.device_type} {max(0, self.device_number) or ''}".strip()
 
     @property
-    def port(self) -> Optional[int]:
+    def port(self) -> int | None:
         """Return the device port, or None if the device doesn't have a port."""
         return self._config_entry.lan_port
 

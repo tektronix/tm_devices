@@ -36,7 +36,7 @@ class BaseSCPICmd(BaseCmd):  # pylint: disable=too-few-public-methods
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._device: Optional["PIControl"] = device
+        self._device: PIControl | None = device
 
 
 class SCPICmdRead(BaseSCPICmd):
@@ -286,7 +286,7 @@ class DefaultDictDeviceCommunication(ParentDefaultDictClass):
         self,
         cmd_syntax: str,
         query_syntax: str,
-        write_syntax: Optional[str] = None,
+        write_syntax: str | None = None,
         device: Optional["PIControl"] = None,
         **kwargs: Any,
     ) -> None:

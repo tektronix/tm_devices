@@ -276,9 +276,9 @@ class Acal(BaseTSPCmd):
 
     def schedule(
         self,
-        action: Optional[str] = None,
-        interval: Optional[str] = None,
-        hour: Optional[int] = None,
+        action: str | None = None,
+        interval: str | None = None,
+        hour: int | None = None,
     ) -> str:
         """Run the ``acal.schedule()`` function.
 

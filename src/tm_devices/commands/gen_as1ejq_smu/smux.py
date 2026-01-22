@@ -5416,7 +5416,7 @@ class SmuxItemMeasure(BaseTSPCmd):
         """
         return self._rel
 
-    def i(self, reading_buffer: Optional[str] = None) -> str:
+    def i(self, reading_buffer: str | None = None) -> str:
         """Run the ``smuX.measure.i()`` function.
 
         Description:
@@ -5445,9 +5445,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def iv(
-        self, i_reading_buffer: Optional[str] = None, v_reading_buffer: Optional[str] = None
-    ) -> str:
+    def iv(self, i_reading_buffer: str | None = None, v_reading_buffer: str | None = None) -> str:
         """Run the ``smuX.measure.iv()`` function.
 
         Description:
@@ -5485,7 +5483,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def p(self, reading_buffer: Optional[str] = None) -> str:
+    def p(self, reading_buffer: str | None = None) -> str:
         """Run the ``smuX.measure.p()`` function.
 
         Description:
@@ -5514,7 +5512,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def r(self, reading_buffer: Optional[str] = None) -> str:
+    def r(self, reading_buffer: str | None = None) -> str:
         """Run the ``smuX.measure.r()`` function.
 
         Description:
@@ -5543,7 +5541,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def v(self, reading_buffer: Optional[str] = None) -> str:
+    def v(self, reading_buffer: str | None = None) -> str:
         """Run the ``smuX.measure.v()`` function.
 
         Description:
@@ -6482,7 +6480,7 @@ class SmuxItemCal(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.lock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def restore(self, calset: Optional[str] = None) -> None:
+    def restore(self, calset: str | None = None) -> None:
         """Run the ``smuX.cal.restore()`` function.
 
         Description:
@@ -7241,7 +7239,7 @@ reading at index bufferVar.fillcount."""
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
+    def makebuffer(self, buffer_size: str, *, buffer_name: str | None = None) -> Buffervar:
         """Run the ``smuX.makebuffer()`` function.
 
         Description:

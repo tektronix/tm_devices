@@ -481,7 +481,7 @@ class SmuSourceConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, list_name: str, index: int | None = None) -> None:
         """Run the ``smu.source.configlist.delete()`` function.
 
         Description:
@@ -516,7 +516,7 @@ class SmuSourceConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(self, list_name: str, index: int, field_separator: Optional[str] = None) -> str:
+    def query(self, list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``smu.source.configlist.query()`` function.
 
         Description:
@@ -562,8 +562,8 @@ class SmuSourceConfiglist(BaseTSPCmd):
         self,
         list_name: str,
         index: int,
-        measure_list_name: Optional[str] = None,
-        measure_index: Optional[float] = None,
+        measure_list_name: str | None = None,
+        measure_index: float | None = None,
     ) -> None:
         """Run the ``smu.source.configlist.recall()`` function.
 
@@ -635,7 +635,7 @@ class SmuSourceConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, list_name: str, index: Optional[int] = None) -> None:
+    def store(self, list_name: str, index: int | None = None) -> None:
         """Run the ``smu.source.configlist.store()`` function.
 
         Description:
@@ -670,7 +670,7 @@ class SmuSourceConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.store()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def storefunc(self, config_list_name: str, function: str, index: Optional[int] = None) -> None:
+    def storefunc(self, config_list_name: str, function: str, index: int | None = None) -> None:
         """Run the ``smu.source.configlist.storefunc()`` function.
 
         Description:
@@ -1531,12 +1531,12 @@ class SmuSource(BaseTSPCmd):
         start: float,
         stop: float,
         points: int,
-        s_delay: Optional[float] = None,
-        count: Optional[int] = None,
-        range_type: Optional[str] = None,
-        fail_abort: Optional[str] = None,
-        dual: Optional[str] = None,
-        buffer_name: Optional[str] = None,
+        s_delay: float | None = None,
+        count: int | None = None,
+        range_type: str | None = None,
+        fail_abort: str | None = None,
+        dual: str | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``smu.source.sweeplinear()`` function.
 
@@ -1602,12 +1602,12 @@ class SmuSource(BaseTSPCmd):
         start: float,
         stop: float,
         step: str,
-        s_delay: Optional[float] = None,
-        count: Optional[int] = None,
-        range_type: Optional[str] = None,
-        fail_abort: Optional[str] = None,
-        dual: Optional[str] = None,
-        buffer_name: Optional[str] = None,
+        s_delay: float | None = None,
+        count: int | None = None,
+        range_type: str | None = None,
+        fail_abort: str | None = None,
+        dual: str | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``smu.source.sweeplinearstep()`` function.
 
@@ -1668,11 +1668,11 @@ class SmuSource(BaseTSPCmd):
     def sweeplist(
         self,
         config_list_name: str,
-        index: Optional[int] = None,
-        s_delay: Optional[float] = None,
-        count: Optional[int] = None,
-        fail_abort: Optional[str] = None,
-        buffer_name: Optional[str] = None,
+        index: int | None = None,
+        s_delay: float | None = None,
+        count: int | None = None,
+        fail_abort: str | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``smu.source.sweeplist()`` function.
 
@@ -1728,13 +1728,13 @@ class SmuSource(BaseTSPCmd):
         start: float,
         stop: float,
         points: int,
-        s_delay: Optional[float] = None,
-        count: Optional[int] = None,
-        range_type: Optional[str] = None,
-        fail_abort: Optional[str] = None,
-        dual: Optional[str] = None,
-        buffer_name: Optional[str] = None,
-        asymptote: Optional[str] = None,
+        s_delay: float | None = None,
+        count: int | None = None,
+        range_type: str | None = None,
+        fail_abort: str | None = None,
+        dual: str | None = None,
+        buffer_name: str | None = None,
+        asymptote: str | None = None,
     ) -> None:
         """Run the ``smu.source.sweeplog()`` function.
 
@@ -3092,7 +3092,7 @@ class SmuMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, list_name: str, index: int | None = None) -> None:
         """Run the ``smu.measure.configlist.delete()`` function.
 
         Description:
@@ -3127,7 +3127,7 @@ class SmuMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(self, list_name: str, index: int, field_separator: Optional[str] = None) -> str:
+    def query(self, list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``smu.measure.configlist.query()`` function.
 
         Description:
@@ -3171,9 +3171,9 @@ class SmuMeasureConfiglist(BaseTSPCmd):
     def recall(
         self,
         list_name: str,
-        index: Optional[int] = None,
-        source_list_name: Optional[str] = None,
-        source_index: Optional[int] = None,
+        index: int | None = None,
+        source_list_name: str | None = None,
+        source_index: int | None = None,
     ) -> None:
         """Run the ``smu.measure.configlist.recall()`` function.
 
@@ -3245,7 +3245,7 @@ class SmuMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, list_name: str, index: Optional[int] = None) -> None:
+    def store(self, list_name: str, index: int | None = None) -> None:
         """Run the ``smu.measure.configlist.store()`` function.
 
         Description:
@@ -3281,7 +3281,7 @@ class SmuMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.store()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def storefunc(self, list_name: str, function: str, index: Optional[int] = None) -> None:
+    def storefunc(self, list_name: str, function: str, index: int | None = None) -> None:
         """Run the ``smu.measure.configlist.storefunc()`` function.
 
         Description:
@@ -4397,7 +4397,7 @@ class SmuMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getattribute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``smu.measure.read()`` function.
 
         Description:
@@ -4429,7 +4429,7 @@ class SmuMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def readwithtime(self, buffer_name: Optional[str] = None) -> str:
+    def readwithtime(self, buffer_name: str | None = None) -> str:
         """Run the ``smu.measure.readwithtime()`` function.
 
         Description:

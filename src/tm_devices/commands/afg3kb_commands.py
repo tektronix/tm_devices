@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Optional
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -100,7 +98,7 @@ class AFG3KBCommands:
         - ``.wai``: The ``*WAI`` command.
     """
 
-    def __init__(self, device: Optional[PIControl] = None) -> None:
+    def __init__(self, device: PIControl | None = None) -> None:
         self._abort = Abort(device)
         self._afgcontrol = Afgcontrol(device)
         self._cal = Cal(device)

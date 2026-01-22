@@ -8,7 +8,7 @@ from collections import OrderedDict
 from contextlib import redirect_stdout
 from io import StringIO
 from subprocess import CalledProcessError, SubprocessError
-from typing import Any, ClassVar, Dict, List, Optional, Tuple
+from typing import Any, ClassVar, Dict, List, Tuple
 from unittest import mock
 
 import pytest
@@ -399,7 +399,7 @@ def test_get_visa_backend() -> None:
     ],
 )
 def test_detect_visa_resource_expression(
-    input_str: str, expected_result: Optional[Tuple[str, str]]
+    input_str: str, expected_result: Tuple[str, str] | None
 ) -> None:
     """Verify that a VISA resource expression can be properly detected."""
     assert detect_visa_resource_expression(input_str) == expected_result

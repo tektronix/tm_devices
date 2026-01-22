@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import ClassVar, Dict, List, Literal, Optional, Tuple, Type
+from typing import ClassVar, Dict, List, Literal, Tuple, Type
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_source_channel import (
     BaseSourceChannel,
@@ -115,7 +115,7 @@ class AWG(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -158,7 +158,7 @@ class AWG(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",  # noqa: ARG002
         duty_cycle: float = 50.0,  # noqa: ARG002
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",  # noqa: ARG002
@@ -200,7 +200,7 @@ class AWG(
         offset: float,
         burst_count: int,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -229,10 +229,10 @@ class AWG(
 
     def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
-        function: Optional[SignalGeneratorFunctionsAWG] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        function: SignalGeneratorFunctionsAWG | None = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> ExtendedSourceDeviceConstants:
         """Get the constraints that restrict the waveform to certain parameter ranges.
@@ -287,7 +287,7 @@ class AWG(
             sample_rate_range=sample_rate_range,
         )
 
-    def set_sample_rate(self, value: float, absolute_tolerance: Optional[float] = None) -> None:
+    def set_sample_rate(self, value: float, absolute_tolerance: float | None = None) -> None:
         """Set the rate at which samples are generated/transmitted.
 
         Args:
@@ -308,8 +308,8 @@ class AWG(
         self,
         frequency: float,
         selected_function: SignalGeneratorFunctionsAWG,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
-        symmetry: Optional[float] = 50.0,
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
+        symmetry: float | None = 50.0,
     ) -> Tuple[str, float]:
         """Get the predefined waveform name for the provided function.
 
@@ -367,7 +367,7 @@ class AWG(
     @abstractmethod
     def _get_series_specific_constraints(
         self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         raise NotImplementedError
 
@@ -394,7 +394,7 @@ class AWGSourceChannel(BaseSourceChannel, ABC):
     ################################################################################################
     def set_waveform_properties(
         self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
         waveform_name: str,
         amplitude: float,
         offset: float,
@@ -459,9 +459,7 @@ class AWGSourceChannel(BaseSourceChannel, ABC):
             raise ValueError(error_message)
         self._awg.set_if_needed(f"OUTPUT{self.num}:STATE", value)
 
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
+    def set_output_signal_path(self, value: SignalGeneratorOutputPathsBase | None = None) -> None:
         """Set the output signal path on the source channel.
 
         Args:

@@ -4,7 +4,7 @@ import time
 
 from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Dict, Optional, Tuple
+from typing import Any, cast, Dict, Tuple
 
 from packaging.version import Version
 
@@ -81,7 +81,7 @@ class TMT4(MarginTester):
         return self._about_info["model"]
 
     @property
-    def port(self) -> Optional[int]:
+    def port(self) -> int | None:
         """Return the configured device port, defaults to 5000."""
         return super().port or 5000
 

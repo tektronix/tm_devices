@@ -267,8 +267,8 @@ class TriggerModelAddblockDelay(BaseTSPCmd):
         self,
         trigger_model_name: str,
         block_name: str,
-        delay_time: Optional[str] = None,
-        reference_block_name: Optional[str] = None,
+        delay_time: str | None = None,
+        reference_block_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.addblock.delay.constant()`` function.
 
@@ -675,7 +675,7 @@ class TriggerModelAddblock(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def measure(
-        self, trigger_model_name: str, block_name: str, channel: str, count: Optional[str] = None
+        self, trigger_model_name: str, block_name: str, channel: str, count: str | None = None
     ) -> None:
         """Run the ``trigger.model.addblock.measure()`` function.
 
@@ -715,7 +715,7 @@ class TriggerModelAddblock(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def measureoverlapped(
-        self, trigger_model_name: str, block_name: str, channel: str, count: Optional[str] = None
+        self, trigger_model_name: str, block_name: str, channel: str, count: str | None = None
     ) -> None:
         """Run the ``trigger.model.addblock.measureoverlapped()`` function.
 
@@ -789,11 +789,11 @@ class TriggerModelAddblock(BaseTSPCmd):
         trigger_model_name: str,
         block_name: str,
         event: str,
-        clear: Optional[str] = None,
-        logic: Optional[str] = None,
-        event_2: Optional[str] = None,
-        event_3: Optional[str] = None,
-        event_4: Optional[str] = None,
+        clear: str | None = None,
+        logic: str | None = None,
+        event_2: str | None = None,
+        event_3: str | None = None,
+        event_4: str | None = None,
     ) -> None:
         """Run the ``trigger.model.addblock.wait()`` function.
 

@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, TYPE_CHECKING, Union
+from typing import Any, cast, Dict, List, Literal, Tuple, Type, TYPE_CHECKING, Union
 
 import pyvisa as visa
 
@@ -274,7 +274,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     # Public Methods
     ################################################################################################
     def add_new_measurement(
-        self, meas_name: str, meas_type: str, meas_source: Optional[str] = None
+        self, meas_name: str, meas_type: str, meas_source: str | None = None
     ) -> None:
         """Add a new measurement with the given name, type, and source.
 
@@ -330,7 +330,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self,
         channel_num: int,
         wfm_type: str = "TimeDomain",
-        output_csv_file: Optional[Union[str, os.PathLike[str]]] = None,
+        output_csv_file: Union[str, os.PathLike[str]] | None = None,
     ) -> List[Any]:
         """Perform a curve query on a specific channel.
 
@@ -709,8 +709,8 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self,
         filename: Path,
         *,
-        colors: Optional[str],
-        view_type: Optional[str],  # noqa: ARG002
+        colors: str | None,
+        view_type: str | None,  # noqa: ARG002
         local_folder: Path,
         device_folder: Path,
         keep_device_file: bool = False,
@@ -810,7 +810,7 @@ class TekScope(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -856,7 +856,7 @@ class TekScope(
         offset: float,
         burst_count: int,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -898,10 +898,10 @@ class TekScope(
     # pylint: disable=too-many-locals
     def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
-        function: Optional[SignalGeneratorFunctionsIAFG] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        function: SignalGeneratorFunctionsIAFG | None = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> ExtendedSourceDeviceConstants:
         """Get the constraints that restrict the waveform to certain parameter ranges.
@@ -1013,7 +1013,7 @@ class TekScopeChannel:
     """Name of the channel."""
     probe: TekProbeData
     """Details about channel setup and any connected probe."""
-    termination: Optional[Literal[50, 250_000, 1_000_000]] = None
+    termination: Literal[50, 250000, 1000000] | None = None
     """Defines impedance at channel port."""
 
 

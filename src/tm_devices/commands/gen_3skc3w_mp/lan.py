@@ -1694,10 +1694,10 @@ class Lan(BaseTSPCmd):
 
     def ipconfig(
         self,
-        method: Optional[str] = None,
-        ip_v4_address: Optional[str] = None,
-        subnet_mask: Optional[str] = None,
-        gateway: Optional[str] = None,
+        method: str | None = None,
+        ip_v4_address: str | None = None,
+        subnet_mask: str | None = None,
+        gateway: str | None = None,
     ) -> str:
         """Run the ``lan.ipconfig()`` function.
 

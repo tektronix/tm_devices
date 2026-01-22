@@ -1,7 +1,7 @@
 """AWG5K device driver module."""
 
 from types import MappingProxyType
-from typing import Dict, Optional, Tuple
+from typing import Dict, Tuple
 
 from tm_devices.commands import AWG5KMixin
 from tm_devices.drivers.awgs.awg import (
@@ -45,7 +45,7 @@ class AWG5K(AWG5KMixin, AWG):
     ################################################################################################
     def _get_series_specific_constraints(
         self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
@@ -111,9 +111,7 @@ class AWG5KSourceChannel(AWGSourceChannel):
             )
             raise ValueError(offset_error)
 
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
+    def set_output_signal_path(self, value: SignalGeneratorOutputPathsBase | None = None) -> None:
         """Set the output signal path on the source channel.
 
         Args:

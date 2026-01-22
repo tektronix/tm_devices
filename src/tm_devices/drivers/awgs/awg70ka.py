@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Literal, Optional, Tuple
+from typing import Dict, Literal, Tuple
 
 from tm_devices.commands import AWG70KAMixin
 from tm_devices.drivers.awgs.awg import (
@@ -50,7 +50,7 @@ class AWG70KA(AWG70KAMixin, AWG):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def load_waveform_set(self, waveform_set_file: Optional[str] = None) -> None:
+    def load_waveform_set(self, waveform_set_file: str | None = None) -> None:
         """Load a waveform set into the memory of the AWG.
 
         Arguments:
@@ -62,7 +62,7 @@ class AWG70KA(AWG70KAMixin, AWG):
     def load_waveform_from_set(
         self,
         waveform_name: str,
-        waveform_set_file: Optional[str] = None,
+        waveform_set_file: str | None = None,
     ) -> None:
         """Load in a specific waveform from a waveform set into the memory of the AWG.
 
@@ -80,7 +80,7 @@ class AWG70KA(AWG70KAMixin, AWG):
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",  # noqa: ARG002
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -118,7 +118,7 @@ class AWG70KA(AWG70KAMixin, AWG):
             symmetry=symmetry,
         )
 
-    def set_sample_rate(self, value: float, absolute_tolerance: Optional[float] = None) -> None:
+    def set_sample_rate(self, value: float, absolute_tolerance: float | None = None) -> None:
         """Set the rate at which samples are generated/transmitted.
 
         Args:
@@ -137,7 +137,7 @@ class AWG70KA(AWG70KAMixin, AWG):
     ################################################################################################
     def _get_series_specific_constraints(
         self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
@@ -173,8 +173,8 @@ class AWG70KA(AWG70KAMixin, AWG):
 
     def _load_waveform_or_set(
         self,
-        waveform_set_file: Optional[str] = None,
-        waveform_name: Optional[str] = None,
+        waveform_set_file: str | None = None,
+        waveform_name: str | None = None,
     ) -> None:
         """Load in a waveform set or a specific waveform from a waveform set into memory.
 
@@ -216,9 +216,7 @@ class AWG70KASourceChannel(AWGSourceChannel):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
+    def set_output_signal_path(self, value: SignalGeneratorOutputPathsBase | None = None) -> None:
         """Set the output signal path on the source channel.
 
         Can only set the output signal path to DCA when an MDC4500 is connected to the AWG70K.

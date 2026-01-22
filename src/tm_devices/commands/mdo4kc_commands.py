@@ -6,7 +6,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
+from typing import Dict
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -742,7 +742,7 @@ class MDO4KCCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: PIControl | None = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._actonevent = Actonevent(device)
         self._afg = Afg(device)

@@ -1229,7 +1229,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def add(
-        self, channel_list: str, config_list: Optional[str] = None, index: Optional[int] = None
+        self, channel_list: str, config_list: str | None = None, index: int | None = None
     ) -> None:
         """Run the ``scan.add()`` function.
 
@@ -1268,7 +1268,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def addsinglestep(
-        self, channel_list: str, config_list: Optional[str] = None, index: Optional[int] = None
+        self, channel_list: str, config_list: str | None = None, index: int | None = None
     ) -> None:
         """Run the ``scan.addsinglestep()`` function.
 
@@ -1334,9 +1334,9 @@ class Scan(BaseTSPCmd):
 
     def create(
         self,
-        channel_list: Optional[str] = None,
-        config_list: Optional[str] = None,
-        index: Optional[int] = None,
+        channel_list: str | None = None,
+        config_list: str | None = None,
+        index: int | None = None,
     ) -> None:
         """Run the ``scan.create()`` function.
 
@@ -1374,7 +1374,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def export(self, filename: str, when: str, what: Optional[str] = None) -> None:
+    def export(self, filename: str, when: str, what: str | None = None) -> None:
         """Run the ``scan.export()`` function.
 
         Description:
@@ -1410,7 +1410,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.export()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def learnlimits(self, window: str, iterations: Optional[str] = None) -> None:
+    def learnlimits(self, window: str, iterations: str | None = None) -> None:
         """Run the ``scan.learnlimits()`` function.
 
         Description:

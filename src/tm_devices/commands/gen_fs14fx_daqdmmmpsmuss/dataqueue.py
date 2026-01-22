@@ -75,7 +75,7 @@ class Dataqueue(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def add(self, value: str, timeout: Optional[float] = None) -> str:
+    def add(self, value: str, timeout: float | None = None) -> str:
         """Run the ``dataqueue.add()`` function.
 
         Description:
@@ -134,7 +134,7 @@ class Dataqueue(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def next(self, timeout: Optional[float] = None) -> str:
+    def next(self, timeout: float | None = None) -> str:
         """Run the ``dataqueue.next()`` function.
 
         Description:

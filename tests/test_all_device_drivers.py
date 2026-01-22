@@ -6,7 +6,7 @@ import sys
 
 from collections import Counter
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 import pytest
 
@@ -134,9 +134,9 @@ def test_device_driver(
     device_manager: DeviceManager,
     dev_type: str,
     address: str,
-    port: Optional[int],
-    connection_type: Optional[str],
-    device_driver: Optional[str],
+    port: int | None,
+    connection_type: str | None,
+    device_driver: str | None,
     mock_http_server: None,  # noqa: ARG001
 ) -> None:
     """Verify all device drivers can be used.

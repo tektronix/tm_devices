@@ -271,7 +271,6 @@ reportImplicitStringConcatenation = "none"  # this is allowed by this project's 
 reportImportCycles = "none"  # other analysis tools catch these more effectively
 reportMissingSuperCall = "none"  # this can be ignored since this would break unit tests if handled incorrectly
 reportPropertyTypeMismatch = "none"  # the auto-generated properties can have mismatches
-reportShadowedImports = "error"
 reportUninitializedInstanceVariable = "error"
 reportUnnecessaryTypeIgnoreComment = "error"
 reportUnusedCallResult = "none"  # this can be ignored since this would break unit tests if handled incorrectly
@@ -313,7 +312,7 @@ line-length = 100
 namespace-packages = ["docs/**", "examples/**", "scripts/**", "tests/**"]
 output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
-target-version = "py310"  # always generate Python 3.10 compatible code  # PYTHON VERSION MARKER
+target-version = "py310"  # PYTHON VERSION MARKER
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
@@ -335,7 +334,6 @@ ignore = [
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
   "UP035",  # `X` is deprecated, use `Y` instead # TODO: Drop Python 3.9: enable this check
   "UP037",  # Remove quotes from type annotation # TODO: Drop Python 3.9: enable this check
-  "UP045",  # Use `X | None` for type annotations # TODO: Drop Python 3.9: enable this check
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}
@@ -375,6 +373,9 @@ order-by-type = false
   "ERA001",  # Found commented-out code
   "S105",  # Possible hardcoded password
   "TID252",  # Relative imports from parent modules are banned
+]
+"src/tm_devices/helpers/constants_and_dataclasses.py" = [
+  "UP045",  # Use `X | None` for type annotations  # This causes the schema generator to break
 ]
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string

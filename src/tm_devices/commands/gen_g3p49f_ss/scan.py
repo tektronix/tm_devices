@@ -965,7 +965,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def add(self, channel_list: str, width: Optional[str] = None) -> None:
+    def add(self, channel_list: str, width: str | None = None) -> None:
         """Run the ``scan.add()`` function.
 
         Description:
@@ -1000,7 +1000,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def addimagestep(self, channel_list: str, dmm_config: Optional[str] = None) -> None:
+    def addimagestep(self, channel_list: str, dmm_config: str | None = None) -> None:
         """Run the ``scan.addimagestep()`` function.
 
         Description:
@@ -1034,7 +1034,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.addimagestep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def addwrite(self, channel_list: str, write_value: str, width: Optional[str] = None) -> None:
+    def addwrite(self, channel_list: str, write_value: str, width: str | None = None) -> None:
         """Run the ``scan.addwrite()`` function.
 
         Description:
@@ -1071,7 +1071,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.addwrite()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def background(self, buffer_var: Optional[str] = None) -> str:
+    def background(self, buffer_var: str | None = None) -> str:
         """Run the ``scan.background()`` function.
 
         Description:
@@ -1101,7 +1101,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.background()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def create(self, channel_list: str, dmm_config: Optional[str] = None) -> None:
+    def create(self, channel_list: str, dmm_config: str | None = None) -> None:
         """Run the ``scan.create()`` function.
 
         Description:
@@ -1136,7 +1136,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def execute(self, buffer_var: Optional[str] = None) -> str:
+    def execute(self, buffer_var: str | None = None) -> str:
         """Run the ``scan.execute()`` function.
 
         Description:

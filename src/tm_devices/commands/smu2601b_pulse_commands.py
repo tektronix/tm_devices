@@ -6,7 +6,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
+from typing import Dict
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -641,7 +641,7 @@ class SMU2601BPulseCommands:
         - ``.tspnet``: The ``tspnet`` command tree.
     """
 
-    def __init__(self, device: Optional[TSPControl] = None) -> None:
+    def __init__(self, device: TSPControl | None = None) -> None:
         self._beeper = Beeper(device)
         self._buffer_var: Dict[str, Buffervar] = DefaultDictPassKeyToFactory(
             lambda x: Buffervar(device, str(x))

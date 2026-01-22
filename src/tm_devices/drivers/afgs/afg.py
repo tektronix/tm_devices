@@ -5,7 +5,7 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Dict, Literal, Optional, Tuple, Type, Union
+from typing import Dict, Literal, Tuple, Type, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
     BaseAFGSourceChannel,
@@ -87,7 +87,7 @@ class AFG(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -152,7 +152,7 @@ class AFG(
         offset: float,
         burst_count: int,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -198,10 +198,10 @@ class AFG(
 
     def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
-        function: Optional[SignalGeneratorFunctionsAFG] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        function: SignalGeneratorFunctionsAFG | None = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> ExtendedSourceDeviceConstants:
         """Get the constraints that restrict the waveform to certain parameter ranges.
@@ -244,8 +244,8 @@ class AFG(
     def _get_series_specific_constraints(
         self,
         function: SignalGeneratorFunctionsAFG,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series.

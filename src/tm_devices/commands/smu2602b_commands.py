@@ -7,7 +7,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
+from typing import Dict
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -732,7 +732,7 @@ class SMU2602BCommands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPControl] = None) -> None:
+    def __init__(self, device: TSPControl | None = None) -> None:
         self._device = device
         self._beeper = Beeper(device)
         self._bit = Bit(device)
@@ -1548,10 +1548,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseIMeasureV()`` function.
 
@@ -1631,10 +1631,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseIMeasureVSweepLin()`` function.
 
@@ -1716,10 +1716,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseIMeasureVSweepLog()`` function.
 
@@ -1800,10 +1800,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseVMeasureI()`` function.
 
@@ -1883,10 +1883,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseVMeasureISweepLin()`` function.
 
@@ -1968,10 +1968,10 @@ class SMU2602BCommands:
         points: int,
         buffer: str,
         tag: int,
-        sync_in: Optional[str] = None,
-        sync_out: Optional[str] = None,
-        sync_in_timeout: Optional[float] = None,
-        sync_in_abort: Optional[str] = None,
+        sync_in: str | None = None,
+        sync_out: str | None = None,
+        sync_in_timeout: float | None = None,
+        sync_in_abort: str | None = None,
     ) -> str:
         """Run the ``ConfigPulseVMeasureISweepLog()`` function.
 
@@ -2823,7 +2823,7 @@ class SMU2602BCommands:
             msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def reset(self, system: Optional[str] = None) -> None:
+    def reset(self, system: str | None = None) -> None:
         """Run the ``reset()`` function.
 
         Description:
@@ -2905,9 +2905,9 @@ class SMU2602BCommands:
     def settimezone(
         self,
         offset: str,
-        dst_offset: Optional[str] = None,
-        dst_start: Optional[str] = None,
-        dst_end: Optional[str] = None,
+        dst_offset: str | None = None,
+        dst_start: str | None = None,
+        dst_end: str | None = None,
     ) -> None:
         """Run the ``settimezone()`` function.
 
@@ -2946,7 +2946,7 @@ class SMU2602BCommands:
             msg = "No TSPControl object was provided, unable to run the ``settimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def waitcomplete(self, group: Optional[str] = None) -> None:
+    def waitcomplete(self, group: str | None = None) -> None:
         """Run the ``waitcomplete()`` function.
 
         Description:

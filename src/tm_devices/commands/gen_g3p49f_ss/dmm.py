@@ -1435,7 +1435,7 @@ class DmmConfigure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(self, user_configuration: str, user_separator: Optional[str] = None) -> str:
+    def query(self, user_configuration: str, user_separator: str | None = None) -> str:
         """Run the ``dmm.configure.query()`` function.
 
         Description:
@@ -1593,7 +1593,7 @@ class DmmCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def ac(self, step: str, value: Optional[str] = None) -> None:
+    def ac(self, step: str, value: str | None = None) -> None:
         """Run the ``dmm.calibration.ac()`` function.
 
         Description:
@@ -1628,7 +1628,7 @@ class DmmCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.ac()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def dc(self, step: str, value: Optional[str] = None) -> None:
+    def dc(self, step: str, value: str | None = None) -> None:
         """Run the ``dmm.calibration.dc()`` function.
 
         Description:
@@ -3764,9 +3764,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.transducer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def appendbuffer(
-        self, buffer_var: str, file_name: str, time_format: Optional[str] = None
-    ) -> None:
+    def appendbuffer(self, buffer_var: str, file_name: str, time_format: str | None = None) -> None:
         """Run the ``dmm.appendbuffer()`` function.
 
         Description:
@@ -3861,7 +3859,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getconfig()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
+    def makebuffer(self, buffer_size: str, *, buffer_name: str | None = None) -> Buffervar:
         """Run the ``dmm.makebuffer()`` function.
 
         Description:
@@ -3897,7 +3895,7 @@ class Dmm(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
         return Buffervar(self._device, buffer_name)
 
-    def measure(self, buffer_var: Optional[str] = None) -> str:
+    def measure(self, buffer_var: str | None = None) -> str:
         """Run the ``dmm.measure()`` function.
 
         Description:
@@ -3928,7 +3926,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measure()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def measurewithptp(self, buffer_var: Optional[str] = None) -> str:
+    def measurewithptp(self, buffer_var: str | None = None) -> str:
         """Run the ``dmm.measurewithptp()`` function.
 
         Description:
@@ -3960,7 +3958,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measurewithptp()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def measurewithtime(self, buffer_var: Optional[str] = None) -> str:
+    def measurewithtime(self, buffer_var: str | None = None) -> str:
         """Run the ``dmm.measurewithtime()`` function.
 
         Description:
@@ -4044,9 +4042,7 @@ class Dmm(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def savebuffer(
-        self, buffer_var: str, file_name: str, time_format: Optional[str] = None
-    ) -> None:
+    def savebuffer(self, buffer_var: str, file_name: str, time_format: str | None = None) -> None:
         """Run the ``dmm.savebuffer()`` function.
 
         Description:

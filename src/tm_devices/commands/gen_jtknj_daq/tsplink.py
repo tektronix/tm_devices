@@ -380,7 +380,7 @@ class Tsplink(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def initialize(self, expected_nodes: Optional[int] = None) -> str:
+    def initialize(self, expected_nodes: int | None = None) -> str:
         """Run the ``tsplink.initialize()`` function.
 
         Description:

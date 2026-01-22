@@ -32,7 +32,7 @@ class Os(BaseTSPCmd):
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "os") -> None:
         super().__init__(device, cmd_syntax)
 
-    def time(self, timespec: Optional[str] = None) -> str:
+    def time(self, timespec: str | None = None) -> str:
         """Run the ``os.time()`` function.
 
         Description:

@@ -7,7 +7,7 @@ import warnings
 
 from abc import ABC
 from pathlib import Path
-from typing import Any, List, Optional, TYPE_CHECKING, Union
+from typing import Any, List, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
     ChannelControlMixin,
@@ -71,7 +71,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
         self,
         channel_num: int,
         wfm_type: str = "TimeDomain",
-        output_csv_file: Optional[Union[str, os.PathLike[str]]] = None,
+        output_csv_file: Union[str, os.PathLike[str]] | None = None,
     ) -> List[Any]:
         """Perform a curve query on a specific channel.
 

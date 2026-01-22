@@ -48,10 +48,10 @@ class DisplayInput(BaseTSPCmd):
     def number(
         self,
         dialog_title: str,
-        number_format: Optional[str] = None,
-        default_value: Optional[str] = None,
-        minimum_value: Optional[str] = None,
-        maximum_value: Optional[str] = None,
+        number_format: str | None = None,
+        default_value: str | None = None,
+        minimum_value: str | None = None,
+        maximum_value: str | None = None,
     ) -> str:
         """Run the ``display.input.number()`` function.
 
@@ -163,7 +163,7 @@ class DisplayInput(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def string(self, dialog_title: str, text_format: Optional[str] = None) -> str:
+    def string(self, dialog_title: str, text_format: str | None = None) -> str:
         """Run the ``display.input.string()`` function.
 
         Description:
@@ -765,7 +765,7 @@ the instrument."""  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def settext(
-        self, user_display_text1: Optional[str] = None, user_display_text2: Optional[str] = None
+        self, user_display_text1: str | None = None, user_display_text2: str | None = None
     ) -> None:
         """Run the ``display.settext()`` function.
 
@@ -802,7 +802,7 @@ the instrument."""  # noqa: E501
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def waitevent(self, timeout: Optional[float] = None) -> str:
+    def waitevent(self, timeout: float | None = None) -> str:
         """Run the ``display.waitevent()`` function.
 
         Description:

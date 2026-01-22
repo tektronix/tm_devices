@@ -2,7 +2,7 @@
 """A mixin class providing class methods for expanding a class with decorators."""
 
 from functools import cached_property, wraps
-from typing import Callable, Optional, overload, Type, TypeVar, Union
+from typing import Callable, overload, Type, TypeVar, Union
 
 from typing_extensions import Concatenate, ParamSpec
 
@@ -68,11 +68,11 @@ class _ExtendableMixin:
     @classmethod
     def add_property(  # pyright: ignore[reportInconsistentOverload]
         cls: Type[_EM],
-        method: Optional[Callable[[_EM], _T]] = None,
+        method: Callable[[_EM], _T] | None = None,
         /,
         *,
         is_cached: bool = False,
-    ) -> Optional[Callable[[Callable[[_EM], _T]], None]]:
+    ) -> Callable[[Callable[[_EM], _T]], None] | None:
         """Add a property to the class.
 
         This class method is best used as a decorator on functions in order to add them to a class.

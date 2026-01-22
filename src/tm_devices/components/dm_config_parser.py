@@ -14,7 +14,6 @@ from typing import (
     Dict,
     get_type_hints,
     List,
-    Optional,
     Protocol,
     runtime_checkable,
     Tuple,
@@ -152,12 +151,12 @@ class DMConfigParser:
         device_type: Union[DeviceTypes, str],
         address: str,
         connection_type: Union[ConnectionTypes, str] = ConnectionTypes.TCPIP,
-        alias: Optional[str] = None,
-        lan_port: Optional[int] = None,
-        lan_device_name: Optional[str] = None,
-        serial_config: Optional[SerialConfig] = None,
-        device_driver: Optional[str] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        lan_port: int | None = None,
+        lan_device_name: str | None = None,
+        serial_config: SerialConfig | None = None,
+        device_driver: str | None = None,
+        gpib_board_number: int | None = None,
     ) -> Tuple[str, DeviceConfigEntry]:
         """Add a new device configuration entry.
 
@@ -238,7 +237,7 @@ class DMConfigParser:
         return new_entry_name, new_entry
 
     def load_config_file(
-        self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
+        self, config_file_path: Union[str, os.PathLike[str]] | None = None
     ) -> None:
         """Load in the config file located at the given path.
 
@@ -308,7 +307,7 @@ class DMConfigParser:
         )
 
     def write_config_to_file(
-        self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
+        self, config_file_path: Union[str, os.PathLike[str]] | None = None
     ) -> str:
         """Write the current configuration to a config file.
 

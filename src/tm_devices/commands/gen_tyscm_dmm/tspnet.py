@@ -141,8 +141,8 @@ class TspnetTsp(BaseTSPCmd):
         self,
         connection_id: str,
         name: str,
-        start_index: Optional[int] = None,
-        end_index: Optional[int] = None,
+        start_index: int | None = None,
+        end_index: int | None = None,
     ) -> str:
         """Run the ``tspnet.tsp.rbtablecopy()`` function.
 
@@ -338,7 +338,7 @@ class Tspnet(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def connect(
-        self, ip_address: str, port_number: Optional[int] = None, init_string: Optional[str] = None
+        self, ip_address: str, port_number: int | None = None, init_string: str | None = None
     ) -> str:
         """Run the ``tspnet.connect()`` function.
 
@@ -407,7 +407,7 @@ class Tspnet(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def execute(
-        self, connection_id: str, command_string: str, format_string: Optional[str] = None
+        self, connection_id: str, command_string: str, format_string: str | None = None
     ) -> str:
         """Run the ``tspnet.execute()`` function.
 
@@ -475,7 +475,7 @@ class Tspnet(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.idn()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def read(self, connection_id: str, format_string: Optional[str] = None) -> str:
+    def read(self, connection_id: str, format_string: str | None = None) -> str:
         """Run the ``tspnet.read()`` function.
 
         Description:
@@ -562,7 +562,7 @@ class Tspnet(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def termination(self, connection_id: str, term_sequence: Optional[str] = None) -> str:
+    def termination(self, connection_id: str, term_sequence: str | None = None) -> str:
         """Run the ``tspnet.termination()`` function.
 
         Description:

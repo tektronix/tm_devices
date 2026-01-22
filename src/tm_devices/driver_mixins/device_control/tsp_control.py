@@ -6,7 +6,7 @@ import logging
 
 from abc import ABC
 from pathlib import Path
-from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Dict, List, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
@@ -238,7 +238,7 @@ class TSPControl(PIControl, ABC):
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Optional[Union[str, float]] = None,
+        expected_value: Union[str, float] | None = None,
         opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.

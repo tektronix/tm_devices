@@ -1,6 +1,6 @@
 """AFG3K device driver module."""
 
-from typing import Optional, Tuple
+from typing import Tuple
 
 from tm_devices.commands import AFG3KMixin
 from tm_devices.drivers.afgs.afg import (
@@ -51,8 +51,8 @@ class AFG3K(AFG3KMixin, AFG):
     def _get_series_specific_constraints(
         self,
         function: SignalGeneratorFunctionsAFG,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.

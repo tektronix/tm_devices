@@ -321,7 +321,7 @@ class StatusQuestionable(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def setmap(self, bit_number: int, set_event: int, clear_event: Optional[int] = None) -> None:
+    def setmap(self, bit_number: int, set_event: int, clear_event: int | None = None) -> None:
         """Run the ``status.questionable.setmap()`` function.
 
         Description:
@@ -523,7 +523,7 @@ class StatusOperation(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def setmap(self, bit_number: int, set_event: int, clear_event: Optional[int] = None) -> None:
+    def setmap(self, bit_number: int, set_event: int, clear_event: int | None = None) -> None:
         """Run the ``status.operation.setmap()`` function.
 
         Description:

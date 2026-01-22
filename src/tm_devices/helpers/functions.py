@@ -14,7 +14,7 @@ import warnings
 
 from enum import EnumMeta
 from functools import cache
-from typing import Any, Dict, Optional, Tuple, Type
+from typing import Any, Dict, Tuple, Type
 
 import requests
 
@@ -424,7 +424,7 @@ def create_visa_connection(
     return _configure_visa_object(visa_object, device_config_entry, visa_library)
 
 
-def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]:
+def detect_visa_resource_expression(input_str: str) -> Tuple[str, str] | None:
     """Check if a given string is a VISA resource expression.
 
     This function will check if a string is a VISA resource expression and pull out the pieces
@@ -442,7 +442,7 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     Returns:
         A tuple with the connection information parts.
     """
-    retval: Optional[Tuple[str, str]] = None
+    retval: Tuple[str, str] | None = None
     if input_str.upper().startswith("ASRL"):
         retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
     elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:

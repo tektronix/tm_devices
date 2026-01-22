@@ -13,7 +13,7 @@ import socket
 import warnings
 
 from types import FrameType, MappingProxyType, TracebackType
-from typing import cast, Dict, Optional, Tuple, Type, TYPE_CHECKING, Union
+from typing import cast, Dict, Tuple, Type, TYPE_CHECKING, Union
 
 from typing_extensions import TypeVar
 
@@ -124,8 +124,8 @@ class DeviceManager(metaclass=Singleton):
     def __init__(
         self,
         verbose: bool = True,
-        config_options: Optional[DMConfigOptions] = None,
-        external_device_drivers: Optional[Mapping[str, Type[Device]]] = None,
+        config_options: DMConfigOptions | None = None,
+        external_device_drivers: Mapping[str, Type[Device]] | None = None,
     ) -> None:
         """Create the instance of the DeviceManager.
 
@@ -188,9 +188,9 @@ class DeviceManager(metaclass=Singleton):
 
     def __exit__(
         self,
-        exc_type: Optional[Type[BaseException]],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType],
+        exc_type: Type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
     ) -> None:
         """Handle exiting the context by closing down the DeviceManager.
 
@@ -308,11 +308,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> AFGAlias:
         """Add an Arbitrary Function Generator to the DeviceManager.
 
@@ -350,11 +350,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> AWGAlias:
         """Add an Arbitrary Waveform Generator to the DeviceManager.
 
@@ -392,11 +392,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> DataAcquisitionSystemAlias:
         """Add a Data Acquisition System to the DeviceManager.
 
@@ -434,11 +434,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> DigitalMultimeterAlias:
         """Add a Digital Multimeter to the DeviceManager.
 
@@ -476,9 +476,9 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
     ) -> MainframeAlias:
         """Add a Mainframe to the DeviceManager.
 
@@ -512,8 +512,8 @@ class DeviceManager(metaclass=Singleton):
         address: str,
         device_driver: str,
         *,
-        alias: Optional[str] = None,
-        port: Optional[int] = None,
+        alias: str | None = None,
+        port: int | None = None,
     ) -> MarginTesterAlias:
         """Add a Margin Tester to the DeviceManager.
 
@@ -544,11 +544,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> PowerSupplyUnitAlias:
         """Add a Power Supply Unit to the DeviceManager.
 
@@ -586,11 +586,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> ScopeAlias:
         """Add a scope to the DeviceManager.
 
@@ -628,11 +628,11 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        gpib_board_number: int | None = None,
     ) -> SourceMeasureUnitAlias:
         """Add a Source Measure Unit to the DeviceManager.
 
@@ -670,10 +670,10 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        gpib_board_number: int | None = None,
     ) -> SystemsSwitchAlias:
         """Add a Systems Switch to the DeviceManager.
 
@@ -709,10 +709,10 @@ class DeviceManager(metaclass=Singleton):
         self,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        gpib_board_number: int | None = None,
     ) -> UnsupportedDeviceAlias:
         """Add a custom device to the DeviceManager that is not an officially supported device type.
 
@@ -925,9 +925,9 @@ class DeviceManager(metaclass=Singleton):
     def get_device(
         self,
         *,
-        device_type: Optional[str] = None,
-        device_number: Optional[Union[int, str]] = None,
-        alias: Optional[str] = None,
+        device_type: str | None = None,
+        device_number: Union[int, str] | None = None,
+        alias: str | None = None,
     ) -> Device:
         """Get the driver for the given device.
 
@@ -1161,9 +1161,9 @@ class DeviceManager(metaclass=Singleton):
     def remove_device(
         self,
         *,
-        device_type: Optional[str] = None,
-        device_number: Optional[Union[int, str]] = None,
-        alias: Optional[str] = None,
+        device_type: str | None = None,
+        device_number: Union[int, str] | None = None,
+        alias: str | None = None,
     ) -> None:
         """Remove a device from the DeviceManager.
 
@@ -1191,7 +1191,7 @@ class DeviceManager(metaclass=Singleton):
 
     def write_current_configuration_to_config_file(
         self,
-        config_file_path: Optional[Union[str, os.PathLike[str]]] = None,
+        config_file_path: Union[str, os.PathLike[str]] | None = None,
     ) -> None:
         """Write a config file located at the current working directory (or custom path).
 
@@ -1217,12 +1217,12 @@ class DeviceManager(metaclass=Singleton):
         device_type: str,
         address: str,
         *,
-        alias: Optional[str] = None,
-        connection_type: Optional[str] = None,
-        port: Optional[int] = None,
-        serial_config: Optional[SerialConfig] = None,
-        device_driver: Optional[str] = None,
-        gpib_board_number: Optional[int] = None,
+        alias: str | None = None,
+        connection_type: str | None = None,
+        port: int | None = None,
+        serial_config: SerialConfig | None = None,
+        device_driver: str | None = None,
+        gpib_board_number: int | None = None,
     ) -> Device:
         """Add a device to the DeviceManager.
 
@@ -1259,7 +1259,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type = ConnectionTypes.GPIB.value
 
         # Device Manager uses all caps for key mappings to device drivers and aliases
-        config_dict: dict[str, Optional[Union[str, int, SerialConfig]]] = {
+        config_dict: dict[str, Union[str, int, SerialConfig] | None] = {
             "device_type": device_type.upper(),
             "address": address.upper(),
         }

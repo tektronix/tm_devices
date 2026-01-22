@@ -821,7 +821,7 @@ class Tsplink(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def reset(self, expected_nodes: Optional[int] = None) -> str:
+    def reset(self, expected_nodes: int | None = None) -> str:
         """Run the ``tsplink.reset()`` function.
 
         Description:

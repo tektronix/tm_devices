@@ -8,7 +8,7 @@ import re
 
 from collections.abc import Generator
 from importlib import import_module
-from typing import Any, Optional, Set, Tuple
+from typing import Any, Set, Tuple
 
 import tomli
 
@@ -171,7 +171,7 @@ def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
     *cls_or_modules: str,
     full: bool = False,
     strict: bool = False,
-    namespace: Optional[str] = None,
+    namespace: str | None = None,
     tree_direction: str = "up",
     chart_direction: str = "LR",
     highlight_family_base_classes: bool = False,

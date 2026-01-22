@@ -5,7 +5,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
+from typing import Dict
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -468,7 +468,7 @@ class SMU2450Commands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPControl] = None) -> None:
+    def __init__(self, device: TSPControl | None = None) -> None:
         self._device = device
         self._beeper = Beeper(device)
         self._buffer = Buffer(device)
@@ -1567,7 +1567,7 @@ class SMU2450Commands:
             msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def reset(self, system: Optional[str] = None) -> None:
+    def reset(self, system: str | None = None) -> None:
         """Run the ``reset()`` function.
 
         Description:
@@ -1593,7 +1593,7 @@ class SMU2450Commands:
             msg = "No TSPControl object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def waitcomplete(self, group: Optional[str] = None) -> None:
+    def waitcomplete(self, group: str | None = None) -> None:
         """Run the ``waitcomplete()`` function.
 
         Description:

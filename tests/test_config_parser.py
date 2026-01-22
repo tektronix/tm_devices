@@ -3,7 +3,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Optional, Type, TYPE_CHECKING
+from typing import Dict, Type, TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -561,7 +561,7 @@ def test_remove_device() -> None:
 def test_get_visa_resource_expression(
     instrument_string: str,
     device_name: str,
-    expected_expr: Optional[str],
+    expected_expr: str | None,
 ) -> None:
     """Test creating a resource expression.
 

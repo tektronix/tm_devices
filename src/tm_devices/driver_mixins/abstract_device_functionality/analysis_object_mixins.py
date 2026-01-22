@@ -4,7 +4,7 @@ Examples include MATH, SEARCH, BUS, PLOT,...etc.
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, Union
+from typing import Union
 
 
 class BusMixin(ABC):
@@ -90,7 +90,7 @@ class MeasurementsMixin(ABC):
 
     @abstractmethod
     def add_new_measurement(
-        self, meas_name: str, meas_type: str, meas_source: Optional[str] = None
+        self, meas_name: str, meas_type: str, meas_source: str | None = None
     ) -> None:
         """Add a new measurement with the given name, type, and source.
 

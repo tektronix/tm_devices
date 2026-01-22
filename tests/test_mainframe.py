@@ -1,6 +1,6 @@
 """Test the MFs."""
 
-from typing import Optional, Type, TYPE_CHECKING
+from typing import Type, TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -45,7 +45,7 @@ if TYPE_CHECKING:
 def test_mainframe_psu_exception(
     device_manager: DeviceManager,
     slot: int,
-    expected_exception: Optional[Type[BaseException]],
+    expected_exception: Type[BaseException] | None,
     match_msg: str,
 ) -> None:
     """Test the MP5103 driver for PSU modules."""
@@ -145,7 +145,7 @@ def test_tsp_buffer_cleanup(
 def test_mainframe_smu_exception(
     device_manager: DeviceManager,
     slot: int,
-    expected_exception: Optional[Type[BaseException]],
+    expected_exception: Type[BaseException] | None,
     match_msg: str,
 ) -> None:
     """Test the MP5103 driver for PSU modules."""
