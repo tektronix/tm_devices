@@ -2,6 +2,64 @@
 build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core~=2.2.1"]
 
+[project]
+authors = [
+  {email = "nicholas.felt@tektronix.com", name = "Nicholas Felt"},
+  {email = "opensource@tektronix.com", name = "Tektronix"},
+]
+dependencies = [
+  "colorlog~=6.9",
+  "dc-schema~=0.0.8",
+  "gpib-ctypes~=0.3",
+  "jsonschema[format-nongpl]~=4.23",
+  "libusb-package~=1.0.26,!=1.0.26.2",  # 1.0.26.2 doesn't work with Python 3.12
+  "packaging>=24.0",
+  "psutil>=6.0.0",
+  "pyserial~=3.5",
+  "python-dateutil~=2.8",
+  "pyusb~=1.2",
+  "pyvicp~=1.1",
+  "pyvisa-py~=0.7.2",
+  "pyvisa-sim~=0.6.0",
+  "pyvisa~=1.12",
+  "pyyaml~=6.0",
+  "requests~=2.31",
+  "tomli-w~=1.0",
+  "tomli~=2.0",
+  "typing-extensions~=4.10",
+  "tzlocal~=5.2",
+  "urllib3~=2.0",
+  "zeroconf~=0.148",
+]
+description = "Manage connections and interactions with Test & Measurement devices."
+dynamic = ["classifiers", "version"]
+keywords = [
+  "REST API",
+  "SCPI",
+  "TSP",
+  "Tektronix",
+  "Test & Measurement",
+  "VISA",
+]
+license = "Apache-2.0"
+maintainers = [
+  {email = "nicholas.felt@tektronix.com", name = "Nicholas Felt"},
+  {email = "opensource@tektronix.com", name = "Tektronix"},
+]
+name = "tm_devices"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"  # PYTHON VERSION MARKER
+
+[project.scripts]
+list-visa-resources = "tm_devices:print_available_visa_devices"
+
+[project.urls]
+"Bug Tracker" = "https://github.com/tektronix/tm_devices/issues/"
+"Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
+documentation = "https://tm-devices.readthedocs.io/stable/"
+homepage = "https://pypi.org/project/tm_devices/"
+repository = "https://github.com/tektronix/tm_devices/"
+
 [tool]
 
 [tool.coverage.paths]
@@ -37,10 +95,6 @@ wrap-descriptions = 100
 wrap-summaries = 0
 
 [tool.poetry]
-authors = [
-  "Tektronix <opensource@tektronix.com>",
-  "Nicholas Felt <nicholas.felt@tektronix.com>",
-]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
@@ -50,51 +104,7 @@ classifiers = [
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",
 ]
-description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm-devices.readthedocs.io/stable/"
-homepage = "https://pypi.org/project/tm_devices/"
-keywords = [
-  "REST API",
-  "SCPI",
-  "TSP",
-  "Tektronix",
-  "Test & Measurement",
-  "VISA",
-]
-license = "Apache-2.0"
-maintainers = [
-  "Tektronix <opensource@tektronix.com>",
-  "Nicholas Felt <nicholas.felt@tektronix.com>",
-]
-name = "tm_devices"
-readme = "README.md"
-repository = "https://github.com/tektronix/tm_devices"
 version = "3.5.0"
-
-[tool.poetry.dependencies]
-colorlog = "^6.9.0"
-dc-schema = "^0.0.8"
-gpib-ctypes = "^0.3.0"
-jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
-libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
-packaging = ">=24.0"
-psutil = ">=6.0.0"
-pyserial = "^3.5"
-python = ">=3.10,<3.14"  # PYTHON VERSION MARKER
-python-dateutil = "^2.8.2"
-pyusb = "^1.2.1"
-pyvicp = "^1.1.0"
-pyvisa = "^1.12.0"
-pyvisa-py = "^0.7.2"
-pyvisa-sim = "^0.6.0"
-pyyaml = "^6.0"
-requests = "^2.31.0"
-tomli = "^2.0.1"
-tomli-w = "^1.0.0"
-typing-extensions = "^4.10.0"
-tzlocal = "^5.2"
-urllib3 = "^2.0"
-zeroconf = "^0.148.0"
 
 [tool.poetry.group.dev.dependencies]
 nodeenv = "^1.9.1"
@@ -152,13 +162,6 @@ pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
 ruff = "0.14.11"
-
-[tool.poetry.scripts]
-list-visa-resources = "tm_devices:print_available_visa_devices"
-
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
-"Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -323,7 +326,7 @@ ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
   "COM812",  # Trailing comma missing (allowed in this package)
   "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
-  "FBT",  # flake8-boolean-trap  # TODO: enable this
+  "FBT",  # flake8-boolean-trap (allowed in this package)
   "FIX002",  # Line contains TO DO (allowed in this package)
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
   "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
