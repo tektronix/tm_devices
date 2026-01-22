@@ -40,8 +40,8 @@ with DeviceManager(
     scope: MSO5 = device_manager.add_scope("MSO56-100083")
     print(scope)
 
-    # Add a device using an IP address and optional alias
-    awg: AWG5K = device_manager.add_awg("192.168.0.1", alias="AWG5k")
+    # Add a device using an IP address, specific LAN device endpoint, and optional alias
+    awg: AWG5K = device_manager.add_awg("192.168.0.1", lan_device_endpoint="inst0", alias="AWG5k")
     print(awg)
 
     # Add a device using a VISA resource address string,

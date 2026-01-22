@@ -298,16 +298,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         ),
     ] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
-    lan_device_name: Annotated[
+    lan_device_endpoint: Annotated[
         Optional[str],
         SchemaAnnotation(
             description=(
-                "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\n"
-                "https://tm-devices.readthedocs.io/stable/configuration/#lan_device_name"
+                "The LAN device endpoint (e.g. 'inst0') to connect via, used for TCPIP connections\n"  # noqa: E501
+                "https://tm-devices.readthedocs.io/stable/configuration/#lan_device_endpoint"
             ),
         ),
     ] = None
-    """The LAN device name to connect on, used for TCPIP connections (defaults to 'inst0')."""
+    """The LAN device endpoint to connect on, used for TCPIP connections (defaults to 'inst0')."""
     serial_config: Annotated[
         Optional[SerialConfig],
         SchemaAnnotation(
@@ -548,9 +548,11 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            # Set the LAN device name to "inst0" if one is not provided/
-            lan_device_name = "inst0" if self.lan_device_name is None else self.lan_device_name
-            resource_expr = f"TCPIP0::{self.address}::{lan_device_name}::INSTR"
+            # Set the LAN device endpoint to "inst0" if one is not provided/
+            lan_device_endpoint = (
+                "inst0" if self.lan_device_endpoint is None else self.lan_device_endpoint
+            )
+            resource_expr = f"TCPIP0::{self.address}::{lan_device_endpoint}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover

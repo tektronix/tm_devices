@@ -3,7 +3,7 @@ devices:
   - address: MSO54-123456
     connection_type: TCPIP
     device_type: SCOPE
-    lan_device_name: hislip0
+    lan_device_endpoint: hislip0
   - address: 789.56.4.123
     alias: foo
     connection_type: SOCKET

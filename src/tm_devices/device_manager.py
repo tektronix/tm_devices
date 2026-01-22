@@ -311,6 +311,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> AFGAlias:
@@ -325,6 +326,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -341,6 +344,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -353,6 +357,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> AWGAlias:
@@ -367,6 +372,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -383,6 +390,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -395,6 +403,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> DataAcquisitionSystemAlias:
@@ -409,6 +418,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -425,6 +436,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -437,6 +449,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> DigitalMultimeterAlias:
@@ -451,6 +464,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -467,6 +482,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -479,6 +495,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
     ) -> MainframeAlias:
         """Add a Mainframe to the DeviceManager.
 
@@ -491,6 +508,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
 
         Returns:
             The Mainframe device driver.
@@ -504,6 +523,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
             ),
         )
 
@@ -547,6 +567,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> PowerSupplyUnitAlias:
@@ -561,6 +582,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -577,6 +600,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -589,6 +613,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> ScopeAlias:
@@ -603,6 +628,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -619,6 +646,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -631,6 +659,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         gpib_board_number: int | None = None,
     ) -> SourceMeasureUnitAlias:
@@ -645,6 +674,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
@@ -661,6 +692,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 serial_config=serial_config,
                 gpib_board_number=gpib_board_number,
             ),
@@ -673,6 +705,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         gpib_board_number: int | None = None,
     ) -> SystemsSwitchAlias:
         """Add a Systems Switch to the DeviceManager.
@@ -686,6 +719,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
 
@@ -701,6 +736,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 gpib_board_number=gpib_board_number,
             ),
         )
@@ -712,6 +748,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         gpib_board_number: int | None = None,
     ) -> UnsupportedDeviceAlias:
         """Add a custom device to the DeviceManager that is not an officially supported device type.
@@ -728,6 +765,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
 
@@ -743,6 +782,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                lan_device_endpoint=lan_device_endpoint,
                 gpib_board_number=gpib_board_number,
             ),
         )
@@ -1212,7 +1252,7 @@ class DeviceManager(metaclass=Singleton):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _add_device(  # noqa: PLR0913
+    def _add_device(  # noqa: PLR0913,C901
         self,
         device_type: str,
         address: str,
@@ -1220,6 +1260,7 @@ class DeviceManager(metaclass=Singleton):
         alias: str | None = None,
         connection_type: str | None = None,
         port: int | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         device_driver: str | None = None,
         gpib_board_number: int | None = None,
@@ -1236,6 +1277,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
+                The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             device_driver: A string indicating the specific Python device driver to use.
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
@@ -1247,6 +1290,7 @@ class DeviceManager(metaclass=Singleton):
         if (visa_resource_parts := detect_visa_resource_expression(address)) is not None:
             connection_type = visa_resource_parts[0]
             address = visa_resource_parts[1]
+            lan_device_endpoint = visa_resource_parts[2]
             if (
                 connection_type == ConnectionTypes.SOCKET.value
                 and len(address_parts := address.split(":", maxsplit=1)) > 1
@@ -1269,6 +1313,8 @@ class DeviceManager(metaclass=Singleton):
             config_dict["connection_type"] = connection_type.upper()
         if port:
             config_dict["lan_port"] = port
+        if lan_device_endpoint:
+            config_dict["lan_device_endpoint"] = lan_device_endpoint
         if serial_config:
             config_dict["serial_config"] = serial_config
         if device_driver:

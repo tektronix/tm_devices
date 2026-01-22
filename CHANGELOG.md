@@ -18,8 +18,13 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Enable programmatic connection to devices that use a different LAN device endpoint via the `DeviceManager`.
+
 ### Changed
 
+- _**<span style="color:orange">minor breaking change</span>**_: Changed the `lan_device_name` parameter name to `lan_device_endpoint` to be more accurate.
 - Dropped support for Python 3.9
 - Update type hinting to use Python 3.9+ syntax where applicable
 - Updated project configuration file (`pyproject.toml`) to use `poetry` v2 settings

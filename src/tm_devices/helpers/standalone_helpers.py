@@ -26,7 +26,8 @@ PACKAGE_NAME: Final[str] = "tm_devices"
 """Constant string with the name of this package."""
 
 VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint: disable=unsubscriptable-object,useless-suppression
-    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
+    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::)?(.*)?::(INSTR?|SOCKET)$",
+    re.IGNORECASE,
 )
 """A regex pattern used to capture pieces of VISA resource expressions."""
 

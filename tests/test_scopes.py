@@ -266,7 +266,10 @@ def test_iafg(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    mso64: MSO6 = cast("MSO6", device_manager.add_scope("MSO64-HOSTNAME", alias="mso64"))
+    mso64: MSO6 = cast(
+        "MSO6",
+        device_manager.add_scope("MSO64-HOSTNAME", alias="mso64", lan_device_endpoint="inst0"),
+    )
     mso64_constraints = mso64.get_waveform_constraints(
         SignalGeneratorFunctionsIAFG.SIN,
         frequency=25.0e6,

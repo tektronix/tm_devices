@@ -85,7 +85,7 @@ devices:
     alias: <alias>
     connection_type: TCPIP
     device_type: <device_type>
-    lan_device_name: <lan_device_name>
+    lan_device_endpoint: <lan_device_endpoint>
 # USB connection
   - address: <model>-<serial_number>
     alias: <alias>
@@ -196,10 +196,10 @@ devices:
 - Required when the `<connection_type>` is `SOCKET`.
 - Optional when `<connection_type>` is `REST_API`
 
-##### `lan_device_name`
+##### `lan_device_endpoint`
 
-- The LAN device name to connect on when `<connection_type>` is `TCPIP`.
-- If no LAN device name is provided in the configuration, `inst0` is used.
+- The LAN device endpoint to connect on when `<connection_type>` is `TCPIP`.
+- If no LAN device endpoint is provided in the configuration, `inst0` is used.
 
 ##### `serial_config`
 
@@ -378,7 +378,7 @@ devices:
   - address: MSO54-123456
     alias: my_scope_on_hislip0
     device_type: SCOPE
-    lan_device_name: hislip0
+    lan_device_endpoint: hislip0
 # SOCKET connection to SCOPE types needs lan_port number
   - address: 123.45.67.255
     alias: my_scope_port4000
@@ -452,7 +452,7 @@ address = "MSO54-123456"
 alias = "my_scope_by_hostname"
 connection_type = "TCPIP"
 device_type = "SCOPE"
-lan_device_name = "hislip0"
+lan_device_endpoint = "hislip0"
 
 # SOCKET connection to SCOPE types needs lan_port number
 [[devices]]
