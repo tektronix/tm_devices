@@ -144,7 +144,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     ################################################################################################
 
     @cached_property
-    def channel(self) -> "MappingProxyType[str, TekScopeChannel]":
+    def channel(self) -> MappingProxyType[str, TekScopeChannel]:
         """Mapping of channel names to any detectable properties, attributes, and settings."""
         # TODO: overwrite in MSO2 driver, would remove need for try-except
         #   https://github.com/tektronix/tm_devices/issues/324
@@ -796,7 +796,7 @@ class TekScope(
         return self._DEVICE_CONSTANTS
 
     @cached_property
-    def internal_afg(self) -> "InternalAFGChannel":
+    def internal_afg(self) -> InternalAFGChannel:
         """The scope's internal AFG."""
         return InternalAFGChannel(self)
 

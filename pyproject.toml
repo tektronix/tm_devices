@@ -333,7 +333,6 @@ ignore = [
   "UP007",  # Use `X | Y` for type annotations # TODO: Drop Python 3.9: enable this check
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
   "UP035",  # `X` is deprecated, use `Y` instead # TODO: Drop Python 3.9: enable this check
-  "UP037",  # Remove quotes from type annotation # TODO: Drop Python 3.9: enable this check
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}
