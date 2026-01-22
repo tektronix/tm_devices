@@ -36,7 +36,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -174,13 +174,13 @@ class OutputItemWvalue(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._marker: Dict[int, OutputItemWvalueMarkerItem] = DefaultDictPassKeyToFactory(
+        self._marker: dict[int, OutputItemWvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemWvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
         )
         self._analog = OutputItemWvalueAnalog(device, f"{self._cmd_syntax}:ANALog")
 
     @property
-    def marker(self) -> Dict[int, OutputItemWvalueMarkerItem]:
+    def marker(self) -> dict[int, OutputItemWvalueMarkerItem]:
         """Return the ``OUTPut[n]:WVALue:MARKer[m]`` command.
 
         Description:
@@ -345,13 +345,13 @@ class OutputItemSvalue(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._marker: Dict[int, OutputItemSvalueMarkerItem] = DefaultDictPassKeyToFactory(
+        self._marker: dict[int, OutputItemSvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemSvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
         )
         self._analog = OutputItemSvalueAnalog(device, f"{self._cmd_syntax}:ANALog")
 
     @property
-    def marker(self) -> Dict[int, OutputItemSvalueMarkerItem]:
+    def marker(self) -> dict[int, OutputItemSvalueMarkerItem]:
         """Return the ``OUTPut[n]:SVALue:MARKer[m]`` command.
 
         Description:

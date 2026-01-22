@@ -23,7 +23,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -221,7 +221,7 @@ class SlistSubsequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._loop = SlistSubsequenceElementItemLoop(device, f"{self._cmd_syntax}:LOOP")
-        self._waveform: Dict[int, SlistSubsequenceElementItemWaveformItem] = (
+        self._waveform: dict[int, SlistSubsequenceElementItemWaveformItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlistSubsequenceElementItemWaveformItem(
                     device, f"{self._cmd_syntax}:WAVeform{x}"
@@ -246,7 +246,7 @@ class SlistSubsequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._loop
 
     @property
-    def waveform(self) -> Dict[int, SlistSubsequenceElementItemWaveformItem]:
+    def waveform(self) -> dict[int, SlistSubsequenceElementItemWaveformItem]:
         """Return the ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]`` command.
 
         Description:
@@ -316,7 +316,7 @@ class SlistSubsequence(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delete = SlistSubsequenceDelete(device, f"{self._cmd_syntax}:DELete")
-        self._element: Dict[int, SlistSubsequenceElementItem] = DefaultDictPassKeyToFactory(
+        self._element: dict[int, SlistSubsequenceElementItem] = DefaultDictPassKeyToFactory(
             lambda x: SlistSubsequenceElementItem(device, f"{self._cmd_syntax}:ELEMent{x}")
         )
         self._length = SlistSubsequenceLength(device, f"{self._cmd_syntax}:LENGth")
@@ -345,7 +345,7 @@ class SlistSubsequence(SCPICmdRead):
         return self._delete
 
     @property
-    def element(self) -> Dict[int, SlistSubsequenceElementItem]:
+    def element(self) -> dict[int, SlistSubsequenceElementItem]:
         """Return the ``SLISt:SUBSequence:ELEMent[n]`` command tree.
 
         Usage:

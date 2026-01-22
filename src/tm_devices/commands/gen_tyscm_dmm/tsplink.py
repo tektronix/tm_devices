@@ -22,7 +22,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -81,7 +81,7 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
-    def state(self, value: Union[str, float]) -> None:
+    def state(self, value: str | float) -> None:
         """Access the ``tsplink.line[N].state`` attribute.
 
         Description:
@@ -181,7 +181,7 @@ class Tsplink(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
-        self._line: Dict[int, TsplinkLineItem] = DefaultDictPassKeyToFactory(
+        self._line: dict[int, TsplinkLineItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkLineItem(device, f"{self._cmd_syntax}.line[{x}]")
         )
 
@@ -216,7 +216,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @group.setter
-    def group(self, value: Union[str, float]) -> None:
+    def group(self, value: str | float) -> None:
         """Access the ``tsplink.group`` attribute.
 
         Description:
@@ -249,7 +249,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def line(self) -> Dict[int, TsplinkLineItem]:
+    def line(self) -> dict[int, TsplinkLineItem]:
         """Return the ``tsplink.line[N]`` command tree.
 
         Info:
@@ -320,7 +320,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @node.setter
-    def node(self, value: Union[str, float]) -> None:
+    def node(self, value: str | float) -> None:
         """Access the ``tsplink.node`` attribute.
 
         Description:
@@ -380,7 +380,7 @@ class Tsplink(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def initialize(self, expected_nodes: Optional[int] = None) -> str:
+    def initialize(self, expected_nodes: int | None = None) -> str:
         """Run the ``tsplink.initialize()`` function.
 
         Description:

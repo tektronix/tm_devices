@@ -26,7 +26,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -106,7 +106,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autolinefreq.setter
-    def autolinefreq(self, value: Union[str, float]) -> None:
+    def autolinefreq(self, value: str | float) -> None:
         """Access the ``localnode.autolinefreq`` attribute.
 
         Description:
@@ -173,7 +173,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @description.setter
-    def description(self, value: Union[str, float]) -> None:
+    def description(self, value: str | float) -> None:
         """Access the ``localnode.description`` attribute.
 
         Description:
@@ -267,7 +267,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @linefreq.setter
-    def linefreq(self, value: Union[str, float]) -> None:
+    def linefreq(self, value: str | float) -> None:
         """Access the ``localnode.linefreq`` attribute.
 
         Description:
@@ -352,7 +352,7 @@ class Localnode(BaseTSPCmd):
         raise AttributeError(msg)
 
     @password.setter
-    def password(self, value: Union[str, float]) -> None:
+    def password(self, value: str | float) -> None:
         """Access the ``localnode.password`` attribute.
 
         Description:
@@ -412,7 +412,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @passwordmode.setter
-    def passwordmode(self, value: Union[str, float]) -> None:
+    def passwordmode(self, value: str | float) -> None:
         """Access the ``localnode.passwordmode`` attribute.
 
         Description:
@@ -480,7 +480,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @prompts.setter
-    def prompts(self, value: Union[str, float]) -> None:
+    def prompts(self, value: str | float) -> None:
         """Access the ``localnode.prompts`` attribute.
 
         Description:
@@ -546,7 +546,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @prompts4882.setter
-    def prompts4882(self, value: Union[str, float]) -> None:
+    def prompts4882(self, value: str | float) -> None:
         """Access the ``localnode.prompts4882`` attribute.
 
         Description:
@@ -669,7 +669,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @showerrors.setter
-    def showerrors(self, value: Union[str, float]) -> None:
+    def showerrors(self, value: str | float) -> None:
         """Access the ``localnode.showerrors`` attribute.
 
         Description:

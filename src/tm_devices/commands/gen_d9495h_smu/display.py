@@ -36,7 +36,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -191,7 +191,7 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``display.smuX.measure.func`` attribute.
 
         Description:
@@ -277,7 +277,7 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``display.smuX.limit.func`` attribute.
 
         Description:
@@ -370,7 +370,7 @@ class DisplaySmuxItem(ValidatedChannel, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @digits.setter
-    def digits(self, value: Union[str, float]) -> None:
+    def digits(self, value: str | float) -> None:
         """Access the ``display.smuX.digits`` attribute.
 
         Description:
@@ -442,7 +442,7 @@ class DisplayLoadmenu(BaseTSPCmd):
         - ``.delete()``: The ``display.loadmenu.delete()`` function.
     """
 
-    def add(self, display_name: str, code: str, memory: Optional[str] = None) -> None:
+    def add(self, display_name: str, code: str, memory: str | None = None) -> None:
         """Run the ``display.loadmenu.add()`` function.
 
         Description:
@@ -770,7 +770,7 @@ For two-channel products, this is the SRC key for Channel A."""
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
         self._loadmenu = DisplayLoadmenu(device, f"{self._cmd_syntax}.loadmenu")
-        self._smu: Dict[str, DisplaySmuxItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[str, DisplaySmuxItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplaySmuxItem(device, f"{self._cmd_syntax}.smu{x}")
         )
         self._trigger = DisplayTrigger(device, f"{self._cmd_syntax}.trigger")
@@ -822,7 +822,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @locallockout.setter
-    def locallockout(self, value: Union[str, float]) -> None:
+    def locallockout(self, value: str | float) -> None:
         """Access the ``display.locallockout`` attribute.
 
         Description:
@@ -892,7 +892,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @numpad.setter
-    def numpad(self, value: Union[str, float]) -> None:
+    def numpad(self, value: str | float) -> None:
         """Access the ``display.numpad`` attribute.
 
         Description:
@@ -956,7 +956,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
-    def screen(self, value: Union[str, float]) -> None:
+    def screen(self, value: str | float) -> None:
         """Access the ``display.screen`` attribute.
 
         Description:
@@ -989,7 +989,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[str, DisplaySmuxItem]:
+    def smu(self) -> dict[str, DisplaySmuxItem]:
         """Return the ``display.smuX`` command tree.
 
         Info:
@@ -1117,10 +1117,10 @@ For two-channel products, this is the SRC key for Channel A."""
 
     def gettext(
         self,
-        embellished: Optional[str] = None,
-        row: Optional[str] = None,
-        column_start: Optional[str] = None,
-        column_end: Optional[int] = None,
+        embellished: str | None = None,
+        row: str | None = None,
+        column_start: str | None = None,
+        column_end: int | None = None,
     ) -> str:
         """Run the ``display.gettext()`` function.
 
@@ -1169,9 +1169,9 @@ For two-channel products, this is the SRC key for Channel A."""
     def inputvalue(
         self,
         format_: str,
-        default: Optional[str] = None,
-        minimum: Optional[str] = None,
-        maximum: Optional[str] = None,
+        default: str | None = None,
+        minimum: str | None = None,
+        maximum: str | None = None,
     ) -> None:
         """Run the ``display.inputvalue()`` function.
 
@@ -1246,9 +1246,9 @@ For two-channel products, this is the SRC key for Channel A."""
         format_: str,
         units: str,
         help_: str,
-        default: Optional[str] = None,
-        minimum: Optional[str] = None,
-        maximum: Optional[str] = None,
+        default: str | None = None,
+        minimum: str | None = None,
+        maximum: str | None = None,
     ) -> None:
         """Run the ``display.prompt()`` function.
 
@@ -1321,7 +1321,7 @@ For two-channel products, this is the SRC key for Channel A."""
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def setcursor(self, row: str, column: str, style: Optional[str] = None) -> None:
+    def setcursor(self, row: str, column: str, style: str | None = None) -> None:
         """Run the ``display.setcursor()`` function.
 
         Description:

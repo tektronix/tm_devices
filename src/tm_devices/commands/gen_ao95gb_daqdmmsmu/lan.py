@@ -16,7 +16,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -98,7 +98,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lxidomain.setter
-    def lxidomain(self, value: Union[str, float]) -> None:
+    def lxidomain(self, value: str | float) -> None:
         """Access the ``lan.lxidomain`` attribute.
 
         Description:
@@ -163,10 +163,10 @@ class Lan(BaseTSPCmd):
 
     def ipconfig(
         self,
-        method: Optional[str] = None,
-        ip_v4_address: Optional[str] = None,
-        subnet_mask: Optional[str] = None,
-        gateway: Optional[str] = None,
+        method: str | None = None,
+        ip_v4_address: str | None = None,
+        subnet_mask: str | None = None,
+        gateway: str | None = None,
     ) -> str:
         """Run the ``lan.ipconfig()`` function.
 

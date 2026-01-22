@@ -51,7 +51,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -167,7 +167,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
-    def ipaddress(self, value: Union[str, float]) -> None:
+    def ipaddress(self, value: str | float) -> None:
         """Access the ``lan.trigger[N].ipaddress`` attribute.
 
         Description:
@@ -240,7 +240,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``lan.trigger[N].mode`` attribute.
 
         Description:
@@ -343,7 +343,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @protocol.setter
-    def protocol(self, value: Union[str, float]) -> None:
+    def protocol(self, value: str | float) -> None:
         """Access the ``lan.trigger[N].protocol`` attribute.
 
         Description:
@@ -414,7 +414,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pseudostate.setter
-    def pseudostate(self, value: Union[str, float]) -> None:
+    def pseudostate(self, value: str | float) -> None:
         """Access the ``lan.trigger[N].pseudostate`` attribute.
 
         Description:
@@ -486,7 +486,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``lan.trigger[N].stimulus`` attribute.
 
         Description:
@@ -801,14 +801,14 @@ class LanStatusDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
             device=self._device,
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, str | float]:
         """Access the ``lan.status.dns.address[N]`` attribute.
 
         Description:
@@ -1090,7 +1090,7 @@ class LanConfigDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.address[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
@@ -1098,7 +1098,7 @@ class LanConfigDns(BaseTSPCmd):
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, str | float]:
         """Access the ``lan.config.dns.address[N]`` attribute.
 
         Description:
@@ -1156,7 +1156,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @domain.setter
-    def domain(self, value: Union[str, float]) -> None:
+    def domain(self, value: str | float) -> None:
         """Access the ``lan.config.dns.domain`` attribute.
 
         Description:
@@ -1221,7 +1221,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dynamic.setter
-    def dynamic(self, value: Union[str, float]) -> None:
+    def dynamic(self, value: str | float) -> None:
         """Access the ``lan.config.dns.dynamic`` attribute.
 
         Description:
@@ -1286,7 +1286,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
-    def hostname(self, value: Union[str, float]) -> None:
+    def hostname(self, value: str | float) -> None:
         """Access the ``lan.config.dns.hostname`` attribute.
 
         Description:
@@ -1351,7 +1351,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @verify.setter
-    def verify(self, value: Union[str, float]) -> None:
+    def verify(self, value: str | float) -> None:
         """Access the ``lan.config.dns.verify`` attribute.
 
         Description:
@@ -1444,7 +1444,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @gateway.setter
-    def gateway(self, value: Union[str, float]) -> None:
+    def gateway(self, value: str | float) -> None:
         """Access the ``lan.config.gateway`` attribute.
 
         Description:
@@ -1508,7 +1508,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
-    def ipaddress(self, value: Union[str, float]) -> None:
+    def ipaddress(self, value: str | float) -> None:
         """Access the ``lan.config.ipaddress`` attribute.
 
         Description:
@@ -1572,7 +1572,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @method.setter
-    def method(self, value: Union[str, float]) -> None:
+    def method(self, value: str | float) -> None:
         """Access the ``lan.config.method`` attribute.
 
         Description:
@@ -1640,7 +1640,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @subnetmask.setter
-    def subnetmask(self, value: Union[str, float]) -> None:
+    def subnetmask(self, value: str | float) -> None:
         """Access the ``lan.config.subnetmask`` attribute.
 
         Description:
@@ -1696,7 +1696,7 @@ class Lan(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._config = LanConfig(device, f"{self._cmd_syntax}.config")
         self._status = LanStatus(device, f"{self._cmd_syntax}.status")
-        self._trigger: Dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: LanTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -1747,7 +1747,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lxidomain.setter
-    def lxidomain(self, value: Union[str, float]) -> None:
+    def lxidomain(self, value: str | float) -> None:
         """Access the ``lan.lxidomain`` attribute.
 
         Description:
@@ -1813,7 +1813,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nagle.setter
-    def nagle(self, value: Union[str, float]) -> None:
+    def nagle(self, value: str | float) -> None:
         """Access the ``lan.nagle`` attribute.
 
         Description:
@@ -1862,7 +1862,7 @@ class Lan(BaseTSPCmd):
         return self._status
 
     @property
-    def trigger(self) -> Dict[int, LanTriggerItem]:
+    def trigger(self) -> dict[int, LanTriggerItem]:
         """Return the ``lan.trigger[N]`` command tree.
 
         Info:

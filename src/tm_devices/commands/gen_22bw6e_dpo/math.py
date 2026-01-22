@@ -146,7 +146,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -5185,7 +5185,7 @@ class Math(SCPICmdRead):
         self._addnew = MathAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = MathDelete(device, f"{self._cmd_syntax}:DELete")
         self._list = MathList(device, f"{self._cmd_syntax}:LIST")
-        self._math: Dict[int, MathMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, MathMathItem] = DefaultDictPassKeyToFactory(
             lambda x: MathMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
 
@@ -5251,7 +5251,7 @@ class Math(SCPICmdRead):
         return self._list
 
     @property
-    def math(self) -> Dict[int, MathMathItem]:
+    def math(self) -> dict[int, MathMathItem]:
         """Return the ``MATH:MATH<x>`` command tree.
 
         Usage:

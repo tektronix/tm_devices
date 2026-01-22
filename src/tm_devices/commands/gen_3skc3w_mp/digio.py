@@ -28,7 +28,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -108,7 +108,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].edge`` attribute.
 
         Description:
@@ -180,7 +180,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].logic`` attribute.
 
         Description:
@@ -253,7 +253,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].mode`` attribute.
 
         Description:
@@ -357,7 +357,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].pulsewidth`` attribute.
 
         Description:
@@ -430,7 +430,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].stimulus`` attribute.
 
         Description:
@@ -585,12 +585,12 @@ class Digio(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "digio") -> None:
         super().__init__(device, cmd_syntax)
-        self._trigger: Dict[int, DigioTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, DigioTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: DigioTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
     @property
-    def trigger(self) -> Dict[int, DigioTriggerItem]:
+    def trigger(self) -> dict[int, DigioTriggerItem]:
         """Return the ``digio.trigger[N]`` command tree.
 
         Info:
@@ -645,7 +645,7 @@ class Digio(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @writeprotect.setter
-    def writeprotect(self, value: Union[str, float]) -> None:
+    def writeprotect(self, value: str | float) -> None:
         """Access the ``digio.writeprotect`` attribute.
 
         Description:

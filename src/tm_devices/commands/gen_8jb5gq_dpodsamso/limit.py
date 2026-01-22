@@ -54,7 +54,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -904,18 +904,18 @@ class LimitCompare(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, LimitCompareChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, LimitCompareChannel] = DefaultDictPassKeyToFactory(
             lambda x: LimitCompareChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, LimitCompareMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, LimitCompareMathItem] = DefaultDictPassKeyToFactory(
             lambda x: LimitCompareMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, LimitCompareRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, LimitCompareRefItem] = DefaultDictPassKeyToFactory(
             lambda x: LimitCompareRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, LimitCompareChannel]:
+    def ch(self) -> dict[int, LimitCompareChannel]:
         """Return the ``LIMit:COMpare:CH<x>`` command.
 
         Description:
@@ -944,7 +944,7 @@ class LimitCompare(SCPICmdWrite, SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, LimitCompareMathItem]:
+    def math(self) -> dict[int, LimitCompareMathItem]:
         """Return the ``LIMit:COMpare:MATH<x>`` command.
 
         Description:
@@ -974,7 +974,7 @@ class LimitCompare(SCPICmdWrite, SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, LimitCompareRefItem]:
+    def ref(self) -> dict[int, LimitCompareRefItem]:
         """Return the ``LIMit:COMpare:REF<x>`` command.
 
         Description:

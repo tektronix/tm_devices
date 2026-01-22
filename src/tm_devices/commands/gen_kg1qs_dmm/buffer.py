@@ -42,8 +42,8 @@ class BufferWrite(BaseTSPCmd):
         buffer_var: str,
         units: str,
         display_digits: int,
-        extra_units: Optional[str] = None,
-        extra_digits: Optional[int] = None,
+        extra_units: str | None = None,
+        extra_digits: int | None = None,
     ) -> None:
         """Run the ``buffer.write.format()`` function.
 
@@ -417,13 +417,13 @@ class Buffer(BaseTSPCmd):
         reading_buffer: str,
         unit: str,
         channel_number: int,
-        channel_num2: Optional[str] = None,
-        constant0: Optional[str] = None,
-        constant1: Optional[str] = None,
-        constant2: Optional[str] = None,
-        constant3: Optional[str] = None,
-        constant4: Optional[str] = None,
-        constant5: Optional[str] = None,
+        channel_num2: str | None = None,
+        constant0: str | None = None,
+        constant1: str | None = None,
+        constant2: str | None = None,
+        constant3: str | None = None,
+        constant4: str | None = None,
+        constant5: str | None = None,
     ) -> None:
         """Run the ``buffer.channelmath()`` function.
 
@@ -478,7 +478,7 @@ class Buffer(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.channelmath()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def clearstats(self, buffer_var: Optional[str] = None) -> None:
+    def clearstats(self, buffer_var: str | None = None) -> None:
         """Run the ``buffer.clearstats()`` function.
 
         Description:
@@ -532,7 +532,7 @@ class Buffer(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def make(
-        self, buffer_size: int, style: Optional[str] = None, *, buffer_name: Optional[str] = None
+        self, buffer_size: int, style: str | None = None, *, buffer_name: str | None = None
     ) -> Buffervar:
         """Run the ``buffer.make()`` function.
 
@@ -582,9 +582,9 @@ class Buffer(BaseTSPCmd):
         self,
         buffer_var: str,
         file_name: str,
-        what: Optional[str] = None,
-        start: Optional[str] = None,
-        end: Optional[str] = None,
+        what: str | None = None,
+        start: str | None = None,
+        end: str | None = None,
     ) -> None:
         """Run the ``buffer.save()`` function.
 
@@ -631,9 +631,9 @@ class Buffer(BaseTSPCmd):
         self,
         buffer_var: str,
         file_name: str,
-        time_format: Optional[str] = None,
-        start: Optional[str] = None,
-        end: Optional[str] = None,
+        time_format: str | None = None,
+        start: str | None = None,
+        end: str | None = None,
     ) -> None:
         """Run the ``buffer.saveappend()`` function.
 

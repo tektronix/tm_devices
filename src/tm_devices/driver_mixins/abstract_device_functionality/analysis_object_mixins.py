@@ -4,7 +4,6 @@ Examples include MATH, SEARCH, BUS, PLOT,...etc.
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, Union
 
 
 class BusMixin(ABC):
@@ -90,7 +89,7 @@ class MeasurementsMixin(ABC):
 
     @abstractmethod
     def add_new_measurement(
-        self, meas_name: str, meas_type: str, meas_source: Optional[str] = None
+        self, meas_name: str, meas_type: str, meas_source: str | None = None
     ) -> None:
         """Add a new measurement with the given name, type, and source.
 
@@ -204,7 +203,7 @@ class ReferenceMixin(ABC):
         """
 
     @abstractmethod
-    def recall_reference(self, reference_path: str, ref_number: Union[int, str]) -> None:
+    def recall_reference(self, reference_path: str, ref_number: int | str) -> None:
         """Recall a reference waveform file.
 
         Args:

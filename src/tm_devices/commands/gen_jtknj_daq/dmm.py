@@ -119,7 +119,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -174,7 +174,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorange.setter
-    def autorange(self, value: Union[str, float]) -> None:
+    def autorange(self, value: str | float) -> None:
         """Access the ``dmm.measure.threshold.autorange`` attribute.
 
         Description:
@@ -240,7 +240,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
-    def range(self, value: Union[str, float]) -> None:
+    def range(self, value: str | float) -> None:
         """Access the ``dmm.measure.threshold.range`` attribute.
 
         Description:
@@ -382,7 +382,7 @@ class DmmMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.rel.enable`` attribute.
 
         Description:
@@ -448,7 +448,7 @@ class DmmMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``dmm.measure.rel.level`` attribute.
 
         Description:
@@ -514,7 +514,7 @@ class DmmMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @method.setter
-    def method(self, value: Union[str, float]) -> None:
+    def method(self, value: str | float) -> None:
         """Access the ``dmm.measure.rel.method`` attribute.
 
         Description:
@@ -589,7 +589,7 @@ class DmmMeasureOffsetcompensation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.offsetcompensation.enable`` attribute.
 
         Description:
@@ -664,7 +664,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @bfactor.setter
-    def bfactor(self, value: Union[str, float]) -> None:
+    def bfactor(self, value: str | float) -> None:
         """Access the ``dmm.measure.math.mxb.bfactor`` attribute.
 
         Description:
@@ -729,7 +729,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mfactor.setter
-    def mfactor(self, value: Union[str, float]) -> None:
+    def mfactor(self, value: str | float) -> None:
         """Access the ``dmm.measure.math.mxb.mfactor`` attribute.
 
         Description:
@@ -810,7 +810,7 @@ class DmmMeasureMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.math.enable`` attribute.
 
         Description:
@@ -877,7 +877,7 @@ class DmmMeasureMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @format.setter
-    def format(self, value: Union[str, float]) -> None:
+    def format(self, value: str | float) -> None:
         """Access the ``dmm.measure.math.format`` attribute.
 
         Description:
@@ -954,7 +954,7 @@ class DmmMeasureMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @percent.setter
-    def percent(self, value: Union[str, float]) -> None:
+    def percent(self, value: str | float) -> None:
         """Access the ``dmm.measure.math.percent`` attribute.
 
         Description:
@@ -1034,7 +1034,7 @@ class DmmMeasureLimitItemLow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``dmm.measure.limit[Y].low.value`` attribute.
 
         Description:
@@ -1117,7 +1117,7 @@ class DmmMeasureLimitItemHigh(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``dmm.measure.limit[Y].high.value`` attribute.
 
         Description:
@@ -1211,7 +1211,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @audible.setter
-    def audible(self, value: Union[str, float]) -> None:
+    def audible(self, value: str | float) -> None:
         """Access the ``dmm.measure.limit[Y].audible`` attribute.
 
         Description:
@@ -1284,7 +1284,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autoclear.setter
-    def autoclear(self, value: Union[str, float]) -> None:
+    def autoclear(self, value: str | float) -> None:
         """Access the ``dmm.measure.limit[Y].autoclear`` attribute.
 
         Description:
@@ -1357,7 +1357,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.limit[Y].enable`` attribute.
 
         Description:
@@ -1493,7 +1493,7 @@ class DmmMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``dmm.measure.filter.count`` attribute.
 
         Description:
@@ -1560,7 +1560,7 @@ class DmmMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.filter.enable`` attribute.
 
         Description:
@@ -1627,7 +1627,7 @@ class DmmMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @type.setter
-    def type(self, value: Union[str, float]) -> None:
+    def type(self, value: str | float) -> None:
         """Access the ``dmm.measure.filter.type`` attribute.
 
         Description:
@@ -1694,7 +1694,7 @@ class DmmMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @window.setter
-    def window(self, value: Union[str, float]) -> None:
+    def window(self, value: str | float) -> None:
         """Access the ``dmm.measure.filter.window`` attribute.
 
         Description:
@@ -1794,7 +1794,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.delete()`` function.
 
         Description:
@@ -1829,7 +1829,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(self, list_name: str, index: int, field_separator: Optional[str] = None) -> str:
+    def query(self, list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``dmm.measure.configlist.query()`` function.
 
         Description:
@@ -1870,7 +1870,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.query()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def recall(self, list_name: str, index: Optional[int] = None) -> None:
+    def recall(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.recall()`` function.
 
         Description:
@@ -1934,7 +1934,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, list_name: str, index: Optional[int] = None) -> None:
+    def store(self, list_name: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.store()`` function.
 
         Description:
@@ -1970,7 +1970,7 @@ class DmmMeasureConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.store()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def storefunc(self, list_name: str, function: str, index: Optional[int] = None) -> None:
+    def storefunc(self, list_name: str, function: str, index: int | None = None) -> None:
         """Run the ``dmm.measure.configlist.storefunc()`` function.
 
         Description:
@@ -2050,7 +2050,7 @@ class DmmMeasureBias(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``dmm.measure.bias.level`` attribute.
 
         Description:
@@ -2125,7 +2125,7 @@ class DmmMeasureAutozero(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.measure.autozero.enable`` attribute.
 
         Description:
@@ -2203,7 +2203,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @direction.setter
-    def direction(self, value: Union[str, float]) -> None:
+    def direction(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.window.direction`` attribute.
 
         Description:
@@ -2271,7 +2271,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelhigh.setter
-    def levelhigh(self, value: Union[str, float]) -> None:
+    def levelhigh(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.window.levelhigh`` attribute.
 
         Description:
@@ -2338,7 +2338,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levellow.setter
-    def levellow(self, value: Union[str, float]) -> None:
+    def levellow(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.window.levellow`` attribute.
 
         Description:
@@ -2415,7 +2415,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.edge.level`` attribute.
 
         Description:
@@ -2483,7 +2483,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @slope.setter
-    def slope(self, value: Union[str, float]) -> None:
+    def slope(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.edge.slope`` attribute.
 
         Description:
@@ -2575,7 +2575,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``dmm.measure.analogtrigger.mode`` attribute.
 
         Description:
@@ -2678,7 +2678,7 @@ class DmmMeasure(BaseTSPCmd):
         self._bias = DmmMeasureBias(device, f"{self._cmd_syntax}.bias")
         self._configlist = DmmMeasureConfiglist(device, f"{self._cmd_syntax}.configlist")
         self._filter = DmmMeasureFilter(device, f"{self._cmd_syntax}.filter")
-        self._limit: Dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmMeasureLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmMeasureMath(device, f"{self._cmd_syntax}.math")
@@ -2688,7 +2688,7 @@ class DmmMeasure(BaseTSPCmd):
         self._rel = DmmMeasureRel(device, f"{self._cmd_syntax}.rel")
         self._sense = DmmMeasureSense(device, f"{self._cmd_syntax}.sense")
         self._threshold = DmmMeasureThreshold(device, f"{self._cmd_syntax}.threshold")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -2738,7 +2738,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
-    def aperture(self, value: Union[str, float]) -> None:
+    def aperture(self, value: str | float) -> None:
         """Access the ``dmm.measure.aperture`` attribute.
 
         Description:
@@ -2804,7 +2804,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
-    def autodelay(self, value: Union[str, float]) -> None:
+    def autodelay(self, value: str | float) -> None:
         """Access the ``dmm.measure.autodelay`` attribute.
 
         Description:
@@ -2871,7 +2871,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorange.setter
-    def autorange(self, value: Union[str, float]) -> None:
+    def autorange(self, value: str | float) -> None:
         """Access the ``dmm.measure.autorange`` attribute.
 
         Description:
@@ -2971,7 +2971,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``dmm.measure.count`` attribute.
 
         Description:
@@ -3036,7 +3036,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dbmreference.setter
-    def dbmreference(self, value: Union[str, float]) -> None:
+    def dbmreference(self, value: str | float) -> None:
         """Access the ``dmm.measure.dbmreference`` attribute.
 
         Description:
@@ -3101,7 +3101,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dbreference.setter
-    def dbreference(self, value: Union[str, float]) -> None:
+    def dbreference(self, value: str | float) -> None:
         """Access the ``dmm.measure.dbreference`` attribute.
 
         Description:
@@ -3167,7 +3167,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @detectorbandwidth.setter
-    def detectorbandwidth(self, value: Union[str, float]) -> None:
+    def detectorbandwidth(self, value: str | float) -> None:
         """Access the ``dmm.measure.detectorbandwidth`` attribute.
 
         Description:
@@ -3234,7 +3234,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @displaydigits.setter
-    def displaydigits(self, value: Union[str, float]) -> None:
+    def displaydigits(self, value: str | float) -> None:
         """Access the ``dmm.measure.displaydigits`` attribute.
 
         Description:
@@ -3312,7 +3312,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fourrtd.setter
-    def fourrtd(self, value: Union[str, float]) -> None:
+    def fourrtd(self, value: str | float) -> None:
         """Access the ``dmm.measure.fourrtd`` attribute.
 
         Description:
@@ -3376,7 +3376,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``dmm.measure.func`` attribute.
 
         Description:
@@ -3440,7 +3440,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @inputimpedance.setter
-    def inputimpedance(self, value: Union[str, float]) -> None:
+    def inputimpedance(self, value: str | float) -> None:
         """Access the ``dmm.measure.inputimpedance`` attribute.
 
         Description:
@@ -3474,7 +3474,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmMeasureLimitItem]:
+    def limit(self) -> dict[int, DmmMeasureLimitItem]:
         """Return the ``dmm.measure.limit[Y]`` command tree.
 
         Info:
@@ -3522,7 +3522,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @linesync.setter
-    def linesync(self, value: Union[str, float]) -> None:
+    def linesync(self, value: str | float) -> None:
         """Access the ``dmm.measure.linesync`` attribute.
 
         Description:
@@ -3599,7 +3599,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
-    def nplc(self, value: Union[str, float]) -> None:
+    def nplc(self, value: str | float) -> None:
         """Access the ``dmm.measure.nplc`` attribute.
 
         Description:
@@ -3673,7 +3673,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @opendetector.setter
-    def opendetector(self, value: Union[str, float]) -> None:
+    def opendetector(self, value: str | float) -> None:
         """Access the ``dmm.measure.opendetector`` attribute.
 
         Description:
@@ -3737,7 +3737,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
-    def range(self, value: Union[str, float]) -> None:
+    def range(self, value: str | float) -> None:
         """Access the ``dmm.measure.range`` attribute.
 
         Description:
@@ -3801,7 +3801,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @refjunction.setter
-    def refjunction(self, value: Union[str, float]) -> None:
+    def refjunction(self, value: str | float) -> None:
         """Access the ``dmm.measure.refjunction`` attribute.
 
         Description:
@@ -3877,7 +3877,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rtdalpha.setter
-    def rtdalpha(self, value: Union[str, float]) -> None:
+    def rtdalpha(self, value: str | float) -> None:
         """Access the ``dmm.measure.rtdalpha`` attribute.
 
         Description:
@@ -3942,7 +3942,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rtdbeta.setter
-    def rtdbeta(self, value: Union[str, float]) -> None:
+    def rtdbeta(self, value: str | float) -> None:
         """Access the ``dmm.measure.rtdbeta`` attribute.
 
         Description:
@@ -4007,7 +4007,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rtddelta.setter
-    def rtddelta(self, value: Union[str, float]) -> None:
+    def rtddelta(self, value: str | float) -> None:
         """Access the ``dmm.measure.rtddelta`` attribute.
 
         Description:
@@ -4072,7 +4072,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rtdzero.setter
-    def rtdzero(self, value: Union[str, float]) -> None:
+    def rtdzero(self, value: str | float) -> None:
         """Access the ``dmm.measure.rtdzero`` attribute.
 
         Description:
@@ -4148,7 +4148,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @simreftemperature.setter
-    def simreftemperature(self, value: Union[str, float]) -> None:
+    def simreftemperature(self, value: str | float) -> None:
         """Access the ``dmm.measure.simreftemperature`` attribute.
 
         Description:
@@ -4214,7 +4214,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @thermistor.setter
-    def thermistor(self, value: Union[str, float]) -> None:
+    def thermistor(self, value: str | float) -> None:
         """Access the ``dmm.measure.thermistor`` attribute.
 
         Description:
@@ -4279,7 +4279,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @thermocouple.setter
-    def thermocouple(self, value: Union[str, float]) -> None:
+    def thermocouple(self, value: str | float) -> None:
         """Access the ``dmm.measure.thermocouple`` attribute.
 
         Description:
@@ -4344,7 +4344,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @threertd.setter
-    def threertd(self, value: Union[str, float]) -> None:
+    def threertd(self, value: str | float) -> None:
         """Access the ``dmm.measure.threertd`` attribute.
 
         Description:
@@ -4419,7 +4419,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @transducer.setter
-    def transducer(self, value: Union[str, float]) -> None:
+    def transducer(self, value: str | float) -> None:
         """Access the ``dmm.measure.transducer`` attribute.
 
         Description:
@@ -4483,7 +4483,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @twortd.setter
-    def twortd(self, value: Union[str, float]) -> None:
+    def twortd(self, value: str | float) -> None:
         """Access the ``dmm.measure.twortd`` attribute.
 
         Description:
@@ -4547,7 +4547,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @unit.setter
-    def unit(self, value: Union[str, float]) -> None:
+    def unit(self, value: str | float) -> None:
         """Access the ``dmm.measure.unit`` attribute.
 
         Description:
@@ -4581,7 +4581,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, str | float]:
         """Access the ``dmm.measure.userdelay[N]`` attribute.
 
         Description:
@@ -4637,7 +4637,7 @@ class DmmMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getattribute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.measure.read()`` function.
 
         Description:
@@ -4669,7 +4669,7 @@ class DmmMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def readwithtime(self, buffer_name: Optional[str] = None) -> str:
+    def readwithtime(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.measure.readwithtime()`` function.
 
         Description:
@@ -4773,7 +4773,7 @@ class DmmDigitizeRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.digitize.rel.enable`` attribute.
 
         Description:
@@ -4839,7 +4839,7 @@ class DmmDigitizeRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``dmm.digitize.rel.level`` attribute.
 
         Description:
@@ -4939,7 +4939,7 @@ class DmmDigitizeMathMxb(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @bfactor.setter
-    def bfactor(self, value: Union[str, float]) -> None:
+    def bfactor(self, value: str | float) -> None:
         """Access the ``dmm.digitize.math.mxb.bfactor`` attribute.
 
         Description:
@@ -5004,7 +5004,7 @@ class DmmDigitizeMathMxb(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mfactor.setter
-    def mfactor(self, value: Union[str, float]) -> None:
+    def mfactor(self, value: str | float) -> None:
         """Access the ``dmm.digitize.math.mxb.mfactor`` attribute.
 
         Description:
@@ -5085,7 +5085,7 @@ class DmmDigitizeMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.digitize.math.enable`` attribute.
 
         Description:
@@ -5152,7 +5152,7 @@ class DmmDigitizeMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @format.setter
-    def format(self, value: Union[str, float]) -> None:
+    def format(self, value: str | float) -> None:
         """Access the ``dmm.digitize.math.format`` attribute.
 
         Description:
@@ -5229,7 +5229,7 @@ class DmmDigitizeMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @percent.setter
-    def percent(self, value: Union[str, float]) -> None:
+    def percent(self, value: str | float) -> None:
         """Access the ``dmm.digitize.math.percent`` attribute.
 
         Description:
@@ -5310,7 +5310,7 @@ class DmmDigitizeLimitItemLow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``dmm.digitize.limit[Y].low.value`` attribute.
 
         Description:
@@ -5394,7 +5394,7 @@ class DmmDigitizeLimitItemHigh(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``dmm.digitize.limit[Y].high.value`` attribute.
 
         Description:
@@ -5488,7 +5488,7 @@ class DmmDigitizeLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @audible.setter
-    def audible(self, value: Union[str, float]) -> None:
+    def audible(self, value: str | float) -> None:
         """Access the ``dmm.digitize.limit[Y].audible`` attribute.
 
         Description:
@@ -5562,7 +5562,7 @@ class DmmDigitizeLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autoclear.setter
-    def autoclear(self, value: Union[str, float]) -> None:
+    def autoclear(self, value: str | float) -> None:
         """Access the ``dmm.digitize.limit[Y].autoclear`` attribute.
 
         Description:
@@ -5636,7 +5636,7 @@ class DmmDigitizeLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``dmm.digitize.limit[Y].enable`` attribute.
 
         Description:
@@ -5772,7 +5772,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @direction.setter
-    def direction(self, value: Union[str, float]) -> None:
+    def direction(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.window.direction`` attribute.
 
         Description:
@@ -5840,7 +5840,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelhigh.setter
-    def levelhigh(self, value: Union[str, float]) -> None:
+    def levelhigh(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.window.levelhigh`` attribute.
 
         Description:
@@ -5907,7 +5907,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levellow.setter
-    def levellow(self, value: Union[str, float]) -> None:
+    def levellow(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.window.levellow`` attribute.
 
         Description:
@@ -5984,7 +5984,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.edge.level`` attribute.
 
         Description:
@@ -6052,7 +6052,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @slope.setter
-    def slope(self, value: Union[str, float]) -> None:
+    def slope(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.edge.slope`` attribute.
 
         Description:
@@ -6145,7 +6145,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``dmm.digitize.analogtrigger.mode`` attribute.
 
         Description:
@@ -6218,12 +6218,12 @@ class DmmDigitize(BaseTSPCmd):
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._analogtrigger = DmmDigitizeAnalogtrigger(device, f"{self._cmd_syntax}.analogtrigger")
-        self._limit: Dict[int, DmmDigitizeLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmDigitizeLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmDigitizeLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmDigitizeMath(device, f"{self._cmd_syntax}.math")
         self._rel = DmmDigitizeRel(device, f"{self._cmd_syntax}.rel")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -6273,7 +6273,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
-    def aperture(self, value: Union[str, float]) -> None:
+    def aperture(self, value: str | float) -> None:
         """Access the ``dmm.digitize.aperture`` attribute.
 
         Description:
@@ -6338,7 +6338,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``dmm.digitize.count`` attribute.
 
         Description:
@@ -6403,7 +6403,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dbmreference.setter
-    def dbmreference(self, value: Union[str, float]) -> None:
+    def dbmreference(self, value: str | float) -> None:
         """Access the ``dmm.digitize.dbmreference`` attribute.
 
         Description:
@@ -6468,7 +6468,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dbreference.setter
-    def dbreference(self, value: Union[str, float]) -> None:
+    def dbreference(self, value: str | float) -> None:
         """Access the ``dmm.digitize.dbreference`` attribute.
 
         Description:
@@ -6534,7 +6534,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @displaydigits.setter
-    def displaydigits(self, value: Union[str, float]) -> None:
+    def displaydigits(self, value: str | float) -> None:
         """Access the ``dmm.digitize.displaydigits`` attribute.
 
         Description:
@@ -6599,7 +6599,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``dmm.digitize.func`` attribute.
 
         Description:
@@ -6663,7 +6663,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @inputimpedance.setter
-    def inputimpedance(self, value: Union[str, float]) -> None:
+    def inputimpedance(self, value: str | float) -> None:
         """Access the ``dmm.digitize.inputimpedance`` attribute.
 
         Description:
@@ -6697,7 +6697,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmDigitizeLimitItem]:
+    def limit(self) -> dict[int, DmmDigitizeLimitItem]:
         """Return the ``dmm.digitize.limit[Y]`` command tree.
 
         Info:
@@ -6757,7 +6757,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
-    def range(self, value: Union[str, float]) -> None:
+    def range(self, value: str | float) -> None:
         """Access the ``dmm.digitize.range`` attribute.
 
         Description:
@@ -6834,7 +6834,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @samplerate.setter
-    def samplerate(self, value: Union[str, float]) -> None:
+    def samplerate(self, value: str | float) -> None:
         """Access the ``dmm.digitize.samplerate`` attribute.
 
         Description:
@@ -6900,7 +6900,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @unit.setter
-    def unit(self, value: Union[str, float]) -> None:
+    def unit(self, value: str | float) -> None:
         """Access the ``dmm.digitize.unit`` attribute.
 
         Description:
@@ -6934,7 +6934,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, str | float]:
         """Access the ``dmm.digitize.userdelay[N]`` attribute.
 
         Description:
@@ -6960,7 +6960,7 @@ class DmmDigitize(BaseTSPCmd):
         """
         return self._userdelay
 
-    def read(self, buffer_name: Optional[str] = None) -> str:
+    def read(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.digitize.read()`` function.
 
         Description:
@@ -6992,7 +6992,7 @@ class DmmDigitize(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def readwithtime(self, buffer_name: Optional[str] = None) -> str:
+    def readwithtime(self, buffer_name: str | None = None) -> str:
         """Run the ``dmm.digitize.readwithtime()`` function.
 
         Description:

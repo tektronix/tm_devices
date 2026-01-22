@@ -25,7 +25,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -112,7 +112,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
-    def access(self, value: Union[str, float]) -> None:
+    def access(self, value: str | float) -> None:
         """Access the ``localnode.access`` attribute.
 
         Description:
@@ -254,7 +254,7 @@ class Localnode(BaseTSPCmd):
         raise AttributeError(msg)
 
     @password.setter
-    def password(self, value: Union[str, float]) -> None:
+    def password(self, value: str | float) -> None:
         """Access the ``localnode.password`` attribute.
 
         Description:
@@ -311,7 +311,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @prompts.setter
-    def prompts(self, value: Union[str, float]) -> None:
+    def prompts(self, value: str | float) -> None:
         """Access the ``localnode.prompts`` attribute.
 
         Description:
@@ -377,7 +377,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @prompts4882.setter
-    def prompts4882(self, value: Union[str, float]) -> None:
+    def prompts4882(self, value: str | float) -> None:
         """Access the ``localnode.prompts4882`` attribute.
 
         Description:
@@ -472,7 +472,7 @@ class Localnode(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @showevents.setter
-    def showevents(self, value: Union[str, float]) -> None:
+    def showevents(self, value: str | float) -> None:
         """Access the ``localnode.showevents`` attribute.
 
         Description:
@@ -558,12 +558,12 @@ class Localnode(BaseTSPCmd):
 
     def settime(
         self,
-        year: Optional[str] = None,
-        month: Optional[int] = None,
-        day: Optional[int] = None,
-        hour: Optional[int] = None,
-        minute: Optional[int] = None,
-        second: Optional[int] = None,
+        year: str | None = None,
+        month: int | None = None,
+        day: int | None = None,
+        hour: int | None = None,
+        minute: int | None = None,
+        second: int | None = None,
     ) -> None:
         """Run the ``localnode.settime()`` function.
 

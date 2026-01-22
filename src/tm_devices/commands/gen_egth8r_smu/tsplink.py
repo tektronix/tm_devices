@@ -33,7 +33,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -113,7 +113,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].mode`` attribute.
 
         Description:
@@ -219,7 +219,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].pulsewidth`` attribute.
 
         Description:
@@ -293,7 +293,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].stimulus`` attribute.
 
         Description:
@@ -528,7 +528,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
-        self._trigger: Dict[int, TsplinkTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, TsplinkTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -564,7 +564,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             raise NoDeviceProvidedError(msg) from error
 
     @group.setter
-    def group(self, value: Union[str, float]) -> None:
+    def group(self, value: str | float) -> None:
         """Access the ``tsplink.group`` attribute.
 
         Description:
@@ -658,7 +658,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             raise NoDeviceProvidedError(msg) from error
 
     @node.setter
-    def node(self, value: Union[str, float]) -> None:
+    def node(self, value: str | float) -> None:
         """Access the ``tsplink.node`` attribute.
 
         Description:
@@ -721,7 +721,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def trigger(self) -> Dict[int, TsplinkTriggerItem]:
+    def trigger(self) -> dict[int, TsplinkTriggerItem]:
         """Return the ``tsplink.trigger[N]`` command tree.
 
         Info:
@@ -777,7 +777,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             raise NoDeviceProvidedError(msg) from error
 
     @writeprotect.setter
-    def writeprotect(self, value: Union[str, float]) -> None:
+    def writeprotect(self, value: str | float) -> None:
         """Access the ``tsplink.writeprotect`` attribute.
 
         Description:
@@ -867,7 +867,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def reset(self, expected_nodes: Optional[int] = None) -> str:
+    def reset(self, expected_nodes: int | None = None) -> str:
         """Run the ``tsplink.reset()`` function.
 
         Description:

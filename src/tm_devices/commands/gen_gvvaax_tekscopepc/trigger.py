@@ -32,7 +32,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
@@ -118,12 +118,12 @@ class TriggerBLevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBLevelChannel]:
+    def ch(self) -> dict[int, TriggerBLevelChannel]:
         """Return the ``TRIGger:B:LEVel:CH<x>`` command.
 
         Description:
@@ -520,12 +520,12 @@ class TriggerALevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALevelChannel]:
+    def ch(self) -> dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
 
         Description:

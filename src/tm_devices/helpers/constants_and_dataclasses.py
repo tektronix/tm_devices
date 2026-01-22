@@ -3,11 +3,17 @@
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Any, cast, Dict, Final, FrozenSet, List, Literal, Optional, Tuple, Union
+from typing import (
+    Annotated,
+    Any,
+    cast,
+    Final,
+    Literal,
+    Optional,
+)
 
 from dc_schema import SchemaAnnotation  # pyright: ignore[reportMissingTypeStubs]
 from pyvisa import constants as pyvisa_constants
-from typing_extensions import Annotated
 
 from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
@@ -50,7 +56,7 @@ class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
 
     def __str__(self) -> str:
         """Return a single line of comma separated, key-value pairs for an environment variable."""
-        ret_list: List[str] = []
+        ret_list: list[str] = []
         for key, val in self.to_dict(ignore_none=True).items():
             # must pull class type from actual value, not the to_dict()'s representation
             if (
@@ -148,7 +154,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``[5, 6, 7, 8]``.
     """
     flow_control: Annotated[
-        Optional[Union[FlowControl, Literal["none", "xon_xoff", "dtr_dsr", "rts_cts"]]],
+        Optional[FlowControl | Literal["none", "xon_xoff", "dtr_dsr", "rts_cts"]],
         SchemaAnnotation(
             description=(
                 "The control for pausing/resuming data streaming between slower devices\n"
@@ -161,7 +167,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
     """
     parity: Annotated[
-        Optional[Union[Parity, Literal["none", "odd", "even", "mark", "space"]]],
+        Optional[Parity | Literal["none", "odd", "even", "mark", "space"]],
         SchemaAnnotation(
             description=(
                 "Define if and where a checksum bit should be added to each data character\n"
@@ -177,7 +183,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
     """
     stop_bits: Annotated[
-        Optional[Union[StopBits, Literal["one", "one_and_a_half", "two"]]],
+        Optional[StopBits | Literal["one", "one_and_a_half", "two"]],
         SchemaAnnotation(
             description=(
                 "The number of bits to use to indicate the end of a frame/character\n"
@@ -193,7 +199,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     """
     end_input: Annotated[
         Optional[
-            Union[Termination, Literal["termination_break", "termination_char", "last_bit", "none"]]
+            Termination | Literal["termination_break", "termination_char", "last_bit", "none"]
         ],
         SchemaAnnotation(
             description=(
@@ -823,7 +829,7 @@ class TMDevicesConfigFileSchema:
     """Configuration file schema for the tm_devices package."""
 
     devices: Annotated[
-        List[DeviceConfigEntry],
+        list[DeviceConfigEntry],
         SchemaAnnotation(
             description=(
                 "A list of devices for the DeviceManager to connect to\n"
@@ -871,7 +877,7 @@ MIN_GPIB_BOARD_NUMBER: Final[int] = 0
 # don't include this in the __init__
 CONFIG_CLASS_STR_PREFIX_MAPPING: Final = MappingProxyType({SerialConfig: "serial_"})
 # don't include this in the __init__
-VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
+VALID_SERIAL_BAUD: Final[frozenset[int]] = frozenset(
     [
         300,
         600,
@@ -889,9 +895,9 @@ VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
     ]
 )
 # don't include this in the __init__
-VALID_SERIAL_DATA_BITS: Final[FrozenSet[int]] = frozenset([5, 6, 7, 8])
+VALID_SERIAL_DATA_BITS: Final[frozenset[int]] = frozenset([5, 6, 7, 8])
 
-VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
+VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, tuple[ConnectionTypes, ...]]] = (
     MappingProxyType(
         {
             DeviceTypes.AFG: (
@@ -1132,7 +1138,7 @@ This lists the natively supported USBTMC connections of `tm_devices`, use
 to register USBTMC connection information for devices not listed here.
 """
 
-LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
+LOAD_IMPEDANCE_LOOKUP: Final[Mapping[float | str, LoadImpedanceAFG]] = MappingProxyType(
     {
         9.97e37: LoadImpedanceAFG.HIGHZ,
         1.0e6: LoadImpedanceAFG.HIGHZ,
@@ -1147,7 +1153,7 @@ LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = Map
 ####################################################################################################
 # Private Attributes
 ####################################################################################################
-_externally_registered_usbtmc_model_id_lookup: Dict[str, USBTMCConfiguration] = {}
+_externally_registered_usbtmc_model_id_lookup: dict[str, USBTMCConfiguration] = {}
 _USB_MODEL_ID_STR_LOOKUP: Mapping[str, USBTMCConfiguration] = MappingProxyType(
     {key.value: value for key, value in USB_MODEL_ID_LOOKUP.items()}
 )

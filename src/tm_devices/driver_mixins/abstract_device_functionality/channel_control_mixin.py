@@ -1,7 +1,7 @@
 """A mixin class that provides access to methods for controlling channels on a device."""
 
 from abc import ABC, abstractmethod
-from typing import final, Tuple
+from typing import final
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -14,7 +14,7 @@ class ChannelControlMixin(ABC):
     ################################################################################################
     @property
     @abstractmethod
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
 
     @cached_property

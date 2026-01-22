@@ -30,7 +30,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -111,7 +111,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -183,7 +183,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -254,7 +254,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delaylist.setter
-    def delaylist(self, value: Union[str, float]) -> None:
+    def delaylist(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delaylist`` attribute.
 
         Description:
@@ -356,7 +356,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @passthrough.setter
-    def passthrough(self, value: Union[str, float]) -> None:
+    def passthrough(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].passthrough`` attribute.
 
         Description:
@@ -427,7 +427,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].stimulus`` attribute.
 
         Description:
@@ -589,7 +589,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         self.EVENT_ID = self.EVENT_ID.replace(
             "[N]", f"[{self._cmd_syntax.rsplit('[', maxsplit=1)[-1].split(']', maxsplit=1)[0]}]"
         )
-        self._stimulus: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -631,7 +631,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @orenable.setter
-    def orenable(self, value: Union[str, float]) -> None:
+    def orenable(self, value: str | float) -> None:
         """Access the ``trigger.blender[N].orenable`` attribute.
 
         Description:
@@ -700,7 +700,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> Dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, str | float]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:
@@ -826,18 +826,18 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
+        self._blender: dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
         )
-        self._generator: Dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
+        self._generator: dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerGeneratorItem(device, f"{self._cmd_syntax}.generator[{x}]")
         )
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
 
     @property
-    def blender(self) -> Dict[int, TriggerBlenderItem]:
+    def blender(self) -> dict[int, TriggerBlenderItem]:
         """Return the ``trigger.blender[N]`` command tree.
 
         Info:
@@ -857,7 +857,7 @@ class Trigger(BaseTSPCmd):
         return self._blender
 
     @property
-    def generator(self) -> Dict[int, TriggerGeneratorItem]:
+    def generator(self) -> dict[int, TriggerGeneratorItem]:
         """Return the ``trigger.generator[N]`` command tree.
 
         Constants:
@@ -866,7 +866,7 @@ class Trigger(BaseTSPCmd):
         return self._generator
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:

@@ -46,7 +46,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1003,7 +1003,7 @@ class Visual(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VISual") -> None:
         super().__init__(device, cmd_syntax)
-        self._area: Dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
+        self._area: dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItem(device, f"{self._cmd_syntax}:AREA{x}")
         )
         self._deleteall = VisualDeleteall(device, f"{self._cmd_syntax}:DELETEALL")
@@ -1014,7 +1014,7 @@ class Visual(SCPICmdRead):
         self._showequation = VisualShowequation(device, f"{self._cmd_syntax}:SHOWEQuation")
 
     @property
-    def area(self) -> Dict[int, VisualAreaItem]:
+    def area(self) -> dict[int, VisualAreaItem]:
         """Return the ``VISual:AREA<x>`` command tree.
 
         Usage:

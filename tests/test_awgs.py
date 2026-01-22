@@ -1,7 +1,7 @@
 # pyright: reportPrivateUsage=none
 """Test the AWGs."""
 
-from typing import cast, Optional, TYPE_CHECKING
+from typing import cast, TYPE_CHECKING
 
 import pytest
 
@@ -195,7 +195,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
     length_range = ParameterBounds(lower=10, upper=1000)
     min_smaple = 1.5e3
     awg_list = [awg70ka150, awg70ka225, awg70ka216, awg70kb208]
-    output_path: Optional[SignalGeneratorOutputPathsNon5200] = None
+    output_path: SignalGeneratorOutputPathsNon5200 | None = None
     for awg in awg_list:
         option = awg.alias[-3:]
         assert awg.opt_string == option
@@ -304,7 +304,7 @@ def test_awg7k(device_manager: DeviceManager) -> None:  # pylint: disable=too-ma
     length_range = ParameterBounds(lower=10, upper=1000)
     awg_list = [awg7k01, awg7k06, awg7kb02, awg7kb01, awg7kc06, awg7kc01]
 
-    output_path: Optional[SignalGeneratorOutputPathsNon5200] = None
+    output_path: SignalGeneratorOutputPathsNon5200 | None = None
     for awg in awg_list:
         option = awg.alias[-2:]
         assert awg.opt_string == option
@@ -349,7 +349,7 @@ def test_awg5k(device_manager: DeviceManager) -> None:
     awg_list = [awg5k, awg5kb, awg5kc]
     ampl_range = ParameterBounds(lower=20.0e-3, upper=4.5)
     offset_range = ParameterBounds(lower=-2.25, upper=2.25)
-    output_path: Optional[SignalGeneratorOutputPathsNon5200] = None
+    output_path: SignalGeneratorOutputPathsNon5200 | None = None
     for awg in awg_list:
         sample_range = ParameterBounds(lower=10.0e6, upper=int(awg.model[5]) * 600.0e6 + 600.0e6)
 

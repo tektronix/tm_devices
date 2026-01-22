@@ -28,7 +28,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -107,7 +107,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -179,7 +179,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -250,7 +250,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overrun.setter
-    def overrun(self, value: Union[str, float]) -> None:
+    def overrun(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].overrun`` attribute.
 
         Description:
@@ -321,7 +321,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @passthrough.setter
-    def passthrough(self, value: Union[str, float]) -> None:
+    def passthrough(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].passthrough`` attribute.
 
         Description:
@@ -392,7 +392,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].stimulus`` attribute.
 
         Description:
@@ -636,7 +636,7 @@ class TriggerDetectorItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.detector[N].stimulus`` attribute.
 
         Description:
@@ -749,18 +749,18 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._detector: Dict[int, TriggerDetectorItem] = DefaultDictPassKeyToFactory(
+        self._detector: dict[int, TriggerDetectorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDetectorItem(device, f"{self._cmd_syntax}.detector[{x}]")
         )
-        self._generator: Dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
+        self._generator: dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerGeneratorItem(device, f"{self._cmd_syntax}.generator[{x}]")
         )
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
 
     @property
-    def detector(self) -> Dict[int, TriggerDetectorItem]:
+    def detector(self) -> dict[int, TriggerDetectorItem]:
         """Return the ``trigger.detector[N]`` command tree.
 
         Info:
@@ -775,7 +775,7 @@ class Trigger(BaseTSPCmd):
         return self._detector
 
     @property
-    def generator(self) -> Dict[int, TriggerGeneratorItem]:
+    def generator(self) -> dict[int, TriggerGeneratorItem]:
         """Return the ``trigger.generator[N]`` command tree.
 
         Info:
@@ -790,7 +790,7 @@ class Trigger(BaseTSPCmd):
         return self._generator
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:

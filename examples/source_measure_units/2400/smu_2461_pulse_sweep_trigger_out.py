@@ -18,7 +18,6 @@ Instrument Console. You can copy and paste these readings into a spreadsheet for
 
 # Press the green button in the gutter to run the script.
 from time import sleep
-from typing import List
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2461
@@ -194,8 +193,8 @@ with DeviceManager() as device_manager:
 
     defbuffer1 = smu2461.commands.buffer_var["defbuffer1"]
     RDG_CNT = int(float(defbuffer1.n))
-    curr: List[float] = []
-    volt: List[float] = []
+    curr: list[float] = []
+    volt: list[float] = []
     # Print Results
     if not RDG_CNT:
         print("Buffer is empty\n")

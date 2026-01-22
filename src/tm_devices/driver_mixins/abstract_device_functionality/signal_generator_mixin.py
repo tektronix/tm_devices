@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Generic, Literal, NamedTuple, Optional, Type, TypeVar, Union
+from typing import Generic, Literal, NamedTuple, TypeVar
 
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
     _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
@@ -36,9 +36,9 @@ class ExtendedSourceDeviceConstants:
     offset_range: ParameterBounds
     frequency_range: ParameterBounds
     sample_rate_range: ParameterBounds
-    square_duty_cycle_range: Optional[ParameterBounds] = None
-    pulse_width_range: Optional[ParameterBounds] = None
-    ramp_symmetry_range: Optional[ParameterBounds] = None
+    square_duty_cycle_range: ParameterBounds | None = None
+    pulse_width_range: ParameterBounds | None = None
+    ramp_symmetry_range: ParameterBounds | None = None
 
 
 @dataclass(frozen=True)
@@ -48,7 +48,7 @@ class SourceDeviceConstants:
     memory_page_size: int
     memory_max_record_length: int
     memory_min_record_length: int
-    functions: Type[SignalGeneratorFunctionBase]
+    functions: type[SignalGeneratorFunctionBase]
 
 
 class SignalGeneratorMixin(
@@ -58,7 +58,7 @@ class SignalGeneratorMixin(
 
     @staticmethod
     def _validate_generated_function(
-        function: Union[str, _SignalGeneratorFunctionsTypeVar],
+        function: str | _SignalGeneratorFunctionsTypeVar,
     ) -> _SignalGeneratorFunctionsTypeVar:
         """Validate the functions within the waveform generation method.
 
@@ -89,7 +89,7 @@ class SignalGeneratorMixin(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -120,7 +120,7 @@ class SignalGeneratorMixin(
         offset: float,
         burst_count: int,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -151,9 +151,9 @@ class SignalGeneratorMixin(
     @abstractmethod
     def get_waveform_constraints(
         self,
-        function: Optional[SignalGeneratorFunctionBase] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
+        function: SignalGeneratorFunctionBase | None = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
         output_signal_path: str = "DIR",
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> ExtendedSourceDeviceConstants:

@@ -16,7 +16,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -67,7 +67,7 @@ class Serial(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @baud.setter
-    def baud(self, value: Union[str, float]) -> None:
+    def baud(self, value: str | float) -> None:
         """Access the ``serial.baud`` attribute.
 
         Description:
@@ -133,7 +133,7 @@ class Serial(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @databits.setter
-    def databits(self, value: Union[str, float]) -> None:
+    def databits(self, value: str | float) -> None:
         """Access the ``serial.databits`` attribute.
 
         Description:
@@ -199,7 +199,7 @@ class Serial(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @parity.setter
-    def parity(self, value: Union[str, float]) -> None:
+    def parity(self, value: str | float) -> None:
         """Access the ``serial.parity`` attribute.
 
         Description:

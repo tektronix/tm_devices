@@ -164,7 +164,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -4250,17 +4250,17 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         self._bitstring = ErrordetectorBitSyncpatternBitstring(
             device, f"{self._cmd_syntax}:BITString"
         )
-        self._disparity: Dict[int, ErrordetectorBitSyncpatternDisparityItem] = (
+        self._disparity: dict[int, ErrordetectorBitSyncpatternDisparityItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: ErrordetectorBitSyncpatternDisparityItem(
                     device, f"{self._cmd_syntax}:DISParity{x}"
                 )
             )
         )
-        self._minus: Dict[int, ErrordetectorBitSyncpatternMinusItem] = DefaultDictPassKeyToFactory(
+        self._minus: dict[int, ErrordetectorBitSyncpatternMinusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorBitSyncpatternMinusItem(device, f"{self._cmd_syntax}:MINus{x}")
         )
-        self._plus: Dict[int, ErrordetectorBitSyncpatternPlusItem] = DefaultDictPassKeyToFactory(
+        self._plus: dict[int, ErrordetectorBitSyncpatternPlusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorBitSyncpatternPlusItem(device, f"{self._cmd_syntax}:PLUS{x}")
         )
 
@@ -4292,7 +4292,7 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         return self._bitstring
 
     @property
-    def disparity(self) -> Dict[int, ErrordetectorBitSyncpatternDisparityItem]:
+    def disparity(self) -> dict[int, ErrordetectorBitSyncpatternDisparityItem]:
         """Return the ``ERRORDetector:BIT:SYNCPATtern:DISParity<x>`` command.
 
         Description:
@@ -4322,7 +4322,7 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         return self._disparity
 
     @property
-    def minus(self) -> Dict[int, ErrordetectorBitSyncpatternMinusItem]:
+    def minus(self) -> dict[int, ErrordetectorBitSyncpatternMinusItem]:
         """Return the ``ERRORDetector:BIT:SYNCPATtern:MINus<x>`` command.
 
         Description:
@@ -4343,7 +4343,7 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         return self._minus
 
     @property
-    def plus(self) -> Dict[int, ErrordetectorBitSyncpatternPlusItem]:
+    def plus(self) -> dict[int, ErrordetectorBitSyncpatternPlusItem]:
         """Return the ``ERRORDetector:BIT:SYNCPATtern:PLUS<x>`` command.
 
         Description:
@@ -4701,15 +4701,15 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = ErrordetectorAlignprimitiveMinus(device, f"{self._cmd_syntax}:MINUS")
-        self._minusx: Dict[int, ErrordetectorAlignprimitiveMinusItem] = DefaultDictPassKeyToFactory(
+        self._minusx: dict[int, ErrordetectorAlignprimitiveMinusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorAlignprimitiveMinusItem(device, f"{self._cmd_syntax}:MINus{x}")
         )
         self._plus = ErrordetectorAlignprimitivePlus(device, f"{self._cmd_syntax}:PLUS")
-        self._plusx: Dict[int, ErrordetectorAlignprimitivePlusItem] = DefaultDictPassKeyToFactory(
+        self._plusx: dict[int, ErrordetectorAlignprimitivePlusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorAlignprimitivePlusItem(device, f"{self._cmd_syntax}:PLUS{x}")
         )
         self._state = ErrordetectorAlignprimitiveState(device, f"{self._cmd_syntax}:STATE")
-        self._symbol: Dict[int, ErrordetectorAlignprimitiveSymbolItem] = (
+        self._symbol: dict[int, ErrordetectorAlignprimitiveSymbolItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: ErrordetectorAlignprimitiveSymbolItem(
                     device, f"{self._cmd_syntax}:SYMBOL{x}"
@@ -4740,7 +4740,7 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
         return self._minus
 
     @property
-    def minusx(self) -> Dict[int, ErrordetectorAlignprimitiveMinusItem]:
+    def minusx(self) -> dict[int, ErrordetectorAlignprimitiveMinusItem]:
         """Return the ``ERRORDetector:ALIGNPRIMitive:MINus<x>`` command.
 
         Description:
@@ -4782,7 +4782,7 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
         return self._plus
 
     @property
-    def plusx(self) -> Dict[int, ErrordetectorAlignprimitivePlusItem]:
+    def plusx(self) -> dict[int, ErrordetectorAlignprimitivePlusItem]:
         """Return the ``ERRORDetector:ALIGNPRIMitive:PLUS<x>`` command.
 
         Description:
@@ -4832,7 +4832,7 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
         return self._state
 
     @property
-    def symbol(self) -> Dict[int, ErrordetectorAlignprimitiveSymbolItem]:
+    def symbol(self) -> dict[int, ErrordetectorAlignprimitiveSymbolItem]:
         """Return the ``ERRORDetector:ALIGNPRIMitive:SYMBOL<x>`` command.
 
         Description:

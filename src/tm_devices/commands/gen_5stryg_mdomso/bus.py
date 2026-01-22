@@ -226,7 +226,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -375,17 +375,17 @@ class BusUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, BusUpperthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, BusUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: BusUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, BusUpperthresholdRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, BusUpperthresholdRefItem] = DefaultDictPassKeyToFactory(
             lambda x: BusUpperthresholdRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._math = BusUpperthresholdMath(device, f"{self._cmd_syntax}:MATH")
         self._math1 = BusUpperthresholdMath1(device, f"{self._cmd_syntax}:MATH1")
 
     @property
-    def ch(self) -> Dict[int, BusUpperthresholdChannel]:
+    def ch(self) -> dict[int, BusUpperthresholdChannel]:
         """Return the ``BUS:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -413,7 +413,7 @@ class BusUpperthreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, BusUpperthresholdRefItem]:
+    def ref(self) -> dict[int, BusUpperthresholdRefItem]:
         """Return the ``BUS:UPPerthreshold:REF<x>`` command.
 
         Description:
@@ -574,15 +574,15 @@ class BusThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, BusThresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, BusThresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: BusThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, BusThresholdDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, BusThresholdDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: BusThresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, BusThresholdChannel]:
+    def ch(self) -> dict[int, BusThresholdChannel]:
         """Return the ``BUS:THReshold:CH<x>`` command.
 
         Description:
@@ -610,7 +610,7 @@ class BusThreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, BusThresholdDigitalBit]:
+    def d(self) -> dict[int, BusThresholdDigitalBit]:
         """Return the ``BUS:THReshold:D<x>`` command.
 
         Description:
@@ -772,17 +772,17 @@ class BusLowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, BusLowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, BusLowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: BusLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, BusLowerthresholdRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, BusLowerthresholdRefItem] = DefaultDictPassKeyToFactory(
             lambda x: BusLowerthresholdRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._math = BusLowerthresholdMath(device, f"{self._cmd_syntax}:MATH")
         self._math1 = BusLowerthresholdMath1(device, f"{self._cmd_syntax}:MATH1")
 
     @property
-    def ch(self) -> Dict[int, BusLowerthresholdChannel]:
+    def ch(self) -> dict[int, BusLowerthresholdChannel]:
         """Return the ``BUS:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -810,7 +810,7 @@ class BusLowerthreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, BusLowerthresholdRefItem]:
+    def ref(self) -> dict[int, BusLowerthresholdRefItem]:
         """Return the ``BUS:LOWerthreshold:REF<x>`` command.
 
         Description:
@@ -3538,14 +3538,14 @@ class BusBItemParallel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._bit: Dict[int, BusBItemParallelBitItem] = DefaultDictPassKeyToFactory(
+        self._bit: dict[int, BusBItemParallelBitItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItemParallelBitItem(device, f"{self._cmd_syntax}:BIT{x}")
         )
         self._clock = BusBItemParallelClock(device, f"{self._cmd_syntax}:CLOCk")
         self._width = BusBItemParallelWidth(device, f"{self._cmd_syntax}:WIDth")
 
     @property
-    def bit(self) -> Dict[int, BusBItemParallelBitItem]:
+    def bit(self) -> dict[int, BusBItemParallelBitItem]:
         """Return the ``BUS:B<x>:PARallel:BIT<x>`` command tree.
 
         Usage:
@@ -7755,7 +7755,7 @@ class Bus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUS") -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, BusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._lowerthreshold = BusLowerthreshold(device, f"{self._cmd_syntax}:LOWerthreshold")
@@ -7763,7 +7763,7 @@ class Bus(SCPICmdRead):
         self._upperthreshold = BusUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
 
     @property
-    def b(self) -> Dict[int, BusBItem]:
+    def b(self) -> dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.
 
         Usage:

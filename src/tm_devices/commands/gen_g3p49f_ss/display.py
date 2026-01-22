@@ -29,7 +29,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -58,7 +58,7 @@ class DisplayLoadmenu(BaseTSPCmd):
         - ``.delete()``: The ``display.loadmenu.delete()`` function.
     """
 
-    def add(self, display_name: str, code: str, memory: Optional[str] = None) -> None:
+    def add(self, display_name: str, code: str, memory: str | None = None) -> None:
         """Run the ``display.loadmenu.add()`` function.
 
         Description:
@@ -196,7 +196,7 @@ class Display(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @locallockout.setter
-    def locallockout(self, value: Union[str, float]) -> None:
+    def locallockout(self, value: str | float) -> None:
         """Access the ``display.locallockout`` attribute.
 
         Description:
@@ -265,7 +265,7 @@ class Display(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
-    def screen(self, value: Union[str, float]) -> None:
+    def screen(self, value: str | float) -> None:
         """Access the ``display.screen`` attribute.
 
         Description:
@@ -407,10 +407,10 @@ class Display(BaseTSPCmd):
 
     def gettext(
         self,
-        embellished: Optional[str] = None,
-        row: Optional[str] = None,
-        column_start: Optional[str] = None,
-        column_end: Optional[int] = None,
+        embellished: str | None = None,
+        row: str | None = None,
+        column_start: str | None = None,
+        column_end: int | None = None,
     ) -> str:
         """Run the ``display.gettext()`` function.
 
@@ -459,9 +459,9 @@ class Display(BaseTSPCmd):
     def inputvalue(
         self,
         format_: str,
-        default: Optional[str] = None,
-        minimum: Optional[str] = None,
-        maximum: Optional[str] = None,
+        default: str | None = None,
+        minimum: str | None = None,
+        maximum: str | None = None,
     ) -> None:
         """Run the ``display.inputvalue()`` function.
 
@@ -584,7 +584,7 @@ class Display(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def setcursor(self, row: str, column: str, style: Optional[str] = None) -> None:
+    def setcursor(self, row: str, column: str, style: str | None = None) -> None:
         """Run the ``display.setcursor()`` function.
 
         Description:
@@ -622,7 +622,7 @@ class Display(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def settext(
-        self, user_display_text1: Optional[str] = None, user_display_text2: Optional[str] = None
+        self, user_display_text1: str | None = None, user_display_text2: str | None = None
     ) -> None:
         """Run the ``display.settext()`` function.
 

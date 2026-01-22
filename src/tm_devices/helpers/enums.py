@@ -1,7 +1,7 @@
 """Module containing Enums for the `tm_devices` package."""
 
 from enum import Enum
-from typing import cast, List
+from typing import cast
 
 
 class CustomStrEnum(Enum):
@@ -21,7 +21,7 @@ class CustomStrEnum(Enum):
         return cast("str", self._value_)  # pylint: disable=no-member
 
     @classmethod
-    def list_values(cls) -> List[str]:
+    def list_values(cls) -> list[str]:
         """Return a list of all the values of the enum."""
         return [enum_entry.value for enum_entry in cls]
 

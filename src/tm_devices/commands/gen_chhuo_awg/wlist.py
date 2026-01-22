@@ -138,7 +138,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -2397,7 +2397,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         self._aggressor2 = WlistSparameterNcascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
         )
-        self._aggressor: Dict[int, WlistSparameterNcascadingAggressorItem] = (
+        self._aggressor: dict[int, WlistSparameterNcascadingAggressorItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: WlistSparameterNcascadingAggressorItem(
                     device, f"{self._cmd_syntax}:AGGRessor{x}"
@@ -2405,20 +2405,20 @@ class WlistSparameterNcascading(SCPICmdRead):
             )
         )
         self._deembed = WlistSparameterNcascadingDeembed(device, f"{self._cmd_syntax}:DEEMbed")
-        self._drx: Dict[int, WlistSparameterNcascadingDrxItem] = DefaultDictPassKeyToFactory(
+        self._drx: dict[int, WlistSparameterNcascadingDrxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterNcascadingDrxItem(device, f"{self._cmd_syntax}:DRX{x}")
         )
-        self._dtx: Dict[int, WlistSparameterNcascadingDtxItem] = DefaultDictPassKeyToFactory(
+        self._dtx: dict[int, WlistSparameterNcascadingDtxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterNcascadingDtxItem(device, f"{self._cmd_syntax}:DTX{x}")
         )
         self._file = WlistSparameterNcascadingFile(device, f"{self._cmd_syntax}:FILE")
         self._layout = WlistSparameterNcascadingLayout(device, f"{self._cmd_syntax}:LAYout")
-        self._rx: Dict[int, WlistSparameterNcascadingRxItem] = DefaultDictPassKeyToFactory(
+        self._rx: dict[int, WlistSparameterNcascadingRxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterNcascadingRxItem(device, f"{self._cmd_syntax}:RX{x}")
         )
         self._sscheme = WlistSparameterNcascadingSscheme(device, f"{self._cmd_syntax}:SSCHeme")
         self._stype = WlistSparameterNcascadingStype(device, f"{self._cmd_syntax}:STYPe")
-        self._tx: Dict[int, WlistSparameterNcascadingTxItem] = DefaultDictPassKeyToFactory(
+        self._tx: dict[int, WlistSparameterNcascadingTxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterNcascadingTxItem(device, f"{self._cmd_syntax}:TX{x}")
         )
         self._type = WlistSparameterNcascadingType(device, f"{self._cmd_syntax}:TYPE")
@@ -2440,7 +2440,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         return self._aggressor2
 
     @property
-    def aggressor(self) -> Dict[int, WlistSparameterNcascadingAggressorItem]:
+    def aggressor(self) -> dict[int, WlistSparameterNcascadingAggressorItem]:
         """Return the ``WLISt:SPARameter:NCAScading:AGGRessor[n]`` command tree.
 
         Usage:
@@ -2484,7 +2484,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         return self._deembed
 
     @property
-    def drx(self) -> Dict[int, WlistSparameterNcascadingDrxItem]:
+    def drx(self) -> dict[int, WlistSparameterNcascadingDrxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:DRX[n]`` command.
 
         Description:
@@ -2510,7 +2510,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         return self._drx
 
     @property
-    def dtx(self) -> Dict[int, WlistSparameterNcascadingDtxItem]:
+    def dtx(self) -> dict[int, WlistSparameterNcascadingDtxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:DTX[n]`` command.
 
         Description:
@@ -2586,7 +2586,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         return self._layout
 
     @property
-    def rx(self) -> Dict[int, WlistSparameterNcascadingRxItem]:
+    def rx(self) -> dict[int, WlistSparameterNcascadingRxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:RX[n]`` command.
 
         Description:
@@ -2662,7 +2662,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         return self._stype
 
     @property
-    def tx(self) -> Dict[int, WlistSparameterNcascadingTxItem]:
+    def tx(self) -> dict[int, WlistSparameterNcascadingTxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:TX[n]`` command.
 
         Description:
@@ -2978,14 +2978,14 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._drx: Dict[int, WlistSparameterCascadingStageItemDrxItem] = (
+        self._drx: dict[int, WlistSparameterCascadingStageItemDrxItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: WlistSparameterCascadingStageItemDrxItem(
                     device, f"{self._cmd_syntax}:DRX{x}"
                 )
             )
         )
-        self._dtx: Dict[int, WlistSparameterCascadingStageItemDtxItem] = (
+        self._dtx: dict[int, WlistSparameterCascadingStageItemDtxItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: WlistSparameterCascadingStageItemDtxItem(
                     device, f"{self._cmd_syntax}:DTX{x}"
@@ -2994,18 +2994,18 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._enable = WlistSparameterCascadingStageItemEnable(device, f"{self._cmd_syntax}:ENABle")
         self._file = WlistSparameterCascadingStageItemFile(device, f"{self._cmd_syntax}:FILE")
-        self._rx: Dict[int, WlistSparameterCascadingStageItemRxItem] = DefaultDictPassKeyToFactory(
+        self._rx: dict[int, WlistSparameterCascadingStageItemRxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterCascadingStageItemRxItem(device, f"{self._cmd_syntax}:RX{x}")
         )
         self._sscheme = WlistSparameterCascadingStageItemSscheme(
             device, f"{self._cmd_syntax}:SSCHeme"
         )
-        self._tx: Dict[int, WlistSparameterCascadingStageItemTxItem] = DefaultDictPassKeyToFactory(
+        self._tx: dict[int, WlistSparameterCascadingStageItemTxItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterCascadingStageItemTxItem(device, f"{self._cmd_syntax}:TX{x}")
         )
 
     @property
-    def drx(self) -> Dict[int, WlistSparameterCascadingStageItemDrxItem]:
+    def drx(self) -> dict[int, WlistSparameterCascadingStageItemDrxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:DRX[n]`` command.
 
         Description:
@@ -3031,7 +3031,7 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._drx
 
     @property
-    def dtx(self) -> Dict[int, WlistSparameterCascadingStageItemDtxItem]:
+    def dtx(self) -> dict[int, WlistSparameterCascadingStageItemDtxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:DTX[n]`` command.
 
         Description:
@@ -3107,7 +3107,7 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._file
 
     @property
-    def rx(self) -> Dict[int, WlistSparameterCascadingStageItemRxItem]:
+    def rx(self) -> dict[int, WlistSparameterCascadingStageItemRxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:RX[n]`` command.
 
         Description:
@@ -3158,7 +3158,7 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._sscheme
 
     @property
-    def tx(self) -> Dict[int, WlistSparameterCascadingStageItemTxItem]:
+    def tx(self) -> dict[int, WlistSparameterCascadingStageItemTxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:TX[n]`` command.
 
         Description:
@@ -3637,7 +3637,7 @@ class WlistSparameterCascading(SCPICmdRead):
         self._aggressor2 = WlistSparameterCascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
         )
-        self._aggressor: Dict[int, WlistSparameterCascadingAggressorItem] = (
+        self._aggressor: dict[int, WlistSparameterCascadingAggressorItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: WlistSparameterCascadingAggressorItem(
                     device, f"{self._cmd_syntax}:AGGRessor{x}"
@@ -3645,7 +3645,7 @@ class WlistSparameterCascading(SCPICmdRead):
             )
         )
         self._deembed = WlistSparameterCascadingDeembed(device, f"{self._cmd_syntax}:DEEMbed")
-        self._stage: Dict[int, WlistSparameterCascadingStageItem] = DefaultDictPassKeyToFactory(
+        self._stage: dict[int, WlistSparameterCascadingStageItem] = DefaultDictPassKeyToFactory(
             lambda x: WlistSparameterCascadingStageItem(device, f"{self._cmd_syntax}:STAGe{x}")
         )
         self._stype = WlistSparameterCascadingStype(device, f"{self._cmd_syntax}:STYPe")
@@ -3668,7 +3668,7 @@ class WlistSparameterCascading(SCPICmdRead):
         return self._aggressor2
 
     @property
-    def aggressor(self) -> Dict[int, WlistSparameterCascadingAggressorItem]:
+    def aggressor(self) -> dict[int, WlistSparameterCascadingAggressorItem]:
         """Return the ``WLISt:SPARameter:CASCading:AGGRessor[n]`` command tree.
 
         Usage:
@@ -3712,7 +3712,7 @@ class WlistSparameterCascading(SCPICmdRead):
         return self._deembed
 
     @property
-    def stage(self) -> Dict[int, WlistSparameterCascadingStageItem]:
+    def stage(self) -> dict[int, WlistSparameterCascadingStageItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]`` command tree.
 
         Usage:

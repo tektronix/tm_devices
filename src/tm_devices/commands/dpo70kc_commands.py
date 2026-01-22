@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -897,7 +895,7 @@ class DPO70KCCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: PIControl | None = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -911,14 +909,14 @@ class DPO70KCCommands:
         self._busy = Busy(device)
         self._cal = Cal(device)
         self._calibrate = Calibrate(device)
-        self._ch: Dict[int, Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, Channel] = DefaultDictPassKeyToFactory(
             lambda x: Channel(device, f"CH{x}")
         )
         self._clear = Clear(device)
         self._cls = Cls(device)
         self._cmdbatch = Cmdbatch(device)
         self._counter = Counter(device)
-        self._cq: Dict[int, CqItem] = DefaultDictPassKeyToFactory(
+        self._cq: dict[int, CqItem] = DefaultDictPassKeyToFactory(
             lambda x: CqItem(device, f"CQ{x}")
         )
         self._cursor = Cursor(device)
@@ -926,7 +924,7 @@ class DPO70KCCommands:
         self._curvenext = Curvenext(device)
         self._curvestream = Curvestream(device)
         self._custom = Custom(device)
-        self._d: Dict[int, DigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, DigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: DigitalBit(device, f"D{x}")
         )
         self._data = Data(device)
@@ -962,14 +960,14 @@ class DPO70KCCommands:
         self._lrn = Lrn(device)
         self._mark = Mark(device)
         self._mask = Mask(device)
-        self._math: Dict[int, MathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, MathItem] = DefaultDictPassKeyToFactory(
             lambda x: MathItem(device, f"MATH{x}")
         )
-        self._matharbflt: Dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
+        self._matharbflt: dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
             lambda x: MatharbfltItem(device, f"MATHArbflt{x}")
         )
         self._mathvar = Mathvar(device)
-        self._mch: Dict[int, MchItem] = DefaultDictPassKeyToFactory(
+        self._mch: dict[int, MchItem] = DefaultDictPassKeyToFactory(
             lambda x: MchItem(device, f"MCH{x}")
         )
         self._measurement = Measurement(device)
@@ -984,7 +982,7 @@ class DPO70KCCommands:
         self._pud = Pud(device)
         self._rcl = Rcl(device)
         self._recall = Recall(device)
-        self._ref: Dict[int, RefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, RefItem] = DefaultDictPassKeyToFactory(
             lambda x: RefItem(device, f"REF{x}")
         )
         self._rem = Rem(device)
@@ -1313,7 +1311,7 @@ class DPO70KCCommands:
         return self._calibrate
 
     @property
-    def ch(self) -> Dict[int, Channel]:
+    def ch(self) -> dict[int, Channel]:
         """Return the ``CH<x>`` command.
 
         Description:
@@ -1443,7 +1441,7 @@ class DPO70KCCommands:
         return self._counter
 
     @property
-    def cq(self) -> Dict[int, CqItem]:
+    def cq(self) -> dict[int, CqItem]:
         """Return the ``CQ<x>`` command tree.
 
         Usage:
@@ -1612,7 +1610,7 @@ class DPO70KCCommands:
         return self._custom
 
     @property
-    def d(self) -> Dict[int, DigitalBit]:
+    def d(self) -> dict[int, DigitalBit]:
         """Return the ``D<x>`` command tree.
 
         Usage:
@@ -2615,7 +2613,7 @@ class DPO70KCCommands:
         return self._mask
 
     @property
-    def math(self) -> Dict[int, MathItem]:
+    def math(self) -> dict[int, MathItem]:
         """Return the ``MATH<x>`` command.
 
         Description:
@@ -2645,7 +2643,7 @@ class DPO70KCCommands:
         return self._math
 
     @property
-    def matharbflt(self) -> Dict[int, MatharbfltItem]:
+    def matharbflt(self) -> dict[int, MatharbfltItem]:
         """Return the ``MATHArbflt<x>`` command tree.
 
         Usage:
@@ -2682,7 +2680,7 @@ class DPO70KCCommands:
         return self._mathvar
 
     @property
-    def mch(self) -> Dict[int, MchItem]:
+    def mch(self) -> dict[int, MchItem]:
         """Return the ``MCH<x>`` command tree.
 
         Usage:
@@ -3024,7 +3022,7 @@ class DPO70KCCommands:
         return self._recall
 
     @property
-    def ref(self) -> Dict[int, RefItem]:
+    def ref(self) -> dict[int, RefItem]:
         """Return the ``REF<x>`` command tree.
 
         Usage:

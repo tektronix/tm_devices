@@ -6,7 +6,6 @@ import sys
 
 from collections import Counter
 from pathlib import Path
-from typing import List, Optional
 
 import pytest
 
@@ -120,9 +119,9 @@ SIMULATED_DEVICE_LIST = (
 )
 
 # Global variables for this test module
-created_connections_list: List[str] = []
-created_models_list: List[str] = []
-drivers_with_auto_generated_commands: List[str] = []
+created_connections_list: list[str] = []
+created_models_list: list[str] = []
+drivers_with_auto_generated_commands: list[str] = []
 
 
 # noinspection PyUnusedLocal
@@ -134,9 +133,9 @@ def test_device_driver(
     device_manager: DeviceManager,
     dev_type: str,
     address: str,
-    port: Optional[int],
-    connection_type: Optional[str],
-    device_driver: Optional[str],
+    port: int | None,
+    connection_type: str | None,
+    device_driver: str | None,
     mock_http_server: None,  # noqa: ARG001
 ) -> None:
     """Verify all device drivers can be used.
@@ -174,10 +173,10 @@ def test_all_device_drivers(pytestconfig: pytest.Config) -> None:
     test_execution_count = pytestconfig.getoption("count") or 1
 
     # Create a list of all supported models and connections
-    supported_connections_list: List[str] = sorted(
+    supported_connections_list: list[str] = sorted(
         x.value for x in ConnectionTypes if not str(x.value).startswith(("_", "MOCK"))
     )
-    supported_models_list: List[str] = sorted(x.value for x in SupportedModels)
+    supported_models_list: list[str] = sorted(x.value for x in SupportedModels)
 
     created_models_list.sort()
     sorted_created_connections_list = sorted(set(created_connections_list))

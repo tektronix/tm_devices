@@ -1,7 +1,6 @@
 """Base source channel module."""
 
 from abc import ABC, abstractmethod
-from typing import Optional
 
 from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
@@ -31,7 +30,7 @@ class BaseSourceChannel(_ExtendableMixin, ABC):
         return self._name
 
     @property
-    def num(self) -> Optional[int]:
+    def num(self) -> int | None:
         """Return the channel number."""
         return self._num
 

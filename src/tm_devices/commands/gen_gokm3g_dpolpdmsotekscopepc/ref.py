@@ -48,7 +48,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1247,13 +1247,13 @@ class RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "REF<x>") -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, RefItemDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, RefItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RefItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
         self._dall = RefItemDall(device, f"{self._cmd_syntax}_DALL")
 
     @property
-    def d(self) -> Dict[int, RefItemDigitalBit]:
+    def d(self) -> dict[int, RefItemDigitalBit]:
         """Return the ``REF<x>_D<x>`` command tree.
 
         Usage:

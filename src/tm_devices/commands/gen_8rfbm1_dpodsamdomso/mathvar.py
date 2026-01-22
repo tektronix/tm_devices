@@ -17,7 +17,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -81,12 +81,12 @@ class Mathvar(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MATHVAR") -> None:
         super().__init__(device, cmd_syntax)
-        self._var: Dict[int, MathvarVarItem] = DefaultDictPassKeyToFactory(
+        self._var: dict[int, MathvarVarItem] = DefaultDictPassKeyToFactory(
             lambda x: MathvarVarItem(device, f"{self._cmd_syntax}:VAR{x}")
         )
 
     @property
-    def var(self) -> Dict[int, MathvarVarItem]:
+    def var(self) -> dict[int, MathvarVarItem]:
         r"""Return the ``MATHVAR:VAR<x>`` command.
 
         Description:

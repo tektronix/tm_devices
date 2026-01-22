@@ -37,7 +37,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -759,7 +759,7 @@ class MaskMaskItemCount(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = MaskMaskItemCountHits(device, f"{self._cmd_syntax}:HITS")
-        self._seg: Dict[int, MaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskMaskItemCountSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
 
@@ -787,7 +787,7 @@ class MaskMaskItemCount(SCPICmdRead):
         return self._hits
 
     @property
-    def seg(self) -> Dict[int, MaskMaskItemCountSegItem]:
+    def seg(self) -> dict[int, MaskMaskItemCountSegItem]:
         """Return the ``MASK:MASK<x>:COUNT:SEG<x>`` command tree.
 
         Usage:
@@ -834,7 +834,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._definedby = MaskMaskItemDefinedby(device, f"{self._cmd_syntax}:DEFinedby")
         self._display = MaskMaskItemDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._list = MaskMaskItemList(device, f"{self._cmd_syntax}:LIST")
-        self._seg: Dict[int, MaskMaskItemSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskMaskItemSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskMaskItemSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._source = MaskMaskItemSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -949,7 +949,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._list
 
     @property
-    def seg(self) -> Dict[int, MaskMaskItemSegItem]:
+    def seg(self) -> dict[int, MaskMaskItemSegItem]:
         """Return the ``MASK:MASK<x>:SEG<x>`` command tree.
 
         Usage:
@@ -1070,7 +1070,7 @@ class Mask(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MASK") -> None:
         super().__init__(device, cmd_syntax)
         self._delete = MaskDelete(device, f"{self._cmd_syntax}:DELete")
-        self._mask: Dict[int, MaskMaskItem] = DefaultDictPassKeyToFactory(
+        self._mask: dict[int, MaskMaskItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskMaskItem(device, f"{self._cmd_syntax}:MASK{x}")
         )
         self._test = MaskTest(device, f"{self._cmd_syntax}:TESt")
@@ -1096,7 +1096,7 @@ class Mask(SCPICmdRead):
         return self._delete
 
     @property
-    def mask(self) -> Dict[int, MaskMaskItem]:
+    def mask(self) -> dict[int, MaskMaskItem]:
         """Return the ``MASK:MASK<x>`` command tree.
 
         Usage:

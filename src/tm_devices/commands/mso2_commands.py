@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -562,7 +560,7 @@ class MSO2Commands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: PIControl | None = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._actonevent = Actonevent(device)
         self._afg = Afg(device)
@@ -579,7 +577,7 @@ class MSO2Commands:
         self._cal = Cal(device)
         self._calibrate = Calibrate(device)
         self._callouts = Callouts(device)
-        self._ch: Dict[int, Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, Channel] = DefaultDictPassKeyToFactory(
             lambda x: Channel(device, f"CH{x}")
         )
         self._clear = Clear(device)
@@ -591,7 +589,7 @@ class MSO2Commands:
         self._customtable = Customtable(device)
         self._data = Data(device)
         self._date = Date(device)
-        self._dch: Dict[int, DchItem] = DefaultDictPassKeyToFactory(
+        self._dch: dict[int, DchItem] = DefaultDictPassKeyToFactory(
             lambda x: DchItem(device, f"DCH{x}")
         )
         self._ddt = Ddt(device)
@@ -1017,7 +1015,7 @@ class MSO2Commands:
         return self._callouts
 
     @property
-    def ch(self) -> Dict[int, Channel]:
+    def ch(self) -> dict[int, Channel]:
         """Return the ``CH<x>`` command.
 
         Description:
@@ -1260,7 +1258,7 @@ class MSO2Commands:
         return self._date
 
     @property
-    def dch(self) -> Dict[int, DchItem]:
+    def dch(self) -> dict[int, DchItem]:
         """Return the ``DCH<x>`` command tree.
 
         Usage:

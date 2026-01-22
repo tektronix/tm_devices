@@ -18,7 +18,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -77,7 +77,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``digio.line[N].mode`` attribute.
 
         Description:
@@ -148,7 +148,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
-    def state(self, value: Union[str, float]) -> None:
+    def state(self, value: str | float) -> None:
         """Access the ``digio.line[N].state`` attribute.
 
         Description:
@@ -255,12 +255,12 @@ class Digio(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "digio") -> None:
         super().__init__(device, cmd_syntax)
-        self._line: Dict[int, DigioLineItem] = DefaultDictPassKeyToFactory(
+        self._line: dict[int, DigioLineItem] = DefaultDictPassKeyToFactory(
             lambda x: DigioLineItem(device, f"{self._cmd_syntax}.line[{x}]")
         )
 
     @property
-    def line(self) -> Dict[int, DigioLineItem]:
+    def line(self) -> dict[int, DigioLineItem]:
         """Return the ``digio.line[N]`` command tree.
 
         Info:

@@ -17,7 +17,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -187,7 +187,7 @@ class Peakstable(SCPICmdRead):
         self._addnew = PeakstableAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PeakstableDelete(device, f"{self._cmd_syntax}:DELete")
         self._list = PeakstableList(device, f"{self._cmd_syntax}:LIST")
-        self._table: Dict[int, PeakstableTableItem] = DefaultDictPassKeyToFactory(
+        self._table: dict[int, PeakstableTableItem] = DefaultDictPassKeyToFactory(
             lambda x: PeakstableTableItem(device, f"{self._cmd_syntax}:TABle{x}")
         )
 
@@ -253,7 +253,7 @@ class Peakstable(SCPICmdRead):
         return self._list
 
     @property
-    def table(self) -> Dict[int, PeakstableTableItem]:
+    def table(self) -> dict[int, PeakstableTableItem]:
         """Return the ``PEAKSTABle:TABle<x>`` command tree.
 
         Usage:

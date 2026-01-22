@@ -14,7 +14,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -86,7 +86,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
-    def hostname(self, value: Union[str, float]) -> None:
+    def hostname(self, value: str | float) -> None:
         """Access the ``lan.config.dns.hostname`` attribute.
 
         Description:
@@ -214,7 +214,7 @@ class Lan(BaseTSPCmd):
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "lan") -> None:
         super().__init__(device, cmd_syntax)
         self._config = LanConfig(device, f"{self._cmd_syntax}.config")
-        self._trigger: Dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: LanTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -228,7 +228,7 @@ class Lan(BaseTSPCmd):
         return self._config
 
     @property
-    def trigger(self) -> Dict[int, LanTriggerItem]:
+    def trigger(self) -> dict[int, LanTriggerItem]:
         """Return the ``lan.trigger[N]`` command tree.
 
         Constants:

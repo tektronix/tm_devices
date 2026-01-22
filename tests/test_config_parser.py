@@ -3,7 +3,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Optional, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -221,7 +221,7 @@ options:
     ],
 )
 def test_file_config_non_default_path(
-    os_environ: Dict[str, str], file_type: ConfigFileType
+    os_environ: dict[str, str], file_type: ConfigFileType
 ) -> None:
     """Test the non-default path to the config file."""
     expected_options = DMConfigOptions(
@@ -396,7 +396,7 @@ def test_file_config_non_default_path(
     ],
 )
 def test_invalid_config_creation(
-    os_environ: Dict[str, str], expected_exception: Type[Exception]
+    os_environ: dict[str, str], expected_exception: type[Exception]
 ) -> None:
     """Test creating invalid configs.
 
@@ -561,7 +561,7 @@ def test_remove_device() -> None:
 def test_get_visa_resource_expression(
     instrument_string: str,
     device_name: str,
-    expected_expr: Optional[str],
+    expected_expr: str | None,
 ) -> None:
     """Test creating a resource expression.
 

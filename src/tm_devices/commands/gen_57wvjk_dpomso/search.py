@@ -247,7 +247,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -370,7 +370,7 @@ class SearchSearchItemTriggerAUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerAUpperthresholdChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerAUpperthresholdChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerAUpperthresholdChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
@@ -378,7 +378,7 @@ class SearchSearchItemTriggerAUpperthreshold(SCPICmdRead):
             )
         )
         self._math = SearchSearchItemTriggerAUpperthresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[int, SearchSearchItemTriggerAUpperthresholdRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerAUpperthresholdRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerAUpperthresholdRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -387,7 +387,7 @@ class SearchSearchItemTriggerAUpperthreshold(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerAUpperthresholdChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerAUpperthresholdChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -447,7 +447,7 @@ class SearchSearchItemTriggerAUpperthreshold(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerAUpperthresholdRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerAUpperthresholdRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:UPPerthreshold:REF<x>`` command.
 
         Description:
@@ -925,14 +925,14 @@ class SearchSearchItemTriggerASetholdThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerASetholdThresholdChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerASetholdThresholdChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerASetholdThresholdChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._ref: Dict[int, SearchSearchItemTriggerASetholdThresholdRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerASetholdThresholdRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerASetholdThresholdRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -947,7 +947,7 @@ class SearchSearchItemTriggerASetholdThreshold(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerASetholdThresholdChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerASetholdThresholdChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:THReshold:CH<x>`` command.
 
         Description:
@@ -976,7 +976,7 @@ class SearchSearchItemTriggerASetholdThreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerASetholdThresholdRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerASetholdThresholdRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:THReshold:REF<x>`` command.
 
         Description:
@@ -2563,7 +2563,7 @@ class SearchSearchItemTriggerALowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerALowerthresholdChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerALowerthresholdChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALowerthresholdChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
@@ -2571,7 +2571,7 @@ class SearchSearchItemTriggerALowerthreshold(SCPICmdRead):
             )
         )
         self._math = SearchSearchItemTriggerALowerthresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[int, SearchSearchItemTriggerALowerthresholdRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerALowerthresholdRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALowerthresholdRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -2580,7 +2580,7 @@ class SearchSearchItemTriggerALowerthreshold(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerALowerthresholdChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerALowerthresholdChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -2641,7 +2641,7 @@ class SearchSearchItemTriggerALowerthreshold(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerALowerthresholdRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerALowerthresholdRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOWerthreshold:REF<x>`` command.
 
         Description:
@@ -2780,7 +2780,7 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerALogicThresholdChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerALogicThresholdChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicThresholdChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
@@ -2788,7 +2788,7 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
             )
         )
         self._math = SearchSearchItemTriggerALogicThresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[int, SearchSearchItemTriggerALogicThresholdRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerALogicThresholdRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicThresholdRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -2797,7 +2797,7 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerALogicThresholdChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerALogicThresholdChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:THReshold:CH<x>`` command.
 
         Description:
@@ -2857,7 +2857,7 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerALogicThresholdRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerALogicThresholdRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:THReshold:REF<x>`` command.
 
         Description:
@@ -3200,14 +3200,14 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerALogicPatternInputChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerALogicPatternInputChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicPatternInputChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._d: Dict[int, SearchSearchItemTriggerALogicPatternInputDigitalBit] = (
+        self._d: dict[int, SearchSearchItemTriggerALogicPatternInputDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicPatternInputDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -3217,7 +3217,7 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
         self._math = SearchSearchItemTriggerALogicPatternInputMath(
             device, f"{self._cmd_syntax}:MATH"
         )
-        self._ref: Dict[int, SearchSearchItemTriggerALogicPatternInputRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerALogicPatternInputRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicPatternInputRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -3226,7 +3226,7 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerALogicPatternInputChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerALogicPatternInputChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:PATtern:INPut:CH<x>`` command.
 
         Description:
@@ -3257,7 +3257,7 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, SearchSearchItemTriggerALogicPatternInputDigitalBit]:
+    def d(self) -> dict[int, SearchSearchItemTriggerALogicPatternInputDigitalBit]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:PATtern:INPut:D<x>`` command.
 
         Description:
@@ -3317,7 +3317,7 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerALogicPatternInputRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerALogicPatternInputRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:PATtern:INPut:REF<x>`` command.
 
         Description:
@@ -3725,7 +3725,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerALogicInputChannel] = (
+        self._ch: dict[int, SearchSearchItemTriggerALogicInputChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicInputChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
@@ -3733,7 +3733,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
             )
         )
         self._clock = SearchSearchItemTriggerALogicInputClock(device, f"{self._cmd_syntax}:CLOCk")
-        self._d: Dict[int, SearchSearchItemTriggerALogicInputDigitalBit] = (
+        self._d: dict[int, SearchSearchItemTriggerALogicInputDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicInputDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -3741,7 +3741,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
             )
         )
         self._math = SearchSearchItemTriggerALogicInputMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[int, SearchSearchItemTriggerALogicInputRefItem] = (
+        self._ref: dict[int, SearchSearchItemTriggerALogicInputRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SearchSearchItemTriggerALogicInputRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
@@ -3750,7 +3750,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerALogicInputChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerALogicInputChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CH<x>`` command.
 
         Description:
@@ -3798,7 +3798,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
         return self._clock
 
     @property
-    def d(self) -> Dict[int, SearchSearchItemTriggerALogicInputDigitalBit]:
+    def d(self) -> dict[int, SearchSearchItemTriggerALogicInputDigitalBit]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:D<x>`` command.
 
         Description:
@@ -3859,7 +3859,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerALogicInputRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerALogicInputRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:REF<x>`` command.
 
         Description:
@@ -4149,16 +4149,16 @@ class SearchSearchItemTriggerALevel(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SearchSearchItemTriggerALevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SearchSearchItemTriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._math = SearchSearchItemTriggerALevelMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[int, SearchSearchItemTriggerALevelRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, SearchSearchItemTriggerALevelRefItem] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerALevelRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, SearchSearchItemTriggerALevelChannel]:
+    def ch(self) -> dict[int, SearchSearchItemTriggerALevelChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LEVel:CH<x>`` command.
 
         Description:
@@ -4219,7 +4219,7 @@ class SearchSearchItemTriggerALevel(SCPICmdWrite, SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SearchSearchItemTriggerALevelRefItem]:
+    def ref(self) -> dict[int, SearchSearchItemTriggerALevelRefItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LEVel:REF<x>`` command.
 
         Description:
@@ -9130,13 +9130,13 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, SearchSearchItemTriggerABusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, SearchSearchItemTriggerABusBItem] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerABusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._source = SearchSearchItemTriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def b(self) -> Dict[int, SearchSearchItemTriggerABusBItem]:
+    def b(self) -> dict[int, SearchSearchItemTriggerABusBItem]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>`` command tree.
 
         Usage:
@@ -9739,12 +9739,12 @@ class Search(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SEARCH") -> None:
         super().__init__(device, cmd_syntax)
-        self._search: Dict[int, SearchSearchItem] = DefaultDictPassKeyToFactory(
+        self._search: dict[int, SearchSearchItem] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItem(device, f"{self._cmd_syntax}:SEARCH{x}")
         )
 
     @property
-    def search(self) -> Dict[int, SearchSearchItem]:
+    def search(self) -> dict[int, SearchSearchItem]:
         """Return the ``SEARCH:SEARCH<x>`` command tree.
 
         Usage:

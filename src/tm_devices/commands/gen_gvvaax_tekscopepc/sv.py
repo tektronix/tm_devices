@@ -81,7 +81,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1942,12 +1942,12 @@ class SvSItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SvSItemChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SvSItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: SvSItemChannel(device, f"{self._cmd_syntax}_CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, SvSItemChannel]:
+    def ch(self) -> dict[int, SvSItemChannel]:
         """Return the ``SV:S<x>_CH<x>`` command tree.
 
         Usage:
@@ -2859,20 +2859,20 @@ class Sv(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SV") -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SvChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SvChannel] = DefaultDictPassKeyToFactory(
             lambda x: SvChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._lockcenter = SvLockcenter(device, f"{self._cmd_syntax}:LOCKCenter")
         self._lockspectrum = SvLockspectrum(device, f"{self._cmd_syntax}:LOCKSpectrum")
         self._marker = SvMarker(device, f"{self._cmd_syntax}:MARKER")
         self._rf_phase = SvRfPhase(device, f"{self._cmd_syntax}:RF_PHASe")
-        self._s: Dict[int, SvSItem] = DefaultDictPassKeyToFactory(
+        self._s: dict[int, SvSItem] = DefaultDictPassKeyToFactory(
             lambda x: SvSItem(device, f"{self._cmd_syntax}:S{x}")
         )
         self._spectrogram = SvSpectrogram(device, f"{self._cmd_syntax}:SPECtrogram")
 
     @property
-    def ch(self) -> Dict[int, SvChannel]:
+    def ch(self) -> dict[int, SvChannel]:
         """Return the ``SV:CH<x>`` command tree.
 
         Usage:
@@ -2978,7 +2978,7 @@ class Sv(SCPICmdRead):
         return self._rf_phase
 
     @property
-    def s(self) -> Dict[int, SvSItem]:
+    def s(self) -> dict[int, SvSItem]:
         """Return the ``SV:S<x>`` command tree.
 
         Usage:

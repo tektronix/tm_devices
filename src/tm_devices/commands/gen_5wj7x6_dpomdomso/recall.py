@@ -16,7 +16,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -111,12 +111,12 @@ class RecallSetup(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._demo: Dict[int, RecallSetupDemoItem] = DefaultDictPassKeyToFactory(
+        self._demo: dict[int, RecallSetupDemoItem] = DefaultDictPassKeyToFactory(
             lambda x: RecallSetupDemoItem(device, f"{self._cmd_syntax}:DEMO{x}")
         )
 
     @property
-    def demo(self) -> Dict[int, RecallSetupDemoItem]:
+    def demo(self) -> dict[int, RecallSetupDemoItem]:
         """Return the ``RECAll:SETUp:DEMO<x>`` command.
 
         Description:

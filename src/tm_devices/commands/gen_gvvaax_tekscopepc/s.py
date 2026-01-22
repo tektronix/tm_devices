@@ -34,7 +34,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -964,12 +964,12 @@ class SItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "S<x>") -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SItemChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: SItemChannel(device, f"{self._cmd_syntax}_CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, SItemChannel]:
+    def ch(self) -> dict[int, SItemChannel]:
         """Return the ``S<x>_CH<x>`` command tree.
 
         Usage:

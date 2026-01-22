@@ -14,8 +14,6 @@ Converted to Python tm_devices script. DCA 4.12.23
 
 import time
 
-from typing import Dict, Tuple
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2602B
 
@@ -84,36 +82,36 @@ DELAY = 0 if SPEED == "FAST" else 1
 
 # Create dictionaries to store data.
 # Tables used to hold test data and pass/fail status for vf1 test
-vf1_test_curr: Dict[int, float] = {}
-vf1_test_volt: Dict[int, float] = {}
-vf1_status: Dict[int, bool] = {}
+vf1_test_curr: dict[int, float] = {}
+vf1_test_volt: dict[int, float] = {}
+vf1_status: dict[int, bool] = {}
 
 # Tables used to hold test data and pass/fail status for vf2 test
-vf2_test_curr: Dict[int, float] = {}
-vf2_test_volt: Dict[int, float] = {}
-vf2_status: Dict[int, bool] = {}
+vf2_test_curr: dict[int, float] = {}
+vf2_test_volt: dict[int, float] = {}
+vf2_status: dict[int, bool] = {}
 
 # Tables used to hold test data and pass/fail status for dynz test
-dynz_data: Dict[int, float] = {}
-dynz_status: Dict[int, bool] = {}
+dynz_data: dict[int, float] = {}
+dynz_status: dict[int, bool] = {}
 
 # Tables used to hold test data and pass/fail status for ir1 test
-ir1_test_volt: Dict[int, float] = {}
-ir1_test_curr: Dict[int, float] = {}
-ir1_status: Dict[int, bool] = {}
+ir1_test_volt: dict[int, float] = {}
+ir1_test_curr: dict[int, float] = {}
+ir1_status: dict[int, bool] = {}
 
 # Tables used to hold test data and pass/fail status for ir2 test
-ir2_test_volt: Dict[int, float] = {}
-ir2_test_curr: Dict[int, float] = {}
-ir2_status: Dict[int, bool] = {}
+ir2_test_volt: dict[int, float] = {}
+ir2_test_curr: dict[int, float] = {}
+ir2_status: dict[int, bool] = {}
 
 # Tables used to hold test data and pass/fail status for vr test
-vr_test_curr: Dict[int, float] = {}
-vr_test_volt: Dict[int, float] = {}
-vr_status: Dict[int, bool] = {}
+vr_test_curr: dict[int, float] = {}
+vr_test_volt: dict[int, float] = {}
+vr_status: dict[int, bool] = {}
 
 # Table to hold good/bad part status based on cumulative results of all tests
-part_status: Dict[int, bool] = {}
+part_status: dict[int, bool] = {}
 
 # Table used to count parts put into simulated bins of a component handler
 bins = [0, 0, 0, 0, 0, 0, 0]  # Initially set all bins to zero
@@ -243,7 +241,7 @@ def diode_test(inst: SMU2602B) -> None:
 
 def vfwd_vrev(
     inst: SMU2602B, irange: float, ilevel: float, srcdelay: float, vcmpl: float
-) -> Tuple[float, float]:
+) -> tuple[float, float]:
     """This function performs a Forward Voltage Test or a Reverse Voltage Breakdown Test.
 
     Args:
@@ -298,7 +296,7 @@ def dynz(curr1: float, volt1: float, curr2: float, volt2: float) -> float:
 
 def i_leakage(
     inst: SMU2602B, vrange: float, vlevel: float, srcdelay: float, icmpl: float
-) -> Tuple[float, float]:
+) -> tuple[float, float]:
     """This function performs a Reverse Leakage Current Test.
 
     Args:

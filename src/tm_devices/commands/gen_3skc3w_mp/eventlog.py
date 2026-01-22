@@ -86,7 +86,7 @@ class Eventlog(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def next(self, event_type: Optional[str] = None) -> str:
+    def next(self, event_type: str | None = None) -> str:
         """Run the ``eventlog.next()`` function.
 
         Description:

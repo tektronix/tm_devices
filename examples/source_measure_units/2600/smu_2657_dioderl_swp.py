@@ -3,7 +3,7 @@
 import math
 
 from time import sleep
-from typing import List, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from tm_devices import DeviceManager
 
@@ -117,9 +117,9 @@ def dioderl_swp(  # noqa: PLR0915
         smua.source.output = 0
 
         def print_data() -> None:
-            t_stamp: List[float] = []
-            curr: List[float] = []
-            volt: List[float] = []
+            t_stamp: list[float] = []
+            curr: list[float] = []
+            volt: list[float] = []
             rdg_cnt: int
             if not (rdg_cnt := int(float(smu2657a.commands.buffer_var["smua.nvbuffer1"].n))):
                 print("No readings in buffer")

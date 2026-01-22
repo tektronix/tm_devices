@@ -8,7 +8,7 @@ from collections import OrderedDict
 from contextlib import redirect_stdout
 from io import StringIO
 from subprocess import CalledProcessError, SubprocessError
-from typing import Any, ClassVar, Dict, List, Optional, Tuple
+from typing import Any, ClassVar
 from unittest import mock
 
 import pytest
@@ -273,7 +273,7 @@ def test_get_visa_backend() -> None:
     # pylint: disable=import-private-name,useless-suppression
     from tm_devices.helpers.functions import _get_system_visa_info  # noqa: PLC0415
 
-    testing_system_details: Dict[Any, Any] = {
+    testing_system_details: dict[Any, Any] = {
         "pyvisa": "1.12.0",
         "backends": OrderedDict(
             [
@@ -399,7 +399,7 @@ def test_get_visa_backend() -> None:
     ],
 )
 def test_detect_visa_resource_expression(
-    input_str: str, expected_result: Optional[Tuple[str, str]]
+    input_str: str, expected_result: tuple[str, str] | None
 ) -> None:
     """Verify that a VISA resource expression can be properly detected."""
     assert detect_visa_resource_expression(input_str) == expected_result
@@ -441,7 +441,7 @@ def test_read_only_cached_property() -> None:
     # pylint: disable=missing-class-docstring,missing-function-docstring,too-few-public-methods
     class ClassWithReadOnlyCachedProperty:
         counter = 0
-        previous_values: ClassVar[List[int]] = []
+        previous_values: ClassVar[list[int]] = []
 
         @cached_property
         def c(self) -> int:

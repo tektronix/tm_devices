@@ -134,7 +134,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -220,7 +220,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system5.enable`` attribute.
 
         Description:
@@ -315,7 +315,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system5.ntr`` attribute.
 
         Description:
@@ -380,7 +380,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system5.ptr`` attribute.
 
         Description:
@@ -487,7 +487,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system4.enable`` attribute.
 
         Description:
@@ -582,7 +582,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system4.ntr`` attribute.
 
         Description:
@@ -647,7 +647,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system4.ptr`` attribute.
 
         Description:
@@ -754,7 +754,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system3.enable`` attribute.
 
         Description:
@@ -849,7 +849,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system3.ntr`` attribute.
 
         Description:
@@ -914,7 +914,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system3.ptr`` attribute.
 
         Description:
@@ -1021,7 +1021,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system2.enable`` attribute.
 
         Description:
@@ -1116,7 +1116,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system2.ntr`` attribute.
 
         Description:
@@ -1181,7 +1181,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system2.ptr`` attribute.
 
         Description:
@@ -1288,7 +1288,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system.enable`` attribute.
 
         Description:
@@ -1383,7 +1383,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system.ntr`` attribute.
 
         Description:
@@ -1448,7 +1448,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system.ptr`` attribute.
 
         Description:
@@ -1553,7 +1553,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.standard.enable`` attribute.
 
         Description:
@@ -1646,7 +1646,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.standard.ntr`` attribute.
 
         Description:
@@ -1711,7 +1711,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.standard.ptr`` attribute.
 
         Description:
@@ -1789,7 +1789,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @condition.setter
-    def condition(self, value: Union[str, float]) -> None:
+    def condition(self, value: str | float) -> None:
         """Access the ``status.operation.user.condition`` attribute.
 
         Description:
@@ -1855,7 +1855,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.user.enable`` attribute.
 
         Description:
@@ -1948,7 +1948,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.user.ntr`` attribute.
 
         Description:
@@ -2013,7 +2013,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.user.ptr`` attribute.
 
         Description:
@@ -2120,7 +2120,7 @@ class StatusOperationTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.trigger_overrun.enable`` attribute.
 
         Description:
@@ -2216,7 +2216,7 @@ class StatusOperationTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.trigger_overrun.ntr`` attribute.
 
         Description:
@@ -2283,7 +2283,7 @@ class StatusOperationTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.trigger_overrun.ptr`` attribute.
 
         Description:
@@ -2391,7 +2391,7 @@ class StatusOperationSlotSummary(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.slot.summary.enable`` attribute.
 
         Description:
@@ -2487,7 +2487,7 @@ class StatusOperationSlotSummary(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.summary.ntr`` attribute.
 
         Description:
@@ -2554,7 +2554,7 @@ class StatusOperationSlotSummary(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.summary.ptr`` attribute.
 
         Description:
@@ -2662,7 +2662,7 @@ class StatusOperationSlotStatus(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.slot.status.enable`` attribute.
 
         Description:
@@ -2758,7 +2758,7 @@ class StatusOperationSlotStatus(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.status.ntr`` attribute.
 
         Description:
@@ -2825,7 +2825,7 @@ class StatusOperationSlotStatus(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.status.ptr`` attribute.
 
         Description:
@@ -2933,7 +2933,7 @@ class StatusOperationSlotPresence(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.slot.presence.enable`` attribute.
 
         Description:
@@ -3029,7 +3029,7 @@ class StatusOperationSlotPresence(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.presence.ntr`` attribute.
 
         Description:
@@ -3096,7 +3096,7 @@ class StatusOperationSlotPresence(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.slot.presence.ptr`` attribute.
 
         Description:
@@ -3258,7 +3258,7 @@ class StatusOperationRemote(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.remote.enable`` attribute.
 
         Description:
@@ -3351,7 +3351,7 @@ class StatusOperationRemote(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.remote.ntr`` attribute.
 
         Description:
@@ -3416,7 +3416,7 @@ class StatusOperationRemote(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.remote.ptr`` attribute.
 
         Description:
@@ -3523,7 +3523,7 @@ class StatusOperationProgram(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.program.enable`` attribute.
 
         Description:
@@ -3617,7 +3617,7 @@ class StatusOperationProgram(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.program.ntr`` attribute.
 
         Description:
@@ -3682,7 +3682,7 @@ class StatusOperationProgram(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.program.ptr`` attribute.
 
         Description:
@@ -3790,7 +3790,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.enable`` attribute.
 
         Description:
@@ -3886,7 +3886,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ntr`` attribute.
 
         Description:
@@ -3953,7 +3953,7 @@ class StatusOperationInstrumentTsplinkTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.trigger_overrun.ptr`` attribute.
 
         Description:
@@ -4069,7 +4069,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.enable`` attribute.
 
         Description:
@@ -4165,7 +4165,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.ntr`` attribute.
 
         Description:
@@ -4232,7 +4232,7 @@ class StatusOperationInstrumentTsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.tsplink.ptr`` attribute.
 
         Description:
@@ -4359,7 +4359,7 @@ class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """``status.operation.instrument.trigger_timer.trigger_overrun.enable`` attribute.
 
         Description:
@@ -4455,7 +4455,7 @@ class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ntr`` attribute.
 
         Description:
@@ -4522,7 +4522,7 @@ class StatusOperationInstrumentTriggerTimerTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.trigger_timer.trigger_overrun.ptr`` attribute.
 
         Description:
@@ -4638,7 +4638,7 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.trigger_timer.enable`` attribute.
 
         Description:
@@ -4734,7 +4734,7 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.trigger_timer.ntr`` attribute.
 
         Description:
@@ -4801,7 +4801,7 @@ class StatusOperationInstrumentTriggerTimer(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.trigger_timer.ptr`` attribute.
 
         Description:
@@ -4927,7 +4927,7 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.lan.enable`` attribute.
 
         Description:
@@ -5023,7 +5023,7 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.lan.ntr`` attribute.
 
         Description:
@@ -5090,7 +5090,7 @@ class StatusOperationInstrumentLan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.lan.ptr`` attribute.
 
         Description:
@@ -5202,7 +5202,7 @@ class StatusOperationInstrumentDigioTriggerOverrunItem(ValidatedDynamicNumberCmd
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun[2].enable`` attribute.
 
         Description:
@@ -5301,7 +5301,7 @@ class StatusOperationInstrumentDigioTriggerOverrunItem(ValidatedDynamicNumberCmd
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun[2].ntr`` attribute.
 
         Description:
@@ -5370,7 +5370,7 @@ class StatusOperationInstrumentDigioTriggerOverrunItem(ValidatedDynamicNumberCmd
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun[2].ptr`` attribute.
 
         Description:
@@ -5480,7 +5480,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun.enable`` attribute.
 
         Description:
@@ -5576,7 +5576,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun.ntr`` attribute.
 
         Description:
@@ -5643,7 +5643,7 @@ class StatusOperationInstrumentDigioTriggerOverrun(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.trigger_overrun.ptr`` attribute.
 
         Description:
@@ -5698,7 +5698,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         self._trigger_overrun = StatusOperationInstrumentDigioTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-        self._trigger_overrunx: Dict[int, StatusOperationInstrumentDigioTriggerOverrunItem] = (
+        self._trigger_overrunx: dict[int, StatusOperationInstrumentDigioTriggerOverrunItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: StatusOperationInstrumentDigioTriggerOverrunItem(
                     device, f"{self._cmd_syntax}.trigger_overrun[{x}]"
@@ -5768,7 +5768,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.enable`` attribute.
 
         Description:
@@ -5864,7 +5864,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.ntr`` attribute.
 
         Description:
@@ -5931,7 +5931,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.digio.ptr`` attribute.
 
         Description:
@@ -5981,7 +5981,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         return self._trigger_overrun
 
     @property
-    def trigger_overrunx(self) -> Dict[int, StatusOperationInstrumentDigioTriggerOverrunItem]:
+    def trigger_overrunx(self) -> dict[int, StatusOperationInstrumentDigioTriggerOverrunItem]:
         """Return the ``status.operation.instrument.digio.trigger_overrun[2]`` command tree.
 
         Sub-properties and sub-methods:
@@ -6100,7 +6100,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.enable`` attribute.
 
         Description:
@@ -6209,7 +6209,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.ntr`` attribute.
 
         Description:
@@ -6276,7 +6276,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.ptr`` attribute.
 
         Description:
@@ -6429,7 +6429,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.enable`` attribute.
 
         Description:
@@ -6539,7 +6539,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.ntr`` attribute.
 
         Description:
@@ -6617,7 +6617,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.ptr`` attribute.
 
         Description:
@@ -6789,7 +6789,7 @@ class Status(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @node_enable.setter
-    def node_enable(self, value: Union[str, float]) -> None:
+    def node_enable(self, value: str | float) -> None:
         """Access the ``status.node_enable`` attribute.
 
         Description:
@@ -6900,7 +6900,7 @@ class Status(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @request_enable.setter
-    def request_enable(self, value: Union[str, float]) -> None:
+    def request_enable(self, value: str | float) -> None:
         """Access the ``status.request_enable`` attribute.
 
         Description:

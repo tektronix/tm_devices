@@ -5,7 +5,7 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Dict, Literal, Optional, Tuple, Type, Union
+from typing import Literal
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
     BaseAFGSourceChannel,
@@ -32,7 +32,7 @@ from tm_devices.helpers.enums import (
 class AFGSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
-    functions: Type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
+    functions: type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
 
 
 # NOTE: Currently all AFGs are controlled via PI, hence the usage of the PIControl mixin here. If
@@ -60,7 +60,7 @@ class AFG(
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AFGSourceChannel]":
         """Mapping of channel names to AFGSourceChannel objects."""
-        channel_map: Dict[str, AFGSourceChannel] = {}
+        channel_map: dict[str, AFGSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AFGSourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -87,7 +87,7 @@ class AFG(
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -152,7 +152,7 @@ class AFG(
         offset: float,
         burst_count: int,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -198,10 +198,10 @@ class AFG(
 
     def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
-        function: Optional[SignalGeneratorFunctionsAFG] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        function: SignalGeneratorFunctionsAFG | None = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> ExtendedSourceDeviceConstants:
         """Get the constraints that restrict the waveform to certain parameter ranges.
@@ -244,10 +244,10 @@ class AFG(
     def _get_series_specific_constraints(
         self,
         function: SignalGeneratorFunctionsAFG,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
+        waveform_length: int | None = None,
+        frequency: float | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series.
 
         Args:
@@ -403,7 +403,7 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         """
         self._afg.set_if_needed(f"{self.name}:FUNCTION", str(value.value))
 
-    def set_impedance(self, value: Union[float, Literal["INFINITY"]]) -> None:
+    def set_impedance(self, value: float | Literal["INFINITY"]) -> None:
         """Set the output load impedance on the source channel.
 
         Args:

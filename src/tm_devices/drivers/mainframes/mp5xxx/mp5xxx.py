@@ -6,7 +6,7 @@ import inspect
 import logging
 
 from abc import ABC
-from typing import List, Tuple, TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations import CommonTSPErrorCheckMixin
@@ -39,7 +39,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
     # Properties
     ################################################################################################
     @property
-    def all_slot_names_list(self) -> Tuple[str, ...]:
+    def all_slot_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the slot names."""
         return tuple(f"{x + 1}" for x in range(self.total_slots))
 
@@ -49,7 +49,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
         return int(self.model[5])
 
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names of a module."""
         return tuple(f"{x + 1}" for x in range(self.total_channels))
 
@@ -69,7 +69,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def get_module_commands_psu(self, slot: int) -> Union[MPSU50_2STCommands, SlotItem]:
+    def get_module_commands_psu(self, slot: int) -> MPSU50_2STCommands | SlotItem:
         """Get a power supply unit (PSU) module commands object from the mainframe.
 
         Args:
@@ -84,7 +84,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
         """
         return self._get_module_commands_api("PSU", _POWER_SUPPLY_UNIT_MODULES, slot)
 
-    def get_module_commands_smu(self, slot: int) -> Union[MSMU60_2Commands, SlotItem]:
+    def get_module_commands_smu(self, slot: int) -> MSMU60_2Commands | SlotItem:
         """Get a Source Measure Unit (SMU) module commands object from the mainframe.
 
         Args:
@@ -103,7 +103,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
     # Private Methods
     ################################################################################################
     def _get_module_commands_api(
-        self, module_type: str, module_alias: List[str], slot: int
+        self, module_type: str, module_alias: list[str], slot: int
     ) -> SlotItem:
         """Get the module commands object for the specific module_type.
 

@@ -34,7 +34,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -877,7 +877,7 @@ class Marker(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MARKER") -> None:
         super().__init__(device, cmd_syntax)
-        self._m: Dict[int, MarkerMItem] = DefaultDictPassKeyToFactory(
+        self._m: dict[int, MarkerMItem] = DefaultDictPassKeyToFactory(
             lambda x: MarkerMItem(device, f"{self._cmd_syntax}:M{x}")
         )
         self._manual = MarkerManual(device, f"{self._cmd_syntax}:MANual")
@@ -886,7 +886,7 @@ class Marker(SCPICmdRead):
         self._type = MarkerType(device, f"{self._cmd_syntax}:TYPe")
 
     @property
-    def m(self) -> Dict[int, MarkerMItem]:
+    def m(self) -> dict[int, MarkerMItem]:
         """Return the ``MARKER:M<x>`` command tree.
 
         Usage:

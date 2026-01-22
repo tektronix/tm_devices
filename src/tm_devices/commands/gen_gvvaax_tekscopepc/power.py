@@ -617,7 +617,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -22291,7 +22291,7 @@ class Power(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._addnew = PowerAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PowerDelete(device, f"{self._cmd_syntax}:DELete")
-        self._power: Dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
+        self._power: dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItem(device, f"{self._cmd_syntax}:POWer{x}")
         )
 
@@ -22338,7 +22338,7 @@ class Power(SCPICmdRead):
         return self._delete
 
     @property
-    def power(self) -> Dict[int, PowerPowerItem]:
+    def power(self) -> dict[int, PowerPowerItem]:
         """Return the ``POWer:POWer<x>`` command tree.
 
         Usage:

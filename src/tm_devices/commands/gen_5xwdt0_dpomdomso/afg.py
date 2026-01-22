@@ -59,7 +59,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1311,13 +1311,13 @@ class AfgArbitrary(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._arb: Dict[int, AfgArbitraryArbItem] = DefaultDictPassKeyToFactory(
+        self._arb: dict[int, AfgArbitraryArbItem] = DefaultDictPassKeyToFactory(
             lambda x: AfgArbitraryArbItem(device, f"{self._cmd_syntax}:ARB{x}")
         )
         self._emem = AfgArbitraryEmem(device, f"{self._cmd_syntax}:EMEM")
 
     @property
-    def arb(self) -> Dict[int, AfgArbitraryArbItem]:
+    def arb(self) -> dict[int, AfgArbitraryArbItem]:
         """Return the ``AFG:ARBitrary:ARB<x>`` command tree.
 
         Usage:

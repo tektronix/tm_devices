@@ -107,7 +107,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -875,13 +875,13 @@ class DisplayScreentext(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._label: Dict[int, DisplayScreentextLabelItem] = DefaultDictPassKeyToFactory(
+        self._label: dict[int, DisplayScreentextLabelItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayScreentextLabelItem(device, f"{self._cmd_syntax}:LABel{x}")
         )
         self._state = DisplayScreentextState(device, f"{self._cmd_syntax}:STATE")
 
     @property
-    def label(self) -> Dict[int, DisplayScreentextLabelItem]:
+    def label(self) -> dict[int, DisplayScreentextLabelItem]:
         """Return the ``DISplay:SCREENTExt:LABel<x>`` command.
 
         Description:
@@ -2077,7 +2077,7 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._caret = DisplayColorPaletteUserCaret(device, f"{self._cmd_syntax}:CARet")
-        self._ch: Dict[int, DisplayColorPaletteUserChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DisplayColorPaletteUserChannel] = DefaultDictPassKeyToFactory(
             lambda x: DisplayColorPaletteUserChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._graticule = DisplayColorPaletteUserGraticule(device, f"{self._cmd_syntax}:GRAticule")
@@ -2086,10 +2086,10 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         self._maskhighlight = DisplayColorPaletteUserMaskhighlight(
             device, f"{self._cmd_syntax}:MASKHighlight"
         )
-        self._math: Dict[int, DisplayColorPaletteUserMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, DisplayColorPaletteUserMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayColorPaletteUserMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, DisplayColorPaletteUserRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, DisplayColorPaletteUserRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayColorPaletteUserRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._waveform = DisplayColorPaletteUserWaveform(device, f"{self._cmd_syntax}:WAVEform")
@@ -2127,7 +2127,7 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         return self._caret
 
     @property
-    def ch(self) -> Dict[int, DisplayColorPaletteUserChannel]:
+    def ch(self) -> dict[int, DisplayColorPaletteUserChannel]:
         """Return the ``DISplay:COLOr:PALEtte:USEr:CH<x>`` command.
 
         Description:
@@ -2280,7 +2280,7 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         return self._maskhighlight
 
     @property
-    def math(self) -> Dict[int, DisplayColorPaletteUserMathItem]:
+    def math(self) -> dict[int, DisplayColorPaletteUserMathItem]:
         """Return the ``DISplay:COLOr:PALEtte:USEr:MATH<x>`` command.
 
         Description:
@@ -2312,7 +2312,7 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, DisplayColorPaletteUserRefItem]:
+    def ref(self) -> dict[int, DisplayColorPaletteUserRefItem]:
         """Return the ``DISplay:COLOr:PALEtte:USEr:REF<x>`` command.
 
         Description:

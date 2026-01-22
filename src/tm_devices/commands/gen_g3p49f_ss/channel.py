@@ -66,7 +66,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -377,7 +377,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.adjustcount()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def adjustdate(self, x: str, date: Optional[str] = None) -> str:
+    def adjustdate(self, x: str, date: str | None = None) -> str:
         """Run the ``channel.calibration.adjustdate()`` function.
 
         Description:
@@ -485,7 +485,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def step(self, channel: str, step: str, value: Optional[str] = None) -> None:
+    def step(self, channel: str, step: str, value: str | None = None) -> None:
         """Run the ``channel.calibration.step()`` function.
 
         Description:
@@ -548,7 +548,7 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.unlock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def verifydate(self, x: str, date: Optional[str] = None) -> str:
+    def verifydate(self, x: str, date: str | None = None) -> str:
         """Run the ``channel.calibration.verifydate()`` function.
 
         Description:
@@ -638,7 +638,7 @@ class Channel(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._calibration = ChannelCalibration(device, f"{self._cmd_syntax}.calibration")
         self._pattern = ChannelPattern(device, f"{self._cmd_syntax}.pattern")
-        self._trigger: Dict[int, ChannelTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, ChannelTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: ChannelTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -691,7 +691,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @connectrule.setter
-    def connectrule(self, value: Union[str, float]) -> None:
+    def connectrule(self, value: str | float) -> None:
         """Access the ``channel.connectrule`` attribute.
 
         Description:
@@ -757,7 +757,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @connectsequential.setter
-    def connectsequential(self, value: Union[str, float]) -> None:
+    def connectsequential(self, value: str | float) -> None:
         """Access the ``channel.connectsequential`` attribute.
 
         Description:
@@ -803,7 +803,7 @@ class Channel(BaseTSPCmd):
         return self._pattern
 
     @property
-    def trigger(self) -> Dict[int, ChannelTriggerItem]:
+    def trigger(self) -> dict[int, ChannelTriggerItem]:
         """Return the ``channel.trigger[N]`` command tree.
 
         Info:
@@ -1301,7 +1301,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getpowerstate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def getstate(self, channel_list: str, indicator_mask: Optional[str] = None) -> str:
+    def getstate(self, channel_list: str, indicator_mask: str | None = None) -> str:
         """Run the ``channel.getstate()`` function.
 
         Description:
@@ -1424,7 +1424,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def read(
-        self, channel_list: str, width: Optional[str] = None, reading_buffer: Optional[str] = None
+        self, channel_list: str, width: str | None = None, reading_buffer: str | None = None
     ) -> str:
         """Run the ``channel.read()`` function.
 
@@ -1629,8 +1629,8 @@ class Channel(BaseTSPCmd):
         self,
         channel_list: str,
         match_value: str,
-        mask: Optional[str] = None,
-        width: Optional[str] = None,
+        mask: str | None = None,
+        width: str | None = None,
     ) -> None:
         """Run the ``channel.setmatch()`` function.
 
@@ -1801,7 +1801,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setstatelatch()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def write(self, channel_list: str, value: str, width: Optional[str] = None) -> None:
+    def write(self, channel_list: str, value: str, width: str | None = None) -> None:
         """Run the ``channel.write()`` function.
 
         Description:

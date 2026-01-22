@@ -5,7 +5,7 @@ import os
 import re
 
 from pathlib import Path
-from typing import Any, List
+from typing import Any
 
 _TYPING_IMPORT_REGEX = re.compile(r"typing\.([a-zA-Z]+)")
 
@@ -17,7 +17,7 @@ def _get_data_type(data_object: Any) -> str:
         data_object: The object to get the data type for.
     """
     try:
-        if "." in str(data_object):
+        if "." in str(data_object) or ("[" in str(data_object) and "]" in str(data_object)):
             raise AttributeError  # noqa: TRY301
         data_type = str(data_object.__name__) if data_object else str(data_object)
     except AttributeError:
@@ -61,7 +61,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
             raise AssertionError(msg)
         # Create the signature of the new method
         argspec = inspect.getfullargspec(method)
-        parameters: List[str] = []
+        parameters: list[str] = []
         for param in inspect.signature(method).parameters.values():
             if (param_sig := param.name) != "self":
                 param_sig += ": " + _get_data_type(param.annotation)
@@ -87,7 +87,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
         # Read in the content of the stub file to avoid adding duplicate methods
         contents = method_path_obj.read_text(encoding="utf-8")
         if f" def {method.__name__}(" not in contents:
-            if typing_imports:
+            if typing_imports:  # pragma: no cover  # Not needed as often in Python 3.9+
                 contents = f"from typing import {', '.join(typing_imports)}\n" + contents
             # Use a regular expression to find the end of the current class
             pattern = r"(class\s+" + cls.__name__ + r"\b.*?)(\n(?=def|class|@)|\Z)"

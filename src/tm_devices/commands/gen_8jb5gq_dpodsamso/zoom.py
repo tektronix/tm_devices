@@ -100,7 +100,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1862,16 +1862,16 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         self._dchan = ZoomZoom1Dchan(device, f"{self._cmd_syntax}:DCHAN")
         self._scrolllock = ZoomZoom1Scrolllock(device, f"{self._cmd_syntax}:SCROLLLock")
         self._state = ZoomZoom1State(device, f"{self._cmd_syntax}:STATE")
-        self._ch: Dict[int, ZoomZoom1Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, ZoomZoom1Channel] = DefaultDictPassKeyToFactory(
             lambda x: ZoomZoom1Channel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, ZoomZoom1MathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, ZoomZoom1MathItem] = DefaultDictPassKeyToFactory(
             lambda x: ZoomZoom1MathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, ZoomZoom1RefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, ZoomZoom1RefItem] = DefaultDictPassKeyToFactory(
             lambda x: ZoomZoom1RefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
-        self._d: Dict[int, ZoomZoom1DigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, ZoomZoom1DigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: ZoomZoom1DigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
@@ -1946,7 +1946,7 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         return self._state
 
     @property
-    def ch(self) -> Dict[int, ZoomZoom1Channel]:
+    def ch(self) -> dict[int, ZoomZoom1Channel]:
         """Return the ``ZOOm:ZOOM1:CH<x>`` command tree.
 
         Usage:
@@ -1962,7 +1962,7 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, ZoomZoom1MathItem]:
+    def math(self) -> dict[int, ZoomZoom1MathItem]:
         """Return the ``ZOOm:ZOOM1:MATH<x>`` command tree.
 
         Usage:
@@ -1978,7 +1978,7 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, ZoomZoom1RefItem]:
+    def ref(self) -> dict[int, ZoomZoom1RefItem]:
         """Return the ``ZOOm:ZOOM1:REF<x>`` command tree.
 
         Usage:
@@ -1994,7 +1994,7 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, ZoomZoom1DigitalBit]:
+    def d(self) -> dict[int, ZoomZoom1DigitalBit]:
         """Return the ``ZOOm:ZOOM1:D<x>`` command tree.
 
         Usage:
@@ -3237,11 +3237,11 @@ class Zoom(SCPICmdWrite, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._graticule = ZoomGraticule(device, f"{self._cmd_syntax}:GRAticule")
         self._horizontal = ZoomHorizontal(device, f"{self._cmd_syntax}:HORizontal")
-        self._math: Dict[int, ZoomMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, ZoomMathItem] = DefaultDictPassKeyToFactory(
             lambda x: ZoomMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
         self._mode = ZoomMode(device, f"{self._cmd_syntax}:MODe")
-        self._ref: Dict[int, ZoomRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, ZoomRefItem] = DefaultDictPassKeyToFactory(
             lambda x: ZoomRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._scroll = ZoomScroll(device, f"{self._cmd_syntax}:SCROLL")
@@ -3280,7 +3280,7 @@ class Zoom(SCPICmdWrite, SCPICmdRead):
         return self._horizontal
 
     @property
-    def math(self) -> Dict[int, ZoomMathItem]:
+    def math(self) -> dict[int, ZoomMathItem]:
         """Return the ``ZOOm:MATH<x>`` command tree.
 
         Usage:
@@ -3319,7 +3319,7 @@ class Zoom(SCPICmdWrite, SCPICmdRead):
         return self._mode
 
     @property
-    def ref(self) -> Dict[int, ZoomRefItem]:
+    def ref(self) -> dict[int, ZoomRefItem]:
         """Return the ``ZOOm:REF<x>`` command tree.
 
         Usage:

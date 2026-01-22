@@ -55,7 +55,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1383,7 +1383,7 @@ class SourceItem(ValidatedChannel, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._casset = SourceItemCasset(device, f"{self._cmd_syntax}:CASSet")
         self._dac = SourceItemDac(device, f"{self._cmd_syntax}:DAC")
-        self._marker: Dict[int, SourceItemMarkerItem] = DefaultDictPassKeyToFactory(
+        self._marker: dict[int, SourceItemMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: SourceItemMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
         )
         self._power = SourceItemPower(device, f"{self._cmd_syntax}:POWer")
@@ -1435,7 +1435,7 @@ class SourceItem(ValidatedChannel, SCPICmdRead):
         return self._dac
 
     @property
-    def marker(self) -> Dict[int, SourceItemMarkerItem]:
+    def marker(self) -> dict[int, SourceItemMarkerItem]:
         """Return the ``SOURce[n]:MARKer[m]`` command tree.
 
         Usage:

@@ -23,7 +23,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -485,7 +485,7 @@ class EyemaskMaskItemCount(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = EyemaskMaskItemCountHits(device, f"{self._cmd_syntax}:HITS")
-        self._seg: Dict[int, EyemaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, EyemaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
             lambda x: EyemaskMaskItemCountSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
 
@@ -513,7 +513,7 @@ class EyemaskMaskItemCount(SCPICmdRead):
         return self._hits
 
     @property
-    def seg(self) -> Dict[int, EyemaskMaskItemCountSegItem]:
+    def seg(self) -> dict[int, EyemaskMaskItemCountSegItem]:
         """Return the ``EYEMASK:MASK<x>:COUNt:SEG<y>`` command tree.
 
         Usage:
@@ -705,12 +705,12 @@ class Eyemask(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "EYEMASK") -> None:
         super().__init__(device, cmd_syntax)
-        self._mask: Dict[int, EyemaskMaskItem] = DefaultDictPassKeyToFactory(
+        self._mask: dict[int, EyemaskMaskItem] = DefaultDictPassKeyToFactory(
             lambda x: EyemaskMaskItem(device, f"{self._cmd_syntax}:MASK{x}")
         )
 
     @property
-    def mask(self) -> Dict[int, EyemaskMaskItem]:
+    def mask(self) -> dict[int, EyemaskMaskItem]:
         """Return the ``EYEMASK:MASK<x>`` command tree.
 
         Usage:

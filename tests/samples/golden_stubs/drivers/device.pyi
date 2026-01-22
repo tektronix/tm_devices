@@ -1,7 +1,6 @@
 import abc
 
 from abc import ABC
-from typing import List
 
 from tm_devices.helpers import DeviceConfigEntry
 
@@ -28,7 +27,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         self, value1: str, value2: str = "add", value3: str = "", value4: float = 0.1
     ) -> str:
         """Return the model."""
-    def custom_list(self) -> List[str]:
+    def custom_list(self) -> list[str]:
         """Return the model and serial in a list."""
     def custom_return_none(self) -> None:
         """Return nothing.

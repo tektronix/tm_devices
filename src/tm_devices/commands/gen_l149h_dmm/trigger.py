@@ -103,7 +103,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -166,7 +166,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].logic`` attribute.
 
         Description:
@@ -240,7 +240,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].pulsewidth`` attribute.
 
         Description:
@@ -315,7 +315,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].stimulus`` attribute.
 
         Description:
@@ -453,7 +453,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkin[N].edge`` attribute.
 
         Description:
@@ -627,7 +627,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fractionalseconds.setter
-    def fractionalseconds(self, value: Union[str, float]) -> None:
+    def fractionalseconds(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.fractionalseconds`` attribute.
 
         Description:
@@ -701,7 +701,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @generate.setter
-    def generate(self, value: Union[str, float]) -> None:
+    def generate(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.generate`` attribute.
 
         Description:
@@ -805,7 +805,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @seconds.setter
-    def seconds(self, value: Union[str, float]) -> None:
+    def seconds(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.seconds`` attribute.
 
         Description:
@@ -878,7 +878,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.stimulus`` attribute.
 
         Description:
@@ -973,7 +973,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -1045,7 +1045,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -1116,7 +1116,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delaylist.setter
-    def delaylist(self, value: Union[str, float]) -> None:
+    def delaylist(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delaylist`` attribute.
 
         Description:
@@ -1187,7 +1187,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].enable`` attribute.
 
         Description:
@@ -1472,7 +1472,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def load_duration_loop(
-        self, duration: float, delay: Optional[float] = None, buffer_name: Optional[str] = None
+        self, duration: float, delay: float | None = None, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.load() - DurationLoop`` function.
 
@@ -1604,8 +1604,8 @@ class TriggerModel(BaseTSPCmd):
         dig_out_line: int,
         count: int,
         clear: str,
-        delay: Optional[float] = None,
-        buffer_name: Optional[str] = None,
+        delay: float | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - LogicTrigger`` function.
 
@@ -1658,8 +1658,8 @@ class TriggerModel(BaseTSPCmd):
         trigger_event: str,
         position: int,
         clear: str,
-        delay: Optional[float] = None,
-        buffer_name: Optional[str] = None,
+        delay: float | None = None,
+        buffer_name: str | None = None,
     ) -> None:
         """Run the ``trigger.model.load() - LoopUntilEvent`` function.
 
@@ -1708,7 +1708,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def load_simple_loop(
-        self, count: int, delay: Optional[float] = None, buffer_name: Optional[str] = None
+        self, count: int, delay: float | None = None, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.load() - SimpleLoop`` function.
 
@@ -1862,7 +1862,7 @@ class TriggerModel(BaseTSPCmd):
         block_number: int,
         target_difference: str,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_DELTA`` function.
 
@@ -1914,7 +1914,7 @@ class TriggerModel(BaseTSPCmd):
         limit_a: float,
         limit_b: float,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_LIMIT_CONSTANT`` function.
 
@@ -1968,7 +1968,7 @@ class TriggerModel(BaseTSPCmd):
         limit_type: float,
         limit_number: float,
         branch_to_block: str,
-        measure_block: Optional[float] = None,
+        measure_block: float | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BRANCH_LIMIT_DYNAMIC`` function.
 
@@ -2111,7 +2111,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_buffer_clear(
-        self, block_number: int, buffer_name: Optional[str] = None
+        self, block_number: int, buffer_name: str | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_BUFFER_CLEAR`` function.
 
@@ -2271,7 +2271,7 @@ class TriggerModel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_measure_digitize(
-        self, block_number: int, buffer_name: Optional[str] = None, count: Optional[int] = None
+        self, block_number: int, buffer_name: str | None = None, count: int | None = None
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_MEASURE_DIGITIZE`` function.
 
@@ -2396,10 +2396,10 @@ class TriggerModel(BaseTSPCmd):
         self,
         block_number: int,
         event: str,
-        clear: Optional[str] = None,
-        logic: Optional[str] = None,
-        event_2: Optional[str] = None,
-        event_3: Optional[str] = None,
+        clear: str | None = None,
+        logic: str | None = None,
+        event_2: str | None = None,
+        event_3: str | None = None,
     ) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_WAIT`` function.
 
@@ -2533,7 +2533,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
-    def ipaddress(self, value: Union[str, float]) -> None:
+    def ipaddress(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].ipaddress`` attribute.
 
         Description:
@@ -2606,7 +2606,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].logic`` attribute.
 
         Description:
@@ -2678,7 +2678,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @protocol.setter
-    def protocol(self, value: Union[str, float]) -> None:
+    def protocol(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].protocol`` attribute.
 
         Description:
@@ -2750,7 +2750,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].stimulus`` attribute.
 
         Description:
@@ -2913,7 +2913,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.lanin[N].edge`` attribute.
 
         Description:
@@ -3077,7 +3077,7 @@ class TriggerExtout(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.extout.logic`` attribute.
 
         Description:
@@ -3144,7 +3144,7 @@ class TriggerExtout(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.extout.stimulus`` attribute.
 
         Description:
@@ -3243,7 +3243,7 @@ class TriggerExtin(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.extin.edge`` attribute.
 
         Description:
@@ -3437,7 +3437,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].logic`` attribute.
 
         Description:
@@ -3514,7 +3514,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].pulsewidth`` attribute.
 
         Description:
@@ -3591,7 +3591,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].stimulus`` attribute.
 
         Description:
@@ -3728,7 +3728,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.digin[N].edge`` attribute.
 
         Description:
@@ -3871,7 +3871,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._stimulus: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -3913,7 +3913,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @orenable.setter
-    def orenable(self, value: Union[str, float]) -> None:
+    def orenable(self, value: str | float) -> None:
         """Access the ``trigger.blender[N].orenable`` attribute.
 
         Description:
@@ -3982,7 +3982,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> Dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, str | float]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:
@@ -4384,37 +4384,37 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
+        self._blender: dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
         )
-        self._digin: Dict[int, TriggerDiginItem] = DefaultDictPassKeyToFactory(
+        self._digin: dict[int, TriggerDiginItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDiginItem(device, f"{self._cmd_syntax}.digin[{x}]")
         )
-        self._digout: Dict[int, TriggerDigoutItem] = DefaultDictPassKeyToFactory(
+        self._digout: dict[int, TriggerDigoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDigoutItem(device, f"{self._cmd_syntax}.digout[{x}]")
         )
         self._ext = TriggerExt(device, f"{self._cmd_syntax}.ext")
         self._extin = TriggerExtin(device, f"{self._cmd_syntax}.extin")
         self._extout = TriggerExtout(device, f"{self._cmd_syntax}.extout")
-        self._lanin: Dict[int, TriggerLaninItem] = DefaultDictPassKeyToFactory(
+        self._lanin: dict[int, TriggerLaninItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerLaninItem(device, f"{self._cmd_syntax}.lanin[{x}]")
         )
-        self._lanout: Dict[int, TriggerLanoutItem] = DefaultDictPassKeyToFactory(
+        self._lanout: dict[int, TriggerLanoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerLanoutItem(device, f"{self._cmd_syntax}.lanout[{x}]")
         )
         self._model = TriggerModel(device, f"{self._cmd_syntax}.model")
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
-        self._tsplinkin: Dict[int, TriggerTsplinkinItem] = DefaultDictPassKeyToFactory(
+        self._tsplinkin: dict[int, TriggerTsplinkinItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTsplinkinItem(device, f"{self._cmd_syntax}.tsplinkin[{x}]")
         )
-        self._tsplinkout: Dict[int, TriggerTsplinkoutItem] = DefaultDictPassKeyToFactory(
+        self._tsplinkout: dict[int, TriggerTsplinkoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTsplinkoutItem(device, f"{self._cmd_syntax}.tsplinkout[{x}]")
         )
 
     @property
-    def blender(self) -> Dict[int, TriggerBlenderItem]:
+    def blender(self) -> dict[int, TriggerBlenderItem]:
         """Return the ``trigger.blender[N]`` command tree.
 
         Info:
@@ -4461,7 +4461,7 @@ class Trigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @continuous.setter
-    def continuous(self, value: Union[str, float]) -> None:
+    def continuous(self, value: str | float) -> None:
         """Access the ``trigger.continuous`` attribute.
 
         Description:
@@ -4494,7 +4494,7 @@ class Trigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def digin(self) -> Dict[int, TriggerDiginItem]:
+    def digin(self) -> dict[int, TriggerDiginItem]:
         """Return the ``trigger.digin[N]`` command tree.
 
         Info:
@@ -4509,7 +4509,7 @@ class Trigger(BaseTSPCmd):
         return self._digin
 
     @property
-    def digout(self) -> Dict[int, TriggerDigoutItem]:
+    def digout(self) -> dict[int, TriggerDigoutItem]:
         """Return the ``trigger.digout[N]`` command tree.
 
         Info:
@@ -4557,7 +4557,7 @@ class Trigger(BaseTSPCmd):
         return self._extout
 
     @property
-    def lanin(self) -> Dict[int, TriggerLaninItem]:
+    def lanin(self) -> dict[int, TriggerLaninItem]:
         """Return the ``trigger.lanin[N]`` command tree.
 
         Info:
@@ -4572,7 +4572,7 @@ class Trigger(BaseTSPCmd):
         return self._lanin
 
     @property
-    def lanout(self) -> Dict[int, TriggerLanoutItem]:
+    def lanout(self) -> dict[int, TriggerLanoutItem]:
         """Return the ``trigger.lanout[N]`` command tree.
 
         Info:
@@ -4647,7 +4647,7 @@ class Trigger(BaseTSPCmd):
         return self._model
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:
@@ -4666,7 +4666,7 @@ class Trigger(BaseTSPCmd):
         return self._timer
 
     @property
-    def tsplinkin(self) -> Dict[int, TriggerTsplinkinItem]:
+    def tsplinkin(self) -> dict[int, TriggerTsplinkinItem]:
         """Return the ``trigger.tsplinkin[N]`` command tree.
 
         Info:
@@ -4681,7 +4681,7 @@ class Trigger(BaseTSPCmd):
         return self._tsplinkin
 
     @property
-    def tsplinkout(self) -> Dict[int, TriggerTsplinkoutItem]:
+    def tsplinkout(self) -> dict[int, TriggerTsplinkoutItem]:
         """Return the ``trigger.tsplinkout[N]`` command tree.
 
         Info:

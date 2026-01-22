@@ -21,6 +21,8 @@ Things to be included in the next release go here.
 ### Changed
 
 - Dropped support for Python 3.9
+- Update type hinting to use Python 3.9+ syntax where applicable
+- Updated project configuration file (`pyproject.toml`) to use `poetry` v2 settings
 
 ---
 

@@ -19,7 +19,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -67,7 +67,7 @@ class CommLanWeb(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.lan.web.enable`` attribute.
 
         Description:
@@ -142,7 +142,7 @@ class CommLanVxi11(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.lan.vxi11.enable`` attribute.
 
         Description:
@@ -216,7 +216,7 @@ class CommLanTelnet(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.lan.telnet.enable`` attribute.
 
         Description:
@@ -289,7 +289,7 @@ class CommLanRawsockets(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.lan.rawsockets.enable`` attribute.
 
         Description:
@@ -373,7 +373,7 @@ class CommLan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.lan.enable`` attribute.
 
         Description:
@@ -482,7 +482,7 @@ class CommGpib(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``comm.gpib.enable`` attribute.
 
         Description:

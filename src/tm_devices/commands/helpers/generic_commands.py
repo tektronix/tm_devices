@@ -9,15 +9,16 @@ import re
 import sys
 
 from collections import defaultdict
+from collections.abc import Callable
 from functools import total_ordering
-from typing import Any, Callable, DefaultDict, Optional, Type, Union
+from typing import Any
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")
 # TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
 #  the dynamic parent class can be removed
 # pylint: disable=unsubscriptable-object,useless-suppression
-ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
+ParentDefaultDictClass: type[defaultdict[Any, Any]] = (
     defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
 )
 
@@ -39,7 +40,7 @@ class DefaultDictPassKeyToFactory(ParentDefaultDictClass):
     default_factory function as the only parameter.
     """
 
-    def __init__(self, default_factory: Callable[[Union[int, str]], Any], **kwargs: Any) -> None:
+    def __init__(self, default_factory: Callable[[int | str], Any], **kwargs: Any) -> None:
         """Create an instance of the class.
 
         Args:
@@ -68,7 +69,7 @@ class BaseCmd:
     The syntax is accessible through the ``.cmd_syntax`` property.
     """
 
-    def __init__(self, device: Optional[Any], cmd_syntax: str) -> None:
+    def __init__(self, device: Any | None, cmd_syntax: str) -> None:
         """Instantiate the command.
 
         Args:
@@ -112,7 +113,7 @@ class ValidatedDynamicNumberCmd(BaseCmd):  # pylint: disable=too-few-public-meth
     attribute) to determine if it is a valid dynamic item number (greater than or equal to 1).
     """
 
-    def __init__(self, device: Optional[Any], cmd_syntax: str) -> None:
+    def __init__(self, device: Any | None, cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
 
         # Validate the dynamic item number

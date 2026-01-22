@@ -11,16 +11,10 @@ from types import MappingProxyType
 from typing import (
     Any,
     cast,
-    Dict,
     get_type_hints,
-    List,
-    Optional,
     Protocol,
     runtime_checkable,
-    Tuple,
-    Type,
     TYPE_CHECKING,
-    Union,
 )
 
 import tomli
@@ -81,9 +75,9 @@ class DMConfigParser:
     FileType = ConfigFileType
     """A convenience enumeration listing the valid config file types."""
 
-    _CONFIG_NESTED_DICT_MAPPING: Mapping[
-        Union[Type[_DataclassProtocol], Type[SerialConfig]], str
-    ] = MappingProxyType({SerialConfig: "serial_config"})
+    _CONFIG_NESTED_DICT_MAPPING: Mapping[type[_DataclassProtocol | SerialConfig], str] = (
+        MappingProxyType({SerialConfig: "serial_config"})
+    )
 
     ################################################################################################
     # Magic Methods
@@ -91,9 +85,9 @@ class DMConfigParser:
     def __init__(self) -> None:
         """Initialize the DMConfigParser and read the configuration."""
         # Create a count of the number of each type of device created
-        self.__dev_count: Dict[str, int] = dict.fromkeys(DeviceTypes.list_values(), 0)
+        self.__dev_count: dict[str, int] = dict.fromkeys(DeviceTypes.list_values(), 0)
 
-        self.__devices: Dict[str, DeviceConfigEntry] = AliasDict()
+        self.__devices: dict[str, DeviceConfigEntry] = AliasDict()
         self.__options = DMConfigOptions()
 
         # Check if the environment variables exists
@@ -149,16 +143,16 @@ class DMConfigParser:
     def add_device(  # noqa: PLR0913  # pylint: disable=too-many-locals
         self,
         *,
-        device_type: Union[DeviceTypes, str],
+        device_type: DeviceTypes | str,
         address: str,
-        connection_type: Union[ConnectionTypes, str] = ConnectionTypes.TCPIP,
-        alias: Optional[str] = None,
-        lan_port: Optional[int] = None,
-        lan_device_name: Optional[str] = None,
-        serial_config: Optional[SerialConfig] = None,
-        device_driver: Optional[str] = None,
-        gpib_board_number: Optional[int] = None,
-    ) -> Tuple[str, DeviceConfigEntry]:
+        connection_type: ConnectionTypes | str = ConnectionTypes.TCPIP,
+        alias: str | None = None,
+        lan_port: int | None = None,
+        lan_device_name: str | None = None,
+        serial_config: SerialConfig | None = None,
+        device_driver: str | None = None,
+        gpib_board_number: int | None = None,
+    ) -> tuple[str, DeviceConfigEntry]:
         """Add a new device configuration entry.
 
         Args:
@@ -237,9 +231,7 @@ class DMConfigParser:
             self.__devices[new_entry.alias] = new_entry
         return new_entry_name, new_entry
 
-    def load_config_file(
-        self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
-    ) -> None:
+    def load_config_file(self, config_file_path: str | os.PathLike[str] | None = None) -> None:
         """Load in the config file located at the given path.
 
         This method will update any changed options and add any newly defined devices.
@@ -307,9 +299,7 @@ class DMConfigParser:
             **new_options.to_dict(ignore_none=True),
         )
 
-    def write_config_to_file(
-        self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
-    ) -> str:
+    def write_config_to_file(self, config_file_path: str | os.PathLike[str] | None = None) -> str:
         """Write the current configuration to a config file.
 
         This method will overwrite any existing config file with the current devices and options. If
@@ -339,7 +329,7 @@ class DMConfigParser:
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def __add_from_device_list(self, devices_list: List[Dict[str, Any]]) -> None:
+    def __add_from_device_list(self, devices_list: list[dict[str, Any]]) -> None:
         """Add devices from a list to the current config.
 
         Args:
@@ -383,7 +373,7 @@ class DMConfigParser:
         )
         raise KeyError(msg)
 
-    def __parse_env_devices(self) -> List[Dict[str, Any]]:
+    def __parse_env_devices(self) -> list[dict[str, Any]]:
         """Extract list of device configuration dictionaries from the env variable TM_DEVICES.
 
         Returns:
@@ -395,10 +385,10 @@ class DMConfigParser:
         devices_str_list = [
             arg.strip() for arg in os.getenv(self.DEVICES_ENV_VARIABLE, "").split("~~~") if arg
         ]
-        retval: List[Dict[str, Any]] = []
-        msg: List[str] = []
+        retval: list[dict[str, Any]] = []
+        msg: list[str] = []
         for dev_entry in devices_str_list:
-            temp_dict: Dict[str, Any] = {}
+            temp_dict: dict[str, Any] = {}
             for dev_arg in dev_entry.split(","):
                 try:
                     dev_key, dev_val = dev_arg.split("=", 1)
@@ -415,8 +405,8 @@ class DMConfigParser:
 
     @staticmethod
     def __parse_config_file(
-        config_file_path: Union[str, os.PathLike[str]],
-    ) -> Tuple[DMConfigOptions, List[Dict[str, Any]]]:
+        config_file_path: str | os.PathLike[str],
+    ) -> tuple[DMConfigOptions, list[dict[str, Any]]]:
         """Parse config file for the options flags and list of device configuration dictionaries.
 
         Args:
@@ -450,12 +440,12 @@ class DMConfigParser:
         devices_list = data.get("devices", [])
         return options, devices_list
 
-    def __pre_process_env_devices(self, devices_list: List[Dict[str, Any]]) -> None:
+    def __pre_process_env_devices(self, devices_list: list[dict[str, Any]]) -> None:
         """Modify device entries in place to make env data mimic toml/yaml parser output format."""
         for entry in devices_list:
             # Bundle any prefixed pairs into a nested kwarg-style dict.
             for to_class, prefix in CONFIG_CLASS_STR_PREFIX_MAPPING.items():
-                config_dict: Dict[str, str] = {}
+                config_dict: dict[str, str] = {}
                 if config_dict := {
                     key.replace(prefix, ""): entry.pop(key)
                     for key in list(entry.keys())

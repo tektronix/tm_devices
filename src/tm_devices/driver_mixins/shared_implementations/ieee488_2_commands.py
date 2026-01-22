@@ -1,6 +1,6 @@
 """Module containing inner classes to use for APIs for IEEE 488.2 commands."""
 
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -38,7 +38,7 @@ class IEEE4882Commands:
         """
         self._pi_control.write("*CLS")
 
-    def ese(self, value: Optional[int] = None) -> str:
+    def ese(self, value: int | None = None) -> str:
         """Send or query the ``*ESE`` (Event Status Enable) command.
 
         This command sets and queries the bits in the Event Status Enable Register (ESER).
@@ -129,7 +129,7 @@ class IEEE4882Commands:
         """
         return self._pi_control.query("*OPT?")
 
-    def psc(self, value: Optional[bool] = None) -> str:
+    def psc(self, value: bool | None = None) -> str:
         """Send or query the ``*PSC`` (Power-on Status Clear) command.
 
         This command sets and queries the power-on status flag that controls the automatic
@@ -167,7 +167,7 @@ class IEEE4882Commands:
         """
         self._pi_control.write("*RST")
 
-    def sre(self, value: Optional[int] = None) -> str:
+    def sre(self, value: int | None = None) -> str:
         """Send or query the ``*SRE`` (Service Request Enable) command.
 
         The ``*SRE`` (Service Request Enable) command sets and queries the bits in the
@@ -237,7 +237,7 @@ class TSPIEEE4882Commands(IEEE4882Commands):
         self._pi_control.write("errorqueue.clear()")
         self._pi_control.write("status.reset()")
 
-    def ese(self, value: Optional[int] = None) -> str:
+    def ese(self, value: int | None = None) -> str:
         """Send or query the Event Status Enable (``status.standard.enable``) command.
 
         This command sets and queries the bits in the Event Status Enable Register (ESER).
@@ -292,7 +292,7 @@ class TSPIEEE4882Commands(IEEE4882Commands):
         r"""Send the Reset (``reset()``) command."""
         self._pi_control.write("reset()")
 
-    def sre(self, value: Optional[int] = None) -> str:
+    def sre(self, value: int | None = None) -> str:
         """Send or query the Service Request Enable (``status.request_enable``) command.
 
         The ``status.request_enable`` (Service Request Enable) command sets and

@@ -35,7 +35,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
@@ -716,12 +716,12 @@ class Fgen(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "FGEN") -> None:
         super().__init__(device, cmd_syntax)
-        self._channel: Dict[int, FgenChannelItem] = DefaultDictPassKeyToFactory(
+        self._channel: dict[int, FgenChannelItem] = DefaultDictPassKeyToFactory(
             lambda x: FgenChannelItem(device, f"{self._cmd_syntax}:CHANnel{x}")
         )
 
     @property
-    def channel(self) -> Dict[int, FgenChannelItem]:
+    def channel(self) -> dict[int, FgenChannelItem]:
         """Return the ``FGEN:CHANnel[n]`` command tree.
 
         Usage:

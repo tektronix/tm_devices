@@ -58,7 +58,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1950,10 +1950,10 @@ class Awgcontrol(SCPICmdRead):
         self._clock = AwgcontrolClock(device, f"{self._cmd_syntax}:CLOCk")
         self._compile = AwgcontrolCompile(device, f"{self._cmd_syntax}:COMPile")
         self._configure = AwgcontrolConfigure(device, f"{self._cmd_syntax}:CONFigure")
-        self._dc: Dict[int, AwgcontrolDcItem] = DefaultDictPassKeyToFactory(
+        self._dc: dict[int, AwgcontrolDcItem] = DefaultDictPassKeyToFactory(
             lambda x: AwgcontrolDcItem(device, f"{self._cmd_syntax}:DC{x}")
         )
-        self._doutput: Dict[int, AwgcontrolDoutputItem] = DefaultDictPassKeyToFactory(
+        self._doutput: dict[int, AwgcontrolDoutputItem] = DefaultDictPassKeyToFactory(
             lambda x: AwgcontrolDoutputItem(device, f"{self._cmd_syntax}:DOUTput{x}")
         )
         self._enhanced = AwgcontrolEnhanced(device, f"{self._cmd_syntax}:ENHanced")
@@ -2033,7 +2033,7 @@ class Awgcontrol(SCPICmdRead):
         return self._configure
 
     @property
-    def dc(self) -> Dict[int, AwgcontrolDcItem]:
+    def dc(self) -> dict[int, AwgcontrolDcItem]:
         """Return the ``AWGControl:DC[n]`` command tree.
 
         Usage:
@@ -2048,7 +2048,7 @@ class Awgcontrol(SCPICmdRead):
         return self._dc
 
     @property
-    def doutput(self) -> Dict[int, AwgcontrolDoutputItem]:
+    def doutput(self) -> dict[int, AwgcontrolDoutputItem]:
         """Return the ``AWGControl:DOUTput[n]`` command tree.
 
         Usage:

@@ -63,7 +63,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -822,10 +822,10 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._goto = SlistSequenceStepItemGoto(device, f"{self._cmd_syntax}:GOTO")
         self._rcount = SlistSequenceStepItemRcount(device, f"{self._cmd_syntax}:RCOunt")
         self._tasset = SlistSequenceStepItemTasset(device, f"{self._cmd_syntax}:TASSet")
-        self._tassetx: Dict[int, SlistSequenceStepItemTassetItem] = DefaultDictPassKeyToFactory(
+        self._tassetx: dict[int, SlistSequenceStepItemTassetItem] = DefaultDictPassKeyToFactory(
             lambda x: SlistSequenceStepItemTassetItem(device, f"{self._cmd_syntax}:TASSet{x}")
         )
-        self._tflag: Dict[int, SlistSequenceStepItemTflagItem] = DefaultDictPassKeyToFactory(
+        self._tflag: dict[int, SlistSequenceStepItemTflagItem] = DefaultDictPassKeyToFactory(
             lambda x: SlistSequenceStepItemTflagItem(device, f"{self._cmd_syntax}:TFLag{x}")
         )
         self._winput = SlistSequenceStepItemWinput(device, f"{self._cmd_syntax}:WINPut")
@@ -976,7 +976,7 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._tasset
 
     @property
-    def tassetx(self) -> Dict[int, SlistSequenceStepItemTassetItem]:
+    def tassetx(self) -> dict[int, SlistSequenceStepItemTassetItem]:
         """Return the ``SLISt:SEQuence:STEP[n]:TASSet[m]`` command.
 
         Description:
@@ -1003,7 +1003,7 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._tassetx
 
     @property
-    def tflag(self) -> Dict[int, SlistSequenceStepItemTflagItem]:
+    def tflag(self) -> dict[int, SlistSequenceStepItemTflagItem]:
         """Return the ``SLISt:SEQuence:STEP[n]:TFLag[m]`` command tree.
 
         Usage:
@@ -1706,7 +1706,7 @@ class SlistSequence(SCPICmdRead):
         self._rflag = SlistSequenceRflag(device, f"{self._cmd_syntax}:RFLag")
         self._srate = SlistSequenceSrate(device, f"{self._cmd_syntax}:SRATe")
         self._step = SlistSequenceStep(device, f"{self._cmd_syntax}:STEP")
-        self._stepx: Dict[int, SlistSequenceStepItem] = DefaultDictPassKeyToFactory(
+        self._stepx: dict[int, SlistSequenceStepItem] = DefaultDictPassKeyToFactory(
             lambda x: SlistSequenceStepItem(device, f"{self._cmd_syntax}:STEP{x}")
         )
         self._track = SlistSequenceTrack(device, f"{self._cmd_syntax}:TRACk")
@@ -1928,7 +1928,7 @@ class SlistSequence(SCPICmdRead):
         return self._step
 
     @property
-    def stepx(self) -> Dict[int, SlistSequenceStepItem]:
+    def stepx(self) -> dict[int, SlistSequenceStepItem]:
         """Return the ``SLISt:SEQuence:STEP[n]`` command tree.
 
         Usage:

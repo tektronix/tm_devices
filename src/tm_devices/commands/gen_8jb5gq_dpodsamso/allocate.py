@@ -14,7 +14,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd
 
@@ -55,12 +55,12 @@ class AllocateWaveform(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ref: Dict[int, AllocateWaveformRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, AllocateWaveformRefItem] = DefaultDictPassKeyToFactory(
             lambda x: AllocateWaveformRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ref(self) -> Dict[int, AllocateWaveformRefItem]:
+    def ref(self) -> dict[int, AllocateWaveformRefItem]:
         """Return the ``ALLOcate:WAVEform:REF<x>`` command.
 
         Description:

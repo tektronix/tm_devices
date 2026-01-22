@@ -94,7 +94,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -2909,7 +2909,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         self._sv = ChannelSv(device, f"{self._cmd_syntax}:SV")
         self._termination = ChannelTermination(device, f"{self._cmd_syntax}:TERmination")
         self._vterm = ChannelVterm(device, f"{self._cmd_syntax}:VTERm")
-        self._d: Dict[int, ChannelDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, ChannelDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: ChannelDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
         self._dall = ChannelDall(device, f"{self._cmd_syntax}_DALL")
@@ -3189,7 +3189,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         return self._vterm
 
     @property
-    def d(self) -> Dict[int, ChannelDigitalBit]:
+    def d(self) -> dict[int, ChannelDigitalBit]:
         """Return the ``CH<x>_D<x>`` command tree.
 
         Usage:

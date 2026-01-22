@@ -20,7 +20,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -110,7 +110,7 @@ class Ptp(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @domain.setter
-    def domain(self, value: Union[str, float]) -> None:
+    def domain(self, value: str | float) -> None:
         """Access the ``ptp.domain`` attribute.
 
         Description:
@@ -183,7 +183,7 @@ class Ptp(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``ptp.enable`` attribute.
 
         Description:
@@ -289,7 +289,7 @@ class Ptp(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @slavepreferred.setter
-    def slavepreferred(self, value: Union[str, float]) -> None:
+    def slavepreferred(self, value: str | float) -> None:
         """Access the ``ptp.slavepreferred`` attribute.
 
         Description:
@@ -353,7 +353,7 @@ class Ptp(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @utcoffset.setter
-    def utcoffset(self, value: Union[str, float]) -> None:
+    def utcoffset(self, value: str | float) -> None:
         """Access the ``ptp.utcoffset`` attribute.
 
         Description:

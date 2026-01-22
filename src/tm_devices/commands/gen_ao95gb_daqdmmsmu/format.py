@@ -16,7 +16,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -105,7 +105,7 @@ printbuffer() functions to be double-precision IEEE Std 754 binary format."""
             raise NoDeviceProvidedError(msg) from error
 
     @asciiprecision.setter
-    def asciiprecision(self, value: Union[str, float]) -> None:
+    def asciiprecision(self, value: str | float) -> None:
         """Access the ``format.asciiprecision`` attribute.
 
         Description:
@@ -183,7 +183,7 @@ printbuffer() functions to be double-precision IEEE Std 754 binary format."""
             raise NoDeviceProvidedError(msg) from error
 
     @byteorder.setter
-    def byteorder(self, value: Union[str, float]) -> None:
+    def byteorder(self, value: str | float) -> None:
         """Access the ``format.byteorder`` attribute.
 
         Description:
@@ -254,7 +254,7 @@ printbuffer() functions to be double-precision IEEE Std 754 binary format."""
             raise NoDeviceProvidedError(msg) from error
 
     @data.setter
-    def data(self, value: Union[str, float]) -> None:
+    def data(self, value: str | float) -> None:
         """Access the ``format.data`` attribute.
 
         Description:

@@ -39,7 +39,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -436,32 +436,32 @@ class Select(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._control = SelectControl(device, f"{self._cmd_syntax}:CONTROl")
-        self._d: Dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: SelectDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._dall = SelectDall(device, f"{self._cmd_syntax}:DAll")
-        self._ref: Dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._rf_average = SelectRfAverage(device, f"{self._cmd_syntax}:RF_AVErage")
         self._rf_maxhold = SelectRfMaxhold(device, f"{self._cmd_syntax}:RF_MAXHold")
         self._rf_minhold = SelectRfMinhold(device, f"{self._cmd_syntax}:RF_MINHold")
         self._rf_normal = SelectRfNormal(device, f"{self._cmd_syntax}:RF_NORMal")
-        self._bus: Dict[int, SelectBusItem] = DefaultDictPassKeyToFactory(
+        self._bus: dict[int, SelectBusItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectBusItem(device, f"{self._cmd_syntax}:BUS{x}")
         )
-        self._b: Dict[int, SelectBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, SelectBItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._math = SelectMath(device, f"{self._cmd_syntax}:MATH")
         self._math1 = SelectMath1(device, f"{self._cmd_syntax}:MATH1")
 
     @property
-    def ch(self) -> Dict[int, SelectChannel]:
+    def ch(self) -> dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
 
         Description:
@@ -533,7 +533,7 @@ class Select(SCPICmdRead):
         return self._control
 
     @property
-    def d(self) -> Dict[int, SelectDigitalBit]:
+    def d(self) -> dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.
 
         Description:
@@ -580,7 +580,7 @@ class Select(SCPICmdRead):
         return self._dall
 
     @property
-    def ref(self) -> Dict[int, SelectRefItem]:
+    def ref(self) -> dict[int, SelectRefItem]:
         """Return the ``SELect:REF<x>`` command.
 
         Description:
@@ -714,7 +714,7 @@ class Select(SCPICmdRead):
         return self._rf_normal
 
     @property
-    def bus(self) -> Dict[int, SelectBusItem]:
+    def bus(self) -> dict[int, SelectBusItem]:
         """Return the ``SELect:BUS<x>`` command.
 
         Description:
@@ -741,7 +741,7 @@ class Select(SCPICmdRead):
         return self._bus
 
     @property
-    def b(self) -> Dict[int, SelectBItem]:
+    def b(self) -> dict[int, SelectBItem]:
         """Return the ``SELect:B<x>`` command.
 
         Description:

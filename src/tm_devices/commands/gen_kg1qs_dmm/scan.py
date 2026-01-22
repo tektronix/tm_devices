@@ -34,7 +34,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -81,7 +81,7 @@ class ScanStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.start.stimulus`` attribute.
 
         Description:
@@ -154,7 +154,7 @@ class ScanMonitorLimitLow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``scan.monitor.limit.low.value`` attribute.
 
         Description:
@@ -227,7 +227,7 @@ class ScanMonitorLimitHigh(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
-    def value(self, value: Union[str, float]) -> None:
+    def value(self, value: str | float) -> None:
         """Access the ``scan.monitor.limit.high.value`` attribute.
 
         Description:
@@ -339,7 +339,7 @@ class ScanMonitor(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @channel.setter
-    def channel(self, value: Union[str, float]) -> None:
+    def channel(self, value: str | float) -> None:
         """Access the ``scan.monitor.channel`` attribute.
 
         Description:
@@ -415,7 +415,7 @@ class ScanMonitor(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``scan.monitor.mode`` attribute.
 
         Description:
@@ -489,7 +489,7 @@ class ScanMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
-    def interval(self, value: Union[str, float]) -> None:
+    def interval(self, value: str | float) -> None:
         """Access the ``scan.measure.interval`` attribute.
 
         Description:
@@ -554,7 +554,7 @@ class ScanMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.measure.stimulus`` attribute.
 
         Description:
@@ -627,7 +627,7 @@ class ScanChannel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.channel.stimulus`` attribute.
 
         Description:
@@ -722,7 +722,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @buffer.setter
-    def buffer(self, value: Union[str, float]) -> None:
+    def buffer(self, value: str | float) -> None:
         """Access the ``scan.buffer`` attribute.
 
         Description:
@@ -786,7 +786,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @bypass.setter
-    def bypass(self, value: Union[str, float]) -> None:
+    def bypass(self, value: str | float) -> None:
         """Access the ``scan.bypass`` attribute.
 
         Description:
@@ -869,7 +869,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``scan.mode`` attribute.
 
         Description:
@@ -944,7 +944,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @restart.setter
-    def restart(self, value: Union[str, float]) -> None:
+    def restart(self, value: str | float) -> None:
         """Access the ``scan.restart`` attribute.
 
         Description:
@@ -1008,7 +1008,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @scancount.setter
-    def scancount(self, value: Union[str, float]) -> None:
+    def scancount(self, value: str | float) -> None:
         """Access the ``scan.scancount`` attribute.
 
         Description:
@@ -1072,7 +1072,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @scaninterval.setter
-    def scaninterval(self, value: Union[str, float]) -> None:
+    def scaninterval(self, value: str | float) -> None:
         """Access the ``scan.scaninterval`` attribute.
 
         Description:
@@ -1143,7 +1143,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def add(
-        self, channel_list: str, config_list: Optional[str] = None, index: Optional[int] = None
+        self, channel_list: str, config_list: str | None = None, index: int | None = None
     ) -> None:
         """Run the ``scan.add()`` function.
 
@@ -1183,7 +1183,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     def addsinglestep(
-        self, channel_list: str, config_list: Optional[str] = None, index: Optional[int] = None
+        self, channel_list: str, config_list: str | None = None, index: int | None = None
     ) -> None:
         """Run the ``scan.addsinglestep()`` function.
 
@@ -1224,9 +1224,9 @@ class Scan(BaseTSPCmd):
 
     def create(
         self,
-        channel_list: Optional[str] = None,
-        config_list: Optional[str] = None,
-        index: Optional[int] = None,
+        channel_list: str | None = None,
+        config_list: str | None = None,
+        index: int | None = None,
     ) -> None:
         """Run the ``scan.create()`` function.
 
@@ -1265,7 +1265,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def export(self, filename: str, when: str, what: Optional[str] = None) -> None:
+    def export(self, filename: str, when: str, what: str | None = None) -> None:
         """Run the ``scan.export()`` function.
 
         Description:
@@ -1301,7 +1301,7 @@ class Scan(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.export()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def learnlimits(self, window: str, iterations: Optional[str] = None) -> None:
+    def learnlimits(self, window: str, iterations: str | None = None) -> None:
         """Run the ``scan.learnlimits()`` function.
 
         Description:

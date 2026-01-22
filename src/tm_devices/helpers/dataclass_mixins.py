@@ -3,7 +3,7 @@
 import operator
 
 from enum import Enum
-from typing import Any, Dict, TYPE_CHECKING
+from typing import Any, TYPE_CHECKING
 
 from tm_devices.helpers.enums import CustomStrEnum
 
@@ -17,7 +17,7 @@ class AsDictionaryMixin:
 
     # reference:
     # https://realpython.com/inheritance-composition-python/#mixing-features-with-mixin-classes
-    def to_dict(self, ignore_none: bool = False, sort_keys: bool = True) -> Dict[str, Any]:
+    def to_dict(self, ignore_none: bool = False, sort_keys: bool = True) -> dict[str, Any]:
         """Transform public attributes of this class to dictionary.
 
         Examples:

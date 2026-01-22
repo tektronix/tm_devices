@@ -14,7 +14,7 @@ import warnings
 
 from enum import EnumMeta
 from functools import cache
-from typing import Any, Dict, Optional, Tuple, Type
+from typing import Any
 
 import requests
 
@@ -219,7 +219,7 @@ def check_for_update(package_name: str = PACKAGE_NAME, index_name: str = "pypi")
         )
 
 
-def check_network_connection(device_name: str, ip_address: str) -> Tuple[bool, str]:
+def check_network_connection(device_name: str, ip_address: str) -> tuple[bool, str]:
     """Check the network connection to the device using the external ping command.
 
     Args:
@@ -424,7 +424,7 @@ def create_visa_connection(
     return _configure_visa_object(visa_object, device_config_entry, visa_library)
 
 
-def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]:
+def detect_visa_resource_expression(input_str: str) -> tuple[str, str] | None:
     """Check if a given string is a VISA resource expression.
 
     This function will check if a string is a VISA resource expression and pull out the pieces
@@ -442,7 +442,7 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     Returns:
         A tuple with the connection information parts.
     """
-    retval: Optional[Tuple[str, str]] = None
+    retval: tuple[str, str] | None = None
     if input_str.upper().startswith("ASRL"):
         retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
     elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:
@@ -583,7 +583,7 @@ def get_visa_backend(visa_lib_path: str) -> str:
 
     system_visa_info = _get_system_visa_info()
     # noinspection PyTypeChecker
-    visa_backends: Dict[str, Any] = system_visa_info["backends"]
+    visa_backends: dict[str, Any] = system_visa_info["backends"]
 
     # Figure out which visa is being used
     try:
@@ -652,7 +652,7 @@ def register_additional_usbtmc_mapping(model_series: str, *, model_id: str, vend
     )
 
 
-def sanitize_enum(value: str, enum_class: Type[CustomStrEnum]) -> CustomStrEnum:
+def sanitize_enum(value: str, enum_class: type[CustomStrEnum]) -> CustomStrEnum:
     """Sanitize a string value into its enum value.
 
     Args:
@@ -764,7 +764,7 @@ def _configure_visa_object(
 
 
 @cache
-def _get_system_visa_info() -> Dict[str, Any]:
+def _get_system_visa_info() -> dict[str, Any]:
     """Get the VISA information for the current system.
 
     Returns:

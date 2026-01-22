@@ -489,7 +489,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -808,15 +808,15 @@ class TriggerBLowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBLowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBLowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerBLowerthresholdDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerBLowerthresholdDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLowerthresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBLowerthresholdChannel]:
+    def ch(self) -> dict[int, TriggerBLowerthresholdChannel]:
         """Return the ``TRIGger:B:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -846,7 +846,7 @@ class TriggerBLowerthreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerBLowerthresholdDigitalBit]:
+    def d(self) -> dict[int, TriggerBLowerthresholdDigitalBit]:
         """Return the ``TRIGger:B:LOWerthreshold:D<x>`` command.
 
         Description:
@@ -958,15 +958,15 @@ class TriggerBLevel(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerBLevelDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerBLevelDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLevelDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBLevelChannel]:
+    def ch(self) -> dict[int, TriggerBLevelChannel]:
         """Return the ``TRIGger:B:LEVel:CH<x>`` command.
 
         Description:
@@ -995,7 +995,7 @@ class TriggerBLevel(SCPICmdWrite, SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerBLevelDigitalBit]:
+    def d(self) -> dict[int, TriggerBLevelDigitalBit]:
         """Return the ``TRIGger:B:LEVel:D<x>`` command.
 
         Description:
@@ -2423,13 +2423,13 @@ class TriggerAUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._rf = TriggerAUpperthresholdRf(device, f"{self._cmd_syntax}:RF")
 
     @property
-    def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
+    def ch(self) -> dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -3058,15 +3058,15 @@ class TriggerASetholdThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerASetholdThresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerASetholdThresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerASetholdThresholdDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerASetholdThresholdDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdThresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerASetholdThresholdChannel]:
+    def ch(self) -> dict[int, TriggerASetholdThresholdChannel]:
         """Return the ``TRIGger:A:SETHold:THReshold:CH<x>`` command.
 
         Description:
@@ -3096,7 +3096,7 @@ class TriggerASetholdThreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerASetholdThresholdDigitalBit]:
+    def d(self) -> dict[int, TriggerASetholdThresholdDigitalBit]:
         """Return the ``TRIGger:A:SETHold:THReshold:D<x>`` command.
 
         Description:
@@ -4871,10 +4871,10 @@ class TriggerALowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerALowerthresholdDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerALowerthresholdDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALowerthresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._rf = TriggerALowerthresholdRf(device, f"{self._cmd_syntax}:RF")
@@ -4882,7 +4882,7 @@ class TriggerALowerthreshold(SCPICmdRead):
         self._ext = TriggerALowerthresholdExt(device, f"{self._cmd_syntax}:EXT")
 
     @property
-    def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
+    def ch(self) -> dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -4911,7 +4911,7 @@ class TriggerALowerthreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerALowerthresholdDigitalBit]:
+    def d(self) -> dict[int, TriggerALowerthresholdDigitalBit]:
         """Return the ``TRIGger:A:LOWerthreshold:D<x>`` command.
 
         Description:
@@ -5124,16 +5124,16 @@ class TriggerALogicThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALogicThresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALogicThresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerALogicThresholdDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerALogicThresholdDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicThresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._rf = TriggerALogicThresholdRf(device, f"{self._cmd_syntax}:RF")
 
     @property
-    def ch(self) -> Dict[int, TriggerALogicThresholdChannel]:
+    def ch(self) -> dict[int, TriggerALogicThresholdChannel]:
         """Return the ``TRIGger:A:LOGIc:THReshold:CH<x>`` command.
 
         Description:
@@ -5162,7 +5162,7 @@ class TriggerALogicThreshold(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerALogicThresholdDigitalBit]:
+    def d(self) -> dict[int, TriggerALogicThresholdDigitalBit]:
         """Return the ``TRIGger:A:LOGIc:THReshold:D<x>`` command.
 
         Description:
@@ -5618,17 +5618,17 @@ class TriggerALogicInput(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALogicInputChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALogicInputChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._clock = TriggerALogicInputClock(device, f"{self._cmd_syntax}:CLOCk")
-        self._d: Dict[int, TriggerALogicInputDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerALogicInputDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicInputDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._rf = TriggerALogicInputRf(device, f"{self._cmd_syntax}:RF")
 
     @property
-    def ch(self) -> Dict[int, TriggerALogicInputChannel]:
+    def ch(self) -> dict[int, TriggerALogicInputChannel]:
         """Return the ``TRIGger:A:LOGIc:INPut:CH<x>`` command.
 
         Description:
@@ -5670,7 +5670,7 @@ class TriggerALogicInput(SCPICmdRead):
         return self._clock
 
     @property
-    def d(self) -> Dict[int, TriggerALogicInputDigitalBit]:
+    def d(self) -> dict[int, TriggerALogicInputDigitalBit]:
         """Return the ``TRIGger:A:LOGIc:INPut:D<x>`` command.
 
         Description:
@@ -6083,10 +6083,10 @@ class TriggerALevel(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auxin = TriggerALevelAuxin(device, f"{self._cmd_syntax}:AUXin")
-        self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._d: Dict[int, TriggerALevelDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerALevelDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
@@ -6121,7 +6121,7 @@ class TriggerALevel(SCPICmdRead):
         return self._auxin
 
     @property
-    def ch(self) -> Dict[int, TriggerALevelChannel]:
+    def ch(self) -> dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
 
         Description:
@@ -6151,7 +6151,7 @@ class TriggerALevel(SCPICmdRead):
         return self._ch
 
     @property
-    def d(self) -> Dict[int, TriggerALevelDigitalBit]:
+    def d(self) -> dict[int, TriggerALevelDigitalBit]:
         """Return the ``TRIGger:A:LEVel:D<x>`` command.
 
         Description:
@@ -17730,13 +17730,13 @@ class TriggerABus(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerABusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._source = TriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def b(self) -> Dict[int, TriggerABusBItem]:
+    def b(self) -> dict[int, TriggerABusBItem]:
         """Return the ``TRIGger:A:BUS:B<x>`` command tree.
 
         Usage:

@@ -7,7 +7,7 @@ import time
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, Tuple, TYPE_CHECKING, Union
+from typing import Any, TYPE_CHECKING
 
 from requests.structures import CaseInsensitiveDict
 
@@ -62,14 +62,14 @@ class MarginTester(Device, RESTAPIControl, ABC):
 
     @cached_property
     @abstractmethod
-    def supported_technologies(self) -> Tuple[str, ...]:
+    def supported_technologies(self) -> tuple[str, ...]:
         """Return the device's supported technologies."""
 
     ################################################################################################
     # Abstract Methods
     ################################################################################################
     @abstractmethod
-    def request_about_info(self, verbose: bool = True) -> Dict[str, Any]:
+    def request_about_info(self, verbose: bool = True) -> dict[str, Any]:
         """Make a get request to 'about' and 'version' endpoints and return device information.
 
         Args:
@@ -101,7 +101,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
         return self._auth_token_file_path.as_posix()
 
     @auth_token_file_path.setter
-    def auth_token_file_path(self, value: Union[str, os.PathLike[str]]) -> None:
+    def auth_token_file_path(self, value: str | os.PathLike[str]) -> None:
         """Set the path to the file containing the auth token."""
         self._auth_token_file_path = Path(value)
 
@@ -142,7 +142,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
         headers["Authorization"] = f"Bearer {token}"
         return headers
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

@@ -967,7 +967,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1855,12 +1855,12 @@ class TriggerBUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBUpperthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBUpperthresholdChannel]:
+    def ch(self) -> dict[int, TriggerBUpperthresholdChannel]:
         """Return the ``TRIGger:B:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -4038,12 +4038,12 @@ class TriggerBLowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBLowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBLowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBLowerthresholdChannel]:
+    def ch(self) -> dict[int, TriggerBLowerthresholdChannel]:
         """Return the ``TRIGger:B:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -4619,12 +4619,12 @@ class TriggerBLevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerBLevelChannel]:
+    def ch(self) -> dict[int, TriggerBLevelChannel]:
         """Return the ``TRIGger:B:LEVel:CH<x>`` command.
 
         Description:
@@ -19972,13 +19972,13 @@ class TriggerBBus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, TriggerBBusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, TriggerBBusBItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBBusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._source = TriggerBBusSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def b(self) -> Dict[int, TriggerBBusBItem]:
+    def b(self) -> dict[int, TriggerBBusBItem]:
         """Return the ``TRIGger:B:BUS:B<x>`` command tree.
 
         Usage:
@@ -21209,12 +21209,12 @@ class TriggerAUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
+    def ch(self) -> dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -22940,12 +22940,12 @@ class TriggerALowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
+    def ch(self) -> dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -23548,12 +23548,12 @@ class TriggerALevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALevelChannel]:
+    def ch(self) -> dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
 
         Description:
@@ -38935,13 +38935,13 @@ class TriggerABus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerABusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._source = TriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def b(self) -> Dict[int, TriggerABusBItem]:
+    def b(self) -> dict[int, TriggerABusBItem]:
         """Return the ``TRIGger:A:BUS:B<x>`` command tree.
 
         Usage:

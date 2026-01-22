@@ -8,21 +8,13 @@ import time
 import warnings
 
 from abc import ABC
+from collections.abc import Callable, Generator, Iterable, Sequence
 from pathlib import Path
 from typing import (
     Any,
-    Callable,
     cast,
     final,
-    Generator,
-    Iterable,
-    List,
-    Optional,
-    Sequence,
-    Tuple,
-    Type,
     TypeVar,
-    Union,
 )
 
 import pyvisa as visa
@@ -54,7 +46,7 @@ from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
-T = TypeVar("T", bound=Sequence[Union[int, float]])
+T = TypeVar("T", bound=Sequence[int | float])
 
 
 class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
@@ -265,12 +257,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         self,
         number_of_polls: int,
         query: str,
-        wanted_val: Union[float, str],
+        wanted_val: float | str,
         sleep_time: float = 0.4,
         tolerance: float = 0,
         percentage: bool = False,
         invert_range: bool = False,
-        invalid_values: Union[List[Union[float, str]], None] = None,
+        invalid_values: list[float | str] | None = None,
     ) -> None:
         """Poll the query until the wanted value appears.
 
@@ -393,12 +385,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         verbose: bool = True,
         datatype: util.BINARY_DATATYPES = "f",
         is_big_endian: bool = False,
-        container: Union[Type[T], Callable[[Iterable[Any]], T]] = list,
-        delay: Optional[float] = None,
+        container: type[T] | Callable[[Iterable[Any]], T] = list,
+        delay: float | None = None,
         header_fmt: util.BINARY_HEADERS = "ieee",
         expect_termination: bool = True,
         data_points: int = 0,
-        chunk_size: Optional[int] = None,
+        chunk_size: int | None = None,
     ) -> T:
         """Send a query to the device and return the binary values.
 
@@ -510,7 +502,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def query_less_than(
         self,
         query: str,
-        value: Union[float, str],
+        value: float | str,
         tolerance: float = 0,
         percentage: bool = False,
         allow_equal: bool = False,
@@ -607,13 +599,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def query_response(
         self,
         query: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         allow_empty: bool = False,
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the device and verify the result.
 
         Args:
@@ -650,7 +642,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         value: str,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the device and verify the result is not the given value.
 
         Args:
@@ -679,7 +671,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """Return the read results from the VISA resource."""
         return self._visa_resource.read()
 
-    def read_raw(self, size: Optional[int] = None) -> bytes:
+    def read_raw(self, size: int | None = None) -> bytes:
         """Return the read_raw results from the VISA resource.
 
         Args:
@@ -698,13 +690,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def set_and_check(  # noqa: PLR0913
         self,
         command: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Optional[Union[str, float]] = None,
+        expected_value: str | float | None = None,
         opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
@@ -748,17 +740,17 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def set_if_needed(  # noqa: PLR0913
         self,
         command: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Optional[Union[str, float]] = None,
+        expected_value: str | float | None = None,
         opc: bool = False,
         allow_empty: bool = False,
         verify_value: bool = False,
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the command's field and update it if the value does not match the input.
 
         Args:

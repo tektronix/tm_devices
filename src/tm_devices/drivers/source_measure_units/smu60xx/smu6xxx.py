@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
@@ -29,7 +29,7 @@ class SMU6xxx(CommonPISystemErrorCheckMixin, PIControl, SourceMeasureUnit, ABC):
     # Properties
     ################################################################################################
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x + 1}" for x in range(self.total_channels))
 

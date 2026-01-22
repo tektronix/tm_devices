@@ -2,7 +2,7 @@
 
 import sys
 
-from typing import Any, Dict
+from typing import Any
 
 from flask import request
 from http_server_mock import HttpServerMock  # pyright: ignore[reportMissingTypeStubs]
@@ -32,7 +32,7 @@ PORT = int(f"60{sys.version_info.minor:02}")
 
 
 @mocker_server.route("/api", methods=["GET"])
-def index() -> Dict[str, str]:
+def index() -> dict[str, str]:
     """GET endpoint for /api.
 
     Returns:
@@ -42,7 +42,7 @@ def index() -> Dict[str, str]:
 
 
 @mocker_server.route("/api/delete", methods=["DELETE"])
-def delete_endpoint() -> Dict[str, str]:
+def delete_endpoint() -> dict[str, str]:
     """DELETE endpoint for /api/delete.
 
     Returns:
@@ -62,7 +62,7 @@ def update_endpoint() -> Any:
 
 
 @mocker_server.route("/api/device/about", methods=["GET"])
-def device_about() -> Dict[str, str]:
+def device_about() -> dict[str, str]:
     """GET endpoint for /api/device/about.
 
     Returns:
@@ -72,7 +72,7 @@ def device_about() -> Dict[str, str]:
 
 
 @mocker_server.route("/api/device/version", methods=["GET"])
-def device_version() -> Dict[str, str]:
+def device_version() -> dict[str, str]:
     """GET endpoint for /api/device/version.
 
     Returns:
@@ -82,7 +82,7 @@ def device_version() -> Dict[str, str]:
 
 
 @mocker_server.route("/api/device/status", methods=["GET"])
-def device_status() -> Dict[str, str]:
+def device_status() -> dict[str, str]:
     """GET endpoint for /api/device/status.
 
     Returns:

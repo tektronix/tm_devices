@@ -5,7 +5,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 from .gen_3vhopd_mpsu.psu import PsuItem
 from .gen_3vhopd_mpsu.status import Status
@@ -46,7 +46,7 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
     """
 
     @property
-    def buffer_var(self) -> Dict[str, Buffervar]:  # pyright: ignore[reportReturnType]
+    def buffer_var(self) -> dict[str, Buffervar]:  # pyright: ignore[reportReturnType]
         """Return the ``bufferVar`` command tree.
 
         Info:
@@ -156,7 +156,7 @@ class MPSU50_2STCommands(metaclass=MPSU50_2STMeta):  # noqa: N801
         """
 
     @property
-    def psu(self) -> Dict[int, PsuItem]:  # pyright: ignore[reportReturnType]
+    def psu(self) -> dict[int, PsuItem]:  # pyright: ignore[reportReturnType]
         """Return the ``psu[X]`` command tree.
 
         Info:

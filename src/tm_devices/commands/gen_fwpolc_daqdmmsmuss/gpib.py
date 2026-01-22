@@ -15,7 +15,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -64,7 +64,7 @@ class Gpib(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @address.setter
-    def address(self, value: Union[str, float]) -> None:
+    def address(self, value: str | float) -> None:
         """Access the ``gpib.address`` attribute.
 
         Description:

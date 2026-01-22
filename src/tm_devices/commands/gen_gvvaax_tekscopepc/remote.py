@@ -83,7 +83,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1711,10 +1711,10 @@ class RemoteSItemDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, RemoteSItemDchItemDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, RemoteSItemDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemDchItemDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
-        self._groupthreshold: Dict[int, RemoteSItemDchItemGroupthresholdItem] = (
+        self._groupthreshold: dict[int, RemoteSItemDchItemGroupthresholdItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: RemoteSItemDchItemGroupthresholdItem(
                     device, f"{self._cmd_syntax}:GROUP{x}THReshold"
@@ -1724,7 +1724,7 @@ class RemoteSItemDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._select = RemoteSItemDchItemSelect(device, f"{self._cmd_syntax}:SELect")
 
     @property
-    def d(self) -> Dict[int, RemoteSItemDchItemDigitalBit]:
+    def d(self) -> dict[int, RemoteSItemDchItemDigitalBit]:
         """Return the ``REMOTE:S<x>_DCH<x>:D<x>`` command tree.
 
         Usage:
@@ -1738,7 +1738,7 @@ class RemoteSItemDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._d
 
     @property
-    def groupthreshold(self) -> Dict[int, RemoteSItemDchItemGroupthresholdItem]:
+    def groupthreshold(self) -> dict[int, RemoteSItemDchItemGroupthresholdItem]:
         """Return the ``REMOTE:S<x>_DCH<x>:GROUP<x>THReshold`` command.
 
         Description:
@@ -2333,13 +2333,13 @@ class RemoteSItemChannelDiggrp(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, RemoteSItemChannelDiggrpDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, RemoteSItemChannelDiggrpDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemChannelDiggrpDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._threshold = RemoteSItemChannelDiggrpThreshold(device, f"{self._cmd_syntax}:THReshold")
 
     @property
-    def d(self) -> Dict[int, RemoteSItemChannelDiggrpDigitalBit]:
+    def d(self) -> dict[int, RemoteSItemChannelDiggrpDigitalBit]:
         """Return the ``REMOTE:S<x>_CH<x>:DIGGRP:D<x>`` command tree.
 
         Usage:
@@ -2518,15 +2518,15 @@ class RemoteSItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, RemoteSItemChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, RemoteSItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemChannel(device, f"{self._cmd_syntax}_CH{x}")
         )
-        self._dch: Dict[int, RemoteSItemDchItem] = DefaultDictPassKeyToFactory(
+        self._dch: dict[int, RemoteSItemDchItem] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemDchItem(device, f"{self._cmd_syntax}_DCH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, RemoteSItemChannel]:
+    def ch(self) -> dict[int, RemoteSItemChannel]:
         """Return the ``REMOTE:S<x>_CH<x>`` command tree.
 
         Usage:
@@ -2544,7 +2544,7 @@ class RemoteSItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._ch
 
     @property
-    def dch(self) -> Dict[int, RemoteSItemDchItem]:
+    def dch(self) -> dict[int, RemoteSItemDchItem]:
         """Return the ``REMOTE:S<x>_DCH<x>`` command tree.
 
         Usage:
@@ -2796,10 +2796,10 @@ class Remote(SCPICmdRead):
         self._delete = RemoteDelete(device, f"{self._cmd_syntax}:DELEte")
         self._logging = RemoteLogging(device, f"{self._cmd_syntax}:LOGGING")
         self._numacq = RemoteNumacq(device, f"{self._cmd_syntax}:NUMACq")
-        self._s: Dict[int, RemoteSItem] = DefaultDictPassKeyToFactory(
+        self._s: dict[int, RemoteSItem] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItem(device, f"{self._cmd_syntax}:S{x}")
         )
-        self._scope: Dict[int, RemoteScopeItem] = DefaultDictPassKeyToFactory(
+        self._scope: dict[int, RemoteScopeItem] = DefaultDictPassKeyToFactory(
             lambda x: RemoteScopeItem(device, f"{self._cmd_syntax}:SCOPe{x}")
         )
         self._sequence = RemoteSequence(device, f"{self._cmd_syntax}:SEQuence")
@@ -3015,7 +3015,7 @@ class Remote(SCPICmdRead):
         return self._numacq
 
     @property
-    def s(self) -> Dict[int, RemoteSItem]:
+    def s(self) -> dict[int, RemoteSItem]:
         """Return the ``REMOTE:S<x>`` command tree.
 
         Usage:
@@ -3030,7 +3030,7 @@ class Remote(SCPICmdRead):
         return self._s
 
     @property
-    def scope(self) -> Dict[int, RemoteScopeItem]:
+    def scope(self) -> dict[int, RemoteScopeItem]:
         """Return the ``REMOTE:SCOPe<x>`` command tree.
 
         Usage:

@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import cast, Dict, Literal, Optional, Tuple
+from typing import cast, Literal
 
 from tm_devices.commands import AWG5200Mixin
 from tm_devices.drivers.awgs.awg import (
@@ -48,7 +48,7 @@ class AWG5200(AWG5200Mixin, AWG):
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
         """Mapping of channel names to AWG5200SourceChannel objects."""
-        channel_map: Dict[str, AWG5200SourceChannel] = {}
+        channel_map: dict[str, AWG5200SourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWG5200SourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -56,7 +56,7 @@ class AWG5200(AWG5200Mixin, AWG):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def load_waveform_set(self, waveform_set_file: Optional[str] = None) -> None:
+    def load_waveform_set(self, waveform_set_file: str | None = None) -> None:
         """Load a waveform set into the memory of the AWG.
 
         Arguments:
@@ -68,7 +68,7 @@ class AWG5200(AWG5200Mixin, AWG):
     def load_waveform_from_set(
         self,
         waveform_name: str,
-        waveform_set_file: Optional[str] = None,
+        waveform_set_file: str | None = None,
     ) -> None:
         """Load in a specific waveform from a waveform set into the memory of the AWG.
 
@@ -86,7 +86,7 @@ class AWG5200(AWG5200Mixin, AWG):
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
         duty_cycle: float = 50.0,
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
@@ -129,7 +129,7 @@ class AWG5200(AWG5200Mixin, AWG):
         amplitude: float,
         offset: float,
         channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        output_signal_path: SignalGeneratorOutputPathsBase | None = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",  # noqa: ARG002
         duty_cycle: float = 50.0,  # noqa: ARG002
         polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",  # noqa: ARG002
@@ -173,7 +173,7 @@ class AWG5200(AWG5200Mixin, AWG):
         # we expect no errors
         self.expect_esr(0)
 
-    def set_sample_rate(self, value: float, absolute_tolerance: Optional[float] = None) -> None:
+    def set_sample_rate(self, value: float, absolute_tolerance: float | None = None) -> None:
         """Set the rate at which samples are generated/transmitted.
 
         Args:
@@ -194,8 +194,8 @@ class AWG5200(AWG5200Mixin, AWG):
     ################################################################################################
     def _get_series_specific_constraints(
         self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+        output_signal_path: SignalGeneratorOutputPathsBase | None,
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
         Args:
@@ -226,8 +226,8 @@ class AWG5200(AWG5200Mixin, AWG):
 
     def _load_waveform_or_set(
         self,
-        waveform_set_file: Optional[str] = None,
-        waveform_name: Optional[str] = None,
+        waveform_set_file: str | None = None,
+        waveform_name: str | None = None,
     ) -> None:
         """Load in a waveform set or a specific waveform from a waveform set into memory.
 
@@ -292,9 +292,7 @@ class AWG5200SourceChannel(AWGSourceChannel):
             tolerance=absolute_tolerance,
         )
 
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
+    def set_output_signal_path(self, value: SignalGeneratorOutputPathsBase | None = None) -> None:
         """Set the output signal path on the source channel.
 
         Args:

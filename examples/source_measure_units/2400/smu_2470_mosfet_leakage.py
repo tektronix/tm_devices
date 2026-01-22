@@ -5,8 +5,6 @@ trigger model template applies the voltage for 60 seconds and makes measurements
 intervals.
 """
 
-from typing import List
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2470
 
@@ -46,8 +44,8 @@ with DeviceManager(verbose=False) as device_manager:
 
     defbuffer1 = smu2470.commands.buffer_var["defbuffer1"]
     n = range(1, int(defbuffer1.n))
-    tmst: List[float] = []
-    curr: List[float] = []
+    tmst: list[float] = []
+    curr: list[float] = []
     # Parse index and data into three columns.
     for cnt in n:
         tmst.append(float(defbuffer1.relativetimestamps[cnt]))

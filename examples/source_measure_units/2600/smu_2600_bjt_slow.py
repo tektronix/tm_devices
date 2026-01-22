@@ -13,8 +13,6 @@ Converted to Python tm_devices script. DCA 4.11.23
 
 import time
 
-from typing import Dict, Tuple
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2602B
 
@@ -36,11 +34,11 @@ HFE1_LIMIT = 40
 TARGET_IC = 100e-6
 
 # dicts to store the data for each part, and its overall status
-vceo_data: Dict[int, float] = {}
-vce_sat_data: Dict[int, float] = {}
-vbe_sat_data: Dict[int, float] = {}
-beta1_data: Dict[int, float] = {}
-status_data: Dict[int, bool] = {}
+vceo_data: dict[int, float] = {}
+vce_sat_data: dict[int, float] = {}
+vbe_sat_data: dict[int, float] = {}
+beta1_data: dict[int, float] = {}
+status_data: dict[int, bool] = {}
 bins = [0, 0, 0, 0, 0]
 
 
@@ -182,7 +180,7 @@ def vceo(inst: SMU2602B, index: int) -> bool:
     return status
 
 
-def vbe_vce_sat(inst: SMU2602B, index: int) -> Tuple[bool, bool]:
+def vbe_vce_sat(inst: SMU2602B, index: int) -> tuple[bool, bool]:
     """This function will run the VCEsat and VBEsat tests on the transistor.
 
     Args:

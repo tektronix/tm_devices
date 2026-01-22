@@ -16,7 +16,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -67,7 +67,7 @@ class Setup(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @poweron.setter
-    def poweron(self, value: Union[str, float]) -> None:
+    def poweron(self, value: str | float) -> None:
         """Access the ``setup.poweron`` attribute.
 
         Description:
@@ -124,7 +124,7 @@ class Setup(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.recall()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def save(self, id_: Optional[str] = None) -> None:
+    def save(self, id_: str | None = None) -> None:
         """Run the ``setup.save()`` function.
 
         Description:

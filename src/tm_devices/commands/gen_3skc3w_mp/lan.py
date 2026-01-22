@@ -45,7 +45,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
@@ -91,7 +91,7 @@ class LanTelnet(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
-    def access(self, value: Union[str, float]) -> None:
+    def access(self, value: str | float) -> None:
         """Access the ``lan.telnet.access`` attribute.
 
         Description:
@@ -272,14 +272,14 @@ class LanStatusDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
             device=self._device,
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, str | float]:
         """Access the ``lan.status.dns.address[N]`` attribute.
 
         Description:
@@ -558,7 +558,7 @@ class LanRawsocket(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
-    def access(self, value: Union[str, float]) -> None:
+    def access(self, value: str | float) -> None:
         """Access the ``lan.rawsocket.access`` attribute.
 
         Description:
@@ -630,7 +630,7 @@ class LanHislip(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
-    def access(self, value: Union[str, float]) -> None:
+    def access(self, value: str | float) -> None:
         """Access the ``lan.hislip.access`` attribute.
 
         Description:
@@ -676,7 +676,7 @@ class LanConfigDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.address[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
@@ -684,7 +684,7 @@ class LanConfigDns(BaseTSPCmd):
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, str | float]:
         """Access the ``lan.config.dns.address[N]`` attribute.
 
         Description:
@@ -742,7 +742,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @domain.setter
-    def domain(self, value: Union[str, float]) -> None:
+    def domain(self, value: str | float) -> None:
         """Access the ``lan.config.dns.domain`` attribute.
 
         Description:
@@ -807,7 +807,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @dynamic.setter
-    def dynamic(self, value: Union[str, float]) -> None:
+    def dynamic(self, value: str | float) -> None:
         """Access the ``lan.config.dns.dynamic`` attribute.
 
         Description:
@@ -872,7 +872,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
-    def hostname(self, value: Union[str, float]) -> None:
+    def hostname(self, value: str | float) -> None:
         """Access the ``lan.config.dns.hostname`` attribute.
 
         Description:
@@ -937,7 +937,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @verify.setter
-    def verify(self, value: Union[str, float]) -> None:
+    def verify(self, value: str | float) -> None:
         """Access the ``lan.config.dns.verify`` attribute.
 
         Description:
@@ -1030,7 +1030,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @gateway.setter
-    def gateway(self, value: Union[str, float]) -> None:
+    def gateway(self, value: str | float) -> None:
         """Access the ``lan.config.gateway`` attribute.
 
         Description:
@@ -1094,7 +1094,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
-    def ipaddress(self, value: Union[str, float]) -> None:
+    def ipaddress(self, value: str | float) -> None:
         """Access the ``lan.config.ipaddress`` attribute.
 
         Description:
@@ -1158,7 +1158,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @method.setter
-    def method(self, value: Union[str, float]) -> None:
+    def method(self, value: str | float) -> None:
         """Access the ``lan.config.method`` attribute.
 
         Description:
@@ -1226,7 +1226,7 @@ class LanConfig(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @subnetmask.setter
-    def subnetmask(self, value: Union[str, float]) -> None:
+    def subnetmask(self, value: str | float) -> None:
         """Access the ``lan.config.subnetmask`` attribute.
 
         Description:
@@ -1323,7 +1323,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autoconnect.setter
-    def autoconnect(self, value: Union[str, float]) -> None:
+    def autoconnect(self, value: str | float) -> None:
         """Access the ``lan.autoconnect`` attribute.
 
         Description:
@@ -1400,7 +1400,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``lan.enable`` attribute.
 
         Description:
@@ -1473,7 +1473,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @identify.setter
-    def identify(self, value: Union[str, float]) -> None:
+    def identify(self, value: str | float) -> None:
         """Access the ``lan.identify`` attribute.
 
         Description:
@@ -1539,7 +1539,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @linktimeout.setter
-    def linktimeout(self, value: Union[str, float]) -> None:
+    def linktimeout(self, value: str | float) -> None:
         """Access the ``lan.linktimeout`` attribute.
 
         Description:
@@ -1605,7 +1605,7 @@ class Lan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nagle.setter
-    def nagle(self, value: Union[str, float]) -> None:
+    def nagle(self, value: str | float) -> None:
         """Access the ``lan.nagle`` attribute.
 
         Description:
@@ -1694,10 +1694,10 @@ class Lan(BaseTSPCmd):
 
     def ipconfig(
         self,
-        method: Optional[str] = None,
-        ip_v4_address: Optional[str] = None,
-        subnet_mask: Optional[str] = None,
-        gateway: Optional[str] = None,
+        method: str | None = None,
+        ip_v4_address: str | None = None,
+        subnet_mask: str | None = None,
+        gateway: str | None = None,
     ) -> str:
         """Run the ``lan.ipconfig()`` function.
 

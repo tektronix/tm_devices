@@ -1,7 +1,6 @@
 """A class containing properties and attributes shared between devices and control mixins."""
 
 from abc import ABC, abstractmethod
-from typing import Tuple
 
 from packaging.version import Version
 
@@ -37,7 +36,7 @@ class _AbstractDeviceControl(ABC):  # pyright: ignore[reportUnusedClass]
         """The IP address of the device."""
 
     @abstractmethod
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

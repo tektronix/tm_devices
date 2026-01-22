@@ -127,7 +127,7 @@ class Script(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def new(self, code: str, name: Optional[str] = None) -> str:
+    def new(self, code: str, name: str | None = None) -> str:
         """Run the ``script.new()`` function.
 
         Description:
@@ -164,7 +164,7 @@ class Script(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.new()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def newautorun(self, code: str, name: Optional[str] = None) -> str:
+    def newautorun(self, code: str, name: str | None = None) -> str:
         """Run the ``script.newautorun()`` function.
 
         Description:

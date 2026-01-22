@@ -16,7 +16,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -150,15 +150,15 @@ class Select(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._dch: Dict[int, SelectDchItem] = DefaultDictPassKeyToFactory(
+        self._dch: dict[int, SelectDchItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectDchItem(device, f"{self._cmd_syntax}:DCH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, SelectChannel]:
+    def ch(self) -> dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
 
         Description:
@@ -189,7 +189,7 @@ class Select(SCPICmdRead):
         return self._ch
 
     @property
-    def dch(self) -> Dict[int, SelectDchItem]:
+    def dch(self) -> dict[int, SelectDchItem]:
         """Return the ``SELect:DCH<x>`` command tree.
 
         Usage:

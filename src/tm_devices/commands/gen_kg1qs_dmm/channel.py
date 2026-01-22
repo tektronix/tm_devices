@@ -153,7 +153,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def getclose(self, channel_list: Optional[str] = None) -> str:
+    def getclose(self, channel_list: str | None = None) -> str:
         """Run the ``channel.getclose()`` function.
 
         Description:
@@ -187,7 +187,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getclose()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def getcount(self, channel_list: Optional[str] = None) -> str:
+    def getcount(self, channel_list: str | None = None) -> str:
         """Run the ``channel.getcount()`` function.
 
         Description:
@@ -307,7 +307,7 @@ class Channel(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getlabel()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def getstate(self, channel_list: Optional[str] = None) -> str:
+    def getstate(self, channel_list: str | None = None) -> str:
         """Run the ``channel.getstate()`` function.
 
         Description:

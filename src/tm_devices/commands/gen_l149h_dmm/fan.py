@@ -14,7 +14,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -63,7 +63,7 @@ class Fan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
-    def level(self, value: Union[str, float]) -> None:
+    def level(self, value: str | float) -> None:
         """Access the ``fan.level`` attribute.
 
         Description:

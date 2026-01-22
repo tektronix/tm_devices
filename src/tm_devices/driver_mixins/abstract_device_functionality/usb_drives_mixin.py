@@ -1,7 +1,6 @@
 """A mixin class providing common methods and attributes for devices with usb ports."""
 
 from abc import ABC, abstractmethod
-from typing import Tuple
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -12,5 +11,5 @@ class USBDrivesMixin(ABC):
 
     @cached_property
     @abstractmethod
-    def usb_drives(self) -> Tuple[str, ...]:
+    def usb_drives(self) -> tuple[str, ...]:
         """Return a list of all connected USB drives."""

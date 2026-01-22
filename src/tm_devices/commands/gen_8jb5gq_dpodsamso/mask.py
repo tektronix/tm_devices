@@ -173,7 +173,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -699,7 +699,7 @@ class MaskUser(SCPICmdRead):
         self._patternbits = MaskUserPatternbits(device, f"{self._cmd_syntax}:PATTERNBITS")
         self._presampbits = MaskUserPresampbits(device, f"{self._cmd_syntax}:PRESAMPBITS")
         self._recordlength = MaskUserRecordlength(device, f"{self._cmd_syntax}:RECOrdlength")
-        self._seg: Dict[int, MaskUserSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskUserSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskUserSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._trigtosamp = MaskUserTrigtosamp(device, f"{self._cmd_syntax}:TRIGTOSAMP")
@@ -924,7 +924,7 @@ class MaskUser(SCPICmdRead):
         return self._recordlength
 
     @property
-    def seg(self) -> Dict[int, MaskUserSegItem]:
+    def seg(self) -> dict[int, MaskUserSegItem]:
         """Return the ``MASK:USER:SEG<m>`` command.
 
         Description:
@@ -4095,7 +4095,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._failures = MaskCountFailures(device, f"{self._cmd_syntax}:FAILURES")
         self._hits = MaskCountHits(device, f"{self._cmd_syntax}:HITS")
-        self._seg: Dict[int, MaskCountSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskCountSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskCountSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._state = MaskCountState(device, f"{self._cmd_syntax}:STATE")
@@ -4146,7 +4146,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
         return self._hits
 
     @property
-    def seg(self) -> Dict[int, MaskCountSegItem]:
+    def seg(self) -> dict[int, MaskCountSegItem]:
         """Return the ``MASK:COUNt:SEG<m>`` command tree.
 
         Usage:
@@ -5544,7 +5544,7 @@ class Mask(SCPICmdRead):
         self._margin = MaskMargin(device, f"{self._cmd_syntax}:MARgin")
         self._maskpre = MaskMaskpre(device, f"{self._cmd_syntax}:MASKPRE")
         self._polarity = MaskPolarity(device, f"{self._cmd_syntax}:POLarity")
-        self._seg: Dict[int, MaskSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._source = MaskSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -5868,7 +5868,7 @@ class Mask(SCPICmdRead):
         return self._polarity
 
     @property
-    def seg(self) -> Dict[int, MaskSegItem]:
+    def seg(self) -> dict[int, MaskSegItem]:
         """Return the ``MASK:SEG<m>`` command.
 
         Description:

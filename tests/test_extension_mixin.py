@@ -13,7 +13,7 @@ import warnings
 
 from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, List
+from typing import Any
 from unittest import mock
 
 import pytest
@@ -189,7 +189,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
 
         # noinspection PyShadowingNames
         @Device.add_method
-        def custom_list(self: Device) -> List[str]:
+        def custom_list(self: Device) -> list[str]:
             """Return the model and serial in a list."""
             return [self.model, self.serial]
 

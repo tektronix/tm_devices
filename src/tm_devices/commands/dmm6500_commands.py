@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional
-
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -356,11 +354,11 @@ class DMM6500Commands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPControl] = None) -> None:
+    def __init__(self, device: TSPControl | None = None) -> None:
         self._device = device
         self._beeper = Beeper(device)
         self._buffer = Buffer(device)
-        self._buffer_var: Dict[str, Buffervar] = DefaultDictPassKeyToFactory(
+        self._buffer_var: dict[str, Buffervar] = DefaultDictPassKeyToFactory(
             lambda x: Buffervar(device, str(x))
         )
         self._channel = Channel(device)
@@ -375,15 +373,15 @@ class DMM6500Commands:
         self._gpib = Gpib(device)
         self._lan = Lan(device)
         self._localnode = Localnode(device)
-        self._node: Dict[int, NodeItem] = DefaultDictPassKeyToFactory(
+        self._node: dict[int, NodeItem] = DefaultDictPassKeyToFactory(
             lambda x: NodeItem(device, f"node[{x}]")
         )
         self._scan = Scan(device)
         self._script = Script(device)
-        self._script_var: Dict[str, Scriptvar] = DefaultDictPassKeyToFactory(
+        self._script_var: dict[str, Scriptvar] = DefaultDictPassKeyToFactory(
             lambda x: Scriptvar(device, str(x))
         )
-        self._slot: Dict[int, SlotItem] = DefaultDictPassKeyToFactory(
+        self._slot: dict[int, SlotItem] = DefaultDictPassKeyToFactory(
             lambda x: SlotItem(device, f"slot[{x}]")
         )
         self._smu = Smu(device)
@@ -529,7 +527,7 @@ class DMM6500Commands:
         return self._buffer
 
     @property
-    def buffer_var(self) -> Dict[str, Buffervar]:
+    def buffer_var(self) -> dict[str, Buffervar]:
         """Return the ``bufferVar`` command tree.
 
         Info:
@@ -849,7 +847,7 @@ class DMM6500Commands:
         return self._localnode
 
     @property
-    def node(self) -> Dict[int, NodeItem]:
+    def node(self) -> dict[int, NodeItem]:
         """Return the ``node[N]`` command tree.
 
         Info:
@@ -898,7 +896,7 @@ class DMM6500Commands:
         return self._script
 
     @property
-    def script_var(self) -> Dict[str, Scriptvar]:
+    def script_var(self) -> dict[str, Scriptvar]:
         """Return the ``scriptVar`` command tree.
 
         Info:
@@ -912,7 +910,7 @@ class DMM6500Commands:
         return self._script_var
 
     @property
-    def slot(self) -> Dict[int, SlotItem]:
+    def slot(self) -> dict[int, SlotItem]:
         """Return the ``slot[1]`` command tree.
 
         Sub-properties and sub-methods:
@@ -1382,7 +1380,7 @@ class DMM6500Commands:
             msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def reset(self, system: Optional[str] = None) -> None:
+    def reset(self, system: str | None = None) -> None:
         """Run the ``reset()`` function.
 
         Description:
@@ -1408,7 +1406,7 @@ class DMM6500Commands:
             msg = "No TSPControl object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
-    def waitcomplete(self, group: Optional[str] = None) -> None:
+    def waitcomplete(self, group: str | None = None) -> None:
         """Run the ``waitcomplete()`` function.
 
         Description:

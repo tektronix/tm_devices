@@ -7,7 +7,6 @@ import sys
 
 from collections.abc import Generator
 from pathlib import Path
-from typing import List, Tuple
 from unittest import mock
 
 import pytest
@@ -64,7 +63,7 @@ def mock_gethostbyname(address: str) -> str:
         raise socket.herror from error
 
 
-def mock_gethostbyaddr(address: str) -> Tuple[str, List[str], List[str]]:
+def mock_gethostbyaddr(address: str) -> tuple[str, list[str], list[str]]:
     """Mock the socket.gethostbyaddr function."""
     try:
         is_hostname = validate_address(address)

@@ -46,7 +46,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -804,7 +804,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ampval: Dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
+        self._ampval: dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
         )
         self._ampmode = PowerPowerItemClresponseAmpmode(device, f"{self._cmd_syntax}:AMPMode")
@@ -817,7 +817,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         self._constamplitude = PowerPowerItemClresponseConstamplitude(
             device, f"{self._cmd_syntax}:CONSTAMPlitude"
         )
-        self._freqval: Dict[int, PowerPowerItemClresponseFreqvalItem] = DefaultDictPassKeyToFactory(
+        self._freqval: dict[int, PowerPowerItemClresponseFreqvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseFreqvalItem(device, f"{self._cmd_syntax}:FREQ{x}Val")
         )
         self._genipaddress = PowerPowerItemClresponseGenipaddress(
@@ -843,7 +843,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         )
 
     @property
-    def ampval(self) -> Dict[int, PowerPowerItemClresponseAmpvalItem]:
+    def ampval(self) -> dict[int, PowerPowerItemClresponseAmpvalItem]:
         """Return the ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
 
         Description:
@@ -991,7 +991,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         return self._constamplitude
 
     @property
-    def freqval(self) -> Dict[int, PowerPowerItemClresponseFreqvalItem]:
+    def freqval(self) -> dict[int, PowerPowerItemClresponseFreqvalItem]:
         """Return the ``POWer:POWer<x>:CLRESPONSE:FREQ<x>Val`` command.
 
         Description:
@@ -1444,7 +1444,7 @@ class Power(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._addnew = PowerAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PowerDelete(device, f"{self._cmd_syntax}:DELete")
-        self._power: Dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
+        self._power: dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItem(device, f"{self._cmd_syntax}:POWer{x}")
         )
 
@@ -1491,7 +1491,7 @@ class Power(SCPICmdRead):
         return self._delete
 
     @property
-    def power(self) -> Dict[int, PowerPowerItem]:
+    def power(self) -> dict[int, PowerPowerItem]:
         """Return the ``POWer:POWer<x>`` command tree.
 
         Usage:

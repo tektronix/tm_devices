@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
-from typing import final, Optional, Tuple, TYPE_CHECKING, Union
+from typing import final, TYPE_CHECKING
 
 from dateutil.tz import tzlocal
 
@@ -18,7 +18,7 @@ class ScreenCaptureMixin(ABC):
 
     @property
     @abstractmethod
-    def valid_image_extensions(self) -> Tuple[str, ...]:
+    def valid_image_extensions(self) -> tuple[str, ...]:
         """Return a tuple of valid image extensions for this device.
 
         The extensions will be in the format '.ext', where 'ext' is the lowercase extension,
@@ -31,12 +31,12 @@ class ScreenCaptureMixin(ABC):
     @final
     def save_screenshot(
         self,
-        filename: Optional[Union[str, os.PathLike[str]]] = None,
+        filename: str | os.PathLike[str] | None = None,
         *,
-        colors: Optional[str] = None,
-        view_type: Optional[str] = None,
-        local_folder: Union[str, os.PathLike[str]] = "./",
-        device_folder: Union[str, os.PathLike[str]] = "./",
+        colors: str | None = None,
+        view_type: str | None = None,
+        local_folder: str | os.PathLike[str] = "./",
+        device_folder: str | os.PathLike[str] = "./",
         keep_device_file: bool = False,
     ) -> None:
         """Capture a screenshot from the device and save it locally.
@@ -91,8 +91,8 @@ class ScreenCaptureMixin(ABC):
         self,
         filename: Path,
         *,
-        colors: Optional[str],
-        view_type: Optional[str],
+        colors: str | None,
+        view_type: str | None,
         local_folder: Path,
         device_folder: Path,
         keep_device_file: bool = False,

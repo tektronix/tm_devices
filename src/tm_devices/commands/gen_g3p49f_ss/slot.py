@@ -31,7 +31,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
@@ -280,7 +280,7 @@ class SlotItemInterlock(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @override.setter
-    def override(self, value: Union[str, float]) -> None:
+    def override(self, value: str | float) -> None:
         """Access the ``slot[slot].interlock.override`` attribute.
 
         Description:
@@ -778,7 +778,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pseudocard.setter
-    def pseudocard(self, value: Union[str, float]) -> None:
+    def pseudocard(self, value: str | float) -> None:
         """Access the ``slot[slot].pseudocard`` attribute.
 
         Description:

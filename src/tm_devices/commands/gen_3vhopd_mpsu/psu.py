@@ -72,7 +72,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -402,7 +402,7 @@ class PsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``psu[X].source.protect.enablei`` attribute.
 
         Description:
@@ -467,7 +467,7 @@ class PsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``psu[X].source.protect.enablev`` attribute.
 
         Description:
@@ -535,7 +535,7 @@ class PsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``psu[X].source.protect.leveli`` attribute.
 
         Description:
@@ -606,7 +606,7 @@ class PsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``psu[X].source.protect.levelv`` attribute.
 
         Description:
@@ -792,7 +792,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``psu[X].source.levelv`` attribute.
 
         Description:
@@ -863,7 +863,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``psu[X].source.limiti`` attribute.
 
         Description:
@@ -931,7 +931,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
-    def offmode(self, value: Union[str, float]) -> None:
+    def offmode(self, value: str | float) -> None:
         """Access the ``psu[X].source.offmode`` attribute.
 
         Description:
@@ -996,7 +996,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
-    def output(self, value: Union[str, float]) -> None:
+    def output(self, value: str | float) -> None:
         """Access the ``psu[X].source.output`` attribute.
 
         Description:
@@ -1078,7 +1078,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``psu[X].source.rangev`` attribute.
 
         Description:
@@ -1149,7 +1149,7 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @slewratev.setter
-    def slewratev(self, value: Union[str, float]) -> None:
+    def slewratev(self, value: str | float) -> None:
         """Access the ``psu[X].source.slewratev`` attribute.
 
         Description:
@@ -1232,7 +1232,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.enablei`` attribute.
 
         Description:
@@ -1297,7 +1297,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
-    def enablep(self, value: Union[str, float]) -> None:
+    def enablep(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.enablep`` attribute.
 
         Description:
@@ -1362,7 +1362,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
-    def enabler(self, value: Union[str, float]) -> None:
+    def enabler(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.enabler`` attribute.
 
         Description:
@@ -1427,7 +1427,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.enablev`` attribute.
 
         Description:
@@ -1493,7 +1493,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.leveli`` attribute.
 
         Description:
@@ -1560,7 +1560,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
-    def levelp(self, value: Union[str, float]) -> None:
+    def levelp(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.levelp`` attribute.
 
         Description:
@@ -1627,7 +1627,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
-    def levelr(self, value: Union[str, float]) -> None:
+    def levelr(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.levelr`` attribute.
 
         Description:
@@ -1694,7 +1694,7 @@ class PsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rel.levelv`` attribute.
 
         Description:
@@ -1823,7 +1823,7 @@ class PsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``psu[X].measure.count`` attribute.
 
         Description:
@@ -1984,7 +1984,7 @@ class PsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rate.setter
-    def rate(self, value: Union[str, float]) -> None:
+    def rate(self, value: str | float) -> None:
         """Access the ``psu[X].measure.rate`` attribute.
 
         Description:
@@ -2071,7 +2071,7 @@ class PsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @tempcomp.setter
-    def tempcomp(self, value: Union[str, float]) -> None:
+    def tempcomp(self, value: str | float) -> None:
         """Access the ``psu[X].measure.tempcomp`` attribute.
 
         Description:
@@ -2107,7 +2107,7 @@ class PsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tempcomp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def i(self, reading_buffer: Optional[str] = None) -> str:
+    def i(self, reading_buffer: str | None = None) -> str:
         """Run the ``psu[X].measure.i()`` function.
 
         Description:
@@ -2137,7 +2137,7 @@ class PsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def p(self, reading_buffer: Optional[str] = None) -> str:
+    def p(self, reading_buffer: str | None = None) -> str:
         """Run the ``psu[X].measure.p()`` function.
 
         Description:
@@ -2167,7 +2167,7 @@ class PsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def r(self, reading_buffer: Optional[str] = None) -> str:
+    def r(self, reading_buffer: str | None = None) -> str:
         """Run the ``psu[X].measure.r()`` function.
 
         Description:
@@ -2197,7 +2197,7 @@ class PsuItemMeasure(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def v(self, reading_buffer: Optional[str] = None) -> str:
+    def v(self, reading_buffer: str | None = None) -> str:
         """Run the ``psu[X].measure.v()`` function.
 
         Description:
@@ -2398,7 +2398,7 @@ class PsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def delete(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def delete(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``psu[X].configlist.delete()`` function.
 
         Description:
@@ -2433,9 +2433,7 @@ class PsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def query(
-        self, config_list_name: str, index: int, field_separator: Optional[str] = None
-    ) -> str:
+    def query(self, config_list_name: str, index: int, field_separator: str | None = None) -> str:
         """Run the ``psu[X].configlist.query()`` function.
 
         Description:
@@ -2533,7 +2531,7 @@ class PsuItemConfiglist(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.size()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def store(self, config_list_name: str, index: Optional[int] = None) -> None:
+    def store(self, config_list_name: str, index: int | None = None) -> None:
         """Run the ``psu[X].configlist.store()`` function.
 
         Description:
@@ -2746,7 +2744,7 @@ class PsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overlapped.setter
-    def overlapped(self, value: Union[str, float]) -> None:
+    def overlapped(self, value: str | float) -> None:
         """Access the ``psu[X].overlapped`` attribute.
 
         Description:
@@ -2832,7 +2830,7 @@ class PsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def makebuffer(self, buffer_size: str, *, buffer_name: Optional[str] = None) -> Buffervar:
+    def makebuffer(self, buffer_size: str, *, buffer_name: str | None = None) -> Buffervar:
         """Run the ``psu[X].makebuffer()`` function.
 
         Description:

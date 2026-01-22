@@ -4,8 +4,6 @@ It does this by sourcing 300 V and measuring the resistance. The Simple Loop tri
 is used to make 10 measurements at 100 ms intervals.
 """
 
-from typing import List
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2470
 
@@ -49,8 +47,8 @@ with DeviceManager(verbose=False) as device_manager:
 
     defbuffer1 = smu2470.commands.buffer_var["defbuffer1"]
     num = range(1, int(defbuffer1.n))
-    tmst: List[float] = []
-    res: List[float] = []
+    tmst: list[float] = []
+    res: list[float] = []
     # Parse index and the data into three columns.
     for cnt in num:
         tmst.append(float(defbuffer1.relativetimestamps[cnt]))

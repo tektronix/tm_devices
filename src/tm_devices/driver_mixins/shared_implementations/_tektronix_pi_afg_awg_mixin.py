@@ -1,7 +1,7 @@
 """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
 from abc import ABC, abstractmethod
-from typing import Generic, Tuple
+from typing import Generic
 
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     _SignalGeneratorFunctionsTypeVar,  # pyright: ignore[reportPrivateUsage]
@@ -36,7 +36,7 @@ class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
     # Properties
     ################################################################################################
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x + 1}" for x in range(self.total_channels))
 
@@ -57,7 +57,7 @@ class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _validate_channels(self, channel: str) -> Tuple[str, ...]:
+    def _validate_channels(self, channel: str) -> tuple[str, ...]:
         """Create a list of channels to use on the source based on the desired channel number.
 
         Args:

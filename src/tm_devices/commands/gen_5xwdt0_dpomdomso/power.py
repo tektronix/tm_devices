@@ -235,7 +235,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -4204,7 +4204,7 @@ class PowerReflevelPercent(SCPICmdWrite, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = PowerReflevelPercentHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = PowerReflevelPercentLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[int, PowerReflevelPercentMidItem] = DefaultDictPassKeyToFactory(
+        self._mid: dict[int, PowerReflevelPercentMidItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerReflevelPercentMidItem(device, f"{self._cmd_syntax}:MID{x}")
         )
 
@@ -4261,7 +4261,7 @@ class PowerReflevelPercent(SCPICmdWrite, SCPICmdRead):
         return self._low
 
     @property
-    def mid(self) -> Dict[int, PowerReflevelPercentMidItem]:
+    def mid(self) -> dict[int, PowerReflevelPercentMidItem]:
         """Return the ``POWer:REFLevel:PERCent:MID<x>`` command.
 
         Description:
@@ -4448,7 +4448,7 @@ class PowerReflevelAbsolute(SCPICmdWrite, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = PowerReflevelAbsoluteHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = PowerReflevelAbsoluteLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[int, PowerReflevelAbsoluteMidItem] = DefaultDictPassKeyToFactory(
+        self._mid: dict[int, PowerReflevelAbsoluteMidItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerReflevelAbsoluteMidItem(device, f"{self._cmd_syntax}:MID{x}")
         )
 
@@ -4505,7 +4505,7 @@ class PowerReflevelAbsolute(SCPICmdWrite, SCPICmdRead):
         return self._low
 
     @property
-    def mid(self) -> Dict[int, PowerReflevelAbsoluteMidItem]:
+    def mid(self) -> dict[int, PowerReflevelAbsoluteMidItem]:
         """Return the ``POWer:REFLevel:ABSolute:MID<x>`` command.
 
         Description:
@@ -6999,7 +6999,7 @@ class PowerHarmonicsResults(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._har: Dict[int, PowerHarmonicsResultsHarItem] = DefaultDictPassKeyToFactory(
+        self._har: dict[int, PowerHarmonicsResultsHarItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerHarmonicsResultsHarItem(device, f"{self._cmd_syntax}:HAR{x}")
         )
         self._iec = PowerHarmonicsResultsIec(device, f"{self._cmd_syntax}:IEC")
@@ -7010,7 +7010,7 @@ class PowerHarmonicsResults(SCPICmdRead):
         self._thdr = PowerHarmonicsResultsThdr(device, f"{self._cmd_syntax}:THDR")
 
     @property
-    def har(self) -> Dict[int, PowerHarmonicsResultsHarItem]:
+    def har(self) -> dict[int, PowerHarmonicsResultsHarItem]:
         """Return the ``POWer:HARMonics:RESults:HAR<x>`` command tree.
 
         Usage:

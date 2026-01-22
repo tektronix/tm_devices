@@ -1,7 +1,6 @@
 """A mixin class that contains common methods for checking the TSP device for errors."""
 
 from abc import ABC
-from typing import Tuple
 
 from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
     _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
@@ -17,7 +16,7 @@ class CommonTSPErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
         order to have access to the methods required by this class.
     """
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

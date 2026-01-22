@@ -6,7 +6,7 @@ import socket
 import sys
 
 from pathlib import Path
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -18,8 +18,6 @@ from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 
 if TYPE_CHECKING:
-    from typing import Dict, List
-
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
 
 
@@ -226,7 +224,7 @@ def test_smu(  # noqa: PLR0915
         assert caplog.records[-1].levelname == "WARNING"
 
     buffer = smu.get_buffers("smub.nvbuffer1")
-    expected_buffer: Dict[str, List[Union[float, str]]] = {"smub.nvbuffer1": []}
+    expected_buffer: dict[str, list[float | str]] = {"smub.nvbuffer1": []}
     assert caplog.records[-1].message == "smub.nvbuffer1 was found to be empty"
     assert caplog.records[-1].levelname == "WARNING"
     assert buffer == expected_buffer
