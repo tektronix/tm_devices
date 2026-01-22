@@ -20,7 +20,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -82,7 +82,7 @@ class Scriptvar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorun.setter
-    def autorun(self, value: Union[str, float]) -> None:
+    def autorun(self, value: str | float) -> None:
         """Access the ``scriptVar.autorun`` attribute.
 
         Description:
@@ -151,7 +151,7 @@ class Scriptvar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @name.setter
-    def name(self, value: Union[str, float]) -> None:
+    def name(self, value: str | float) -> None:
         """Access the ``scriptVar.name`` attribute.
 
         Description:
@@ -221,7 +221,7 @@ class Scriptvar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @source.setter
-    def source(self, value: Union[str, float]) -> None:
+    def source(self, value: str | float) -> None:
         """Access the ``scriptVar.source`` attribute.
 
         Description:

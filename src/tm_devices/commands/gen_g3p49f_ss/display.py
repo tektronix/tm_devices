@@ -29,7 +29,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -196,7 +196,7 @@ class Display(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @locallockout.setter
-    def locallockout(self, value: Union[str, float]) -> None:
+    def locallockout(self, value: str | float) -> None:
         """Access the ``display.locallockout`` attribute.
 
         Description:
@@ -265,7 +265,7 @@ class Display(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
-    def screen(self, value: Union[str, float]) -> None:
+    def screen(self, value: str | float) -> None:
         """Access the ``display.screen`` attribute.
 
         Description:

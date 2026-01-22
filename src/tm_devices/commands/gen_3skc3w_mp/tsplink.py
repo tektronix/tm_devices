@@ -31,7 +31,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -109,7 +109,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].mode`` attribute.
 
         Description:
@@ -181,7 +181,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overrun.setter
-    def overrun(self, value: Union[str, float]) -> None:
+    def overrun(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].overrun`` attribute.
 
         Description:
@@ -255,7 +255,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``tsplink.trigger[N].pulsewidth`` attribute.
 
         Description:
@@ -478,7 +478,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @group.setter
-    def group(self, value: Union[str, float]) -> None:
+    def group(self, value: str | float) -> None:
         """Access the ``tsplink.group`` attribute.
 
         Description:
@@ -569,7 +569,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @node.setter
-    def node(self, value: Union[str, float]) -> None:
+    def node(self, value: str | float) -> None:
         """Access the ``tsplink.node`` attribute.
 
         Description:
@@ -632,7 +632,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
-    def state(self, value: Union[str, float]) -> None:
+    def state(self, value: str | float) -> None:
         """Access the ``tsplink.state`` attribute.
 
         Description:
@@ -719,7 +719,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @writeprotect.setter
-    def writeprotect(self, value: Union[str, float]) -> None:
+    def writeprotect(self, value: str | float) -> None:
         """Access the ``tsplink.writeprotect`` attribute.
 
         Description:

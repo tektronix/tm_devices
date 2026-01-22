@@ -6,7 +6,7 @@ import inspect
 import logging
 
 from abc import ABC
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations import CommonTSPErrorCheckMixin
@@ -69,7 +69,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def get_module_commands_psu(self, slot: int) -> Union[MPSU50_2STCommands, SlotItem]:
+    def get_module_commands_psu(self, slot: int) -> MPSU50_2STCommands | SlotItem:
         """Get a power supply unit (PSU) module commands object from the mainframe.
 
         Args:
@@ -84,7 +84,7 @@ class MP5xxx(CommonTSPErrorCheckMixin, TSPControl, Mainframe, ABC):
         """
         return self._get_module_commands_api("PSU", _POWER_SUPPLY_UNIT_MODULES, slot)
 
-    def get_module_commands_smu(self, slot: int) -> Union[MSMU60_2Commands, SlotItem]:
+    def get_module_commands_smu(self, slot: int) -> MSMU60_2Commands | SlotItem:
         """Get a Source Measure Unit (SMU) module commands object from the mainframe.
 
         Args:

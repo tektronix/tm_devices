@@ -28,7 +28,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -107,7 +107,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -179,7 +179,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -250,7 +250,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overrun.setter
-    def overrun(self, value: Union[str, float]) -> None:
+    def overrun(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].overrun`` attribute.
 
         Description:
@@ -321,7 +321,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @passthrough.setter
-    def passthrough(self, value: Union[str, float]) -> None:
+    def passthrough(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].passthrough`` attribute.
 
         Description:
@@ -392,7 +392,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].stimulus`` attribute.
 
         Description:
@@ -636,7 +636,7 @@ class TriggerDetectorItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.detector[N].stimulus`` attribute.
 
         Description:

@@ -10,7 +10,6 @@ from typing import (
     Final,
     Literal,
     Optional,
-    Union,
 )
 
 from dc_schema import SchemaAnnotation  # pyright: ignore[reportMissingTypeStubs]
@@ -155,7 +154,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``[5, 6, 7, 8]``.
     """
     flow_control: Annotated[
-        Optional[Union[FlowControl, Literal["none", "xon_xoff", "dtr_dsr", "rts_cts"]]],
+        Optional[FlowControl | Literal["none", "xon_xoff", "dtr_dsr", "rts_cts"]],
         SchemaAnnotation(
             description=(
                 "The control for pausing/resuming data streaming between slower devices\n"
@@ -168,7 +167,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
     """
     parity: Annotated[
-        Optional[Union[Parity, Literal["none", "odd", "even", "mark", "space"]]],
+        Optional[Parity | Literal["none", "odd", "even", "mark", "space"]],
         SchemaAnnotation(
             description=(
                 "Define if and where a checksum bit should be added to each data character\n"
@@ -184,7 +183,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
     """
     stop_bits: Annotated[
-        Optional[Union[StopBits, Literal["one", "one_and_a_half", "two"]]],
+        Optional[StopBits | Literal["one", "one_and_a_half", "two"]],
         SchemaAnnotation(
             description=(
                 "The number of bits to use to indicate the end of a frame/character\n"
@@ -200,7 +199,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     """
     end_input: Annotated[
         Optional[
-            Union[Termination, Literal["termination_break", "termination_char", "last_bit", "none"]]
+            Termination | Literal["termination_break", "termination_char", "last_bit", "none"]
         ],
         SchemaAnnotation(
             description=(
@@ -1139,7 +1138,7 @@ This lists the natively supported USBTMC connections of `tm_devices`, use
 to register USBTMC connection information for devices not listed here.
 """
 
-LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
+LOAD_IMPEDANCE_LOOKUP: Final[Mapping[float | str, LoadImpedanceAFG]] = MappingProxyType(
     {
         9.97e37: LoadImpedanceAFG.HIGHZ,
         1.0e6: LoadImpedanceAFG.HIGHZ,

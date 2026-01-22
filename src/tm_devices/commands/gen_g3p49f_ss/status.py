@@ -69,7 +69,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -150,7 +150,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system5.enable`` attribute.
 
         Description:
@@ -245,7 +245,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system5.ntr`` attribute.
 
         Description:
@@ -310,7 +310,7 @@ class StatusSystem5(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system5.ptr`` attribute.
 
         Description:
@@ -417,7 +417,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system4.enable`` attribute.
 
         Description:
@@ -512,7 +512,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system4.ntr`` attribute.
 
         Description:
@@ -577,7 +577,7 @@ class StatusSystem4(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system4.ptr`` attribute.
 
         Description:
@@ -684,7 +684,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system3.enable`` attribute.
 
         Description:
@@ -779,7 +779,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system3.ntr`` attribute.
 
         Description:
@@ -844,7 +844,7 @@ class StatusSystem3(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system3.ptr`` attribute.
 
         Description:
@@ -951,7 +951,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system2.enable`` attribute.
 
         Description:
@@ -1046,7 +1046,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system2.ntr`` attribute.
 
         Description:
@@ -1111,7 +1111,7 @@ class StatusSystem2(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system2.ptr`` attribute.
 
         Description:
@@ -1218,7 +1218,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.system.enable`` attribute.
 
         Description:
@@ -1313,7 +1313,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.system.ntr`` attribute.
 
         Description:
@@ -1378,7 +1378,7 @@ class StatusSystem(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.system.ptr`` attribute.
 
         Description:
@@ -1484,7 +1484,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.standard.enable`` attribute.
 
         Description:
@@ -1579,7 +1579,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.standard.ntr`` attribute.
 
         Description:
@@ -1644,7 +1644,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.standard.ptr`` attribute.
 
         Description:
@@ -1749,7 +1749,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.enable`` attribute.
 
         Description:
@@ -1842,7 +1842,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.ntr`` attribute.
 
         Description:
@@ -1907,7 +1907,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.ptr`` attribute.
 
         Description:
@@ -1985,7 +1985,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @condition.setter
-    def condition(self, value: Union[str, float]) -> None:
+    def condition(self, value: str | float) -> None:
         """Access the ``status.operation.user.condition`` attribute.
 
         Description:
@@ -2051,7 +2051,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.user.enable`` attribute.
 
         Description:
@@ -2144,7 +2144,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.user.ntr`` attribute.
 
         Description:
@@ -2209,7 +2209,7 @@ class StatusOperationUser(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.user.ptr`` attribute.
 
         Description:
@@ -2320,7 +2320,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.enable`` attribute.
 
         Description:
@@ -2414,7 +2414,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.ntr`` attribute.
 
         Description:
@@ -2479,7 +2479,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.ptr`` attribute.
 
         Description:
@@ -2597,7 +2597,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
@@ -2690,7 +2690,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
@@ -2755,7 +2755,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:
@@ -2895,7 +2895,7 @@ class Status(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @node_enable.setter
-    def node_enable(self, value: Union[str, float]) -> None:
+    def node_enable(self, value: str | float) -> None:
         """Access the ``status.node_enable`` attribute.
 
         Description:
@@ -3014,7 +3014,7 @@ class Status(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @request_enable.setter
-    def request_enable(self, value: Union[str, float]) -> None:
+    def request_enable(self, value: str | float) -> None:
         """Access the ``status.request_enable`` attribute.
 
         Description:

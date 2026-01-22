@@ -3,7 +3,6 @@
 import re
 
 from decimal import Decimal, InvalidOperation
-from typing import Union
 
 
 def raise_error(unique_identifier: str, message: str, *, condense_printout: bool = True) -> None:
@@ -44,8 +43,8 @@ def raise_failure(unique_identifier: str, message: str, *, condense_printout: bo
 
 def verify_values(  # noqa: PLR0913
     unique_identifier: str,
-    expected_value: Union[str, float],
-    actual_value: Union[str, float],
+    expected_value: str | float,
+    actual_value: str | float,
     *,
     tolerance: float = 0,
     percentage: bool = False,

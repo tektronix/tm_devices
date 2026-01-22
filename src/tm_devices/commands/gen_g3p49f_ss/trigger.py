@@ -30,7 +30,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -111,7 +111,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -183,7 +183,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -254,7 +254,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delaylist.setter
-    def delaylist(self, value: Union[str, float]) -> None:
+    def delaylist(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delaylist`` attribute.
 
         Description:
@@ -356,7 +356,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @passthrough.setter
-    def passthrough(self, value: Union[str, float]) -> None:
+    def passthrough(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].passthrough`` attribute.
 
         Description:
@@ -427,7 +427,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].stimulus`` attribute.
 
         Description:
@@ -570,7 +570,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         self.EVENT_ID = self.EVENT_ID.replace(
             "[N]", f"[{self._cmd_syntax.rsplit('[', maxsplit=1)[-1].split(']', maxsplit=1)[0]}]"
         )
-        self._stimulus: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -612,7 +612,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @orenable.setter
-    def orenable(self, value: Union[str, float]) -> None:
+    def orenable(self, value: str | float) -> None:
         """Access the ``trigger.blender[N].orenable`` attribute.
 
         Description:
@@ -681,7 +681,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, str | float]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:

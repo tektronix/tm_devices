@@ -26,7 +26,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -384,7 +384,7 @@ the instrument."""  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @activebuffer.setter
-    def activebuffer(self, value: Union[str, float]) -> None:
+    def activebuffer(self, value: str | float) -> None:
         """Access the ``display.activebuffer`` attribute.
 
         Description:
@@ -461,7 +461,7 @@ the instrument."""  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lightstate.setter
-    def lightstate(self, value: Union[str, float]) -> None:
+    def lightstate(self, value: str | float) -> None:
         """Access the ``display.lightstate`` attribute.
 
         Description:
@@ -530,7 +530,7 @@ the instrument."""  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @readingformat.setter
-    def readingformat(self, value: Union[str, float]) -> None:
+    def readingformat(self, value: str | float) -> None:
         """Access the ``display.readingformat`` attribute.
 
         Description:

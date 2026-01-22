@@ -15,7 +15,6 @@ from typing import (
     cast,
     final,
     TypeVar,
-    Union,
 )
 
 import pyvisa as visa
@@ -47,7 +46,7 @@ from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
-T = TypeVar("T", bound=Sequence[Union[int, float]])
+T = TypeVar("T", bound=Sequence[int | float])
 
 
 class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
@@ -258,12 +257,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         self,
         number_of_polls: int,
         query: str,
-        wanted_val: Union[float, str],
+        wanted_val: float | str,
         sleep_time: float = 0.4,
         tolerance: float = 0,
         percentage: bool = False,
         invert_range: bool = False,
-        invalid_values: Union[list[Union[float, str]], None] = None,
+        invalid_values: list[float | str] | None = None,
     ) -> None:
         """Poll the query until the wanted value appears.
 
@@ -386,7 +385,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         verbose: bool = True,
         datatype: util.BINARY_DATATYPES = "f",
         is_big_endian: bool = False,
-        container: Union[type[T], Callable[[Iterable[Any]], T]] = list,
+        container: type[T] | Callable[[Iterable[Any]], T] = list,
         delay: float | None = None,
         header_fmt: util.BINARY_HEADERS = "ieee",
         expect_termination: bool = True,
@@ -503,7 +502,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def query_less_than(
         self,
         query: str,
-        value: Union[float, str],
+        value: float | str,
         tolerance: float = 0,
         percentage: bool = False,
         allow_equal: bool = False,
@@ -600,7 +599,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def query_response(
         self,
         query: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
@@ -691,13 +690,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def set_and_check(  # noqa: PLR0913
         self,
         command: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Union[str, float] | None = None,
+        expected_value: str | float | None = None,
         opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
@@ -741,13 +740,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     def set_if_needed(  # noqa: PLR0913
         self,
         command: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Union[str, float] | None = None,
+        expected_value: str | float | None = None,
         opc: bool = False,
         allow_empty: bool = False,
         verify_value: bool = False,

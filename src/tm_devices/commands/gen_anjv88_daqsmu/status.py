@@ -29,7 +29,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -94,7 +94,7 @@ class StatusStandard(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.standard.enable`` attribute.
 
         Description:
@@ -230,7 +230,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.enable`` attribute.
 
         Description:
@@ -432,7 +432,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.enable`` attribute.
 
         Description:
@@ -693,7 +693,7 @@ class Status(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @request_enable.setter
-    def request_enable(self, value: Union[str, float]) -> None:
+    def request_enable(self, value: str | float) -> None:
         """Access the ``status.request_enable`` attribute.
 
         Description:

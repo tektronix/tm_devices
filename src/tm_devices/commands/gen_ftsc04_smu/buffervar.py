@@ -35,7 +35,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
@@ -79,47 +79,47 @@ class Buffervar(BaseTSPCmd):
         self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bufferVar"
     ) -> None:
         super().__init__(device, cmd_syntax)
-        self._measurefunctions: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._measurefunctions: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.measurefunctions[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.measurefunctions[{{key}}])",
             device=self._device,
         )
-        self._measureranges: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._measureranges: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.measureranges[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.measureranges[{{key}}])",
             device=self._device,
         )
-        self._readings: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._readings: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.readings[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.readings[{{key}}])",
             device=self._device,
         )
-        self._sourcefunctions: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._sourcefunctions: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.sourcefunctions[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.sourcefunctions[{{key}}])",
             device=self._device,
         )
-        self._sourceoutputstates: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._sourceoutputstates: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.sourceoutputstates[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.sourceoutputstates[{{key}}])",
             device=self._device,
         )
-        self._sourceranges: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._sourceranges: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.sourceranges[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.sourceranges[{{key}}])",
             device=self._device,
         )
-        self._sourcevalues: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._sourcevalues: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.sourcevalues[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.sourcevalues[{{key}}])",
             device=self._device,
         )
-        self._statuses: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._statuses: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.statuses[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.statuses[{{key}}])",
             device=self._device,
         )
-        self._timestamps: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._timestamps: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.timestamps[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.timestamps[{{key}}])",
             device=self._device,
@@ -161,7 +161,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @appendmode.setter
-    def appendmode(self, value: Union[str, float]) -> None:
+    def appendmode(self, value: str | float) -> None:
         """Access the ``bufferVar.appendmode`` attribute.
 
         Description:
@@ -267,7 +267,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @cachemode.setter
-    def cachemode(self, value: Union[str, float]) -> None:
+    def cachemode(self, value: str | float) -> None:
         """Access the ``bufferVar.cachemode`` attribute.
 
         Description:
@@ -373,7 +373,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @collectsourcevalues.setter
-    def collectsourcevalues(self, value: Union[str, float]) -> None:
+    def collectsourcevalues(self, value: str | float) -> None:
         """Access the ``bufferVar.collectsourcevalues`` attribute.
 
         Description:
@@ -448,7 +448,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @collecttimestamps.setter
-    def collecttimestamps(self, value: Union[str, float]) -> None:
+    def collecttimestamps(self, value: str | float) -> None:
         """Access the ``bufferVar.collecttimestamps`` attribute.
 
         Description:
@@ -522,7 +522,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fillcount.setter
-    def fillcount(self, value: Union[str, float]) -> None:
+    def fillcount(self, value: str | float) -> None:
         """Access the ``bufferVar.fillcount`` attribute.
 
         Description:
@@ -594,7 +594,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fillmode.setter
-    def fillmode(self, value: Union[str, float]) -> None:
+    def fillmode(self, value: str | float) -> None:
         """Access the ``bufferVar.fillmode`` attribute.
 
         Description:
@@ -631,7 +631,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def measurefunctions(self) -> dict[int, Union[str, float]]:
+    def measurefunctions(self) -> dict[int, str | float]:
         """Access the ``bufferVar.measurefunctions[N]`` attribute.
 
         Description:
@@ -658,7 +658,7 @@ class Buffervar(BaseTSPCmd):
         return self._measurefunctions
 
     @property
-    def measureranges(self) -> dict[int, Union[str, float]]:
+    def measureranges(self) -> dict[int, str | float]:
         """Access the ``bufferVar.measureranges[N]`` attribute.
 
         Description:
@@ -717,7 +717,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def readings(self) -> dict[int, Union[str, float]]:
+    def readings(self) -> dict[int, str | float]:
         """Access the ``bufferVar.readings[N]`` attribute.
 
         Description:
@@ -744,7 +744,7 @@ class Buffervar(BaseTSPCmd):
         return self._readings
 
     @property
-    def sourcefunctions(self) -> dict[int, Union[str, float]]:
+    def sourcefunctions(self) -> dict[int, str | float]:
         """Access the ``bufferVar.sourcefunctions[N]`` attribute.
 
         Description:
@@ -771,7 +771,7 @@ class Buffervar(BaseTSPCmd):
         return self._sourcefunctions
 
     @property
-    def sourceoutputstates(self) -> dict[int, Union[str, float]]:
+    def sourceoutputstates(self) -> dict[int, str | float]:
         """Access the ``bufferVar.sourceoutputstates[N]`` attribute.
 
         Description:
@@ -798,7 +798,7 @@ class Buffervar(BaseTSPCmd):
         return self._sourceoutputstates
 
     @property
-    def sourceranges(self) -> dict[int, Union[str, float]]:
+    def sourceranges(self) -> dict[int, str | float]:
         """Access the ``bufferVar.sourceranges[N]`` attribute.
 
         Description:
@@ -825,7 +825,7 @@ class Buffervar(BaseTSPCmd):
         return self._sourceranges
 
     @property
-    def sourcevalues(self) -> dict[int, Union[str, float]]:
+    def sourcevalues(self) -> dict[int, str | float]:
         """Access the ``bufferVar.sourcevalues[N]`` attribute.
 
         Description:
@@ -852,7 +852,7 @@ class Buffervar(BaseTSPCmd):
         return self._sourcevalues
 
     @property
-    def statuses(self) -> dict[int, Union[str, float]]:
+    def statuses(self) -> dict[int, str | float]:
         """Access the ``bufferVar.statuses[N]`` attribute.
 
         Description:
@@ -916,7 +916,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @timestampresolution.setter
-    def timestampresolution(self, value: Union[str, float]) -> None:
+    def timestampresolution(self, value: str | float) -> None:
         """Access the ``bufferVar.timestampresolution`` attribute.
 
         Description:
@@ -956,7 +956,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def timestamps(self) -> dict[int, Union[str, float]]:
+    def timestamps(self) -> dict[int, str | float]:
         """Access the ``bufferVar.timestamps[N]`` attribute.
 
         Description:

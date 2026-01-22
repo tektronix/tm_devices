@@ -43,7 +43,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -92,7 +92,7 @@ class ScanTriggerSequence(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.trigger.sequence.stimulus`` attribute.
 
         Description:
@@ -211,7 +211,7 @@ class ScanTriggerMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.trigger.measure.stimulus`` attribute.
 
         Description:
@@ -330,7 +330,7 @@ class ScanTriggerChannel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.trigger.channel.stimulus`` attribute.
 
         Description:
@@ -449,7 +449,7 @@ class ScanTriggerArm(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``scan.trigger.arm.stimulus`` attribute.
 
         Description:
@@ -672,7 +672,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @bypass.setter
-    def bypass(self, value: Union[str, float]) -> None:
+    def bypass(self, value: str | float) -> None:
         """Access the ``scan.bypass`` attribute.
 
         Description:
@@ -740,7 +740,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @measurecount.setter
-    def measurecount(self, value: Union[str, float]) -> None:
+    def measurecount(self, value: str | float) -> None:
         """Access the ``scan.measurecount`` attribute.
 
         Description:
@@ -807,7 +807,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``scan.mode`` attribute.
 
         Description:
@@ -870,7 +870,7 @@ class Scan(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @scancount.setter
-    def scancount(self, value: Union[str, float]) -> None:
+    def scancount(self, value: str | float) -> None:
         """Access the ``scan.scancount`` attribute.
 
         Description:

@@ -13,7 +13,7 @@ import socket
 import warnings
 
 from types import FrameType, MappingProxyType, TracebackType
-from typing import cast, TYPE_CHECKING, Union
+from typing import cast, TYPE_CHECKING
 
 from typing_extensions import TypeVar
 
@@ -836,7 +836,7 @@ class DeviceManager(metaclass=Singleton):
 
         return found_devices
 
-    def get_afg(self, number_or_alias: Union[int, str]) -> AFGAlias:
+    def get_afg(self, number_or_alias: int | str) -> AFGAlias:
         """Get the Arbitrary Function Generator Python driver for the given AFG number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -857,7 +857,7 @@ class DeviceManager(metaclass=Singleton):
             "AFGAlias", self.get_device(device_type=DeviceTypes.AFG.value, alias=number_or_alias)
         )
 
-    def get_awg(self, number_or_alias: Union[int, str]) -> AWGAlias:
+    def get_awg(self, number_or_alias: int | str) -> AWGAlias:
         """Get the Arbitrary Waveform Generator Python driver for the given AWG number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -878,7 +878,7 @@ class DeviceManager(metaclass=Singleton):
             "AWGAlias", self.get_device(device_type=DeviceTypes.AWG.value, alias=number_or_alias)
         )
 
-    def get_daq(self, number_or_alias: Union[int, str]) -> DataAcquisitionSystemAlias:
+    def get_daq(self, number_or_alias: int | str) -> DataAcquisitionSystemAlias:
         """Get the Data Acquisition System Python driver for the given DAQ number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -900,7 +900,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.DAQ.value, alias=number_or_alias),
         )
 
-    def get_dmm(self, number_or_alias: Union[int, str]) -> DigitalMultimeterAlias:
+    def get_dmm(self, number_or_alias: int | str) -> DigitalMultimeterAlias:
         """Get the Digital Multimeter Python driver for the given DMM number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -926,7 +926,7 @@ class DeviceManager(metaclass=Singleton):
         self,
         *,
         device_type: str | None = None,
-        device_number: Union[int, str] | None = None,
+        device_number: int | str | None = None,
         alias: str | None = None,
     ) -> Device:
         """Get the driver for the given device.
@@ -970,7 +970,7 @@ class DeviceManager(metaclass=Singleton):
 
         return device
 
-    def get_mf(self, number_or_alias: Union[int, str]) -> MainframeAlias:
+    def get_mf(self, number_or_alias: int | str) -> MainframeAlias:
         """Get the Mainframe driver for the given device number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -992,7 +992,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.MF.value, alias=number_or_alias),
         )
 
-    def get_mt(self, number_or_alias: Union[int, str]) -> MarginTesterAlias:
+    def get_mt(self, number_or_alias: int | str) -> MarginTesterAlias:
         """Get the Margin Tester Python driver for the given Margin Tester number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -1014,7 +1014,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.MT.value, alias=number_or_alias),
         )
 
-    def get_psu(self, number_or_alias: Union[int, str]) -> PowerSupplyUnitAlias:
+    def get_psu(self, number_or_alias: int | str) -> PowerSupplyUnitAlias:
         """Get the Power Supply Unit Python driver for the given PSU number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -1036,7 +1036,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.PSU.value, alias=number_or_alias),
         )
 
-    def get_scope(self, number_or_alias: Union[int, str]) -> ScopeAlias:
+    def get_scope(self, number_or_alias: int | str) -> ScopeAlias:
         """Get the scope driver for the given scope number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -1058,7 +1058,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.SCOPE.value, alias=number_or_alias),
         )
 
-    def get_smu(self, number_or_alias: Union[int, str]) -> SourceMeasureUnitAlias:
+    def get_smu(self, number_or_alias: int | str) -> SourceMeasureUnitAlias:
         """Get the Source Measure Unit Python driver for the given SMU number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -1080,7 +1080,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.SMU.value, alias=number_or_alias),
         )
 
-    def get_ss(self, number_or_alias: Union[int, str]) -> SystemsSwitchAlias:
+    def get_ss(self, number_or_alias: int | str) -> SystemsSwitchAlias:
         """Get the Systems Switch Python driver for the given Systems Switch number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
@@ -1102,7 +1102,7 @@ class DeviceManager(metaclass=Singleton):
             self.get_device(device_type=DeviceTypes.SS.value, alias=number_or_alias),
         )
 
-    def load_config_file(self, config_file_path: Union[str, os.PathLike[str]]) -> None:
+    def load_config_file(self, config_file_path: str | os.PathLike[str]) -> None:
         """Load in the config file located at the given path.
 
         This method will update the current configuration options with any newly defined options and
@@ -1162,7 +1162,7 @@ class DeviceManager(metaclass=Singleton):
         self,
         *,
         device_type: str | None = None,
-        device_number: Union[int, str] | None = None,
+        device_number: int | str | None = None,
         alias: str | None = None,
     ) -> None:
         """Remove a device from the DeviceManager.
@@ -1191,7 +1191,7 @@ class DeviceManager(metaclass=Singleton):
 
     def write_current_configuration_to_config_file(
         self,
-        config_file_path: Union[str, os.PathLike[str]] | None = None,
+        config_file_path: str | os.PathLike[str] | None = None,
     ) -> None:
         """Write a config file located at the current working directory (or custom path).
 
@@ -1259,7 +1259,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type = ConnectionTypes.GPIB.value
 
         # Device Manager uses all caps for key mappings to device drivers and aliases
-        config_dict: dict[str, Union[str, int, SerialConfig] | None] = {
+        config_dict: dict[str, str | int | SerialConfig | None] = {
             "device_type": device_type.upper(),
             "address": address.upper(),
         }

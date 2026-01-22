@@ -22,7 +22,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -81,7 +81,7 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
-    def state(self, value: Union[str, float]) -> None:
+    def state(self, value: str | float) -> None:
         """Access the ``tsplink.line[N].state`` attribute.
 
         Description:
@@ -216,7 +216,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @group.setter
-    def group(self, value: Union[str, float]) -> None:
+    def group(self, value: str | float) -> None:
         """Access the ``tsplink.group`` attribute.
 
         Description:
@@ -320,7 +320,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @node.setter
-    def node(self, value: Union[str, float]) -> None:
+    def node(self, value: str | float) -> None:
         """Access the ``tsplink.node`` attribute.
 
         Description:

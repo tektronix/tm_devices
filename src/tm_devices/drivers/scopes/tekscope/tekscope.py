@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, cast, Literal, TYPE_CHECKING, Union
+from typing import Any, cast, Literal, TYPE_CHECKING
 
 import pyvisa as visa
 
@@ -198,16 +198,16 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     @cached_property
     def commands(
         self,
-    ) -> Union[
-        LPD6Commands,
-        MSO2Commands,
-        MSO4Commands,
-        MSO5Commands,
-        MSO5BCommands,
-        MSO5LPCommands,
-        MSO6Commands,
-        MSO6BCommands,
-    ]:
+    ) -> (
+        LPD6Commands
+        | MSO2Commands
+        | MSO4Commands
+        | MSO5Commands
+        | MSO5BCommands
+        | MSO5LPCommands
+        | MSO6Commands
+        | MSO6BCommands
+    ):
         """Return the device commands."""
         return super().commands  # pragma: no cover
 
@@ -330,7 +330,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self,
         channel_num: int,
         wfm_type: str = "TimeDomain",
-        output_csv_file: Union[str, os.PathLike[str]] | None = None,
+        output_csv_file: str | os.PathLike[str] | None = None,
     ) -> list[Any]:
         """Perform a curve query on a specific channel.
 
@@ -391,7 +391,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self.set_and_check(":DATA:ENC", "ASCII")
         wfm_str = self.query(":CURVE?")
         frames = wfm_str.splitlines()[0].split(";")
-        wfm_data: list[Union[list[int], list[float]]] = []
+        wfm_data: list[list[int] | list[float]] = []
         if wfm_type == "TimeDomain":
             for frame in frames:
                 wfm_data.append([int(b) for b in frame.split(",")])  # noqa: PERF401
@@ -408,7 +408,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
 
         return wfm_data  # return list of frames
 
-    def recall_reference(self, reference_path: str, ref_number: Union[int, str]) -> None:
+    def recall_reference(self, reference_path: str, ref_number: int | str) -> None:
         """Recall a reference waveform file.
 
         Args:

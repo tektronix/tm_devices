@@ -19,7 +19,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -101,7 +101,7 @@ class Eventlog(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``eventlog.enable`` attribute.
 
         Description:
@@ -171,7 +171,7 @@ class Eventlog(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overwritemethod.setter
-    def overwritemethod(self, value: Union[str, float]) -> None:
+    def overwritemethod(self, value: str | float) -> None:
         """Access the ``eventlog.overwritemethod`` attribute.
 
         Description:

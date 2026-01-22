@@ -104,7 +104,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -550,7 +550,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
-    def autodelay(self, value: Union[str, float]) -> None:
+    def autodelay(self, value: str | float) -> None:
         """Access the ``smu[X].source.autodelay`` attribute.
 
         Description:
@@ -620,7 +620,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``smu[X].source.autorangei`` attribute.
 
         Description:
@@ -687,7 +687,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``smu[X].source.autorangev`` attribute.
 
         Description:
@@ -787,7 +787,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``smu[X].source.delay`` attribute.
 
         Description:
@@ -858,7 +858,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``smu[X].source.func`` attribute.
 
         Description:
@@ -926,7 +926,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``smu[X].source.leveli`` attribute.
 
         Description:
@@ -991,7 +991,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``smu[X].source.levelv`` attribute.
 
         Description:
@@ -1057,7 +1057,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``smu[X].source.limiti`` attribute.
 
         Description:
@@ -1124,7 +1124,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
-    def limitv(self, value: Union[str, float]) -> None:
+    def limitv(self, value: str | float) -> None:
         """Access the ``smu[X].source.limitv`` attribute.
 
         Description:
@@ -1190,7 +1190,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitni.setter
-    def limitni(self, value: Union[str, float]) -> None:
+    def limitni(self, value: str | float) -> None:
         """Access the ``smu[X].source.limitni`` attribute.
 
         Description:
@@ -1255,7 +1255,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitnv.setter
-    def limitnv(self, value: Union[str, float]) -> None:
+    def limitnv(self, value: str | float) -> None:
         """Access the ``smu[X].source.limitnv`` attribute.
 
         Description:
@@ -1320,7 +1320,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitpi.setter
-    def limitpi(self, value: Union[str, float]) -> None:
+    def limitpi(self, value: str | float) -> None:
         """Access the ``smu[X].source.limitpi`` attribute.
 
         Description:
@@ -1385,7 +1385,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitpv.setter
-    def limitpv(self, value: Union[str, float]) -> None:
+    def limitpv(self, value: str | float) -> None:
         """Access the ``smu[X].source.limitpv`` attribute.
 
         Description:
@@ -1451,7 +1451,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``smu[X].source.lowrangei`` attribute.
 
         Description:
@@ -1518,7 +1518,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``smu[X].source.lowrangev`` attribute.
 
         Description:
@@ -1588,7 +1588,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offfunc.setter
-    def offfunc(self, value: Union[str, float]) -> None:
+    def offfunc(self, value: str | float) -> None:
         """Access the ``smu[X].source.offfunc`` attribute.
 
         Description:
@@ -1658,7 +1658,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimiti.setter
-    def offlimiti(self, value: Union[str, float]) -> None:
+    def offlimiti(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimiti`` attribute.
 
         Description:
@@ -1725,7 +1725,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitv.setter
-    def offlimitv(self, value: Union[str, float]) -> None:
+    def offlimitv(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimitv`` attribute.
 
         Description:
@@ -1792,7 +1792,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitni.setter
-    def offlimitni(self, value: Union[str, float]) -> None:
+    def offlimitni(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimitni`` attribute.
 
         Description:
@@ -1859,7 +1859,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitnv.setter
-    def offlimitnv(self, value: Union[str, float]) -> None:
+    def offlimitnv(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimitnv`` attribute.
 
         Description:
@@ -1926,7 +1926,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitpi.setter
-    def offlimitpi(self, value: Union[str, float]) -> None:
+    def offlimitpi(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimitpi`` attribute.
 
         Description:
@@ -1993,7 +1993,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitpv.setter
-    def offlimitpv(self, value: Union[str, float]) -> None:
+    def offlimitpv(self, value: str | float) -> None:
         """Access the ``smu[X].source.offlimitpv`` attribute.
 
         Description:
@@ -2062,7 +2062,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
-    def offmode(self, value: Union[str, float]) -> None:
+    def offmode(self, value: str | float) -> None:
         """Access the ``smu[X].source.offmode`` attribute.
 
         Description:
@@ -2130,7 +2130,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
-    def output(self, value: Union[str, float]) -> None:
+    def output(self, value: str | float) -> None:
         """Access the ``smu[X].source.output`` attribute.
 
         Description:
@@ -2196,7 +2196,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
-    def rangei(self, value: Union[str, float]) -> None:
+    def rangei(self, value: str | float) -> None:
         """Access the ``smu[X].source.rangei`` attribute.
 
         Description:
@@ -2263,7 +2263,7 @@ class SmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``smu[X].source.rangev`` attribute.
 
         Description:
@@ -2344,7 +2344,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.enablei`` attribute.
 
         Description:
@@ -2409,7 +2409,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
-    def enablep(self, value: Union[str, float]) -> None:
+    def enablep(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.enablep`` attribute.
 
         Description:
@@ -2474,7 +2474,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
-    def enabler(self, value: Union[str, float]) -> None:
+    def enabler(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.enabler`` attribute.
 
         Description:
@@ -2539,7 +2539,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.enablev`` attribute.
 
         Description:
@@ -2605,7 +2605,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.leveli`` attribute.
 
         Description:
@@ -2672,7 +2672,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
-    def levelp(self, value: Union[str, float]) -> None:
+    def levelp(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.levelp`` attribute.
 
         Description:
@@ -2739,7 +2739,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
-    def levelr(self, value: Union[str, float]) -> None:
+    def levelr(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.levelr`` attribute.
 
         Description:
@@ -2806,7 +2806,7 @@ class SmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``smu[X].measure.rel.levelv`` attribute.
 
         Description:
@@ -2910,7 +2910,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
-    def aperture(self, value: Union[str, float]) -> None:
+    def aperture(self, value: str | float) -> None:
         """Access the ``smu[X].measure.aperture`` attribute.
 
         Description:
@@ -2981,7 +2981,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
-    def autodelay(self, value: Union[str, float]) -> None:
+    def autodelay(self, value: str | float) -> None:
         """Access the ``smu[X].measure.autodelay`` attribute.
 
         Description:
@@ -3050,7 +3050,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``smu[X].measure.autorangei`` attribute.
 
         Description:
@@ -3117,7 +3117,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``smu[X].measure.autorangev`` attribute.
 
         Description:
@@ -3187,7 +3187,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``smu[X].measure.count`` attribute.
 
         Description:
@@ -3259,7 +3259,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``smu[X].measure.delay`` attribute.
 
         Description:
@@ -3330,7 +3330,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
-    def interval(self, value: Union[str, float]) -> None:
+    def interval(self, value: str | float) -> None:
         """Access the ``smu[X].measure.interval`` attribute.
 
         Description:
@@ -3399,7 +3399,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``smu[X].measure.lowrangei`` attribute.
 
         Description:
@@ -3466,7 +3466,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``smu[X].measure.lowrangev`` attribute.
 
         Description:
@@ -3536,7 +3536,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
-    def nplc(self, value: Union[str, float]) -> None:
+    def nplc(self, value: str | float) -> None:
         """Access the ``smu[X].measure.nplc`` attribute.
 
         Description:
@@ -3682,7 +3682,7 @@ class SmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @tempcomp.setter
-    def tempcomp(self, value: Union[str, float]) -> None:
+    def tempcomp(self, value: str | float) -> None:
         """Access the ``smu[X].measure.tempcomp`` attribute.
 
         Description:
@@ -4058,7 +4058,7 @@ class SmuItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @speed.setter
-    def speed(self, value: Union[str, float]) -> None:
+    def speed(self, value: str | float) -> None:
         """Access the ``smu[X].contact.speed`` attribute.
 
         Description:
@@ -4129,7 +4129,7 @@ class SmuItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @threshold.setter
-    def threshold(self, value: Union[str, float]) -> None:
+    def threshold(self, value: str | float) -> None:
         """Access the ``smu[X].contact.threshold`` attribute.
 
         Description:
@@ -4750,7 +4750,7 @@ class SmuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overlapped.setter
-    def overlapped(self, value: Union[str, float]) -> None:
+    def overlapped(self, value: str | float) -> None:
         """Access the ``smu[X].overlapped`` attribute.
 
         Description:
@@ -4819,7 +4819,7 @@ class SmuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @sense.setter
-    def sense(self, value: Union[str, float]) -> None:
+    def sense(self, value: str | float) -> None:
         """Access the ``smu[X].sense`` attribute.
 
         Description:

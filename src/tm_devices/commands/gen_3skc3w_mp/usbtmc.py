@@ -14,7 +14,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -63,7 +63,7 @@ class Usbtmc(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
-    def access(self, value: Union[str, float]) -> None:
+    def access(self, value: str | float) -> None:
         """Access the ``usbtmc.access`` attribute.
 
         Description:

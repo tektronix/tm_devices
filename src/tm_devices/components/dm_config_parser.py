@@ -15,7 +15,6 @@ from typing import (
     Protocol,
     runtime_checkable,
     TYPE_CHECKING,
-    Union,
 )
 
 import tomli
@@ -76,7 +75,7 @@ class DMConfigParser:
     FileType = ConfigFileType
     """A convenience enumeration listing the valid config file types."""
 
-    _CONFIG_NESTED_DICT_MAPPING: Mapping[type[Union[_DataclassProtocol, SerialConfig]], str] = (
+    _CONFIG_NESTED_DICT_MAPPING: Mapping[type[_DataclassProtocol | SerialConfig], str] = (
         MappingProxyType({SerialConfig: "serial_config"})
     )
 
@@ -144,9 +143,9 @@ class DMConfigParser:
     def add_device(  # noqa: PLR0913  # pylint: disable=too-many-locals
         self,
         *,
-        device_type: Union[DeviceTypes, str],
+        device_type: DeviceTypes | str,
         address: str,
-        connection_type: Union[ConnectionTypes, str] = ConnectionTypes.TCPIP,
+        connection_type: ConnectionTypes | str = ConnectionTypes.TCPIP,
         alias: str | None = None,
         lan_port: int | None = None,
         lan_device_name: str | None = None,
@@ -232,9 +231,7 @@ class DMConfigParser:
             self.__devices[new_entry.alias] = new_entry
         return new_entry_name, new_entry
 
-    def load_config_file(
-        self, config_file_path: Union[str, os.PathLike[str]] | None = None
-    ) -> None:
+    def load_config_file(self, config_file_path: str | os.PathLike[str] | None = None) -> None:
         """Load in the config file located at the given path.
 
         This method will update any changed options and add any newly defined devices.
@@ -302,9 +299,7 @@ class DMConfigParser:
             **new_options.to_dict(ignore_none=True),
         )
 
-    def write_config_to_file(
-        self, config_file_path: Union[str, os.PathLike[str]] | None = None
-    ) -> str:
+    def write_config_to_file(self, config_file_path: str | os.PathLike[str] | None = None) -> str:
         """Write the current configuration to a config file.
 
         This method will overwrite any existing config file with the current devices and options. If
@@ -410,7 +405,7 @@ class DMConfigParser:
 
     @staticmethod
     def __parse_config_file(
-        config_file_path: Union[str, os.PathLike[str]],
+        config_file_path: str | os.PathLike[str],
     ) -> tuple[DMConfigOptions, list[dict[str, Any]]]:
         """Parse config file for the options flags and list of device configuration dictionaries.
 

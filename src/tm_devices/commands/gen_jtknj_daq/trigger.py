@@ -106,7 +106,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -169,7 +169,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].logic`` attribute.
 
         Description:
@@ -243,7 +243,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].pulsewidth`` attribute.
 
         Description:
@@ -318,7 +318,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkout[N].stimulus`` attribute.
 
         Description:
@@ -456,7 +456,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.tsplinkin[N].edge`` attribute.
 
         Description:
@@ -630,7 +630,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fractionalseconds.setter
-    def fractionalseconds(self, value: Union[str, float]) -> None:
+    def fractionalseconds(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.fractionalseconds`` attribute.
 
         Description:
@@ -704,7 +704,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @generate.setter
-    def generate(self, value: Union[str, float]) -> None:
+    def generate(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.generate`` attribute.
 
         Description:
@@ -808,7 +808,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @seconds.setter
-    def seconds(self, value: Union[str, float]) -> None:
+    def seconds(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.seconds`` attribute.
 
         Description:
@@ -881,7 +881,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].start.stimulus`` attribute.
 
         Description:
@@ -976,7 +976,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].count`` attribute.
 
         Description:
@@ -1048,7 +1048,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delay`` attribute.
 
         Description:
@@ -1119,7 +1119,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delaylist.setter
-    def delaylist(self, value: Union[str, float]) -> None:
+    def delaylist(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].delaylist`` attribute.
 
         Description:
@@ -1190,7 +1190,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``trigger.timer[N].enable`` attribute.
 
         Description:
@@ -2651,7 +2651,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
-    def ipaddress(self, value: Union[str, float]) -> None:
+    def ipaddress(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].ipaddress`` attribute.
 
         Description:
@@ -2724,7 +2724,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].logic`` attribute.
 
         Description:
@@ -2796,7 +2796,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @protocol.setter
-    def protocol(self, value: Union[str, float]) -> None:
+    def protocol(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].protocol`` attribute.
 
         Description:
@@ -2868,7 +2868,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.lanout[N].stimulus`` attribute.
 
         Description:
@@ -3031,7 +3031,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.lanin[N].edge`` attribute.
 
         Description:
@@ -3195,7 +3195,7 @@ class TriggerExtout(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.extout.logic`` attribute.
 
         Description:
@@ -3262,7 +3262,7 @@ class TriggerExtout(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.extout.stimulus`` attribute.
 
         Description:
@@ -3361,7 +3361,7 @@ class TriggerExtin(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.extin.edge`` attribute.
 
         Description:
@@ -3554,7 +3554,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
-    def logic(self, value: Union[str, float]) -> None:
+    def logic(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].logic`` attribute.
 
         Description:
@@ -3631,7 +3631,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].pulsewidth`` attribute.
 
         Description:
@@ -3708,7 +3708,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``trigger.digout[N].stimulus`` attribute.
 
         Description:
@@ -3845,7 +3845,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
-    def edge(self, value: Union[str, float]) -> None:
+    def edge(self, value: str | float) -> None:
         """Access the ``trigger.digin[N].edge`` attribute.
 
         Description:
@@ -3988,7 +3988,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._stimulus: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -4030,7 +4030,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @orenable.setter
-    def orenable(self, value: Union[str, float]) -> None:
+    def orenable(self, value: str | float) -> None:
         """Access the ``trigger.blender[N].orenable`` attribute.
 
         Description:
@@ -4099,7 +4099,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, str | float]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:
@@ -4602,7 +4602,7 @@ class Trigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @continuous.setter
-    def continuous(self, value: Union[str, float]) -> None:
+    def continuous(self, value: str | float) -> None:
         """Access the ``trigger.continuous`` attribute.
 
         Description:

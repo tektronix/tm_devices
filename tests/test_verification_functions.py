@@ -2,8 +2,6 @@
 
 import re
 
-from typing import Union
-
 import pytest
 
 from tm_devices.helpers import verify_values
@@ -98,8 +96,8 @@ def test_verify_values_pass() -> None:
     ],
 )
 def test_verify_values_fail(
-    expected_value: Union[float, str],
-    actual_value: Union[float, str],
+    expected_value: float | str,
+    actual_value: float | str,
     tolerance: float,
     percentage: bool,
     expect_fail: bool,

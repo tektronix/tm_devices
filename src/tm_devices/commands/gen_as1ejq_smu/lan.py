@@ -14,7 +14,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -86,7 +86,7 @@ class LanConfigDns(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
-    def hostname(self, value: Union[str, float]) -> None:
+    def hostname(self, value: str | float) -> None:
         """Access the ``lan.config.dns.hostname`` attribute.
 
         Description:

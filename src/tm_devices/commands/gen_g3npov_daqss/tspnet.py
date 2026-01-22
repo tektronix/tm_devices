@@ -28,7 +28,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
@@ -78,7 +78,7 @@ class TspnetTsp(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @abortonconnect.setter
-    def abortonconnect(self, value: Union[str, float]) -> None:
+    def abortonconnect(self, value: str | float) -> None:
         """Access the ``tspnet.tsp.abortonconnect`` attribute.
 
         Description:
@@ -267,7 +267,7 @@ class Tspnet(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @timeout.setter
-    def timeout(self, value: Union[str, float]) -> None:
+    def timeout(self, value: str | float) -> None:
         """Access the ``tspnet.timeout`` attribute.
 
         Description:

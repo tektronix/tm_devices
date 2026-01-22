@@ -5,7 +5,7 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Literal, Union
+from typing import Literal
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
     BaseAFGSourceChannel,
@@ -403,7 +403,7 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         """
         self._afg.set_if_needed(f"{self.name}:FUNCTION", str(value.value))
 
-    def set_impedance(self, value: Union[float, Literal["INFINITY"]]) -> None:
+    def set_impedance(self, value: float | Literal["INFINITY"]) -> None:
         """Set the output load impedance on the source channel.
 
         Args:

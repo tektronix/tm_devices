@@ -99,7 +99,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -185,7 +185,7 @@ class StatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.over_temperature.enable`` attribute.
 
         Description:
@@ -281,7 +281,7 @@ class StatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.over_temperature.ntr`` attribute.
 
         Description:
@@ -348,7 +348,7 @@ class StatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.over_temperature.ptr`` attribute.
 
         Description:
@@ -465,7 +465,7 @@ class StatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd)
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -570,7 +570,7 @@ class StatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd)
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -643,7 +643,7 @@ class StatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd)
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -761,7 +761,7 @@ class StatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.enable`` attribute.
 
         Description:
@@ -857,7 +857,7 @@ class StatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.ntr`` attribute.
 
         Description:
@@ -940,7 +940,7 @@ class StatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.instrument.ptr`` attribute.
 
         Description:
@@ -1048,7 +1048,7 @@ class StatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.calibration.enable`` attribute.
 
         Description:
@@ -1144,7 +1144,7 @@ class StatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.calibration.ntr`` attribute.
 
         Description:
@@ -1211,7 +1211,7 @@ class StatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.calibration.ptr`` attribute.
 
         Description:
@@ -1341,7 +1341,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.questionable.enable`` attribute.
 
         Description:
@@ -1448,7 +1448,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.questionable.ntr`` attribute.
 
         Description:
@@ -1526,7 +1526,7 @@ class StatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.questionable.ptr`` attribute.
 
         Description:
@@ -1633,7 +1633,7 @@ class StatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.sweeping.enable`` attribute.
 
         Description:
@@ -1728,7 +1728,7 @@ class StatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.sweeping.ntr`` attribute.
 
         Description:
@@ -1793,7 +1793,7 @@ class StatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.sweeping.ptr`` attribute.
 
         Description:
@@ -1900,7 +1900,7 @@ class StatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.measuring.enable`` attribute.
 
         Description:
@@ -1995,7 +1995,7 @@ class StatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.measuring.ntr`` attribute.
 
         Description:
@@ -2060,7 +2060,7 @@ class StatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.measuring.ptr`` attribute.
 
         Description:
@@ -2179,7 +2179,7 @@ class StatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -2287,7 +2287,7 @@ class StatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -2362,7 +2362,7 @@ class StatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -2481,7 +2481,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.enable`` attribute.
 
         Description:
@@ -2577,7 +2577,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.ntr`` attribute.
 
         Description:
@@ -2661,7 +2661,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.instrument.ptr`` attribute.
 
         Description:
@@ -2769,7 +2769,7 @@ class StatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.calibrating.enable`` attribute.
 
         Description:
@@ -2865,7 +2865,7 @@ class StatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.calibrating.ntr`` attribute.
 
         Description:
@@ -2932,7 +2932,7 @@ class StatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.calibrating.ptr`` attribute.
 
         Description:
@@ -3062,7 +3062,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.operation.enable`` attribute.
 
         Description:
@@ -3182,7 +3182,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.operation.ntr`` attribute.
 
         Description:
@@ -3247,7 +3247,7 @@ class StatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.operation.ptr`` attribute.
 
         Description:
@@ -3367,7 +3367,7 @@ class StatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.reading_overflow.enable`` attribute.
 
         Description:
@@ -3463,7 +3463,7 @@ class StatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.reading_overflow.ntr`` attribute.
 
         Description:
@@ -3530,7 +3530,7 @@ class StatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.reading_overflow.ptr`` attribute.
 
         Description:
@@ -3640,7 +3640,7 @@ class StatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.protection.enable`` attribute.
 
         Description:
@@ -3739,7 +3739,7 @@ class StatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.protection.ntr`` attribute.
 
         Description:
@@ -3808,7 +3808,7 @@ class StatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.protection.ptr`` attribute.
 
         Description:
@@ -3928,7 +3928,7 @@ class StatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -4036,7 +4036,7 @@ class StatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -4111,7 +4111,7 @@ class StatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -4232,7 +4232,7 @@ class StatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.enable`` attribute.
 
         Description:
@@ -4331,7 +4331,7 @@ class StatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.ntr`` attribute.
 
         Description:
@@ -4416,7 +4416,7 @@ class StatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.instrument.ptr`` attribute.
 
         Description:
@@ -4525,7 +4525,7 @@ class StatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.current_limit.enable`` attribute.
 
         Description:
@@ -4621,7 +4621,7 @@ class StatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.current_limit.ntr`` attribute.
 
         Description:
@@ -4688,7 +4688,7 @@ class StatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.current_limit.ptr`` attribute.
 
         Description:
@@ -4822,7 +4822,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``status.measurement.enable`` attribute.
 
         Description:
@@ -4929,7 +4929,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``status.measurement.ntr`` attribute.
 
         Description:
@@ -5007,7 +5007,7 @@ class StatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``status.measurement.ptr`` attribute.
 
         Description:

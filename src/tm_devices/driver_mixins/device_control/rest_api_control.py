@@ -7,7 +7,7 @@ import time
 from abc import ABC, abstractmethod
 from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Union
+from typing import Any, cast
 
 import requests
 
@@ -81,7 +81,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a DELETE request with the given url and headers.
 
         Args:
@@ -121,7 +121,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a GET request with the given url and headers.
 
         Args:
@@ -163,7 +163,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a PATCH request with the given url and headers.
 
         Args:
@@ -212,7 +212,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a POST request with the given url and headers.
 
         Args:
@@ -261,7 +261,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a PUT request with the given url and headers.
 
         Args:
@@ -399,7 +399,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, dict[str, Any] | bytes, int, requests.RequestException | None]:
         """Perform a request with the given url and headers.
 
         Args:
@@ -434,7 +434,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             else:
                 url = self._api_url + url
         response = cast("requests.Response", None)
-        retval: Union[dict[str, Any], bytes] = {}
+        retval: dict[str, Any] | bytes = {}
         _logger.log(
             logging.INFO if self._verbose else logging.DEBUG,
             "(%s) %s >> %s%s%s",

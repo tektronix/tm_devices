@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Generic, Literal, NamedTuple, TypeVar, Union
+from typing import Generic, Literal, NamedTuple, TypeVar
 
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
     _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
@@ -58,7 +58,7 @@ class SignalGeneratorMixin(
 
     @staticmethod
     def _validate_generated_function(
-        function: Union[str, _SignalGeneratorFunctionsTypeVar],
+        function: str | _SignalGeneratorFunctionsTypeVar,
     ) -> _SignalGeneratorFunctionsTypeVar:
         """Validate the functions within the waveform generation method.
 

@@ -18,7 +18,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -77,7 +77,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``digio.line[N].mode`` attribute.
 
         Description:
@@ -148,7 +148,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
-    def state(self, value: Union[str, float]) -> None:
+    def state(self, value: str | float) -> None:
         """Access the ``digio.line[N].state`` attribute.
 
         Description:

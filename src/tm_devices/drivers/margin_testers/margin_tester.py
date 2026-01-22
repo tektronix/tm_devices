@@ -7,7 +7,7 @@ import time
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, TYPE_CHECKING, Union
+from typing import Any, TYPE_CHECKING
 
 from requests.structures import CaseInsensitiveDict
 
@@ -101,7 +101,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
         return self._auth_token_file_path.as_posix()
 
     @auth_token_file_path.setter
-    def auth_token_file_path(self, value: Union[str, os.PathLike[str]]) -> None:
+    def auth_token_file_path(self, value: str | os.PathLike[str]) -> None:
         """Set the path to the file containing the auth token."""
         self._auth_token_file_path = Path(value)
 

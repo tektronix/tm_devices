@@ -22,7 +22,7 @@ import shutil
 import subprocess
 
 from pathlib import Path
-from typing import Any, Union
+from typing import Any
 
 import jsonschema
 import requests
@@ -164,7 +164,7 @@ def convert_to_draft_7(schema: dict[str, Any]) -> dict[str, Any]:
 
 
 def recursively_post_process_schema(  # noqa: C901,PLR0912
-    schema: Union[str, dict[str, Any], list[dict[str, Any]]],
+    schema: str | dict[str, Any] | list[dict[str, Any]],
 ) -> None:
     """Recursively post-process the schema to remove unnecessary fields.
 
@@ -208,7 +208,7 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
             recursively_post_process_schema(item)
 
 
-def extract_urls(json_obj: Union[str, list[Any], dict[str, Any]]) -> set[str]:
+def extract_urls(json_obj: str | list[Any] | dict[str, Any]) -> set[str]:
     """Recursively extract URLs from a JSON object.
 
     Args:

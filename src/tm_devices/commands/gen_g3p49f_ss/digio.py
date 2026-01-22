@@ -27,7 +27,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -107,7 +107,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
-    def mode(self, value: Union[str, float]) -> None:
+    def mode(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].mode`` attribute.
 
         Description:
@@ -212,7 +212,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
-    def pulsewidth(self, value: Union[str, float]) -> None:
+    def pulsewidth(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].pulsewidth`` attribute.
 
         Description:
@@ -286,7 +286,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``digio.trigger[N].stimulus`` attribute.
 
         Description:
@@ -525,7 +525,7 @@ class Digio(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @writeprotect.setter
-    def writeprotect(self, value: Union[str, float]) -> None:
+    def writeprotect(self, value: str | float) -> None:
         """Access the ``digio.writeprotect`` attribute.
 
         Description:

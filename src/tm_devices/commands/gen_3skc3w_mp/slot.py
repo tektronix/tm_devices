@@ -276,7 +276,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -1460,7 +1460,7 @@ class SlotItemStatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.over_temperature.enable`` attribute.
 
         Description:
@@ -1565,7 +1565,7 @@ class SlotItemStatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.over_temperature.ntr`` attribute.
 
         Description:
@@ -1638,7 +1638,7 @@ class SlotItemStatusQuestionableOverTemperature(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.over_temperature.ptr`` attribute.
 
         Description:
@@ -1761,7 +1761,7 @@ class SlotItemStatusQuestionableInstrumentSmuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.smu[X].enable`` attribute.
 
         Description:
@@ -1869,7 +1869,7 @@ class SlotItemStatusQuestionableInstrumentSmuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.smu[X].ntr`` attribute.
 
         Description:
@@ -1944,7 +1944,7 @@ class SlotItemStatusQuestionableInstrumentSmuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.smu[X].ptr`` attribute.
 
         Description:
@@ -2068,7 +2068,7 @@ class SlotItemStatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -2176,7 +2176,7 @@ class SlotItemStatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -2251,7 +2251,7 @@ class SlotItemStatusQuestionableInstrumentPsuItem(ValidatedDynamicNumberCmd, Bas
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -2391,7 +2391,7 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.enable`` attribute.
 
         Description:
@@ -2496,7 +2496,7 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.ntr`` attribute.
 
         Description:
@@ -2587,7 +2587,7 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.instrument.ptr`` attribute.
 
         Description:
@@ -2725,7 +2725,7 @@ class SlotItemStatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.calibration.enable`` attribute.
 
         Description:
@@ -2830,7 +2830,7 @@ class SlotItemStatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.calibration.ntr`` attribute.
 
         Description:
@@ -2903,7 +2903,7 @@ class SlotItemStatusQuestionableCalibration(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.calibration.ptr`` attribute.
 
         Description:
@@ -3054,7 +3054,7 @@ class SlotItemStatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.enable`` attribute.
 
         Description:
@@ -3177,7 +3177,7 @@ class SlotItemStatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.ntr`` attribute.
 
         Description:
@@ -3267,7 +3267,7 @@ class SlotItemStatusQuestionable(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.questionable.ptr`` attribute.
 
         Description:
@@ -3378,7 +3378,7 @@ class SlotItemStatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.sweeping.enable`` attribute.
 
         Description:
@@ -3474,7 +3474,7 @@ class SlotItemStatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.sweeping.ntr`` attribute.
 
         Description:
@@ -3541,7 +3541,7 @@ class SlotItemStatusOperationSweeping(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.sweeping.ptr`` attribute.
 
         Description:
@@ -3649,7 +3649,7 @@ class SlotItemStatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.measuring.enable`` attribute.
 
         Description:
@@ -3745,7 +3745,7 @@ class SlotItemStatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.measuring.ntr`` attribute.
 
         Description:
@@ -3812,7 +3812,7 @@ class SlotItemStatusOperationMeasuring(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.measuring.ptr`` attribute.
 
         Description:
@@ -3937,7 +3937,7 @@ class SlotItemStatusOperationInstrumentSmuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.smu[X].enable`` attribute.
 
         Description:
@@ -4051,7 +4051,7 @@ class SlotItemStatusOperationInstrumentSmuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.smu[X].ntr`` attribute.
 
         Description:
@@ -4130,7 +4130,7 @@ class SlotItemStatusOperationInstrumentSmuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.smu[X].ptr`` attribute.
 
         Description:
@@ -4259,7 +4259,7 @@ class SlotItemStatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -4370,7 +4370,7 @@ class SlotItemStatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -4447,7 +4447,7 @@ class SlotItemStatusOperationInstrumentPsuItem(ValidatedDynamicNumberCmd, BaseTS
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -4579,7 +4579,7 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.enable`` attribute.
 
         Description:
@@ -4675,7 +4675,7 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.ntr`` attribute.
 
         Description:
@@ -4761,7 +4761,7 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.instrument.ptr`` attribute.
 
         Description:
@@ -4889,7 +4889,7 @@ class SlotItemStatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.calibrating.enable`` attribute.
 
         Description:
@@ -4985,7 +4985,7 @@ class SlotItemStatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.calibrating.ntr`` attribute.
 
         Description:
@@ -5052,7 +5052,7 @@ class SlotItemStatusOperationCalibrating(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.calibrating.ptr`` attribute.
 
         Description:
@@ -5188,7 +5188,7 @@ class SlotItemStatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.enable`` attribute.
 
         Description:
@@ -5310,7 +5310,7 @@ class SlotItemStatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.ntr`` attribute.
 
         Description:
@@ -5375,7 +5375,7 @@ class SlotItemStatusOperation(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.operation.ptr`` attribute.
 
         Description:
@@ -5504,7 +5504,7 @@ class SlotItemStatusMeasurementVoltageLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.voltage_limit.enable`` attribute.
 
         Description:
@@ -5609,7 +5609,7 @@ class SlotItemStatusMeasurementVoltageLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.voltage_limit.ntr`` attribute.
 
         Description:
@@ -5682,7 +5682,7 @@ class SlotItemStatusMeasurementVoltageLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.voltage_limit.ptr`` attribute.
 
         Description:
@@ -5802,7 +5802,7 @@ class SlotItemStatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.reading_overflow.enable`` attribute.
 
         Description:
@@ -5907,7 +5907,7 @@ class SlotItemStatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.reading_overflow.ntr`` attribute.
 
         Description:
@@ -5980,7 +5980,7 @@ class SlotItemStatusMeasurementReadingOverflow(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.reading_overflow.ptr`` attribute.
 
         Description:
@@ -6093,7 +6093,7 @@ class SlotItemStatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.protection.enable`` attribute.
 
         Description:
@@ -6192,7 +6192,7 @@ class SlotItemStatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.protection.ntr`` attribute.
 
         Description:
@@ -6261,7 +6261,7 @@ class SlotItemStatusMeasurementProtection(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.protection.ptr`` attribute.
 
         Description:
@@ -6384,7 +6384,7 @@ class SlotItemStatusMeasurementInstrumentSmuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.smu[X].enable`` attribute.
 
         Description:
@@ -6495,7 +6495,7 @@ class SlotItemStatusMeasurementInstrumentSmuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.smu[X].ntr`` attribute.
 
         Description:
@@ -6572,7 +6572,7 @@ class SlotItemStatusMeasurementInstrumentSmuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.smu[X].ptr`` attribute.
 
         Description:
@@ -6699,7 +6699,7 @@ class SlotItemStatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.psu[X].enable`` attribute.
 
         Description:
@@ -6810,7 +6810,7 @@ class SlotItemStatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.psu[X].ntr`` attribute.
 
         Description:
@@ -6887,7 +6887,7 @@ class SlotItemStatusMeasurementInstrumentPsuItem(ValidatedDynamicNumberCmd, Base
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.psu[X].ptr`` attribute.
 
         Description:
@@ -7030,7 +7030,7 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.enable`` attribute.
 
         Description:
@@ -7138,7 +7138,7 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.ntr`` attribute.
 
         Description:
@@ -7231,7 +7231,7 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.instrument.ptr`` attribute.
 
         Description:
@@ -7370,7 +7370,7 @@ class SlotItemStatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.current_limit.enable`` attribute.
 
         Description:
@@ -7475,7 +7475,7 @@ class SlotItemStatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.current_limit.ntr`` attribute.
 
         Description:
@@ -7548,7 +7548,7 @@ class SlotItemStatusMeasurementCurrentLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.current_limit.ptr`` attribute.
 
         Description:
@@ -7707,7 +7707,7 @@ class SlotItemStatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.enable`` attribute.
 
         Description:
@@ -7829,7 +7829,7 @@ class SlotItemStatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ntr.setter
-    def ntr(self, value: Union[str, float]) -> None:
+    def ntr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.ntr`` attribute.
 
         Description:
@@ -7913,7 +7913,7 @@ class SlotItemStatusMeasurement(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptr.setter
-    def ptr(self, value: Union[str, float]) -> None:
+    def ptr(self, value: str | float) -> None:
         """Access the ``slot[Z].status.measurement.ptr`` attribute.
 
         Description:
@@ -8523,7 +8523,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
-    def autodelay(self, value: Union[str, float]) -> None:
+    def autodelay(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.autodelay`` attribute.
 
         Description:
@@ -8596,7 +8596,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.autorangei`` attribute.
 
         Description:
@@ -8665,7 +8665,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.autorangev`` attribute.
 
         Description:
@@ -8769,7 +8769,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.delay`` attribute.
 
         Description:
@@ -8843,7 +8843,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.func`` attribute.
 
         Description:
@@ -8913,7 +8913,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.leveli`` attribute.
 
         Description:
@@ -8978,7 +8978,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.levelv`` attribute.
 
         Description:
@@ -9044,7 +9044,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limiti`` attribute.
 
         Description:
@@ -9111,7 +9111,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
-    def limitv(self, value: Union[str, float]) -> None:
+    def limitv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limitv`` attribute.
 
         Description:
@@ -9177,7 +9177,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitni.setter
-    def limitni(self, value: Union[str, float]) -> None:
+    def limitni(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limitni`` attribute.
 
         Description:
@@ -9242,7 +9242,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitnv.setter
-    def limitnv(self, value: Union[str, float]) -> None:
+    def limitnv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limitnv`` attribute.
 
         Description:
@@ -9307,7 +9307,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitpi.setter
-    def limitpi(self, value: Union[str, float]) -> None:
+    def limitpi(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limitpi`` attribute.
 
         Description:
@@ -9372,7 +9372,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitpv.setter
-    def limitpv(self, value: Union[str, float]) -> None:
+    def limitpv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.limitpv`` attribute.
 
         Description:
@@ -9439,7 +9439,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.lowrangei`` attribute.
 
         Description:
@@ -9508,7 +9508,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.lowrangev`` attribute.
 
         Description:
@@ -9580,7 +9580,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offfunc.setter
-    def offfunc(self, value: Union[str, float]) -> None:
+    def offfunc(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offfunc`` attribute.
 
         Description:
@@ -9652,7 +9652,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimiti.setter
-    def offlimiti(self, value: Union[str, float]) -> None:
+    def offlimiti(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimiti`` attribute.
 
         Description:
@@ -9721,7 +9721,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitv.setter
-    def offlimitv(self, value: Union[str, float]) -> None:
+    def offlimitv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimitv`` attribute.
 
         Description:
@@ -9790,7 +9790,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitni.setter
-    def offlimitni(self, value: Union[str, float]) -> None:
+    def offlimitni(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimitni`` attribute.
 
         Description:
@@ -9859,7 +9859,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitnv.setter
-    def offlimitnv(self, value: Union[str, float]) -> None:
+    def offlimitnv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimitnv`` attribute.
 
         Description:
@@ -9928,7 +9928,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitpi.setter
-    def offlimitpi(self, value: Union[str, float]) -> None:
+    def offlimitpi(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimitpi`` attribute.
 
         Description:
@@ -9997,7 +9997,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitpv.setter
-    def offlimitpv(self, value: Union[str, float]) -> None:
+    def offlimitpv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offlimitpv`` attribute.
 
         Description:
@@ -10068,7 +10068,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
-    def offmode(self, value: Union[str, float]) -> None:
+    def offmode(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.offmode`` attribute.
 
         Description:
@@ -10137,7 +10137,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
-    def output(self, value: Union[str, float]) -> None:
+    def output(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.output`` attribute.
 
         Description:
@@ -10203,7 +10203,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
-    def rangei(self, value: Union[str, float]) -> None:
+    def rangei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.rangei`` attribute.
 
         Description:
@@ -10270,7 +10270,7 @@ class SlotItemSmuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].source.rangev`` attribute.
 
         Description:
@@ -10352,7 +10352,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.enablei`` attribute.
 
         Description:
@@ -10419,7 +10419,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
-    def enablep(self, value: Union[str, float]) -> None:
+    def enablep(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.enablep`` attribute.
 
         Description:
@@ -10486,7 +10486,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
-    def enabler(self, value: Union[str, float]) -> None:
+    def enabler(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.enabler`` attribute.
 
         Description:
@@ -10553,7 +10553,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.enablev`` attribute.
 
         Description:
@@ -10621,7 +10621,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.leveli`` attribute.
 
         Description:
@@ -10690,7 +10690,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
-    def levelp(self, value: Union[str, float]) -> None:
+    def levelp(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.levelp`` attribute.
 
         Description:
@@ -10759,7 +10759,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
-    def levelr(self, value: Union[str, float]) -> None:
+    def levelr(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.levelr`` attribute.
 
         Description:
@@ -10828,7 +10828,7 @@ class SlotItemSmuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.rel.levelv`` attribute.
 
         Description:
@@ -10935,7 +10935,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
-    def aperture(self, value: Union[str, float]) -> None:
+    def aperture(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.aperture`` attribute.
 
         Description:
@@ -11010,7 +11010,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
-    def autodelay(self, value: Union[str, float]) -> None:
+    def autodelay(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.autodelay`` attribute.
 
         Description:
@@ -11082,7 +11082,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.autorangei`` attribute.
 
         Description:
@@ -11151,7 +11151,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.autorangev`` attribute.
 
         Description:
@@ -11223,7 +11223,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.count`` attribute.
 
         Description:
@@ -11297,7 +11297,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.delay`` attribute.
 
         Description:
@@ -11371,7 +11371,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
-    def interval(self, value: Union[str, float]) -> None:
+    def interval(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.interval`` attribute.
 
         Description:
@@ -11443,7 +11443,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.lowrangei`` attribute.
 
         Description:
@@ -11512,7 +11512,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.lowrangev`` attribute.
 
         Description:
@@ -11584,7 +11584,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
-    def nplc(self, value: Union[str, float]) -> None:
+    def nplc(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.nplc`` attribute.
 
         Description:
@@ -11733,7 +11733,7 @@ class SlotItemSmuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @tempcomp.setter
-    def tempcomp(self, value: Union[str, float]) -> None:
+    def tempcomp(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].measure.tempcomp`` attribute.
 
         Description:
@@ -12115,7 +12115,7 @@ class SlotItemSmuItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @speed.setter
-    def speed(self, value: Union[str, float]) -> None:
+    def speed(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].contact.speed`` attribute.
 
         Description:
@@ -12189,7 +12189,7 @@ class SlotItemSmuItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @threshold.setter
-    def threshold(self, value: Union[str, float]) -> None:
+    def threshold(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].contact.threshold`` attribute.
 
         Description:
@@ -12822,7 +12822,7 @@ class SlotItemSmuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overlapped.setter
-    def overlapped(self, value: Union[str, float]) -> None:
+    def overlapped(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].overlapped`` attribute.
 
         Description:
@@ -12895,7 +12895,7 @@ class SlotItemSmuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @sense.setter
-    def sense(self, value: Union[str, float]) -> None:
+    def sense(self, value: str | float) -> None:
         """Access the ``slot[Z].smu[X].sense`` attribute.
 
         Description:
@@ -13417,7 +13417,7 @@ class SlotItemPsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.protect.enablei`` attribute.
 
         Description:
@@ -13484,7 +13484,7 @@ class SlotItemPsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.protect.enablev`` attribute.
 
         Description:
@@ -13555,7 +13555,7 @@ class SlotItemPsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.protect.leveli`` attribute.
 
         Description:
@@ -13630,7 +13630,7 @@ class SlotItemPsuItemSourceProtect(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.protect.levelv`` attribute.
 
         Description:
@@ -13826,7 +13826,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.levelv`` attribute.
 
         Description:
@@ -13899,7 +13899,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.limiti`` attribute.
 
         Description:
@@ -13968,7 +13968,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
-    def offmode(self, value: Union[str, float]) -> None:
+    def offmode(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.offmode`` attribute.
 
         Description:
@@ -14033,7 +14033,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
-    def output(self, value: Union[str, float]) -> None:
+    def output(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.output`` attribute.
 
         Description:
@@ -14116,7 +14116,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.rangev`` attribute.
 
         Description:
@@ -14190,7 +14190,7 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @slewratev.setter
-    def slewratev(self, value: Union[str, float]) -> None:
+    def slewratev(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].source.slewratev`` attribute.
 
         Description:
@@ -14276,7 +14276,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.enablei`` attribute.
 
         Description:
@@ -14343,7 +14343,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
-    def enablep(self, value: Union[str, float]) -> None:
+    def enablep(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.enablep`` attribute.
 
         Description:
@@ -14410,7 +14410,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
-    def enabler(self, value: Union[str, float]) -> None:
+    def enabler(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.enabler`` attribute.
 
         Description:
@@ -14477,7 +14477,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.enablev`` attribute.
 
         Description:
@@ -14545,7 +14545,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.leveli`` attribute.
 
         Description:
@@ -14614,7 +14614,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
-    def levelp(self, value: Union[str, float]) -> None:
+    def levelp(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.levelp`` attribute.
 
         Description:
@@ -14683,7 +14683,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
-    def levelr(self, value: Union[str, float]) -> None:
+    def levelr(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.levelr`` attribute.
 
         Description:
@@ -14752,7 +14752,7 @@ class SlotItemPsuItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rel.levelv`` attribute.
 
         Description:
@@ -14885,7 +14885,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.count`` attribute.
 
         Description:
@@ -15049,7 +15049,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rate.setter
-    def rate(self, value: Union[str, float]) -> None:
+    def rate(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.rate`` attribute.
 
         Description:
@@ -15139,7 +15139,7 @@ class SlotItemPsuItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @tempcomp.setter
-    def tempcomp(self, value: Union[str, float]) -> None:
+    def tempcomp(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].measure.tempcomp`` attribute.
 
         Description:
@@ -15819,7 +15819,7 @@ class SlotItemPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @overlapped.setter
-    def overlapped(self, value: Union[str, float]) -> None:
+    def overlapped(self, value: str | float) -> None:
         """Access the ``slot[Z].psu[X].overlapped`` attribute.
 
         Description:

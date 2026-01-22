@@ -20,7 +20,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -96,7 +96,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].enable`` attribute.
 
         Description:
@@ -168,7 +168,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @fractionalseconds.setter
-    def fractionalseconds(self, value: Union[str, float]) -> None:
+    def fractionalseconds(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].fractionalseconds`` attribute.
 
         Description:
@@ -240,7 +240,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @period.setter
-    def period(self, value: Union[str, float]) -> None:
+    def period(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].period`` attribute.
 
         Description:
@@ -312,7 +312,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @ptpseconds.setter
-    def ptpseconds(self, value: Union[str, float]) -> None:
+    def ptpseconds(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].ptpseconds`` attribute.
 
         Description:
@@ -385,7 +385,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @repetition.setter
-    def repetition(self, value: Union[str, float]) -> None:
+    def repetition(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].repetition`` attribute.
 
         Description:
@@ -457,7 +457,7 @@ class ScheduleAlarmItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @seconds.setter
-    def seconds(self, value: Union[str, float]) -> None:
+    def seconds(self, value: str | float) -> None:
         """Access the ``schedule.alarm[N].seconds`` attribute.
 
         Description:

@@ -3,7 +3,6 @@
 import string
 
 from abc import ABC
-from typing import Union
 
 from tm_devices.commands import (
     SMU2601BCommands,
@@ -54,21 +53,21 @@ class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
     @cached_property
     def commands(
         self,
-    ) -> Union[
-        SMU2601BCommands,
-        SMU2602BCommands,
-        SMU2604BCommands,
-        SMU2606BCommands,
-        SMU2611BCommands,
-        SMU2612BCommands,
-        SMU2614BCommands,
-        SMU2634BCommands,
-        SMU2635BCommands,
-        SMU2636BCommands,
-        SMU2601BPulseCommands,
-        SMU2651ACommands,
-        SMU2657ACommands,
-    ]:
+    ) -> (
+        SMU2601BCommands
+        | SMU2602BCommands
+        | SMU2604BCommands
+        | SMU2606BCommands
+        | SMU2611BCommands
+        | SMU2612BCommands
+        | SMU2614BCommands
+        | SMU2634BCommands
+        | SMU2635BCommands
+        | SMU2636BCommands
+        | SMU2601BPulseCommands
+        | SMU2651ACommands
+        | SMU2657ACommands
+    ):
         """Return the device commands."""
         return super().commands
 

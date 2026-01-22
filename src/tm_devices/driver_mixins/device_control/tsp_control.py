@@ -6,7 +6,7 @@ import logging
 
 from abc import ABC
 from pathlib import Path
-from typing import Any, TYPE_CHECKING, Union
+from typing import Any, TYPE_CHECKING
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
@@ -77,9 +77,7 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def export_buffers(
-        self, filepath: Union[str, os.PathLike[str]], *args: str, sep: str = ","
-    ) -> None:
+    def export_buffers(self, filepath: str | os.PathLike[str], *args: str, sep: str = ",") -> None:
         """Export one or more of the device's buffers to the given filepath.
 
         Args:
@@ -162,7 +160,7 @@ class TSPControl(PIControl, ABC):
         script_name: str,
         *,
         script_body: str = "",
-        file_path: Union[str, os.PathLike[str], None] = None,
+        file_path: str | os.PathLike[str] | None = None,
         run_script: bool = False,
         to_nv_memory: bool = False,
     ) -> None:
@@ -232,13 +230,13 @@ class TSPControl(PIControl, ABC):
     def set_and_check(  # noqa: PLR0913
         self,
         command: str,
-        value: Union[str, float],
+        value: str | float,
         tolerance: float = 0,
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         *,
-        expected_value: Union[str, float] | None = None,
+        expected_value: str | float | None = None,
         opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.

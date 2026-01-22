@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
-from typing import final, TYPE_CHECKING, Union
+from typing import final, TYPE_CHECKING
 
 from dateutil.tz import tzlocal
 
@@ -31,12 +31,12 @@ class ScreenCaptureMixin(ABC):
     @final
     def save_screenshot(
         self,
-        filename: Union[str, os.PathLike[str]] | None = None,
+        filename: str | os.PathLike[str] | None = None,
         *,
         colors: str | None = None,
         view_type: str | None = None,
-        local_folder: Union[str, os.PathLike[str]] = "./",
-        device_folder: Union[str, os.PathLike[str]] = "./",
+        local_folder: str | os.PathLike[str] = "./",
+        device_folder: str | os.PathLike[str] = "./",
         keep_device_file: bool = False,
     ) -> None:
         """Capture a screenshot from the device and save it locally.

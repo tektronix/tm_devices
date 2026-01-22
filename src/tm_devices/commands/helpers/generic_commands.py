@@ -11,7 +11,7 @@ import sys
 from collections import defaultdict
 from collections.abc import Callable
 from functools import total_ordering
-from typing import Any, Union
+from typing import Any
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")
@@ -40,7 +40,7 @@ class DefaultDictPassKeyToFactory(ParentDefaultDictClass):
     default_factory function as the only parameter.
     """
 
-    def __init__(self, default_factory: Callable[[Union[int, str]], Any], **kwargs: Any) -> None:
+    def __init__(self, default_factory: Callable[[int | str], Any], **kwargs: Any) -> None:
         """Create an instance of the class.
 
         Args:

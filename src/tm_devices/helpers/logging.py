@@ -13,7 +13,7 @@ import traceback
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Literal, TYPE_CHECKING, TypeVar, Union
+from typing import Literal, TYPE_CHECKING, TypeVar
 
 import colorlog
 import pyvisa
@@ -117,9 +117,9 @@ def disable_all_loggers(
 
 def configure_logging(
     *,
-    log_console_level: Union[str, LoggingLevels] = LoggingLevels.INFO,
-    log_file_level: Union[str, LoggingLevels] = LoggingLevels.DEBUG,
-    log_file_directory: Union[str, os.PathLike[str], Path] | None = None,
+    log_console_level: str | LoggingLevels = LoggingLevels.INFO,
+    log_file_level: str | LoggingLevels = LoggingLevels.DEBUG,
+    log_file_directory: str | os.PathLike[str] | Path | None = None,
     log_file_name: str | None = None,
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
@@ -280,9 +280,7 @@ def __log_to_specific_handler_type_only(
         A pointer to the handler that it logged the message to.
     """
     handler_used: _T | None = None
-    exception_info: Union[tuple[type[BaseException], BaseException, TracebackType], str] | None = (
-        None
-    )
+    exception_info: tuple[type[BaseException], BaseException, TracebackType] | str | None = None
     if exc_info:
         exception_info = exc_info
     elif logging_level_str == "EXCEPTION" and sys.exc_info() == (None, None, None):

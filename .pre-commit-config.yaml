@@ -142,7 +142,7 @@ repos:
         language: system
         pass_filenames: false
         files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
-#        args: [--strict]  # TODO: enable this when poetry can be updated to v2+
+#        args: [--strict]  # TODO: enable
       - id: check-tm-devices-schema-file
         name: check-tm-devices-schema-file
         entry: python

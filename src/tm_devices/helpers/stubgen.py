@@ -87,7 +87,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
         # Read in the content of the stub file to avoid adding duplicate methods
         contents = method_path_obj.read_text(encoding="utf-8")
         if f" def {method.__name__}(" not in contents:
-            if typing_imports:
+            if typing_imports:  # pragma: no cover  # Not needed as often in Python 3.9+
                 contents = f"from typing import {', '.join(typing_imports)}\n" + contents
             # Use a regular expression to find the end of the current class
             pattern = r"(class\s+" + cls.__name__ + r"\b.*?)(\n(?=def|class|@)|\Z)"

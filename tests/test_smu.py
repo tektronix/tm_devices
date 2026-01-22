@@ -6,7 +6,7 @@ import socket
 import sys
 
 from pathlib import Path
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -224,7 +224,7 @@ def test_smu(  # noqa: PLR0915
         assert caplog.records[-1].levelname == "WARNING"
 
     buffer = smu.get_buffers("smub.nvbuffer1")
-    expected_buffer: dict[str, list[Union[float, str]]] = {"smub.nvbuffer1": []}
+    expected_buffer: dict[str, list[float | str]] = {"smub.nvbuffer1": []}
     assert caplog.records[-1].message == "smub.nvbuffer1 was found to be empty"
     assert caplog.records[-1].levelname == "WARNING"
     assert buffer == expected_buffer

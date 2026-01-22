@@ -36,7 +36,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -183,7 +183,7 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``display.smuX.measure.func`` attribute.
 
         Description:
@@ -265,7 +265,7 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``display.smuX.limit.func`` attribute.
 
         Description:
@@ -359,7 +359,7 @@ class DisplaySmuxItem(ValidatedChannel, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @digits.setter
-    def digits(self, value: Union[str, float]) -> None:
+    def digits(self, value: str | float) -> None:
         """Access the ``display.smuX.digits`` attribute.
 
         Description:
@@ -814,7 +814,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @locallockout.setter
-    def locallockout(self, value: Union[str, float]) -> None:
+    def locallockout(self, value: str | float) -> None:
         """Access the ``display.locallockout`` attribute.
 
         Description:
@@ -884,7 +884,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @numpad.setter
-    def numpad(self, value: Union[str, float]) -> None:
+    def numpad(self, value: str | float) -> None:
         """Access the ``display.numpad`` attribute.
 
         Description:
@@ -948,7 +948,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
-    def screen(self, value: Union[str, float]) -> None:
+    def screen(self, value: str | float) -> None:
         """Access the ``display.screen`` attribute.
 
         Description:

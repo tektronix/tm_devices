@@ -15,7 +15,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
@@ -39,7 +39,7 @@ class Buffervar(BaseTSPCmd):
         self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bufferVar"
     ) -> None:
         super().__init__(device, cmd_syntax)
-        self._statuses: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._statuses: dict[int, str | float] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.statuses[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.statuses[{{key}}])",
             device=self._device,
@@ -78,7 +78,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def statuses(self) -> dict[int, Union[str, float]]:
+    def statuses(self) -> dict[int, str | float]:
         """Access the ``bufferVar.statuses[N]`` attribute.
 
         Description:

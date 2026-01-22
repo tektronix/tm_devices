@@ -4,7 +4,6 @@ Examples include MATH, SEARCH, BUS, PLOT,...etc.
 """
 
 from abc import ABC, abstractmethod
-from typing import Union
 
 
 class BusMixin(ABC):
@@ -204,7 +203,7 @@ class ReferenceMixin(ABC):
         """
 
     @abstractmethod
-    def recall_reference(self, reference_path: str, ref_number: Union[int, str]) -> None:
+    def recall_reference(self, reference_path: str, ref_number: int | str) -> None:
         """Recall a reference waveform file.
 
         Args:

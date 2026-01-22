@@ -114,7 +114,7 @@ Attributes and Functions:
 """
 
 from collections.abc import Sequence
-from typing import Any, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING
 
 from ..gen_ftsc04_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
@@ -180,7 +180,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
-    def action(self, value: Union[str, float]) -> None:
+    def action(self, value: str | float) -> None:
         """Access the ``smuX.trigger.source.action`` attribute.
 
         Description:
@@ -253,7 +253,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``smuX.trigger.source.limiti`` attribute.
 
         Description:
@@ -326,7 +326,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
-    def limitv(self, value: Union[str, float]) -> None:
+    def limitv(self, value: str | float) -> None:
         """Access the ``smuX.trigger.source.limitv`` attribute.
 
         Description:
@@ -400,7 +400,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``smuX.trigger.source.stimulus`` attribute.
 
         Description:
@@ -492,7 +492,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.linearv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def listi(self, sweep_list: Sequence[Union[str, float]]) -> None:
+    def listi(self, sweep_list: Sequence[str | float]) -> None:
         """Run the ``smuX.trigger.source.listi()`` function.
 
         Description:
@@ -517,7 +517,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.listi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def listv(self, sweep_list: Sequence[Union[str, float]]) -> None:
+    def listv(self, sweep_list: Sequence[str | float]) -> None:
         """Run the ``smuX.trigger.source.listv()`` function.
 
         Description:
@@ -681,7 +681,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
-    def action(self, value: Union[str, float]) -> None:
+    def action(self, value: str | float) -> None:
         """Access the ``smuX.trigger.measure.action`` attribute.
 
         Description:
@@ -755,7 +755,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``smuX.trigger.measure.stimulus`` attribute.
 
         Description:
@@ -998,7 +998,7 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
-    def action(self, value: Union[str, float]) -> None:
+    def action(self, value: str | float) -> None:
         """Access the ``smuX.trigger.endsweep.action`` attribute.
 
         Description:
@@ -1085,7 +1085,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
-    def action(self, value: Union[str, float]) -> None:
+    def action(self, value: str | float) -> None:
         """Access the ``smuX.trigger.endpulse.action`` attribute.
 
         Description:
@@ -1159,7 +1159,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``smuX.trigger.endpulse.stimulus`` attribute.
 
         Description:
@@ -1273,7 +1273,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``smuX.trigger.arm.count`` attribute.
 
         Description:
@@ -1347,7 +1347,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
-    def stimulus(self, value: Union[str, float]) -> None:
+    def stimulus(self, value: str | float) -> None:
         """Access the ``smuX.trigger.arm.stimulus`` attribute.
 
         Description:
@@ -1536,7 +1536,7 @@ class SmuxItemTrigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autoclear.setter
-    def autoclear(self, value: Union[str, float]) -> None:
+    def autoclear(self, value: str | float) -> None:
         """Access the ``smuX.trigger.autoclear`` attribute.
 
         Description:
@@ -1607,7 +1607,7 @@ class SmuxItemTrigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``smuX.trigger.count`` attribute.
 
         Description:
@@ -1813,7 +1813,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``smuX.source.autorangei`` attribute.
 
         Description:
@@ -1888,7 +1888,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``smuX.source.autorangev`` attribute.
 
         Description:
@@ -1993,7 +1993,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``smuX.source.delay`` attribute.
 
         Description:
@@ -2064,7 +2064,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
-    def func(self, value: Union[str, float]) -> None:
+    def func(self, value: str | float) -> None:
         """Access the ``smuX.source.func`` attribute.
 
         Description:
@@ -2135,7 +2135,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @highc.setter
-    def highc(self, value: Union[str, float]) -> None:
+    def highc(self, value: str | float) -> None:
         """Access the ``smuX.source.highc`` attribute.
 
         Description:
@@ -2206,7 +2206,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``smuX.source.leveli`` attribute.
 
         Description:
@@ -2277,7 +2277,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``smuX.source.levelv`` attribute.
 
         Description:
@@ -2348,7 +2348,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
-    def limiti(self, value: Union[str, float]) -> None:
+    def limiti(self, value: str | float) -> None:
         """Access the ``smuX.source.limiti`` attribute.
 
         Description:
@@ -2419,7 +2419,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitp.setter
-    def limitp(self, value: Union[str, float]) -> None:
+    def limitp(self, value: str | float) -> None:
         """Access the ``smuX.source.limitp`` attribute.
 
         Description:
@@ -2490,7 +2490,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
-    def limitv(self, value: Union[str, float]) -> None:
+    def limitv(self, value: str | float) -> None:
         """Access the ``smuX.source.limitv`` attribute.
 
         Description:
@@ -2563,7 +2563,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``smuX.source.lowrangei`` attribute.
 
         Description:
@@ -2638,7 +2638,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``smuX.source.lowrangev`` attribute.
 
         Description:
@@ -2712,7 +2712,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offfunc.setter
-    def offfunc(self, value: Union[str, float]) -> None:
+    def offfunc(self, value: str | float) -> None:
         """Access the ``smuX.source.offfunc`` attribute.
 
         Description:
@@ -2786,7 +2786,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimiti.setter
-    def offlimiti(self, value: Union[str, float]) -> None:
+    def offlimiti(self, value: str | float) -> None:
         """Access the ``smuX.source.offlimiti`` attribute.
 
         Description:
@@ -2861,7 +2861,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitv.setter
-    def offlimitv(self, value: Union[str, float]) -> None:
+    def offlimitv(self, value: str | float) -> None:
         """Access the ``smuX.source.offlimitv`` attribute.
 
         Description:
@@ -2935,7 +2935,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
-    def offmode(self, value: Union[str, float]) -> None:
+    def offmode(self, value: str | float) -> None:
         """Access the ``smuX.source.offmode`` attribute.
 
         Description:
@@ -3007,7 +3007,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
-    def output(self, value: Union[str, float]) -> None:
+    def output(self, value: str | float) -> None:
         """Access the ``smuX.source.output`` attribute.
 
         Description:
@@ -3079,7 +3079,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @outputenableaction.setter
-    def outputenableaction(self, value: Union[str, float]) -> None:
+    def outputenableaction(self, value: str | float) -> None:
         """Access the ``smuX.source.outputenableaction`` attribute.
 
         Description:
@@ -3151,7 +3151,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
-    def rangei(self, value: Union[str, float]) -> None:
+    def rangei(self, value: str | float) -> None:
         """Access the ``smuX.source.rangei`` attribute.
 
         Description:
@@ -3222,7 +3222,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``smuX.source.rangev`` attribute.
 
         Description:
@@ -3293,7 +3293,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @settling.setter
-    def settling(self, value: Union[str, float]) -> None:
+    def settling(self, value: str | float) -> None:
         """Access the ``smuX.source.settling`` attribute.
 
         Description:
@@ -3364,7 +3364,7 @@ class SmuxItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @sink.setter
-    def sink(self, value: Union[str, float]) -> None:
+    def sink(self, value: str | float) -> None:
         """Access the ``smuX.source.sink`` attribute.
 
         Description:
@@ -3537,7 +3537,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
-    def enablei(self, value: Union[str, float]) -> None:
+    def enablei(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.enablei`` attribute.
 
         Description:
@@ -3610,7 +3610,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
-    def enablep(self, value: Union[str, float]) -> None:
+    def enablep(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.enablep`` attribute.
 
         Description:
@@ -3683,7 +3683,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
-    def enabler(self, value: Union[str, float]) -> None:
+    def enabler(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.enabler`` attribute.
 
         Description:
@@ -3756,7 +3756,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
-    def enablev(self, value: Union[str, float]) -> None:
+    def enablev(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.enablev`` attribute.
 
         Description:
@@ -3830,7 +3830,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
-    def leveli(self, value: Union[str, float]) -> None:
+    def leveli(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.leveli`` attribute.
 
         Description:
@@ -3904,7 +3904,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
-    def levelp(self, value: Union[str, float]) -> None:
+    def levelp(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.levelp`` attribute.
 
         Description:
@@ -3978,7 +3978,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
-    def levelr(self, value: Union[str, float]) -> None:
+    def levelr(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.levelr`` attribute.
 
         Description:
@@ -4052,7 +4052,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
-    def levelv(self, value: Union[str, float]) -> None:
+    def levelv(self, value: str | float) -> None:
         """Access the ``smuX.measure.rel.levelv`` attribute.
 
         Description:
@@ -4140,7 +4140,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``smuX.measure.filter.count`` attribute.
 
         Description:
@@ -4214,7 +4214,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
-    def enable(self, value: Union[str, float]) -> None:
+    def enable(self, value: str | float) -> None:
         """Access the ``smuX.measure.filter.enable`` attribute.
 
         Description:
@@ -4288,7 +4288,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @type.setter
-    def type(self, value: Union[str, float]) -> None:
+    def type(self, value: str | float) -> None:
         """Access the ``smuX.measure.filter.type`` attribute.
 
         Description:
@@ -4408,7 +4408,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @analogfilter.setter
-    def analogfilter(self, value: Union[str, float]) -> None:
+    def analogfilter(self, value: str | float) -> None:
         """Access the ``smuX.measure.analogfilter`` attribute.
 
         Description:
@@ -4482,7 +4482,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
-    def autorangei(self, value: Union[str, float]) -> None:
+    def autorangei(self, value: str | float) -> None:
         """Access the ``smuX.measure.autorangei`` attribute.
 
         Description:
@@ -4555,7 +4555,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
-    def autorangev(self, value: Union[str, float]) -> None:
+    def autorangev(self, value: str | float) -> None:
         """Access the ``smuX.measure.autorangev`` attribute.
 
         Description:
@@ -4629,7 +4629,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @autozero.setter
-    def autozero(self, value: Union[str, float]) -> None:
+    def autozero(self, value: str | float) -> None:
         """Access the ``smuX.measure.autozero`` attribute.
 
         Description:
@@ -4702,7 +4702,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
-    def count(self, value: Union[str, float]) -> None:
+    def count(self, value: str | float) -> None:
         """Access the ``smuX.measure.count`` attribute.
 
         Description:
@@ -4773,7 +4773,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
-    def delay(self, value: Union[str, float]) -> None:
+    def delay(self, value: str | float) -> None:
         """Access the ``smuX.measure.delay`` attribute.
 
         Description:
@@ -4846,7 +4846,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @delayfactor.setter
-    def delayfactor(self, value: Union[str, float]) -> None:
+    def delayfactor(self, value: str | float) -> None:
         """Access the ``smuX.measure.delayfactor`` attribute.
 
         Description:
@@ -4937,7 +4937,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @highcrangedelayfactor.setter
-    def highcrangedelayfactor(self, value: Union[str, float]) -> None:
+    def highcrangedelayfactor(self, value: str | float) -> None:
         """Access the ``smuX.measure.highcrangedelayfactor`` attribute.
 
         Description:
@@ -5011,7 +5011,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
-    def interval(self, value: Union[str, float]) -> None:
+    def interval(self, value: str | float) -> None:
         """Access the ``smuX.measure.interval`` attribute.
 
         Description:
@@ -5084,7 +5084,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
-    def lowrangei(self, value: Union[str, float]) -> None:
+    def lowrangei(self, value: str | float) -> None:
         """Access the ``smuX.measure.lowrangei`` attribute.
 
         Description:
@@ -5159,7 +5159,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
-    def lowrangev(self, value: Union[str, float]) -> None:
+    def lowrangev(self, value: str | float) -> None:
         """Access the ``smuX.measure.lowrangev`` attribute.
 
         Description:
@@ -5232,7 +5232,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
-    def nplc(self, value: Union[str, float]) -> None:
+    def nplc(self, value: str | float) -> None:
         """Access the ``smuX.measure.nplc`` attribute.
 
         Description:
@@ -5305,7 +5305,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
-    def rangei(self, value: Union[str, float]) -> None:
+    def rangei(self, value: str | float) -> None:
         """Access the ``smuX.measure.rangei`` attribute.
 
         Description:
@@ -5380,7 +5380,7 @@ class SmuxItemMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
-    def rangev(self, value: Union[str, float]) -> None:
+    def rangev(self, value: str | float) -> None:
         """Access the ``smuX.measure.rangev`` attribute.
 
         Description:
@@ -5856,7 +5856,7 @@ class SmuxItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @speed.setter
-    def speed(self, value: Union[str, float]) -> None:
+    def speed(self, value: str | float) -> None:
         """Access the ``smuX.contact.speed`` attribute.
 
         Description:
@@ -5930,7 +5930,7 @@ class SmuxItemContact(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @threshold.setter
-    def threshold(self, value: Union[str, float]) -> None:
+    def threshold(self, value: str | float) -> None:
         """Access the ``smuX.contact.threshold`` attribute.
 
         Description:
@@ -6150,7 +6150,7 @@ class SmuxItemCal(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @adjustdate.setter
-    def adjustdate(self, value: Union[str, float]) -> None:
+    def adjustdate(self, value: str | float) -> None:
         """Access the ``smuX.cal.adjustdate`` attribute.
 
         Description:
@@ -6222,7 +6222,7 @@ class SmuxItemCal(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @date.setter
-    def date(self, value: Union[str, float]) -> None:
+    def date(self, value: str | float) -> None:
         """Access the ``smuX.cal.date`` attribute.
 
         Description:
@@ -6293,7 +6293,7 @@ class SmuxItemCal(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @due.setter
-    def due(self, value: Union[str, float]) -> None:
+    def due(self, value: str | float) -> None:
         """Access the ``smuX.cal.due`` attribute.
 
         Description:
@@ -6356,7 +6356,7 @@ class SmuxItemCal(BaseTSPCmd):
         raise AttributeError(msg)
 
     @password.setter
-    def password(self, value: Union[str, float]) -> None:
+    def password(self, value: str | float) -> None:
         """Access the ``smuX.cal.password`` attribute.
 
         Description:
@@ -6419,7 +6419,7 @@ class SmuxItemCal(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @polarity.setter
-    def polarity(self, value: Union[str, float]) -> None:
+    def polarity(self, value: str | float) -> None:
         """Access the ``smuX.cal.polarity`` attribute.
 
         Description:
@@ -7183,7 +7183,7 @@ reading at index bufferVar.fillcount."""
             raise NoDeviceProvidedError(msg) from error
 
     @sense.setter
-    def sense(self, value: Union[str, float]) -> None:
+    def sense(self, value: str | float) -> None:
         """Access the ``smuX.sense`` attribute.
 
         Description:

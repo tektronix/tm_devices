@@ -66,7 +66,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -691,7 +691,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @connectrule.setter
-    def connectrule(self, value: Union[str, float]) -> None:
+    def connectrule(self, value: str | float) -> None:
         """Access the ``channel.connectrule`` attribute.
 
         Description:
@@ -757,7 +757,7 @@ class Channel(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @connectsequential.setter
-    def connectsequential(self, value: Union[str, float]) -> None:
+    def connectsequential(self, value: str | float) -> None:
         """Access the ``channel.connectsequential`` attribute.
 
         Description:

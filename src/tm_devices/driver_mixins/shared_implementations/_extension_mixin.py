@@ -3,7 +3,7 @@
 
 from collections.abc import Callable
 from functools import cached_property, wraps
-from typing import Concatenate, overload, TypeVar, Union
+from typing import Concatenate, overload, TypeVar
 
 from typing_extensions import ParamSpec, Self
 
@@ -97,7 +97,7 @@ class _ExtendableMixin:
         @wraps(method)  # type: ignore[arg-type]
         def wrap(function: Callable[[Self], _T]) -> None:
             """Wrap function in property class and attach that function to class."""
-            func: Union[property, cached_property[_T]]
+            func: property | cached_property[_T]
             if is_cached:
                 func = cached_property(function)
                 func.__set_name__(owner=cls, name=function.__name__)

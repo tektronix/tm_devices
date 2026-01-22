@@ -329,7 +329,6 @@ ignore = [
   "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
   "TD002",  # Missing author in TO DO (allowed in this package)
   "TD003",  # Missing issue link on the line following this TO DO (allowed in this package)
-  "UP007",  # Use `X | Y` for type annotations # TODO: Drop Python 3.9: enable this check
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
 ]
 pydocstyle = {convention = "google"}
