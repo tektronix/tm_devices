@@ -148,7 +148,7 @@ class DMConfigParser:
         connection_type: ConnectionTypes | str = ConnectionTypes.TCPIP,
         alias: str | None = None,
         lan_port: int | None = None,
-        lan_device_name: str | None = None,
+        lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         device_driver: str | None = None,
         gpib_board_number: int | None = None,
@@ -166,7 +166,7 @@ class DMConfigParser:
             connection_type: The specific type of connection defined in the config entry.
             alias: An optional key/name used to retrieve this device from the DeviceManager.
             lan_port: The port number to connect on, used for SOCKET/REST_API connections.
-            lan_device_name: The LAN device name to connect on, only used for TCPIP connections.
+            lan_device_endpoint: The LAN device endpoint to connect on, used for TCPIP connections.
                 The default is 'inst0'.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
@@ -188,7 +188,7 @@ class DMConfigParser:
             connection_type=connection_type,
             alias=alias,
             lan_port=lan_port,
-            lan_device_name=lan_device_name,
+            lan_device_endpoint=lan_device_endpoint,
             serial_config=serial_config,
             device_driver=device_driver,
             gpib_board_number=gpib_board_number,

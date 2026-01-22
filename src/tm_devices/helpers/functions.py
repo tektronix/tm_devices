@@ -424,7 +424,7 @@ def create_visa_connection(
     return _configure_visa_object(visa_object, device_config_entry, visa_library)
 
 
-def detect_visa_resource_expression(input_str: str) -> tuple[str, str] | None:
+def detect_visa_resource_expression(input_str: str) -> tuple[str, str, str | None] | None:
     """Check if a given string is a VISA resource expression.
 
     This function will check if a string is a VISA resource expression and pull out the pieces
@@ -435,6 +435,7 @@ def detect_visa_resource_expression(input_str: str) -> tuple[str, str] | None:
         - The address of the device, an IP address
           (with port separated by a colon for SOCKET connections), hostname, or
           string in the format ``model-serial``.
+        - The LAN device endpoint, e.g. "inst0".
 
     Args:
         input_str: The string to check for a VISA resource expression.
@@ -442,14 +443,17 @@ def detect_visa_resource_expression(input_str: str) -> tuple[str, str] | None:
     Returns:
         A tuple with the connection information parts.
     """
-    retval: tuple[str, str] | None = None
+    retval: tuple[str, str, str | None] | None = None
     if input_str.upper().startswith("ASRL"):
-        retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
-    elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:
+        retval = (
+            ConnectionTypes.SERIAL.value,
+            input_str[4:].split("::", 1)[0],
+            None,  # Serial connections don't use the LAN device endpoint
+        )
+    elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str)) is not None:
         match_groups_list = list(filter(None, match.groups()))
-        for unneeded_part in ("INST", "INST0", "INSTR"):
-            while unneeded_part in match_groups_list:
-                match_groups_list.remove(unneeded_part)
+        if match_groups_list[-1] in {"INSTR", "INST"}:
+            match_groups_list = match_groups_list[:-1]
         # Check if the model is in the USB model lookup
         model_id_lookup = {
             **_externally_registered_usbtmc_model_id_lookup,
@@ -465,17 +469,33 @@ def detect_visa_resource_expression(input_str: str) -> tuple[str, str] | None:
             # SMU and PSU need to be removed from the string to prevent issues
             match_groups_list[1] = filtered_usb_model_keys[0].replace("SMU", "").replace("PSU", "")
         if match_groups_list[-1] == ConnectionTypes.SOCKET.value:
-            retval = (match_groups_list[-1], ":".join(match_groups_list[1:3]))
+            retval = (
+                match_groups_list[-1],
+                ":".join(match_groups_list[1:3]),
+                None,  # SOCKET connections don't use the LAN device endpoint
+            )
         # If connection_type is GPIB, the board number must be passed back in the returned value
         elif input_str.upper().startswith(ConnectionTypes.GPIB.value.upper()):
             retval = (
                 match_groups_list[0],
                 "-".join(match_groups_list[1:]).lstrip("0X"),
+                None,  # GPIB connections don't use the LAN device endpoint
             )
         else:
+            connection_type = match_groups_list[0].rstrip("0")
+            if connection_type.upper().startswith(ConnectionTypes.USB.value.upper()):
+                address = "-".join(match_groups_list[1:3]).lstrip("0X").lstrip("0x")
+            else:
+                address = match_groups_list[1]
+            lan_device_endpoint = (
+                match_groups_list[-1]
+                if (len(match_groups_list) > 2 and match_groups_list[-1] not in address)  # noqa: PLR2004
+                else None
+            )
             retval = (
-                match_groups_list[0].rstrip("0"),
-                "-".join(match_groups_list[1:]).lstrip("0X"),
+                connection_type,
+                address,
+                lan_device_endpoint,
             )
     return retval
 

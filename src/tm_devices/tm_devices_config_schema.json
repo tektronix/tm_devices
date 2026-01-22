@@ -264,7 +264,7 @@
                     "default": null,
                     "description": "The GPIB board number to use, only used for GPIB connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#gpib_board_number"
                 },
-                "lan_device_name": {
+                "lan_device_endpoint": {
                     "anyOf": [
                         {
                             "type": "string"
@@ -274,7 +274,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_device_name"
+                    "description": "The LAN device endpoint (e.g. 'inst0') to connect via, used for TCPIP connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_device_endpoint"
                 },
                 "lan_port": {
                     "anyOf": [
