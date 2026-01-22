@@ -134,7 +134,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -5698,7 +5698,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         self._trigger_overrun = StatusOperationInstrumentDigioTriggerOverrun(
             device, f"{self._cmd_syntax}.trigger_overrun"
         )
-        self._trigger_overrunx: Dict[int, StatusOperationInstrumentDigioTriggerOverrunItem] = (
+        self._trigger_overrunx: dict[int, StatusOperationInstrumentDigioTriggerOverrunItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: StatusOperationInstrumentDigioTriggerOverrunItem(
                     device, f"{self._cmd_syntax}.trigger_overrun[{x}]"
@@ -5981,7 +5981,7 @@ class StatusOperationInstrumentDigio(BaseTSPCmd):
         return self._trigger_overrun
 
     @property
-    def trigger_overrunx(self) -> Dict[int, StatusOperationInstrumentDigioTriggerOverrunItem]:
+    def trigger_overrunx(self) -> dict[int, StatusOperationInstrumentDigioTriggerOverrunItem]:
         """Return the ``status.operation.instrument.digio.trigger_overrun[2]`` command tree.
 
         Sub-properties and sub-methods:

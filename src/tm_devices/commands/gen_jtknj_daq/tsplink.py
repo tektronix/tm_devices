@@ -22,7 +22,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -181,7 +181,7 @@ class Tsplink(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
-        self._line: Dict[int, TsplinkLineItem] = DefaultDictPassKeyToFactory(
+        self._line: dict[int, TsplinkLineItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkLineItem(device, f"{self._cmd_syntax}.line[{x}]")
         )
 
@@ -249,7 +249,7 @@ class Tsplink(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def line(self) -> Dict[int, TsplinkLineItem]:
+    def line(self) -> dict[int, TsplinkLineItem]:
         """Return the ``tsplink.line[N]`` command tree.
 
         Info:

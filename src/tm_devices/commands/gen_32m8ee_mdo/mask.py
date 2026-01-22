@@ -104,7 +104,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -662,10 +662,10 @@ class MaskUser(SCPICmdRead):
         self._vpos = MaskUserVpos(device, f"{self._cmd_syntax}:VPOS")
         self._vscale = MaskUserVscale(device, f"{self._cmd_syntax}:VSCAle")
         self._width = MaskUserWidth(device, f"{self._cmd_syntax}:WIDth")
-        self._seg: Dict[int, MaskUserSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskUserSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskUserSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
-        self._mask: Dict[int, MaskUserMaskItem] = DefaultDictPassKeyToFactory(
+        self._mask: dict[int, MaskUserMaskItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskUserMaskItem(device, f"{self._cmd_syntax}:MASK{x}")
         )
 
@@ -942,7 +942,7 @@ class MaskUser(SCPICmdRead):
         return self._width
 
     @property
-    def seg(self) -> Dict[int, MaskUserSegItem]:
+    def seg(self) -> dict[int, MaskUserSegItem]:
         """Return the ``MASK:USER:SEG<x>`` command.
 
         Description:
@@ -965,7 +965,7 @@ class MaskUser(SCPICmdRead):
         return self._seg
 
     @property
-    def mask(self) -> Dict[int, MaskUserMaskItem]:
+    def mask(self) -> dict[int, MaskUserMaskItem]:
         """Return the ``MASK:USER:MASK<x>`` command.
 
         Description:
@@ -2820,7 +2820,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._failures = MaskCountFailures(device, f"{self._cmd_syntax}:FAILURES")
         self._hits = MaskCountHits(device, f"{self._cmd_syntax}:HITS")
-        self._seg: Dict[int, MaskCountSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, MaskCountSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskCountSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._tests = MaskCountTests(device, f"{self._cmd_syntax}:TESTS")
@@ -2869,7 +2869,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
         return self._hits
 
     @property
-    def seg(self) -> Dict[int, MaskCountSegItem]:
+    def seg(self) -> dict[int, MaskCountSegItem]:
         """Return the ``MASK:COUNt:SEG<x>`` command tree.
 
         Usage:

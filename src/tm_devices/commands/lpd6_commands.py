@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -1600,7 +1598,7 @@ class LPD6Commands:
         self._cal = Cal(device)
         self._calibrate = Calibrate(device)
         self._callouts = Callouts(device)
-        self._ch: Dict[int, Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, Channel] = DefaultDictPassKeyToFactory(
             lambda x: Channel(device, f"CH{x}")
         )
         self._clear = Clear(device)
@@ -1615,7 +1613,7 @@ class LPD6Commands:
         self._ddt = Ddt(device)
         self._dese = Dese(device)
         self._diag = Diag(device)
-        self._diggrp: Dict[int, DiggrpItem] = DefaultDictPassKeyToFactory(
+        self._diggrp: dict[int, DiggrpItem] = DefaultDictPassKeyToFactory(
             lambda x: DiggrpItem(device, f"DIGGRP{x}")
         )
         self._display = Display(device)
@@ -1643,7 +1641,7 @@ class LPD6Commands:
         self._mainwindow = Mainwindow(device)
         self._mask = Mask(device)
         self._math = Math(device)
-        self._matharbflt: Dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
+        self._matharbflt: dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
             lambda x: MatharbfltItem(device, f"MATHArbflt{x}")
         )
         self._meastable = Meastable(device)
@@ -1661,7 +1659,7 @@ class LPD6Commands:
         self._pud = Pud(device)
         self._recall = Recall(device)
         self._ref = Ref(device)
-        self._refx: Dict[int, RefItem] = DefaultDictPassKeyToFactory(
+        self._refx: dict[int, RefItem] = DefaultDictPassKeyToFactory(
             lambda x: RefItem(device, f"REF{x}")
         )
         self._rem = Rem(device)
@@ -2066,7 +2064,7 @@ class LPD6Commands:
         return self._callouts
 
     @property
-    def ch(self) -> Dict[int, Channel]:
+    def ch(self) -> dict[int, Channel]:
         """Return the ``CH<x>`` command.
 
         Description:
@@ -2444,7 +2442,7 @@ class LPD6Commands:
         return self._diag
 
     @property
-    def diggrp(self) -> Dict[int, DiggrpItem]:
+    def diggrp(self) -> dict[int, DiggrpItem]:
         """Return the ``DIGGRP<x>`` command tree.
 
         Usage:
@@ -3056,7 +3054,7 @@ class LPD6Commands:
         return self._math
 
     @property
-    def matharbflt(self) -> Dict[int, MatharbfltItem]:
+    def matharbflt(self) -> dict[int, MatharbfltItem]:
         """Return the ``MATHArbflt<x>`` command tree.
 
         Usage:
@@ -3425,7 +3423,7 @@ class LPD6Commands:
         return self._ref
 
     @property
-    def refx(self) -> Dict[int, RefItem]:
+    def refx(self) -> dict[int, RefItem]:
         """Return the ``REF<x>`` command tree.
 
         Usage:

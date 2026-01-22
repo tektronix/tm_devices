@@ -21,7 +21,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Any, Dict, Optional, TYPE_CHECKING
+from typing import Any, Optional, TYPE_CHECKING
 
 from ..gen_aon74s_smu.buffervar import Buffervar
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -455,7 +455,7 @@ class Buffer(BaseTSPCmd):
         buffer_var: str | None = None,
         rel_start_time: str | None = None,
         rel_end_time: str | None = None,
-    ) -> Dict[Any, Any]:
+    ) -> dict[Any, Any]:
         """Run the ``buffer.getstats()`` function.
 
         Description:

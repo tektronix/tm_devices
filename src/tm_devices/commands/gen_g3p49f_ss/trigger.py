@@ -30,7 +30,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -570,7 +570,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         self.EVENT_ID = self.EVENT_ID.replace(
             "[N]", f"[{self._cmd_syntax.rsplit('[', maxsplit=1)[-1].split(']', maxsplit=1)[0]}]"
         )
-        self._stimulus: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -681,7 +681,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> Dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, Union[str, float]]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:
@@ -806,15 +806,15 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
+        self._blender: dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
         )
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
 
     @property
-    def blender(self) -> Dict[int, TriggerBlenderItem]:
+    def blender(self) -> dict[int, TriggerBlenderItem]:
         """Return the ``trigger.blender[N]`` command tree.
 
         Info:
@@ -834,7 +834,7 @@ class Trigger(BaseTSPCmd):
         return self._blender
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:

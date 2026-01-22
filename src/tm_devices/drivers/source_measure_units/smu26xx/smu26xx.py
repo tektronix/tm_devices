@@ -3,7 +3,7 @@
 import string
 
 from abc import ABC
-from typing import Tuple, Union
+from typing import Union
 
 from tm_devices.commands import (
     SMU2601BCommands,
@@ -41,7 +41,7 @@ class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
     # Properties
     ################################################################################################
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(string.ascii_lowercase[: self.total_channels])
 

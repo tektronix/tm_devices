@@ -35,7 +35,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -794,7 +794,7 @@ class Ref(SCPICmdRead):
         self._addnew = RefAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = RefDelete(device, f"{self._cmd_syntax}:DELete")
         self._list = RefList(device, f"{self._cmd_syntax}:LIST")
-        self._ref: Dict[int, RefRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, RefRefItem] = DefaultDictPassKeyToFactory(
             lambda x: RefRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
@@ -861,7 +861,7 @@ class Ref(SCPICmdRead):
         return self._list
 
     @property
-    def ref(self) -> Dict[int, RefRefItem]:
+    def ref(self) -> dict[int, RefRefItem]:
         """Return the ``REF:REF<x>`` command tree.
 
         Usage:

@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import ClassVar, Dict, List, Literal, Tuple, Type
+from typing import ClassVar, Literal
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_source_channel import (
     BaseSourceChannel,
@@ -31,7 +31,7 @@ from tm_devices.helpers.enums import (
 class AWGSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
-    functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
+    functions: type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
 
 
 # NOTE: Currently all AWGs are controlled via PI, hence the usage of the PIControl mixin here. If
@@ -50,11 +50,11 @@ class AWG(
     OutputSignalPath = SignalGeneratorOutputPathsNon5200
 
     # The record lengths for the predefined SIN waveforms.
-    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_SIN: ClassVar[List[int]] = [3600, 1000, 960, 360, 100, 36, 10]
+    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_SIN: ClassVar[list[int]] = [3600, 1000, 960, 360, 100, 36, 10]
     # The record lengths for the predefined CLOCK waveforms.
-    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_CLOCK: ClassVar[List[int]] = [960]
+    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_CLOCK: ClassVar[list[int]] = [960]
     # All predefined waveforms have these record lengths.
-    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_DEFAULT: ClassVar[List[int]] = [1000, 960, 100, 10]
+    _PRE_DEFINED_SIGNAL_RECORD_LENGTH_DEFAULT: ClassVar[list[int]] = [1000, 960, 100, 10]
 
     ################################################################################################
     # Magic Methods
@@ -75,7 +75,7 @@ class AWG(
         Returns:
             The dictionary of channel string to the source channel object.
         """
-        channel_map: Dict[str, AWGSourceChannel] = {}
+        channel_map: dict[str, AWGSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWGSourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -255,7 +255,7 @@ class AWG(
 
         if function and not waveform_length:
             # use the min and max waveform length dependent on the predefined files
-            func_sample_rate_lookup: Dict[str, ParameterBounds] = {
+            func_sample_rate_lookup: dict[str, ParameterBounds] = {
                 SignalGeneratorFunctionsAWG.SIN.name: ParameterBounds(lower=10, upper=3600),
                 SignalGeneratorFunctionsAWG.CLOCK.name: ParameterBounds(lower=960, upper=960),
                 SignalGeneratorFunctionsAWG.SQUARE.name: ParameterBounds(lower=10, upper=1000),
@@ -310,7 +310,7 @@ class AWG(
         selected_function: SignalGeneratorFunctionsAWG,
         output_signal_path: SignalGeneratorOutputPathsBase | None,
         symmetry: float | None = 50.0,
-    ) -> Tuple[str, float]:
+    ) -> tuple[str, float]:
         """Get the predefined waveform name for the provided function.
 
         Args:
@@ -368,7 +368,7 @@ class AWG(
     def _get_series_specific_constraints(
         self,
         output_signal_path: SignalGeneratorOutputPathsBase | None,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         raise NotImplementedError
 
 

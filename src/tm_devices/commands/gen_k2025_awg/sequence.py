@@ -33,7 +33,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -660,7 +660,7 @@ class SequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:SUBSequence"
         )
         self._twait = SequenceElementItemTwait(device, f"{self._cmd_syntax}:TWAit")
-        self._waveform: Dict[int, SequenceElementItemWaveformItem] = DefaultDictPassKeyToFactory(
+        self._waveform: dict[int, SequenceElementItemWaveformItem] = DefaultDictPassKeyToFactory(
             lambda x: SequenceElementItemWaveformItem(device, f"{self._cmd_syntax}:WAVeform{x}")
         )
 
@@ -769,7 +769,7 @@ class SequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._twait
 
     @property
-    def waveform(self) -> Dict[int, SequenceElementItemWaveformItem]:
+    def waveform(self) -> dict[int, SequenceElementItemWaveformItem]:
         """Return the ``SEQuence:ELEMent[n]:WAVeform[m]`` command.
 
         Description:
@@ -812,14 +812,14 @@ class Sequence(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SEQuence") -> None:
         super().__init__(device, cmd_syntax)
-        self._element: Dict[int, SequenceElementItem] = DefaultDictPassKeyToFactory(
+        self._element: dict[int, SequenceElementItem] = DefaultDictPassKeyToFactory(
             lambda x: SequenceElementItem(device, f"{self._cmd_syntax}:ELEMent{x}")
         )
         self._jump = SequenceJump(device, f"{self._cmd_syntax}:JUMP")
         self._length = SequenceLength(device, f"{self._cmd_syntax}:LENGth")
 
     @property
-    def element(self) -> Dict[int, SequenceElementItem]:
+    def element(self) -> dict[int, SequenceElementItem]:
         """Return the ``SEQuence:ELEMent[n]`` command tree.
 
         Usage:

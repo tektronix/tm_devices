@@ -1,7 +1,5 @@
 """MSO2 device driver module."""
 
-from typing import Tuple
-
 import pyvisa as visa
 
 from tm_devices.commands import MSO2Mixin
@@ -43,7 +41,7 @@ class MSO2(MSO2Mixin, TekScope):  # pyright: ignore[reportIncompatibleVariableOv
     # Public Methods
     ################################################################################################
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names.
 
         Notes:

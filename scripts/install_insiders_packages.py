@@ -6,8 +6,6 @@ import os
 import subprocess
 import sys
 
-from typing import List
-
 import requests
 
 from packaging.version import parse as parse_version
@@ -24,7 +22,7 @@ PACKAGE_LIST = {
 }
 
 
-def get_github_tags(repo_url_str: str, github_token: str) -> List[str]:
+def get_github_tags(repo_url_str: str, github_token: str) -> list[str]:
     """Get the tags for a GitHub repository.
 
     Args:
@@ -54,7 +52,7 @@ def get_github_tags(repo_url_str: str, github_token: str) -> List[str]:
         return []
 
 
-def get_newest_matching_tag(current_version: str, tags: List[str]) -> str:
+def get_newest_matching_tag(current_version: str, tags: list[str]) -> str:
     """Find the newest tag that starts with the given current version.
 
     Args:

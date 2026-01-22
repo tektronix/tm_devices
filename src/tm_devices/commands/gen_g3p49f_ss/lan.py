@@ -51,7 +51,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -801,14 +801,14 @@ class LanStatusDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
             device=self._device,
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, Union[str, float]]:
         """Access the ``lan.status.dns.address[N]`` attribute.
 
         Description:
@@ -1090,7 +1090,7 @@ class LanConfigDns(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._address: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.address[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.address[{{key}}])",
@@ -1098,7 +1098,7 @@ class LanConfigDns(BaseTSPCmd):
         )
 
     @property
-    def address(self) -> Dict[int, Union[str, float]]:
+    def address(self) -> dict[int, Union[str, float]]:
         """Access the ``lan.config.dns.address[N]`` attribute.
 
         Description:
@@ -1696,7 +1696,7 @@ class Lan(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._config = LanConfig(device, f"{self._cmd_syntax}.config")
         self._status = LanStatus(device, f"{self._cmd_syntax}.status")
-        self._trigger: Dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: LanTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -1862,7 +1862,7 @@ class Lan(BaseTSPCmd):
         return self._status
 
     @property
-    def trigger(self) -> Dict[int, LanTriggerItem]:
+    def trigger(self) -> dict[int, LanTriggerItem]:
         """Return the ``lan.trigger[N]`` command tree.
 
         Info:

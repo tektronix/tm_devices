@@ -25,7 +25,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -235,23 +235,23 @@ class Select(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
-        self._bus: Dict[int, SelectBusItem] = DefaultDictPassKeyToFactory(
+        self._bus: dict[int, SelectBusItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectBusItem(device, f"{self._cmd_syntax}:BUS{x}")
         )
-        self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._control = SelectControl(device, f"{self._cmd_syntax}:CONTROl")
-        self._d: Dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: SelectDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
         self._math1 = SelectMath1(device, f"{self._cmd_syntax}:MATH1")
-        self._ref: Dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def bus(self) -> Dict[int, SelectBusItem]:
+    def bus(self) -> dict[int, SelectBusItem]:
         """Return the ``SELect:BUS<x>`` command.
 
         Description:
@@ -274,7 +274,7 @@ class Select(SCPICmdWrite, SCPICmdRead):
         return self._bus
 
     @property
-    def ch(self) -> Dict[int, SelectChannel]:
+    def ch(self) -> dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
 
         Description:
@@ -334,7 +334,7 @@ class Select(SCPICmdWrite, SCPICmdRead):
         return self._control
 
     @property
-    def d(self) -> Dict[int, SelectDigitalBit]:
+    def d(self) -> dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.
 
         Description:
@@ -393,7 +393,7 @@ class Select(SCPICmdWrite, SCPICmdRead):
         return self._math1
 
     @property
-    def ref(self) -> Dict[int, SelectRefItem]:
+    def ref(self) -> dict[int, SelectRefItem]:
         """Return the ``SELect:REF<x>`` command.
 
         Description:

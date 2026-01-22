@@ -682,7 +682,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -8835,7 +8835,7 @@ class BusBItemParallel(SCPICmdRead):
         self._allthresholds = BusBItemParallelAllthresholds(
             device, f"{self._cmd_syntax}:ALLTHResholds"
         )
-        self._bitsource: Dict[int, BusBItemParallelBitsourceItem] = DefaultDictPassKeyToFactory(
+        self._bitsource: dict[int, BusBItemParallelBitsourceItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItemParallelBitsourceItem(device, f"{self._cmd_syntax}:BIT{x}SOUrce")
         )
         self._clocksource = BusBItemParallelClocksource(device, f"{self._cmd_syntax}:CLOCKSOUrce")
@@ -8869,7 +8869,7 @@ class BusBItemParallel(SCPICmdRead):
         return self._allthresholds
 
     @property
-    def bitsource(self) -> Dict[int, BusBItemParallelBitsourceItem]:
+    def bitsource(self) -> dict[int, BusBItemParallelBitsourceItem]:
         """Return the ``BUS:B<x>:PARallel:BIT<x>SOUrce`` command.
 
         Description:
@@ -25528,7 +25528,7 @@ class Bus(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUS") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = BusAddnew(device, f"{self._cmd_syntax}:ADDNew")
-        self._b: Dict[int, BusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._delete = BusDelete(device, f"{self._cmd_syntax}:DELete")
@@ -25557,7 +25557,7 @@ class Bus(SCPICmdRead):
         return self._addnew
 
     @property
-    def b(self) -> Dict[int, BusBItem]:
+    def b(self) -> dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.
 
         Usage:

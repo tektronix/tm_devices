@@ -8,7 +8,7 @@ from collections.abc import Generator
 # noinspection PyUnresolvedReferences
 from functools import _lru_cache_wrapper, cached_property  # pyright: ignore [reportPrivateUsage]
 from types import FunctionType
-from typing import Any, List, Set, Type
+from typing import Any
 
 import pytest
 
@@ -36,9 +36,9 @@ def _reset_dm(device_manager: tm_devices.DeviceManager) -> Generator[None, None,
     device_manager.remove_all_devices()
 
 
-def get_all_drivers() -> List[Type[object]]:
+def get_all_drivers() -> list[type[object]]:
     """Get all non-abstract device drivers."""
-    all_drivers: List[Type[object]] = []
+    all_drivers: list[type[object]] = []
     for driver in get_all_subclasses(Device):
         if not (
             "UnitTestOnly" in driver.__name__
@@ -55,7 +55,7 @@ def get_all_drivers() -> List[Type[object]]:
 
 
 # noinspection PyArgumentList
-def get_all_subclasses(class_object: Type[object]) -> Set[Type[object]]:
+def get_all_subclasses(class_object: type[object]) -> set[type[object]]:
     """Get all the subclasses for a given class object.
 
     Args:
@@ -71,7 +71,7 @@ def get_all_subclasses(class_object: Type[object]) -> Set[Type[object]]:
     )
 
 
-def get_all_method_names(class_object: Type[object]) -> Set[str]:
+def get_all_method_names(class_object: type[object]) -> set[str]:
     """Get all the methods for a given class object.
 
     Args:
@@ -126,7 +126,7 @@ def test_device_types() -> None:
 
 
 @pytest.mark.parametrize("driver", get_all_drivers())
-def test_driver_has_family_base_class(driver: Type[object]) -> None:
+def test_driver_has_family_base_class(driver: type[object]) -> None:
     """Test that each driver has a family base class."""
     assert hasattr(driver, _FAMILY_BASE_CLASS_PROPERTY_NAME), (
         f"{driver.__name__} is not part of a Family, "
@@ -146,7 +146,7 @@ def test_driver_has_family_base_class(driver: Type[object]) -> None:
         key=lambda x: x.__name__,  # pyright: ignore[reportUnknownMemberType,reportUnknownLambdaType,reportAttributeAccessIssue]
     ),
 )
-def test_family_base_class_inheritance(family_base_class: Type[object]) -> None:
+def test_family_base_class_inheritance(family_base_class: type[object]) -> None:
     """Test that family base classes do not inherit from another family base class."""
     for family_class_base in family_base_class.__bases__:
         inherited_family_class_base = getattr(
@@ -167,7 +167,7 @@ def test_family_base_class_inheritance(family_base_class: Type[object]) -> None:
     ],
 )
 def test_no_new_methods_in_subclasses(
-    family_base_class: Type[object], driver: Type[object]
+    family_base_class: type[object], driver: type[object]
 ) -> None:
     """Test that no new methods are defined in subclasses."""
     family_base_class_methods = get_all_method_names(family_base_class)
@@ -179,7 +179,7 @@ def test_no_new_methods_in_subclasses(
 
 
 @pytest.mark.parametrize("driver", get_all_drivers())
-def test_mixin_import_order(driver: Type[object]) -> None:
+def test_mixin_import_order(driver: type[object]) -> None:
     """Test that the Mixin import order is correct."""
     mro = [x.__name__ for x in driver.__mro__]
     if (mixin_name := driver.__name__ + "Mixin") in mro:
@@ -187,7 +187,7 @@ def test_mixin_import_order(driver: Type[object]) -> None:
 
 
 @pytest.mark.parametrize("driver", get_all_drivers())
-def test_no_lru_cache_in_methods(driver: Type[object]) -> None:
+def test_no_lru_cache_in_methods(driver: type[object]) -> None:
     """Test that lru_cache is never used in methods."""
     lru_cached_methods = {
         name
@@ -202,10 +202,10 @@ def test_supported_models_in_device_driver_mapping() -> None:
     from tm_devices.drivers import _device_driver_mapping  # noqa: PLC0415
 
     supported_models_list = sorted(x.value for x in tm_devices.SupportedModels)
-    device_driver_list: List[str] = sorted(
+    device_driver_list: list[str] = sorted(
         _device_driver_mapping._DEVICE_DRIVER_MODEL_STR_MAPPING  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     )
-    module_list: List[str] = list(tm_devices.drivers.__all__)
+    module_list: list[str] = list(tm_devices.drivers.__all__)
     # Remove a few non-driver items
     module_list.remove("SupportedModels")
     module_list.sort()

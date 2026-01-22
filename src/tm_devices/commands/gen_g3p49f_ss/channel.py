@@ -66,7 +66,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -638,7 +638,7 @@ class Channel(BaseTSPCmd):
         super().__init__(device, cmd_syntax)
         self._calibration = ChannelCalibration(device, f"{self._cmd_syntax}.calibration")
         self._pattern = ChannelPattern(device, f"{self._cmd_syntax}.pattern")
-        self._trigger: Dict[int, ChannelTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, ChannelTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: ChannelTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -803,7 +803,7 @@ class Channel(BaseTSPCmd):
         return self._pattern
 
     @property
-    def trigger(self) -> Dict[int, ChannelTriggerItem]:
+    def trigger(self) -> dict[int, ChannelTriggerItem]:
         """Return the ``channel.trigger[N]`` command tree.
 
         Info:

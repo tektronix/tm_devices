@@ -25,7 +25,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -480,12 +480,12 @@ class SaveEventtable(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._bus: Dict[int, SaveEventtableBusItem] = DefaultDictPassKeyToFactory(
+        self._bus: dict[int, SaveEventtableBusItem] = DefaultDictPassKeyToFactory(
             lambda x: SaveEventtableBusItem(device, f"{self._cmd_syntax}:BUS{x}")
         )
 
     @property
-    def bus(self) -> Dict[int, SaveEventtableBusItem]:
+    def bus(self) -> dict[int, SaveEventtableBusItem]:
         """Return the ``SAVe:EVENTtable:BUS<x>`` command.
 
         Description:

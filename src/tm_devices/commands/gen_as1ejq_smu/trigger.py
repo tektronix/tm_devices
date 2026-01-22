@@ -9,7 +9,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     BaseTSPCmd,
@@ -97,18 +97,18 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
+        self._blender: dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
         )
-        self._generator: Dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
+        self._generator: dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerGeneratorItem(device, f"{self._cmd_syntax}.generator[{x}]")
         )
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
 
     @property
-    def blender(self) -> Dict[int, TriggerBlenderItem]:
+    def blender(self) -> dict[int, TriggerBlenderItem]:
         """Return the ``trigger.blender[N]`` command tree.
 
         Constants:
@@ -118,7 +118,7 @@ class Trigger(BaseTSPCmd):
         return self._blender
 
     @property
-    def generator(self) -> Dict[int, TriggerGeneratorItem]:
+    def generator(self) -> dict[int, TriggerGeneratorItem]:
         """Return the ``trigger.generator[N]`` command tree.
 
         Constants:
@@ -127,7 +127,7 @@ class Trigger(BaseTSPCmd):
         return self._generator
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Constants:

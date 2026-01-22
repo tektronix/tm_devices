@@ -59,7 +59,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -151,7 +151,7 @@ class CursorXyRectangularY(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRectangularYDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyRectangularYPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyRectangularYPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyRectangularYPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyRectangularYUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -176,7 +176,7 @@ class CursorXyRectangularY(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyRectangularYPositionItem]:
+    def position(self) -> dict[int, CursorXyRectangularYPositionItem]:
         """Return the ``CURSor:XY:RECTangular:Y:POSITION<x>`` command.
 
         Description:
@@ -302,7 +302,7 @@ class CursorXyRectangularX(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRectangularXDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyRectangularXPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyRectangularXPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyRectangularXPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyRectangularXUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -327,7 +327,7 @@ class CursorXyRectangularX(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyRectangularXPositionItem]:
+    def position(self) -> dict[int, CursorXyRectangularXPositionItem]:
         """Return the ``CURSor:XY:RECTangular:X:POSITION<x>`` command.
 
         Description:
@@ -524,7 +524,7 @@ class CursorXyRatio(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRatioDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyRatioPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyRatioPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyRatioPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyRatioUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -550,7 +550,7 @@ class CursorXyRatio(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyRatioPositionItem]:
+    def position(self) -> dict[int, CursorXyRatioPositionItem]:
         """Return the ``CURSor:XY:RATIO:POSITION<x>`` command.
 
         Description:
@@ -664,7 +664,7 @@ class CursorXyProduct(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyProductDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyProductPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyProductPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyProductPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyProductUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -690,7 +690,7 @@ class CursorXyProduct(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyProductPositionItem]:
+    def position(self) -> dict[int, CursorXyProductPositionItem]:
         """Return the ``CURSor:XY:PRODUCT:POSITION<x>`` command.
 
         Description:
@@ -801,7 +801,7 @@ class CursorXyPolarTheta(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyPolarThetaDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyPolarThetaPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyPolarThetaPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyPolarThetaPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyPolarThetaUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -826,7 +826,7 @@ class CursorXyPolarTheta(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyPolarThetaPositionItem]:
+    def position(self) -> dict[int, CursorXyPolarThetaPositionItem]:
         """Return the ``CURSor:XY:POLar:THETA:POSITION<x>`` command.
 
         Description:
@@ -938,7 +938,7 @@ class CursorXyPolarRadius(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyPolarRadiusDelta(device, f"{self._cmd_syntax}:DELta")
-        self._position: Dict[int, CursorXyPolarRadiusPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorXyPolarRadiusPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorXyPolarRadiusPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorXyPolarRadiusUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -964,7 +964,7 @@ class CursorXyPolarRadius(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorXyPolarRadiusPositionItem]:
+    def position(self) -> dict[int, CursorXyPolarRadiusPositionItem]:
         """Return the ``CURSor:XY:POLar:RADIUS:POSITION<x>`` command.
 
         Description:
@@ -1355,14 +1355,14 @@ class CursorVbars(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._alternate: Dict[int, CursorVbarsAlternateItem] = DefaultDictPassKeyToFactory(
+        self._alternate: dict[int, CursorVbarsAlternateItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorVbarsAlternateItem(device, f"{self._cmd_syntax}:ALTERNATE{x}")
         )
         self._delta = CursorVbarsDelta(device, f"{self._cmd_syntax}:DELTa")
-        self._hpos: Dict[int, CursorVbarsHposItem] = DefaultDictPassKeyToFactory(
+        self._hpos: dict[int, CursorVbarsHposItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorVbarsHposItem(device, f"{self._cmd_syntax}:HPOS{x}")
         )
-        self._position: Dict[int, CursorVbarsPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorVbarsPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorVbarsPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorVbarsUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -1370,7 +1370,7 @@ class CursorVbars(SCPICmdRead):
         self._vdelta = CursorVbarsVdelta(device, f"{self._cmd_syntax}:VDELTa")
 
     @property
-    def alternate(self) -> Dict[int, CursorVbarsAlternateItem]:
+    def alternate(self) -> dict[int, CursorVbarsAlternateItem]:
         """Return the ``CURSor:VBArs:ALTERNATE<x>`` command.
 
         Description:
@@ -1414,7 +1414,7 @@ class CursorVbars(SCPICmdRead):
         return self._delta
 
     @property
-    def hpos(self) -> Dict[int, CursorVbarsHposItem]:
+    def hpos(self) -> dict[int, CursorVbarsHposItem]:
         """Return the ``CURSor:VBArs:HPOS<x>`` command.
 
         Description:
@@ -1436,7 +1436,7 @@ class CursorVbars(SCPICmdRead):
         return self._hpos
 
     @property
-    def position(self) -> Dict[int, CursorVbarsPositionItem]:
+    def position(self) -> dict[int, CursorVbarsPositionItem]:
         """Return the ``CURSor:VBArs:POSITION<x>`` command.
 
         Description:
@@ -1717,7 +1717,7 @@ class CursorHbars(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorHbarsDelta(device, f"{self._cmd_syntax}:DELTa")
-        self._position: Dict[int, CursorHbarsPositionItem] = DefaultDictPassKeyToFactory(
+        self._position: dict[int, CursorHbarsPositionItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorHbarsPositionItem(device, f"{self._cmd_syntax}:POSITION{x}")
         )
         self._units = CursorHbarsUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -1743,7 +1743,7 @@ class CursorHbars(SCPICmdRead):
         return self._delta
 
     @property
-    def position(self) -> Dict[int, CursorHbarsPositionItem]:
+    def position(self) -> dict[int, CursorHbarsPositionItem]:
         """Return the ``CURSor:HBArs:POSITION<x>`` command.
 
         Description:

@@ -18,7 +18,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -225,7 +225,7 @@ class Plot(SCPICmdRead):
         self._addnew = PlotAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PlotDelete(device, f"{self._cmd_syntax}:DELete")
         self._list = PlotList(device, f"{self._cmd_syntax}:LIST")
-        self._plot: Dict[int, PlotPlotItem] = DefaultDictPassKeyToFactory(
+        self._plot: dict[int, PlotPlotItem] = DefaultDictPassKeyToFactory(
             lambda x: PlotPlotItem(device, f"{self._cmd_syntax}:PLOT{x}")
         )
 
@@ -291,7 +291,7 @@ class Plot(SCPICmdRead):
         return self._list
 
     @property
-    def plot(self) -> Dict[int, PlotPlotItem]:
+    def plot(self) -> dict[int, PlotPlotItem]:
         """Return the ``PLOT:PLOT<x>`` command tree.
 
         Usage:

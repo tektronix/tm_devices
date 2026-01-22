@@ -2,8 +2,6 @@
 
 import re
 
-from typing import List, Tuple
-
 import pytest
 
 # Use the actual implementation
@@ -15,7 +13,7 @@ from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_c
 class DummyDevice:  # pylint: disable=too-few-public-methods
     """A dummy device for testing the expect_esr method."""
 
-    get_errors_return: Tuple[int, Tuple[str, ...]] = (0, ())
+    get_errors_return: tuple[int, tuple[str, ...]] = (0, ())
 
     def __init__(self) -> None:
         """Initialize the dummy device."""
@@ -25,11 +23,11 @@ class DummyDevice:  # pylint: disable=too-few-public-methods
     def _no_error_string(self) -> str:
         return ""
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         return self.get_errors_return
 
     def expect_esr(
-        self, esr: int, error_messages: Tuple[str, ...] = (), *, use_regex_match: bool = False
+        self, esr: int, error_messages: tuple[str, ...] = (), *, use_regex_match: bool = False
     ) -> bool:
         """A wrapper to call the expect_esr method from _AbstractDeviceVISAWriteQueryControl."""
         # Patch self into the class
@@ -99,7 +97,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
     failure_msg_start = 'FAILURE: (DUMMY 1 "DUT") : '
 
     def get_assertion_msg(
-        log_msgs: List[str], *, esr: Tuple[int, int] = (0, 0), extra_assert_msg: str = ""
+        log_msgs: list[str], *, esr: tuple[int, int] = (0, 0), extra_assert_msg: str = ""
     ) -> str:
         """Helper to create the expected assertion message string."""
         esr_match = esr[0] == esr[1]
@@ -129,7 +127,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
         retval = re.escape(match).replace(r"\#", "#").replace(r"\ ", " ").replace("\\\n", "\n")
         return f"^{retval}$"
 
-    def verify_caplog_matches_expected(log_msgs: List[str]) -> None:
+    def verify_caplog_matches_expected(log_msgs: list[str]) -> None:
         """Helper to verify caplog records match expected log messages."""
         log_msgs = [msg for msg in log_msgs if msg]  # Filter out empty messages
         assert len(caplog.records) == len(log_msgs)
@@ -140,7 +138,7 @@ def test_expect_esr_param_just_esr_arg(  # noqa: PLR0915
             )
         caplog.clear()
 
-    def convert_log_msgs_for_device2(msg: List[str]) -> List[str]:
+    def convert_log_msgs_for_device2(msg: list[str]) -> list[str]:
         """Helper to convert a log message for device2's custom no error string."""
         return [msg.replace("DummyDevice", "DummyDeviceCustomNoError") for msg in msg]
 

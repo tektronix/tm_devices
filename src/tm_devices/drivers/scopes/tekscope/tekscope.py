@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, cast, Dict, List, Literal, Tuple, Type, TYPE_CHECKING, Union
+from typing import Any, cast, Literal, TYPE_CHECKING, Union
 
 import pyvisa as visa
 
@@ -70,7 +70,7 @@ _logger: logging.Logger = logging.getLogger(__name__)
 class TekScopeSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
-    functions: Type[SignalGeneratorFunctionsIAFG] = SignalGeneratorFunctionsIAFG
+    functions: type[SignalGeneratorFunctionsIAFG] = SignalGeneratorFunctionsIAFG
 
 
 @dataclass(frozen=True)
@@ -148,7 +148,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         """Mapping of channel names to any detectable properties, attributes, and settings."""
         # TODO: overwrite in MSO2 driver, would remove need for try-except
         #   https://github.com/tektronix/tm_devices/issues/324
-        channel_map: Dict[str, TekScopeChannel] = {}
+        channel_map: dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
             500
@@ -217,7 +217,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         return self.query(":ETHERNET:NAME?", verbose=False, remove_quotes=True)
 
     @cached_property
-    def license_list(self) -> Tuple[str, ...]:
+    def license_list(self) -> tuple[str, ...]:
         """Return the list of license AppIDs installed on the scope."""
         license_list = self.query(
             ":LICENSE:APPID?", verbose=False, remove_quotes=True, allow_empty=True
@@ -240,10 +240,10 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
             return 0
 
     @cached_property
-    def usb_drives(self) -> Tuple[str, ...]:
+    def usb_drives(self) -> tuple[str, ...]:
         """Return a list of all connected USB drives."""
         # Find all USB drives connected to the device
-        usb_drives: List[str] = []
+        usb_drives: list[str] = []
         # These drive letter hosts are hard coded to the front and back usb ports.
         available_hosts = ["E:", "F:", "G:", "H:", "I:", "J:", "K:"]
         with self.temporary_verbose(False):
@@ -259,7 +259,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         return tuple(usb_drives)
 
     @property
-    def valid_image_extensions(self) -> Tuple[str, ...]:
+    def valid_image_extensions(self) -> tuple[str, ...]:
         """Return a tuple of valid image extensions for this device.
 
         The extensions will be in the format '.ext', where 'ext' is the lowercase extension,
@@ -331,7 +331,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         channel_num: int,
         wfm_type: str = "TimeDomain",
         output_csv_file: Union[str, os.PathLike[str]] | None = None,
-    ) -> List[Any]:
+    ) -> list[Any]:
         """Perform a curve query on a specific channel.
 
         Args:
@@ -391,7 +391,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self.set_and_check(":DATA:ENC", "ASCII")
         wfm_str = self.query(":CURVE?")
         frames = wfm_str.splitlines()[0].split(";")
-        wfm_data: List[Union[List[int], List[float]]] = []
+        wfm_data: list[Union[list[int], list[float]]] = []
         if wfm_type == "TimeDomain":
             for frame in frames:
                 wfm_data.append([int(b) for b in frame.split(",")])  # noqa: PERF401

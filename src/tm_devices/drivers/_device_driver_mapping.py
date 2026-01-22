@@ -1,7 +1,7 @@
 """The mapping for all device drivers."""
 
 from types import MappingProxyType
-from typing import Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
@@ -114,7 +114,7 @@ if TYPE_CHECKING:
 ####################################################################################################
 # Private Attributes
 ####################################################################################################
-_DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, Type[Device]]" = MappingProxyType(
+_DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, type[Device]]" = MappingProxyType(
     {
         # AFGs
         SupportedModels.AFG3K.value: AFG3K,

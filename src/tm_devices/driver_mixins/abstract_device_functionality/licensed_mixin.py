@@ -1,7 +1,7 @@
 """A mixin class providing common methods and attributes for devices with installable licenses."""
 
 from abc import ABC, abstractmethod
-from typing import final, Tuple
+from typing import final
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -11,7 +11,7 @@ class LicensedMixin(ABC):
 
     @cached_property
     @abstractmethod
-    def license_list(self) -> Tuple[str, ...]:
+    def license_list(self) -> tuple[str, ...]:
         """Return the list of licenses installed on the device."""
 
     @final

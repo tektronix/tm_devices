@@ -25,7 +25,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -306,7 +306,7 @@ class Linktraining(SCPICmdRead):
         self._acqtime = LinktrainingAcqtime(device, f"{self._cmd_syntax}:ACQTime")
         self._armscope = LinktrainingArmscope(device, f"{self._cmd_syntax}:ARMscope")
         self._decode = LinktrainingDecode(device, f"{self._cmd_syntax}:DECOde")
-        self._equalizationch: Dict[int, LinktrainingEqualizationchItem] = (
+        self._equalizationch: dict[int, LinktrainingEqualizationchItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: LinktrainingEqualizationchItem(
                     device, f"{self._cmd_syntax}:EQUalizationCH{x}"
@@ -431,7 +431,7 @@ class Linktraining(SCPICmdRead):
         return self._decode
 
     @property
-    def equalizationch(self) -> Dict[int, LinktrainingEqualizationchItem]:
+    def equalizationch(self) -> dict[int, LinktrainingEqualizationchItem]:
         """Return the ``LINKTRaining:EQUalizationCH<x>`` command.
 
         Description:

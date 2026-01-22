@@ -93,7 +93,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -689,7 +689,7 @@ class StatusQuestionableInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._smu: Dict[int, StatusQuestionableInstrumentSmuItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[int, StatusQuestionableInstrumentSmuItem] = DefaultDictPassKeyToFactory(
             lambda x: StatusQuestionableInstrumentSmuItem(device, f"{self._cmd_syntax}.smu[{x}]")
         )
 
@@ -953,7 +953,7 @@ class StatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, StatusQuestionableInstrumentSmuItem]:
+    def smu(self) -> dict[int, StatusQuestionableInstrumentSmuItem]:
         """Return the ``status.questionable.instrument.smu[X]`` command tree.
 
         Info:
@@ -2417,7 +2417,7 @@ class StatusOperationInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._smu: Dict[int, StatusOperationInstrumentSmuItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[int, StatusOperationInstrumentSmuItem] = DefaultDictPassKeyToFactory(
             lambda x: StatusOperationInstrumentSmuItem(device, f"{self._cmd_syntax}.smu[{x}]")
         )
 
@@ -2681,7 +2681,7 @@ class StatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, StatusOperationInstrumentSmuItem]:
+    def smu(self) -> dict[int, StatusOperationInstrumentSmuItem]:
         """Return the ``status.operation.instrument.smu[X]`` command tree.
 
         Info:
@@ -3903,7 +3903,7 @@ class StatusMeasurementInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._smu: Dict[int, StatusMeasurementInstrumentSmuItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[int, StatusMeasurementInstrumentSmuItem] = DefaultDictPassKeyToFactory(
             lambda x: StatusMeasurementInstrumentSmuItem(device, f"{self._cmd_syntax}.smu[{x}]")
         )
 
@@ -4175,7 +4175,7 @@ class StatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, StatusMeasurementInstrumentSmuItem]:
+    def smu(self) -> dict[int, StatusMeasurementInstrumentSmuItem]:
         """Return the ``status.measurement.instrument.smu[X]`` command tree.
 
         Info:

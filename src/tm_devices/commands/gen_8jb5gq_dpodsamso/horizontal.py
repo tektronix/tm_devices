@@ -132,7 +132,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -202,15 +202,15 @@ class HorizontalTimestamp(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalTimestampChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalTimestampChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalTimestampChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, HorizontalTimestampRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalTimestampRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalTimestampRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalTimestampChannel]:
+    def ch(self) -> dict[int, HorizontalTimestampChannel]:
         """Return the ``HORizontal:TIMEStamp:CH<x>`` command.
 
         Description:
@@ -230,7 +230,7 @@ class HorizontalTimestamp(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, HorizontalTimestampRefItem]:
+    def ref(self) -> dict[int, HorizontalTimestampRefItem]:
         """Return the ``HORizontal:TIMEStamp:REF<x>`` command.
 
         Description:
@@ -1063,15 +1063,15 @@ class HorizontalFastframeXzeroSelected(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeXzeroSelectedChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeXzeroSelectedChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroSelectedChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, HorizontalFastframeXzeroSelectedRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalFastframeXzeroSelectedRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroSelectedRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeXzeroSelectedChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeXzeroSelectedChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:SELECTED:CH<x>`` command.
 
         Description:
@@ -1093,7 +1093,7 @@ class HorizontalFastframeXzeroSelected(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeXzeroSelectedRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeXzeroSelectedRefItem]:
         """Return the ``HORizontal:FASTframe:XZEro:SELECTED:REF<x>`` command.
 
         Description:
@@ -1197,15 +1197,15 @@ class HorizontalFastframeXzeroFrame(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeXzeroFrameChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeXzeroFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, HorizontalFastframeXzeroFrameRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalFastframeXzeroFrameRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroFrameRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeXzeroFrameChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeXzeroFrameChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:FRAme:CH<x>`` command.
 
         Description:
@@ -1230,7 +1230,7 @@ class HorizontalFastframeXzeroFrame(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeXzeroFrameRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeXzeroFrameRefItem]:
         """Return the ``HORizontal:FASTframe:XZEro:FRAme:REF<x>`` command.
 
         Description:
@@ -1318,15 +1318,15 @@ class HorizontalFastframeXzeroAll(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeXzeroAllChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeXzeroAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroAllChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._ref: Dict[int, HorizontalFastframeXzeroAllRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalFastframeXzeroAllRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroAllRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeXzeroAllChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeXzeroAllChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:ALL:CH<x>`` command.
 
         Description:
@@ -1351,7 +1351,7 @@ class HorizontalFastframeXzeroAll(SCPICmdRead):
         return self._ch
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeXzeroAllRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeXzeroAllRefItem]:
         """Return the ``HORizontal:FASTframe:XZEro:ALL:REF<x>`` command.
 
         Description:
@@ -1626,28 +1626,28 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeTimestampSelectedChannel] = (
+        self._ch: dict[int, HorizontalFastframeTimestampSelectedChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampSelectedChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._math: Dict[int, HorizontalFastframeTimestampSelectedMathItem] = (
+        self._math: dict[int, HorizontalFastframeTimestampSelectedMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampSelectedMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeTimestampSelectedRefItem] = (
+        self._ref: dict[int, HorizontalFastframeTimestampSelectedRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampSelectedRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeTimestampSelectedDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeTimestampSelectedDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampSelectedDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -1656,7 +1656,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeTimestampSelectedChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeTimestampSelectedChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>`` command.
 
         Description:
@@ -1682,7 +1682,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeTimestampSelectedMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeTimestampSelectedMathItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>`` command.
 
         Description:
@@ -1708,7 +1708,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeTimestampSelectedRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeTimestampSelectedRefItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:REF<x>`` command.
 
         Description:
@@ -1734,7 +1734,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeTimestampSelectedDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeTimestampSelectedDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
 
         Description:
@@ -1898,24 +1898,24 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeTimestampFrameChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeTimestampFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, HorizontalFastframeTimestampFrameMathItem] = (
+        self._math: dict[int, HorizontalFastframeTimestampFrameMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampFrameMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeTimestampFrameRefItem] = (
+        self._ref: dict[int, HorizontalFastframeTimestampFrameRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampFrameRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeTimestampFrameDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeTimestampFrameDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampFrameDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -1924,7 +1924,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeTimestampFrameChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeTimestampFrameChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>`` command.
 
         Description:
@@ -1950,7 +1950,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeTimestampFrameMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeTimestampFrameMathItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>`` command.
 
         Description:
@@ -1976,7 +1976,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeTimestampFrameRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeTimestampFrameRefItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:REF<x>`` command.
 
         Description:
@@ -2002,7 +2002,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeTimestampFrameDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeTimestampFrameDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
 
         Description:
@@ -2147,24 +2147,24 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeTimestampDeltaChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeTimestampDeltaChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampDeltaChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, HorizontalFastframeTimestampDeltaMathItem] = (
+        self._math: dict[int, HorizontalFastframeTimestampDeltaMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampDeltaMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeTimestampDeltaRefItem] = (
+        self._ref: dict[int, HorizontalFastframeTimestampDeltaRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampDeltaRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeTimestampDeltaDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeTimestampDeltaDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampDeltaDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -2173,7 +2173,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeTimestampDeltaChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeTimestampDeltaChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>`` command.
 
         Description:
@@ -2199,7 +2199,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeTimestampDeltaMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeTimestampDeltaMathItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>`` command.
 
         Description:
@@ -2225,7 +2225,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeTimestampDeltaRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeTimestampDeltaRefItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:REF<x>`` command.
 
         Description:
@@ -2251,7 +2251,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeTimestampDeltaDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeTimestampDeltaDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
 
         Description:
@@ -2396,28 +2396,28 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeTimestampBetweenChannel] = (
+        self._ch: dict[int, HorizontalFastframeTimestampBetweenChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampBetweenChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._math: Dict[int, HorizontalFastframeTimestampBetweenMathItem] = (
+        self._math: dict[int, HorizontalFastframeTimestampBetweenMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampBetweenMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeTimestampBetweenRefItem] = (
+        self._ref: dict[int, HorizontalFastframeTimestampBetweenRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampBetweenRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeTimestampBetweenDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeTimestampBetweenDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampBetweenDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -2426,7 +2426,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeTimestampBetweenChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeTimestampBetweenChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>`` command.
 
         Description:
@@ -2452,7 +2452,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeTimestampBetweenMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeTimestampBetweenMathItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>`` command.
 
         Description:
@@ -2478,7 +2478,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeTimestampBetweenRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeTimestampBetweenRefItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:REF<x>`` command.
 
         Description:
@@ -2504,7 +2504,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeTimestampBetweenDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeTimestampBetweenDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
 
         Description:
@@ -2647,25 +2647,25 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeTimestampAllChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeTimestampAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, HorizontalFastframeTimestampAllMathItem] = (
+        self._math: dict[int, HorizontalFastframeTimestampAllMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeTimestampAllMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeTimestampAllRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalFastframeTimestampAllRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
-        self._d: Dict[int, HorizontalFastframeTimestampAllDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, HorizontalFastframeTimestampAllDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeTimestampAllChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeTimestampAllChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:CH<x>`` command.
 
         Description:
@@ -2692,7 +2692,7 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeTimestampAllMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeTimestampAllMathItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>`` command.
 
         Description:
@@ -2719,7 +2719,7 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeTimestampAllRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeTimestampAllRefItem]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:REF<x>`` command.
 
         Description:
@@ -2746,7 +2746,7 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeTimestampAllDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeTimestampAllDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
 
         Description:
@@ -3190,19 +3190,19 @@ class HorizontalFastframeSelected(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeSelectedChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, HorizontalFastframeSelectedChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeSelectedChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, HorizontalFastframeSelectedMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, HorizontalFastframeSelectedMathItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeSelectedMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, HorizontalFastframeSelectedRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, HorizontalFastframeSelectedRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeSelectedRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._source = HorizontalFastframeSelectedSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeSelectedChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeSelectedChannel]:
         """Return the ``HORizontal:FASTframe:SELECTED:CH<x>`` command.
 
         Description:
@@ -3230,7 +3230,7 @@ class HorizontalFastframeSelected(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeSelectedMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeSelectedMathItem]:
         """Return the ``HORizontal:FASTframe:SELECTED:MATH<x>`` command.
 
         Description:
@@ -3258,7 +3258,7 @@ class HorizontalFastframeSelected(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeSelectedRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeSelectedRefItem]:
         """Return the ``HORizontal:FASTframe:SELECTED:REF<x>`` command.
 
         Description:
@@ -3589,28 +3589,28 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeMultipleframesNumframesChannel] = (
+        self._ch: dict[int, HorizontalFastframeMultipleframesNumframesChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesNumframesChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._math: Dict[int, HorizontalFastframeMultipleframesNumframesMathItem] = (
+        self._math: dict[int, HorizontalFastframeMultipleframesNumframesMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesNumframesMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeMultipleframesNumframesRefItem] = (
+        self._ref: dict[int, HorizontalFastframeMultipleframesNumframesRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesNumframesRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesNumframesDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -3619,7 +3619,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeMultipleframesNumframesChannel]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:CH<x>`` command.
 
         Description:
@@ -3649,7 +3649,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeMultipleframesNumframesMathItem]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>`` command.
 
         Description:
@@ -3679,7 +3679,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeMultipleframesNumframesRefItem]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:REF<x>`` command.
 
         Description:
@@ -3709,7 +3709,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>`` command.
 
         Description:
@@ -3910,28 +3910,28 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, HorizontalFastframeMultipleframesFramestartChannel] = (
+        self._ch: dict[int, HorizontalFastframeMultipleframesFramestartChannel] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesFramestartChannel(
                     device, f"{self._cmd_syntax}:CH{x}"
                 )
             )
         )
-        self._math: Dict[int, HorizontalFastframeMultipleframesFramestartMathItem] = (
+        self._math: dict[int, HorizontalFastframeMultipleframesFramestartMathItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesFramestartMathItem(
                     device, f"{self._cmd_syntax}:MATH{x}"
                 )
             )
         )
-        self._ref: Dict[int, HorizontalFastframeMultipleframesFramestartRefItem] = (
+        self._ref: dict[int, HorizontalFastframeMultipleframesFramestartRefItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesFramestartRefItem(
                     device, f"{self._cmd_syntax}:REF{x}"
                 )
             )
         )
-        self._d: Dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit] = (
+        self._d: dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit] = (
             DefaultDictPassKeyToFactory(
                 lambda x: HorizontalFastframeMultipleframesFramestartDigitalBit(
                     device, f"{self._cmd_syntax}:D{x}"
@@ -3940,7 +3940,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         )
 
     @property
-    def ch(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartChannel]:
+    def ch(self) -> dict[int, HorizontalFastframeMultipleframesFramestartChannel]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:CH<x>`` command.
 
         Description:
@@ -3970,7 +3970,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartMathItem]:
+    def math(self) -> dict[int, HorizontalFastframeMultipleframesFramestartMathItem]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>`` command.
 
         Description:
@@ -4000,7 +4000,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartRefItem]:
+    def ref(self) -> dict[int, HorizontalFastframeMultipleframesFramestartRefItem]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:REF<x>`` command.
 
         Description:
@@ -4030,7 +4030,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit]:
+    def d(self) -> dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>`` command.
 
         Description:

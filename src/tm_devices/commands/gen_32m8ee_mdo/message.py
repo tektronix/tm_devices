@@ -28,7 +28,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -427,7 +427,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._box = MessageBox(device, f"{self._cmd_syntax}:BOX")
         self._clear = MessageClear(device, f"{self._cmd_syntax}:CLEAR")
-        self._message1: Dict[int, MessageMessage1Item] = DefaultDictPassKeyToFactory(
+        self._message1: dict[int, MessageMessage1Item] = DefaultDictPassKeyToFactory(
             lambda x: MessageMessage1Item(device, f"{self._cmd_syntax}:MESSAGE1{x}")
         )
         self._show = MessageShow(device, f"{self._cmd_syntax}:SHOW")
@@ -490,7 +490,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
         return self._clear
 
     @property
-    def message1(self) -> Dict[int, MessageMessage1Item]:
+    def message1(self) -> dict[int, MessageMessage1Item]:
         """Return the ``MESSage:MESSAGE1<x>`` command tree.
 
         Usage:

@@ -81,7 +81,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -2277,7 +2277,7 @@ class DmmMeasure(BaseTSPCmd):
         self._autozero = DmmMeasureAutozero(device, f"{self._cmd_syntax}.autozero")
         self._bias = DmmMeasureBias(device, f"{self._cmd_syntax}.bias")
         self._filter = DmmMeasureFilter(device, f"{self._cmd_syntax}.filter")
-        self._limit: Dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmMeasureLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmMeasureMath(device, f"{self._cmd_syntax}.math")
@@ -2986,7 +2986,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmMeasureLimitItem]:
+    def limit(self) -> dict[int, DmmMeasureLimitItem]:
         """Return the ``dmm.measure.limit[Y]`` command tree.
 
         Info:

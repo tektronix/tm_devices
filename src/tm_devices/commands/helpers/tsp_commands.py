@@ -5,7 +5,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional, TYPE_CHECKING
+from typing import Any, Optional, TYPE_CHECKING
 
 from .generic_commands import BaseCmd
 
@@ -23,7 +23,7 @@ class BaseTSPCmd(BaseCmd):  # pylint: disable=too-few-public-methods
         super().__init__(device, cmd_syntax)
         self._device: TSPControl | None = device
 
-    def _get_tsp_table_dict(self, table: str) -> Dict[Any, Any]:
+    def _get_tsp_table_dict(self, table: str) -> dict[Any, Any]:
         """Get the full content of a TSP table variable.
 
         Args:
@@ -35,7 +35,7 @@ class BaseTSPCmd(BaseCmd):  # pylint: disable=too-few-public-methods
         keys = self._device.query(  # type: ignore[union-attr]
             f's="" for k,v in pairs({table}) do s = s..k.."; " end print(s)'
         ).split("; ")
-        table_dict: Dict[Any, Any] = {}
+        table_dict: dict[Any, Any] = {}
         for key in filter(None, keys):
             if (
                 self._device.query(f"print(type({table}.{key}))")  # type: ignore[union-attr]

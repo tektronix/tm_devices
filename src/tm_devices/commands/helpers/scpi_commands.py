@@ -10,7 +10,7 @@ import string
 import sys
 
 from collections import defaultdict
-from typing import Any, cast, DefaultDict, Optional, Set, Tuple, Type, TYPE_CHECKING, Union
+from typing import Any, cast, Optional, TYPE_CHECKING, Union
 
 from .generic_commands import BaseCmd, END_OF_STRING_DIGITS, NoDeviceProvidedError
 
@@ -23,7 +23,7 @@ END_OF_STRING_NUMBER = re.compile(r"(\d+)$")
 # TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
 #  the dynamic parent class can be removed
 # pylint: disable=unsubscriptable-object,useless-suppression
-ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
+ParentDefaultDictClass: type[defaultdict[Any, Any]] = (
     defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
 )
 
@@ -62,7 +62,7 @@ class SCPICmdRead(BaseSCPICmd):
             msg = "No PIControl object was provided, the .query() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
-    def verify(self, value: Union[float, str]) -> Tuple[bool, str]:
+    def verify(self, value: Union[float, str]) -> tuple[bool, str]:
         """Verify the return value from the SCPI query matches the value.
 
         Sends the query ``.cmd_syntax + '?'``.
@@ -121,7 +121,7 @@ class SCPICmdReadWithArguments(BaseSCPICmd):
             msg = "No PIControl object was provided, the .query() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
-    def verify(self, argument: str, value: Union[float, str]) -> Tuple[bool, str]:
+    def verify(self, argument: str, value: Union[float, str]) -> tuple[bool, str]:
         """Verify the return value from the SCPI query matches the value.
 
         Sends the query ``.cmd_syntax + '? argument'``.
@@ -238,9 +238,9 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
 
         # Validate the channel
         channel: Union[str, int]
-        valid_channels: Set[Union[str, int]]
+        valid_channels: set[Union[str, int]]
         if device is not None and hasattr(device, "all_channel_names_list"):
-            valid_channel_strings: Set[str] = set(device.all_channel_names_list)
+            valid_channel_strings: set[str] = set(device.all_channel_names_list)
         else:
             valid_channel_numbers = set(range(1, MAX_CHANNELS + 1))
             valid_channel_strings = {f"CH{x}" for x in valid_channel_numbers}
@@ -248,7 +248,7 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
         # Find the current channel
         uses_integer_channels = all(ch_name[-1].isdigit() for ch_name in valid_channel_strings)
         if uses_integer_channels:
-            valid_channels: Set[Union[str, int]] = {
+            valid_channels: set[Union[str, int]] = {
                 int(number_match)
                 for ch_name in valid_channel_strings
                 for number_match in END_OF_STRING_NUMBER.findall(ch_name)
@@ -259,7 +259,7 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
                 msg = f"No channel number was detected in the command syntax '{self._cmd_syntax}'"
                 raise ValueError(msg)
         else:
-            valid_channels = cast("Set[Union[str, int]]", valid_channel_strings)
+            valid_channels = cast("set[Union[str, int]]", valid_channel_strings)
             # Check if the channel "number" is actually a letter
             if (last_letter := self._cmd_syntax[-1]) in string.ascii_lowercase:
                 channel = last_letter

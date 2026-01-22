@@ -17,7 +17,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -66,12 +66,12 @@ class CustomSelect(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._gate: Dict[int, CustomSelectGateItem] = DefaultDictPassKeyToFactory(
+        self._gate: dict[int, CustomSelectGateItem] = DefaultDictPassKeyToFactory(
             lambda x: CustomSelectGateItem(device, f"{self._cmd_syntax}:GATE{x}")
         )
 
     @property
-    def gate(self) -> Dict[int, CustomSelectGateItem]:
+    def gate(self) -> dict[int, CustomSelectGateItem]:
         """Return the ``CUSTOM:SELECT:GATE<x>`` command.
 
         Description:
@@ -233,13 +233,13 @@ class Custom(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CUSTOM") -> None:
         super().__init__(device, cmd_syntax)
-        self._gate: Dict[int, CustomGateItem] = DefaultDictPassKeyToFactory(
+        self._gate: dict[int, CustomGateItem] = DefaultDictPassKeyToFactory(
             lambda x: CustomGateItem(device, f"{self._cmd_syntax}:GATE{x}")
         )
         self._select = CustomSelect(device, f"{self._cmd_syntax}:SELECT")
 
     @property
-    def gate(self) -> Dict[int, CustomGateItem]:
+    def gate(self) -> dict[int, CustomGateItem]:
         """Return the ``CUSTOM:GATE<x>`` command tree.
 
         Usage:

@@ -1,7 +1,6 @@
 """SMU24xxInteractive device driver module."""
 
 from abc import ABC
-from typing import Tuple
 
 from tm_devices.driver_mixins.device_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
@@ -29,7 +28,7 @@ class SMU24xxInteractive(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit
     # Properties
     ################################################################################################
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(f"OUTPUT{x + 1}" for x in range(self.total_channels))
 
@@ -46,7 +45,7 @@ class SMU24xxInteractive(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

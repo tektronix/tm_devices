@@ -18,7 +18,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd
 
@@ -270,7 +270,7 @@ class Battery(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BATTery") -> None:
         super().__init__(device, cmd_syntax)
         self._acpower = BatteryAcpower(device, f"{self._cmd_syntax}:ACPOWer")
-        self._slot: Dict[int, BatterySlotItem] = DefaultDictPassKeyToFactory(
+        self._slot: dict[int, BatterySlotItem] = DefaultDictPassKeyToFactory(
             lambda x: BatterySlotItem(device, f"{self._cmd_syntax}:SLOT{x}")
         )
 
@@ -294,7 +294,7 @@ class Battery(SCPICmdRead):
         return self._acpower
 
     @property
-    def slot(self) -> Dict[int, BatterySlotItem]:
+    def slot(self) -> dict[int, BatterySlotItem]:
         """Return the ``BATTery:SLOT<1,2>`` command tree.
 
         Usage:

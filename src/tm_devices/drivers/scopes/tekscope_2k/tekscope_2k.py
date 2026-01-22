@@ -7,7 +7,7 @@ import warnings
 
 from abc import ABC
 from pathlib import Path
-from typing import Any, List, TYPE_CHECKING, Union
+from typing import Any, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
     ChannelControlMixin,
@@ -47,7 +47,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
     # Public Methods
     ################################################################################################
 
-    def get_available_data_sources(self) -> List[str]:
+    def get_available_data_sources(self) -> list[str]:
         """Fetch the list of currently active channel names available as data sources.
 
         Returns:
@@ -60,7 +60,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
 
         source_string = source_string.split(":")[-1]  # Remove :SELECT: from beginning
         source_list = source_string.split(";")
-        available_source_list: List[str] = []
+        available_source_list: list[str] = []
         for source_item in source_list:
             source_name, source_status = source_item.split(" ", maxsplit=1)
             if source_status == "1":
@@ -72,7 +72,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
         channel_num: int,
         wfm_type: str = "TimeDomain",
         output_csv_file: Union[str, os.PathLike[str]] | None = None,
-    ) -> List[Any]:
+    ) -> list[Any]:
         """Perform a curve query on a specific channel.
 
         Args:

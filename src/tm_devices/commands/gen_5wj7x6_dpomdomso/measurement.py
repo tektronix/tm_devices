@@ -106,7 +106,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1631,7 +1631,7 @@ class MeasurementReflevelPercent(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = MeasurementReflevelPercentHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementReflevelPercentLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[int, MeasurementReflevelPercentMidItem] = DefaultDictPassKeyToFactory(
+        self._mid: dict[int, MeasurementReflevelPercentMidItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementReflevelPercentMidItem(device, f"{self._cmd_syntax}:MID{x}")
         )
 
@@ -1696,7 +1696,7 @@ class MeasurementReflevelPercent(SCPICmdRead):
         return self._low
 
     @property
-    def mid(self) -> Dict[int, MeasurementReflevelPercentMidItem]:
+    def mid(self) -> dict[int, MeasurementReflevelPercentMidItem]:
         """Return the ``MEASUrement:REFLevel:PERCent:MID<x>`` command.
 
         Description:
@@ -1859,7 +1859,7 @@ class MeasurementReflevelAbsolute(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = MeasurementReflevelAbsoluteHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementReflevelAbsoluteLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[int, MeasurementReflevelAbsoluteMidItem] = DefaultDictPassKeyToFactory(
+        self._mid: dict[int, MeasurementReflevelAbsoluteMidItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementReflevelAbsoluteMidItem(device, f"{self._cmd_syntax}:MID{x}")
         )
 
@@ -1923,7 +1923,7 @@ class MeasurementReflevelAbsolute(SCPICmdRead):
         return self._low
 
     @property
-    def mid(self) -> Dict[int, MeasurementReflevelAbsoluteMidItem]:
+    def mid(self) -> dict[int, MeasurementReflevelAbsoluteMidItem]:
         """Return the ``MEASUrement:REFLevel:ABSolute:MID<x>`` command.
 
         Description:
@@ -2475,7 +2475,7 @@ class MeasurementMeasItemDelay(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = MeasurementMeasItemDelayDirection(device, f"{self._cmd_syntax}:DIRection")
-        self._edge: Dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
+        self._edge: dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItemDelayEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
 
@@ -2514,7 +2514,7 @@ class MeasurementMeasItemDelay(SCPICmdRead):
         return self._direction
 
     @property
-    def edge(self) -> Dict[int, MeasurementMeasItemDelayEdgeItem]:
+    def edge(self) -> dict[int, MeasurementMeasItemDelayEdgeItem]:
         """Return the ``MEASUrement:MEAS<x>:DELay:EDGE<x>`` command.
 
         Description:
@@ -3110,18 +3110,18 @@ class MeasurementIndicators(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._horz: Dict[int, MeasurementIndicatorsHorzItem] = DefaultDictPassKeyToFactory(
+        self._horz: dict[int, MeasurementIndicatorsHorzItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementIndicatorsHorzItem(device, f"{self._cmd_syntax}:HORZ{x}")
         )
         self._numhorz = MeasurementIndicatorsNumhorz(device, f"{self._cmd_syntax}:NUMHORZ")
         self._numvert = MeasurementIndicatorsNumvert(device, f"{self._cmd_syntax}:NUMVERT")
         self._state = MeasurementIndicatorsState(device, f"{self._cmd_syntax}:STATE")
-        self._vert: Dict[int, MeasurementIndicatorsVertItem] = DefaultDictPassKeyToFactory(
+        self._vert: dict[int, MeasurementIndicatorsVertItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementIndicatorsVertItem(device, f"{self._cmd_syntax}:VERT{x}")
         )
 
     @property
-    def horz(self) -> Dict[int, MeasurementIndicatorsHorzItem]:
+    def horz(self) -> dict[int, MeasurementIndicatorsHorzItem]:
         """Return the ``MEASUrement:INDICators:HORZ<x>`` command.
 
         Description:
@@ -3206,7 +3206,7 @@ class MeasurementIndicators(SCPICmdRead):
         return self._state
 
     @property
-    def vert(self) -> Dict[int, MeasurementIndicatorsVertItem]:
+    def vert(self) -> dict[int, MeasurementIndicatorsVertItem]:
         """Return the ``MEASUrement:INDICators:VERT<x>`` command.
 
         Description:
@@ -3503,7 +3503,7 @@ class MeasurementImmedDelay(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = MeasurementImmedDelayDirection(device, f"{self._cmd_syntax}:DIRection")
-        self._edge: Dict[int, MeasurementImmedDelayEdgeItem] = DefaultDictPassKeyToFactory(
+        self._edge: dict[int, MeasurementImmedDelayEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementImmedDelayEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
 
@@ -3539,7 +3539,7 @@ class MeasurementImmedDelay(SCPICmdRead):
         return self._direction
 
     @property
-    def edge(self) -> Dict[int, MeasurementImmedDelayEdgeItem]:
+    def edge(self) -> dict[int, MeasurementImmedDelayEdgeItem]:
         """Return the ``MEASUrement:IMMed:DELay:EDGE<x>`` command.
 
         Description:
@@ -3907,7 +3907,7 @@ class Measurement(SCPICmdRead):
         self._gating = MeasurementGating(device, f"{self._cmd_syntax}:GATing")
         self._immed = MeasurementImmed(device, f"{self._cmd_syntax}:IMMed")
         self._indicators = MeasurementIndicators(device, f"{self._cmd_syntax}:INDICators")
-        self._meas: Dict[int, MeasurementMeasItem] = DefaultDictPassKeyToFactory(
+        self._meas: dict[int, MeasurementMeasItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItem(device, f"{self._cmd_syntax}:MEAS{x}")
         )
         self._method = MeasurementMethod(device, f"{self._cmd_syntax}:METHod")
@@ -4012,7 +4012,7 @@ class Measurement(SCPICmdRead):
         return self._indicators
 
     @property
-    def meas(self) -> Dict[int, MeasurementMeasItem]:
+    def meas(self) -> dict[int, MeasurementMeasItem]:
         """Return the ``MEASUrement:MEAS<x>`` command.
 
         Description:

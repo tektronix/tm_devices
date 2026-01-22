@@ -705,7 +705,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -3194,7 +3194,7 @@ class DpojetReflevels(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoset = DpojetReflevelsAutoset(device, f"{self._cmd_syntax}:AUTOset")
-        self._ch: Dict[int, DpojetReflevelsChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DpojetReflevelsChannel] = DefaultDictPassKeyToFactory(
             lambda x: DpojetReflevelsChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
@@ -3224,7 +3224,7 @@ class DpojetReflevels(SCPICmdRead):
         return self._autoset
 
     @property
-    def ch(self) -> Dict[int, DpojetReflevelsChannel]:
+    def ch(self) -> dict[int, DpojetReflevelsChannel]:
         """Return the ``DPOJET:REFLevels:CH<x>`` command tree.
 
         Usage:
@@ -3315,12 +3315,12 @@ class DpojetReflevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, DpojetReflevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DpojetReflevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: DpojetReflevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, DpojetReflevelChannel]:
+    def ch(self) -> dict[int, DpojetReflevelChannel]:
         """Return the ``DPOJET:REFLevel:CH<x>`` command tree.
 
         Usage:
@@ -13657,7 +13657,7 @@ class DpojetMeasItemResultsAllacqs(SCPICmdRead):
         self._population = DpojetMeasItemResultsAllacqsPopulation(
             device, f"{self._cmd_syntax}:POPUlation"
         )
-        self._seg: Dict[int, DpojetMeasItemResultsAllacqsSegItem] = DefaultDictPassKeyToFactory(
+        self._seg: dict[int, DpojetMeasItemResultsAllacqsSegItem] = DefaultDictPassKeyToFactory(
             lambda x: DpojetMeasItemResultsAllacqsSegItem(device, f"{self._cmd_syntax}:SEG{x}")
         )
         self._stddev = DpojetMeasItemResultsAllacqsStddev(device, f"{self._cmd_syntax}:STDDev")
@@ -13945,7 +13945,7 @@ class DpojetMeasItemResultsAllacqs(SCPICmdRead):
         return self._population
 
     @property
-    def seg(self) -> Dict[int, DpojetMeasItemResultsAllacqsSegItem]:
+    def seg(self) -> dict[int, DpojetMeasItemResultsAllacqsSegItem]:
         """Return the ``DPOJET:MEAS<x>:RESULts:ALLAcqs:SEG<x>`` command tree.
 
         Usage:
@@ -21724,7 +21724,7 @@ class Dpojet(SCPICmdRead):
         self._lockrj = DpojetLockrj(device, f"{self._cmd_syntax}:LOCKRJ")
         self._lockrjvalue = DpojetLockrjvalue(device, f"{self._cmd_syntax}:LOCKRJValue")
         self._logging = DpojetLogging(device, f"{self._cmd_syntax}:LOGging")
-        self._meas: Dict[int, DpojetMeasItem] = DefaultDictPassKeyToFactory(
+        self._meas: dict[int, DpojetMeasItem] = DefaultDictPassKeyToFactory(
             lambda x: DpojetMeasItem(device, f"{self._cmd_syntax}:MEAS{x}")
         )
         self._minbujui = DpojetMinbujui(device, f"{self._cmd_syntax}:MINBUJUI")
@@ -21732,7 +21732,7 @@ class Dpojet(SCPICmdRead):
         self._nummeas = DpojetNummeas(device, f"{self._cmd_syntax}:NUMMeas")
         self._numplot = DpojetNumplot(device, f"{self._cmd_syntax}:NUMPlot")
         self._opticalunittype = DpojetOpticalunittype(device, f"{self._cmd_syntax}:OPTICALUNITType")
-        self._plot: Dict[int, DpojetPlotItem] = DefaultDictPassKeyToFactory(
+        self._plot: dict[int, DpojetPlotItem] = DefaultDictPassKeyToFactory(
             lambda x: DpojetPlotItem(device, f"{self._cmd_syntax}:PLOT{x}")
         )
         self._population = DpojetPopulation(device, f"{self._cmd_syntax}:POPULATION")
@@ -22266,7 +22266,7 @@ class Dpojet(SCPICmdRead):
         return self._logging
 
     @property
-    def meas(self) -> Dict[int, DpojetMeasItem]:
+    def meas(self) -> dict[int, DpojetMeasItem]:
         """Return the ``DPOJET:MEAS<x>`` command tree.
 
         Usage:
@@ -22424,7 +22424,7 @@ class Dpojet(SCPICmdRead):
         return self._opticalunittype
 
     @property
-    def plot(self) -> Dict[int, DpojetPlotItem]:
+    def plot(self) -> dict[int, DpojetPlotItem]:
         """Return the ``DPOJET:PLOT<x>`` command tree.
 
         Usage:

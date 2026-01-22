@@ -743,7 +743,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -14282,12 +14282,12 @@ class MeasurementMeasItemDelay(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._edge: Dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
+        self._edge: dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItemDelayEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
 
     @property
-    def edge(self) -> Dict[int, MeasurementMeasItemDelayEdgeItem]:
+    def edge(self) -> dict[int, MeasurementMeasItemDelayEdgeItem]:
         """Return the ``MEASUrement:MEAS<x>:DELay:EDGE<x>`` command.
 
         Description:
@@ -16801,7 +16801,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._displaystat = MeasurementMeasItemDisplaystat(
             device, f"{self._cmd_syntax}:DISPlaystat"
         )
-        self._edge: Dict[int, MeasurementMeasItemEdgeItem] = DefaultDictPassKeyToFactory(
+        self._edge: dict[int, MeasurementMeasItemEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItemEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
         self._edgeincre = MeasurementMeasItemEdgeincre(device, f"{self._cmd_syntax}:EDGEIncre")
@@ -16887,7 +16887,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:OUTEDGEQUALifier"
         )
         self._outfilters = MeasurementMeasItemOutfilters(device, f"{self._cmd_syntax}:OUTFILTers")
-        self._outputvoltage: Dict[int, MeasurementMeasItemOutputvoltageItem] = (
+        self._outputvoltage: dict[int, MeasurementMeasItemOutputvoltageItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: MeasurementMeasItemOutputvoltageItem(
                     device, f"{self._cmd_syntax}:OUTPUT{x}VOLTage"
@@ -16934,7 +16934,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._reflevels = MeasurementMeasItemReflevels(device, f"{self._cmd_syntax}:REFLevels")
         self._reflevels1 = MeasurementMeasItemReflevels1(device, f"{self._cmd_syntax}:REFLevels1")
         self._refmode = MeasurementMeasItemRefmode(device, f"{self._cmd_syntax}:REFMode")
-        self._refvoltageval: Dict[int, MeasurementMeasItemRefvoltagevalItem] = (
+        self._refvoltageval: dict[int, MeasurementMeasItemRefvoltagevalItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: MeasurementMeasItemRefvoltagevalItem(
                     device, f"{self._cmd_syntax}:REFVOLTAGE{x}Val"
@@ -16943,7 +16943,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._refvoltage = MeasurementMeasItemRefvoltage(device, f"{self._cmd_syntax}:REFVoltage")
         self._results = MeasurementMeasItemResults(device, f"{self._cmd_syntax}:RESUlts")
-        self._ripplefreqval: Dict[int, MeasurementMeasItemRipplefreqvalItem] = (
+        self._ripplefreqval: dict[int, MeasurementMeasItemRipplefreqvalItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: MeasurementMeasItemRipplefreqvalItem(
                     device, f"{self._cmd_syntax}:RIPPLEFREQ{x}Val"
@@ -17406,7 +17406,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._displaystat
 
     @property
-    def edge(self) -> Dict[int, MeasurementMeasItemEdgeItem]:
+    def edge(self) -> dict[int, MeasurementMeasItemEdgeItem]:
         """Return the ``MEASUrement:MEAS<x>:EDGE<x>`` command.
 
         Description:
@@ -18731,7 +18731,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._outfilters
 
     @property
-    def outputvoltage(self) -> Dict[int, MeasurementMeasItemOutputvoltageItem]:
+    def outputvoltage(self) -> dict[int, MeasurementMeasItemOutputvoltageItem]:
         """Return the ``MEASUrement:MEAS<x>:OUTPUT<n>VOLTage`` command.
 
         Description:
@@ -19297,7 +19297,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._refmode
 
     @property
-    def refvoltageval(self) -> Dict[int, MeasurementMeasItemRefvoltagevalItem]:
+    def refvoltageval(self) -> dict[int, MeasurementMeasItemRefvoltagevalItem]:
         """Return the ``MEASUrement:MEAS<x>:REFVOLTAGE<n>Val`` command.
 
         Description:
@@ -19370,7 +19370,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._results
 
     @property
-    def ripplefreqval(self) -> Dict[int, MeasurementMeasItemRipplefreqvalItem]:
+    def ripplefreqval(self) -> dict[int, MeasurementMeasItemRipplefreqvalItem]:
         """Return the ``MEASUrement:MEAS<x>:RIPPLEFREQ<n>Val`` command.
 
         Description:
@@ -26725,7 +26725,7 @@ class Measurement(SCPICmdRead):
         self._addnew = MeasurementAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._annotate = MeasurementAnnotate(device, f"{self._cmd_syntax}:ANNOTate")
         self._autoset = MeasurementAutoset(device, f"{self._cmd_syntax}:AUTOset")
-        self._ch: Dict[int, MeasurementChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, MeasurementChannel] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._clockrecovery = MeasurementClockrecovery(device, f"{self._cmd_syntax}:CLOCKRecovery")
@@ -26733,7 +26733,7 @@ class Measurement(SCPICmdRead):
         self._delete = MeasurementDelete(device, f"{self._cmd_syntax}:DELete")
         self._diracmodel = MeasurementDiracmodel(device, f"{self._cmd_syntax}:DIRacmodel")
         self._displayunits = MeasurementDisplayunits(device, f"{self._cmd_syntax}:DISPLAYUnits")
-        self._edge: Dict[int, MeasurementEdgeItem] = DefaultDictPassKeyToFactory(
+        self._edge: dict[int, MeasurementEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
         self._eyerender = MeasurementEyerender(device, f"{self._cmd_syntax}:EYERENDER")
@@ -26745,17 +26745,17 @@ class Measurement(SCPICmdRead):
         self._list = MeasurementList(device, f"{self._cmd_syntax}:LIST")
         self._lockrj = MeasurementLockrj(device, f"{self._cmd_syntax}:LOCKRJ")
         self._lockrjvalue = MeasurementLockrjvalue(device, f"{self._cmd_syntax}:LOCKRJValue")
-        self._math: Dict[int, MeasurementMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, MeasurementMathItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._meas: Dict[int, MeasurementMeasItem] = DefaultDictPassKeyToFactory(
+        self._meas: dict[int, MeasurementMeasItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItem(device, f"{self._cmd_syntax}:MEAS{x}")
         )
         self._measrange = MeasurementMeasrange(device, f"{self._cmd_syntax}:MEASRange")
         self._mech = MeasurementMech(device, f"{self._cmd_syntax}:MECH")
         self._minui = MeasurementMinui(device, f"{self._cmd_syntax}:MINUI")
         self._population = MeasurementPopulation(device, f"{self._cmd_syntax}:POPUlation")
-        self._ref: Dict[int, MeasurementRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, MeasurementRefItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
         self._reflevels = MeasurementReflevels(device, f"{self._cmd_syntax}:REFLevels")
@@ -27183,7 +27183,7 @@ class Measurement(SCPICmdRead):
         return self._autoset
 
     @property
-    def ch(self) -> Dict[int, MeasurementChannel]:
+    def ch(self) -> dict[int, MeasurementChannel]:
         """Return the ``MEASUrement:CH<x>`` command tree.
 
         Usage:
@@ -27317,7 +27317,7 @@ class Measurement(SCPICmdRead):
         return self._displayunits
 
     @property
-    def edge(self) -> Dict[int, MeasurementEdgeItem]:
+    def edge(self) -> dict[int, MeasurementEdgeItem]:
         """Return the ``MEASUrement:EDGE<x>`` command.
 
         Description:
@@ -27579,7 +27579,7 @@ class Measurement(SCPICmdRead):
         return self._lockrjvalue
 
     @property
-    def math(self) -> Dict[int, MeasurementMathItem]:
+    def math(self) -> dict[int, MeasurementMathItem]:
         """Return the ``MEASUrement:MATH<x>`` command tree.
 
         Usage:
@@ -27596,7 +27596,7 @@ class Measurement(SCPICmdRead):
         return self._math
 
     @property
-    def meas(self) -> Dict[int, MeasurementMeasItem]:
+    def meas(self) -> dict[int, MeasurementMeasItem]:
         """Return the ``MEASUrement:MEAS<x>`` command tree.
 
         Usage:
@@ -27807,7 +27807,7 @@ class Measurement(SCPICmdRead):
         return self._population
 
     @property
-    def ref(self) -> Dict[int, MeasurementRefItem]:
+    def ref(self) -> dict[int, MeasurementRefItem]:
         """Return the ``MEASUrement:REF<x>`` command tree.
 
         Usage:

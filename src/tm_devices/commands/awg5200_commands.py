@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -124,7 +122,7 @@ class AWG5200Commands:
     def __init__(self, device: PIControl | None = None) -> None:
         self._abort = Abort(device)
         self._active = Active(device)
-        self._auxoutput: Dict[int, AuxoutputItem] = DefaultDictPassKeyToFactory(
+        self._auxoutput: dict[int, AuxoutputItem] = DefaultDictPassKeyToFactory(
             lambda x: AuxoutputItem(device, f"AUXoutput{x}")
         )
         self._awgcontrol = Awgcontrol(device)
@@ -146,13 +144,13 @@ class AWG5200Commands:
         self._opc = Opc(device)
         self._opt = Opt(device)
         self._output = Output(device)
-        self._outputx: Dict[int, OutputItem] = DefaultDictPassKeyToFactory(
+        self._outputx: dict[int, OutputItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItem(device, f"OUTPut{x}")
         )
         self._rst = Rst(device)
         self._slist = Slist(device)
         self._source = Source(device)
-        self._sourcex: Dict[int, SourceItem] = DefaultDictPassKeyToFactory(
+        self._sourcex: dict[int, SourceItem] = DefaultDictPassKeyToFactory(
             lambda x: SourceItem(device, f"SOURce{x}")
         )
         self._sre = Sre(device)
@@ -201,7 +199,7 @@ class AWG5200Commands:
         return self._active
 
     @property
-    def auxoutput(self) -> Dict[int, AuxoutputItem]:
+    def auxoutput(self) -> dict[int, AuxoutputItem]:
         """Return the ``AUXoutput[n]`` command tree.
 
         Usage:
@@ -614,7 +612,7 @@ class AWG5200Commands:
         return self._output
 
     @property
-    def outputx(self) -> Dict[int, OutputItem]:
+    def outputx(self) -> dict[int, OutputItem]:
         """Return the ``OUTPut[n]`` command tree.
 
         Usage:
@@ -703,7 +701,7 @@ class AWG5200Commands:
         return self._source
 
     @property
-    def sourcex(self) -> Dict[int, SourceItem]:
+    def sourcex(self) -> dict[int, SourceItem]:
         """Return the ``SOURce[n]`` command tree.
 
         Usage:

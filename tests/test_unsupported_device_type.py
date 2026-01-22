@@ -2,7 +2,6 @@
 """Test the usage of unsupported device types."""
 
 from pathlib import Path
-from typing import Tuple
 
 import pytest
 
@@ -19,7 +18,7 @@ class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):
     def device_type(self) -> str:  # noqa: D102
         return "CustomDeviceType"
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         return 0, ()
 
     @cached_property

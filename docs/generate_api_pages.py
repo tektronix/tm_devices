@@ -1,7 +1,6 @@
 """Generate the code reference pages and navigation."""
 
 from pathlib import Path
-from typing import Tuple
 
 import mkdocs_gen_files
 
@@ -13,7 +12,7 @@ root = Path(__file__).parent.parent
 src = root / "src"
 
 
-def sort_paths(path_object: Path) -> Tuple[int, str]:
+def sort_paths(path_object: Path) -> tuple[int, str]:
     """A helper function to provide a way to sort a list of Path objects.
 
     This allows for sorting based on the name, but places modules above subpackages.

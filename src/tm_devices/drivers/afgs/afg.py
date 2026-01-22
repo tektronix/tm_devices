@@ -5,7 +5,7 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Dict, Literal, Tuple, Type, Union
+from typing import Literal, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
     BaseAFGSourceChannel,
@@ -32,7 +32,7 @@ from tm_devices.helpers.enums import (
 class AFGSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
-    functions: Type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
+    functions: type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
 
 
 # NOTE: Currently all AFGs are controlled via PI, hence the usage of the PIControl mixin here. If
@@ -60,7 +60,7 @@ class AFG(
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AFGSourceChannel]":
         """Mapping of channel names to AFGSourceChannel objects."""
-        channel_map: Dict[str, AFGSourceChannel] = {}
+        channel_map: dict[str, AFGSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AFGSourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -247,7 +247,7 @@ class AFG(
         waveform_length: int | None = None,
         frequency: float | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series.
 
         Args:

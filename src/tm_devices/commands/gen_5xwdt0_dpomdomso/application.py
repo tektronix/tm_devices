@@ -17,7 +17,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -235,12 +235,12 @@ class ApplicationLicense(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._slot: Dict[int, ApplicationLicenseSlotItem] = DefaultDictPassKeyToFactory(
+        self._slot: dict[int, ApplicationLicenseSlotItem] = DefaultDictPassKeyToFactory(
             lambda x: ApplicationLicenseSlotItem(device, f"{self._cmd_syntax}:SLOT{x}")
         )
 
     @property
-    def slot(self) -> Dict[int, ApplicationLicenseSlotItem]:
+    def slot(self) -> dict[int, ApplicationLicenseSlotItem]:
         """Return the ``APPLication:LICENSE:SLOT<x>`` command tree.
 
         Usage:

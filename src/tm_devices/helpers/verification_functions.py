@@ -3,7 +3,7 @@
 import re
 
 from decimal import Decimal, InvalidOperation
-from typing import Tuple, Union
+from typing import Union
 
 
 def raise_error(unique_identifier: str, message: str, *, condense_printout: bool = True) -> None:
@@ -118,7 +118,7 @@ def _verify_numerical_value(
     tolerance: Decimal,
     message: str,
     expect_fail: bool,
-) -> Tuple[str, bool]:
+) -> tuple[str, bool]:
     """Compare and verify a numerical value with expected value.
 
     Args:
@@ -169,7 +169,7 @@ def _verify_string_value(
     message: str,
     expect_fail: bool,
     use_regex_match: bool = False,
-) -> Tuple[str, bool]:
+) -> tuple[str, bool]:
     """Compare and verify a string value with expected value.
 
     Args:

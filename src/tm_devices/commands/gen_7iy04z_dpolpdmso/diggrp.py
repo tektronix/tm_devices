@@ -14,7 +14,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -121,12 +121,12 @@ class DiggrpItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DIGGRP<x>") -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, DiggrpItemDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, DiggrpItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: DiggrpItemDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def d(self) -> Dict[int, DiggrpItemDigitalBit]:
+    def d(self) -> dict[int, DiggrpItemDigitalBit]:
         """Return the ``DIGGRP<x>:D<x>`` command tree.
 
         Usage:

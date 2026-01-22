@@ -1,7 +1,5 @@
 """AFG31K device driver module."""
 
-from typing import Tuple
-
 from tm_devices.commands import AFG3KCMixin
 from tm_devices.drivers.afgs.afg3kb import (
     AFG3KB,
@@ -27,7 +25,7 @@ class AFG3KC(AFG3KCMixin, AFG3KB):  # pyright: ignore[reportIncompatibleVariable
     # Private Methods
     ################################################################################################
     @staticmethod
-    def _get_driver_specific_multipliers(model_number: str) -> Tuple[float, float]:
+    def _get_driver_specific_multipliers(model_number: str) -> tuple[float, float]:
         """Get multipliers for frequency dependent on the function.
 
         Args:

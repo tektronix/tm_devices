@@ -33,7 +33,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
@@ -76,62 +76,62 @@ class Buffervar(BaseTSPCmd):
         self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bufferVar"
     ) -> None:
         super().__init__(device, cmd_syntax)
-        self._dates: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._dates: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.dates[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.dates[{{key}}])",
             device=self._device,
         )
-        self._extraformattedvalues: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._extraformattedvalues: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.extraformattedvalues[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.extraformattedvalues[{{key}}])",
             device=self._device,
         )
-        self._extravalues: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._extravalues: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.extravalues[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.extravalues[{{key}}])",
             device=self._device,
         )
-        self._extravalueunits: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._extravalueunits: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.extravalueunits[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.extravalueunits[{{key}}])",
             device=self._device,
         )
-        self._formattedreadings: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._formattedreadings: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.formattedreadings[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.formattedreadings[{{key}}])",
             device=self._device,
         )
-        self._fractionalseconds: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._fractionalseconds: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.fractionalseconds[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.fractionalseconds[{{key}}])",
             device=self._device,
         )
-        self._readings: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._readings: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.readings[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.readings[{{key}}])",
             device=self._device,
         )
-        self._relativetimestamps: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._relativetimestamps: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.relativetimestamps[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.relativetimestamps[{{key}}])",
             device=self._device,
         )
-        self._seconds: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._seconds: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.seconds[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.seconds[{{key}}])",
             device=self._device,
         )
-        self._statuses: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._statuses: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.statuses[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.statuses[{{key}}])",
             device=self._device,
         )
-        self._times: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._times: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.times[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.times[{{key}}])",
             device=self._device,
         )
-        self._timestamps: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._timestamps: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.timestamps[{{key}}]",
             query_syntax=f"print({self._cmd_syntax}.timestamps[{{key}}])",
             device=self._device,
@@ -209,7 +209,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def dates(self) -> Dict[int, Union[str, float]]:
+    def dates(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.dates[N]`` attribute.
 
         Description:
@@ -267,7 +267,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def extraformattedvalues(self) -> Dict[int, Union[str, float]]:
+    def extraformattedvalues(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.extraformattedvalues[N]`` attribute.
 
         Description:
@@ -295,7 +295,7 @@ class Buffervar(BaseTSPCmd):
         return self._extraformattedvalues
 
     @property
-    def extravalues(self) -> Dict[int, Union[str, float]]:
+    def extravalues(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.extravalues[N]`` attribute.
 
         Description:
@@ -322,7 +322,7 @@ class Buffervar(BaseTSPCmd):
         return self._extravalues
 
     @property
-    def extravalueunits(self) -> Dict[int, Union[str, float]]:
+    def extravalueunits(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.extravalueunits[N]`` attribute.
 
         Description:
@@ -422,7 +422,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def formattedreadings(self) -> Dict[int, Union[str, float]]:
+    def formattedreadings(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.formattedreadings[N]`` attribute.
 
         Description:
@@ -449,7 +449,7 @@ class Buffervar(BaseTSPCmd):
         return self._formattedreadings
 
     @property
-    def fractionalseconds(self) -> Dict[int, Union[str, float]]:
+    def fractionalseconds(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.fractionalseconds[N]`` attribute.
 
         Description:
@@ -581,7 +581,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def readings(self) -> Dict[int, Union[str, float]]:
+    def readings(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.readings[N]`` attribute.
 
         Description:
@@ -608,7 +608,7 @@ class Buffervar(BaseTSPCmd):
         return self._readings
 
     @property
-    def relativetimestamps(self) -> Dict[int, Union[str, float]]:
+    def relativetimestamps(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.relativetimestamps[N]`` attribute.
 
         Description:
@@ -634,7 +634,7 @@ class Buffervar(BaseTSPCmd):
         return self._relativetimestamps
 
     @property
-    def seconds(self) -> Dict[int, Union[str, float]]:
+    def seconds(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.seconds[N]`` attribute.
 
         Description:
@@ -692,7 +692,7 @@ class Buffervar(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def statuses(self) -> Dict[int, Union[str, float]]:
+    def statuses(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.statuses[N]`` attribute.
 
         Description:
@@ -719,7 +719,7 @@ class Buffervar(BaseTSPCmd):
         return self._statuses
 
     @property
-    def times(self) -> Dict[int, Union[str, float]]:
+    def times(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.times[N]`` attribute.
 
         Description:
@@ -746,7 +746,7 @@ class Buffervar(BaseTSPCmd):
         return self._times
 
     @property
-    def timestamps(self) -> Dict[int, Union[str, float]]:
+    def timestamps(self) -> dict[int, Union[str, float]]:
         """Access the ``bufferVar.timestamps[N]`` attribute.
 
         Description:

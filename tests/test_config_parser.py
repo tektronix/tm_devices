@@ -3,7 +3,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -221,7 +221,7 @@ options:
     ],
 )
 def test_file_config_non_default_path(
-    os_environ: Dict[str, str], file_type: ConfigFileType
+    os_environ: dict[str, str], file_type: ConfigFileType
 ) -> None:
     """Test the non-default path to the config file."""
     expected_options = DMConfigOptions(
@@ -396,7 +396,7 @@ def test_file_config_non_default_path(
     ],
 )
 def test_invalid_config_creation(
-    os_environ: Dict[str, str], expected_exception: Type[Exception]
+    os_environ: dict[str, str], expected_exception: type[Exception]
 ) -> None:
     """Test creating invalid configs.
 

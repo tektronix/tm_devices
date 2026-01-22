@@ -89,7 +89,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -2836,7 +2836,7 @@ class Sv(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SV") -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, SvChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SvChannel] = DefaultDictPassKeyToFactory(
             lambda x: SvChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._lockcenter = SvLockcenter(device, f"{self._cmd_syntax}:LOCKCenter")
@@ -2851,7 +2851,7 @@ class Sv(SCPICmdRead):
         self._window = SvWindow(device, f"{self._cmd_syntax}:WINDOW")
 
     @property
-    def ch(self) -> Dict[int, SvChannel]:
+    def ch(self) -> dict[int, SvChannel]:
         """Return the ``SV:CH<x>`` command tree.
 
         Usage:

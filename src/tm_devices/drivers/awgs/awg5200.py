@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import cast, Dict, Literal, Tuple
+from typing import cast, Literal
 
 from tm_devices.commands import AWG5200Mixin
 from tm_devices.drivers.awgs.awg import (
@@ -48,7 +48,7 @@ class AWG5200(AWG5200Mixin, AWG):
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
         """Mapping of channel names to AWG5200SourceChannel objects."""
-        channel_map: Dict[str, AWG5200SourceChannel] = {}
+        channel_map: dict[str, AWG5200SourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWG5200SourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -195,7 +195,7 @@ class AWG5200(AWG5200Mixin, AWG):
     def _get_series_specific_constraints(
         self,
         output_signal_path: SignalGeneratorOutputPathsBase | None,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
         Args:

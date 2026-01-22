@@ -201,7 +201,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -3595,7 +3595,7 @@ class BusBItemMipidsione(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = BusBItemMipidsioneClock(device, f"{self._cmd_syntax}:CLOCk")
-        self._lane: Dict[int, BusBItemMipidsioneLaneItem] = DefaultDictPassKeyToFactory(
+        self._lane: dict[int, BusBItemMipidsioneLaneItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItemMipidsioneLaneItem(device, f"{self._cmd_syntax}:LANE{x}")
         )
 
@@ -3615,7 +3615,7 @@ class BusBItemMipidsione(SCPICmdRead):
         return self._clock
 
     @property
-    def lane(self) -> Dict[int, BusBItemMipidsioneLaneItem]:
+    def lane(self) -> dict[int, BusBItemMipidsioneLaneItem]:
         """Return the ``BUS:B<x>:MIPIDSIOne:LANE<x>`` command tree.
 
         Usage:
@@ -4077,7 +4077,7 @@ class BusBItemMipicsitwo(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = BusBItemMipicsitwoClock(device, f"{self._cmd_syntax}:CLOCk")
-        self._lane: Dict[int, BusBItemMipicsitwoLaneItem] = DefaultDictPassKeyToFactory(
+        self._lane: dict[int, BusBItemMipicsitwoLaneItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItemMipicsitwoLaneItem(device, f"{self._cmd_syntax}:LANE{x}")
         )
 
@@ -4097,7 +4097,7 @@ class BusBItemMipicsitwo(SCPICmdRead):
         return self._clock
 
     @property
-    def lane(self) -> Dict[int, BusBItemMipicsitwoLaneItem]:
+    def lane(self) -> dict[int, BusBItemMipicsitwoLaneItem]:
         """Return the ``BUS:B<x>:MIPICSITWo:LANE<x>`` command tree.
 
         Usage:
@@ -6768,24 +6768,24 @@ class Bus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUS") -> None:
         super().__init__(device, cmd_syntax)
-        self._b1: Dict[int, BusB1Item] = DefaultDictPassKeyToFactory(
+        self._b1: dict[int, BusB1Item] = DefaultDictPassKeyToFactory(
             lambda x: BusB1Item(device, f"{self._cmd_syntax}:B1{x}")
         )
-        self._b: Dict[int, BusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
-        self._ch: Dict[int, BusChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, BusChannel] = DefaultDictPassKeyToFactory(
             lambda x: BusChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, BusMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, BusMathItem] = DefaultDictPassKeyToFactory(
             lambda x: BusMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, BusRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, BusRefItem] = DefaultDictPassKeyToFactory(
             lambda x: BusRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def b1(self) -> Dict[int, BusB1Item]:
+    def b1(self) -> dict[int, BusB1Item]:
         """Return the ``BUS:B1<x>`` command tree.
 
         Usage:
@@ -6800,7 +6800,7 @@ class Bus(SCPICmdRead):
         return self._b1
 
     @property
-    def b(self) -> Dict[int, BusBItem]:
+    def b(self) -> dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.
 
         Usage:
@@ -6832,7 +6832,7 @@ class Bus(SCPICmdRead):
         return self._b
 
     @property
-    def ch(self) -> Dict[int, BusChannel]:
+    def ch(self) -> dict[int, BusChannel]:
         """Return the ``BUS:CH<x>`` command tree.
 
         Usage:
@@ -6847,7 +6847,7 @@ class Bus(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, BusMathItem]:
+    def math(self) -> dict[int, BusMathItem]:
         """Return the ``BUS:MATH<x>`` command tree.
 
         Usage:
@@ -6862,7 +6862,7 @@ class Bus(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, BusRefItem]:
+    def ref(self) -> dict[int, BusRefItem]:
         """Return the ``BUS:REF<x>`` command tree.
 
         Usage:

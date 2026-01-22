@@ -36,7 +36,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -691,7 +691,7 @@ For two-channel products, this is the SRC key for Channel A."""
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
         self._loadmenu = DisplayLoadmenu(device, f"{self._cmd_syntax}.loadmenu")
-        self._smu: Dict[str, DisplaySmuxItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[str, DisplaySmuxItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplaySmuxItem(device, f"{self._cmd_syntax}.smu{x}")
         )
         self._trigger = DisplayTrigger(device, f"{self._cmd_syntax}.trigger")
@@ -910,7 +910,7 @@ For two-channel products, this is the SRC key for Channel A."""
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[str, DisplaySmuxItem]:
+    def smu(self) -> dict[str, DisplaySmuxItem]:
         """Return the ``display.smuX`` command tree.
 
         Sub-properties and sub-methods:

@@ -352,7 +352,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -2119,12 +2119,12 @@ class DisplayWaveview1Ref(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ref: Dict[int, DisplayWaveview1RefRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, DisplayWaveview1RefRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1RefRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ref(self) -> Dict[int, DisplayWaveview1RefRefItem]:
+    def ref(self) -> dict[int, DisplayWaveview1RefRefItem]:
         """Return the ``DISplay:WAVEView1:REF:REF<x>`` command tree.
 
         Usage:
@@ -2451,12 +2451,12 @@ class DisplayWaveview1Plot(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._plot: Dict[int, DisplayWaveview1PlotPlotItem] = DefaultDictPassKeyToFactory(
+        self._plot: dict[int, DisplayWaveview1PlotPlotItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1PlotPlotItem(device, f"{self._cmd_syntax}:PLOT{x}")
         )
 
     @property
-    def plot(self) -> Dict[int, DisplayWaveview1PlotPlotItem]:
+    def plot(self) -> dict[int, DisplayWaveview1PlotPlotItem]:
         """Return the ``DISplay:WAVEView1:PLOT:PLOT<x>`` command tree.
 
         Usage:
@@ -2786,12 +2786,12 @@ class DisplayWaveview1Math(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._math: Dict[int, DisplayWaveview1MathMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, DisplayWaveview1MathMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1MathMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
 
     @property
-    def math(self) -> Dict[int, DisplayWaveview1MathMathItem]:
+    def math(self) -> dict[int, DisplayWaveview1MathMathItem]:
         """Return the ``DISplay:WAVEView1:MATH:MATH<x>`` command tree.
 
         Usage:
@@ -5300,7 +5300,7 @@ class DisplayWaveview1Channel(ValidatedChannel, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1ChannelState(device, f"{self._cmd_syntax}:STATE")
         self._vertical = DisplayWaveview1ChannelVertical(device, f"{self._cmd_syntax}:VERTical")
-        self._d: Dict[int, DisplayWaveview1ChannelDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, DisplayWaveview1ChannelDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1ChannelDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
         self._dall = DisplayWaveview1ChannelDall(device, f"{self._cmd_syntax}_DALL")
@@ -5352,7 +5352,7 @@ class DisplayWaveview1Channel(ValidatedChannel, SCPICmdRead):
         return self._vertical
 
     @property
-    def d(self) -> Dict[int, DisplayWaveview1ChannelDigitalBit]:
+    def d(self) -> dict[int, DisplayWaveview1ChannelDigitalBit]:
         """Return the ``DISplay:WAVEView1:CH<x>_D<x>`` command tree.
 
         Usage:
@@ -5564,12 +5564,12 @@ class DisplayWaveview1Bus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, DisplayWaveview1BusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, DisplayWaveview1BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1BusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
 
     @property
-    def b(self) -> Dict[int, DisplayWaveview1BusBItem]:
+    def b(self) -> dict[int, DisplayWaveview1BusBItem]:
         """Return the ``DISplay:WAVEView1:BUS:B<x>`` command tree.
 
         Usage:
@@ -5615,7 +5615,7 @@ class DisplayWaveview1(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = DisplayWaveview1Bus(device, f"{self._cmd_syntax}:BUS")
-        self._ch: Dict[int, DisplayWaveview1Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DisplayWaveview1Channel] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1Channel(device, f"{self._cmd_syntax}:CH{x}")
         )
         self._cursor = DisplayWaveview1Cursor(device, f"{self._cmd_syntax}:CURSor")
@@ -5624,24 +5624,24 @@ class DisplayWaveview1(SCPICmdRead):
         self._intensity = DisplayWaveview1Intensity(device, f"{self._cmd_syntax}:INTENSITy")
         self._math = DisplayWaveview1Math(device, f"{self._cmd_syntax}:MATH")
         self._plot = DisplayWaveview1Plot(device, f"{self._cmd_syntax}:PLOT")
-        self._refx: Dict[int, DisplayWaveview1RefItem] = DefaultDictPassKeyToFactory(
+        self._refx: dict[int, DisplayWaveview1RefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1RefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
-        self._rf_frequency: Dict[int, DisplayWaveview1RfFrequencyItem] = (
+        self._rf_frequency: dict[int, DisplayWaveview1RfFrequencyItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: DisplayWaveview1RfFrequencyItem(
                     device, f"{self._cmd_syntax}:RF_FREQuency{x}"
                 )
             )
         )
-        self._rf_magnitude: Dict[int, DisplayWaveview1RfMagnitudeItem] = (
+        self._rf_magnitude: dict[int, DisplayWaveview1RfMagnitudeItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: DisplayWaveview1RfMagnitudeItem(
                     device, f"{self._cmd_syntax}:RF_MAGnitude{x}"
                 )
             )
         )
-        self._rf_phase: Dict[int, DisplayWaveview1RfPhaseItem] = DefaultDictPassKeyToFactory(
+        self._rf_phase: dict[int, DisplayWaveview1RfPhaseItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1RfPhaseItem(device, f"{self._cmd_syntax}:RF_PHASe{x}")
         )
         self._style = DisplayWaveview1Style(device, f"{self._cmd_syntax}:STYle")
@@ -5664,7 +5664,7 @@ class DisplayWaveview1(SCPICmdRead):
         return self._bus
 
     @property
-    def ch(self) -> Dict[int, DisplayWaveview1Channel]:
+    def ch(self) -> dict[int, DisplayWaveview1Channel]:
         """Return the ``DISplay:WAVEView1:CH<x>`` command tree.
 
         Usage:
@@ -5801,7 +5801,7 @@ class DisplayWaveview1(SCPICmdRead):
         return self._plot
 
     @property
-    def refx(self) -> Dict[int, DisplayWaveview1RefItem]:
+    def refx(self) -> dict[int, DisplayWaveview1RefItem]:
         """Return the ``DISplay:WAVEView1:REF<x>`` command tree.
 
         Usage:
@@ -5815,7 +5815,7 @@ class DisplayWaveview1(SCPICmdRead):
         return self._refx
 
     @property
-    def rf_frequency(self) -> Dict[int, DisplayWaveview1RfFrequencyItem]:
+    def rf_frequency(self) -> dict[int, DisplayWaveview1RfFrequencyItem]:
         """Return the ``DISplay:WAVEView1:RF_FREQuency<x>`` command tree.
 
         Usage:
@@ -5834,7 +5834,7 @@ class DisplayWaveview1(SCPICmdRead):
         return self._rf_frequency
 
     @property
-    def rf_magnitude(self) -> Dict[int, DisplayWaveview1RfMagnitudeItem]:
+    def rf_magnitude(self) -> dict[int, DisplayWaveview1RfMagnitudeItem]:
         """Return the ``DISplay:WAVEView1:RF_MAGnitude<x>`` command tree.
 
         Usage:
@@ -5853,7 +5853,7 @@ class DisplayWaveview1(SCPICmdRead):
         return self._rf_magnitude
 
     @property
-    def rf_phase(self) -> Dict[int, DisplayWaveview1RfPhaseItem]:
+    def rf_phase(self) -> dict[int, DisplayWaveview1RfPhaseItem]:
         """Return the ``DISplay:WAVEView1:RF_PHASe<x>`` command tree.
 
         Usage:
@@ -6885,12 +6885,12 @@ class DisplayReffftviewItemRef(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ref: Dict[int, DisplayReffftviewItemRefRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, DisplayReffftviewItemRefRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayReffftviewItemRefRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def ref(self) -> Dict[int, DisplayReffftviewItemRefRefItem]:
+    def ref(self) -> dict[int, DisplayReffftviewItemRefRefItem]:
         """Return the ``DISplay:REFFFTView<x>:REF:REF<x>`` command tree.
 
         Usage:
@@ -11869,12 +11869,12 @@ class DisplayMathfftview1Math(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._math: Dict[int, DisplayMathfftview1MathMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, DisplayMathfftview1MathMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayMathfftview1MathMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
 
     @property
-    def math(self) -> Dict[int, DisplayMathfftview1MathMathItem]:
+    def math(self) -> dict[int, DisplayMathfftview1MathMathItem]:
         """Return the ``DISplay:MATHFFTView1:MATH:MATH<x>`` command tree.
 
         Usage:
@@ -14453,24 +14453,24 @@ class DisplayGlobal(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, DisplayGlobalBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, DisplayGlobalBItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalBItem(device, f"{self._cmd_syntax}:B{x}")
         )
-        self._ch: Dict[int, DisplayGlobalChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DisplayGlobalChannel] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, DisplayGlobalMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, DisplayGlobalMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._plot: Dict[int, DisplayGlobalPlotItem] = DefaultDictPassKeyToFactory(
+        self._plot: dict[int, DisplayGlobalPlotItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalPlotItem(device, f"{self._cmd_syntax}:PLOT{x}")
         )
-        self._ref: Dict[int, DisplayGlobalRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, DisplayGlobalRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
     @property
-    def b(self) -> Dict[int, DisplayGlobalBItem]:
+    def b(self) -> dict[int, DisplayGlobalBItem]:
         """Return the ``DISplay:GLObal:B<x>`` command tree.
 
         Usage:
@@ -14484,7 +14484,7 @@ class DisplayGlobal(SCPICmdRead):
         return self._b
 
     @property
-    def ch(self) -> Dict[int, DisplayGlobalChannel]:
+    def ch(self) -> dict[int, DisplayGlobalChannel]:
         """Return the ``DISplay:GLObal:CH<x>`` command tree.
 
         Usage:
@@ -14498,7 +14498,7 @@ class DisplayGlobal(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, DisplayGlobalMathItem]:
+    def math(self) -> dict[int, DisplayGlobalMathItem]:
         """Return the ``DISplay:GLObal:MATH<x>`` command tree.
 
         Usage:
@@ -14512,7 +14512,7 @@ class DisplayGlobal(SCPICmdRead):
         return self._math
 
     @property
-    def plot(self) -> Dict[int, DisplayGlobalPlotItem]:
+    def plot(self) -> dict[int, DisplayGlobalPlotItem]:
         """Return the ``DISplay:GLObal:PLOT<x>`` command tree.
 
         Usage:
@@ -14529,7 +14529,7 @@ class DisplayGlobal(SCPICmdRead):
         return self._plot
 
     @property
-    def ref(self) -> Dict[int, DisplayGlobalRefItem]:
+    def ref(self) -> dict[int, DisplayGlobalRefItem]:
         """Return the ``DISplay:GLObal:REF<x>`` command tree.
 
         Usage:
@@ -14756,7 +14756,7 @@ class Display(SCPICmdRead):
         self._mathfftview1 = DisplayMathfftview1(device, f"{self._cmd_syntax}:MATHFFTView1")
         self._persistence = DisplayPersistence(device, f"{self._cmd_syntax}:PERSistence")
         self._plotview1 = DisplayPlotview1(device, f"{self._cmd_syntax}:PLOTView1")
-        self._reffftview: Dict[int, DisplayReffftviewItem] = DefaultDictPassKeyToFactory(
+        self._reffftview: dict[int, DisplayReffftviewItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayReffftviewItem(device, f"{self._cmd_syntax}:REFFFTView{x}")
         )
         self._select = DisplaySelect(device, f"{self._cmd_syntax}:SELect")
@@ -14764,13 +14764,13 @@ class Display(SCPICmdRead):
         self._waveview = DisplayWaveview(device, f"{self._cmd_syntax}:WAVEView")
         self._waveview1 = DisplayWaveview1(device, f"{self._cmd_syntax}:WAVEView1")
         self._waveform = DisplayWaveform(device, f"{self._cmd_syntax}:WAVEform")
-        self._ch: Dict[int, DisplayChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, DisplayChannel] = DefaultDictPassKeyToFactory(
             lambda x: DisplayChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, DisplayMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, DisplayMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, DisplayRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, DisplayRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
@@ -14917,7 +14917,7 @@ class Display(SCPICmdRead):
         return self._plotview1
 
     @property
-    def reffftview(self) -> Dict[int, DisplayReffftviewItem]:
+    def reffftview(self) -> dict[int, DisplayReffftviewItem]:
         """Return the ``DISplay:REFFFTView<x>`` command tree.
 
         Usage:
@@ -15056,7 +15056,7 @@ class Display(SCPICmdRead):
         return self._waveform
 
     @property
-    def ch(self) -> Dict[int, DisplayChannel]:
+    def ch(self) -> dict[int, DisplayChannel]:
         """Return the ``DISplay:CH<x>`` command tree.
 
         Usage:
@@ -15075,7 +15075,7 @@ class Display(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, DisplayMathItem]:
+    def math(self) -> dict[int, DisplayMathItem]:
         """Return the ``DISplay:MATH<x>`` command tree.
 
         Usage:
@@ -15094,7 +15094,7 @@ class Display(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, DisplayRefItem]:
+    def ref(self) -> dict[int, DisplayRefItem]:
         """Return the ``DISplay:REF<x>`` command tree.
 
         Usage:

@@ -1,7 +1,6 @@
 """Base Scope device driver module."""
 
 from abc import ABC, abstractmethod
-from typing import Tuple
 
 from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes
@@ -32,6 +31,6 @@ class Scope(Device, ABC):
         return DeviceTypes.SCOPE.value
 
     @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
+    def all_channel_names_list(self) -> tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(f"CH{x + 1}" for x in range(self.total_channels))

@@ -6,7 +6,7 @@ import logging
 
 from abc import ABC
 from pathlib import Path
-from typing import Any, Dict, List, TYPE_CHECKING, Union
+from typing import Any, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
@@ -52,7 +52,7 @@ class TSPControl(PIControl, ABC):
             default_visa_timeout: The default VISA timeout value in milliseconds.
         """
         super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
-        self._user_created_custom_buffers: List[str] = []
+        self._user_created_custom_buffers: list[str] = []
 
     ################################################################################################
     # Magic Methods
@@ -97,7 +97,7 @@ class TSPControl(PIControl, ABC):
                 for index in range(column_length)
             )
 
-    def get_buffers(self, *args: str) -> Dict[str, List[float | str]]:
+    def get_buffers(self, *args: str) -> dict[str, list[float | str]]:
         """Get the contents of one or more buffers on the device.
 
         Args:
@@ -131,7 +131,7 @@ class TSPControl(PIControl, ABC):
             ".units",
         )
 
-        buffer_data: Dict[str, List[float | str]] = {}
+        buffer_data: dict[str, list[float | str]] = {}
         for buffer_name in args:
             buffer_size_name = buffer_name
             for attr_name in buffer_attributes:
@@ -209,7 +209,7 @@ class TSPControl(PIControl, ABC):
             return str(value) + " " * (column_widths[key] - len(str(value)))
 
         buffer_headers = [fix_width(x, x) for x in buffer_data]
-        buffer_rows: List[List[Any]] = [
+        buffer_rows: list[list[Any]] = [
             [fix_width(k, v[index] if index < len(v) else "") for k, v in buffer_data.items()]
             for index in range(column_length)
         ]

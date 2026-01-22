@@ -22,7 +22,7 @@ import shutil
 import subprocess
 
 from pathlib import Path
-from typing import Any, Dict, List, Set, Union
+from typing import Any, Union
 
 import jsonschema
 import requests
@@ -67,7 +67,7 @@ def download_json_metaschema() -> None:
 
 
 def run_command(
-    command: List[str],
+    command: list[str],
     *,
     ignore_errors: bool = False,
     suppress_output: bool = False,
@@ -141,7 +141,7 @@ def run_command(
             raise SystemExit(exit_msg)  # noqa: B904
 
 
-def convert_to_draft_7(schema: Dict[str, Any]) -> Dict[str, Any]:
+def convert_to_draft_7(schema: dict[str, Any]) -> dict[str, Any]:
     """Convert the schema to draft-07.
 
     Args:
@@ -164,7 +164,7 @@ def convert_to_draft_7(schema: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def recursively_post_process_schema(  # noqa: C901,PLR0912
-    schema: Union[str, Dict[str, Any], List[Dict[str, Any]]],
+    schema: Union[str, dict[str, Any], list[dict[str, Any]]],
 ) -> None:
     """Recursively post-process the schema to remove unnecessary fields.
 
@@ -208,7 +208,7 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
             recursively_post_process_schema(item)
 
 
-def extract_urls(json_obj: Union[str, List[Any], Dict[str, Any]]) -> Set[str]:
+def extract_urls(json_obj: Union[str, list[Any], dict[str, Any]]) -> set[str]:
     """Recursively extract URLs from a JSON object.
 
     Args:
@@ -217,7 +217,7 @@ def extract_urls(json_obj: Union[str, List[Any], Dict[str, Any]]) -> Set[str]:
     Returns:
         A set of URLs extracted from the JSON object.
     """
-    urls: Set[str] = set()
+    urls: set[str] = set()
     if isinstance(json_obj, dict):
         for value in json_obj.values():
             if isinstance(value, str):
@@ -238,7 +238,7 @@ def validate_links_in_json(file_path: Path) -> None:
     """
     json_data = json.loads(file_path.read_text(encoding="utf-8"))
     urls = extract_urls(json_data)
-    invalid_links: List[str] = []
+    invalid_links: list[str] = []
     requests_log = logging.getLogger("requests")
     original_requests_log_level = requests_log.level
     urllib3_log = logging.getLogger("urllib3")

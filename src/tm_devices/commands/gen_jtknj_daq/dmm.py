@@ -119,7 +119,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -2678,7 +2678,7 @@ class DmmMeasure(BaseTSPCmd):
         self._bias = DmmMeasureBias(device, f"{self._cmd_syntax}.bias")
         self._configlist = DmmMeasureConfiglist(device, f"{self._cmd_syntax}.configlist")
         self._filter = DmmMeasureFilter(device, f"{self._cmd_syntax}.filter")
-        self._limit: Dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmMeasureLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmMeasureLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmMeasureMath(device, f"{self._cmd_syntax}.math")
@@ -2688,7 +2688,7 @@ class DmmMeasure(BaseTSPCmd):
         self._rel = DmmMeasureRel(device, f"{self._cmd_syntax}.rel")
         self._sense = DmmMeasureSense(device, f"{self._cmd_syntax}.sense")
         self._threshold = DmmMeasureThreshold(device, f"{self._cmd_syntax}.threshold")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -3474,7 +3474,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmMeasureLimitItem]:
+    def limit(self) -> dict[int, DmmMeasureLimitItem]:
         """Return the ``dmm.measure.limit[Y]`` command tree.
 
         Info:
@@ -4581,7 +4581,7 @@ class DmmMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, Union[str, float]]:
         """Access the ``dmm.measure.userdelay[N]`` attribute.
 
         Description:
@@ -6218,12 +6218,12 @@ class DmmDigitize(BaseTSPCmd):
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._analogtrigger = DmmDigitizeAnalogtrigger(device, f"{self._cmd_syntax}.analogtrigger")
-        self._limit: Dict[int, DmmDigitizeLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmDigitizeLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmDigitizeLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmDigitizeMath(device, f"{self._cmd_syntax}.math")
         self._rel = DmmDigitizeRel(device, f"{self._cmd_syntax}.rel")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -6697,7 +6697,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmDigitizeLimitItem]:
+    def limit(self) -> dict[int, DmmDigitizeLimitItem]:
         """Return the ``dmm.digitize.limit[Y]`` command tree.
 
         Info:
@@ -6934,7 +6934,7 @@ class DmmDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, Union[str, float]]:
         """Access the ``dmm.digitize.userdelay[N]`` attribute.
 
         Description:

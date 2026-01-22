@@ -28,7 +28,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -749,18 +749,18 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._detector: Dict[int, TriggerDetectorItem] = DefaultDictPassKeyToFactory(
+        self._detector: dict[int, TriggerDetectorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDetectorItem(device, f"{self._cmd_syntax}.detector[{x}]")
         )
-        self._generator: Dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
+        self._generator: dict[int, TriggerGeneratorItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerGeneratorItem(device, f"{self._cmd_syntax}.generator[{x}]")
         )
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
 
     @property
-    def detector(self) -> Dict[int, TriggerDetectorItem]:
+    def detector(self) -> dict[int, TriggerDetectorItem]:
         """Return the ``trigger.detector[N]`` command tree.
 
         Info:
@@ -775,7 +775,7 @@ class Trigger(BaseTSPCmd):
         return self._detector
 
     @property
-    def generator(self) -> Dict[int, TriggerGeneratorItem]:
+    def generator(self) -> dict[int, TriggerGeneratorItem]:
         """Return the ``trigger.generator[N]`` command tree.
 
         Info:
@@ -790,7 +790,7 @@ class Trigger(BaseTSPCmd):
         return self._generator
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:

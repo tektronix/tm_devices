@@ -1,7 +1,6 @@
 """AWG7K device driver module."""
 
 from types import MappingProxyType
-from typing import Dict, Tuple
 
 from tm_devices.commands import AWG7KMixin
 from tm_devices.drivers.awgs.awg import (
@@ -38,7 +37,7 @@ class AWG7K(AWG7KMixin, AWG):
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
         """Mapping of channel names to AWG7KSourceChannel objects."""
-        channel_map: Dict[str, AWG7KSourceChannel] = {}
+        channel_map: dict[str, AWG7KSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWG7KSourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -49,7 +48,7 @@ class AWG7K(AWG7KMixin, AWG):
     def _get_series_specific_constraints(
         self,
         output_signal_path: SignalGeneratorOutputPathsBase | None,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
         Args:

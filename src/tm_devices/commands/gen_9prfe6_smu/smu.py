@@ -134,7 +134,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -1038,7 +1038,7 @@ class SmuSource(BaseTSPCmd):
         self._configlist = SmuSourceConfiglist(device, f"{self._cmd_syntax}.configlist")
         self._protect = SmuSourceProtect(device, f"{self._cmd_syntax}.protect")
         self._pulse = SmuSourcePulse(device, f"{self._cmd_syntax}.pulse")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -1727,7 +1727,7 @@ class SmuSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, Union[str, float]]:
         """Access the ``smu.source.userdelay[N]`` attribute.
 
         Description:
@@ -4167,12 +4167,12 @@ class SmuMeasure(BaseTSPCmd):
         self._autozero = SmuMeasureAutozero(device, f"{self._cmd_syntax}.autozero")
         self._configlist = SmuMeasureConfiglist(device, f"{self._cmd_syntax}.configlist")
         self._filter = SmuMeasureFilter(device, f"{self._cmd_syntax}.filter")
-        self._limit: Dict[int, SmuMeasureLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, SmuMeasureLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: SmuMeasureLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = SmuMeasureMath(device, f"{self._cmd_syntax}.math")
         self._rel = SmuMeasureRel(device, f"{self._cmd_syntax}.rel")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -4692,7 +4692,7 @@ class SmuMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, SmuMeasureLimitItem]:
+    def limit(self) -> dict[int, SmuMeasureLimitItem]:
         """Return the ``smu.measure.limit[Y]`` command tree.
 
         Info:
@@ -5054,7 +5054,7 @@ class SmuMeasure(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, Union[str, float]]:
         """Access the ``smu.measure.userdelay[N]`` attribute.
 
         Description:
@@ -6354,12 +6354,12 @@ class SmuDigitize(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._limit: Dict[int, SmuDigitizeLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, SmuDigitizeLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: SmuDigitizeLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = SmuDigitizeMath(device, f"{self._cmd_syntax}.math")
         self._rel = SmuDigitizeRel(device, f"{self._cmd_syntax}.rel")
-        self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._userdelay: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.userdelay[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.userdelay[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.userdelay[{{key}}])",
@@ -6627,7 +6627,7 @@ class SmuDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, SmuDigitizeLimitItem]:
+    def limit(self) -> dict[int, SmuDigitizeLimitItem]:
         """Return the ``smu.digitize.limit[Y]`` command tree.
 
         Info:
@@ -6930,7 +6930,7 @@ class SmuDigitize(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def userdelay(self) -> Dict[int, Union[str, float]]:
+    def userdelay(self) -> dict[int, Union[str, float]]:
         """Access the ``smu.digitize.userdelay[N]`` attribute.
 
         Description:

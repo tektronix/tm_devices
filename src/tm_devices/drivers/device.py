@@ -12,7 +12,6 @@ from functools import cached_property as functools_cached_property
 from typing import (
     Any,
     final,
-    Tuple,
     TypeVar,
 )
 
@@ -338,7 +337,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     # Public Methods
     ################################################################################################
     @final
-    def check_network_connection(self) -> Tuple[bool, str]:
+    def check_network_connection(self) -> tuple[bool, str]:
         """Check the network connection to the device using an external ping command.
 
         Wrapper function for
@@ -389,7 +388,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         self._close()
 
     @final
-    def get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note
@@ -578,7 +577,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _get_self_properties(self) -> Tuple[str, ...]:
+    def _get_self_properties(self) -> tuple[str, ...]:
         """Get a complete list of all the properties of the device."""
         return tuple(
             p

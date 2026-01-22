@@ -23,7 +23,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Any, Dict, Optional, TYPE_CHECKING
+from typing import Any, Optional, TYPE_CHECKING
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 from .buffervar import Buffervar
@@ -599,7 +599,7 @@ class Buffer(BaseTSPCmd):
         abs_start_fractional: str | None = None,
         abs_end_time: float | None = None,
         abs_end_fractional: str | None = None,
-    ) -> Dict[Any, Any]:
+    ) -> dict[Any, Any]:
         """Run the ``buffer.getstats()`` function.
 
         Description:

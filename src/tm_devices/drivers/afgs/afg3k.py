@@ -1,7 +1,5 @@
 """AFG3K device driver module."""
 
-from typing import Tuple
-
 from tm_devices.commands import AFG3KMixin
 from tm_devices.drivers.afgs.afg import (
     AFG,
@@ -31,7 +29,7 @@ class AFG3K(AFG3KMixin, AFG):
     # Private Methods
     ################################################################################################
     @staticmethod
-    def _get_driver_specific_multipliers(model_number: str) -> Tuple[float, float]:
+    def _get_driver_specific_multipliers(model_number: str) -> tuple[float, float]:
         """Get multipliers for frequency dependent on the function.
 
         Args:
@@ -54,7 +52,7 @@ class AFG3K(AFG3KMixin, AFG):
         waveform_length: int | None = None,
         frequency: float | None = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
         Args:

@@ -1,7 +1,6 @@
 """A private mixin for common methods and attributes for Tektronix scopes."""
 
 from abc import ABC
-from typing import Tuple
 
 from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
     _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
@@ -22,7 +21,7 @@ class _TektronixPIScopeMixin(_AbstractDeviceVISAWriteQueryControl, ABC):  # pyri
         """A string containing the expected error message when no error is present."""
         return '0,"No events to report - queue empty"'
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

@@ -4,7 +4,7 @@ import logging
 
 from abc import abstractmethod
 from itertools import zip_longest
-from typing import Any, final, Tuple
+from typing import Any, final
 
 from tm_devices.driver_mixins.device_control._abstract_device_control import (
     _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
@@ -32,7 +32,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
 
     @final
     def expect_esr(  # noqa: C901, # pylint: disable=too-many-locals
-        self, esr: int, error_messages: Tuple[str, ...] = (), *, use_regex_match: bool = False
+        self, esr: int, error_messages: tuple[str, ...] = (), *, use_regex_match: bool = False
     ) -> bool:
         r"""Checks for the expected esr value and queued error messages.
 

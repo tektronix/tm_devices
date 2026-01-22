@@ -62,7 +62,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1697,7 +1697,7 @@ class Histogram(SCPICmdRead):
         self._addnew = HistogramAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._deleteall = HistogramDeleteall(device, f"{self._cmd_syntax}:DELETEALL")
         self._delete = HistogramDelete(device, f"{self._cmd_syntax}:DELete")
-        self._histogram: Dict[int, HistogramHistogramItem] = DefaultDictPassKeyToFactory(
+        self._histogram: dict[int, HistogramHistogramItem] = DefaultDictPassKeyToFactory(
             lambda x: HistogramHistogramItem(device, f"{self._cmd_syntax}:HISTogram{x}")
         )
         self._list = HistogramList(device, f"{self._cmd_syntax}:LIST")
@@ -1763,7 +1763,7 @@ class Histogram(SCPICmdRead):
         return self._delete
 
     @property
-    def histogram(self) -> Dict[int, HistogramHistogramItem]:
+    def histogram(self) -> dict[int, HistogramHistogramItem]:
         """Return the ``HISTogram:HISTogram<x>`` command tree.
 
         Usage:

@@ -6,8 +6,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -756,7 +754,7 @@ class DPO4KBCommands:
         self._busy = Busy(device)
         self._cal = Cal(device)
         self._calibrate = Calibrate(device)
-        self._ch: Dict[int, Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, Channel] = DefaultDictPassKeyToFactory(
             lambda x: Channel(device, f"CH{x}")
         )
         self._clearmenu = Clearmenu(device)
@@ -764,7 +762,7 @@ class DPO4KBCommands:
         self._configuration = Configuration(device)
         self._cursor = Cursor(device)
         self._curve = Curve(device)
-        self._d: Dict[int, DigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, DigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: DigitalBit(device, f"D{x}")
         )
         self._data = Data(device)
@@ -815,7 +813,7 @@ class DPO4KBCommands:
         self._rcl = Rcl(device)
         self._reboot = Reboot(device)
         self._recall = Recall(device)
-        self._ref: Dict[int, RefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, RefItem] = DefaultDictPassKeyToFactory(
             lambda x: RefItem(device, f"REF{x}")
         )
         self._rem = Rem(device)
@@ -827,7 +825,7 @@ class DPO4KBCommands:
         self._search = Search(device)
         self._select = Select(device)
         self._set = Set(device)
-        self._setup: Dict[int, SetupItem] = DefaultDictPassKeyToFactory(
+        self._setup: dict[int, SetupItem] = DefaultDictPassKeyToFactory(
             lambda x: SetupItem(device, f"SETUP{x}")
         )
         self._socketserver = Socketserver(device)
@@ -1126,7 +1124,7 @@ class DPO4KBCommands:
         return self._calibrate
 
     @property
-    def ch(self) -> Dict[int, Channel]:
+    def ch(self) -> dict[int, Channel]:
         """Return the ``CH<x>`` command.
 
         Description:
@@ -1306,7 +1304,7 @@ class DPO4KBCommands:
         return self._curve
 
     @property
-    def d(self) -> Dict[int, DigitalBit]:
+    def d(self) -> dict[int, DigitalBit]:
         """Return the ``D<x>`` command.
 
         Description:
@@ -2539,7 +2537,7 @@ class DPO4KBCommands:
         return self._recall
 
     @property
-    def ref(self) -> Dict[int, RefItem]:
+    def ref(self) -> dict[int, RefItem]:
         """Return the ``REF<x>`` command.
 
         Description:
@@ -2806,7 +2804,7 @@ class DPO4KBCommands:
         return self._set
 
     @property
-    def setup(self) -> Dict[int, SetupItem]:
+    def setup(self) -> dict[int, SetupItem]:
         """Return the ``SETUP<x>`` command tree.
 
         Usage:

@@ -3,11 +3,18 @@
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Any, cast, Dict, Final, FrozenSet, List, Literal, Optional, Tuple, Union
+from typing import (
+    Annotated,
+    Any,
+    cast,
+    Final,
+    Literal,
+    Optional,
+    Union,
+)
 
 from dc_schema import SchemaAnnotation  # pyright: ignore[reportMissingTypeStubs]
 from pyvisa import constants as pyvisa_constants
-from typing_extensions import Annotated
 
 from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
@@ -50,7 +57,7 @@ class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
 
     def __str__(self) -> str:
         """Return a single line of comma separated, key-value pairs for an environment variable."""
-        ret_list: List[str] = []
+        ret_list: list[str] = []
         for key, val in self.to_dict(ignore_none=True).items():
             # must pull class type from actual value, not the to_dict()'s representation
             if (
@@ -823,7 +830,7 @@ class TMDevicesConfigFileSchema:
     """Configuration file schema for the tm_devices package."""
 
     devices: Annotated[
-        List[DeviceConfigEntry],
+        list[DeviceConfigEntry],
         SchemaAnnotation(
             description=(
                 "A list of devices for the DeviceManager to connect to\n"
@@ -871,7 +878,7 @@ MIN_GPIB_BOARD_NUMBER: Final[int] = 0
 # don't include this in the __init__
 CONFIG_CLASS_STR_PREFIX_MAPPING: Final = MappingProxyType({SerialConfig: "serial_"})
 # don't include this in the __init__
-VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
+VALID_SERIAL_BAUD: Final[frozenset[int]] = frozenset(
     [
         300,
         600,
@@ -889,9 +896,9 @@ VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
     ]
 )
 # don't include this in the __init__
-VALID_SERIAL_DATA_BITS: Final[FrozenSet[int]] = frozenset([5, 6, 7, 8])
+VALID_SERIAL_DATA_BITS: Final[frozenset[int]] = frozenset([5, 6, 7, 8])
 
-VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
+VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, tuple[ConnectionTypes, ...]]] = (
     MappingProxyType(
         {
             DeviceTypes.AFG: (
@@ -1147,7 +1154,7 @@ LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = Map
 ####################################################################################################
 # Private Attributes
 ####################################################################################################
-_externally_registered_usbtmc_model_id_lookup: Dict[str, USBTMCConfiguration] = {}
+_externally_registered_usbtmc_model_id_lookup: dict[str, USBTMCConfiguration] = {}
 _USB_MODEL_ID_STR_LOOKUP: Mapping[str, USBTMCConfiguration] = MappingProxyType(
     {key.value: value for key, value in USB_MODEL_ID_LOOKUP.items()}
 )

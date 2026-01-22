@@ -20,7 +20,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -504,12 +504,12 @@ class Schedule(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "schedule") -> None:
         super().__init__(device, cmd_syntax)
-        self._alarm: Dict[int, ScheduleAlarmItem] = DefaultDictPassKeyToFactory(
+        self._alarm: dict[int, ScheduleAlarmItem] = DefaultDictPassKeyToFactory(
             lambda x: ScheduleAlarmItem(device, f"{self._cmd_syntax}.alarm[{x}]")
         )
 
     @property
-    def alarm(self) -> Dict[int, ScheduleAlarmItem]:
+    def alarm(self) -> dict[int, ScheduleAlarmItem]:
         """Return the ``schedule.alarm[N]`` command tree.
 
         Info:

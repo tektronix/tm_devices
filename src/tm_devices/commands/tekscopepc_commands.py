@@ -5,8 +5,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict
-
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -1191,7 +1189,7 @@ class TekScopePCCommands:
         self._bustable = Bustable(device)
         self._busy = Busy(device)
         self._callouts = Callouts(device)
-        self._ch: Dict[int, Channel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, Channel] = DefaultDictPassKeyToFactory(
             lambda x: Channel(device, f"CH{x}")
         )
         self._cls = Cls(device)
@@ -1223,7 +1221,7 @@ class TekScopePCCommands:
         self._mainwindow = Mainwindow(device)
         self._mask = Mask(device)
         self._math = Math(device)
-        self._matharbflt: Dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
+        self._matharbflt: dict[int, MatharbfltItem] = DefaultDictPassKeyToFactory(
             lambda x: MatharbfltItem(device, f"MATHArbflt{x}")
         )
         self._meastable = Meastable(device)
@@ -1239,13 +1237,13 @@ class TekScopePCCommands:
         self._pud = Pud(device)
         self._recall = Recall(device)
         self._ref = Ref(device)
-        self._refx: Dict[int, RefItem] = DefaultDictPassKeyToFactory(
+        self._refx: dict[int, RefItem] = DefaultDictPassKeyToFactory(
             lambda x: RefItem(device, f"REF{x}")
         )
         self._rem = Rem(device)
         self._remote = Remote(device)
         self._rst = Rst(device)
-        self._s: Dict[int, SItem] = DefaultDictPassKeyToFactory(lambda x: SItem(device, f"S{x}"))
+        self._s: dict[int, SItem] = DefaultDictPassKeyToFactory(lambda x: SItem(device, f"S{x}"))
         self._save = Save(device)
         self._saveonevent = Saveonevent(device)
         self._search = Search(device)
@@ -1460,7 +1458,7 @@ class TekScopePCCommands:
         return self._callouts
 
     @property
-    def ch(self) -> Dict[int, Channel]:
+    def ch(self) -> dict[int, Channel]:
         """Return the ``CH<x>`` command.
 
         Description:
@@ -2162,7 +2160,7 @@ class TekScopePCCommands:
         return self._math
 
     @property
-    def matharbflt(self) -> Dict[int, MatharbfltItem]:
+    def matharbflt(self) -> dict[int, MatharbfltItem]:
         """Return the ``MATHArbflt<x>`` command tree.
 
         Usage:
@@ -2478,7 +2476,7 @@ class TekScopePCCommands:
         return self._ref
 
     @property
-    def refx(self) -> Dict[int, RefItem]:
+    def refx(self) -> dict[int, RefItem]:
         """Return the ``REF<x>`` command tree.
 
         Usage:
@@ -2581,7 +2579,7 @@ class TekScopePCCommands:
         return self._rst
 
     @property
-    def s(self) -> Dict[int, SItem]:
+    def s(self) -> dict[int, SItem]:
         """Return the ``S<x>`` command tree.
 
         Usage:

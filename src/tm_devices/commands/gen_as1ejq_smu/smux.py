@@ -122,7 +122,8 @@ Attributes and Functions:
     ```
 """
 
-from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
+from collections.abc import Sequence
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 from .buffervar import Buffervar
@@ -6563,7 +6564,7 @@ class SmuxItemBuffer(BaseTSPCmd):
         - ``.recalculatestats()``: The ``smuX.buffer.recalculatestats()`` function.
     """
 
-    def getstats(self, buffer_var: str) -> Dict[Any, Any]:
+    def getstats(self, buffer_var: str) -> dict[Any, Any]:
         """Run the ``smuX.buffer.getstats()`` function.
 
         Description:

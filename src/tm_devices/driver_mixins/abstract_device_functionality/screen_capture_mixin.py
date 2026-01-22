@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
-from typing import final, Tuple, TYPE_CHECKING, Union
+from typing import final, TYPE_CHECKING, Union
 
 from dateutil.tz import tzlocal
 
@@ -18,7 +18,7 @@ class ScreenCaptureMixin(ABC):
 
     @property
     @abstractmethod
-    def valid_image_extensions(self) -> Tuple[str, ...]:
+    def valid_image_extensions(self) -> tuple[str, ...]:
         """Return a tuple of valid image extensions for this device.
 
         The extensions will be in the format '.ext', where 'ext' is the lowercase extension,

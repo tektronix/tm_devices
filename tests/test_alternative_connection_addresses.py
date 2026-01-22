@@ -1,8 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for various methods of connecting to devices."""
 
-from typing import Tuple
-
 import pytest
 
 from tm_devices import DeviceManager
@@ -134,7 +132,7 @@ def test_alternative_connection_methods(
     address: str,
     device_type: str,
     connection: str | None,
-    expected_info: Tuple[str, str, str, str],
+    expected_info: tuple[str, str, str, str],
 ) -> None:
     """Verify various non-standard connection addresses work properly.
 

@@ -10,8 +10,6 @@ the source and measure settings are configured before the pulse command
 arguments so the arguments are stored in variables to make them easier to read.
 """
 
-from typing import List
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2461
 
@@ -89,9 +87,9 @@ with DeviceManager() as device_manager:
         operation_condition_register = int(smu2461.commands.status.operation.condition.rstrip())
         is_sweeping = operation_condition_register == 2**BIT
 
-    num: List[int] = []
-    curr: List[float] = []
-    volt: List[float] = []
+    num: list[int] = []
+    curr: list[float] = []
+    volt: list[float] = []
     rdg_cnt: int
     if not (rdg_cnt := int(float(smu2461.commands.buffer_var["defbuffer1"].n))):
         print("No readings in buffer")

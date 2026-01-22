@@ -33,7 +33,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -528,7 +528,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
-        self._trigger: Dict[int, TsplinkTriggerItem] = DefaultDictPassKeyToFactory(
+        self._trigger: dict[int, TsplinkTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
         )
 
@@ -721,7 +721,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def trigger(self) -> Dict[int, TsplinkTriggerItem]:
+    def trigger(self) -> dict[int, TsplinkTriggerItem]:
         """Return the ``tsplink.trigger[N]`` command tree.
 
         Info:

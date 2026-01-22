@@ -56,7 +56,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -1456,7 +1456,7 @@ class Awgcontrol(SCPICmdRead):
         self._compile = AwgcontrolCompile(device, f"{self._cmd_syntax}:COMPile")
         self._configure = AwgcontrolConfigure(device, f"{self._cmd_syntax}:CONFigure")
         self._dloading = AwgcontrolDloading(device, f"{self._cmd_syntax}:DLOading")
-        self._doutput: Dict[int, AwgcontrolDoutputItem] = DefaultDictPassKeyToFactory(
+        self._doutput: dict[int, AwgcontrolDoutputItem] = DefaultDictPassKeyToFactory(
             lambda x: AwgcontrolDoutputItem(device, f"{self._cmd_syntax}:DOUTput{x}")
         )
         self._interleave = AwgcontrolInterleave(device, f"{self._cmd_syntax}:INTerleave")
@@ -1547,7 +1547,7 @@ class Awgcontrol(SCPICmdRead):
         return self._dloading
 
     @property
-    def doutput(self) -> Dict[int, AwgcontrolDoutputItem]:
+    def doutput(self) -> dict[int, AwgcontrolDoutputItem]:
         """Return the ``AWGControl:DOUTput[n]`` command tree.
 
         Usage:

@@ -276,7 +276,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -2308,14 +2308,14 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._psu: Dict[int, SlotItemStatusQuestionableInstrumentPsuItem] = (
+        self._psu: dict[int, SlotItemStatusQuestionableInstrumentPsuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusQuestionableInstrumentPsuItem(
                     device, f"{self._cmd_syntax}.psu[{x}]"
                 )
             )
         )
-        self._smu: Dict[int, SlotItemStatusQuestionableInstrumentSmuItem] = (
+        self._smu: dict[int, SlotItemStatusQuestionableInstrumentSmuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusQuestionableInstrumentSmuItem(
                     device, f"{self._cmd_syntax}.smu[{x}]"
@@ -2534,7 +2534,7 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def psu(self) -> Dict[int, SlotItemStatusQuestionableInstrumentPsuItem]:
+    def psu(self) -> dict[int, SlotItemStatusQuestionableInstrumentPsuItem]:
         """Return the ``slot[Z].status.questionable.instrument.psu[X]`` command tree.
 
         Info:
@@ -2625,7 +2625,7 @@ class SlotItemStatusQuestionableInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, SlotItemStatusQuestionableInstrumentSmuItem]:
+    def smu(self) -> dict[int, SlotItemStatusQuestionableInstrumentSmuItem]:
         """Return the ``slot[Z].status.questionable.instrument.smu[X]`` command tree.
 
         Info:
@@ -4502,14 +4502,14 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._psu: Dict[int, SlotItemStatusOperationInstrumentPsuItem] = (
+        self._psu: dict[int, SlotItemStatusOperationInstrumentPsuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusOperationInstrumentPsuItem(
                     device, f"{self._cmd_syntax}.psu[{x}]"
                 )
             )
         )
-        self._smu: Dict[int, SlotItemStatusOperationInstrumentSmuItem] = (
+        self._smu: dict[int, SlotItemStatusOperationInstrumentSmuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusOperationInstrumentSmuItem(
                     device, f"{self._cmd_syntax}.smu[{x}]"
@@ -4710,7 +4710,7 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def psu(self) -> Dict[int, SlotItemStatusOperationInstrumentPsuItem]:
+    def psu(self) -> dict[int, SlotItemStatusOperationInstrumentPsuItem]:
         """Return the ``slot[Z].status.operation.instrument.psu[X]`` command tree.
 
         Info:
@@ -4796,7 +4796,7 @@ class SlotItemStatusOperationInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, SlotItemStatusOperationInstrumentSmuItem]:
+    def smu(self) -> dict[int, SlotItemStatusOperationInstrumentSmuItem]:
         """Return the ``slot[Z].status.operation.instrument.smu[X]`` command tree.
 
         Info:
@@ -6945,14 +6945,14 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._psu: Dict[int, SlotItemStatusMeasurementInstrumentPsuItem] = (
+        self._psu: dict[int, SlotItemStatusMeasurementInstrumentPsuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusMeasurementInstrumentPsuItem(
                     device, f"{self._cmd_syntax}.psu[{x}]"
                 )
             )
         )
-        self._smu: Dict[int, SlotItemStatusMeasurementInstrumentSmuItem] = (
+        self._smu: dict[int, SlotItemStatusMeasurementInstrumentSmuItem] = (
             DefaultDictPassKeyToFactory(
                 lambda x: SlotItemStatusMeasurementInstrumentSmuItem(
                     device, f"{self._cmd_syntax}.smu[{x}]"
@@ -7177,7 +7177,7 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def psu(self) -> Dict[int, SlotItemStatusMeasurementInstrumentPsuItem]:
+    def psu(self) -> dict[int, SlotItemStatusMeasurementInstrumentPsuItem]:
         """Return the ``slot[Z].status.measurement.instrument.psu[X]`` command tree.
 
         Info:
@@ -7270,7 +7270,7 @@ class SlotItemStatusMeasurementInstrument(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, SlotItemStatusMeasurementInstrumentSmuItem]:
+    def smu(self) -> dict[int, SlotItemStatusMeasurementInstrumentSmuItem]:
         """Return the ``slot[Z].status.measurement.instrument.smu[X]`` command tree.
 
         Info:
@@ -16087,10 +16087,10 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "slot[Z]") -> None:
         super().__init__(device, cmd_syntax)
         self._firmware = SlotItemFirmware(device, f"{self._cmd_syntax}.firmware")
-        self._psu: Dict[int, SlotItemPsuItem] = DefaultDictPassKeyToFactory(
+        self._psu: dict[int, SlotItemPsuItem] = DefaultDictPassKeyToFactory(
             lambda x: SlotItemPsuItem(device, f"{self._cmd_syntax}.psu[{x}]")
         )
-        self._smu: Dict[int, SlotItemSmuItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[int, SlotItemSmuItem] = DefaultDictPassKeyToFactory(
             lambda x: SlotItemSmuItem(device, f"{self._cmd_syntax}.smu[{x}]")
         )
         self._status = SlotItemStatus(device, f"{self._cmd_syntax}.status")
@@ -16204,7 +16204,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def psu(self) -> Dict[int, SlotItemPsuItem]:
+    def psu(self) -> dict[int, SlotItemPsuItem]:
         """Return the ``slot[Z].psu[X]`` command tree.
 
         Info:
@@ -16258,7 +16258,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def smu(self) -> Dict[int, SlotItemSmuItem]:
+    def smu(self) -> dict[int, SlotItemSmuItem]:
         """Return the ``slot[Z].smu[X]`` command tree.
 
         Info:

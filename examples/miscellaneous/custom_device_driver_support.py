@@ -1,7 +1,5 @@
 """An example of external device support via a custom driver."""
 
-from typing import Tuple
-
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.drivers import MSO5
@@ -22,7 +20,7 @@ class CustomScope(PIControl, Scope):
         return 4
 
     # This is an abstract method that must be implemented by the custom device driver.
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device."""
         # The contents of this method would need to be properly implemented,
         # this is just example code. :)
@@ -47,7 +45,7 @@ class CustomDevice(PIControl, Device):
         return "CustomDevice"
 
     # This is an abstract method that must be implemented by the custom device driver.
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device."""
         # The contents of this method would need to be properly implemented,
         # this is just example code. :)

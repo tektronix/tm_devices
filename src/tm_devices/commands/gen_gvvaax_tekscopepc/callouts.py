@@ -37,7 +37,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -842,12 +842,12 @@ class Callouts(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALLOUTS") -> None:
         super().__init__(device, cmd_syntax)
-        self._callout: Dict[int, CalloutsCalloutItem] = DefaultDictPassKeyToFactory(
+        self._callout: dict[int, CalloutsCalloutItem] = DefaultDictPassKeyToFactory(
             lambda x: CalloutsCalloutItem(device, f"{self._cmd_syntax}:CALLOUT{x}")
         )
 
     @property
-    def callout(self) -> Dict[int, CalloutsCalloutItem]:
+    def callout(self) -> dict[int, CalloutsCalloutItem]:
         """Return the ``CALLOUTS:CALLOUT<x>`` command.
 
         Description:

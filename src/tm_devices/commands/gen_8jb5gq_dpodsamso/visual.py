@@ -50,7 +50,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -614,13 +614,13 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._flip = VisualAreaItemFlip(device, f"{self._cmd_syntax}:FLIP")
         self._height = VisualAreaItemHeight(device, f"{self._cmd_syntax}:HEIGHT")
         self._label = VisualAreaItemLabel(device, f"{self._cmd_syntax}:LABel")
-        self._operation: Dict[int, VisualAreaItemOperationItem] = DefaultDictPassKeyToFactory(
+        self._operation: dict[int, VisualAreaItemOperationItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItemOperationItem(device, f"{self._cmd_syntax}:OPERATION{x}")
         )
         self._rotation = VisualAreaItemRotation(device, f"{self._cmd_syntax}:ROTAtion")
         self._shape = VisualAreaItemShape(device, f"{self._cmd_syntax}:SHAPE")
         self._showlogic = VisualAreaItemShowlogic(device, f"{self._cmd_syntax}:SHOWLOGic")
-        self._source: Dict[int, VisualAreaItemSourceItem] = DefaultDictPassKeyToFactory(
+        self._source: dict[int, VisualAreaItemSourceItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItemSourceItem(device, f"{self._cmd_syntax}:SOURCE{x}")
         )
         self._vertices = VisualAreaItemVertices(device, f"{self._cmd_syntax}:VERTICES")
@@ -732,7 +732,7 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._label
 
     @property
-    def operation(self) -> Dict[int, VisualAreaItemOperationItem]:
+    def operation(self) -> dict[int, VisualAreaItemOperationItem]:
         """Return the ``VISual:AREA<x>:OPERATION<x>`` command.
 
         Description:
@@ -842,7 +842,7 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._showlogic
 
     @property
-    def source(self) -> Dict[int, VisualAreaItemSourceItem]:
+    def source(self) -> dict[int, VisualAreaItemSourceItem]:
         """Return the ``VISual:AREA<x>:SOURCE<x>`` command.
 
         Description:
@@ -998,7 +998,7 @@ class Visual(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VISual") -> None:
         super().__init__(device, cmd_syntax)
-        self._area: Dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
+        self._area: dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItem(device, f"{self._cmd_syntax}:AREA{x}")
         )
         self._areacolor = VisualAreacolor(device, f"{self._cmd_syntax}:AREACOLOr")
@@ -1008,7 +1008,7 @@ class Visual(SCPICmdRead):
         self._file = VisualFile(device, f"{self._cmd_syntax}:FILE")
 
     @property
-    def area(self) -> Dict[int, VisualAreaItem]:
+    def area(self) -> dict[int, VisualAreaItem]:
         """Return the ``VISual:AREA<x>`` command.
 
         Description:

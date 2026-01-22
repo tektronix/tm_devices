@@ -6,8 +6,6 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Dict
-
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -643,7 +641,7 @@ class SMU2601BPulseCommands:
 
     def __init__(self, device: TSPControl | None = None) -> None:
         self._beeper = Beeper(device)
-        self._buffer_var: Dict[str, Buffervar] = DefaultDictPassKeyToFactory(
+        self._buffer_var: dict[str, Buffervar] = DefaultDictPassKeyToFactory(
             lambda x: Buffervar(device, str(x))
         )
         self._dataqueue = Dataqueue(device)
@@ -656,7 +654,7 @@ class SMU2601BPulseCommands:
         self._lan = Lan(device)
         self._localnode = Localnode(device)
         self._serial = Serial(device)
-        self._smu: Dict[str, SmuxItem] = DefaultDictPassKeyToFactory(
+        self._smu: dict[str, SmuxItem] = DefaultDictPassKeyToFactory(
             lambda x: SmuxItem(device, f"smu{x}")
         )
         self._status = Status(device)
@@ -675,7 +673,7 @@ class SMU2601BPulseCommands:
         return self._beeper
 
     @property
-    def buffer_var(self) -> Dict[str, Buffervar]:
+    def buffer_var(self) -> dict[str, Buffervar]:
         """Return the ``bufferVar`` command tree.
 
         Info:
@@ -958,7 +956,7 @@ class SMU2601BPulseCommands:
         return self._serial
 
     @property
-    def smu(self) -> Dict[str, SmuxItem]:
+    def smu(self) -> dict[str, SmuxItem]:
         """Return the ``smuX`` command tree.
 
         Constants:

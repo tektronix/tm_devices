@@ -196,7 +196,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -450,12 +450,12 @@ class TriggerAUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
+    def ch(self) -> dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
 
         Description:
@@ -1030,12 +1030,12 @@ class TriggerASetholdlogicvalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, TriggerASetholdlogicvalDchItemDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerASetholdlogicvalDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdlogicvalDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
 
     @property
-    def d(self) -> Dict[int, TriggerASetholdlogicvalDchItemDigitalBit]:
+    def d(self) -> dict[int, TriggerASetholdlogicvalDchItemDigitalBit]:
         """Return the ``TRIGger:A:SETHOLDLOGICVAL:DCH<x>_D<x>`` command.
 
         Description:
@@ -1081,12 +1081,12 @@ class TriggerASetholdlogicval(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._dch: Dict[int, TriggerASetholdlogicvalDchItem] = DefaultDictPassKeyToFactory(
+        self._dch: dict[int, TriggerASetholdlogicvalDchItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdlogicvalDchItem(device, f"{self._cmd_syntax}:DCH{x}")
         )
 
     @property
-    def dch(self) -> Dict[int, TriggerASetholdlogicvalDchItem]:
+    def dch(self) -> dict[int, TriggerASetholdlogicvalDchItem]:
         """Return the ``TRIGger:A:SETHOLDLOGICVAL:DCH<x>`` command tree.
 
         Usage:
@@ -1738,12 +1738,12 @@ class TriggerALowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
+    def ch(self) -> dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
 
         Description:
@@ -2257,12 +2257,12 @@ class TriggerALogicpatternDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[int, TriggerALogicpatternDchItemDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, TriggerALogicpatternDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicpatternDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
 
     @property
-    def d(self) -> Dict[int, TriggerALogicpatternDchItemDigitalBit]:
+    def d(self) -> dict[int, TriggerALogicpatternDchItemDigitalBit]:
         """Return the ``TRIGger:A:LOGICPattern:DCH<x>_D<x>`` command.
 
         Description:
@@ -2339,15 +2339,15 @@ class TriggerALogicpattern(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALogicpatternChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALogicpatternChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicpatternChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._dch: Dict[int, TriggerALogicpatternDchItem] = DefaultDictPassKeyToFactory(
+        self._dch: dict[int, TriggerALogicpatternDchItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicpatternDchItem(device, f"{self._cmd_syntax}:DCH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALogicpatternChannel]:
+    def ch(self) -> dict[int, TriggerALogicpatternChannel]:
         """Return the ``TRIGger:A:LOGICPattern:CH<x>`` command.
 
         Description:
@@ -2377,7 +2377,7 @@ class TriggerALogicpattern(SCPICmdRead):
         return self._ch
 
     @property
-    def dch(self) -> Dict[int, TriggerALogicpatternDchItem]:
+    def dch(self) -> dict[int, TriggerALogicpatternDchItem]:
         """Return the ``TRIGger:A:LOGICPattern:DCH<x>`` command tree.
 
         Usage:
@@ -2431,12 +2431,12 @@ class TriggerALevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, TriggerALevelChannel]:
+    def ch(self) -> dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
 
         Description:
@@ -6880,13 +6880,13 @@ class TriggerABus(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerABusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._source = TriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
     @property
-    def b(self) -> Dict[int, TriggerABusBItem]:
+    def b(self) -> dict[int, TriggerABusBItem]:
         """Return the ``TRIGger:A:BUS:B<x>`` command tree.
 
         Usage:

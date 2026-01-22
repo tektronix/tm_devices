@@ -85,7 +85,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -1928,7 +1928,7 @@ class Dmm(BaseTSPCmd):
         self._calibration = DmmCalibration(device, f"{self._cmd_syntax}.calibration")
         self._configure = DmmConfigure(device, f"{self._cmd_syntax}.configure")
         self._filter = DmmFilter(device, f"{self._cmd_syntax}.filter")
-        self._limit: Dict[int, DmmLimitItem] = DefaultDictPassKeyToFactory(
+        self._limit: dict[int, DmmLimitItem] = DefaultDictPassKeyToFactory(
             lambda x: DmmLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
         )
         self._math = DmmMath(device, f"{self._cmd_syntax}.math")
@@ -2696,7 +2696,7 @@ class Dmm(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def limit(self) -> Dict[int, DmmLimitItem]:
+    def limit(self) -> dict[int, DmmLimitItem]:
         """Return the ``dmm.limit[Y]`` command tree.
 
         Info:

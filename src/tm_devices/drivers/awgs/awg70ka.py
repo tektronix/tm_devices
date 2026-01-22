@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Literal, Tuple
+from typing import Literal
 
 from tm_devices.commands import AWG70KAMixin
 from tm_devices.drivers.awgs.awg import (
@@ -42,7 +42,7 @@ class AWG70KA(AWG70KAMixin, AWG):
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
         """Mapping of channel names to AWG70KASourceChannel objects."""
-        channel_map: Dict[str, AWG70KASourceChannel] = {}
+        channel_map: dict[str, AWG70KASourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWG70KASourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
@@ -138,7 +138,7 @@ class AWG70KA(AWG70KAMixin, AWG):
     def _get_series_specific_constraints(
         self,
         output_signal_path: SignalGeneratorOutputPathsBase | None,
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+    ) -> tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         """Get constraints which are dependent on the model series and parameters.
 
         Args:

@@ -7,7 +7,7 @@ import time
 from abc import ABC, abstractmethod
 from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Dict, Tuple, Union
+from typing import Any, cast, Union
 
 import requests
 
@@ -75,13 +75,13 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         self,
         url: str,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a DELETE request with the given url and headers.
 
         Args:
@@ -115,13 +115,13 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         self,
         url: str,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a GET request with the given url and headers.
 
         Args:
@@ -154,16 +154,16 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
     def patch(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any] | None = None,
+        json_body: dict[str, Any] | None = None,
         data_body: str | None = None,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a PATCH request with the given url and headers.
 
         Args:
@@ -203,16 +203,16 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
     def post(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any] | None = None,
+        json_body: dict[str, Any] | None = None,
         data_body: str | None = None,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a POST request with the given url and headers.
 
         Args:
@@ -252,16 +252,16 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
     def put(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any] | None = None,
+        json_body: dict[str, Any] | None = None,
         data_body: str | None = None,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a PUT request with the given url and headers.
 
         Args:
@@ -390,16 +390,16 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         self,
         request_type: SupportedRequestTypes,
         url: str,
-        json_body: Dict[str, Any] | None = None,
+        json_body: dict[str, Any] | None = None,
         data_body: str | None = None,
         headers: Mapping[str, str] | None = None,
-        auth: Tuple[str, str] | None = None,
+        auth: tuple[str, str] | None = None,
         timeout: float | None = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-    ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, requests.RequestException | None]:
+    ) -> tuple[bool, Union[dict[str, Any], bytes], int, requests.RequestException | None]:
         """Perform a request with the given url and headers.
 
         Args:
@@ -434,7 +434,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             else:
                 url = self._api_url + url
         response = cast("requests.Response", None)
-        retval: Union[Dict[str, Any], bytes] = {}
+        retval: Union[dict[str, Any], bytes] = {}
         _logger.log(
             logging.INFO if self._verbose else logging.DEBUG,
             "(%s) %s >> %s%s%s",

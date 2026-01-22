@@ -1,7 +1,5 @@
 """DAQ6510 device driver module."""
 
-from typing import Tuple
-
 from tm_devices.commands import DAQ6510Mixin
 from tm_devices.driver_mixins.device_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
@@ -47,7 +45,7 @@ class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMixin, TSPControl, DataAcquisitio
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note

@@ -1,7 +1,6 @@
 """A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR."""
 
 from abc import ABC
-from typing import List, Tuple
 
 from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
     _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
@@ -22,7 +21,7 @@ class CommonPISystemErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
         """A string containing the expected error message when no error is present."""
         return '0,"No error"'
 
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+    def _get_errors(self) -> tuple[int, tuple[str, ...]]:
         """Get the current errors from the device.
 
         !!! note
@@ -35,7 +34,7 @@ class CommonPISystemErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
         result = int(self.query("*ESR?").strip())
 
         # return the errors if any
-        returned_errors: List[str] = []
+        returned_errors: list[str] = []
         error = ""
         while error != self._no_error_string:
             error = self.query("SYSTEM:ERROR?")

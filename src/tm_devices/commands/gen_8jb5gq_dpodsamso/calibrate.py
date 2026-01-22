@@ -21,7 +21,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -135,12 +135,12 @@ class CalibrateProbestate(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, CalibrateProbestateChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, CalibrateProbestateChannel] = DefaultDictPassKeyToFactory(
             lambda x: CalibrateProbestateChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, CalibrateProbestateChannel]:
+    def ch(self) -> dict[int, CalibrateProbestateChannel]:
         """Return the ``CALibrate:PRObestate:CH<x>`` command.
 
         Description:
@@ -298,12 +298,12 @@ class CalibrateCalprobe(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[int, CalibrateCalprobeChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, CalibrateCalprobeChannel] = DefaultDictPassKeyToFactory(
             lambda x: CalibrateCalprobeChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
     @property
-    def ch(self) -> Dict[int, CalibrateCalprobeChannel]:
+    def ch(self) -> dict[int, CalibrateCalprobeChannel]:
         """Return the ``CALibrate:CALProbe:CH<x>`` command.
 
         Description:

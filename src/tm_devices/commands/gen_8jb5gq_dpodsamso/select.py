@@ -30,7 +30,7 @@ Commands and Queries:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -380,27 +380,27 @@ class Select(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
-        self._b: Dict[int, SelectBItem] = DefaultDictPassKeyToFactory(
+        self._b: dict[int, SelectBItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectBItem(device, f"{self._cmd_syntax}:B{x}")
         )
         self._control = SelectControl(device, f"{self._cmd_syntax}:CONTROl")
         self._dall = SelectDall(device, f"{self._cmd_syntax}:DALL")
         self._digtraces = SelectDigtraces(device, f"{self._cmd_syntax}:DIGTraces")
-        self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
+        self._ch: dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[int, SelectMathItem] = DefaultDictPassKeyToFactory(
+        self._math: dict[int, SelectMathItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
-        self._ref: Dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
+        self._ref: dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
-        self._d: Dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
+        self._d: dict[int, SelectDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: SelectDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
     @property
-    def b(self) -> Dict[int, SelectBItem]:
+    def b(self) -> dict[int, SelectBItem]:
         """Return the ``SELect:B<x>`` command.
 
         Description:
@@ -503,7 +503,7 @@ class Select(SCPICmdRead):
         return self._digtraces
 
     @property
-    def ch(self) -> Dict[int, SelectChannel]:
+    def ch(self) -> dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
 
         Description:
@@ -531,7 +531,7 @@ class Select(SCPICmdRead):
         return self._ch
 
     @property
-    def math(self) -> Dict[int, SelectMathItem]:
+    def math(self) -> dict[int, SelectMathItem]:
         """Return the ``SELect:MATH<x>`` command.
 
         Description:
@@ -562,7 +562,7 @@ class Select(SCPICmdRead):
         return self._math
 
     @property
-    def ref(self) -> Dict[int, SelectRefItem]:
+    def ref(self) -> dict[int, SelectRefItem]:
         """Return the ``SELect:REF<x>`` command.
 
         Description:
@@ -593,7 +593,7 @@ class Select(SCPICmdRead):
         return self._ref
 
     @property
-    def d(self) -> Dict[int, SelectDigitalBit]:
+    def d(self) -> dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.
 
         Description:

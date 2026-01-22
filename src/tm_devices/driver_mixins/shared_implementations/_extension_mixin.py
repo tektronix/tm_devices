@@ -1,10 +1,11 @@
 # pyright: reportInvalidTypeVarUse=none
 """A mixin class providing class methods for expanding a class with decorators."""
 
+from collections.abc import Callable
 from functools import cached_property, wraps
-from typing import Callable, overload, Type, TypeVar, Union
+from typing import Concatenate, overload, TypeVar, Union
 
-from typing_extensions import Concatenate, ParamSpec
+from typing_extensions import ParamSpec, Self
 
 # bound is used to allow anything that subclasses from Device
 _EM = TypeVar("_EM", bound="_ExtendableMixin")
@@ -22,8 +23,8 @@ class _ExtendableMixin:
     ################################################################################################
     @classmethod
     def add_method(
-        cls: Type[_EM],
-        method: Callable[Concatenate[_EM, _P], _T],
+        cls,
+        method: Callable[Concatenate[Self, _P], _T],
     ) -> None:
         """Add a method to the class.
 
@@ -51,14 +52,14 @@ class _ExtendableMixin:
     @classmethod
     @overload
     def add_property(
-        cls: Type[_EM],
+        cls: type[_EM],
         method: Callable[Concatenate[_EM, _P], _T],
     ) -> None: ...  # pragma: no cover
 
     @classmethod
     @overload
     def add_property(
-        cls: Type[_EM],
+        cls: type[_EM],
         method: None = None,
         /,
         *,
@@ -67,12 +68,12 @@ class _ExtendableMixin:
 
     @classmethod
     def add_property(  # pyright: ignore[reportInconsistentOverload]
-        cls: Type[_EM],
-        method: Callable[[_EM], _T] | None = None,
+        cls,
+        method: Callable[[Self], _T] | None = None,
         /,
         *,
         is_cached: bool = False,
-    ) -> Callable[[Callable[[_EM], _T]], None] | None:
+    ) -> Callable[[Callable[[Self], _T]], None] | None:
         """Add a property to the class.
 
         This class method is best used as a decorator on functions in order to add them to a class.
@@ -94,7 +95,7 @@ class _ExtendableMixin:
         """
 
         @wraps(method)  # type: ignore[arg-type]
-        def wrap(function: Callable[[_EM], _T]) -> None:
+        def wrap(function: Callable[[Self], _T]) -> None:
             """Wrap function in property class and attach that function to class."""
             func: Union[property, cached_property[_T]]
             if is_cached:

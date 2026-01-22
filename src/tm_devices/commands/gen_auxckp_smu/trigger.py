@@ -101,7 +101,7 @@ Attributes and Functions:
     ```
 """
 
-from typing import Dict, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from ..helpers import (
     BaseTSPCmd,
@@ -3879,7 +3879,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._stimulus: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
+        self._stimulus: dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
             write_syntax=f"{self._cmd_syntax}.stimulus[{{key}}] = ",
             query_syntax=f"print({self._cmd_syntax}.stimulus[{{key}}])",
@@ -3990,7 +3990,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def stimulus(self) -> Dict[int, Union[str, float]]:
+    def stimulus(self) -> dict[int, Union[str, float]]:
         """Access the ``trigger.blender[N].stimulus[M]`` attribute.
 
         Description:
@@ -4503,34 +4503,34 @@ class Trigger(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
-        self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
+        self._blender: dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
         )
-        self._digin: Dict[int, TriggerDiginItem] = DefaultDictPassKeyToFactory(
+        self._digin: dict[int, TriggerDiginItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDiginItem(device, f"{self._cmd_syntax}.digin[{x}]")
         )
-        self._digout: Dict[int, TriggerDigoutItem] = DefaultDictPassKeyToFactory(
+        self._digout: dict[int, TriggerDigoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerDigoutItem(device, f"{self._cmd_syntax}.digout[{x}]")
         )
-        self._lanin: Dict[int, TriggerLaninItem] = DefaultDictPassKeyToFactory(
+        self._lanin: dict[int, TriggerLaninItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerLaninItem(device, f"{self._cmd_syntax}.lanin[{x}]")
         )
-        self._lanout: Dict[int, TriggerLanoutItem] = DefaultDictPassKeyToFactory(
+        self._lanout: dict[int, TriggerLanoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerLanoutItem(device, f"{self._cmd_syntax}.lanout[{x}]")
         )
         self._model = TriggerModel(device, f"{self._cmd_syntax}.model")
-        self._timer: Dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
+        self._timer: dict[int, TriggerTimerItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTimerItem(device, f"{self._cmd_syntax}.timer[{x}]")
         )
-        self._tsplinkin: Dict[int, TriggerTsplinkinItem] = DefaultDictPassKeyToFactory(
+        self._tsplinkin: dict[int, TriggerTsplinkinItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTsplinkinItem(device, f"{self._cmd_syntax}.tsplinkin[{x}]")
         )
-        self._tsplinkout: Dict[int, TriggerTsplinkoutItem] = DefaultDictPassKeyToFactory(
+        self._tsplinkout: dict[int, TriggerTsplinkoutItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerTsplinkoutItem(device, f"{self._cmd_syntax}.tsplinkout[{x}]")
         )
 
     @property
-    def blender(self) -> Dict[int, TriggerBlenderItem]:
+    def blender(self) -> dict[int, TriggerBlenderItem]:
         """Return the ``trigger.blender[N]`` command tree.
 
         Info:
@@ -4610,7 +4610,7 @@ class Trigger(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def digin(self) -> Dict[int, TriggerDiginItem]:
+    def digin(self) -> dict[int, TriggerDiginItem]:
         """Return the ``trigger.digin[N]`` command tree.
 
         Info:
@@ -4625,7 +4625,7 @@ class Trigger(BaseTSPCmd):
         return self._digin
 
     @property
-    def digout(self) -> Dict[int, TriggerDigoutItem]:
+    def digout(self) -> dict[int, TriggerDigoutItem]:
         """Return the ``trigger.digout[N]`` command tree.
 
         Info:
@@ -4641,7 +4641,7 @@ class Trigger(BaseTSPCmd):
         return self._digout
 
     @property
-    def lanin(self) -> Dict[int, TriggerLaninItem]:
+    def lanin(self) -> dict[int, TriggerLaninItem]:
         """Return the ``trigger.lanin[N]`` command tree.
 
         Info:
@@ -4656,7 +4656,7 @@ class Trigger(BaseTSPCmd):
         return self._lanin
 
     @property
-    def lanout(self) -> Dict[int, TriggerLanoutItem]:
+    def lanout(self) -> dict[int, TriggerLanoutItem]:
         """Return the ``trigger.lanout[N]`` command tree.
 
         Info:
@@ -4740,7 +4740,7 @@ class Trigger(BaseTSPCmd):
         return self._model
 
     @property
-    def timer(self) -> Dict[int, TriggerTimerItem]:
+    def timer(self) -> dict[int, TriggerTimerItem]:
         """Return the ``trigger.timer[N]`` command tree.
 
         Info:
@@ -4759,7 +4759,7 @@ class Trigger(BaseTSPCmd):
         return self._timer
 
     @property
-    def tsplinkin(self) -> Dict[int, TriggerTsplinkinItem]:
+    def tsplinkin(self) -> dict[int, TriggerTsplinkinItem]:
         """Return the ``trigger.tsplinkin[N]`` command tree.
 
         Info:
@@ -4774,7 +4774,7 @@ class Trigger(BaseTSPCmd):
         return self._tsplinkin
 
     @property
-    def tsplinkout(self) -> Dict[int, TriggerTsplinkoutItem]:
+    def tsplinkout(self) -> dict[int, TriggerTsplinkoutItem]:
         """Return the ``trigger.tsplinkout[N]`` command tree.
 
         Info:

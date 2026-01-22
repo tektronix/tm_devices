@@ -4,7 +4,7 @@ import time
 
 from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Dict, Tuple
+from typing import Any, cast
 
 from packaging.version import Version
 
@@ -91,7 +91,7 @@ class TMT4(MarginTester):
         return self._about_info["serialNumber"]
 
     @cached_property
-    def supported_technologies(self) -> Tuple[str, ...]:
+    def supported_technologies(self) -> tuple[str, ...]:
         """Return the device's supported technologies."""
         return tuple(self._about_info["supportedTechnologies"].split(","))
 
@@ -103,7 +103,7 @@ class TMT4(MarginTester):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def request_about_info(self, verbose: bool = True) -> Dict[str, Any]:
+    def request_about_info(self, verbose: bool = True) -> dict[str, Any]:
         """Make a get request to the 'about' endpoint and return the device information.
 
         Args:
@@ -115,9 +115,9 @@ class TMT4(MarginTester):
         # Make get request to about and version endpoints
         with self.temporary_verbose(verbose):
             _, res_json, _, _ = self.get("/device/about")
-            res_json = cast("Dict[str, Any]", res_json)
+            res_json = cast("dict[str, Any]", res_json)
             _, res_json2, _, _ = self.get("/device/version")
-            res_json2 = cast("Dict[str, Any]", res_json2)
+            res_json2 = cast("dict[str, Any]", res_json2)
             res_json.update(res_json2)
         return res_json
 

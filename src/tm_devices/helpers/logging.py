@@ -13,7 +13,7 @@ import traceback
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Generator, Literal, Tuple, Type, TYPE_CHECKING, TypeVar, Union
+from typing import Literal, TYPE_CHECKING, TypeVar, Union
 
 import colorlog
 import pyvisa
@@ -28,6 +28,7 @@ from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 if TYPE_CHECKING:
     import os
 
+    from collections.abc import Generator
     from types import TracebackType
 
 _logger_initialized = False
@@ -234,7 +235,7 @@ def configure_logging(
 
 
 def __exception_handler(
-    exc_type: Type[BaseException], exc_value: BaseException, exc_traceback: TracebackType
+    exc_type: type[BaseException], exc_value: BaseException, exc_traceback: TracebackType
 ) -> None:  # pragma: no cover
     """Log uncaught exceptions."""
     additional_message_for_file = (
@@ -259,11 +260,11 @@ def __exception_handler(
 
 
 def __log_to_specific_handler_type_only(
-    handler_type: Type[_T],
+    handler_type: type[_T],
     message: str,
     logging_level_str: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "EXCEPTION"],
     *,
-    exc_info: Tuple[Type[BaseException], BaseException, TracebackType] | None = None,
+    exc_info: tuple[type[BaseException], BaseException, TracebackType] | None = None,
 ) -> _T | None:  # pragma: no cover
     """Log a message to handlers of a specific type only.
 
@@ -279,7 +280,7 @@ def __log_to_specific_handler_type_only(
         A pointer to the handler that it logged the message to.
     """
     handler_used: _T | None = None
-    exception_info: Union[Tuple[Type[BaseException], BaseException, TracebackType], str] | None = (
+    exception_info: Union[tuple[type[BaseException], BaseException, TracebackType], str] | None = (
         None
     )
     if exc_info:
@@ -321,7 +322,7 @@ def __log_message_to_console_and_traceback_to_file(
     *,
     message_for_console: str | None = None,
     additional_message_for_file: str = "",
-    exc_info: Tuple[Type[BaseException], BaseException, TracebackType] | None = None,
+    exc_info: tuple[type[BaseException], BaseException, TracebackType] | None = None,
 ) -> str:  # pyright: ignore[reportUnusedFunction]  # pragma: no cover
     """Log a message to the console and the current traceback to the log file.
 

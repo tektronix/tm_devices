@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Generic, Literal, NamedTuple, Type, TypeVar, Union
+from typing import Generic, Literal, NamedTuple, TypeVar, Union
 
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
     _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
@@ -48,7 +48,7 @@ class SourceDeviceConstants:
     memory_page_size: int
     memory_max_record_length: int
     memory_min_record_length: int
-    functions: Type[SignalGeneratorFunctionBase]
+    functions: type[SignalGeneratorFunctionBase]
 
 
 class SignalGeneratorMixin(

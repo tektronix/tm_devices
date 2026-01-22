@@ -8,18 +8,12 @@ import time
 import warnings
 
 from abc import ABC
+from collections.abc import Callable, Generator, Iterable, Sequence
 from pathlib import Path
 from typing import (
     Any,
-    Callable,
     cast,
     final,
-    Generator,
-    Iterable,
-    List,
-    Sequence,
-    Tuple,
-    Type,
     TypeVar,
     Union,
 )
@@ -269,7 +263,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         tolerance: float = 0,
         percentage: bool = False,
         invert_range: bool = False,
-        invalid_values: Union[List[Union[float, str]], None] = None,
+        invalid_values: Union[list[Union[float, str]], None] = None,
     ) -> None:
         """Poll the query until the wanted value appears.
 
@@ -392,7 +386,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         verbose: bool = True,
         datatype: util.BINARY_DATATYPES = "f",
         is_big_endian: bool = False,
-        container: Union[Type[T], Callable[[Iterable[Any]], T]] = list,
+        container: Union[type[T], Callable[[Iterable[Any]], T]] = list,
         delay: float | None = None,
         header_fmt: util.BINARY_HEADERS = "ieee",
         expect_termination: bool = True,
@@ -612,7 +606,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
         allow_empty: bool = False,
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the device and verify the result.
 
         Args:
@@ -649,7 +643,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         value: str,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the device and verify the result is not the given value.
 
         Args:
@@ -757,7 +751,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         opc: bool = False,
         allow_empty: bool = False,
         verify_value: bool = False,
-    ) -> Tuple[bool, str]:
+    ) -> tuple[bool, str]:
         """Query the command's field and update it if the value does not match the input.
 
         Args:

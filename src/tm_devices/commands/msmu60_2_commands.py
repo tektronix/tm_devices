@@ -5,7 +5,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 from .gen_4bzuy0_mpsumsmu.firmware import Firmware
 from .gen_4dh8ja_mpmpsumsmu.buffervar import Buffervar
@@ -46,7 +46,7 @@ class MSMU60_2Commands(metaclass=MSMU60_2Meta):  # noqa: N801
     """
 
     @property
-    def buffer_var(self) -> Dict[str, Buffervar]:  # pyright: ignore[reportReturnType]
+    def buffer_var(self) -> dict[str, Buffervar]:  # pyright: ignore[reportReturnType]
         """Return the ``bufferVar`` command tree.
 
         Info:
@@ -178,7 +178,7 @@ class MSMU60_2Commands(metaclass=MSMU60_2Meta):  # noqa: N801
         """
 
     @property
-    def smu(self) -> Dict[int, SmuItem]:  # pyright: ignore[reportReturnType]
+    def smu(self) -> dict[int, SmuItem]:  # pyright: ignore[reportReturnType]
         """Return the ``smu[X]`` command tree.
 
         Info:

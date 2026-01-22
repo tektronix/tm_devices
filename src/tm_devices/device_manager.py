@@ -13,7 +13,7 @@ import socket
 import warnings
 
 from types import FrameType, MappingProxyType, TracebackType
-from typing import cast, Dict, Tuple, Type, TYPE_CHECKING, Union
+from typing import cast, TYPE_CHECKING, Union
 
 from typing_extensions import TypeVar
 
@@ -125,7 +125,7 @@ class DeviceManager(metaclass=Singleton):
         self,
         verbose: bool = True,
         config_options: DMConfigOptions | None = None,
-        external_device_drivers: Mapping[str, Type[Device]] | None = None,
+        external_device_drivers: Mapping[str, type[Device]] | None = None,
     ) -> None:
         """Create the instance of the DeviceManager.
 
@@ -143,7 +143,7 @@ class DeviceManager(metaclass=Singleton):
         # Set up the DeviceManager
         self.__is_open = False
         self.__verbose_visa = False
-        self.__devices: Dict[str, Device] = AliasDict()
+        self.__devices: dict[str, Device] = AliasDict()
         self._external_device_drivers = external_device_drivers
         # initialize for __set_options()
         self.__verbose: bool = NotImplemented
@@ -188,7 +188,7 @@ class DeviceManager(metaclass=Singleton):
 
     def __exit__(
         self,
-        exc_type: Type[BaseException] | None,
+        exc_type: type[BaseException] | None,
         exc_val: BaseException | None,
         exc_tb: TracebackType | None,
     ) -> None:
@@ -792,7 +792,7 @@ class DeviceManager(metaclass=Singleton):
 
     def get_available_devices(
         self, search: str = "", configured: bool = True, local: bool = True
-    ) -> Dict[str, Tuple[str, ...]]:
+    ) -> dict[str, tuple[str, ...]]:
         """Get tuples of local and configured devices, optionally narrowed by a search.
 
         Args:
@@ -808,7 +808,7 @@ class DeviceManager(metaclass=Singleton):
                 May need to configure the VISA backend.
         """
         self.__protect_access()
-        found_devices: Dict[str, Tuple[str, ...]] = {}
+        found_devices: dict[str, tuple[str, ...]] = {}
         if configured:
             found_devices["configured"] = tuple(
                 str(device_config) for device_config in self.__config.devices.values()
@@ -1373,7 +1373,7 @@ class DeviceManager(metaclass=Singleton):
             AssertionError: Indicates something went wrong when creating the device.
         """
         if self._external_device_drivers is not None:
-            device_drivers: Mapping[str, Type[Device]] = MappingProxyType(
+            device_drivers: Mapping[str, type[Device]] = MappingProxyType(
                 {**self._external_device_drivers, **_DEVICE_DRIVER_MODEL_STR_MAPPING}
             )
         else:
@@ -1482,7 +1482,7 @@ class DeviceManager(metaclass=Singleton):
         self,
         visa_resource: MessageBasedResource,
         device_config: DeviceConfigEntry,
-        device_drivers: Mapping[str, Type[Device]],
+        device_drivers: Mapping[str, type[Device]],
     ) -> Device:
         """Select the correct VISA device driver based on the ``*IDN?`` response.
 
@@ -1503,7 +1503,7 @@ class DeviceManager(metaclass=Singleton):
         model_series = ""
         try:
             model_series = get_model_series(idn_response.split(",")[1])
-            device_driver = cast("Type[PIControl]", device_drivers[model_series])
+            device_driver = cast("type[PIControl]", device_drivers[model_series])
             new_device = device_driver(
                 device_config,
                 self.__verbose,

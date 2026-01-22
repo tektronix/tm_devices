@@ -510,7 +510,7 @@ Commands and Queries:
     ```
 """  # noqa: E501
 
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
 from ..helpers import (
     DefaultDictPassKeyToFactory,
@@ -4873,7 +4873,7 @@ class PowerPowerItemSoa(SCPICmdRead):
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._isource = PowerPowerItemSoaIsource(device, f"{self._cmd_syntax}:ISOURce")
-        self._point: Dict[int, PowerPowerItemSoaPointItem] = DefaultDictPassKeyToFactory(
+        self._point: dict[int, PowerPowerItemSoaPointItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemSoaPointItem(device, f"{self._cmd_syntax}:POINT{x}")
         )
         self._recallmask = PowerPowerItemSoaRecallmask(device, f"{self._cmd_syntax}:RECAllmask")
@@ -4912,7 +4912,7 @@ class PowerPowerItemSoa(SCPICmdRead):
         return self._isource
 
     @property
-    def point(self) -> Dict[int, PowerPowerItemSoaPointItem]:
+    def point(self) -> dict[int, PowerPowerItemSoaPointItem]:
         """Return the ``POWer:POWer<x>:SOA:POINT<x>`` command.
 
         Description:
@@ -9360,7 +9360,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ampval: Dict[int, PowerPowerItemPsrrAmpvalItem] = DefaultDictPassKeyToFactory(
+        self._ampval: dict[int, PowerPowerItemPsrrAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemPsrrAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
         )
         self._ampmode = PowerPowerItemPsrrAmpmode(device, f"{self._cmd_syntax}:AMPMode")
@@ -9374,7 +9374,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
         self._constamplitude = PowerPowerItemPsrrConstamplitude(
             device, f"{self._cmd_syntax}:CONSTAMPlitude"
         )
-        self._freqval: Dict[int, PowerPowerItemPsrrFreqvalItem] = DefaultDictPassKeyToFactory(
+        self._freqval: dict[int, PowerPowerItemPsrrFreqvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemPsrrFreqvalItem(device, f"{self._cmd_syntax}:FREQ{x}Val")
         )
         self._genipaddress = PowerPowerItemPsrrGenipaddress(
@@ -9398,7 +9398,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
         )
 
     @property
-    def ampval(self) -> Dict[int, PowerPowerItemPsrrAmpvalItem]:
+    def ampval(self) -> dict[int, PowerPowerItemPsrrAmpvalItem]:
         """Return the ``POWer:POWer<x>:PSRR:AMP<x>Val`` command.
 
         Description:
@@ -9574,7 +9574,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
         return self._constamplitude
 
     @property
-    def freqval(self) -> Dict[int, PowerPowerItemPsrrFreqvalItem]:
+    def freqval(self) -> dict[int, PowerPowerItemPsrrFreqvalItem]:
         """Return the ``POWer:POWer<x>:PSRR:FREQ<x>Val`` command.
 
         Description:
@@ -13852,7 +13852,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ampval: Dict[int, PowerPowerItemImpedanceAmpvalItem] = DefaultDictPassKeyToFactory(
+        self._ampval: dict[int, PowerPowerItemImpedanceAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemImpedanceAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
         )
         self._ampmode = PowerPowerItemImpedanceAmpmode(device, f"{self._cmd_syntax}:AMPMode")
@@ -13866,7 +13866,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         self._constamplitude = PowerPowerItemImpedanceConstamplitude(
             device, f"{self._cmd_syntax}:CONSTAMPlitude"
         )
-        self._freqval: Dict[int, PowerPowerItemImpedanceFreqvalItem] = DefaultDictPassKeyToFactory(
+        self._freqval: dict[int, PowerPowerItemImpedanceFreqvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemImpedanceFreqvalItem(device, f"{self._cmd_syntax}:FREQ{x}Val")
         )
         self._genipaddress = PowerPowerItemImpedanceGenipaddress(
@@ -13892,7 +13892,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         )
 
     @property
-    def ampval(self) -> Dict[int, PowerPowerItemImpedanceAmpvalItem]:
+    def ampval(self) -> dict[int, PowerPowerItemImpedanceAmpvalItem]:
         """Return the ``POWer:POWer<x>:IMPEDANCE:AMP<x>Val`` command.
 
         Description:
@@ -14067,7 +14067,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         return self._constamplitude
 
     @property
-    def freqval(self) -> Dict[int, PowerPowerItemImpedanceFreqvalItem]:
+    def freqval(self) -> dict[int, PowerPowerItemImpedanceFreqvalItem]:
         """Return the ``POWer:POWer<x>:IMPEDANCE:FREQ<x>Val`` command.
 
         Description:
@@ -17894,7 +17894,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ampval: Dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
+        self._ampval: dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
         )
         self._ampmode = PowerPowerItemClresponseAmpmode(device, f"{self._cmd_syntax}:AMPMode")
@@ -17908,7 +17908,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         self._constamplitude = PowerPowerItemClresponseConstamplitude(
             device, f"{self._cmd_syntax}:CONSTAMPlitude"
         )
-        self._freqval: Dict[int, PowerPowerItemClresponseFreqvalItem] = DefaultDictPassKeyToFactory(
+        self._freqval: dict[int, PowerPowerItemClresponseFreqvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseFreqvalItem(device, f"{self._cmd_syntax}:FREQ{x}Val")
         )
         self._genipaddress = PowerPowerItemClresponseGenipaddress(
@@ -17935,7 +17935,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         )
 
     @property
-    def ampval(self) -> Dict[int, PowerPowerItemClresponseAmpvalItem]:
+    def ampval(self) -> dict[int, PowerPowerItemClresponseAmpvalItem]:
         """Return the ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
 
         Description:
@@ -18118,7 +18118,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         return self._constamplitude
 
     @property
-    def freqval(self) -> Dict[int, PowerPowerItemClresponseFreqvalItem]:
+    def freqval(self) -> dict[int, PowerPowerItemClresponseFreqvalItem]:
         """Return the ``POWer:POWer<x>:CLRESPONSE:FREQ<x>Val`` command.
 
         Description:
@@ -19634,7 +19634,7 @@ class Power(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._addnew = PowerAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PowerDelete(device, f"{self._cmd_syntax}:DELete")
-        self._power: Dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
+        self._power: dict[int, PowerPowerItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItem(device, f"{self._cmd_syntax}:POWer{x}")
         )
 
@@ -19675,7 +19675,7 @@ class Power(SCPICmdRead):
         return self._delete
 
     @property
-    def power(self) -> Dict[int, PowerPowerItem]:
+    def power(self) -> dict[int, PowerPowerItem]:
         """Return the ``POWer:POWer<x>`` command tree.
 
         Usage:
