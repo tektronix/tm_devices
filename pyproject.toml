@@ -106,31 +106,6 @@ classifiers = [
 ]
 version = "3.5.0"
 
-[tool.poetry.dependencies]
-colorlog = "^6.9.0"
-dc-schema = "^0.0.8"
-gpib-ctypes = "^0.3.0"
-jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
-libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
-packaging = ">=24.0"
-psutil = ">=6.0.0"
-pyserial = "^3.5"
-python = ">=3.9.2,<3.14"  # This is the main Python version requirement
-python-dateutil = "^2.8.2"
-pyusb = "^1.2.1"
-pyvicp = "^1.1.0"
-pyvisa = "^1.12.0"
-pyvisa-py = "^0.7.2"
-pyvisa-sim = "^0.6.0"
-pyyaml = "^6.0"
-requests = "^2.31.0"
-tomli = "^2.0.1"
-tomli-w = "^1.0.0"
-typing-extensions = "^4.10.0"
-tzlocal = "^5.2"
-urllib3 = "^2.0"
-zeroconf = "^0.148.0"
-
 [tool.poetry.group.dev.dependencies]
 nodeenv = "^1.9.1"
 pip = "^25.0"
