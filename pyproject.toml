@@ -123,7 +123,7 @@ twine = "^6.0.1"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
-wheel = "^0.45.0"
+wheel = "^0.46.2"
 
 [tool.poetry.group.docs.dependencies]
 black = "^25.1.0"
