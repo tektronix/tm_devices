@@ -19,8 +19,8 @@ dependencies = [
   "python-dateutil~=2.8",
   "pyusb~=1.2",
   "pyvicp~=1.1",
-  "pyvisa-py~=0.7.2",
-  "pyvisa-sim~=0.6.0",
+  "pyvisa-py~=0.8.1",
+  "pyvisa-sim~=0.7.1",
   "pyvisa~=1.12",
   "pyyaml~=6.0",
   "requests~=2.31",
@@ -114,7 +114,7 @@ poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "4.0.2"
+pylint = "4.0.4"
 pyright = {extras = ["nodejs"], version = "1.1.408"}
 pyroma = "^5.0"
 tox = "^4.0"
@@ -126,7 +126,7 @@ types-requests = "^2.31"
 wheel = "^0.46.2"
 
 [tool.poetry.group.docs.dependencies]
-black = "^25.1.0"
+black = "^26.1.0"
 codespell = "^2.2.6"
 griffe = "^1.1.0"
 mkdocs = "^1.6.0"
@@ -138,8 +138,8 @@ mkdocs-macros-plugin = "^1.0.5"
 mkdocs-mermaid2-plugin = "^1.1.1"
 mkdocs-section-index = "^0.3.9"
 mkdocs-spellcheck = "^1.1.0"
-mkdocstrings = "^0.30.0"
-mkdocstrings-python = "^1.10.2"
+mkdocstrings = "^1.0.2"
+mkdocstrings-python = "^2.0.1"
 nodeenv = "^1.9.1"
 packaging = ">=24.0"
 pygments = "^2.17.2"
@@ -153,7 +153,7 @@ coverage = "^7.10.6"
 flask = "^3.0.3"
 http-server-mock = "^1.7"
 linkchecker = "^10.0.0"
-pytest = "^8.2.0"
+pytest = "^9.0.2"
 pytest-cov = "^7.0.0"
 pytest-depends = "^1.0.1"
 pytest-env = "^1.1.3"
@@ -161,7 +161,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.14.11"
+ruff = "0.14.14"
 
 [tool.pylint.basic]
 good-names = ["_"]
