@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Added
 
 - Enable programmatic connection to devices that use a different LAN device endpoint via the `DeviceManager`.
+- Added support for Python 3.14.
 
 ### Changed
 

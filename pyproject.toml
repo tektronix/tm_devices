@@ -12,7 +12,7 @@ dependencies = [
   "dc-schema~=0.0.8",
   "gpib-ctypes~=0.3",
   "jsonschema[format-nongpl]~=4.23",
-  "libusb-package~=1.0,!=1.0.26.2",  # 1.0.26.2 doesn't work with Python 3.12
+  "libusb-package~=1.0,!=1.0.26.2,!=1.0.26.3",  # 1.0.26.2 doesn't work with Python 3.12; 1.0.26.3 doesn't work with Python 3.14
   "packaging>=24.0",
   "psutil>=6.0.0",
   "pyserial~=3.5",
@@ -48,7 +48,7 @@ maintainers = [
 ]
 name = "tm_devices"
 readme = "README.md"
-requires-python = ">=3.10,<3.14"  # PYTHON VERSION MARKER
+requires-python = ">=3.10,<3.15"  # PYTHON VERSION MARKER
 
 [project.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -422,10 +422,10 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py310,py311,py312,py313,tests,docs,doctests  # PYTHON VERSION MARKER
+envlist = py310,py311,py312,py313,py314,tests,docs,doctests  # PYTHON VERSION MARKER
 skip_missing_interpreters = True
 labels =
-  basic = py310,py311,py312,py313,tests  # PYTHON VERSION MARKER
+  basic = py310,py311,py312,py313,py314,tests  # PYTHON VERSION MARKER
   documentation = docs,doctests
 
 [gh-actions]
@@ -434,6 +434,7 @@ python =  # PYTHON VERSION MARKER
     3.11: py311
     3.12: py312
     3.13: py313
+    3.14: py314
 
 [testenv]
 package = wheel
