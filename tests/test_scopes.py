@@ -162,9 +162,11 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         with mock.patch.object(
             scope,
             "query",
-            side_effect=lambda cmd, *a, **kw: "1;0;1;0;1"  # pyright: ignore[reportUnknownLambdaType]
-            if cmd == ":CURVE?"
-            else _original_query(cmd, *a, **kw),  # pyright: ignore[reportUnknownArgumentType]
+            side_effect=lambda cmd, *a, **kw: (
+                "1;0;1;0;1"  # pyright: ignore[reportUnknownLambdaType]
+                if cmd == ":CURVE?"
+                else _original_query(cmd, *a, **kw)
+            ),  # pyright: ignore[reportUnknownArgumentType]
         ):
             curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
         with filepath.open(encoding="utf8") as curve_csv:

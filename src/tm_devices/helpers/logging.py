@@ -339,7 +339,7 @@ def __log_message_to_console_and_traceback_to_file(
     """
     file_handler = __log_to_specific_handler_type_only(
         logging.FileHandler,
-        message.split("\n")[0] + additional_message_for_file + "\n\n",
+        message.split("\n", maxsplit=1)[0] + additional_message_for_file + "\n\n",
         "EXCEPTION",
         exc_info=exc_info,
     )
