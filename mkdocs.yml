@@ -103,7 +103,8 @@ plugins:
           options:
             # General options
             extensions: [docs/griffe_custom_decorator_labels.py]
-            show_inheritance_diagram: true  # INSIDERS FEATURE
+            inheritance_diagram_direction: LR
+            show_inheritance_diagram: true
             show_source: false  # a link is included at the top of each page
             # Headings options
             heading_level: 1
@@ -124,16 +125,16 @@ plugins:
               trim_doctest_flags: true
             docstring_section_style: list
             merge_init_into_class: true
-            relative_crossrefs: true  # INSIDERS FEATURE
-            scoped_crossrefs: true  # INSIDERS FEATURE
+            relative_crossrefs: true
+            scoped_crossrefs: true
             # Signature options
             line_length: 100
-            modernize_annotations: false  # INSIDERS FEATURE (if the source code annotations format changes, update this to true)
+            modernize_annotations: true
             show_signature_annotations: true
             signature_crossrefs: true
             separate_signature: true
             unwrap_annotated: true
-          import:
+          inventories:
             - url: https://docs.python.org/3/objects.inv
               domains: [std, py]
             - url: https://typing-extensions.readthedocs.io/en/stable/objects.inv

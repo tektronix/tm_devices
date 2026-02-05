@@ -118,9 +118,9 @@ class DMConfigParser:
         """Filepath of the config file.
 
         Prioritizes the path contained in the environment variable defined by
-        [`DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE`][tm_devices.components.DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE]
+        [`DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE`][tm_devices.components.dm_config_parser.DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE]
         with a fallback to the default path defined by
-        [`DMConfigParser.DEFAULT_CONFIG_FILE_PATH`][tm_devices.components.DMConfigParser.DEFAULT_CONFIG_FILE_PATH].
+        [`DMConfigParser.DEFAULT_CONFIG_FILE_PATH`][tm_devices.components.dm_config_parser.DMConfigParser.DEFAULT_CONFIG_FILE_PATH].
         """
         return os.getenv(
             self.CONFIG_FILE_PATH_ENV_VARIABLE,
@@ -304,7 +304,7 @@ class DMConfigParser:
 
         This method will overwrite any existing config file with the current devices and options. If
         no custom path is provided, it will write to the file defined by
-        [`DMConfigParser.defined_config_file_path`][tm_devices.components.DMConfigParser.defined_config_file_path].
+        [`DMConfigParser.defined_config_file_path`][tm_devices.components.dm_config_parser.DMConfigParser.defined_config_file_path].
 
         Args:
             config_file_path: The path to the config file. If ends in ".toml" will create toml file.

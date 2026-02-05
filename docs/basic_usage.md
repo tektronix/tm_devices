@@ -192,7 +192,7 @@ Create and read from a dynamic buffer.
 Sometimes using the [`DeviceManager`][tm_devices.DeviceManager] class as a context manager is not feasible.
 In those instances there is an alternative way to enforce the device manager to
 close when the Python script execution is finished without needing to explicitly
-call the [`.close()`][tm_devices.DeviceManager.close] method.
+call the [`.close()`][tm_devices.device_manager.DeviceManager.close] method.
 
 ```python
 # fmt: off
