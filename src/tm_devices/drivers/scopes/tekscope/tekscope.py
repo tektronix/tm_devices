@@ -961,7 +961,7 @@ class TekScope(
             )
         amplitude_multiplier = 1
 
-        if function in {SignalGeneratorFunctionsIAFG.SIN}:
+        if function in {SignalGeneratorFunctionsIAFG.SIN}:  # noqa: FURB171
             frequency_multiplier = 1
         elif function in {
             SignalGeneratorFunctionsIAFG.SQUARE,
@@ -969,7 +969,7 @@ class TekScope(
             SignalGeneratorFunctionsIAFG.ARBITRARY,
         }:
             frequency_multiplier = 0.5
-        elif function in {SignalGeneratorFunctionsIAFG.SINC}:
+        elif function in {SignalGeneratorFunctionsIAFG.SINC}:  # noqa: FURB171
             frequency_multiplier = 0.04
             amplitude_multiplier = 0.6
         elif function in {
