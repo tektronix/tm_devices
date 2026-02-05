@@ -122,7 +122,7 @@ class AFG31K(AFG):
         square_mult, other_mult, arb_mult = self._get_driver_specific_multipliers(model_number)
         low_freq_range = 1.0e-6
         # the maximum frequency of the SIN wave depends on the model mumber
-        if function.name in {SignalGeneratorFunctionsAFG.SIN.name}:
+        if function.name in {SignalGeneratorFunctionsAFG.SIN.name}:  # noqa: FURB171
             high_freq_range = model_multiplier * freq_base
         # each waveform has a maximum frequency which is a multiple of SIN wave constraints
         elif function.name == SignalGeneratorFunctionsAFG.ARBITRARY.name:

@@ -240,7 +240,7 @@ class DMConfigParser:
             config_file_path: The path to the config file to load.
         """
         # Grabs path from environment variable with fallback to the default path
-        file_path = config_file_path if config_file_path else self.defined_config_file_path
+        file_path = config_file_path or self.defined_config_file_path
         # Automatically handles toml and yaml
         options, devices_list = self.__parse_config_file(file_path)
         self.__add_from_device_list(devices_list)
