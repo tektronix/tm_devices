@@ -146,7 +146,7 @@ pydantic = "^2.12.5"
 pygments = "^2.17.2"
 pymdown-extensions = "^10.8.1"
 requests = "^2.31.0"
-symspellpy = "^6.7.7"
+# symspellpy = "^6.7.7"  # TODO: add this back once https://github.com/mammothb/editdistpy/issues/21 is resolved, then rerun `tox run -e export-reqs` to update docs/requirements.txt
 tomli = "^2.0.1"
 
 [tool.poetry.group.tests.dependencies]
