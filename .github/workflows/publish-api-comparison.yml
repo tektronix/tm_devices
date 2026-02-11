@@ -6,7 +6,7 @@ on:
     types: [completed]
 jobs:
   publish-api-comparison:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-publish-api-comparison.yml@v1.8.5
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-publish-api-comparison.yml@v1.9.0
     permissions:
       checks: write
       pull-requests: write
