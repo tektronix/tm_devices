@@ -10,8 +10,6 @@ on:
 jobs:
   sbom-scan:
     uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-sbom-scan.yml@v1.9.0
-    with:
-      pre-install-python-packages: setuptools==81.0.0 wheel
     permissions:
       security-events: write
       contents: write

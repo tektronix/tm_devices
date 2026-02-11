@@ -442,8 +442,6 @@ package = wheel
 install_command = python -I -m pip install --upgrade --upgrade-strategy=eager {opts} {packages}
 deps =
     poetry
-    # This ensures all packages will build properly if they require pkg_resources
-    setuptools==81.0.0
 passenv =
     PYRIGHT_PYTHON_GLOBAL_NODE  # If set outside of tox, this will cause python-pyright to use nodeenv to install node rather than use the system node
 setenv =
