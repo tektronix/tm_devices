@@ -3,7 +3,7 @@
 This will cause them to be classified correctly when the documentation is built.
 """
 
-from griffe import Extension, stdlib_decorators
+from griffe import Extension, stdlib_decorators  # pyright: ignore[reportMissingTypeStubs]
 
 
 class CustomDecoratorLabels(Extension):

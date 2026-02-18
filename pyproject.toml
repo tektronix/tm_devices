@@ -128,7 +128,7 @@ wheel = "^0.46.2"
 [tool.poetry.group.docs.dependencies]
 black = "^26.1.0"
 codespell = "^2.2.6"
-griffe = "^1.15.0"
+griffe = "^2.0.0"
 mkdocs = "^1.6.1"
 mkdocs-ezglossary-plugin = "^2.1.0"
 mkdocs-gen-files = "^0.6.0"
@@ -162,7 +162,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.0"
+ruff = "0.15.1"
 
 [tool.pylint.basic]
 good-names = ["_"]
