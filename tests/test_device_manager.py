@@ -49,6 +49,9 @@ class TestDeviceManager:  # pylint: disable=no-self-use
         """
         # use a serial device for coverage with updating visa_object serial settings.
         device_manager.remove_all_devices()
+        device_manager.disable_command_verification = False
+        device_manager.setup_cleanup_enabled = False
+        device_manager.teardown_cleanup_enabled = False
         device_manager.add_smu(
             "1",
             alias="testing",
@@ -93,6 +96,7 @@ device_type = "SCOPE"
 
 [options]
 default_visa_timeout = {UNIT_TEST_TIMEOUT}
+disable_command_verification = false
 setup_cleanup = false
 standalone = false
 teardown_cleanup = false
@@ -122,6 +126,7 @@ devices:
     device_type: SCOPE
 options:
   default_visa_timeout: {UNIT_TEST_TIMEOUT}
+  disable_command_verification: false
   setup_cleanup: false
   standalone: false
   teardown_cleanup: false
