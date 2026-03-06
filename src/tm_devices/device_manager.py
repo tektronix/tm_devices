@@ -1504,6 +1504,9 @@ class DeviceManager(metaclass=Singleton):
         if self.__setup_cleanup_enabled:
             new_device.cleanup(verbose=bool(self.__config.options.verbose_mode))
 
+        # Set the device command verification based on the DeviceManager option for it.
+        new_device.enable_verification = not bool(self.__disable_command_verification)
+
         return new_device
 
     def __protect_access(self) -> None:

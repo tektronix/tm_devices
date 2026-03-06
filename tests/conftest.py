@@ -148,10 +148,12 @@ def _reset_dm(  # pyright: ignore[reportUnusedFunction]
     """
     saved_setup_enable = device_manager.setup_cleanup_enabled
     saved_teardown_enable = device_manager.teardown_cleanup_enabled
+    saved_disable_command_verification = device_manager.disable_command_verification
     device_manager.remove_all_devices()
     yield
     device_manager.setup_cleanup_enabled = saved_setup_enable
     device_manager.teardown_cleanup_enabled = saved_teardown_enable
+    device_manager.disable_command_verification = saved_disable_command_verification
     device_manager.load_config_file(unit_test_config_file)
 
 

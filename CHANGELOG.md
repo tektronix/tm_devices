@@ -23,6 +23,10 @@ Things to be included in the next release go here.
 - Enable programmatic connection to devices that use a different LAN device endpoint via the `DeviceManager`.
 - Added support for Python 3.14.
 
+### Fixed
+
+- Fixed the bug causing devices to not properly inherit the `DeviceManager`'s command verification setting for all connection methods (config file, environment variable, python code).
+
 ### Changed
 
 - _**<span style="color:orange">minor breaking change</span>**_: Changed the `lan_device_name` parameter name to `lan_device_endpoint` to be more accurate.
