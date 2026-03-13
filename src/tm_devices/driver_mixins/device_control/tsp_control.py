@@ -180,8 +180,11 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Load the script, writing each line separately to avoid exceeding the
+        # 1000-character write limit of TSP devices.
+        script_lines = [f"loadscript {script_name}", *script_body.splitlines(), "endscript"]
+        for line in script_lines:
+            self.write(line)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
