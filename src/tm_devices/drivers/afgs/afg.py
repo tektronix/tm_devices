@@ -323,7 +323,7 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         # Frequency
         self.set_frequency(frequency)
         # Offset
-        self.set_offset(offset, absolute_tolerance=0.01)
+        self.set_offset(offset)
         if function == SignalGeneratorFunctionsAFG.PULSE:
             # Duty cycle is only valid for pulse
             self.set_pulse_duty_cycle(duty_cycle)
@@ -334,7 +334,7 @@ class AFGSourceChannel(BaseAFGSourceChannel):
             self.set_ramp_symmetry(symmetry)
         self.set_function(function)
         # Amplitude, needs to be after termination so that the amplitude is properly adjusted
-        self.set_amplitude(amplitude, absolute_tolerance=0.01)
+        self.set_amplitude(amplitude)
         if burst_count > 0:
             self.setup_burst_waveform(burst_count)
 

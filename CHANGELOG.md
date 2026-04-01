@@ -26,6 +26,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Fixed the bug causing devices to not properly inherit the `DeviceManager`'s command verification setting for all connection methods (config file, environment variable, python code).
+- Fixed the bug in `AFGSourceChannel.set_function_properties` where amplitude and offset updates within 10 mV were ignored on consecutive calls.
 
 ### Changed
 
