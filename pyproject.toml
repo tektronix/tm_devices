@@ -162,7 +162,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.8"
+ruff = "0.15.9"
 
 [tool.pylint.basic]
 good-names = ["_"]
