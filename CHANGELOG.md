@@ -18,6 +18,35 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.6.0 (2026-04-10)
+
+### Merged Pull Requests
+
+- python-deps(deps): bump the python-dependencies group with 8 updates ([#559](https://github.com/tektronix/tm_devices/pull/559))
+- fix: Removed 10 mV tolerance for offset and amplitude in AFGSourceChannel.set_function_properties ([#567](https://github.com/tektronix/tm_devices/pull/567))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 17 updates ([#564](https://github.com/tektronix/tm_devices/pull/564))
+- python-deps(deps): bump the python-dependencies group with 5 updates ([#561](https://github.com/tektronix/tm_devices/pull/561))
+- chore(deps): bump black from 26.3.0 to 26.3.1 in /docs ([#560](https://github.com/tektronix/tm_devices/pull/560))
+- gh-actions(deps): bump the gh-actions-dependencies group with 12 updates ([#533](https://github.com/tektronix/tm_devices/pull/533))
+- fix: Properly set each device's `enable_verification` property when connecting to it ([#557](https://github.com/tektronix/tm_devices/pull/557))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 11 updates ([#555](https://github.com/tektronix/tm_devices/pull/555))
+- python-deps(deps): bump the python-dependencies group with 11 updates ([#551](https://github.com/tektronix/tm_devices/pull/551))
+- docs: enable SymSpell for documentation spell checking ([#550](https://github.com/tektronix/tm_devices/pull/550))
+- chore: add type field to issue templates for better categorization ([#549](https://github.com/tektronix/tm_devices/pull/549))
+- chore(deps): update documentation dependencies to latest versions and add pydantic to enable builds to pass ([#545](https://github.com/tektronix/tm_devices/pull/545))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 3 updates ([#544](https://github.com/tektronix/tm_devices/pull/544))
+- Add Python 3.14 support ([#508](https://github.com/tektronix/tm_devices/pull/508))
+- python-deps(deps): bump the python-dependencies group across 1 directory ([#541](https://github.com/tektronix/tm_devices/pull/541))
+- feat: Enable programmatic connection to devices that use a different `lan_device_endpoint` via the `DeviceManager` ([#538](https://github.com/tektronix/tm_devices/pull/538))
+- Update type hinting and project configuration files ([#537](https://github.com/tektronix/tm_devices/pull/537))
+- Drop support for Python 3.9 ([#536](https://github.com/tektronix/tm_devices/pull/536))
+- python-deps(deps): bump the python-dependencies group with 6 updates ([#534](https://github.com/tektronix/tm_devices/pull/534))
+- python-deps(deps): bump the python-dependencies group across 1 directory with 2 updates ([#530](https://github.com/tektronix/tm_devices/pull/530))
+- chore(python-deps): update poetry and related dependencies to latest versions ([#528](https://github.com/tektronix/tm_devices/pull/528))
+- python-deps(deps): bump the python-dependencies group with 4 updates ([#526](https://github.com/tektronix/tm_devices/pull/526))
+
 ### Added
 
 - Enable programmatic connection to devices that use a different LAN device endpoint via the `DeviceManager`.
