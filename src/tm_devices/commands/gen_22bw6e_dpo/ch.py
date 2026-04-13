@@ -69,7 +69,7 @@ Commands and Queries:
     - CH<x>:PRObe:INPUTMode?
     - CH<x>:PRObe:RESistance?
     - CH<x>:PRObe:SELFCal EXECUTE
-    - CH<x>:PRObe:SELFCal:State? EXECUTE
+    - CH<x>:PRObe:SELFCal:State?
     - CH<x>:PRObe:SET <QString>
     - CH<x>:PRObe:SET?
     - CH<x>:PRObe:STATus?
@@ -91,13 +91,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import (
-    SCPICmdRead,
-    SCPICmdReadWithArguments,
-    SCPICmdWrite,
-    SCPICmdWriteNoArguments,
-    ValidatedChannel,
-)
+from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedChannel
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -377,22 +371,20 @@ class ChannelProbeSet(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class ChannelProbeSelfcalState(SCPICmdReadWithArguments):
+class ChannelProbeSelfcalState(SCPICmdRead):
     """The ``CH<x>:PRObe:SELFCal:State`` command.
 
     Description:
         - This query-only command returns the self-calibration state. The channel is specified by x.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the
-          ``CH<x>:PRObe:SELFCal:State? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the
-          ``CH<x>:PRObe:SELFCal:State? argument`` query and raise an AssertionError if the returned
-          value does not match ``value``.
+        - Using the ``.query()`` method will send the ``CH<x>:PRObe:SELFCal:State?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>:PRObe:SELFCal:State?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
 
     SCPI Syntax:
         ```
-        - CH<x>:PRObe:SELFCal:State? EXECUTE
+        - CH<x>:PRObe:SELFCal:State?
         ```
     """
 
@@ -428,15 +420,13 @@ class ChannelProbeSelfcal(SCPICmdWrite, SCPICmdRead):
               by x.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the
-              ``CH<x>:PRObe:SELFCal:State? argument`` query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``CH<x>:PRObe:SELFCal:State? argument`` query and raise an AssertionError if the
-              returned value does not match ``value``.
+            - Using the ``.query()`` method will send the ``CH<x>:PRObe:SELFCal:State?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>:PRObe:SELFCal:State?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
 
         SCPI Syntax:
             ```
-            - CH<x>:PRObe:SELFCal:State? EXECUTE
+            - CH<x>:PRObe:SELFCal:State?
             ```
         """
         return self._state
