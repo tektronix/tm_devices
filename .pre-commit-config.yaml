@@ -135,7 +135,7 @@ repos:
         pass_filenames: false
         files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
         always_run: true
-        args: [--json, --ignore-code=CVE-2019-8341]
+        args: [--json]
       - id: poetry-check
         name: poetry-check
         entry: poetry check
