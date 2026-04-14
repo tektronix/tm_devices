@@ -18,15 +18,19 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the changelog to pass `pre-commit` checks.
+
 ---
 
 ## v3.6.1 (2026-04-14)
 
 ### Merged Pull Requests
 
-- docs: Add fix for scope.commands.ch[<channel>].probe.selfcal.state.query() EXECUTE status ([#573](https://github.com/tektronix/tm_devices/pull/573))
+- docs: Add fix for scope.commands.ch\[<channel>\].probe.selfcal.state.query() EXECUTE status ([#573](https://github.com/tektronix/tm_devices/pull/573))
 - docs: Add probe selfcal.state.query() fix to CHANGELOG ([#572](https://github.com/tektronix/tm_devices/pull/572))
-- fix: Updated EXECUTE in scope.commands.ch[<channel>].probe.selfcal.state.query() ([#8](https://github.com/tektronix/tm_devices/pull/8))
+- fix: Updated EXECUTE in scope.commands.ch\[<channel>\].probe.selfcal.state.query() ([#8](https://github.com/tektronix/tm_devices/pull/8))
 - gh-actions(deps): bump the gh-actions-dependencies group with 12 updates ([#569](https://github.com/tektronix/tm_devices/pull/569))
 - python-deps(deps): bump the python-dependencies group with 6 updates ([#570](https://github.com/tektronix/tm_devices/pull/570))
 
