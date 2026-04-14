@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed `scope.commands.ch[<channel>].probe.selfcal.state.query()` to properly return the EXECUTE status when called on a probe that supports self-calibration, removing unwanted arguments that were previously interfering with the query command.
+
 ---
 
 ## v3.6.0 (2026-04-10)
