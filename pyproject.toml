@@ -115,7 +115,7 @@ poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
 pylint = "4.0.5"
-pyright = {extras = ["nodejs"], version = "1.1.408"}
+pyright = {extras = ["nodejs"], version = "1.1.409"}
 pyroma = "^5.0"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -123,7 +123,7 @@ twine = "^6.0.1"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
-wheel = "^0.46.2"
+wheel = "^0.47.0"
 
 [tool.poetry.group.docs.dependencies]
 black = "^26.1.0"
@@ -162,7 +162,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.11"
+ruff = "0.15.12"
 
 [tool.pylint.basic]
 good-names = ["_"]
