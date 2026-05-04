@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: ed81924a8b1cecdaa570b072528fa80c9c4d6ccd  # frozen: 0.37.1
+    rev: 943377262562a12b57292fc98fabd7dbf81451fe  # frozen: 0.37.2
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -54,7 +54,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 2ca29f9297911f8f5a4e8f97100b7832f045e8d3  # frozen: v4.13.10
+    rev: 460d83c603b0ddf80dc2a11d5e7ec2f464142737  # frozen: v4.15.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
