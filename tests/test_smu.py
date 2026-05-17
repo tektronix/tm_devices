@@ -350,9 +350,7 @@ def test_load_script_split_long_lines(
     long_body_lines = [f'print("line number {i:04d}")' for i in range(45)]
     script_body = "\n".join(long_body_lines)
     script_command = f"loadscript longscript\n{script_body}\nendscript"
-    assert len(script_command) > 1000, (
-        f"Need >1000 chars for test but got {len(script_command)}"
-    )
+    assert len(script_command) > 1000, f"Need >1000 chars for test but got {len(script_command)}"
 
     # Capture every individual write() call
     written_calls: list[str] = []
