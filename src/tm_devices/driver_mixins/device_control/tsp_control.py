@@ -177,11 +177,22 @@ class TSPControl(PIControl, ABC):
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
+        tsp_max_write_length = 1000  # TSP devices require a write_termination within 1000 chars
+
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Load the script - split into multiple writes for long scripts to avoid
+        # exceeding tsp_max_write_length on real hardware. Shorter scripts use
+        # a single write for backwards compatibility with existing tests and behavior.
+        script_command = f"loadscript {script_name}\n{script_body}\nendscript"
+        if len(script_command) >= tsp_max_write_length:
+            self.write(f"loadscript {script_name}")
+            for line in script_body.splitlines():
+                self.write(line)
+            self.write("endscript")
+        else:
+            self.write(script_command)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:

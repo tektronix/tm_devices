@@ -327,3 +327,66 @@ def test_smu6430(device_manager: DeviceManager) -> None:
     assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
     assert smu.all_channel_names_list == ("SOURCE1",)
+
+
+def test_load_script_split_long_lines(
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],  # noqa: ARG001
+) -> None:
+    """Verify load_script() splits long scripts into individual line writes.
+
+    This avoids exceeding the TSP device max write length of 1000 characters.
+
+    Regression test for https://github.com/tektronix/tm_devices/issues/500
+
+    Args:
+        device_manager: The DeviceManager object.
+        capsys: The captured stdout and stderr.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-long-script")
+
+    # Build a script > 1000 chars when combined with loadscript/endscript wrapper.
+    # Each line is short, but the total exceeds the 1000-char limit.
+    long_body_lines = [f'print("line number {i:04d}")' for i in range(45)]
+    script_body = "\n".join(long_body_lines)
+    script_command = f"loadscript longscript\n{script_body}\nendscript"
+    assert len(script_command) > 1000, (
+        f"Need >1000 chars for test but got {len(script_command)}"
+    )
+
+    # Capture every individual write() call
+    written_calls: list[str] = []
+    original_write = smu.write  # type: ignore[misc]
+
+    def _record_write(command: str, *, verbose: bool = True) -> None:  # noqa: ARG001
+        written_calls.append(command)
+        original_write(command)  # type: ignore[misc]
+
+    with mock.patch.object(smu, "write", side_effect=_record_write):
+        smu.load_script("longscript", script_body=script_body, run_script=False)
+
+    # Verify script sent as multiple short writes rather than one long write.
+    # First call is delete guard, then loadscript, each line, then endscript.
+    assert written_calls[0] == "if longscript ~= nil then script.delete('longscript') end"
+    assert written_calls[1] == "loadscript longscript"
+    # Every call should be ≤ 1000 characters
+    for idx, call in enumerate(written_calls):
+        assert len(call) <= 1000, (
+            f"write() call #{idx} exceeds 1000 chars ({len(call)} chars): {call[:50]}..."
+        )
+
+    # Verify all script lines are present in the calls
+    for line in long_body_lines:
+        assert line in written_calls, f"Expected script line missing: {line}"
+
+    # Verify endscript is present
+    assert "endscript" in written_calls
+    # Verify the long one-line-1000+ path was NOT taken
+    assert not any(len(c) > 1000 for c in written_calls)
+
+    # Short script (<1000 chars) should still use the original single-write path.
+    written_calls.clear()
+    short_body = 'print("hello")'
+    with mock.patch.object(smu, "write", side_effect=_record_write):
+        smu.load_script("shorty", script_body=short_body, run_script=False)
+    assert written_calls[1] == f"loadscript shorty\n{short_body}\nendscript"

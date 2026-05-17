@@ -497,3 +497,8 @@ commands =
     poetry export --without-hashes --without-urls --all-extras --only=tests --output=tests/requirements.txt
     - pre-commit run -a requirements-txt-fixer
 """
+
+[dependency-groups]
+dev = [
+    "pytest-order>=1.4.0",
+]
