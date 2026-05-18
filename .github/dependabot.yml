@@ -1,5 +1,10 @@
 ---
 version: 2
+multi-ecosystem-groups:
+  python-and-pre-commit:
+    schedule:
+      interval: weekly
+    labels: [python, pre-commit, dependencies]
 updates:
   - package-ecosystem: github-actions
     directory: /
@@ -14,13 +19,19 @@ updates:
       include: scope
   - package-ecosystem: pip
     directory: /
-    schedule:
-      interval: weekly
+    multi-ecosystem-group: python-and-pre-commit
     versioning-strategy: increase-if-necessary
-    groups:
-      python-dependencies:
-        patterns: ['*']
+    patterns: ['*']
     labels: [python, dependencies]
     commit-message:
       prefix: python-deps
+      include: scope
+  - package-ecosystem: pre-commit
+    directory: /
+    multi-ecosystem-group: python-and-pre-commit
+    versioning-strategy: increase-if-necessary
+    patterns: ['*']
+    labels: [pre-commit, dependencies]
+    commit-message:
+      prefix: pre-commit-deps
       include: scope
