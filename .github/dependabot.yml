@@ -5,6 +5,9 @@ multi-ecosystem-groups:
     schedule:
       interval: weekly
     labels: [python, pre-commit, dependencies]
+    commit-message:
+      prefix: chore
+      include: scope
 updates:
   - package-ecosystem: github-actions
     directory: /
@@ -23,14 +26,8 @@ updates:
     versioning-strategy: increase-if-necessary
     patterns: ['*']
     labels: [python, dependencies]
-    commit-message:
-      prefix: python-deps
-      include: scope
   - package-ecosystem: pre-commit
     directory: /
     multi-ecosystem-group: python-and-pre-commit
     patterns: ['*']
     labels: [pre-commit, dependencies]
-    commit-message:
-      prefix: pre-commit-deps
-      include: scope
