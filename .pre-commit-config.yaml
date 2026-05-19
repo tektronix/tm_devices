@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 943377262562a12b57292fc98fabd7dbf81451fe  # frozen: 0.37.2
+    rev: f805888065fdb6162e1f800e50bb9460cbd223d6  # frozen: 0.37.2
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -49,12 +49,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: c04ed26e40637cab1aa9879c693832a9c120fb20  # frozen: v1.7.12.24
+    rev: 2f3dbd354aa118b539dee99d8eed05a83097a199  # frozen: v1.7.12.24
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 0fedbbe40de438359fdf74bb0ef645ed23063999  # frozen: v4.16.2
+    rev: 953e1ba4599cc3143122ed5c3e8de3d6dfd5524d  # frozen: v4.16.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -63,16 +63,16 @@ repos:
     hooks:
       - id: yamlfix
   - repo: https://github.com/thibaudcolas/curlylint
-    rev: 71adf4d34c290684fd9f94a4d21ac55bcfe640f0  # frozen: v0.13.1
+    rev: 20d279d3cba11d64529ee88c5a2092c5c09919b6  # frozen: v0.13.1
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 2d496dbc18e31b83a1596685347ffe0b6041daf0  # frozen: 1.0.0
+    rev: 82912cdaea4fb830f751504486a7879c70526547  # frozen: 1.0.0
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
-          - setuptools==80.9.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
+          - setuptools==82.0.1  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-config
