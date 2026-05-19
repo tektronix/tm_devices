@@ -22,6 +22,8 @@ if TYPE_CHECKING:
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
+_MAX_TSP_WRITE_CHARS = 1000
+
 
 class TSPControl(PIControl, ABC):
     """Base Test Script Processing (TSP) control class.
@@ -177,11 +179,14 @@ class TSPControl(PIControl, ABC):
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
+        load_script_command = f"loadscript {script_name}\n{script_body}\nendscript"
+        _validate_tsp_write_termination_spans(load_script_command)
+
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
         # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        self.write(load_script_command)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
@@ -286,3 +291,15 @@ class TSPControl(PIControl, ABC):
         for buffer_name in self._user_created_custom_buffers:
             self.write(f"{buffer_name} = nil")
         self.write("collectgarbage()")
+
+
+def _validate_tsp_write_termination_spans(command: str) -> None:
+    """Verify that a TSP loadscript command is terminated before the input limit."""
+    for segment_number, segment in enumerate(command.split("\n"), start=1):
+        if len(segment) > _MAX_TSP_WRITE_CHARS:
+            msg = (
+                f"Segment {segment_number} in the TSP loadscript command has "
+                f"{len(segment)} characters, which exceeds the {_MAX_TSP_WRITE_CHARS} "
+                "character limit before a write termination."
+            )
+            raise ValueError(msg)

@@ -21,6 +21,8 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the changelog to pass `pre-commit` checks.
+- Updated TSP script loading to write each line with a termination and reject script lines
+    that exceed the instrument input limit.
 
 ---
 

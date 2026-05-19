@@ -16,6 +16,9 @@ from packaging.version import Version
 
 from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.device_control.tsp_control import (
+    _validate_tsp_write_termination_spans,
+)
 
 if TYPE_CHECKING:
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
@@ -91,6 +94,17 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs.save()" not in stdout
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
+    _validate_tsp_write_termination_spans(f"loadscript max_line_script\n{('x' * 1000)}\nendscript")
+
+    too_long_script_line = f"print({('x' * 992)!r})"
+    _ = capsys.readouterr()
+    with pytest.raises(
+        ValueError,
+        match="Segment 2 in the TSP loadscript command has 1001 characters",
+    ):
+        smu.load_script(script_name="too_long_script", script_body=too_long_script_line)
+    stdout = capsys.readouterr().out
+    assert "too_long_script" not in stdout
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
