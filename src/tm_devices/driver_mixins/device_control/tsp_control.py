@@ -33,6 +33,7 @@ class TSPControl(PIControl, ABC):
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
+    _TSP_MAX_WRITE_LENGTH = 1000
 
     def __init__(
         self,
@@ -177,7 +178,7 @@ class TSPControl(PIControl, ABC):
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
-        tsp_max_write_length = 1000  # TSP devices require a write_termination within 1000 chars
+        tsp_max_write_length = self._TSP_MAX_WRITE_LENGTH
 
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
