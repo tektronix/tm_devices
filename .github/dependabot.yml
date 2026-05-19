@@ -29,7 +29,6 @@ updates:
   - package-ecosystem: pre-commit
     directory: /
     multi-ecosystem-group: python-and-pre-commit
-    versioning-strategy: increase-if-necessary
     patterns: ['*']
     labels: [pre-commit, dependencies]
     commit-message:
