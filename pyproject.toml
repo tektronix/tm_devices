@@ -2,6 +2,11 @@
 build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core~=2.2.1"]
 
+[dependency-groups]
+dev = [
+  "pytest-order>=1.4.0",
+]
+
 [project]
 authors = [
   {email = "nicholas.felt@tektronix.com", name = "Nicholas Felt"},
