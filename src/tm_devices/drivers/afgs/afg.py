@@ -337,6 +337,8 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         self.set_amplitude(amplitude)
         if burst_count > 0:
             self.setup_burst_waveform(burst_count)
+        else:
+            self.set_burst_state(0)
 
     def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
         """Set the amplitude on the source channel.
