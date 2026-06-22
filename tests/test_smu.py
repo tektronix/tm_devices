@@ -92,6 +92,12 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
 
+    capsys.readouterr()
+    with pytest.raises(ValueError, match="write termination character"):
+        smu.load_script(script_name="overrun", script_body="x" * 1001)
+    stdout = capsys.readouterr().out
+    assert "loadscript overrun" not in stdout
+
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
     with (

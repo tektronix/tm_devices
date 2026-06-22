@@ -22,6 +22,8 @@ if TYPE_CHECKING:
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
+_TSP_MAX_WRITE_CHARS_BEFORE_TERMINATION = 1000
+
 
 class TSPControl(PIControl, ABC):
     """Base Test Script Processing (TSP) control class.
@@ -177,11 +179,23 @@ class TSPControl(PIControl, ABC):
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
+        # Load the script
+        load_script_command = f"loadscript {script_name}\n{script_body}\nendscript"
+        visa_resource = getattr(self, "_visa_resource", None)
+        write_termination = getattr(visa_resource, "write_termination", None) or "\n"
+        for command_part in load_script_command.split(write_termination):
+            if len(command_part) > _TSP_MAX_WRITE_CHARS_BEFORE_TERMINATION:
+                msg = (
+                    "TSP scripts must contain a write termination character at least every "
+                    f"{_TSP_MAX_WRITE_CHARS_BEFORE_TERMINATION} characters. "
+                    "Split long script lines before calling load_script()."
+                )
+                raise ValueError(msg)
+
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        self.write(load_script_command)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
