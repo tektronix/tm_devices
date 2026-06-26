@@ -20,6 +20,7 @@ Things to be included in the next release go here.
 
 ### Fixed
 
+- Added support for configuring `tm_devices` logging from an existing base logger.
 - Updated the changelog to pass `pre-commit` checks.
 
 ---

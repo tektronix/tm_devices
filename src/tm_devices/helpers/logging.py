@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from types import TracebackType
 
 _logger_initialized = False
+_configured_logger: logging.Logger | None = None
 
 
 _T = TypeVar("_T", bound=logging.Handler)
@@ -115,7 +116,7 @@ def disable_all_loggers(
     logging.disable(logging.NOTSET)
 
 
-def configure_logging(
+def configure_logging(  # noqa: PLR0913
     *,
     log_console_level: str | LoggingLevels = LoggingLevels.INFO,
     log_file_level: str | LoggingLevels = LoggingLevels.DEBUG,
@@ -124,6 +125,7 @@ def configure_logging(
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
     log_uncaught_exceptions: bool = True,
+    logger: logging.Logger | None = None,
 ) -> logging.Logger:
     """Configure the logging for this package.
 
@@ -165,17 +167,20 @@ def configure_logging(
             Setting the `log_file_level` parameter to
             [`LoggingLevels.NONE`][tm_devices.helpers.logging.LoggingLevels.NONE] will disable
             this feature regardless of the value of `log_uncaught_exceptions`.
+        logger: An existing logger to use as the base for the tm_devices logger. When provided,
+            the configured package logger is created as a child of this logger so it inherits the
+            caller's logging hierarchy and handlers. Defaults to None.
 
     Returns:
-        The base logger for the package, this base logger can also be accessed using
-            `logging.getLogger(tm_devices.PACKAGE_NAME)`.
+        The configured base logger for the package. When `logger` is not provided, this is
+            accessible using `logging.getLogger(tm_devices.PACKAGE_NAME)`.
     """
-    global _logger_initialized  # noqa: PLW0603
+    global _configured_logger, _logger_initialized  # noqa: PLW0603
 
-    _logger: logging.Logger = logging.getLogger(PACKAGE_NAME)
     if _logger_initialized:
         # If the logger was previously initialized, just return it
-        return _logger
+        return _configured_logger or logging.getLogger(PACKAGE_NAME)
+    _logger = logger.getChild(PACKAGE_NAME) if logger else logging.getLogger(PACKAGE_NAME)
     # Convert object types into enum values
     log_console_level = LoggingLevels(log_console_level)
     log_file_level = LoggingLevels(log_file_level)
@@ -230,6 +235,7 @@ def configure_logging(
 
     if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
         sys.excepthook = __exception_handler
+    _configured_logger = _logger
     _logger_initialized = True
     return _logger
 
