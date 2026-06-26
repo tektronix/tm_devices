@@ -68,7 +68,7 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
     for handler in pyvisa_handlers_copy:
         pyvisa.logger.removeHandler(handler)
     tm_devices_logging._logger_initialized = False  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
-    tm_devices_logging._configured_logger = None  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
+    tm_devices_logging._configured_logger_name = PACKAGE_NAME  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     temp_excepthook = sys.excepthook
     yield
     # Reset the handlers back to what they were

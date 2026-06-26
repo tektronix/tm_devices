@@ -32,7 +32,7 @@ if TYPE_CHECKING:
     from types import TracebackType
 
 _logger_initialized = False
-_configured_logger: logging.Logger | None = None
+_configured_logger_name: str = PACKAGE_NAME
 
 
 _T = TypeVar("_T", bound=logging.Handler)
@@ -175,11 +175,11 @@ def configure_logging(  # noqa: PLR0913
         The configured base logger for the package. When `logger` is not provided, this is
             accessible using `logging.getLogger(tm_devices.PACKAGE_NAME)`.
     """
-    global _configured_logger, _logger_initialized  # noqa: PLW0603
+    global _configured_logger_name, _logger_initialized  # noqa: PLW0603
 
     if _logger_initialized:
         # If the logger was previously initialized, just return it
-        return _configured_logger or logging.getLogger(PACKAGE_NAME)
+        return logging.getLogger(_configured_logger_name)
     _logger = logger.getChild(PACKAGE_NAME) if logger else logging.getLogger(PACKAGE_NAME)
     # Convert object types into enum values
     log_console_level = LoggingLevels(log_console_level)
@@ -235,7 +235,7 @@ def configure_logging(  # noqa: PLR0913
 
     if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
         sys.excepthook = __exception_handler
-    _configured_logger = _logger
+    _configured_logger_name = _logger.name
     _logger_initialized = True
     return _logger
 
