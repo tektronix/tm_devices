@@ -18,9 +18,12 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
-### Fixed
+### Added
 
 - Added support for configuring `tm_devices` logging from an existing base logger.
+
+### Fixed
+
 - Updated the changelog to pass `pre-commit` checks.
 
 ---
