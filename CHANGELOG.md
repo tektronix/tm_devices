@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the changelog to pass `pre-commit` checks.
+- Fixed the USBTMC model ID for AFG31052 devices.
 
 ---
 
