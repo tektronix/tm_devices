@@ -79,63 +79,63 @@ _Device Support Levels_
 
 </div>
 
-| Type   | Series/Model                | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
-| ------ | --------------------------- | --------------- | ---------------- | ---------------------------------- |
-| AFGs   | **AFG3000**                 | PI              | ✅               |                                    |
+| Type   | Series/Model                | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status             |
+| ------ | --------------------------- | --------------- | ---------------- | ---------------------------------------------- |
+| AFGs   | **AFG3000**                 | PI              | ✅               |                                                |
 |        | **AFG31xxx**                | PI              | ✅               | AFG31051, AFG31052, AFG31252 USB IDs validated |
-| AWGs   | **AWG5000**                 | PI              | ✅               |                                    |
-|        | **AWG5200**                 | PI              | ✅               |                                    |
-|        | **AWG7000**                 | PI              | ✅               | ✅                                 |
-|        | **AWG70000**                | PI              | ✅               | ✅                                 |
-| Scopes | **2 Series MSO**            | PI              | ✅               | ✅                                 |
-|        | **3 Series MDO**            | PI              | ✅               | ✅                                 |
-|        | **4 Series MSO**            | PI              | ✅               | ✅                                 |
-|        | **4 Series B MSO**          | PI              | ✅               | ✅                                 |
-|        | **5 Series MSO**            | PI              | ✅               | ✅                                 |
-|        | **5 Series B MSO**          | PI              | ✅               | ✅                                 |
-|        | **5 Series MSO (LP)**       | PI              | ✅               | ✅                                 |
-|        | **6 Series MSO**            | PI              | ✅               | ✅                                 |
-|        | **6 Series B MSO**          | PI              | ✅               | ✅                                 |
-|        | **6 Series LPD**            | PI              | ✅               | ✅                                 |
-|        | **7 Series DPO ⭐ NEW ⭐**  | PI              | ✅               | ✅                                 |
-|        | **MSO2000/B**               | PI              | ✅               |                                    |
-|        | **DPO2000/B**               | PI              | ✅               |                                    |
-|        | **MDO3000**                 | PI              | ✅               | ✅                                 |
-|        | **MDO4000/B/C**             | PI              | ✅               | ✅                                 |
-|        | **MSO4000/B**               | PI              | ✅               | ✅                                 |
-|        | **DPO4000/B**               | PI              | ✅               | ✅                                 |
-|        | **MSO5000/B**               | PI              | ✅               | ✅                                 |
-|        | **DPO5000/B**               | PI              | ✅               | ✅                                 |
-|        | **DPO7000/C**               | PI              | ✅               | ✅                                 |
-|        | **DPO70000/C/D/DX/SX**      | PI              | ✅               | ✅                                 |
-|        | **DSA70000/C/D**            | PI              | ✅               | ✅                                 |
-|        | **MSO70000/C/DX**           | PI              | ✅               | ✅                                 |
-|        | **TSOVu**                   | PI              | ✅               |                                    |
-|        | **TekScope**                | PI              | ✅               | ✅                                 |
-| PSUs   | **2200**                    | PI              | ✅               |                                    |
-|        | **2220**                    | PI              | ✅               |                                    |
-|        | **2230**                    | PI              | ✅               |                                    |
-|        | **2231**                    | PI              | ✅               |                                    |
-|        | **2280S**                   | PI              | ✅               |                                    |
-|        | **2281S**                   | PI              | ✅               |                                    |
-| SMUs   | **24xx Standard**           | PI              | ✅               |                                    |
-|        | **24xx Interactive**        | TSP             | ✅               | ✅                                 |
-|        | **26xxB**                   | TSP             | ✅               | 🚧                                 |
-|        | **2636B**                   | TSP             | ✅               | ✅                                 |
-|        | **Model 2601B-PULSE**       | TSP             | ✅               |                                    |
-|        | **Model 2606B**             | TSP             | ✅               | 🚧                                 |
-|        | **2651A**                   | TSP             | ✅               | ✅                                 |
-|        | **2657A**                   | TSP             | ✅               |                                    |
-|        | **6430 (electrometer)**     | PI              | ✅               |                                    |
-|        | **6514 (electrometer)**     | PI              | ✅               |                                    |
-|        | **6517B (electrometer)**    | PI              | ✅               |                                    |
-| MTs    | **TMT4**                    | API             | ✅               |                                    |
-| DMMs   | **DMM6500**                 | TSP             | ✅               |                                    |
-|        | **DMM7510**                 | TSP             | ✅               |                                    |
-|        | **DMM7512**                 | TSP             | ✅               |                                    |
-| DAQs   | **DAQ6510**                 | TSP             | ✅               |                                    |
-| SSs    | **3706A**                   | TSP             | ✅               |                                    |
-| MFs    | **MP5000 Series ⭐ NEW ⭐** | TSP             | ✅               | 🚧                                 |
+| AWGs   | **AWG5000**                 | PI              | ✅               |                                                |
+|        | **AWG5200**                 | PI              | ✅               |                                                |
+|        | **AWG7000**                 | PI              | ✅               | ✅                                             |
+|        | **AWG70000**                | PI              | ✅               | ✅                                             |
+| Scopes | **2 Series MSO**            | PI              | ✅               | ✅                                             |
+|        | **3 Series MDO**            | PI              | ✅               | ✅                                             |
+|        | **4 Series MSO**            | PI              | ✅               | ✅                                             |
+|        | **4 Series B MSO**          | PI              | ✅               | ✅                                             |
+|        | **5 Series MSO**            | PI              | ✅               | ✅                                             |
+|        | **5 Series B MSO**          | PI              | ✅               | ✅                                             |
+|        | **5 Series MSO (LP)**       | PI              | ✅               | ✅                                             |
+|        | **6 Series MSO**            | PI              | ✅               | ✅                                             |
+|        | **6 Series B MSO**          | PI              | ✅               | ✅                                             |
+|        | **6 Series LPD**            | PI              | ✅               | ✅                                             |
+|        | **7 Series DPO ⭐ NEW ⭐**  | PI              | ✅               | ✅                                             |
+|        | **MSO2000/B**               | PI              | ✅               |                                                |
+|        | **DPO2000/B**               | PI              | ✅               |                                                |
+|        | **MDO3000**                 | PI              | ✅               | ✅                                             |
+|        | **MDO4000/B/C**             | PI              | ✅               | ✅                                             |
+|        | **MSO4000/B**               | PI              | ✅               | ✅                                             |
+|        | **DPO4000/B**               | PI              | ✅               | ✅                                             |
+|        | **MSO5000/B**               | PI              | ✅               | ✅                                             |
+|        | **DPO5000/B**               | PI              | ✅               | ✅                                             |
+|        | **DPO7000/C**               | PI              | ✅               | ✅                                             |
+|        | **DPO70000/C/D/DX/SX**      | PI              | ✅               | ✅                                             |
+|        | **DSA70000/C/D**            | PI              | ✅               | ✅                                             |
+|        | **MSO70000/C/DX**           | PI              | ✅               | ✅                                             |
+|        | **TSOVu**                   | PI              | ✅               |                                                |
+|        | **TekScope**                | PI              | ✅               | ✅                                             |
+| PSUs   | **2200**                    | PI              | ✅               |                                                |
+|        | **2220**                    | PI              | ✅               |                                                |
+|        | **2230**                    | PI              | ✅               |                                                |
+|        | **2231**                    | PI              | ✅               |                                                |
+|        | **2280S**                   | PI              | ✅               |                                                |
+|        | **2281S**                   | PI              | ✅               |                                                |
+| SMUs   | **24xx Standard**           | PI              | ✅               |                                                |
+|        | **24xx Interactive**        | TSP             | ✅               | ✅                                             |
+|        | **26xxB**                   | TSP             | ✅               | 🚧                                             |
+|        | **2636B**                   | TSP             | ✅               | ✅                                             |
+|        | **Model 2601B-PULSE**       | TSP             | ✅               |                                                |
+|        | **Model 2606B**             | TSP             | ✅               | 🚧                                             |
+|        | **2651A**                   | TSP             | ✅               | ✅                                             |
+|        | **2657A**                   | TSP             | ✅               |                                                |
+|        | **6430 (electrometer)**     | PI              | ✅               |                                                |
+|        | **6514 (electrometer)**     | PI              | ✅               |                                                |
+|        | **6517B (electrometer)**    | PI              | ✅               |                                                |
+| MTs    | **TMT4**                    | API             | ✅               |                                                |
+| DMMs   | **DMM6500**                 | TSP             | ✅               |                                                |
+|        | **DMM7510**                 | TSP             | ✅               |                                                |
+|        | **DMM7512**                 | TSP             | ✅               |                                                |
+| DAQs   | **DAQ6510**                 | TSP             | ✅               |                                                |
+| SSs    | **3706A**                   | TSP             | ✅               |                                                |
+| MFs    | **MP5000 Series ⭐ NEW ⭐** | TSP             | ✅               | 🚧                                             |
 
 </div>
 
