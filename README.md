@@ -82,7 +82,7 @@ _Device Support Levels_
 | Type   | Series/Model                | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
 | ------ | --------------------------- | --------------- | ---------------- | ---------------------------------- |
 | AFGs   | **AFG3000**                 | PI              | ✅               |                                    |
-|        | **AFG31xxx**                | PI              | ✅               |                                    |
+|        | **AFG31xxx**                | PI              | ✅               | AFG31051, AFG31052, AFG31252 USB IDs validated |
 | AWGs   | **AWG5000**                 | PI              | ✅               |                                    |
 |        | **AWG5200**                 | PI              | ✅               |                                    |
 |        | **AWG7000**                 | PI              | ✅               | ✅                                 |

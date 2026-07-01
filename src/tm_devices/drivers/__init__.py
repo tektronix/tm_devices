@@ -6,7 +6,7 @@ from tm_devices.helpers.enums import SupportedModels
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
 from tm_devices.drivers.afgs.afg3kc import AFG3KC
-from tm_devices.drivers.afgs.afg31k import AFG31K
+from tm_devices.drivers.afgs.afg31k import AFG31K, AFG31051, AFG31052, AFG31252
 from tm_devices.drivers.awgs.awg5k import AWG5K
 from tm_devices.drivers.awgs.awg5kb import AWG5KB
 from tm_devices.drivers.awgs.awg5kc import AWG5KC
@@ -111,6 +111,9 @@ __all__ = [
     "AFG3KB",
     "AFG3KC",
     "AFG31K",
+    "AFG31051",
+    "AFG31052",
+    "AFG31252",
     "AWG5K",
     "AWG5KB",
     "AWG5KC",

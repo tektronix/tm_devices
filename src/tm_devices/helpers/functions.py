@@ -55,6 +55,9 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"(?P<{SupportedModels.AFG3K.value}>^AFG3\d\d\d$)"
     rf"|(?P<{SupportedModels.AFG3KB.value}>^AFG3\d\d\dB$)"
     rf"|(?P<{SupportedModels.AFG3KC.value}>^AFG3\d\d\dC$)"
+    rf"|(?P<{SupportedModels.AFG31051.value}>^AFG31051$)"
+    rf"|(?P<{SupportedModels.AFG31052.value}>^AFG31052$)"
+    rf"|(?P<{SupportedModels.AFG31252.value}>^AFG31252$)"
     rf"|(?P<{SupportedModels.AFG31K.value}>^AFG31\d\d\d$)"
     # AWGs
     rf"|(?P<{SupportedModels.AWG5200.value}>^AWG52\d\d$)"

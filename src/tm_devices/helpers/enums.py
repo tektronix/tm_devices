@@ -95,6 +95,9 @@ class SupportedModels(CustomStrEnum):
     AFG3KB = "AFG3KB"
     AFG3KC = "AFG3KC"
     AFG31K = "AFG31K"
+    AFG31051 = "AFG31051"
+    AFG31052 = "AFG31052"
+    AFG31252 = "AFG31252"
     # AWGs
     AWG5200 = "AWG5200"
     AWG5K = "AWG5K"

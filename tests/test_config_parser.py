@@ -537,9 +537,19 @@ def test_remove_device() -> None:
             "USB0::0x0699::0x0345::C0123123::0::INSTR",
         ),
         (
+            "device_type=AFG,connection_type=USB,address=AFG31051-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0357::B0123123::0::INSTR",
+        ),
+        (
             "device_type=AFG,connection_type=USB,address=AFG31052-B0123123",
             "AFG 1",
             "USB0::0x0699::0x0358::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31252-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035E::B0123123::0::INSTR",
         ),
         (
             "device_type=SCOPE,address=3,connection_type=SERIAL",

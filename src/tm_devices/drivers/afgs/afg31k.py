@@ -158,3 +158,15 @@ class AFG31K(AFG):
     def _reboot(self) -> None:
         """Reboot the device."""
         self.write("SYSTem:RESTart")
+
+
+class AFG31051(AFG31K):
+    """AFG31051 device driver."""
+
+
+class AFG31052(AFG31K):
+    """AFG31052 device driver."""
+
+
+class AFG31252(AFG31K):
+    """AFG31252 device driver."""
