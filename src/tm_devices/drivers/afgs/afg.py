@@ -19,7 +19,7 @@ from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.driver_mixins.shared_implementations._tektronix_pi_afg_awg_mixin import (
     _TektronixPIAFGAWGMixin,  # pyright: ignore[reportPrivateUsage]
 )
-from tm_devices.drivers.device import Device, family_base_class
+from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.enums import (
@@ -40,7 +40,6 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 # control class inheritance responsibility moved to the newly created Family Base Classes. The other
 # option would be to create two abstract AFG parent classes and two distinct AFGSourceChannel
 # classes, with one set using the PIControl mixin and one set using another control mixin.
-@family_base_class
 class AFG(
     _TektronixPIAFGAWGMixin[SignalGeneratorFunctionsAFG, AFGSourceDeviceConstants],
     PIControl,
