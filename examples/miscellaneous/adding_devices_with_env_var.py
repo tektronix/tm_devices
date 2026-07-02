@@ -7,7 +7,7 @@ to execute the Python script.
 import os
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import AFG31K, MSO2, SMU2601B
+from tm_devices.drivers import AFG31052, MSO2, SMU2601B
 
 # Indicate to use the PyVISA-py backend rather than any installed VISA backends.
 os.environ["TM_OPTIONS"] = "STANDALONE"
@@ -30,7 +30,7 @@ with DeviceManager(verbose=True) as dm:
     scope.expect_esr(0)
 
     # AFG
-    afg: AFG31K = dm.get_afg(1)
+    afg: AFG31052 = dm.get_afg(1)
     print(afg.idn_string)
 
     # Turn on AFG and verify success
