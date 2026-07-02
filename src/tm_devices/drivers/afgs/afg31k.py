@@ -1,5 +1,7 @@
 """AFG31K device driver module."""
 
+from abc import ABC
+
 from tm_devices.drivers.afgs.afg3k import (
     AFG,
     AFGSourceDeviceConstants,
@@ -9,8 +11,8 @@ from tm_devices.drivers.afgs.afg3k import (
 )
 
 
-class AFG31K(AFG):
-    """AFG31K device driver."""
+class AFG31K(AFG, ABC):
+    """AFG31K family base driver."""
 
     _DEVICE_CONSTANTS = AFGSourceDeviceConstants(
         memory_page_size=2,
@@ -160,12 +162,40 @@ class AFG31K(AFG):
         self.write("SYSTem:RESTart")
 
 
+class AFG31021(AFG31K):
+    """AFG31021 device driver."""
+
+
+class AFG31022(AFG31K):
+    """AFG31022 device driver."""
+
+
 class AFG31051(AFG31K):
     """AFG31051 device driver."""
 
 
 class AFG31052(AFG31K):
     """AFG31052 device driver."""
+
+
+class AFG31101(AFG31K):
+    """AFG31101 device driver."""
+
+
+class AFG31102(AFG31K):
+    """AFG31102 device driver."""
+
+
+class AFG31151(AFG31K):
+    """AFG31151 device driver."""
+
+
+class AFG31152(AFG31K):
+    """AFG31152 device driver."""
+
+
+class AFG31251(AFG31K):
+    """AFG31251 device driver."""
 
 
 class AFG31252(AFG31K):

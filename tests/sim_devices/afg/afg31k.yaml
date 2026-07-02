@@ -29,6 +29,34 @@ devices:
         - q: SYSTEM:ERROR?
           default: 0,"No error"
           command_error: 1, Command error
+  afg31022:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG31022,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
   afg31051:
     eom:
       USB INSTR:
@@ -99,6 +127,76 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,AFG31101,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
+  afg31102:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG31102,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
+  afg31151:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG31151,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
   afg31152:
     eom:
       USB INSTR:
@@ -113,6 +211,20 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,AFG31152,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
   afg31251:
     eom:
       USB INSTR:
@@ -127,6 +239,20 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,AFG31251,C100101,SCPI:99.0 FV:1.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: SYSTem:RESTart
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
   afg31252:
     eom:
       USB INSTR:

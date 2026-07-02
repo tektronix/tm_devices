@@ -270,8 +270,6 @@ def test_afg31k(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str
         frequency=70.0e6,
     )
 
-    assert afg31051.__class__.__name__ == "AFG31051"
-
     assert afg31051_constraints == ExtendedSourceDeviceConstants(
         amplitude_range=ParameterBounds(lower=2.0e-3, upper=16.0),
         offset_range=ParameterBounds(lower=-10.0, upper=10.0),

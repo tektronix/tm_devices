@@ -6,7 +6,18 @@ from typing import TYPE_CHECKING
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
 from tm_devices.drivers.afgs.afg3kc import AFG3KC
-from tm_devices.drivers.afgs.afg31k import AFG31K, AFG31051, AFG31052, AFG31252
+from tm_devices.drivers.afgs.afg31k import (
+    AFG31021,
+    AFG31022,
+    AFG31051,
+    AFG31052,
+    AFG31101,
+    AFG31102,
+    AFG31151,
+    AFG31152,
+    AFG31251,
+    AFG31252,
+)
 from tm_devices.drivers.awgs.awg5k import AWG5K
 from tm_devices.drivers.awgs.awg5kb import AWG5KB
 from tm_devices.drivers.awgs.awg5kc import AWG5KC
@@ -120,9 +131,15 @@ _DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, type[Device]]" = MappingProxyTyp
         SupportedModels.AFG3K.value: AFG3K,
         SupportedModels.AFG3KB.value: AFG3KB,
         SupportedModels.AFG3KC.value: AFG3KC,
-        SupportedModels.AFG31K.value: AFG31K,
+        SupportedModels.AFG31021.value: AFG31021,
+        SupportedModels.AFG31022.value: AFG31022,
         SupportedModels.AFG31051.value: AFG31051,
         SupportedModels.AFG31052.value: AFG31052,
+        SupportedModels.AFG31101.value: AFG31101,
+        SupportedModels.AFG31102.value: AFG31102,
+        SupportedModels.AFG31151.value: AFG31151,
+        SupportedModels.AFG31152.value: AFG31152,
+        SupportedModels.AFG31251.value: AFG31251,
         SupportedModels.AFG31252.value: AFG31252,
         # AWGs
         SupportedModels.AWG5200.value: AWG5200,
