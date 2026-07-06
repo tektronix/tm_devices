@@ -21,7 +21,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the changelog to pass `pre-commit` checks.
-- Added model-specific AFG31K USBTMC mappings for AFG31051, AFG31052, and AFG31252 devices.
+- Added model-specific AFG31K USBTMC mappings for all AFG31K models.
 
 ---
 
