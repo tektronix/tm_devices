@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: f805888065fdb6162e1f800e50bb9460cbd223d6  # frozen: 0.37.2
+    rev: 1a4bb160cab6417b3045e1b37b6b72449243e658  # frozen: 0.37.4
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -49,12 +49,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 2f3dbd354aa118b539dee99d8eed05a83097a199  # frozen: v1.7.12.24
+    rev: c04ed26e40637cab1aa9879c693832a9c120fb20  # frozen: v1.7.12.24
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 953e1ba4599cc3143122ed5c3e8de3d6dfd5524d  # frozen: v4.16.2
+    rev: a6859a7b8182086a5e013deab8fefc0597b502e9  # frozen: v4.16.4
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -63,11 +63,11 @@ repos:
     hooks:
       - id: yamlfix
   - repo: https://github.com/thibaudcolas/curlylint
-    rev: 20d279d3cba11d64529ee88c5a2092c5c09919b6  # frozen: v0.13.1
+    rev: 71adf4d34c290684fd9f94a4d21ac55bcfe640f0  # frozen: v0.13.1
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 82912cdaea4fb830f751504486a7879c70526547  # frozen: 1.0.0
+    rev: 2d496dbc18e31b83a1596685347ffe0b6041daf0  # frozen: 1.0.0
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
@@ -151,7 +151,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 0671d8ab202c4ac093b78433ae5baf74f3fc7246  # frozen: v0.15.15
+    rev: c59bba8fb259db0fec2bbb77ad8ba51ea7341b56  # frozen: v0.15.20
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
