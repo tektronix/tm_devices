@@ -1023,7 +1023,34 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = Mapp
         SupportedModels.AFG3K: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0345"
         ),
-        SupportedModels.AFG31K: USBTMCConfiguration(
+        SupportedModels.AFG31021: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0355"
+        ),
+        SupportedModels.AFG31022: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0356"
+        ),
+        SupportedModels.AFG31051: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0357"
+        ),
+        SupportedModels.AFG31052: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0358"
+        ),
+        SupportedModels.AFG31101: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0359"
+        ),
+        SupportedModels.AFG31102: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035A"
+        ),
+        SupportedModels.AFG31151: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035B"
+        ),
+        SupportedModels.AFG31152: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035C"
+        ),
+        SupportedModels.AFG31251: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035D"
+        ),
+        SupportedModels.AFG31252: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035E"
         ),
         SupportedModels.SMU2450: USBTMCConfiguration(

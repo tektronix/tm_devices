@@ -537,6 +537,56 @@ def test_remove_device() -> None:
             "USB0::0x0699::0x0345::C0123123::0::INSTR",
         ),
         (
+            "device_type=AFG,connection_type=USB,address=AFG31021-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0355::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31022-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0356::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31051-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0357::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31052-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0358::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31101-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x0359::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31102-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035A::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31151-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035B::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31152-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035C::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31251-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035D::B0123123::0::INSTR",
+        ),
+        (
+            "device_type=AFG,connection_type=USB,address=AFG31252-B0123123",
+            "AFG 1",
+            "USB0::0x0699::0x035E::B0123123::0::INSTR",
+        ),
+        (
             "device_type=SCOPE,address=3,connection_type=SERIAL",
             "SCOPE 1",
             "ASRL3::INSTR",

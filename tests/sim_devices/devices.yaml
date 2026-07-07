@@ -128,17 +128,32 @@ resources:
   TCPIP::AFG31021-HOSTNAME::INSTR:
     device: afg31021
     filename: afg/afg31k.yaml
+  TCPIP::AFG31022-HOSTNAME::INSTR:
+    device: afg31022
+    filename: afg/afg31k.yaml
   TCPIP::AFG31051-HOSTNAME::INSTR:
     device: afg31051
     filename: afg/afg31k.yaml
+  TCPIP::AFG31052-HOSTNAME::INSTR:
+    device: afg31052
+    filename: afg/afg31k.yaml
   TCPIP::AFG31101-HOSTNAME::INSTR:
     device: afg31101
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31102-HOSTNAME::INSTR:
+    device: afg31102
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31151-HOSTNAME::INSTR:
+    device: afg31151
     filename: afg/afg31k.yaml
   TCPIP::AFG31152-HOSTNAME::INSTR:
     device: afg31152
     filename: afg/afg31k.yaml
   TCPIP::AFG31251-HOSTNAME::INSTR:
     device: afg31251
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31252-HOSTNAME::INSTR:
+    device: afg31252
     filename: afg/afg31k.yaml
 
   # --- awg ---
