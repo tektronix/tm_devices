@@ -18,10 +18,13 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added model-specific AFG31K USBTMC mappings for all AFG31K models.
+
 ### Fixed
 
 - Updated the changelog to pass `pre-commit` checks.
-- Added model-specific AFG31K USBTMC mappings for all AFG31K models.
 
 ---
 
