@@ -8,8 +8,10 @@ from tm_devices.drivers.afgs.afg import (
     ParameterBounds,
     SignalGeneratorFunctionsAFG,
 )
+from tm_devices.drivers.device import family_base_class
 
 
+@family_base_class
 class AFG3K(AFG3KMixin, AFG):
     """AFG3K device driver."""
 
