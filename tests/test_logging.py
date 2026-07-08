@@ -68,6 +68,7 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
     for handler in pyvisa_handlers_copy:
         pyvisa.logger.removeHandler(handler)
     tm_devices_logging._logger_initialized = False  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
+    tm_devices_logging._configured_logger_name = PACKAGE_NAME  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     temp_excepthook = sys.excepthook
     yield
     # Reset the handlers back to what they were
@@ -80,6 +81,19 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
     for handler in pyvisa_handlers_copy:
         pyvisa.logger.addHandler(handler)
     sys.excepthook = temp_excepthook
+
+
+def test_configure_logger_with_base_logger(reset_package_logger: None) -> None:  # noqa: ARG001
+    """Test configuring the package logger as a child of an existing logger."""
+    base_logger = logging.getLogger("custom_application")
+    logger = configure_logging(
+        log_console_level=LoggingLevels.NONE,
+        log_file_level=LoggingLevels.NONE,
+        logger=base_logger,
+    )
+    assert logger is base_logger.getChild(PACKAGE_NAME)
+    assert logger.name == f"custom_application.{PACKAGE_NAME}"
+    assert configure_logging() is logger
 
 
 def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG001

@@ -20,6 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
+- Added support for configuring `tm_devices` logging from an existing base logger.
 - Added model-specific AFG31K USBTMC mappings for all AFG31K models.
 
 ### Fixed

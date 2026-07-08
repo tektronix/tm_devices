@@ -32,11 +32,14 @@ if TYPE_CHECKING:
     from types import TracebackType
 
 _logger_initialized = False
+_configured_logger_name: str = PACKAGE_NAME
 
 
 _T = TypeVar("_T", bound=logging.Handler)
 __MULTILINE_MESSAGE_LEADING_WHITESPACE = " " * 29
 _ORIGINAL_SYS_EXCEPTHOOK = sys.__excepthook__
+_LOGGING_FILE_FORMAT = "[%(asctime)s] [%(package_name)10s] [%(levelname)8s] %(message)s"
+_LOGGING_CONSOLE_FORMAT = "%(asctime)s - %(message)s"
 
 
 class _CustomFormatterWithMicroseconds(logging.Formatter):  # pragma: no cover
@@ -115,7 +118,7 @@ def disable_all_loggers(
     logging.disable(logging.NOTSET)
 
 
-def configure_logging(
+def configure_logging(  # noqa: PLR0913
     *,
     log_console_level: str | LoggingLevels = LoggingLevels.INFO,
     log_file_level: str | LoggingLevels = LoggingLevels.DEBUG,
@@ -124,6 +127,7 @@ def configure_logging(
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
     log_uncaught_exceptions: bool = True,
+    logger: logging.Logger | None = None,
 ) -> logging.Logger:
     """Configure the logging for this package.
 
@@ -165,17 +169,20 @@ def configure_logging(
             Setting the `log_file_level` parameter to
             [`LoggingLevels.NONE`][tm_devices.helpers.logging.LoggingLevels.NONE] will disable
             this feature regardless of the value of `log_uncaught_exceptions`.
+        logger: An existing logger to use as the base for the tm_devices logger. When provided,
+            the configured package logger is created as a child of this logger so it inherits the
+            caller's logging hierarchy and handlers. Defaults to None.
 
     Returns:
-        The base logger for the package, this base logger can also be accessed using
-            `logging.getLogger(tm_devices.PACKAGE_NAME)`.
+        The configured base logger for the package. When `logger` is not provided, this is
+            accessible using `logging.getLogger(tm_devices.PACKAGE_NAME)`.
     """
-    global _logger_initialized  # noqa: PLW0603
+    global _configured_logger_name, _logger_initialized  # noqa: PLW0603
 
-    _logger: logging.Logger = logging.getLogger(PACKAGE_NAME)
     if _logger_initialized:
         # If the logger was previously initialized, just return it
-        return _logger
+        return logging.getLogger(_configured_logger_name)
+    _logger = logger.getChild(PACKAGE_NAME) if logger else logging.getLogger(PACKAGE_NAME)
     # Convert object types into enum values
     log_console_level = LoggingLevels(log_console_level)
     log_file_level = LoggingLevels(log_file_level)
@@ -186,8 +193,6 @@ def configure_logging(
     # The logger/module name is not included in the message, since formatting the messages to
     # be aligned would cause the width of the message prefix to be almost 100 characters before
     # the message is even added to the line.
-    logging_file_format_string = "[%(asctime)s] [%(package_name)10s] [%(levelname)8s] %(message)s"
-    logging_console_format_string = "%(asctime)s - %(message)s"
     if not log_file_directory:  # pragma: no cover
         log_file_directory = Path("./logs")
     if not log_file_name:  # pragma: no cover
@@ -198,7 +203,7 @@ def configure_logging(
         # Set up logger for tm_devices
         log_filepath.parent.mkdir(parents=True, exist_ok=True)
         file_handler = logging.FileHandler(log_filepath, mode="w", encoding="utf-8")
-        file_formatter = _CustomFormatterWithPackageNameAndMicroseconds(logging_file_format_string)
+        file_formatter = _CustomFormatterWithPackageNameAndMicroseconds(_LOGGING_FILE_FORMAT)
 
         file_handler.setLevel(getattr(logging, log_file_level.value))
         file_handler.setFormatter(file_formatter)
@@ -217,12 +222,12 @@ def configure_logging(
         if log_colored_output:
             console_handler = colorlog.StreamHandler(stream=sys.stdout)
             console_formatter = _CustomFormatterWithColorAndMicroseconds(
-                "%(log_color)s" + logging_console_format_string,
+                "%(log_color)s" + _LOGGING_CONSOLE_FORMAT,
                 log_colors=colorlog.default_log_colors,
             )
         else:
             console_handler = logging.StreamHandler(stream=sys.stdout)
-            console_formatter = _CustomFormatterWithMicroseconds(logging_console_format_string)
+            console_formatter = _CustomFormatterWithMicroseconds(_LOGGING_CONSOLE_FORMAT)
 
         console_handler.setLevel(getattr(logging, log_console_level.value))
         console_handler.setFormatter(console_formatter)
@@ -230,6 +235,7 @@ def configure_logging(
 
     if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
         sys.excepthook = __exception_handler
+    _configured_logger_name = _logger.name
     _logger_initialized = True
     return _logger
 
