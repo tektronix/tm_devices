@@ -21,6 +21,38 @@ if TYPE_CHECKING:
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
 
 
+def test_load_script_rejects_line_over_character_limit(
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Verify TSP scripts require a write termination within 1000 characters."""
+    smu = device_manager.add_smu("smu2601b-hostname")
+    _ = capsys.readouterr()
+
+    with (
+        mock.patch.object(smu, "write") as write,
+        pytest.raises(ValueError, match=r"write termination.*1000"),
+    ):
+        smu.load_script("overrun", script_body="x" * 1001)
+
+    write.assert_not_called()
+    assert "script.delete" not in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("script_body", ["x" * 1000, f"{'x' * 600}\n{'y' * 600}"])
+def test_load_script_accepts_terminated_lines_within_character_limit(
+    device_manager: DeviceManager,
+    script_body: str,
+) -> None:
+    """Verify the limit applies between terminations, not to the whole script."""
+    smu = device_manager.add_smu("smu2601b-hostname")
+
+    with mock.patch.object(smu, "write") as write:
+        smu.load_script("within_limit", script_body=script_body)
+
+    assert write.call_count == 2
+
+
 # pylint: disable=too-many-locals
 def test_smu(  # noqa: PLR0915
     device_manager: DeviceManager,
