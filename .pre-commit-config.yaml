@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: f805888065fdb6162e1f800e50bb9460cbd223d6  # frozen: 0.37.2
+    rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3  # frozen: 0.37.4
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -54,7 +54,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 953e1ba4599cc3143122ed5c3e8de3d6dfd5524d  # frozen: v4.16.2
+    rev: 6afcd8e9560ddf1b9a5032262a0be26540e85fb3  # frozen: v4.16.5
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -72,7 +72,7 @@ repos:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
-          - setuptools==82.0.1  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
+          - setuptools==83.0.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-config
@@ -151,7 +151,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 0671d8ab202c4ac093b78433ae5baf74f3fc7246  # frozen: v0.15.15
+    rev: 01a675ea018f2fb714478a5ffb83fcea8374bb06  # frozen: v0.15.21
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
