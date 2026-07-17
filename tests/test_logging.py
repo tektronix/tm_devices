@@ -69,8 +69,10 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
         pyvisa.logger.removeHandler(handler)
     tm_devices_logging._logger_initialized = False  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     tm_devices_logging._configured_logger_name = PACKAGE_NAME  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
+    tm_devices_logging._log_response_max_length = None  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     temp_excepthook = sys.excepthook
     yield
+    tm_devices_logging._log_response_max_length = None  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     # Reset the handlers back to what they were
     for handler in logger.handlers.copy():
         logger.removeHandler(handler)
@@ -146,3 +148,47 @@ def test_configure_logger_no_file(reset_package_logger: None) -> None:  # noqa: 
     assert len(logger.handlers) == 2
     assert [type(x) for x in logger.handlers] == [logging.NullHandler, colorlog.StreamHandler]
     assert isinstance(logger.handlers[1].formatter, colorlog.ColoredFormatter)
+
+
+@pytest.mark.parametrize(
+    ("response", "max_length", "expected"),
+    [
+        # No limit (argument and global both None) logs the full repr
+        (b"hello world", None, "b'hello world'"),
+        # A limit longer than the repr does not truncate
+        ("hi", 100, "'hi'"),
+        # A limit shorter than the repr truncates and appends the marker
+        (b"hello world", 5, "b'hel" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER),
+        # A limit of zero suppresses the response contents entirely
+        (b"hello world", 0, tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER),
+    ],
+)
+def test_truncate_response_for_logging(
+    response: object, max_length: int | None, expected: str
+) -> None:
+    """Test the truncation of command responses for logging.
+
+    Args:
+        response: The response to format for logging.
+        max_length: The maximum number of characters to keep.
+        expected: The expected formatted string.
+    """
+    assert tm_devices_logging.truncate_response_for_logging(response, max_length) == expected
+
+
+def test_configure_logging_response_max_length(reset_package_logger: None) -> None:  # noqa: ARG001
+    """Test that the log_response_max_length config option is stored and used globally."""
+    # Truncation is disabled by default
+    assert tm_devices_logging.get_log_response_max_length() is None
+    configure_logging(
+        log_console_level=LoggingLevels.NONE,
+        log_file_level=LoggingLevels.NONE,
+        log_response_max_length=4,
+    )
+    # The configured value is retrievable and applied when no per-call length is given
+    assert tm_devices_logging.get_log_response_max_length() == 4
+    assert tm_devices_logging.truncate_response_for_logging("abcdefghij") == (
+        "'abc" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER
+    )
+    # A per-call length overrides the global value
+    assert tm_devices_logging.truncate_response_for_logging("abcdefghij", 100) == "'abcdefghij'"
