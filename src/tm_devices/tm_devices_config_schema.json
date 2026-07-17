@@ -125,6 +125,18 @@
                     "default": null,
                     "description": "Indicate if PyVISA logs should be included in the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages"
                 },
+                "log_response_max_length": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Set the maximum number of characters to log for a command response\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_response_max_length"
+                },
                 "log_uncaught_exceptions": {
                     "anyOf": [
                         {

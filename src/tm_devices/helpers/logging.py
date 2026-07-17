@@ -33,6 +33,11 @@ if TYPE_CHECKING:
 
 _logger_initialized = False
 _configured_logger_name: str = PACKAGE_NAME
+_log_response_max_length: int | None = None
+"""The globally configured max length for logged command responses (None disables truncation)."""
+
+RESPONSE_LOG_TRUNCATION_MARKER = " [... response log truncated]"
+"""The marker appended to a logged command response when it is truncated."""
 
 
 _T = TypeVar("_T", bound=logging.Handler)
@@ -127,6 +132,7 @@ def configure_logging(  # noqa: PLR0913
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
     log_uncaught_exceptions: bool = True,
+    log_response_max_length: int | None = None,
     logger: logging.Logger | None = None,
 ) -> logging.Logger:
     """Configure the logging for this package.
@@ -169,6 +175,10 @@ def configure_logging(  # noqa: PLR0913
             Setting the `log_file_level` parameter to
             [`LoggingLevels.NONE`][tm_devices.helpers.logging.LoggingLevels.NONE] will disable
             this feature regardless of the value of `log_uncaught_exceptions`.
+        log_response_max_length: The maximum number of characters to log for a command response.
+            When set to a non-negative integer, any logged command response longer than this
+            number of characters will be truncated in the logs. Defaults to None, which disables
+            truncation and logs the full response.
         logger: An existing logger to use as the base for the tm_devices logger. When provided,
             the configured package logger is created as a child of this logger so it inherits the
             caller's logging hierarchy and handlers. Defaults to None.
@@ -177,11 +187,13 @@ def configure_logging(  # noqa: PLR0913
         The configured base logger for the package. When `logger` is not provided, this is
             accessible using `logging.getLogger(tm_devices.PACKAGE_NAME)`.
     """
-    global _configured_logger_name, _logger_initialized  # noqa: PLW0603
+    global _configured_logger_name, _log_response_max_length, _logger_initialized  # noqa: PLW0603
 
     if _logger_initialized:
         # If the logger was previously initialized, just return it
         return logging.getLogger(_configured_logger_name)
+    # Store the response truncation length so it can be read at log time from anywhere
+    _log_response_max_length = log_response_max_length
     _logger = logger.getChild(PACKAGE_NAME) if logger else logging.getLogger(PACKAGE_NAME)
     # Convert object types into enum values
     log_console_level = LoggingLevels(log_console_level)
@@ -238,6 +250,38 @@ def configure_logging(  # noqa: PLR0913
     _configured_logger_name = _logger.name
     _logger_initialized = True
     return _logger
+
+
+def get_log_response_max_length() -> int | None:
+    """Return the globally configured maximum length for logged command responses.
+
+    Returns:
+        The maximum number of characters to log for a command response, or None if response
+            truncation is disabled. This value is set by the `log_response_max_length` parameter
+            of [`configure_logging()`][tm_devices.helpers.logging.configure_logging].
+    """
+    return _log_response_max_length
+
+
+def truncate_response_for_logging(response: object, max_length: int | None = None) -> str:
+    """Return the repr of a command response, truncated for logging when a max length applies.
+
+    Args:
+        response: The command response to format for logging.
+        max_length: The maximum number of characters to keep. When None, the globally configured
+            value from [`configure_logging()`][tm_devices.helpers.logging.configure_logging] is
+            used. When both this argument and the global value are None, no truncation is
+            performed.
+
+    Returns:
+        The repr of the response, with a marker appended if it exceeded the applicable limit.
+    """
+    if max_length is None:
+        max_length = get_log_response_max_length()
+    response_repr = repr(response)
+    if max_length is not None and len(response_repr) > max_length:
+        return response_repr[:max_length] + RESPONSE_LOG_TRUNCATION_MARKER
+    return response_repr
 
 
 def __exception_handler(

@@ -32,7 +32,13 @@ from tm_devices.helpers.functions import (
     register_additional_usbtmc_mapping,
     sanitize_enum,
 )
-from tm_devices.helpers.logging import configure_logging, disable_all_loggers, LoggingLevels
+from tm_devices.helpers.logging import (
+    configure_logging,
+    disable_all_loggers,
+    get_log_response_max_length,
+    LoggingLevels,
+    truncate_response_for_logging,
+)
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_helpers import (
@@ -74,6 +80,7 @@ __all__ = [
     "create_visa_connection",
     "detect_visa_resource_expression",
     "disable_all_loggers",
+    "get_log_response_max_length",
     "get_model_series",
     "get_version",
     "get_visa_backend",
@@ -82,6 +89,7 @@ __all__ = [
     "raise_failure",
     "register_additional_usbtmc_mapping",
     "sanitize_enum",
+    "truncate_response_for_logging",
     "validate_address",
     "verify_values",
 ]
