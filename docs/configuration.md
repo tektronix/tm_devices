@@ -263,6 +263,7 @@ options:
   log_colored_output: false
   log_pyvisa_messages: false
   log_uncaught_exceptions: true
+  log_response_max_length: 1000
 ```
 
 #### General Configuration Options Definitions
@@ -356,6 +357,17 @@ options:
 - This config option is used to enable or disable logging uncaught exceptions in the log file. The
     default value of this config option is true. Setting the `log_file_level` parameter
     to "NONE" will disable this feature regardless of the value of `log_uncaught_exceptions`. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_response_max_length`
+
+- This config option is used to truncate command responses in the logs to a maximum number of
+    characters. This is useful when querying large amounts of data, such as an oscilloscope's
+    waveform via `CURVe?`, which can otherwise create very large log files. When set to a
+    non-negative integer, any logged response longer than this length is truncated with a marker
+    appended to indicate truncation. The default value of this config option is `None`, which
+    disables truncation and logs the full response. Individual queries can override this value via
+    the `log_response_max_length` argument of the `.query()` method (and related methods). See the
     [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 
 ### Sample Config File
