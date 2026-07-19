@@ -33,6 +33,7 @@ class TSPControl(PIControl, ABC):
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
+    _TSP_MAX_WRITE_LENGTH = 1000
 
     def __init__(
         self,
@@ -155,6 +156,44 @@ class TSPControl(PIControl, ABC):
                 buffer_data[buffer_name] = list(map(_to_float_or_str, buffer_str.split(", ")))
         return buffer_data
 
+    @staticmethod
+    def _chunk_string_by_write_limit(data: str, max_length: int, write_termination: str) -> list[str]:
+        """Split a string into chunks that each fit within the TSP max write length.
+
+        The splitting algorithm ensures that every chunk ends with the
+        ``write_termination`` character (typically ``\\n``) so that the TSP
+        instrument correctly processes each write.  If the natural termination
+        does not fall within the limit, the chunk is forcibly split at the limit
+        boundary and the termination character is inserted.
+
+        Args:
+            data: The string to split.
+            max_length: The maximum number of characters per chunk.
+            write_termination: The termination character used by the VISA connection.
+
+        Returns:
+            A list of string chunks, each ending with ``write_termination``.
+        """
+        if len(data) <= max_length:
+            return [data]
+
+        chunks: list[str] = []
+        remaining = data
+        while remaining:
+            # Find the last occurrence of the termination character within the limit
+            split_pos = remaining.rfind(write_termination, 0, max_length)
+            if split_pos == -1:
+                # No natural break point found; split at the hard limit
+                split_pos = max_length
+            else:
+                # Include the termination character in the chunk
+                split_pos += len(write_termination)
+
+            chunks.append(remaining[:split_pos])
+            remaining = remaining[split_pos:]
+
+        return chunks
+
     def load_script(
         self,
         script_name: str,
@@ -165,6 +204,12 @@ class TSPControl(PIControl, ABC):
         to_nv_memory: bool = False,
     ) -> None:
         """Upload a TSP script to the instrument.
+
+        TSP devices have a maximum write length (typically 1000 characters) before
+        a ``write_termination`` character must be present.  This method automatically
+        splits long scripts into multiple writes so that each individual write does
+        not exceed the limit.  Short scripts (under the limit) are sent in a single
+        write for backward compatibility.
 
         Args:
             script_name: A string indicating what to name the script being loaded on the instrument.
@@ -180,8 +225,44 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Build the full loadscript command
+        script_command = f"loadscript {script_name}\n{script_body}\nendscript"
+
+        if len(script_command) >= self._TSP_MAX_WRITE_LENGTH:
+            # Determine the actual write_termination from the VISA resource
+            try:
+                write_termination: str = getattr(
+                    self._visa_resource, "write_termination", "\n"
+                )
+                # pyvisa stores the termination as a bytes-like string; normalize to str
+                if isinstance(write_termination, bytes):
+                    write_termination = write_termination.decode("utf-8")
+            except Exception:  # pragma: no cover  # noqa: BLE001
+                write_termination = "\n"
+
+            # Split into chunks that each end with the write_termination character
+            header = f"loadscript {script_name}{write_termination}"
+            footer = f"endscript{write_termination}"
+
+            # Build the body lines preserving the original newlines
+            body_lines = script_body.splitlines()
+            body_content = write_termination.join(body_lines) + write_termination
+
+            # Full content between header and footer (without header/footer)
+            inner = body_content
+
+            # Chunk the inner content if it itself exceeds the limit
+            inner_chunks = self._chunk_string_by_write_limit(
+                inner, self._TSP_MAX_WRITE_LENGTH, write_termination
+            )
+
+            self.write(header.rstrip(write_termination))
+            for chunk in inner_chunks:
+                self.write(chunk.rstrip(write_termination))
+            self.write(footer.rstrip(write_termination))
+        else:
+            # Short script — single write (backward compatible)
+            self.write(script_command)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
