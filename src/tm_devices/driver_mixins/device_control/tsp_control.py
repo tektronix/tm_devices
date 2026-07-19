@@ -22,6 +22,12 @@ if TYPE_CHECKING:
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
+# TSP instruments enforce a 1000-character maximum per VISA write when no
+# write_termination character is configured.  Scripts longer than this limit
+# must be sent in multiple writes, which requires write_termination to be set
+# so that the instrument can distinguish successive chunks.
+_TSP_WRITE_MAX_CHARS: int = 1000
+
 
 class TSPControl(PIControl, ABC):
     """Base Test Script Processing (TSP) control class.
@@ -172,6 +178,25 @@ class TSPControl(PIControl, ABC):
             file_path: a *.tsp file from the local filesystem to read and use as the `script_body`.
             run_script: Boolean indicating if the script should be run immediately after loading.
             to_nv_memory: Boolean indicating if the script is to be saved to non-volatile memory.
+
+        Raises:
+            ValueError: If the full ``loadscript`` command exceeds
+                :data:`_TSP_WRITE_MAX_CHARS` (1000) characters **and** the
+                VISA resource has no ``write_termination`` character configured.
+                TSP instruments require a termination character to distinguish
+                successive multi-write chunks; without it the instrument cannot
+                receive scripts larger than the 1000-character hardware limit.
+                Set ``write_termination`` on the VISA resource (e.g.
+                ``device.visa_resource.write_termination = "\\n"``) before
+                loading large scripts.
+
+        Note:
+            TSP instruments enforce a **1000-character maximum per VISA
+            write** when ``write_termination`` is not configured.  For small
+            scripts (total command ≤ 1000 chars) a single write is used as
+            before.  For larger scripts the method automatically splits the
+            body into ≤1000-character chunks provided ``write_termination`` is
+            set.
         """
         if file_path is not None:
             # script_body argument is overwritten by file contents
@@ -180,8 +205,38 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Build the full single-write command to check its length.
+        full_cmd = f"loadscript {script_name}\n{script_body}\nendscript"
+
+        if len(full_cmd) <= _TSP_WRITE_MAX_CHARS:
+            # Small script: send in one write, same behaviour as before.
+            self.write(full_cmd)
+        else:
+            # Large script: must use multi-write protocol.
+            # The instrument needs write_termination to delimit successive writes.
+            write_termination: str = getattr(
+                getattr(self, "visa_resource", None), "write_termination", ""
+            ) or ""
+            if not write_termination:
+                msg = (
+                    f"Script '{script_name}' requires {len(full_cmd)} characters to load, which "
+                    f"exceeds the TSP per-write limit of {_TSP_WRITE_MAX_CHARS} characters. "
+                    "TSP instruments cannot receive scripts larger than this limit without a "
+                    "write_termination character configured on the VISA resource. "
+                    "Set write_termination before loading large scripts, e.g.: "
+                    "device.visa_resource.write_termination = '\\n'"
+                )
+                raise ValueError(msg)
+
+            # Phase 1: open the script context on the instrument.
+            self.write(f"loadscript {script_name}")
+
+            # Phase 2: stream the body in chunks that respect the hardware limit.
+            for chunk_start in range(0, len(script_body), _TSP_WRITE_MAX_CHARS):
+                self.write(script_body[chunk_start : chunk_start + _TSP_WRITE_MAX_CHARS])
+
+            # Phase 3: close the script context.
+            self.write("endscript")
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
