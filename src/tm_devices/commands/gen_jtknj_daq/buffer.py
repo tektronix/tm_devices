@@ -92,7 +92,6 @@ class BufferWrite(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.format()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=too-many-arguments
     def reading(
         self,
         buffer_var: str,
