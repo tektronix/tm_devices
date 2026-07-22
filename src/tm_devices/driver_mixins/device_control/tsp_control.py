@@ -177,6 +177,17 @@ class TSPControl(PIControl, ABC):
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
+        # Check that no line in script_body exceeds max character write limit
+        # without write termination
+        max_write_length = 1000
+        for line in script_body.splitlines():
+            if len(line) > max_write_length:
+                msg = (
+                    f"Line in script '{script_name}' exceeds the max write character limit of "
+                    f"{max_write_length} without a write termination character."
+                )
+                raise ValueError(msg)
+
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 

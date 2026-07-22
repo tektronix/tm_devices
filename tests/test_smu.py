@@ -92,6 +92,14 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
 
+    # Test load_script line length validation (>1000 characters without write termination)
+    overrun_script = "print('" + ("x" * 1001) + "')"
+    with pytest.raises(
+        ValueError,
+        match=r"Line in script 'overrun_script' exceeds the max write character limit of 1000",
+    ):
+        smu.load_script(script_name="overrun_script", script_body=overrun_script)
+
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
     with (
