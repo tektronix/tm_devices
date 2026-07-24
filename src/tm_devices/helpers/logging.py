@@ -13,7 +13,7 @@ import traceback
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Literal, TYPE_CHECKING, TypeVar
+from typing import Final, Literal, TYPE_CHECKING, TypeVar
 
 import colorlog
 import pyvisa
@@ -34,10 +34,121 @@ if TYPE_CHECKING:
 _logger_initialized = False
 _configured_logger_name: str = PACKAGE_NAME
 _log_response_max_characters: int | None = None
-"""The globally configured max length for logged command responses (None disables truncation)."""
+"""The globally configured max characters for logged responses (None disables truncation)."""
 
 RESPONSE_LOG_TRUNCATION_MARKER = " [... response log truncated]"
 """The marker appended to a logged command response when it is truncated."""
+
+LOG_RECORD_MAX_CHARACTERS_ATTR: Final = "tm_devices_response_max_characters"
+"""The `extra` key which overrides the truncation limit for a single logging call."""
+
+
+class UnsetType:  # pylint: disable=too-few-public-methods
+    """A sentinel type indicating that an argument was not provided."""
+
+    def __repr__(self) -> str:
+        """Return the name of the sentinel, so it renders readably in the API documentation."""
+        return "UNSET"
+
+
+UNSET: Final = UnsetType()
+"""A sentinel for an unprovided argument, distinct from None, which disables truncation."""
+
+
+class _TruncatedValue:
+    """A stand-in for an oversized logging argument which renders as truncated text."""
+
+    def __init__(self, as_str: str, as_repr: str) -> None:
+        """Create the stand-in from its `%s` and `%r` renderings."""
+        self._as_str = as_str
+        self._as_repr = as_repr
+
+    def __repr__(self) -> str:
+        """Return the truncated text used for `%r` style formatting."""
+        return self._as_repr
+
+    def __str__(self) -> str:
+        """Return the truncated text used for `%s` style formatting."""
+        return self._as_str
+
+
+def _truncate_argument_for_logging(value: object, max_characters: int) -> object:
+    """Return a stand-in which renders truncated, when the argument exceeds the limit.
+
+    Strings and bytes are sliced directly, so the limit counts characters of the response rather
+    than of its repr. Anything else is sliced by its repr, since it cannot be sliced directly.
+
+    Args:
+        value: The logging argument to measure.
+        max_characters: The maximum number of characters to keep.
+
+    Returns:
+        The original argument, or a stand-in rendering the truncated value with the marker.
+    """
+    if isinstance(value, (str, bytes)):
+        if len(value) <= max_characters:
+            return value
+        truncated = value[:max_characters]
+        return _TruncatedValue(
+            f"{truncated!s}{RESPONSE_LOG_TRUNCATION_MARKER}",
+            f"{truncated!r}{RESPONSE_LOG_TRUNCATION_MARKER}",
+        )
+    value_repr = repr(value)
+    if len(value_repr) <= max_characters:
+        return value
+    truncated_repr = value_repr[:max_characters] + RESPONSE_LOG_TRUNCATION_MARKER
+    return _TruncatedValue(truncated_repr, truncated_repr)
+
+
+class ResponseTruncationFilter(logging.Filter):  # pylint: disable=too-few-public-methods
+    """A filter which truncates oversized arguments on every log record it sees.
+
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] attaches this to the
+    handlers it creates. Add it to any handler created elsewhere for that handler to truncate too.
+    """
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        """Truncate the oversized arguments of a log record in place.
+
+        Args:
+            record: The log record to truncate the arguments of.
+
+        Returns:
+            True, so that the record is always emitted.
+        """
+        max_characters = getattr(record, LOG_RECORD_MAX_CHARACTERS_ATTR, UNSET)
+        if isinstance(max_characters, UnsetType):
+            max_characters = _log_response_max_characters
+        if max_characters is None or not record.args:
+            return True
+        if isinstance(record.args, tuple):
+            record.args = tuple(
+                _truncate_argument_for_logging(arg, max_characters) for arg in record.args
+            )
+        else:
+            record.args = {
+                key: _truncate_argument_for_logging(value, max_characters)
+                for key, value in record.args.items()
+            }
+        return True
+
+
+def response_log_extra(
+    max_characters: int | None | UnsetType = UNSET,
+) -> dict[str, int | None]:
+    """Return the `extra` mapping which overrides the truncation limit of a single log call.
+
+    Args:
+        max_characters: The maximum number of characters to keep. Defaults to
+            [`UNSET`][tm_devices.helpers.logging.UNSET], which applies the global config value.
+            Set this to None to disable truncation, matching the meaning of None in the config.
+
+    Returns:
+        A mapping suitable for the `extra` argument of a logging call.
+    """
+    if isinstance(max_characters, UnsetType):
+        return {}
+    return {LOG_RECORD_MAX_CHARACTERS_ATTR: max_characters}
 
 
 _T = TypeVar("_T", bound=logging.Handler)
@@ -123,7 +234,7 @@ def disable_all_loggers(
     logging.disable(logging.NOTSET)
 
 
-def configure_logging(  # noqa: PLR0913
+def configure_logging(  # noqa: PLR0913  # pylint: disable=too-many-locals
     *,
     log_console_level: str | LoggingLevels = LoggingLevels.INFO,
     log_file_level: str | LoggingLevels = LoggingLevels.DEBUG,
@@ -176,9 +287,11 @@ def configure_logging(  # noqa: PLR0913
             [`LoggingLevels.NONE`][tm_devices.helpers.logging.LoggingLevels.NONE] will disable
             this feature regardless of the value of `log_uncaught_exceptions`.
         log_response_max_characters: The maximum number of characters to log for a command response.
-            When set to a non-negative integer, any logged command response longer than this
-            number of characters will be truncated in the logs. Defaults to None, which disables
-            truncation and logs the full response.
+            When set to a non-negative integer, any logged value longer than this number of
+            characters will be truncated in the logs by the
+            [`ResponseTruncationFilter`][tm_devices.helpers.logging.ResponseTruncationFilter]
+            attached to each handler created here. Defaults to None, which disables truncation and
+            logs the full response.
         logger: An existing logger to use as the base for the tm_devices logger. When provided,
             the configured package logger is created as a child of this logger so it inherits the
             caller's logging hierarchy and handlers. Defaults to None.
@@ -192,8 +305,10 @@ def configure_logging(  # noqa: PLR0913
     if _logger_initialized:
         # If the logger was previously initialized, just return it
         return logging.getLogger(_configured_logger_name)
-    # Store the response truncation length so it can be read at log time from anywhere
+    # Store the response truncation limit so it can be read at log time from anywhere
     _log_response_max_characters = log_response_max_characters
+    # Shared by every handler, so truncation applies to all records rather than opted-in calls.
+    response_truncation_filter = ResponseTruncationFilter()
     _logger = logger.getChild(PACKAGE_NAME) if logger else logging.getLogger(PACKAGE_NAME)
     # Convert object types into enum values
     log_console_level = LoggingLevels(log_console_level)
@@ -219,6 +334,7 @@ def configure_logging(  # noqa: PLR0913
 
         file_handler.setLevel(getattr(logging, log_file_level.value))
         file_handler.setFormatter(file_formatter)
+        file_handler.addFilter(response_truncation_filter)
         _logger.addHandler(file_handler)
 
         if log_pyvisa_messages:
@@ -243,6 +359,7 @@ def configure_logging(  # noqa: PLR0913
 
         console_handler.setLevel(getattr(logging, log_console_level.value))
         console_handler.setFormatter(console_formatter)
+        console_handler.addFilter(response_truncation_filter)
         _logger.addHandler(console_handler)
 
     if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
@@ -253,7 +370,7 @@ def configure_logging(  # noqa: PLR0913
 
 
 def get_log_response_max_characters() -> int | None:
-    """Return the globally configured maximum length for logged command responses.
+    """Return the globally configured maximum number of characters for logged responses.
 
     Returns:
         The maximum number of characters to log for a command response, or None if response
@@ -261,27 +378,6 @@ def get_log_response_max_characters() -> int | None:
             of [`configure_logging()`][tm_devices.helpers.logging.configure_logging].
     """
     return _log_response_max_characters
-
-
-def truncate_response_for_logging(response: object, max_characters: int | None = None) -> str:
-    """Return the repr of a command response, truncated for logging when a max length applies.
-
-    Args:
-        response: The command response to format for logging.
-        max_characters: The maximum number of characters to keep. When None, the globally configured
-            value from [`configure_logging()`][tm_devices.helpers.logging.configure_logging] is
-            used. When both this argument and the global value are None, no truncation is
-            performed.
-
-    Returns:
-        The repr of the response, with a marker appended if it exceeded the applicable limit.
-    """
-    if max_characters is None:
-        max_characters = get_log_response_max_characters()
-    response_repr = repr(response)
-    if max_characters is not None and len(response_repr) > max_characters:
-        return response_repr[:max_characters] + RESPONSE_LOG_TRUNCATION_MARKER
-    return response_repr
 
 
 def __exception_handler(

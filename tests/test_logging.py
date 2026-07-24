@@ -150,34 +150,100 @@ def test_configure_logger_no_file(reset_package_logger: None) -> None:  # noqa: 
     assert isinstance(logger.handlers[1].formatter, colorlog.ColoredFormatter)
 
 
+def _record(response: object, **extra: object) -> logging.LogRecord:
+    """Build a log record shaped like the ones the query methods emit.
+
+    Args:
+        response: The response to log as the record's second argument.
+        extra: Any additional attributes to set on the record.
+
+    Returns:
+        The constructed log record.
+    """
+    record = logging.LogRecord(
+        PACKAGE_NAME,
+        logging.DEBUG,
+        __file__,
+        0,
+        "Response from %r >>  %r",
+        ("*IDN?", response),
+        None,
+    )
+    for key, value in extra.items():
+        setattr(record, key, value)
+    return record
+
+
 @pytest.mark.parametrize(
     ("response", "max_characters", "expected"),
     [
-        # No limit (argument and global both None) logs the full repr
-        (b"hello world", None, "b'hello world'"),
-        # A limit longer than the repr does not truncate
-        ("hi", 100, "'hi'"),
-        # A limit shorter than the repr truncates and appends the marker
-        (b"hello world", 5, "b'hel" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER),
-        # A limit of zero suppresses the response contents entirely
-        (b"hello world", 0, tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER),
+        # An unset override with no global limit configured logs the full repr
+        (b"hello world", tm_devices_logging.UNSET, "Response from '*IDN?' >>  b'hello world'"),
+        # An explicit None disables truncation
+        (b"hello world", None, "Response from '*IDN?' >>  b'hello world'"),
+        # A limit longer than the response does not truncate
+        ("hi", 100, "Response from '*IDN?' >>  'hi'"),
+        # A limit shorter than the response truncates and appends the marker
+        (
+            b"hello world",
+            5,
+            "Response from '*IDN?' >>  b'hello'"
+            + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER,
+        ),
+        # A limit of zero suppresses the contents of every argument on the record
+        (
+            b"hello world",
+            0,
+            f"Response from ''{tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER} >>  "
+            f"b''{tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER}",
+        ),
     ],
 )
-def test_truncate_response_for_logging(
-    response: object, max_characters: int | None, expected: str
+def test_response_truncation_filter(
+    response: object, max_characters: int | None | tm_devices_logging.UnsetType, expected: str
 ) -> None:
-    """Test the truncation of command responses for logging.
+    """Test that the filter truncates oversized response arguments.
 
     Args:
-        response: The response to format for logging.
-        max_characters: The maximum number of characters to keep.
-        expected: The expected formatted string.
+        response: The response to log.
+        max_characters: The per-call override to apply.
+        expected: The expected formatted message.
     """
-    assert tm_devices_logging.truncate_response_for_logging(response, max_characters) == expected
+    record = _record(response, **tm_devices_logging.response_log_extra(max_characters))
+    assert tm_devices_logging.ResponseTruncationFilter().filter(record)
+    assert record.getMessage() == expected
+
+
+def test_response_truncation_filter_applies_to_all_records(
+    reset_package_logger: None,  # noqa: ARG001
+) -> None:
+    """Test that the global limit truncates records which never opt in to truncation."""
+    configure_logging(
+        log_console_level=LoggingLevels.NONE,
+        log_file_level=LoggingLevels.NONE,
+        log_response_max_characters=8,
+    )
+    log_filter = tm_devices_logging.ResponseTruncationFilter()
+    # A record with no per-call override still gets truncated by the global limit
+    record = _record("abcdefghij")
+    assert log_filter.filter(record)
+    assert record.getMessage() == (
+        "Response from '*IDN?' >>  'abcdefgh'" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER
+    )
+    # An arbitrary logging call which never opted in is truncated too
+    other = logging.LogRecord(PACKAGE_NAME, logging.DEBUG, __file__, 0, "%s", ("abcdefghij",), None)
+    assert log_filter.filter(other)
+    assert other.getMessage() == ("abcdefgh" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER)
+    # Records logged with a mapping argument are handled as well
+    mapping = logging.LogRecord(
+        PACKAGE_NAME, logging.DEBUG, __file__, 0, "%(value)s", ({"value": "abcdefghij"},), None
+    )
+    assert log_filter.filter(mapping)
+    assert mapping.getMessage() == ("abcdefgh" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER)
 
 
 def test_configure_logging_response_max_characters(reset_package_logger: None) -> None:  # noqa: ARG001
-    """Test that the log_response_max_characters config option is stored and used globally."""
+    """Test that the log_response_max_characters config option is stored globally."""
     # Truncation is disabled by default
     assert tm_devices_logging.get_log_response_max_characters() is None
     configure_logging(
@@ -185,10 +251,34 @@ def test_configure_logging_response_max_characters(reset_package_logger: None) -
         log_file_level=LoggingLevels.NONE,
         log_response_max_characters=4,
     )
-    # The configured value is retrievable and applied when no per-call length is given
     assert tm_devices_logging.get_log_response_max_characters() == 4
-    assert tm_devices_logging.truncate_response_for_logging("abcdefghij") == (
-        "'abc" + tm_devices_logging.RESPONSE_LOG_TRUNCATION_MARKER
+
+
+def test_response_log_extra() -> None:
+    """Test the mapping built for overriding the truncation limit of a single logging call."""
+    # An unset override produces an empty mapping, so the global value applies
+    assert not tm_devices_logging.response_log_extra()
+    assert not tm_devices_logging.response_log_extra(tm_devices_logging.UNSET)
+    # An explicit value is passed through under the documented record attribute
+    assert tm_devices_logging.response_log_extra(None) == {
+        tm_devices_logging.LOG_RECORD_MAX_CHARACTERS_ATTR: None
+    }
+    assert tm_devices_logging.response_log_extra(10) == {
+        tm_devices_logging.LOG_RECORD_MAX_CHARACTERS_ATTR: 10
+    }
+
+
+def test_unset_sentinel_repr() -> None:
+    """Test that the sentinel renders readably in the generated API documentation."""
+    assert repr(tm_devices_logging.UNSET) == "UNSET"
+
+
+def test_response_truncation_filter_keeps_small_arguments() -> None:
+    """Test that arguments within the limit are passed through untouched."""
+    record = logging.LogRecord(
+        PACKAGE_NAME, logging.DEBUG, __file__, 0, "%r %r", (12345, "ok"), None
     )
-    # A per-call length overrides the global value
-    assert tm_devices_logging.truncate_response_for_logging("abcdefghij", 100) == "'abcdefghij'"
+    setattr(record, tm_devices_logging.LOG_RECORD_MAX_CHARACTERS_ATTR, 100)
+    assert tm_devices_logging.ResponseTruncationFilter().filter(record)
+    assert record.args == (12345, "ok")
+    assert record.getMessage() == "12345 'ok'"
