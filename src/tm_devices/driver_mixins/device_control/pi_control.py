@@ -329,7 +329,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         verbose: bool = True,
         remove_quotes: bool = False,
         allow_empty: bool = False,
-        log_response_max_length: int | None = None,
+        log_response_max_characters: int | None = None,
     ) -> str:
         """Send a query to the device and return the result.
 
@@ -338,10 +338,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             verbose: Set this to False in order to disable printouts.
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             allow_empty: Set this to True if an empty return string is permitted.
-            log_response_max_length: The maximum number of characters of the response to log for
+            log_response_max_characters: The maximum number of characters of the response to log for
                 this query. Set to a non-negative integer to truncate the logged response for this
                 call only (0 suppresses the response contents), overriding the global
-                `log_response_max_length` config option. Defaults to None, which uses the global
+                `log_response_max_characters` config option. Defaults to None, which uses the global
                 config option.
 
         Returns:
@@ -375,7 +375,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "Response from %r >>  %s",
             query,
-            truncate_response_for_logging(response, log_response_max_length),
+            truncate_response_for_logging(response, log_response_max_characters),
         )
 
         if not allow_empty and not response:
@@ -398,7 +398,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         expect_termination: bool = True,
         data_points: int = 0,
         chunk_size: int | None = None,
-        log_response_max_length: int | None = None,
+        log_response_max_characters: int | None = None,
     ) -> T:
         """Send a query to the device and return the binary values.
 
@@ -420,10 +420,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                  number of bytes based on the datatype. Defaults to 0.
             chunk_size: Size of the chunks to read from the device. Using larger chunks may
                 be faster for large amount of data.
-            log_response_max_length: The maximum number of characters of the response to log for
+            log_response_max_characters: The maximum number of characters of the response to log for
                 this query. Set to a non-negative integer to truncate the logged response for this
                 call only (0 suppresses the response contents), overriding the global
-                `log_response_max_length` config option. Defaults to None, which uses the global
+                `log_response_max_characters` config option. Defaults to None, which uses the global
                 config option.
 
         Returns:
@@ -465,7 +465,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "Response from %r >>  %s",
             query,
-            truncate_response_for_logging(response, log_response_max_length),
+            truncate_response_for_logging(response, log_response_max_characters),
         )
 
         if not response:
@@ -562,17 +562,17 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         return query_passed
 
     def query_raw_binary(
-        self, query: str, verbose: bool = True, log_response_max_length: int | None = None
+        self, query: str, verbose: bool = True, log_response_max_characters: int | None = None
     ) -> bytes:
         """Send a command to the device and then read and return the raw binary values.
 
         Args:
             query: The query to send to the device.
             verbose: Set this to False in order to disable printouts.
-            log_response_max_length: The maximum number of characters of the response to log for
+            log_response_max_characters: The maximum number of characters of the response to log for
                 this query. Set to a non-negative integer to truncate the logged response for this
                 call only (0 suppresses the response contents), overriding the global
-                `log_response_max_length` config option. Defaults to None, which uses the global
+                `log_response_max_characters` config option. Defaults to None, which uses the global
                 config option.
 
         Returns:
@@ -605,7 +605,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "Response from %r >>  %s",
             query,
-            truncate_response_for_logging(response, log_response_max_length),
+            truncate_response_for_logging(response, log_response_max_characters),
         )
 
         if not response.strip():

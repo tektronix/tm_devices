@@ -177,7 +177,7 @@ def test_query_response_log_truncation(
     _ = capsys.readouterr()
 
     # A per-command length truncates the logged response for this call only.
-    assert scope.query("*IDN?", log_response_max_length=5) == full_response
+    assert scope.query("*IDN?", log_response_max_characters=5) == full_response
     truncated_stdout = capsys.readouterr().out
     assert RESPONSE_LOG_TRUNCATION_MARKER in truncated_stdout
     assert full_response not in truncated_stdout

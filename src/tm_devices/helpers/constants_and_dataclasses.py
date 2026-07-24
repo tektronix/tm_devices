@@ -792,12 +792,12 @@ class DMConfigOptions(AsDictionaryMixin):
     Defaults to True. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
     """
-    log_response_max_length: Annotated[
+    log_response_max_characters: Annotated[
         Optional[int],
         SchemaAnnotation(
             description=(
                 "Set the maximum number of characters to log for a command response\n"
-                "https://tm-devices.readthedocs.io/stable/configuration/#log_response_max_length"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_response_max_characters"
             ),
         ),
     ] = None
@@ -830,10 +830,10 @@ class DMConfigOptions(AsDictionaryMixin):
                     f"Valid values are {LoggingLevels.list_values()}"
                 )
                 raise ValueError(msg) from error
-        if self.log_response_max_length is not None and self.log_response_max_length < 0:
+        if self.log_response_max_characters is not None and self.log_response_max_characters < 0:
             msg = (
-                f"Invalid value for log_response_max_length: {self.log_response_max_length}. "
-                f"Value must be a non-negative integer."
+                f"Invalid value for log_response_max_characters: "
+                f"{self.log_response_max_characters}. Value must be a non-negative integer."
             )
             raise ValueError(msg)
 

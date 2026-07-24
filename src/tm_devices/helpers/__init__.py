@@ -35,7 +35,7 @@ from tm_devices.helpers.functions import (
 from tm_devices.helpers.logging import (
     configure_logging,
     disable_all_loggers,
-    get_log_response_max_length,
+    get_log_response_max_characters,
     LoggingLevels,
     truncate_response_for_logging,
 )
@@ -80,7 +80,7 @@ __all__ = [
     "create_visa_connection",
     "detect_visa_resource_expression",
     "disable_all_loggers",
-    "get_log_response_max_length",
+    "get_log_response_max_characters",
     "get_model_series",
     "get_version",
     "get_visa_backend",

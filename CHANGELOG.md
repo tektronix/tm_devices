@@ -20,7 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Added a `log_response_max_length` configuration option and a matching `log_response_max_length` argument on the `.query()`, `.query_binary()`, and `.query_raw_binary()` methods to truncate long command responses in the logs.
+- Added a `log_response_max_characters` configuration option and a matching `log_response_max_characters` argument on the `.query()`, `.query_binary()`, and `.query_raw_binary()` methods to truncate long command responses in the logs.
 - Added support for configuring `tm_devices` logging from an existing base logger.
 - Added model-specific AFG31K USBTMC mappings for all AFG31K models.
 
