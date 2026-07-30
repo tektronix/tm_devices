@@ -1252,7 +1252,7 @@ class DeviceManager(metaclass=Singleton):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _add_device(  # noqa: PLR0913,C901
+    def _add_device(  # noqa: PLR0913,C901 pylint: disable=too-many-locals
         self,
         device_type: str,
         address: str,
@@ -1263,6 +1263,8 @@ class DeviceManager(metaclass=Singleton):
         lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         device_driver: str | None = None,
+        login_command: str | None = None,
+        logout_command: str | None = None,
         gpib_board_number: int | None = None,
     ) -> Device:
         """Add a device to the DeviceManager.
@@ -1281,6 +1283,10 @@ class DeviceManager(metaclass=Singleton):
                 The default (when needed) is 'inst0'.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             device_driver: A string indicating the specific Python device driver to use.
+            login_command: A command sent before the first ``*IDN?`` query for logging in, only for
+                password protected instruments.
+            logout_command: A command sent before closing the connection for logging out, only for
+                password protected instruments.
             gpib_board_number: The GPIB board number (also referred to as a controller) to be used
                 when making a GPIB connection (defaults to 0).
 
@@ -1319,6 +1325,10 @@ class DeviceManager(metaclass=Singleton):
             config_dict["serial_config"] = serial_config
         if device_driver:
             config_dict["device_driver"] = device_driver
+        if login_command:
+            config_dict["login_command"] = login_command
+        if logout_command:
+            config_dict["logout_command"] = logout_command
         if gpib_board_number:
             config_dict["gpib_board_number"] = gpib_board_number
         new_device_name, new_device_config = self.__config.add_device(**config_dict)  # pyright: ignore[reportArgumentType]
@@ -1326,11 +1336,15 @@ class DeviceManager(metaclass=Singleton):
         return self.__create_device(new_device_name, new_device_config, 4)
 
     @staticmethod
-    def __clear_visa_output_buffer_and_get_idn(visa_resource: MessageBasedResource) -> str:
+    def __clear_visa_output_buffer_and_get_idn(
+        visa_resource: MessageBasedResource,
+        login_command: str | None = None,
+    ) -> str:
         """Clear out the VISA buffer of a device and return the ``*IDN?`` response.
 
         Args:
             visa_resource: The VISA resource object.
+            login_command: An optional login command to send before the first ``*IDN?`` query.
 
         Returns:
             The response from the ``*IDN?`` query.
@@ -1364,6 +1378,13 @@ class DeviceManager(metaclass=Singleton):
             )
             warnings.warn(msg, stacklevel=1)
             _logger.warning(msg)
+
+        if login_command:
+            visa_resource.write(login_command)
+            # Read any success message that might be in the buffer from the login command
+            with contextlib.suppress(visa.VisaIOError):
+                visa_resource.read()
+
         visa_resource.write("*IDN?")
         idn_response = ""
         error_msg = None
@@ -1548,7 +1569,10 @@ class DeviceManager(metaclass=Singleton):
         Raises:
             SystemError: Indicating the correct driver was unable to be determined.
         """
-        idn_response = self.__clear_visa_output_buffer_and_get_idn(visa_resource)
+        idn_response = self.__clear_visa_output_buffer_and_get_idn(
+            visa_resource,
+            device_config.login_command,
+        )
         model_series = ""
         try:
             model_series = get_model_series(idn_response.split(",")[1])

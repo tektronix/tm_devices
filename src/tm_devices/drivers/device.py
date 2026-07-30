@@ -216,6 +216,16 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """Return the device port, or None if the device doesn't have a port."""
         return self._config_entry.lan_port
 
+    @property
+    def login_command(self) -> str | None:
+        """Return the configured login command, if one was provided."""
+        return self._config_entry.login_command
+
+    @property
+    def logout_command(self) -> str | None:
+        """Return the configured logout command, if one was provided."""
+        return self._config_entry.logout_command
+
     @cached_property
     def series(self) -> str:
         """Return the series of the device.

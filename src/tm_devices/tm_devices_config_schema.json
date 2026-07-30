@@ -288,6 +288,30 @@
                     "default": null,
                     "description": "The LAN port number to connect on, used for SOCKET/REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_port"
                 },
+                "login_command": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "A login command to send before the initial *IDN? query of the instrument\nhttps://tm-devices.readthedocs.io/stable/configuration/#login_command"
+                },
+                "logout_command": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "A logout command to send during device teardown before closing the connection\nhttps://tm-devices.readthedocs.io/stable/configuration/#logout_command"
+                },
                 "serial_config": {
                     "anyOf": [
                         {
