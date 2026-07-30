@@ -151,6 +151,8 @@ class DMConfigParser:
         lan_device_endpoint: str | None = None,
         serial_config: SerialConfig | None = None,
         device_driver: str | None = None,
+        login_command: str | None = None,
+        logout_command: str | None = None,
         gpib_board_number: int | None = None,
     ) -> tuple[str, DeviceConfigEntry]:
         """Add a new device configuration entry.
@@ -170,6 +172,10 @@ class DMConfigParser:
                 The default is 'inst0'.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
+            login_command: A command sent after opening the connection, only used for password
+                protected instruments
+            logout_command: A command sent before closing the connection, only used for password
+                protected instruments
             gpib_board_number: The GPIB board number (also referred to as a controller), only used
                 for GPIB connections. The default is 0.
 
@@ -191,6 +197,8 @@ class DMConfigParser:
             lan_device_endpoint=lan_device_endpoint,
             serial_config=serial_config,
             device_driver=device_driver,
+            login_command=login_command,
+            logout_command=logout_command,
             gpib_board_number=gpib_board_number,
         )
         # Currently, USB connections when using the PyVISA-py backend are not supported.
