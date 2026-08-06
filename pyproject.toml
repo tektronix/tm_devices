@@ -120,7 +120,7 @@ pyroma = "^5.0"
 safety = "~3.7.0"  # TODO: Remove this version pin once the issue with safety is resolved
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
-twine = "^6.0.1"
+twine = "^7.0.0"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
@@ -163,7 +163,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.22"
+ruff = "0.16.1"
 
 [tool.pylint.basic]
 good-names = ["_"]
