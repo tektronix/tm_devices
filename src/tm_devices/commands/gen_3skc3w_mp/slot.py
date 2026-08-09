@@ -58,7 +58,7 @@ Attributes and Functions:
     - slot[Z].psu[X].source.protect.trippedi
     - slot[Z].psu[X].source.protect.trippedv
     - slot[Z].psu[X].source.rangev
-    - slot[Z].psu[X].source.slewratev
+    - slot[Z].psu[X].source.slewrate.v
     - slot[Z].psu[X].trigger.measure.Y()
     - slot[Z].psu[X].trigger.source.linearY()
     - slot[Z].psu[X].trigger.source.listY()
@@ -251,6 +251,7 @@ Attributes and Functions:
     - slot[Z].trigger.model.abort()
     - slot[Z].trigger.model.addblock.branch.always()
     - slot[Z].trigger.model.addblock.branch.counter()
+    - slot[Z].trigger.model.addblock.branch.event()
     - slot[Z].trigger.model.addblock.branch.once()
     - slot[Z].trigger.model.addblock.branch.onceexcluded()
     - slot[Z].trigger.model.addblock.configlist.next()
@@ -709,6 +710,7 @@ class SlotItemTriggerModelAddblockBranch(BaseTSPCmd):
     Properties and methods:
         - ``.always()``: The ``slot[Z].trigger.model.addblock.branch.always()`` function.
         - ``.counter()``: The ``slot[Z].trigger.model.addblock.branch.counter()`` function.
+        - ``.event()``: The ``slot[Z].trigger.model.addblock.branch.event()`` function.
         - ``.once()``: The ``slot[Z].trigger.model.addblock.branch.once()`` function.
         - ``.onceexcluded()``: The ``slot[Z].trigger.model.addblock.branch.onceexcluded()``
           function.
@@ -775,6 +777,41 @@ class SlotItemTriggerModelAddblockBranch(BaseTSPCmd):
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.counter()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    def event(
+        self, trigger_model_name: str, block_name: str, branch_to_block_name: str, event_id: str
+    ) -> None:
+        """Run the ``slot[Z].trigger.model.addblock.branch.event()`` function.
+
+        Description:
+            - This function defines a trigger model block that branches to another trigger model
+              block when an event occurs.
+
+        TSP Syntax:
+            ```
+            - slot[Z].trigger.model.addblock.branch.event()
+            ```
+
+        Args:
+            trigger_model_name: Name of the trigger model to which the block is added.
+            block_name: Name of the block to be added; an empty string is a valid block name.
+            branch_to_block_name: Name of the block to branch to when the condition is true.
+            event_id: The event that must occur before the trigger model branches to the specified
+                block; see Details.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.event("{trigger_model_name}", '
+                f'"{block_name}", '
+                f'"{branch_to_block_name}", '
+                f"{event_id})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.event()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def once(self, trigger_model_name: str, block_name: str, branch_to_block_name: str) -> None:
@@ -882,6 +919,7 @@ class SlotItemTriggerModelAddblock(BaseTSPCmd):
         Sub-properties and sub-methods:
             - ``.always()``: The ``slot[Z].trigger.model.addblock.branch.always()`` function.
             - ``.counter()``: The ``slot[Z].trigger.model.addblock.branch.counter()`` function.
+            - ``.event()``: The ``slot[Z].trigger.model.addblock.branch.event()`` function.
             - ``.once()``: The ``slot[Z].trigger.model.addblock.branch.once()`` function.
             - ``.onceexcluded()``: The ``slot[Z].trigger.model.addblock.branch.onceexcluded()``
               function.
@@ -13372,6 +13410,93 @@ class SlotItemPsuItemTrigger(BaseTSPCmd):
         return self._source
 
 
+class SlotItemPsuItemSourceSlewrate(BaseTSPCmd):
+    """The ``slot[Z].psu[X].source.slewrate`` command tree.
+
+    Info:
+        - ``Z``, the module slot number.
+        - ``X``, the module channel number.
+
+    Properties and methods:
+        - ``.v``: The ``slot[Z].psu[X].source.slewrate.v`` attribute.
+    """
+
+    @property
+    def v(self) -> str:
+        """Access the ``slot[Z].psu[X].source.slewrate.v`` attribute.
+
+        Description:
+            - This attribute configures the voltage source slew rate.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].psu[X].source.slewrate.v)``
+              query.
+            - Setting this property to a value will send the
+              ``slot[Z].psu[X].source.slewrate.v = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].psu[X].source.slewrate.v = value
+            - print(slot[Z].psu[X].source.slewrate.v)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+            - ``X``, the module channel number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".v"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.v)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.v`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @v.setter
+    def v(self, value: str | float) -> None:
+        """Access the ``slot[Z].psu[X].source.slewrate.v`` attribute.
+
+        Description:
+            - This attribute configures the voltage source slew rate.
+
+        Usage:
+            - Accessing this property will send the ``print(slot[Z].psu[X].source.slewrate.v)``
+              query.
+            - Setting this property to a value will send the
+              ``slot[Z].psu[X].source.slewrate.v = value`` command.
+
+        TSP Syntax:
+            ```
+            - slot[Z].psu[X].source.slewrate.v = value
+            - print(slot[Z].psu[X].source.slewrate.v)
+            ```
+
+        Info:
+            - ``Z``, the module slot number.
+            - ``X``, the module channel number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".v", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.v = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.v`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
 class SlotItemPsuItemSourceProtect(BaseTSPCmd):
     """The ``slot[Z].psu[X].source.protect`` command tree.
 
@@ -13750,12 +13875,13 @@ class SlotItemPsuItemSource(BaseTSPCmd):
         - ``.output``: The ``slot[Z].psu[X].source.output`` attribute.
         - ``.protect``: The ``slot[Z].psu[X].source.protect`` command tree.
         - ``.rangev``: The ``slot[Z].psu[X].source.rangev`` attribute.
-        - ``.slewratev``: The ``slot[Z].psu[X].source.slewratev`` attribute.
+        - ``.slewrate``: The ``slot[Z].psu[X].source.slewrate`` command tree.
     """
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._protect = SlotItemPsuItemSourceProtect(device, f"{self._cmd_syntax}.protect")
+        self._slewrate = SlotItemPsuItemSourceSlewrate(device, f"{self._cmd_syntax}.slewrate")
 
     @property
     def constantcurrent(self) -> str:
@@ -14154,79 +14280,17 @@ class SlotItemPsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def slewratev(self) -> str:
-        """Access the ``slot[Z].psu[X].source.slewratev`` attribute.
-
-        Description:
-            - This attribute configures the voltage source slew rate.
-
-        Usage:
-            - Accessing this property will send the ``print(slot[Z].psu[X].source.slewratev)``
-              query.
-            - Setting this property to a value will send the
-              ``slot[Z].psu[X].source.slewratev = value`` command.
-
-        TSP Syntax:
-            ```
-            - slot[Z].psu[X].source.slewratev = value
-            - print(slot[Z].psu[X].source.slewratev)
-            ```
+    def slewrate(self) -> SlotItemPsuItemSourceSlewrate:
+        """Return the ``slot[Z].psu[X].source.slewrate`` command tree.
 
         Info:
             - ``Z``, the module slot number.
             - ``X``, the module channel number.
 
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        Sub-properties and sub-methods:
+            - ``.v``: The ``slot[Z].psu[X].source.slewrate.v`` attribute.
         """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".slewratev"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.slewratev)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slewratev`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @slewratev.setter
-    def slewratev(self, value: str | float) -> None:
-        """Access the ``slot[Z].psu[X].source.slewratev`` attribute.
-
-        Description:
-            - This attribute configures the voltage source slew rate.
-
-        Usage:
-            - Accessing this property will send the ``print(slot[Z].psu[X].source.slewratev)``
-              query.
-            - Setting this property to a value will send the
-              ``slot[Z].psu[X].source.slewratev = value`` command.
-
-        TSP Syntax:
-            ```
-            - slot[Z].psu[X].source.slewratev = value
-            - print(slot[Z].psu[X].source.slewratev)
-            ```
-
-        Info:
-            - ``Z``, the module slot number.
-            - ``X``, the module channel number.
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".slewratev", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.slewratev = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slewratev`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
+        return self._slewrate
 
 
 class SlotItemPsuItemMeasureRel(BaseTSPCmd):
@@ -15868,7 +15932,7 @@ class SlotItemPsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             - ``.output``: The ``slot[Z].psu[X].source.output`` attribute.
             - ``.protect``: The ``slot[Z].psu[X].source.protect`` command tree.
             - ``.rangev``: The ``slot[Z].psu[X].source.rangev`` attribute.
-            - ``.slewratev``: The ``slot[Z].psu[X].source.slewratev`` attribute.
+            - ``.slewrate``: The ``slot[Z].psu[X].source.slewrate`` command tree.
         """
         return self._source
 

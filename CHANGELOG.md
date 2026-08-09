@@ -26,6 +26,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the changelog to pass `pre-commit` checks.
+- Fixed `psu[X].source.slewrate.v` command handling and regenerated APIs to reflect the corrected command definition.
 
 ---
 
