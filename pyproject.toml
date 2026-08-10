@@ -114,8 +114,8 @@ poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "4.0.5"
-pyright = {extras = ["nodejs"], version = "1.1.409"}
+pylint = "4.0.6"
+pyright = {extras = ["nodejs"], version = "1.1.411"}
 pyroma = "^5.0"
 safety = "~3.7.0"  # TODO: Remove this version pin once the issue with safety is resolved
 tox = "^4.0"
@@ -145,7 +145,7 @@ nodeenv = "^1.9.1"
 packaging = ">=24.0"
 pydantic = "^2.12.5"
 pygments = "^2.17.2"
-pymdown-extensions = "^10.8.1"
+pymdown-extensions = "^11.0.1"
 requests = "^2.31.0"
 symspellpy = "^6.7.7"
 tomli = "^2.0.1"
@@ -163,7 +163,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.13"
+ruff = "0.15.22"
 
 [tool.pylint.basic]
 good-names = ["_"]
