@@ -408,6 +408,16 @@ def test_invalid_config_creation(
         DMConfigParser()
 
 
+def test_invalid_log_response_max_characters() -> None:
+    """Test that a negative log_response_max_characters is rejected."""
+    with pytest.raises(ValueError, match="log_response_max_characters"):
+        DMConfigOptions(log_response_max_characters=-1)
+    # A value of zero and positive values are valid.
+    for valid_value in (0, 1000):
+        options = DMConfigOptions(log_response_max_characters=valid_value)
+        assert options.log_response_max_characters == valid_value
+
+
 def test_invalid_config_creation_from_file() -> None:
     """Test loading a config file with an invalid option."""
     with mock.patch.dict(

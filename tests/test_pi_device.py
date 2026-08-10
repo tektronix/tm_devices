@@ -8,6 +8,7 @@ import pytest
 import pyvisa as visa
 
 from tm_devices import DeviceManager
+from tm_devices.helpers.logging import RESPONSE_LOG_TRUNCATION_MARKER
 
 if TYPE_CHECKING:
     from tm_devices.drivers import MSO2
@@ -158,3 +159,31 @@ def test_pi_control(  # noqa: PLR0915
         scope.poll_query(
             1, ":DISPLAY:WAVEVIEW:CH1:STATE?", 9.9e37, sleep_time=0, invalid_values=[9.9e37]
         )
+
+
+def test_query_response_log_truncation(
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Test truncation of logged query responses via the per-command argument.
+
+    Args:
+        device_manager: The DeviceManager object.
+        capsys: The captured stdout and stderr.
+    """
+    scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME")
+    full_response = "TEKTRONIX,MSO22,200201,CF:91.1CT FV:1.41.55.993"
+    # Flush any output produced while connecting to and identifying the scope.
+    _ = capsys.readouterr()
+
+    # A per-command length truncates the logged response for this call only.
+    assert scope.query("*IDN?", log_response_max_characters=5) == full_response
+    truncated_stdout = capsys.readouterr().out
+    assert RESPONSE_LOG_TRUNCATION_MARKER in truncated_stdout
+    assert full_response not in truncated_stdout
+
+    # Without the argument (and no global limit configured) the full response is logged.
+    assert scope.query("*IDN?") == full_response
+    full_stdout = capsys.readouterr().out
+    assert RESPONSE_LOG_TRUNCATION_MARKER not in full_stdout
+    assert full_response in full_stdout

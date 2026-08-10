@@ -39,6 +39,9 @@ from tm_devices.helpers import (
     get_visa_backend,
     PYVISA_PY_BACKEND,
     raise_failure,
+    response_log_extra,
+    UNSET,
+    UnsetType,
     verify_values,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -328,6 +331,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         verbose: bool = True,
         remove_quotes: bool = False,
         allow_empty: bool = False,
+        log_response_max_characters: int | None | UnsetType = UNSET,
     ) -> str:
         """Send a query to the device and return the result.
 
@@ -336,6 +340,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             verbose: Set this to False in order to disable printouts.
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             allow_empty: Set this to True if an empty return string is permitted.
+            log_response_max_characters: The maximum number of characters of the response to log
+                for this query, overriding the global config option. Defaults to
+                [`UNSET`][tm_devices.helpers.logging.UNSET], which applies the global value. Set
+                this to None to log the full response even when a global limit is configured.
 
         Returns:
             The results of the query.
@@ -369,6 +377,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             "Response from %r >>  %r",
             query,
             response,
+            extra=response_log_extra(log_response_max_characters),
         )
 
         if not allow_empty and not response:
@@ -379,7 +388,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         return response
 
-    def query_binary(  # noqa: PLR0913
+    def query_binary(  # noqa: PLR0913  # pylint: disable=too-many-locals
         self,
         query: str,
         verbose: bool = True,
@@ -391,6 +400,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         expect_termination: bool = True,
         data_points: int = 0,
         chunk_size: int | None = None,
+        log_response_max_characters: int | None | UnsetType = UNSET,
     ) -> T:
         """Send a query to the device and return the binary values.
 
@@ -412,6 +422,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                  number of bytes based on the datatype. Defaults to 0.
             chunk_size: Size of the chunks to read from the device. Using larger chunks may
                 be faster for large amount of data.
+            log_response_max_characters: The maximum number of characters of the response to log
+                for this query, overriding the global config option. Defaults to
+                [`UNSET`][tm_devices.helpers.logging.UNSET], which applies the global value. Set
+                this to None to log the full response even when a global limit is configured.
 
         Returns:
             The results of the query.
@@ -453,6 +467,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             "Response from %r >>  %r",
             query,
             response,
+            extra=response_log_extra(log_response_max_characters),
         )
 
         if not response:
@@ -548,12 +563,21 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         return query_passed
 
-    def query_raw_binary(self, query: str, verbose: bool = True) -> bytes:
+    def query_raw_binary(
+        self,
+        query: str,
+        verbose: bool = True,
+        log_response_max_characters: int | None | UnsetType = UNSET,
+    ) -> bytes:
         """Send a command to the device and then read and return the raw binary values.
 
         Args:
             query: The query to send to the device.
             verbose: Set this to False in order to disable printouts.
+            log_response_max_characters: The maximum number of characters of the response to log
+                for this query, overriding the global config option. Defaults to
+                [`UNSET`][tm_devices.helpers.logging.UNSET], which applies the global value. Set
+                this to None to log the full response even when a global limit is configured.
 
         Returns:
             The raw results of the query.
@@ -586,6 +610,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             "Response from %r >>  %r",
             query,
             response,
+            extra=response_log_extra(log_response_max_characters),
         )
 
         if not response.strip():

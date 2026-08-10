@@ -792,6 +792,27 @@ class DMConfigOptions(AsDictionaryMixin):
     Defaults to True. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
     """
+    log_response_max_characters: Annotated[
+        Optional[int],
+        SchemaAnnotation(
+            description=(
+                "Set the maximum number of characters to log for a command response\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_response_max_characters"
+            ),
+        ),
+    ] = None
+    """The maximum number of characters to log for a command response.
+
+    When set to a non-negative integer, any command response longer than this number of
+    characters will be truncated in the logs, with a marker appended to indicate that
+    truncation occurred. This applies to all logged responses (e.g. from
+    [`query()`][tm_devices.driver_mixins.device_control.pi_control.PIControl.query]), which is
+    useful when querying large amounts of data such as an oscilloscope's waveform via ``CURVe?``.
+
+    Defaults to None, which disables truncation and logs the full response. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
+    information.
+    """
 
     def __post_init__(self) -> None:
         """Validate data after creation.
@@ -809,6 +830,12 @@ class DMConfigOptions(AsDictionaryMixin):
                     f"Valid values are {LoggingLevels.list_values()}"
                 )
                 raise ValueError(msg) from error
+        if self.log_response_max_characters is not None and self.log_response_max_characters < 0:
+            msg = (
+                f"Invalid value for log_response_max_characters: "
+                f"{self.log_response_max_characters}. Value must be a non-negative integer."
+            )
+            raise ValueError(msg)
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""
