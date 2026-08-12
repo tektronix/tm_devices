@@ -1379,6 +1379,10 @@ class DeviceManager(metaclass=Singleton):
             warnings.warn(msg, stacklevel=1)
             _logger.warning(msg)
 
+        old_timeout = visa_resource.timeout
+        # 2 second timeout to read should be good
+        visa_resource.timeout = 2000
+
         if login_command:
             visa_resource.write(login_command)
             # Read any success message that might be in the buffer from the login command
@@ -1388,9 +1392,6 @@ class DeviceManager(metaclass=Singleton):
         visa_resource.write("*IDN?")
         idn_response = ""
         error_msg = None
-        old_timeout = visa_resource.timeout
-        # 2 second timeout to read should be good
-        visa_resource.timeout = 2000
         try:
             msg_string = visa_resource.read().strip()
             # IDN should be a 4 fields separated by 3 commas, also double check string is consistent
