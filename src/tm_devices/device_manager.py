@@ -1384,7 +1384,10 @@ class DeviceManager(metaclass=Singleton):
         visa_resource.timeout = 2000
 
         if login_command:
-            visa_resource.write(login_command)
+            # Prevent password exposure
+            _logger.info("Logging in to device")
+            with disable_all_loggers():
+                visa_resource.write(login_command)
             # Read any success message that might be in the buffer from the login command
             with contextlib.suppress(visa.VisaIOError):
                 visa_resource.read()
