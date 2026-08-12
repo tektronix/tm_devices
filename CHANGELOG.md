@@ -53,8 +53,6 @@ Things to be included in the next release go here.
     can receive login commands before the initial `*IDN?` query.
 - Added support for a per-device `logout_command` config entry to send a logout command during
     teardown before closing the connection.
-- Added `Device.login_command` and `Device.logout_command` properties for accessing configured
-    instrument login and logout commands in tests and scripts.
 
 ### Fixed
 
