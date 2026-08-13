@@ -79,7 +79,7 @@ class AWG5200(AWG5200Mixin, AWG):
         """
         self._load_waveform_or_set(waveform_set_file=waveform_set_file, waveform_name=waveform_name)
 
-    def generate_function(  # noqa: PLR0913
+    def generate_function(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAWG,
@@ -122,7 +122,7 @@ class AWG5200(AWG5200Mixin, AWG):
             symmetry=symmetry,
         )
 
-    def generate_waveform(  # noqa: PLR0913
+    def generate_waveform(  # noqa: PLR0913,PLR0917
         self,
         needed_sample_rate: float,
         waveform_name: str,

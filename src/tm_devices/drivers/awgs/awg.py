@@ -108,7 +108,7 @@ class AWG(
         self.write(f'MMEMory:IMPort "{wfm_name}", {waveform_file_path}, {wfm_type}')
         self._ieee_cmds.opc()
 
-    def generate_function(  # noqa: PLR0913
+    def generate_function(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAWG,
@@ -151,7 +151,7 @@ class AWG(
             symmetry=symmetry,
         )
 
-    def generate_waveform(  # noqa: PLR0913
+    def generate_waveform(  # noqa: PLR0913,PLR0917
         self,
         needed_sample_rate: float,
         waveform_name: str,
@@ -192,7 +192,7 @@ class AWG(
         self.write("AWGCONTROL:RUN")
         self.expect_esr(0)
 
-    def setup_burst(  # noqa: PLR0913
+    def setup_burst(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAWG,

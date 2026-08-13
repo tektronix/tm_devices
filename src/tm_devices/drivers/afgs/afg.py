@@ -79,7 +79,7 @@ class AFG(
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def generate_function(  # noqa: PLR0913
+    def generate_function(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAFG,
@@ -143,7 +143,7 @@ class AFG(
             # Check for system errors
             self.expect_esr(0)
 
-    def setup_burst(  # noqa: PLR0913
+    def setup_burst(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAFG,
@@ -286,7 +286,7 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         """
         self._afg.write(f"{self.name}:PHASE:INITIATE")
 
-    def set_function_properties(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def set_function_properties(  # noqa: PLR0913,PLR0917  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAFG,
