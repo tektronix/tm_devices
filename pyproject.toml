@@ -114,13 +114,13 @@ poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "4.0.6"
+pylint = "4.0.7"
 pyright = {extras = ["nodejs"], version = "1.1.411"}
 pyroma = "^5.0"
 safety = "~3.7.0"  # TODO: Remove this version pin once the issue with safety is resolved
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
-twine = "^6.0.1"
+twine = "^7.0.0"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
@@ -163,7 +163,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.15.22"
+ruff = "0.16.2"
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -327,6 +327,7 @@ flake8-quotes = {docstring-quotes = "double"}
 ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
   "COM812",  # Trailing comma missing (allowed in this package)
+  "CPY001",  # Missing copyright notice at top of file (allowed in this package)
   "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
   "FBT",  # flake8-boolean-trap (allowed in this package)
   "FIX002",  # Line contains TO DO (allowed in this package)
@@ -372,6 +373,7 @@ order-by-type = false
   "D104",  # Missing docstring in public package
   "D107",  # Missing docstring in `__init__`
   "ERA001",  # Found commented-out code
+  "PLR0917",  # Too many positional arguments
   "S105",  # Possible hardcoded password
   "TID252",  # Relative imports from parent modules are banned
 ]

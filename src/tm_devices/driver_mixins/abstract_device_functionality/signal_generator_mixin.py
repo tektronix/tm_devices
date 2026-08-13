@@ -82,7 +82,7 @@ class SignalGeneratorMixin(
         """The constants defining what functions and memory sizes are allowed for the device."""
 
     @abstractmethod
-    def generate_function(  # noqa: PLR0913
+    def generate_function(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: _SignalGeneratorFunctionsTypeVar,
@@ -112,7 +112,7 @@ class SignalGeneratorMixin(
         raise NotImplementedError
 
     @abstractmethod
-    def setup_burst(  # noqa: PLR0913
+    def setup_burst(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: _SignalGeneratorFunctionsTypeVar,

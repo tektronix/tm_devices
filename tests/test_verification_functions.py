@@ -38,8 +38,10 @@ def test_verify_values_pass() -> None:
             0.05,
             False,
             False,
-            "does not match the expected result within a tolerance of 0.05, "
-            "range: [0.05, 0.15], expect: 0.1, actual: 0.2  <-- ABOVE range",
+            (
+                "does not match the expected result within a tolerance of 0.05, "
+                "range: [0.05, 0.15], expect: 0.1, actual: 0.2  <-- ABOVE range"
+            ),
         ),
         (
             0.1,
@@ -47,8 +49,10 @@ def test_verify_values_pass() -> None:
             0.1,
             False,
             True,
-            "matches the expected result within a tolerance of 0.1, "
-            "range: [0.0, 0.2], expect: 0.1, actual: 0.2  <-- INSIDE range",
+            (
+                "matches the expected result within a tolerance of 0.1, "
+                "range: [0.0, 0.2], expect: 0.1, actual: 0.2  <-- INSIDE range"
+            ),
         ),
         (
             0.1,
@@ -73,8 +77,10 @@ def test_verify_values_pass() -> None:
             5,
             True,
             False,
-            "does not match the expected result within a tolerance of 0.005, "
-            "range: [0.095, 0.105], expect: 0.1, actual: 0.05  <-- BELOW range",
+            (
+                "does not match the expected result within a tolerance of 0.005, "
+                "range: [0.095, 0.105], expect: 0.1, actual: 0.05  <-- BELOW range"
+            ),
         ),
         (
             "0.1",
@@ -82,8 +88,10 @@ def test_verify_values_pass() -> None:
             0.01,
             False,
             True,
-            "matches the expected result within a tolerance of 0.01, "
-            "range: [0.09, 0.11], expect: 0.1, actual: 0.1  <-- INSIDE range",
+            (
+                "matches the expected result within a tolerance of 0.01, "
+                "range: [0.09, 0.11], expect: 0.1, actual: 0.1  <-- INSIDE range"
+            ),
         ),
         (
             "0.1",
