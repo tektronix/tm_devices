@@ -24,7 +24,7 @@ updates:
     directory: /
     multi-ecosystem-group: python-and-pre-commit
     versioning-strategy: increase-if-necessary
-#    exclude-paths: [docs/**, tests/**]  # re-exclude these paths if issues arise
+    exclude-paths: [docs/**, tests/**]
     patterns: ['*']
     labels: [python, dependencies]
   - package-ecosystem: pre-commit
