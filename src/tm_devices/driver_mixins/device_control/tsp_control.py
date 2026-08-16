@@ -15,6 +15,8 @@ from tm_devices.helpers import verify_values
 if TYPE_CHECKING:
     import os
 
+    from collections.abc import Generator
+
     import pyvisa as visa
 
     from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
@@ -33,6 +35,10 @@ class TSPControl(PIControl, ABC):
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
+
+    # TSP devices require a write termination character to be sent at least once every
+    # this many characters, or the instrument's receive buffer overruns. See #500.
+    _MAX_TSP_SCRIPT_WRITE_LENGTH = 1000
 
     def __init__(
         self,
@@ -180,8 +186,16 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Load the script. This is sent as multiple writes, each no longer than
+        # _MAX_TSP_SCRIPT_WRITE_LENGTH characters, since TSP devices require a write
+        # termination character to be sent at least that often or a communication
+        # overrun occurs on the instrument (see #500). A single long line (e.g. one very
+        # long print() statement) is split the same way as a long multi-line script; the
+        # instrument accumulates raw bytes across writes while in script-load mode, so
+        # this does not require splitting on line boundaries.
+        full_script = f"loadscript {script_name}\n{script_body}\nendscript"
+        for chunk in self._chunk_string(full_script, self._MAX_TSP_SCRIPT_WRITE_LENGTH):
+            self.write(chunk)
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
@@ -280,6 +294,21 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+    @staticmethod
+    def _chunk_string(value: str, max_length: int) -> Generator[str, None, None]:
+        """Yield successive chunks of ``value`` that are no longer than ``max_length``.
+
+        Args:
+            value: The string to split into chunks.
+            max_length: The maximum number of characters allowed in a single chunk.
+
+        Yields:
+            Chunks of ``value``, each at most ``max_length`` characters long. Concatenating
+            all yielded chunks in order reproduces ``value`` exactly.
+        """
+        for start in range(0, len(value), max_length):
+            yield value[start : start + max_length]
+
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""
         super()._cleanup()
