@@ -18,6 +18,33 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.7.0 (2026-08-18)
+
+### Merged Pull Requests
+
+- chore(deps): Ensure docs and tests requirements files are always up to date ([#622](https://github.com/tektronix/tm_devices/pull/622))
+- docs: Change the indexing for documentation builds to attempt to fix readthedocs builds ([#621](https://github.com/tektronix/tm_devices/pull/621))
+- chore(deps): Bump the "python-and-pre-commit" group with 2 updates across multiple ecosystems ([#605](https://github.com/tektronix/tm_devices/pull/605))
+- fix(psu): correct psu[X].source.slewrate.v command handling and regenerate APIs ([#612](https://github.com/tektronix/tm_devices/pull/612))
+- chore(deps-dev): Update ruff requirement ([#610](https://github.com/tektronix/tm_devices/pull/610))
+- feat: support base logger configuration ([#596](https://github.com/tektronix/tm_devices/pull/596))
+- fix: add model-specific AFG31K USB IDs ([#598](https://github.com/tektronix/tm_devices/pull/598))
+- gh-actions(deps): bump the gh-actions-dependencies group across 1 directory with 12 updates ([#595](https://github.com/tektronix/tm_devices/pull/595))
+- chore(deps): bump the python-and-pre-commit group across 1 directory with 7 updates ([#588](https://github.com/tektronix/tm_devices/pull/588))
+- chore(deps): update dependabot configuration to standardize commit message prefixes ([#585](https://github.com/tektronix/tm_devices/pull/585))
+- chore(deps): remove versioning strategy for pre-commit dependencies since it isn't supported ([#584](https://github.com/tektronix/tm_devices/pull/584))
+- chore(deps): configure multi-ecosystem updates for Python and pre-commit dependencies ([#583](https://github.com/tektronix/tm_devices/pull/583))
+- python-deps(deps): bump the python-dependencies group with 11 updates ([#582](https://github.com/tektronix/tm_devices/pull/582))
+- gh-actions(deps): bump the gh-actions-dependencies group with 13 updates ([#579](https://github.com/tektronix/tm_devices/pull/579))
+- python-deps(deps): bump the python-dependencies group with 9 updates ([#580](https://github.com/tektronix/tm_devices/pull/580))
+- gh-actions(deps): bump the gh-actions-dependencies group with 12 updates ([#577](https://github.com/tektronix/tm_devices/pull/577))
+- python-deps(deps): bump the python-dependencies group with 2 updates ([#578](https://github.com/tektronix/tm_devices/pull/578))
+- python-deps(deps): bump the python-dependencies group with 12 updates ([#576](https://github.com/tektronix/tm_devices/pull/576))
+- python-deps(deps): bump the python-dependencies group with 6 updates ([#575](https://github.com/tektronix/tm_devices/pull/575))
+- docs: Update CHANGELOG formatting to comply with pre-commit checks ([#574](https://github.com/tektronix/tm_devices/pull/574))
+
 ### Added
 
 - Added support for configuring `tm_devices` logging from an existing base logger.
