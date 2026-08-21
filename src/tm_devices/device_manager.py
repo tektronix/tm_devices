@@ -1385,7 +1385,7 @@ class DeviceManager(metaclass=Singleton):
 
         if login_command:
             # Prevent password exposure
-            _logger.info("Logging in to device")
+            _logger.info("Logging in to device %s", visa_resource.resource_info.resource_name)
             with disable_all_loggers():
                 visa_resource.write(login_command)
             # Read any success message that might be in the buffer from the login command
