@@ -49,6 +49,10 @@ Things to be included in the next release go here.
 
 - Added support for configuring `tm_devices` logging from an existing base logger.
 - Added model-specific AFG31K USBTMC mappings for all AFG31K models.
+- Added support for a per-device `login_command` config entry so password-protected instruments
+    can receive login commands before the initial `*IDN?` query.
+- Added support for a per-device `logout_command` config entry to send a logout command during
+    teardown before closing the connection.
 
 ### Fixed
 

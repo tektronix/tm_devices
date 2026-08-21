@@ -165,6 +165,8 @@ def test_smu(  # noqa: PLR0915
     ieee_cmds={smu.ieee_cmds!r}
     ip_address=''
     is_open=True
+    login_command=None
+    logout_command=None
     manufacturer='Keithley Instruments Inc.'
     model='Model 2601B'
     name='SMU {smu.device_number}'
