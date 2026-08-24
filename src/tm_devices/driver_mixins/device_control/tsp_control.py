@@ -37,7 +37,7 @@ class TSPControl(PIControl, ABC):
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
 
     # TSP devices require a write termination character to be sent at least once every
-    # this many characters, or the instrument's receive buffer overruns. See #500.
+    # this many characters, or the instrument's receive buffer overruns.
     _MAX_TSP_SCRIPT_WRITE_LENGTH = 1000
 
     def __init__(
@@ -189,7 +189,7 @@ class TSPControl(PIControl, ABC):
         # Load the script. This is sent as multiple writes, each no longer than
         # _MAX_TSP_SCRIPT_WRITE_LENGTH characters, since TSP devices require a write
         # termination character to be sent at least that often or a communication
-        # overrun occurs on the instrument (see #500). A single long line (e.g. one very
+        # overrun occurs on the instrument. A single long line (e.g. one very
         # long print() statement) is split the same way as a long multi-line script; the
         # instrument accumulates raw bytes across writes while in script-load mode, so
         # this does not require splitting on line boundaries.
