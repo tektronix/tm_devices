@@ -104,7 +104,7 @@ classifiers = [
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",
 ]
-version = "3.6.1"
+version = "3.7.0"
 
 [tool.poetry.group.dev.dependencies]
 nodeenv = "^1.9.1"
@@ -124,7 +124,7 @@ twine = "^7.0.0"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
-wheel = "^0.47.0"
+wheel = "^0.48.0"
 
 [tool.poetry.group.docs.dependencies]
 black = "^26.1.0"
@@ -163,7 +163,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.16.2"
+ruff = "0.16.3"
 
 [tool.pylint.basic]
 good-names = ["_"]
