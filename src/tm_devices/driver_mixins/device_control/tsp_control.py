@@ -21,6 +21,7 @@ if TYPE_CHECKING:
 
 
 _logger: logging.Logger = logging.getLogger(__name__)
+_SCRIPT_LINE_CHARACTER_LIMIT = 1000
 
 
 class TSPControl(PIControl, ABC):
@@ -176,6 +177,17 @@ class TSPControl(PIControl, ABC):
         if file_path is not None:
             # script_body argument is overwritten by file contents
             script_body = Path(file_path).read_text(encoding="utf-8").strip()
+
+        write_termination = self.visa_resource.write_termination or "\n"
+        if any(
+            len(segment) > _SCRIPT_LINE_CHARACTER_LIMIT
+            for segment in script_body.split(write_termination)
+        ):
+            msg = (
+                "The script body must contain a write termination within every "
+                f"{_SCRIPT_LINE_CHARACTER_LIMIT} characters."
+            )
+            raise ValueError(msg)
 
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")

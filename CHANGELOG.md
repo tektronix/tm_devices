@@ -52,6 +52,7 @@ Things to be included in the next release go here.
 
 ### Fixed
 
+- Fixed TSP script loading to reject lines that exceed the device's 1000-character write limit.
 - Updated the changelog to pass `pre-commit` checks.
 - Fixed `psu[X].source.slewrate.v` command handling and regenerated APIs to reflect the corrected command definition.
 
