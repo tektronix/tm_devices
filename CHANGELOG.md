@@ -16,7 +16,7 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+- Fixed `TSPControl.load_script()` sending script content as a single unbounded write, which could exceed the instrument's max write length before a write termination and cause a communication overrun; content is now sent in bounded chunks.
 
 ### Added
 
@@ -25,7 +25,6 @@ Things to be included in the next release go here.
 
 ### Fixed
 
-- Fixed `TSPControl.load_script()` sending script content as a single unbounded write, which could exceed the instrument's max write length before a write termination and cause a communication overrun; content is now sent in bounded chunks.
 - Updated the changelog to pass `pre-commit` checks.
 - Fixed `psu[X].source.slewrate.v` command handling and regenerated APIs to reflect the corrected command definition.
 
