@@ -291,6 +291,10 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
     stdout = capsys.readouterr().out
     assert 'smu.source.sweeplinear("SolarCell", 0, 0.53, 56, 0.1)' in stdout
 
+    smu.commands.trigger.model.load_empty()
+    stdout = capsys.readouterr().out
+    assert 'trigger.model.load("Empty")' in stdout
+
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
     with (

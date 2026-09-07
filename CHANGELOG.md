@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed `trigger.model.load_empty()` to pass `"Empty"` parameter to `trigger.model.load()` on TSP devices ([#618](https://github.com/tektronix/tm_devices/issues/618)).
+
 ---
 
 ## v3.7.0 (2026-08-18)
