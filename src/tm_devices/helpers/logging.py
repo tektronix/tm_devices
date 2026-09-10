@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import contextlib
 import importlib.metadata
 import inspect
 import logging
@@ -242,27 +243,59 @@ def configure_logging(  # noqa: PLR0913
 
 def __exception_handler(
     exc_type: type[BaseException], exc_value: BaseException, exc_traceback: TracebackType
-) -> None:  # pragma: no cover
+) -> None:
     """Log uncaught exceptions."""
-    additional_message_for_file = (
-        f"\n\nAn uncaught exception occurred. If the exception was explicitly raised by "
-        f"the {PACKAGE_NAME} package, look for the most recent previous ERROR log entry "
-        f"above to see the specific timestamp of the exception. Otherwise, use the "
-        f"traceback to debug the issue."
-    )
-    updated_message = __log_message_to_console_and_traceback_to_file(
-        exc_value.args[0] if exc_value.args else exc_value.__class__.__name__,
-        message_for_console="UNCAUGHT EXCEPTION!!!",
-        additional_message_for_file=additional_message_for_file,
-        exc_info=(exc_type, exc_value, exc_traceback),
-    )
+    # A sys.excepthook implementation must never raise. When it does, Python discards the
+    # exception it was called to report and prints an unhelpful "Error in sys.excepthook" message
+    # instead, which means the original exception is lost. Logging to the file/console can fail
+    # for reasons outside of this package's control (e.g. the handler streams are already closed
+    # during interpreter shutdown), so all of that work is best-effort and the original hook is
+    # always called exactly once from a finally block.
+    try:
+        additional_message_for_file = (
+            f"\n\nAn uncaught exception occurred. If the exception was explicitly raised by "
+            f"the {PACKAGE_NAME} package, look for the most recent previous ERROR log entry "
+            f"above to see the specific timestamp of the exception. Otherwise, use the "
+            f"traceback to debug the issue."
+        )
+        # The first argument is only the exception's message when it is actually a string. The
+        # entire OSError family stores a numeric errno there instead, in which case rendering the
+        # exception provides the useful message (e.g. "[Errno 10054] connection reset").
+        if first_arg_is_message := bool(exc_value.args) and isinstance(exc_value.args[0], str):
+            original_message: str = exc_value.args[0]
+        else:
+            original_message = str(exc_value) or exc_value.__class__.__name__
+        updated_message = __log_message_to_console_and_traceback_to_file(
+            original_message,
+            message_for_console="UNCAUGHT EXCEPTION!!!",
+            additional_message_for_file=additional_message_for_file,
+            exc_info=(exc_type, exc_value, exc_traceback),
+        )
 
-    # Remove the original cause if it exists to make the traceback in the console shorter.
-    exc_value.__cause__ = None
-    # Update the message to include the log file location where the complete traceback is located.
-    if exc_value.args:
-        exc_value.args = (updated_message, *exc_value.args[1:])
-    _ORIGINAL_SYS_EXCEPTHOOK(exc_type, exc_value, exc_traceback)
+        # Remove the original cause if it exists to make the traceback in the console shorter.
+        exc_value.__cause__ = None
+        # Update the message to include the log file location where the complete traceback is
+        # located. Rewriting the arguments is only safe when the first argument is the message,
+        # since exceptions like OSError build their message from other attributes and can hold
+        # structured data in their arguments.
+        if first_arg_is_message:
+            exc_value.args = (updated_message, *exc_value.args[1:])
+        else:
+            # Attaching the location as a note leaves the arguments untouched, Python appends
+            # notes to the printed traceback. Notes require Python 3.11 or newer, on older
+            # versions the location is only available in the log file itself.
+            logfile_hint = updated_message.removeprefix(original_message).strip()
+            with contextlib.suppress(AttributeError):
+                exc_value.add_note(logfile_hint)  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+    except Exception:  # noqa: BLE001
+        # Printing the secondary failure is also best-effort, since sys.stderr may be None.
+        with contextlib.suppress(Exception):
+            traceback.print_exc(file=sys.stderr)
+    finally:
+        # A finally block is used so that a BaseException which is not an Exception, such as a
+        # KeyboardInterrupt arriving while the log file is being written, cannot stop the original
+        # exception from being reported before it propagates.
+        _ORIGINAL_SYS_EXCEPTHOOK(exc_type, exc_value, exc_traceback)
 
 
 def __log_to_specific_handler_type_only(

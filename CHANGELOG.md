@@ -18,6 +18,11 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed uncaught exceptions whose first argument is not a string, such as the `OSError` family, being replaced by an `Error in sys.excepthook:` message that hid the original exception and its traceback. The log file location is now attached to these exceptions as a note (Python 3.11 and newer) rather than by rewriting their arguments.
+- Fixed a failure while logging an uncaught exception, which can happen when the log handlers are already closed during interpreter shutdown, preventing that exception from being reported at all.
+
 ---
 
 ## v3.7.0 (2026-08-18)
