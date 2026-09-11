@@ -28,7 +28,7 @@ class ParameterBounds(NamedTuple):
     upper: float
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ExtendedSourceDeviceConstants:
     """Class to hold source device constants."""
 
@@ -41,7 +41,7 @@ class ExtendedSourceDeviceConstants:
     ramp_symmetry_range: ParameterBounds | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class SourceDeviceConstants:
     """Class to hold source device constants."""
 

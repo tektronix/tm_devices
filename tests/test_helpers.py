@@ -18,6 +18,18 @@ from packaging.version import InvalidVersion, Version
 from requests import Response
 
 from conftest import SIMULATED_VISA_LIB
+from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
+    ExtendedSourceDeviceConstants,
+    ParameterBounds,
+    SourceDeviceConstants,
+)
+from tm_devices.drivers.afgs.afg import AFGSourceDeviceConstants
+from tm_devices.drivers.awgs.awg import AWGSourceDeviceConstants
+from tm_devices.drivers.scopes.tekscope.tekscope import (
+    TekProbeData,
+    TekScopeChannel,
+    TekScopeSourceDeviceConstants,
+)
 from tm_devices.helpers import (
     check_for_update,
     check_network_connection,
@@ -28,15 +40,20 @@ from tm_devices.helpers import (
     detect_visa_resource_expression,
     DeviceConfigEntry,
     DeviceTypes,
+    DMConfigOptions,
     get_model_series,
     get_version,
     get_visa_backend,
     ping_address,
     sanitize_enum,
+    SerialConfig,
     SupportedModels,
+    USBTMCConfiguration,
     VALID_DEVICE_CONNECTION_TYPES,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+from tm_devices.helpers.constants_and_dataclasses import TMDevicesConfigFileSchema
+from tm_devices.helpers.enums import SignalGeneratorFunctionBase
 
 MODEL_SERIES_LIST = SupportedModels.list_values()
 
@@ -485,3 +502,112 @@ def test_read_only_cached_property() -> None:
     del instance.c
     assert instance.c != val_1
     assert instance.counter == 2
+
+
+def test_dataclasses_enforce_keyword_only_arguments() -> None:
+    """Verify that dataclasses enforce keyword-only arguments."""
+    bounds = ParameterBounds(lower=0.0, upper=1.0)
+    probe = TekProbeData(probetype="ANALOG")
+
+    # Positional arguments must raise TypeError
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = USBTMCConfiguration("0x1234", "0x5678")  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = SerialConfig(9600)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = DeviceConfigEntry(DeviceTypes.SCOPE, "192.168.1.1")  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = DMConfigOptions(True)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = TMDevicesConfigFileSchema([])  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = SourceDeviceConstants(1, 2, 3, SignalGeneratorFunctionBase)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = ExtendedSourceDeviceConstants(bounds, bounds, bounds, bounds)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = AFGSourceDeviceConstants(1, 2, 3)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = AWGSourceDeviceConstants(1, 2, 3)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = TekScopeSourceDeviceConstants(1, 2, 3)  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = TekProbeData("ANALOG")  # type: ignore[misc]
+
+    with pytest.raises(TypeError, match="positional argument"):
+        # pyright: ignore[reportCallIssue]
+        _ = TekScopeChannel("CH1", probe)  # type: ignore[misc]
+
+    # Keyword arguments must succeed
+    assert USBTMCConfiguration(vendor_id="0x1234", model_id="0x5678").vendor_id == "0x1234"
+    assert SerialConfig(baud_rate=9600).baud_rate == 9600
+    assert (
+        DeviceConfigEntry(device_type=DeviceTypes.SCOPE, address="192.168.1.1").address
+        == "192.168.1.1"
+    )
+    assert DMConfigOptions(standalone=True).standalone is True
+    assert TMDevicesConfigFileSchema(devices=[]).devices == []
+    assert (
+        SourceDeviceConstants(
+            memory_page_size=1,
+            memory_max_record_length=2,
+            memory_min_record_length=3,
+            functions=SignalGeneratorFunctionBase,
+        ).memory_page_size
+        == 1
+    )
+    assert (
+        ExtendedSourceDeviceConstants(
+            amplitude_range=bounds,
+            offset_range=bounds,
+            frequency_range=bounds,
+            sample_rate_range=bounds,
+        ).amplitude_range
+        == bounds
+    )
+    assert (
+        AFGSourceDeviceConstants(
+            memory_page_size=1,
+            memory_max_record_length=2,
+            memory_min_record_length=3,
+        ).memory_page_size
+        == 1
+    )
+    assert (
+        AWGSourceDeviceConstants(
+            memory_page_size=1,
+            memory_max_record_length=2,
+            memory_min_record_length=3,
+        ).memory_page_size
+        == 1
+    )
+    assert (
+        TekScopeSourceDeviceConstants(
+            memory_page_size=1,
+            memory_max_record_length=2,
+            memory_min_record_length=3,
+        ).memory_page_size
+        == 1
+    )
+    assert TekProbeData(probetype="ANALOG").probetype == "ANALOG"
+    assert TekScopeChannel(name="CH1", probe=probe).name == "CH1"
