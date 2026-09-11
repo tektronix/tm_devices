@@ -291,9 +291,9 @@ def test_afg3k_gen_waveform(  # pylint: disable=too-many-locals
     afg3kc = device_manager.add_afg(
         "afg3252c-hostname", alias="afg3kc", connection_type="SOCKET", port=10001
     )
-    # Turn burst off on all channels to initiate a phase sync in generate_function
+    # Turn burst on on all channels to verify generate_function disables it to initiate a phase sync
     for source_channel in afg3kc.source_channel.values():
-        source_channel.set_burst_state(0)
+        source_channel.set_burst_state(1)
     afg3kc.generate_function(25e6, afg3kc.source_device_constants.functions.PULSE, 1.0, 0.0, "all")
     stdout = capsys.readouterr().out
     assert "SOURCE1:PHASE:INITIATE" in stdout
@@ -360,6 +360,7 @@ def test_afg3k_gen_waveform(  # pylint: disable=too-many-locals
     )
     pulse_dcycle = afg3kc.query("SOURCE1:PULSE:DCYCLE?")
     assert float(pulse_dcycle) == 50
+    assert int(afg3kc.query("SOURCE1:BURST:STATE?")) == 0
 
     assert afg3kc.expect_esr(0)
     assert afg3kc.get_errors() == (0, ('0,"No error"',))
