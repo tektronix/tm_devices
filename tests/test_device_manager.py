@@ -180,6 +180,34 @@ options:
             device_manager.verbose = saved_verbose
             device_manager.visa_library = saved_visa_lib
 
+    def test_visa_library_config_option_precedence(
+        self, device_manager: DeviceManager, tmp_path: Path
+    ) -> None:
+        """The `visa_library` config option must win over the deprecated `standalone` option.
+
+        Args:
+            device_manager: The DeviceManager object.
+            tmp_path: A temporary directory unique to this test invocation.
+        """
+        saved_visa_lib = device_manager.visa_library
+        config_file = tmp_path / "visa_library_config.yaml"
+        config_file.write_text(
+            f"""\
+devices: []
+options:
+  standalone: true
+  visa_library: '{SIMULATED_VISA_LIB}'
+"""
+        )
+        try:
+            # `standalone` is also set in the config file above (and still triggers its own
+            # DeprecationWarning, covered by test_standalone_option_is_deprecated in
+            # test_config_parser.py); what matters here is the resulting precedence.
+            device_manager.load_config_file(config_file)
+            assert device_manager.visa_library == SIMULATED_VISA_LIB
+        finally:
+            device_manager.visa_library = saved_visa_lib
+
     def test_failed_cleanup(self, device_manager: DeviceManager) -> None:
         """Test what happens when a device manager cleanup fails.
 

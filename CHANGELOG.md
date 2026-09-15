@@ -16,7 +16,13 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Added
+
+- `visa_library` configuration option, which accepts any VISA backend string supported by `pyvisa.ResourceManager()` (for example `"@py"` for PyVISA-py, or the path to a specific VISA shared library), instead of only being able to toggle PyVISA-py on or off.
+
+### Deprecated
+
+- The `standalone` configuration option is deprecated in favor of the new `visa_library` option (`visa_library: "@py"` is equivalent to `standalone: true`). `standalone` still works but now raises a `DeprecationWarning`.
 
 ---
 

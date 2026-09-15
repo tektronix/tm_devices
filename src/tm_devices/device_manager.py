@@ -1589,7 +1589,9 @@ class DeviceManager(metaclass=Singleton):
             else self.__config.options.default_visa_timeout
         )
         # Configure the VISA library
-        if self.__config.options.standalone:
+        if self.__config.options.visa_library is not None:
+            self.__visa_library = self.__config.options.visa_library
+        elif self.__config.options.standalone:
             self.__visa_library = PYVISA_PY_BACKEND
         elif self.__visa_library is NotImplemented:
             # Check for an environment variable, primarily used for enabling
