@@ -489,6 +489,42 @@ def test_add_device() -> None:
         config.add_device(device_type="AWG", address="127.0.0.1", alias="ALIAS")
 
 
+def test_socket_duplicate_detection_uses_host_and_port() -> None:
+    """Allow shared LAN ports across different hosts but reject exact host+port duplicates."""
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("os.path.isfile", mock.MagicMock(return_value=False)),
+    ):
+        config = DMConfigParser()
+
+    config.add_device(
+        device_type="MF",
+        connection_type="SOCKET",
+        address="192.168.0.1",
+        lan_port=5025,
+        alias="ALIAS1",
+    )
+    config.add_device(
+        device_type="MF",
+        connection_type="SOCKET",
+        address="192.168.0.2",
+        lan_port=5025,
+        alias="ALIAS2",
+    )
+
+    assert config.devices["ALIAS1"].address == "192.168.0.1"
+    assert config.devices["ALIAS2"].address == "192.168.0.2"
+
+    with pytest.raises(ValueError, match=r"Found duplicate addresses"):
+        config.add_device(
+            device_type="MF",
+            connection_type="SOCKET",
+            address="192.168.0.1",
+            lan_port=5025,
+            alias="ALIAS3",
+        )
+
+
 def test_remove_device() -> None:
     """Verify a device can be removed."""
     device_string = "device_type=SCOPE,address=MSO54-123456.unit.test.domain"

@@ -18,6 +18,11 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- `total_channels` property for MP5xxx no longer times out when slots not populated.
+- Fixed formatting of `lan_port` when used in device address duplicate detection.
+
 ---
 
 ## v3.7.0 (2026-08-18)
