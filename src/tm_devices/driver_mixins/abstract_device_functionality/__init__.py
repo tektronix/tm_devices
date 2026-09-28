@@ -17,6 +17,7 @@ from .licensed_mixin import LicensedMixin
 from .screen_capture_mixin import ScreenCaptureMixin
 from .signal_generator_mixin import SignalGeneratorMixin
 from .usb_drives_mixin import USBDrivesMixin
+from .waveform_save_mixin import WaveformSaveMixin
 
 __all__ = [
     "BaseAFGSourceChannel",
@@ -34,4 +35,5 @@ __all__ = [
     "SearchMixin",
     "SignalGeneratorMixin",
     "USBDrivesMixin",
+    "WaveformSaveMixin",
 ]

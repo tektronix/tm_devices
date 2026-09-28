@@ -41,6 +41,8 @@ devices:
       - q: FILESYSTEM:DELETE "./new_folder/temp.png"
       - q: :FILESystem:MKDir "new_folder"
       - q: :FILESystem:CWD "./new_folder"
+      - q: SAVE:WAVEFORM CH1,"./new_folder/temp.csv"
+      - q: FILESYSTEM:READFILE "./new_folder/temp.csv"
     properties:
       save_image_composition:
         default: NORMAL

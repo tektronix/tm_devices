@@ -499,7 +499,7 @@ def test_tekscope3k_4k(device_manager: DeviceManager, capsys: pytest.CaptureFixt
     assert scope2.total_channels == 2
 
 
-def test_tekscopepc(
+def test_tekscopepc(  # noqa: PLR0915
     device_manager: DeviceManager, tmp_path: pathlib.Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
     """Test the TekScopePC implementation.
@@ -580,6 +580,118 @@ def test_tekscopepc(
         assert f'SAVE:IMAGE "./new_folder/{filename.as_posix()}"' in stdout
         assert f'FILESYSTEM:READFILE "./new_folder/{filename.as_posix()}"' in stdout
         assert f'FILESYSTEM:DELETE "./new_folder/{filename.as_posix()}"' not in stdout
+
+    with pytest.raises(
+        ValueError, match=r"Invalid waveform extension: '\.txt', valid extensions are"
+    ):
+        scope.save_waveform("temp.txt")
+    with pytest.raises(
+        ValueError, match=r"Local folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_waveform("temp.csv", local_folder="filename.txt")
+    with pytest.raises(
+        ValueError, match=r"Device folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_waveform("temp.csv", device_folder="filename.txt")
+
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"1234"),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(return_value=None),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+        ),
+    ):
+        scope.enable_verification = False
+        filename = pathlib.Path(
+            datetime.now(tz=tzlocal()).strftime(
+                f"%Y%m%d_%H%M%S{scope.valid_waveform_extensions[0]}"
+            )
+        )
+        # local_folder does not exist yet, so save_waveform() must create it.
+        new_local_folder = tmp_path / "does_not_exist_yet"
+        local_file = new_local_folder / filename
+        scope.save_waveform(local_folder=new_local_folder)
+        assert local_file.read_bytes() == b"1234"
+        stdout = capsys.readouterr().out
+        assert f'SAVE:WAVEFORM ALL,"./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./{filename.as_posix()}"' in stdout
+
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"5678"),
+        ),
+        scope.temporary_enable_verification(True),
+    ):
+        filename = pathlib.Path("temp.csv")
+        local_file = tmp_path / "folder" / filename
+        scope.save_waveform(
+            filename,
+            local_folder=local_file.parent,
+            device_folder="./new_folder",
+            source="CH1",
+            keep_device_file=True,
+        )
+        assert local_file.read_bytes() == b"5678"
+        stdout = capsys.readouterr().out
+        assert f'SAVE:WAVEFORM CH1,"./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./new_folder/{filename.as_posix()}"' not in stdout
+
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"91011"),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(return_value=None),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+        ),
+    ):
+        # The file format saved is selected by the filename's extension, e.g. ".wfm" for the
+        # scope's internal format instead of the default ".csv" spreadsheet format.
+        scope.enable_verification = False
+        filename = pathlib.Path("temp.wfm")
+        local_file = tmp_path / filename
+        scope.save_waveform(filename, local_folder=tmp_path)
+        assert local_file.read_bytes() == b"91011"
+        stdout = capsys.readouterr().out
+        assert f'SAVE:WAVEFORM ALL,"./{filename.as_posix()}"' in stdout
+
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"121314"),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(return_value=None),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+        ),
+    ):
+        # ".mat" saves the waveform in a MATLAB-compatible file format.
+        scope.enable_verification = False
+        filename = pathlib.Path("temp.mat")
+        local_file = tmp_path / filename
+        scope.save_waveform(filename, local_folder=tmp_path)
+        assert local_file.read_bytes() == b"121314"
+        stdout = capsys.readouterr().out
+        assert f'SAVE:WAVEFORM ALL,"./{filename.as_posix()}"' in stdout
 
     scope.expect_esr(0)
 
