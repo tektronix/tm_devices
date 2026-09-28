@@ -10,6 +10,8 @@ on:
 jobs:
   sbom-scan:
     uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-sbom-scan.yml@v1.10.0
+    with:
+      production-dependency-groups: main
     permissions:
       security-events: write
       contents: write
