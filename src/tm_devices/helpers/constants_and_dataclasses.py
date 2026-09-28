@@ -339,6 +339,36 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         ),
     ] = None
     """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
+    write_termination: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "The VISA write termination character(s) to use for this device, overriding "
+                "the default for its connection type\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#write_termination"
+            ),
+        ),
+    ] = None
+    """The VISA write termination character(s) to use for this device.
+
+    Overrides the default write termination for the device's connection type (e.g. the
+    ``"\\n"`` that SOCKET connections use by default).
+    """
+    read_termination: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "The VISA read termination character(s) to use for this device, overriding "
+                "the default for its connection type\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#read_termination"
+            ),
+        ),
+    ] = None
+    """The VISA read termination character(s) to use for this device.
+
+    Overrides the default read termination for the device's connection type (e.g. the
+    ``"\\n"`` that SOCKET connections use by default).
+    """
 
     # pylint: disable=too-many-branches
     def __post_init__(self) -> None:  # noqa: PLR0912, C901

@@ -121,6 +121,13 @@ devices:
     device_type: <device_type>
     lan_port: <port_number>
     device_driver: <device_driver>
+# write_termination/read_termination are optional on any device, regardless of connection type
+  - address: <ip_address_or_hostname>
+    alias: <alias>
+    connection_type: <connection_type>
+    device_type: <device_type>
+    write_termination: <write_termination>
+    read_termination: <read_termination>
 ```
 
 #### Device Configuration Definitions
@@ -230,6 +237,15 @@ devices:
 
 - The GPIB board number (also referred to as a controller) that the device is connected to.
 - If no board number is provided in the configuration, a board number of `0` is assumed.
+
+##### `write_termination` / `read_termination`
+
+- The VISA write/read termination character(s) to use for this specific device, overriding
+    the default for its `<connection_type>` (for example, `SOCKET` connections default to
+    `"\n"` for both).
+- Most VISA connection types use PyVISA's own defaults and do not need this set. It is mainly
+    useful for devices that require a non-default termination character, or that behave
+    inconsistently with the connection type's default.
 
 ##### `device_driver`
 

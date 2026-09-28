@@ -16,7 +16,9 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Added
+
+- `write_termination` and `read_termination` per-device configuration options, which override the default VISA termination character(s) for that device's connection type.
 
 ---
 

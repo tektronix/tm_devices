@@ -230,6 +230,19 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
     assert visa_obj.read_termination == "\n"
     assert visa_obj.write_termination == "\n"
 
+    # An explicitly configured termination character overrides the connection-type default.
+    dev_config_4 = DeviceConfigEntry(
+        device_type=DeviceTypes.AFG,
+        connection_type=ConnectionTypes.SOCKET,
+        address="AFG3252C-HOSTNAME",
+        lan_port=10001,
+        write_termination="\r\n",
+        read_termination=";",
+    )
+    visa_obj_4 = create_visa_connection(dev_config_4, SIMULATED_VISA_LIB)
+    assert visa_obj_4.write_termination == "\r\n"
+    assert visa_obj_4.read_termination == ";"
+
     assert check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")
     stdout = capsys.readouterr().out
     assert "(dev_config_3) >> checking if a VISA connection can be made to " in stdout
