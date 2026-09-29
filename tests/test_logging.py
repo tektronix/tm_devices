@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 
 
 @pytest.fixture(name="remove_log_file_handler")
-def _remove_log_file_handler() -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
+def _remove_log_file_handler() -> Generator[None, None, None]:
     """Remove the file handler from the logger."""
     logger = logging.getLogger(PACKAGE_NAME)
     file_handler = None
@@ -80,7 +80,7 @@ def _capture_exception_info(
 
 
 @pytest.fixture(name="original_excepthook_calls")
-def _original_excepthook_calls(  # pyright: ignore[reportUnusedFunction]
+def _original_excepthook_calls(
     monkeypatch: pytest.MonkeyPatch,
 ) -> Generator[list[tuple[object, ...]], None, None]:
     """Record the calls made to the original excepthook by the package's exception handler."""
@@ -190,7 +190,7 @@ def test_exception_handler_when_logging_raises_base_exception(
 
 
 @pytest.fixture(name="reset_package_logger")
-def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
+def _reset_package_logger() -> Generator[None, None, None]:
     """Reset the package logger."""
     logger = logging.getLogger(PACKAGE_NAME)
     handlers_copy = logger.handlers.copy()

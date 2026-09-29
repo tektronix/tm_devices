@@ -25,7 +25,7 @@ from tm_devices.drivers.device import (
 
 
 @pytest.fixture(autouse=True, scope="module")
-def _reset_dm(device_manager: tm_devices.DeviceManager) -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
+def _reset_dm(device_manager: tm_devices.DeviceManager) -> Generator[None, None, None]:
     """Reset the device_manager settings before and after running the tests in this module.
 
     Args:

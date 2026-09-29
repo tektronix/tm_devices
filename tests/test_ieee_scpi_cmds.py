@@ -9,7 +9,7 @@ _DEVICE_ALIAS = "TESTING_AFG_IEEE"
 
 
 @pytest.fixture(name="device")
-def _device(device_manager: DeviceManager) -> AFG:  # pyright: ignore[reportUnusedFunction]
+def _device(device_manager: DeviceManager) -> AFG:
     """Reset the device after each test."""
     afg = device_manager.add_afg("afg3252c-hostname", alias=_DEVICE_ALIAS)
     afg.ieee_cmds.ese(0)
