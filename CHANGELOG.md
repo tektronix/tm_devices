@@ -22,6 +22,8 @@ Things to be included in the next release go here.
 
 - Fixed uncaught exceptions whose first argument is not a string, such as the `OSError` family, being replaced by an `Error in sys.excepthook:` message that hid the original exception and its traceback. The log file location is now attached to these exceptions as a note (Python 3.11 and newer) rather than by rewriting their arguments.
 - Fixed a failure while logging an uncaught exception, which can happen when the log handlers are already closed during interpreter shutdown, preventing that exception from being reported at all.
+- Fixed the sample rate calculation used by the AWG `CLOCK` function. The predefined `*Clock960` waveform is a fixed 2 samples per cycle rather than a single cycle spread across its 960 sample record. This affects all AWG drivers, which previously generated a `CLOCK` signal 480x faster than requested or raised a `ValueError` for valid frequencies.
+- - Fixed the AWG70K `CLOCK` function exceeding the 12.5 GHz maximum frequency of the clock output on the 50 GS/s models, which previously allowed a `CLOCK` signal to be requested at up to 25 GHz (half of the maximum sample rate).
 
 ---
 

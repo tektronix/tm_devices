@@ -345,7 +345,9 @@ def test_awg5k(device_manager: DeviceManager) -> None:
     awg5k = cast("AWG5K", device_manager.add_awg("awg5012-hostname", alias="awg5k"))
     awg5kb = cast("AWG5KB", device_manager.add_awg("awg5002b-hostname", alias="awg5kb"))
     awg5kc = cast("AWG5KC", device_manager.add_awg("awg5012c-hostname", alias="awg5kc"))
-    length_range = ParameterBounds(lower=960, upper=960)
+    # The predefined CLOCK waveform is a fixed 2 samples/cycle square wave, so its frequency
+    # bounds are the sample rate bounds divided by 2 (not by the 960 sample record length).
+    length_range = ParameterBounds(lower=2, upper=2)
     awg_list = [awg5k, awg5kb, awg5kc]
     ampl_range = ParameterBounds(lower=20.0e-3, upper=4.5)
     offset_range = ParameterBounds(lower=-2.25, upper=2.25)
@@ -391,3 +393,72 @@ def test_awg5k(device_manager: DeviceManager) -> None:
     awg5k.set_sample_rate(10.0e6, absolute_tolerance=0)
     query_val = awg5k.query("SOURCE1:FREQUENCY?")
     assert float(query_val) == 10.0e6
+
+
+def test_awg_clock_waveform_constraints(device_manager: DeviceManager) -> None:
+    """Verify the reported CLOCK frequency range is limited to what the AWG can output.
+
+    The predefined ``*Clock960`` waveform is 2 samples/cycle repeated to fill its
+    960 sample record, so the achievable frequency range is ``sample_rate_range / 2``,
+    further limited by the maximum clock output frequency of the AWG.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    awg_clock_info = (
+        (
+            cast(
+                "AWG70KA",
+                device_manager.add_awg("awg70001aopt150-hostname", alias="awg70ka150clk"),
+            ),
+            ParameterBounds(lower=1.5e3, upper=50.0e9),
+            # The AWG70K clock output maximum, half of the 50 GS/s sample rate would be 25 GHz.
+            12.5e9,
+        ),
+        (
+            cast(
+                "AWG70KA",
+                device_manager.add_awg("awg70002aopt225-hostname", alias="awg70ka225clk"),
+            ),
+            ParameterBounds(lower=1.5e3, upper=25.0e9),
+            12.5e9,
+        ),
+        (
+            cast(
+                "AWG70KA",
+                device_manager.add_awg("awg70002aopt216-hostname", alias="awg70ka216clk"),
+            ),
+            ParameterBounds(lower=1.5e3, upper=16.0e9),
+            # Half of the 16 GS/s sample rate is below the 12.5 GHz clock output maximum.
+            8.0e9,
+        ),
+        (
+            cast("AWG5200", device_manager.add_awg("awg5200opt50-hostname", alias="awg5200clk")),
+            ParameterBounds(lower=300.0, upper=5.0e9),
+            2.5e9,
+        ),
+        (
+            cast("AWG7K", device_manager.add_awg("awg7102opt06-hostname", alias="awg7k06clk")),
+            ParameterBounds(lower=10.0e6, upper=10.0e9),
+            5.0e9,
+        ),
+        (
+            cast("AWG5K", device_manager.add_awg("awg5012-hostname", alias="awg5kclk")),
+            ParameterBounds(lower=10.0e6, upper=1.2e9),
+            600.0e6,
+        ),
+    )
+    for awg, sample_rate_range, max_clock_frequency in awg_clock_info:
+        constraints = awg.get_waveform_constraints(SignalGeneratorFunctionsAWG.CLOCK)
+        assert constraints.sample_rate_range == sample_rate_range
+        assert constraints.frequency_range == ParameterBounds(
+            lower=sample_rate_range.lower / 2,
+            upper=max_clock_frequency,
+        )
+
+        # The SIN function is unaffected, it still uses its record lengths as samples/cycle.
+        sin_constraints = awg.get_waveform_constraints(SignalGeneratorFunctionsAWG.SIN)
+        assert sin_constraints.frequency_range == ParameterBounds(
+            lower=sample_rate_range.lower / 3600,
+            upper=sample_rate_range.upper / 10,
+        )
