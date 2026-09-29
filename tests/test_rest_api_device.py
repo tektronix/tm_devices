@@ -101,7 +101,7 @@ def fixture_rest_api_control(mock_http_server: None) -> CustomRestApiDevice:  # 
 
 
 @pytest.fixture(autouse=True)
-def _reset_rest_api_control(rest_api_control: CustomRestApiDevice) -> None:  # pyright: ignore[reportUnusedFunction]
+def _reset_rest_api_control(rest_api_control: CustomRestApiDevice) -> None:
     """Reset the Rest API Device to its initial state."""
     rest_api_control.set_api_version(1)
 

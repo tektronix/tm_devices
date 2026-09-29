@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: c4654a7e007c9619a5eb63c39a456572a0fa1851  # frozen: 0.38.0
+    rev: 4f85d46a92dc17713078e5de73f8a13190edf6fc  # frozen: 0.38.2
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -49,12 +49,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: c04ed26e40637cab1aa9879c693832a9c120fb20  # frozen: v1.7.12.24
+    rev: 357f7eec6dec49bf7693dc0dbec30212226d5492  # frozen: v1.7.12.25
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3d7386012109c403d56375314125c20e102e75c0  # frozen: v4.18.0
+    rev: 054e4a278e11abb9b8df6c103fa64f544d468ee5  # frozen: v4.19.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -87,7 +87,7 @@ repos:
           - mdformat-web
           - mdformat-wikilink
   - repo: https://github.com/pappasam/toml-sort
-    rev: 2970ae9bb7124fe5117a27e10c10d2da051ce05a  # frozen: v0.24.4
+    rev: 6bcff12c5d156baa6897ca2a85f6d534af296e7c  # frozen: v0.25.0
     hooks:
       - id: toml-sort-fix
   - repo: local
@@ -151,7 +151,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: aab412d509121cb5f7533134b7e67f9fab59c682  # frozen: v0.16.4
+    rev: a56c0b927e6465d37cae3e97d35d4d18ab2b96cd  # frozen: v0.16.9
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]

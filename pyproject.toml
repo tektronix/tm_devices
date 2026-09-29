@@ -4,8 +4,8 @@ requires = ["poetry-core~=2.2.1"]
 
 [project]
 authors = [
-  {email = "nicholas.felt@tektronix.com", name = "Nicholas Felt"},
-  {email = "opensource@tektronix.com", name = "Tektronix"},
+  { email = "nicholas.felt@tektronix.com", name = "Nicholas Felt" },
+  { email = "opensource@tektronix.com", name = "Tektronix" },
 ]
 dependencies = [
   "colorlog~=6.9",
@@ -43,8 +43,8 @@ keywords = [
 ]
 license = "Apache-2.0"
 maintainers = [
-  {email = "nicholas.felt@tektronix.com", name = "Nicholas Felt"},
-  {email = "opensource@tektronix.com", name = "Tektronix"},
+  { email = "nicholas.felt@tektronix.com", name = "Nicholas Felt" },
+  { email = "opensource@tektronix.com", name = "Tektronix" },
 ]
 name = "tm_devices"
 readme = "README.md"
@@ -114,8 +114,8 @@ poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
-pylint = "4.0.7"
-pyright = {extras = ["nodejs"], version = "1.1.411"}
+pylint = "4.0.9"
+pyright = { extras = ["nodejs"], version = "1.1.414" }
 pyroma = "^5.0"
 safety = "~3.7.0"  # TODO: Remove this version pin once the issue with safety is resolved
 tox = "^4.0"
@@ -145,7 +145,7 @@ nodeenv = "^1.9.1"
 packaging = ">=24.0"
 pydantic = "^2.12.5"
 pygments = "^2.17.2"
-pymdown-extensions = "^11.0.1"
+pymdown-extensions = "^12.1.0"
 requests = "^2.31.0"
 symspellpy = "^6.7.7"
 tomli = "^2.0.1"
@@ -163,7 +163,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.16.4"
+ruff = "0.16.9"
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -305,7 +305,7 @@ markers = [
 xfail_strict = true
 
 [tool.pytest_env]
-pytest_report_title = {skip_if_set = true, value = "Test Results"}
+pytest_report_title = { skip_if_set = true, value = "Test Results" }
 
 [tool.rstcheck]
 ignore_directives = [
@@ -322,8 +322,8 @@ target-version = "py310"  # PYTHON VERSION MARKER
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
 fixable = ["ALL"]
-flake8-pytest-style = {mark-parentheses = false}
-flake8-quotes = {docstring-quotes = "double"}
+flake8-pytest-style = { mark-parentheses = false }
+flake8-quotes = { docstring-quotes = "double" }
 ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
   "COM812",  # Trailing comma missing (allowed in this package)
@@ -337,8 +337,8 @@ ignore = [
   "TD003",  # Missing issue link on the line following this TO DO (allowed in this package)
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
 ]
-pydocstyle = {convention = "google"}
-pylint = {max-args = 7}
+pydocstyle = { convention = "google" }
+pylint = { max-args = 7 }
 # https://beta.ruff.rs/docs/rules/
 select = [
   "ALL",
@@ -414,11 +414,11 @@ patch_tags = []
 [tool.tomlsort]
 all = true
 in_place = true
-spaces_before_inline_comment = 2
-trailing_comma_inline_array = true
 overrides."tool.coverage.paths.*".inline_arrays = false
 overrides."tool.poetry.*".inline_arrays = false
 overrides."tool.pylint.*".table_keys = false
+spaces_before_inline_comment = 2
+trailing_comma_inline_array = true
 
 # Tox configuration
 [tool.tox]
