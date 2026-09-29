@@ -79,6 +79,28 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         probe_id_type="TPP0500B",
     )
 
+    # Some device families (e.g. TekScopePC) have no PROBETYPE/PROBE:ID:* PI commands at all,
+    # so `channel` must fall back to inferring the probe data from the channel name.
+    _original_query = scope.query
+    with mock.patch.object(
+        scope,
+        "query",
+        side_effect=lambda cmd, *a, **kw: (  # pyright: ignore[reportUnknownLambdaType]
+            (_ for _ in ()).throw(visa.errors.VisaIOError(visa.constants.StatusCode.error_timeout))
+            if cmd.startswith(("CH4:PROBETYPE", "CH4:PROBE:ID"))
+            else _original_query(cmd, *a, **kw)  # pyright: ignore[reportUnknownArgumentType]
+        ),
+    ):
+        # noinspection PyPropertyAccess
+        del scope.channel
+        assert scope.channel["CH4"].probe == TekProbeData(
+            probetype="ANALOG",
+            probe_id_sernumber="N/A",
+            probe_id_type="1X",
+        )
+    # noinspection PyPropertyAccess
+    del scope.channel
+
     # Test that invalid PI commands are caught properly
     scope.write("EXAMPLE_COMMAND")
     scope.expect_esr(32, ('113,"Undefined header; Command not found; EXAMPLE_COMMAND"',))

@@ -1,9 +1,15 @@
 """MSO2 device driver module."""
 
+from types import MappingProxyType
+
 import pyvisa as visa
 
 from tm_devices.commands import MSO2Mixin
-from tm_devices.drivers.scopes.tekscope.tekscope import TekScope
+from tm_devices.drivers.scopes.tekscope.tekscope import (
+    TekProbeData,
+    TekScope,
+    TekScopeChannel,
+)
 from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -52,6 +58,29 @@ class MSO2(MSO2Mixin, TekScope):  # pyright: ignore[reportIncompatibleVariableOv
             # replace last index CH3 or CH5 with DCH1
             retval = (*retval[:-1], "DCH1")
         return retval
+
+    @cached_property
+    def channel(self) -> MappingProxyType[str, TekScopeChannel]:
+        """Mapping of channel names to any detectable properties, attributes, and settings.
+
+        MSO2 has no ``PROBETYPE``/``PROBE:ID:*`` PI commands at all (unlike most other
+        TekScope families), so this builds the probe data directly from the channel name
+        instead of querying the device and relying on ``AbstractTekScope.channel``'s
+        VISA-timeout fallback for that.
+        """
+        return MappingProxyType(
+            {
+                channel: TekScopeChannel(
+                    name=channel,
+                    probe=(
+                        TekProbeData(probetype="DIGITAL", probe_id_type="N/A")
+                        if channel.startswith("DCH")
+                        else TekProbeData()
+                    ),
+                )
+                for channel in self.all_channel_names_list
+            }
+        )
 
     @cached_property
     def total_channels(self) -> int:
