@@ -394,6 +394,15 @@ exist within the [`AWG`][tm_devices.drivers.awgs.awg.AWG] class.
 [`SignalGeneratorFunctionsAWG`][tm_devices.helpers.enums.SignalGeneratorFunctionsAWG]:
 `SIN`, `SQUARE`, `RAMP`, `TRIANGLE`, `DC`, `CLOCK`
 
+!!! note
+
+    Each predefined waveform except `CLOCK` holds exactly one cycle within its record length,
+    so its output frequency is `sample_rate / record_length`. The predefined `CLOCK` waveform
+    (`*Clock960`) is a fixed 2 samples/cycle square wave which is repeated to fill its 960 sample
+    record, so its output frequency is always `sample_rate / 2`, regardless of the record length.
+    Some instruments limit the `CLOCK` frequency further, the AWG70K series caps its clock output
+    at 12.5 GHz even on the models capable of sampling at 50 GS/s.
+
 #### AWG5K/AWG7K
 
 The AWG5K/7K series instruments are signal generators focused on waveform generation and operate on the Windows operating system.
