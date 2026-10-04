@@ -16,7 +16,9 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Added
+
+- `save_waveform()` method on TekScope devices, which saves waveform data on the device (as a `.wfm`, `.csv`, or `.mat` file, selected by the filename's extension) and downloads it locally, mirroring `save_screenshot()`.
 
 ### Fixed
 
