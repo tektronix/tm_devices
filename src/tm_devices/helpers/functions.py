@@ -789,6 +789,13 @@ def _configure_visa_object(
             else:
                 setattr(serial_config, name, getattr(visa_object, name))
 
+    # An explicitly configured termination character always overrides the connection-type default
+    # set above.
+    if device_config_entry.write_termination is not None:
+        visa_object.write_termination = device_config_entry.write_termination
+    if device_config_entry.read_termination is not None:
+        visa_object.read_termination = device_config_entry.read_termination
+
     return visa_object
 
 

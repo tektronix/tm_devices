@@ -288,6 +288,18 @@
                     "default": null,
                     "description": "The LAN port number to connect on, used for SOCKET/REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_port"
                 },
+                "read_termination": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The VISA read termination character(s) to use for this device, overriding the default for its connection type\nhttps://tm-devices.readthedocs.io/stable/configuration/#read_termination"
+                },
                 "serial_config": {
                     "anyOf": [
                         {
@@ -300,6 +312,18 @@
                     ],
                     "default": null,
                     "description": "The configuration options for SERIAL (ASRL) connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+                },
+                "write_termination": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The VISA write termination character(s) to use for this device, overriding the default for its connection type\nhttps://tm-devices.readthedocs.io/stable/configuration/#write_termination"
                 }
             },
             "required": [
