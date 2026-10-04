@@ -171,7 +171,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if PyVISA-py's pure Python VISA backend should be used\nhttps://tm-devices.readthedocs.io/stable/configuration/#standalone"
+                    "description": "Deprecated, use `visa_library` instead. Indicate if PyVISA-py's pure Python VISA backend should be used\nhttps://tm-devices.readthedocs.io/stable/configuration/#standalone"
                 },
                 "teardown_cleanup": {
                     "anyOf": [
@@ -208,6 +208,18 @@
                     ],
                     "default": null,
                     "description": "Indicate if verbose VISA logging should be printed to stdout instead of just the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#verbose_visa"
+                },
+                "visa_library": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The VISA backend to use when creating VISA connections, as accepted by `pyvisa.ResourceManager()`, e.g. `\"@py\"` for PyVISA-py or a path to a specific VISA library\nhttps://tm-devices.readthedocs.io/stable/configuration/#visa_library"
                 }
             },
             "type": "object"

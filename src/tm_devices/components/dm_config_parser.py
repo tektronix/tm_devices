@@ -28,6 +28,7 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     DeviceTypes,
     DMConfigOptions,
+    PYVISA_PY_BACKEND,
     SerialConfig,
 )
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -194,7 +195,12 @@ class DMConfigParser:
             gpib_board_number=gpib_board_number,
         )
         # Currently, USB connections when using the PyVISA-py backend are not supported.
-        if self.__options.standalone and new_entry.connection_type in {
+        using_pyvisa_py = (
+            self.__options.visa_library == PYVISA_PY_BACKEND
+            if self.__options.visa_library is not None
+            else bool(self.__options.standalone)
+        )
+        if using_pyvisa_py and new_entry.connection_type in {
             ConnectionTypes.USB,
             ConnectionTypes.GPIB,
         }:

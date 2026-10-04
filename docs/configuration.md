@@ -249,7 +249,7 @@ These options are used to configure runtime behaviors of `tm_devices`.
 options:
   verbose_mode: false
   verbose_visa: false
-  standalone: false
+  visa_library: ""
   setup_cleanup: false
   teardown_cleanup: false
   disable_command_verification: false
@@ -277,11 +277,28 @@ options:
 
 ##### `standalone`
 
+!!! warning
+    This config option is deprecated, use [`visa_library`](#visa_library) instead
+    (`visa_library: "@py"` is equivalent to `standalone: true`).
+
 - This config option specifies to use the PyVISA-py VISA backend, which
     does not require any actual visa.dll to exist on the system to work.
 - By default, the Device Manager will default to using whatever visa.dll it
     can find on the system and fall back to using PyVISA-py's backend if no other
     VISA backends are found.
+
+##### `visa_library`
+
+- This config option specifies the VISA backend to use when creating VISA
+    connections, as a string accepted by PyVISA's `ResourceManager()`, for example
+    `"@py"` to use the pure-Python PyVISA-py backend, or the path to a specific
+    VISA shared library.
+- By default (when this option is not set), the Device Manager will default to
+    using whatever visa.dll it can find on the system and fall back to using
+    PyVISA-py's backend if no other VISA backends are found.
+- This supersedes the deprecated [`standalone`](#standalone) option, which only
+    allowed toggling PyVISA-py on or off. When both options are set, `visa_library`
+    takes precedence.
 
 ##### `setup_cleanup`
 
@@ -413,7 +430,7 @@ options:
   setup_cleanup: true
   teardown_cleanup: true
   disable_command_verification: true
-  standalone: false
+  visa_library: ""
   verbose_mode: false
   verbose_visa: false
   retry_visa_connection: false
@@ -496,7 +513,7 @@ lan_port = 5000
 setup_cleanup = true
 teardown_cleanup = true
 disable_command_verification = true
-standalone = false
+visa_library = ""
 verbose_mode = false
 verbose_visa = false
 retry_visa_connection = false

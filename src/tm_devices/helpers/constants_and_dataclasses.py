@@ -1,5 +1,7 @@
 """Module containing constants and dataclasses for the `tm_devices` package."""
 
+import warnings
+
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
@@ -581,12 +583,37 @@ class DMConfigOptions(AsDictionaryMixin):
         Optional[bool],
         SchemaAnnotation(
             description=(
-                "Indicate if PyVISA-py's pure Python VISA backend should be used\n"
+                "Deprecated, use `visa_library` instead. Indicate if PyVISA-py's pure "
+                "Python VISA backend should be used\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#standalone"
             ),
         ),
     ] = None
-    """An option indicating to use PyVISA-py's pure Python VISA backend."""
+    """An option indicating to use PyVISA-py's pure Python VISA backend.
+
+    Deprecated, use
+    [`visa_library`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.visa_library]
+    instead.
+    """
+    visa_library: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "The VISA backend to use when creating VISA connections, as accepted by "
+                '`pyvisa.ResourceManager()`, e.g. `"@py"` for PyVISA-py or a path to a '
+                "specific VISA library\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#visa_library"
+            ),
+        ),
+    ] = None
+    """The VISA backend to use when creating VISA connections.
+
+    Any value accepted by `pyvisa.ResourceManager()` is valid here, for example `"@py"` to
+    use the pure Python PyVISA-py backend, or the path to a specific VISA shared library.
+    When not set, the system's default VISA backend is used. This supersedes the deprecated
+    [`standalone`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.standalone]
+    option, which only allowed toggling PyVISA-py on or off.
+    """
     setup_cleanup: Annotated[
         Optional[bool],
         SchemaAnnotation(
@@ -809,6 +836,13 @@ class DMConfigOptions(AsDictionaryMixin):
                     f"Valid values are {LoggingLevels.list_values()}"
                 )
                 raise ValueError(msg) from error
+
+        if self.standalone is not None:
+            deprecation_msg = (
+                "The `standalone` option is deprecated, use the `visa_library` option "
+                'instead (`visa_library="@py"` is equivalent to `standalone=True`).'
+            )
+            warnings.warn(deprecation_msg, DeprecationWarning, stacklevel=2)
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""

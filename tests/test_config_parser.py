@@ -1,6 +1,8 @@
 # pyright: reportPrivateUsage=none
 """Tests for the config_parser.py file."""
 
+import warnings
+
 from pathlib import Path
 from types import MappingProxyType
 from typing import TYPE_CHECKING
@@ -136,6 +138,66 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert expected_entry == config.devices, (
         f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
     )
+
+
+def test_standalone_option_is_deprecated() -> None:
+    """Test that setting the `standalone` option raises a DeprecationWarning."""
+    with pytest.warns(DeprecationWarning, match="visa_library"):
+        options = DMConfigOptions(standalone=True)
+    assert options.standalone is True
+    assert options.visa_library is None
+
+    # not setting `standalone` at all must not warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        DMConfigOptions()
+
+
+def test_visa_library_option_from_file() -> None:
+    """Test that the `visa_library` option is parsed from a config file without warning."""
+    file_contents = """
+devices:
+- address: MSO54-123456
+  connection_type: USB
+  device_type: SCOPE
+options:
+  visa_library: "@sim"
+"""
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("pathlib.Path.is_file", mock.MagicMock(return_value=True)),
+        mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)),
+    ):
+        config = DMConfigParser()
+
+    assert config.options.visa_library == "@sim"
+    assert config.options.standalone is None
+
+
+def test_visa_library_and_standalone_both_set_rejects_usb() -> None:
+    """When both options are set, `visa_library` (not `standalone`) decides the USB/GPIB check."""
+    file_contents = """
+devices:
+- address: MSO54-123456
+  connection_type: USB
+  device_type: SCOPE
+options:
+  standalone: true
+  visa_library: ""
+"""
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("pathlib.Path.is_file", mock.MagicMock(return_value=True)),
+        mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)),
+        pytest.warns(DeprecationWarning, match="visa_library"),
+    ):
+        # `standalone=True` alone would reject the USB connection, but the empty
+        # `visa_library` (system default backend) takes precedence and allows it.
+        config = DMConfigParser()
+
+    assert config.options.visa_library == ""
+    assert config.options.standalone is True
+    assert "SCOPE 1" in config.devices
 
 
 def test_file_config_default_path() -> None:
