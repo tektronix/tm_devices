@@ -29,7 +29,7 @@ from tm_devices.helpers.logging import LoggingLevels
 from tm_devices.helpers.standalone_helpers import validate_address
 
 
-@dataclass
+@dataclass(kw_only=True)
 class USBTMCConfiguration:
     """Dataclass for holding USBTMC configuration information.
 
@@ -75,7 +75,7 @@ class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
         return ",".join(ret_list)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntryEnvStrMixin):
     """Serial configuration properties for connecting to a device over SERIAL (ASRL).
 
@@ -235,7 +235,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
 
 # pylint: disable=too-many-instance-attributes
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntryEnvStrMixin):
     """Dataclass for holding configuration information for a single device."""
 
@@ -573,7 +573,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         annotation: Any = SchemaAnnotation(title="")
 
 
-@dataclass
+@dataclass(kw_only=True)
 class DMConfigOptions(AsDictionaryMixin):
     """Device Management Configuration options."""
 
@@ -826,7 +826,7 @@ class DMConfigOptions(AsDictionaryMixin):
         annotation: Any = SchemaAnnotation(title="")
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TMDevicesConfigFileSchema:
     """Configuration file schema for the tm_devices package."""
 
