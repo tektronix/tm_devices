@@ -319,6 +319,8 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         else:  # pragma: no cover
             # if termination is MAXIMUM or MINIMUM or INFINITY
             self._afg.set_if_needed(f"OUTPUT{self.num}:IMPEDANCE", termination)
+        if burst_count == 0:
+            self.set_burst_state(0)
         # Frequency
         self.set_frequency(frequency)
         # Offset

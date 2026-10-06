@@ -16,7 +16,9 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Fixed
+
+- Explicitly disable burst state on AFG instruments when configuring non-burst waveforms.
 
 ### Fixed
 
