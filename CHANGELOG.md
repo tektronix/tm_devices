@@ -16,7 +16,9 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Changed
+
+- `MSO2.channel` now builds its probe data directly from the channel name instead of going through `AbstractTekScope.channel`'s generic PROBETYPE-query-then-VISA-timeout-fallback path, since MSO2 has no PROBETYPE/PROBE:ID:* PI commands at all. This also speeds up connecting to an MSO2, since it no longer waits out a VISA timeout per channel.
 
 ### Fixed
 

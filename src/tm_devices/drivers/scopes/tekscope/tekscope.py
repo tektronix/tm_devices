@@ -145,9 +145,12 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
 
     @cached_property
     def channel(self) -> MappingProxyType[str, TekScopeChannel]:
-        """Mapping of channel names to any detectable properties, attributes, and settings."""
-        # TODO: overwrite in MSO2 driver, would remove need for try-except
-        #   https://github.com/tektronix/tm_devices/issues/324
+        """Mapping of channel names to any detectable properties, attributes, and settings.
+
+        Some device families (e.g. TekScopePC) have no ``PROBETYPE``/``PROBE:ID:*`` PI
+        commands at all, so the queries below are expected to time out and fall back to
+        inferring the probe data from the channel name instead.
+        """
         channel_map: dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
@@ -159,7 +162,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
             old_pi_verbosity = self.query(":VERBose?")
             self.set_and_check(":VERBose", 1)
 
-            # CH1, CH2, ..., CH<n>[, DCH<n>]
+            # CH1, CH2, ..., CH<n>
             for channel in self.all_channel_names_list:
                 try:
                     # Channels that support the PROBETYPE query are dynamically assigned
@@ -176,14 +179,10 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                         probe_id_type=probe_id_type,
                     )
                 except visa.errors.Error:
-                    # handle digital exclusive channels
-                    if channel.startswith("DCH"):
-                        probetype: Literal["ANALOG", "DIGITAL"] = "DIGITAL"
-                        probe_id_type = "N/A"
-                    else:
-                        probetype: Literal["ANALOG", "DIGITAL"] = "ANALOG"
-                        probe_id_type = "1X"
-                    probe = TekProbeData(probetype=probetype, probe_id_type=probe_id_type)
+                    # None of the families that fall back to here have digital-exclusive
+                    # channels (only MSO2 does, and it overrides this property entirely), so
+                    # every channel reaching this point is analog with the default probe.
+                    probe = TekProbeData()
                 # verify probetype string is reliably one of ANALOG or DIGITAL
                 if probe.probetype not in ("ANALOG", "DIGITAL"):  # pragma: no cover
                     msg = f"{channel}:PROBETYPE? was not ANALOG or DIGITAL, got {probe.probetype}"
