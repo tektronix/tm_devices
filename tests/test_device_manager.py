@@ -13,11 +13,59 @@ import pyvisa.constants
 
 from conftest import SIMULATED_VISA_LIB, UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
-from tm_devices.helpers import ConnectionTypes, DeviceTypes, PYVISA_PY_BACKEND, SerialConfig
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import (
+    ConnectionTypes,
+    DeviceConfigEntry,
+    DeviceTypes,
+    PYVISA_PY_BACKEND,
+    SerialConfig,
+)
 
 
 class TestDeviceManager:  # pylint: disable=no-self-use
     """Device Manager test class."""
+
+    def test_login_command(self) -> None:
+        """Verify the login command is sent before the initial ``*IDN?`` query."""
+        visa_resource = mock.MagicMock()
+        idn_response = "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
+        visa_resource.read_stb.return_value = 0
+        visa_resource.read.return_value = idn_response
+        visa_resource.query.return_value = idn_response
+        visa_resource.timeout = 5000
+        visa_resource.resource_info.resource_name = "TCPIP0::AFG3252C-HOSTNAME::inst0::INSTR"
+
+        response = DeviceManager._DeviceManager__clear_visa_output_buffer_and_get_idn(  # noqa: SLF001 # pyright: ignore[reportUnknownVariableType, reportUnknownMemberType, reportAttributeAccessIssue]
+            visa_resource,
+            login_command="login my_password",
+        )
+
+        assert response == idn_response
+        assert visa_resource.timeout == 5000
+        visa_resource.write.assert_has_calls(
+            [mock.call("login my_password"), mock.call("*IDN?")], any_order=False
+        )
+
+    def test_logout_command(self) -> None:
+        """Verify the logout command is sent before closing the device connection."""
+        mock_visa_resource = mock.MagicMock()
+        mock_config = DeviceConfigEntry(
+            device_type=DeviceTypes.AFG,
+            address="AFG3252C-HOSTNAME",
+            connection_type=ConnectionTypes.TCPIP,
+            logout_command="logout",
+        )
+        mock_device = mock.MagicMock()
+        mock_device._config_entry = mock_config  # noqa: SLF001
+        mock_device._visa_resource = mock_visa_resource  # noqa: SLF001
+        mock_device._is_open = True  # noqa: SLF001
+
+        PIControl._close(mock_device)  # noqa: SLF001 # pyright: ignore[reportPrivateUsage]
+
+        mock_visa_resource.write.assert_called_once_with("logout")
+        mock_visa_resource.close.assert_called_once()
+        assert mock_device._is_open is False  # noqa: SLF001
 
     @pytest.mark.parametrize(
         # Get the list of device types, ignore the unit test ones since
