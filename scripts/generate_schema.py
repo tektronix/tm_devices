@@ -287,13 +287,13 @@ def main() -> None:
 
     # Create the schema
     logger.info("Generating the schema for the tm_devices configuration file")
-    schema_dict = get_schema(TMDevicesConfigFileSchema)  # pyright: ignore[reportUnknownVariableType]
+    schema_dict = get_schema(TMDevicesConfigFileSchema)
 
     # Process the schema
     logger.info("Post-processing the schema")
-    recursively_post_process_schema(schema_dict)  # pyright: ignore[reportUnknownArgumentType]
+    recursively_post_process_schema(schema_dict)
     logger.info("Converting the schema to draft-07")
-    schema_dict = convert_to_draft_7(schema_dict)  # pyright: ignore[reportUnknownArgumentType]
+    schema_dict = convert_to_draft_7(schema_dict)
 
     # Validate the schema
     logger.info("Validating the schema in-memory")
