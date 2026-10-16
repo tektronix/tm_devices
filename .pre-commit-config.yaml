@@ -135,7 +135,8 @@ repos:
         pass_filenames: false
         files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
         always_run: true
-        args: [--json]
+        # nltk is only a transitive dev dependency of safety, and CVE-2026-81726 has no fixed release.
+        args: [--json, --ignore-code=CVE-2026-81726]
       - id: poetry-check
         name: poetry-check
         entry: poetry check
