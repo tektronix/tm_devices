@@ -4,7 +4,7 @@ import logging
 import warnings
 
 from collections.abc import MutableMapping
-from typing import Any
+from typing import Any, ClassVar
 from weakref import WeakValueDictionary
 
 _logger: logging.Logger = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ class Singleton(type):
         ...     pass
     """
 
-    _class_instances: MutableMapping[Any, Any] = WeakValueDictionary()
+    _class_instances: ClassVar[MutableMapping[Any, Any]] = WeakValueDictionary()
 
     def __call__(cls, *args: Any, **kwargs: Any) -> Any:
         """Allow any usage of the class to be performed on the same instance."""
