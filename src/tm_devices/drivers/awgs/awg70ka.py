@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Literal
+from typing import ClassVar, Literal
 
 from tm_devices.commands import AWG70KAMixin
 from tm_devices.drivers.awgs.awg import (
@@ -28,6 +28,9 @@ class AWG70KA(AWG70KAMixin, AWG):
         memory_max_record_length=2000000000,
         memory_min_record_length=1,
     )
+    # The clock output of the AWG70K tops out at 12.5 GHz, so the 50 GS/s models cannot generate
+    # the predefined CLOCK waveform at their maximum sample rate divided by 2 (25 GHz).
+    _PRE_DEFINED_SIGNAL_MAX_FREQUENCY_CLOCK: ClassVar[float | None] = 12.5e9
     sample_waveform_set_file = (
         "C:\\Program Files\\Tektronix\\AWG70000\\Samples\\AWG5k7k Predefined Waveforms.awgx"
     )

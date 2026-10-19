@@ -53,6 +53,13 @@ class AWG(
     _PRE_DEFINED_SIGNAL_RECORD_LENGTH_SIN: ClassVar[list[int]] = [3600, 1000, 960, 360, 100, 36, 10]
     # The record lengths for the predefined CLOCK waveforms.
     _PRE_DEFINED_SIGNAL_RECORD_LENGTH_CLOCK: ClassVar[list[int]] = [960]
+    # The predefined CLOCK waveform is a fixed 2 samples/cycle square wave which is repeated to
+    # fill its record length, so its output frequency is always sample_rate / 2, independent of
+    # the record length used to name the waveform file.
+    _PRE_DEFINED_SIGNAL_SAMPLES_PER_CYCLE_CLOCK: ClassVar[int] = 2
+    # The maximum frequency the predefined CLOCK waveform can be generated at. A value of None
+    # means the only limit is the maximum sample rate divided by the samples per cycle.
+    _PRE_DEFINED_SIGNAL_MAX_FREQUENCY_CLOCK: ClassVar[float | None] = None
     # All predefined waveforms have these record lengths.
     _PRE_DEFINED_SIGNAL_RECORD_LENGTH_DEFAULT: ClassVar[list[int]] = [1000, 960, 100, 10]
 
@@ -257,7 +264,10 @@ class AWG(
             # use the min and max waveform length dependent on the predefined files
             func_sample_rate_lookup: dict[str, ParameterBounds] = {
                 SignalGeneratorFunctionsAWG.SIN.name: ParameterBounds(lower=10, upper=3600),
-                SignalGeneratorFunctionsAWG.CLOCK.name: ParameterBounds(lower=960, upper=960),
+                SignalGeneratorFunctionsAWG.CLOCK.name: ParameterBounds(
+                    lower=self._PRE_DEFINED_SIGNAL_SAMPLES_PER_CYCLE_CLOCK,
+                    upper=self._PRE_DEFINED_SIGNAL_SAMPLES_PER_CYCLE_CLOCK,
+                ),
                 SignalGeneratorFunctionsAWG.SQUARE.name: ParameterBounds(lower=10, upper=1000),
                 SignalGeneratorFunctionsAWG.RAMP.name: ParameterBounds(lower=10, upper=1000),
                 SignalGeneratorFunctionsAWG.TRIANGLE.name: ParameterBounds(lower=10, upper=1000),
@@ -269,6 +279,14 @@ class AWG(
             fastest_frequency = (
                 sample_rate_range.upper / func_sample_rate_lookup[function.name].lower
             )
+            if (
+                function == SignalGeneratorFunctionsAWG.CLOCK
+                and self._PRE_DEFINED_SIGNAL_MAX_FREQUENCY_CLOCK is not None
+            ):
+                # Some AWGs cap the frequency of the CLOCK output below sample_rate / 2.
+                fastest_frequency = min(
+                    fastest_frequency, self._PRE_DEFINED_SIGNAL_MAX_FREQUENCY_CLOCK
+                )
         elif waveform_length and not function:
             slowest_frequency = sample_rate_range.lower / waveform_length
             fastest_frequency = sample_rate_range.upper / waveform_length
@@ -341,13 +359,23 @@ class AWG(
                 premade_signal_rl = self._PRE_DEFINED_SIGNAL_RECORD_LENGTH_DEFAULT
             # for each of these three records lengths
             for record_length in premade_signal_rl:  # pragma: no cover
-                needed_sample_rate = frequency * record_length
+                # Every predefined waveform except CLOCK holds exactly one cycle within its
+                # record length, so the record length is also its samples/cycle value.
+                samples_per_cycle = (
+                    self._PRE_DEFINED_SIGNAL_SAMPLES_PER_CYCLE_CLOCK
+                    if selected_function == SignalGeneratorFunctionsAWG.CLOCK
+                    else record_length
+                )
+                needed_sample_rate = frequency * samples_per_cycle
                 # try for the highest record length that can generate the frequency
+                # the frequency range check enforces any device specific frequency maximum which
+                # is lower than what the sample rate range allows
                 if (
                     device_constraints.sample_rate_range
                     and device_constraints.sample_rate_range.lower
                     <= needed_sample_rate
                     <= device_constraints.sample_rate_range.upper
+                    and frequency <= device_constraints.frequency_range.upper
                 ):
                     predefined_name = f"*{selected_function.value.title()}{record_length}"
                     break
