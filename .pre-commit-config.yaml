@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3  # frozen: 0.37.4
+    rev: 4f85d46a92dc17713078e5de73f8a13190edf6fc  # frozen: 0.38.2
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -49,12 +49,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 2f3dbd354aa118b539dee99d8eed05a83097a199  # frozen: v1.7.12.24
+    rev: 357f7eec6dec49bf7693dc0dbec30212226d5492  # frozen: v1.7.12.25
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 6afcd8e9560ddf1b9a5032262a0be26540e85fb3  # frozen: v4.16.5
+    rev: 054e4a278e11abb9b8df6c103fa64f544d468ee5  # frozen: v4.19.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -63,16 +63,16 @@ repos:
     hooks:
       - id: yamlfix
   - repo: https://github.com/thibaudcolas/curlylint
-    rev: 20d279d3cba11d64529ee88c5a2092c5c09919b6  # frozen: v0.13.1
+    rev: 71adf4d34c290684fd9f94a4d21ac55bcfe640f0  # frozen: v0.13.1
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 82912cdaea4fb830f751504486a7879c70526547  # frozen: 1.0.0
+    rev: 2d496dbc18e31b83a1596685347ffe0b6041daf0  # frozen: 1.0.0
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
-          - setuptools==83.0.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
+          - setuptools==84.0.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-config
@@ -87,7 +87,7 @@ repos:
           - mdformat-web
           - mdformat-wikilink
   - repo: https://github.com/pappasam/toml-sort
-    rev: 2970ae9bb7124fe5117a27e10c10d2da051ce05a  # frozen: v0.24.4
+    rev: 6bcff12c5d156baa6897ca2a85f6d534af296e7c  # frozen: v0.25.0
     hooks:
       - id: toml-sort-fix
   - repo: local
@@ -151,7 +151,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 2700fd5671c633760d912769c041bfcde2b9a01b  # frozen: v0.15.22
+    rev: a56c0b927e6465d37cae3e97d35d4d18ab2b96cd  # frozen: v0.16.9
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]

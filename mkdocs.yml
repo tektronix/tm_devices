@@ -72,6 +72,7 @@ markdown_extensions:
 plugins:
   - search:
       prebuild_index: true
+      indexing: sections
   - include-markdown
   - section-index
   - autorefs

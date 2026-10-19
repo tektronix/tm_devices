@@ -107,7 +107,7 @@ def test_awg70k_gen_waveform(
     )
     stdout = capsys.readouterr().out
     source1_frequency = awg70ka150.query("SOURCE1:FREQUENCY?")
-    assert float(source1_frequency) == 96000000
+    assert float(source1_frequency) == 200000
     source1_waveform_file = awg70ka150.query("SOURCE1:WAVEFORM?")
     assert source1_waveform_file == '"*Clock960"'
     source1_amplitude = awg70ka150.query("SOURCE1:VOLTAGE:AMPLITUDE?")
@@ -154,10 +154,10 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
     with pytest.raises(ValueError, match=error_match):
         awg7k06.source_channel["SOURCE1"].set_offset(0.2)
     awg7k06.generate_function(
-        10e4, awg7k06.source_device_constants.functions.CLOCK, 1.0, 0.0, channel="SOURCE1"
+        10e6, awg7k06.source_device_constants.functions.CLOCK, 1.0, 0.0, channel="SOURCE1"
     )
     source1_frequency = awg7k06.query("SOURCE1:FREQUENCY?")
-    assert float(source1_frequency) == 96000000
+    assert float(source1_frequency) == 20000000
     source1_waveform_file = awg7k06.query("SOURCE1:WAVEFORM?")
     assert source1_waveform_file == '"*Clock960"'
     source1_amplitude = awg7k06.query("SOURCE1:VOLTAGE:AMPLITUDE?")
@@ -208,7 +208,7 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
 
     # Clock
     awg7k01.generate_function(
-        10e4,
+        10e6,
         awg7k01.source_device_constants.functions.CLOCK,
         1.0,
         0.0,
@@ -216,7 +216,7 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
         output_signal_path=awg7k01.OutputSignalPath.DCA,
     )
     source1_frequency = awg7k01.query("SOURCE1:FREQUENCY?")
-    assert float(source1_frequency) == 96000000
+    assert float(source1_frequency) == 20000000
     source1_waveform_file = awg7k01.query("SOURCE1:WAVEFORM?")
     assert source1_waveform_file == '"*Clock960"'
 
@@ -276,6 +276,88 @@ def test_awg5k_gen_waveform(device_manager: DeviceManager) -> None:
         channel="SOURCE1",
         output_signal_path=awg5k.OutputSignalPath.DIR,
     )
+
+
+def test_awg_clock_waveform_sample_rate(device_manager: DeviceManager) -> None:
+    """Verify the predefined CLOCK waveform is driven at 2 samples/cycle, not its record length.
+
+    ``*Clock960`` is a fixed 2 samples/cycle square wave tiled to fill its 960 sample record,
+    so its output frequency is always ``sample_rate / 2``, limited by the maximum clock output
+    frequency of the AWG. Previously the 960 sample record length was used as the samples/cycle
+    value, which silently generated a signal 480x faster than requested (or raised a
+    ``ValueError`` when ``frequency * 960`` exceeded the maximum sample rate).
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    awg70ka150 = cast(
+        "AWG70KA", device_manager.add_awg("awg70001aopt150-hostname", alias="awg70ka150clk")
+    )
+    awg520050 = cast("AWG5200", device_manager.add_awg("awg5200opt50-hostname", alias="awg5200clk"))
+    awg7k06 = cast("AWG7K", device_manager.add_awg("awg7102opt06-hostname", alias="awg7k06clk"))
+    awg5k = cast("AWG5K", device_manager.add_awg("awg5012-hostname", alias="awg5kclk"))
+
+    # Each of these frequencies is above the old (incorrect) max_sample_rate / 960 ceiling,
+    # so each of these calls used to raise a ValueError.
+    for awg, frequency, sample_rate_query in (
+        (awg70ka150, 12.5e9, "SOURCE1:FREQUENCY?"),  # the AWG70K clock output maximum
+        (awg520050, 2.5e9, "CLOCK:SRATE?"),  # the AWG5200 opt 50 maximum
+        (awg7k06, 5.0e9, "SOURCE1:FREQUENCY?"),  # the AWG7102 maximum
+        (awg5k, 600.0e6, "SOURCE1:FREQUENCY?"),  # the AWG5012 maximum
+    ):
+        awg.generate_function(
+            frequency,
+            awg.source_device_constants.functions.CLOCK,
+            1.0,
+            0.0,
+            channel="SOURCE1",
+        )
+        # The sample rate is twice the requested frequency, not 960x it.
+        assert float(awg.query(sample_rate_query)) == 2 * frequency
+        # The waveform file is still named after the record length.
+        assert awg.query("SOURCE1:WAVEFORM?") == '"*Clock960"'
+        assert int(awg.query("OUTPUT1:STATE?")) == 1
+        assert awg.expect_esr(0)
+
+    # A frequency above max_sample_rate / 2 is still rejected.
+    with pytest.raises(
+        ValueError,
+        match=r"Unable to generate Clock waveform with provided frequency of 700000000\.0 Hz\.",
+    ):
+        awg5k.generate_function(
+            700.0e6, awg5k.source_device_constants.functions.CLOCK, 1.0, 0.0, channel="SOURCE1"
+        )
+
+    # A frequency above the 12.5 GHz clock output maximum of the AWG70K is rejected even though
+    # the 50 GS/s sample rate of this model would be able to provide 2 samples/cycle for it.
+    with pytest.raises(
+        ValueError,
+        match=r"Unable to generate Clock waveform with provided frequency of 12501000000\.0 Hz\.",
+    ):
+        awg70ka150.generate_function(
+            12.501e9,
+            awg70ka150.source_device_constants.functions.CLOCK,
+            1.0,
+            0.0,
+            channel="SOURCE1",
+        )
+
+    # A frequency below min_sample_rate / 2 is now rejected instead of silently generating a
+    # signal 480x too fast (1.0 MHz * 960 = 960 MS/s used to fall within the AWG5012 range).
+    with pytest.raises(
+        ValueError,
+        match=r"Unable to generate Clock waveform with provided frequency of 1000000\.0 Hz\.",
+    ):
+        awg5k.generate_function(
+            1.0e6, awg5k.source_device_constants.functions.CLOCK, 1.0, 0.0, channel="SOURCE1"
+        )
+
+    # Every other predefined function still uses its record length as its samples/cycle value.
+    awg5k.generate_function(
+        1.0e6, awg5k.source_device_constants.functions.SQUARE, 1.0, 0.0, channel="SOURCE1"
+    )
+    assert float(awg5k.query("SOURCE1:FREQUENCY?")) == 1.0e6 * 1000
+    assert awg5k.query("SOURCE1:WAVEFORM?") == '"*Square1000"'
 
 
 def test_afg3k_gen_waveform(  # pylint: disable=too-many-locals

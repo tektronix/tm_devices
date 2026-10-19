@@ -14,6 +14,7 @@ Attributes and Functions:
     - trigger.model.abort()
     - trigger.model.addblock.branch.always()
     - trigger.model.addblock.branch.counter()
+    - trigger.model.addblock.branch.event()
     - trigger.model.addblock.branch.once()
     - trigger.model.addblock.branch.onceexcluded()
     - trigger.model.addblock.configlist.next()
@@ -24,6 +25,7 @@ Attributes and Functions:
     - trigger.model.addblock.measure()
     - trigger.model.addblock.measureoverlapped()
     - trigger.model.addblock.nop()
+    - trigger.model.addblock.notify()
     - trigger.model.addblock.reset.branch.counter()
     - trigger.model.addblock.source.action.bias()
     - trigger.model.addblock.source.action.skip()
@@ -433,6 +435,7 @@ class TriggerModelAddblockBranch(BaseTSPCmd):
     Properties and methods:
         - ``.always()``: The ``trigger.model.addblock.branch.always()`` function.
         - ``.counter()``: The ``trigger.model.addblock.branch.counter()`` function.
+        - ``.event()``: The ``trigger.model.addblock.branch.event()`` function.
         - ``.once()``: The ``trigger.model.addblock.branch.once()`` function.
         - ``.onceexcluded()``: The ``trigger.model.addblock.branch.onceexcluded()`` function.
     """
@@ -500,12 +503,47 @@ class TriggerModelAddblockBranch(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.counter()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
+    def event(
+        self, trigger_model_name: str, block_name: str, branch_to_block_name: str, event_id: str
+    ) -> None:
+        """Run the ``trigger.model.addblock.branch.event()`` function.
+
+        Description:
+            - This function defines a trigger model block that branches to another trigger model
+              block when an event occurs.
+
+        TSP Syntax:
+            ```
+            - trigger.model.addblock.branch.event()
+            ```
+
+        Args:
+            trigger_model_name: Name of the trigger model to which the block is added.
+            block_name: Name of the block to be added; an empty string is a valid block name.
+            branch_to_block_name: Name of the block to branch to when the condition is true.
+            event_id: The event that must occur before the trigger model branches to the specified
+                block; see Details.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.event("{trigger_model_name}", '
+                f'"{block_name}", '
+                f'"{branch_to_block_name}", '
+                f"{event_id})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.event()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
     def once(self, trigger_model_name: str, block_name: str, branch_to_block_name: str) -> None:
         """Run the ``trigger.model.addblock.branch.once()`` function.
 
         Description:
-            - This function causes the trigger model to branch to a specified trigger model block
-              the first time it is encountered in the trigger model.
+            - This function defines a trigger model block that branches to a specified trigger model
+              block the first time it is encountered in the trigger model.
 
         TSP Syntax:
             ```
@@ -514,9 +552,8 @@ class TriggerModelAddblockBranch(BaseTSPCmd):
 
         Args:
             trigger_model_name: Name of the trigger model to which the block is added.
-            block_name: Name of the trigger block.
-            branch_to_block_name: Name of the block to branch to on the first pass through this
-                block.
+            block_name: Name of the trigger block; an empty string is a valid block name.
+            branch_to_block_name: Name of the block to branch to on true condition.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -576,6 +613,7 @@ class TriggerModelAddblock(BaseTSPCmd):
         - ``.measure()``: The ``trigger.model.addblock.measure()`` function.
         - ``.measureoverlapped()``: The ``trigger.model.addblock.measureoverlapped()`` function.
         - ``.nop()``: The ``trigger.model.addblock.nop()`` function.
+        - ``.notify()``: The ``trigger.model.addblock.notify()`` function.
         - ``.reset``: The ``trigger.model.addblock.reset`` command tree.
         - ``.source``: The ``trigger.model.addblock.source`` command tree.
         - ``.wait()``: The ``trigger.model.addblock.wait()`` function.
@@ -596,6 +634,7 @@ class TriggerModelAddblock(BaseTSPCmd):
         Sub-properties and sub-methods:
             - ``.always()``: The ``trigger.model.addblock.branch.always()`` function.
             - ``.counter()``: The ``trigger.model.addblock.branch.counter()`` function.
+            - ``.event()``: The ``trigger.model.addblock.branch.event()`` function.
             - ``.once()``: The ``trigger.model.addblock.branch.once()`` function.
             - ``.onceexcluded()``: The ``trigger.model.addblock.branch.onceexcluded()`` function.
         """
@@ -783,6 +822,34 @@ class TriggerModelAddblock(BaseTSPCmd):
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.nop()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
+    def notify(self, trigger_model_name: str, block_name: str, event_id: str) -> None:
+        """Run the ``trigger.model.addblock.notify()`` function.
+
+        Description:
+            - This function defines a trigger model block that generates a trigger event.
+
+        TSP Syntax:
+            ```
+            - trigger.model.addblock.notify()
+            ```
+
+        Args:
+            trigger_model_name: Name of the trigger model to which the block will be added.
+            block_name: Name of the trigger block; an empty string is a valid block name.
+            event_id: slot[Z].trigger.model.EVENT_NOTIFYN, where N is the number of the notify
+                event; see Details.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.notify("{trigger_model_name}", "{block_name}", {event_id})'
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.notify()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
     # pylint: disable=too-many-arguments
     def wait(
         self,
@@ -876,6 +943,7 @@ class TriggerModel(BaseTSPCmd):
             - ``.measure()``: The ``trigger.model.addblock.measure()`` function.
             - ``.measureoverlapped()``: The ``trigger.model.addblock.measureoverlapped()`` function.
             - ``.nop()``: The ``trigger.model.addblock.nop()`` function.
+            - ``.notify()``: The ``trigger.model.addblock.notify()`` function.
             - ``.reset``: The ``trigger.model.addblock.reset`` command tree.
             - ``.source``: The ``trigger.model.addblock.source`` command tree.
             - ``.wait()``: The ``trigger.model.addblock.wait()`` function.

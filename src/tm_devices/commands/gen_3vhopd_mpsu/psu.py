@@ -59,7 +59,7 @@ Attributes and Functions:
     - psu[X].source.protect.trippedi
     - psu[X].source.protect.trippedv
     - psu[X].source.rangev
-    - psu[X].source.slewratev
+    - psu[X].source.slewrate.v
     - psu[X].trigger.measure.i()
     - psu[X].trigger.measure.iv()
     - psu[X].trigger.measure.p()
@@ -356,6 +356,88 @@ class PsuItemTrigger(BaseTSPCmd):
             - ``.logv()``: The ``psu[X].trigger.source.logv()`` function.
         """
         return self._source
+
+
+class PsuItemSourceSlewrate(BaseTSPCmd):
+    """The ``psu[X].source.slewrate`` command tree.
+
+    Info:
+        - ``X``, the module channel number.
+
+    Properties and methods:
+        - ``.v``: The ``psu[X].source.slewrate.v`` attribute.
+    """
+
+    @property
+    def v(self) -> str:
+        """Access the ``psu[X].source.slewrate.v`` attribute.
+
+        Description:
+            - This attribute configures the voltage source slew rate.
+
+        Usage:
+            - Accessing this property will send the ``print(psu[X].source.slewrate.v)`` query.
+            - Setting this property to a value will send the ``psu[X].source.slewrate.v = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - psu[X].source.slewrate.v = value
+            - print(psu[X].source.slewrate.v)
+            ```
+
+        Info:
+            - ``X``, the module channel number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".v"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.v)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.v`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @v.setter
+    def v(self, value: str | float) -> None:
+        """Access the ``psu[X].source.slewrate.v`` attribute.
+
+        Description:
+            - This attribute configures the voltage source slew rate.
+
+        Usage:
+            - Accessing this property will send the ``print(psu[X].source.slewrate.v)`` query.
+            - Setting this property to a value will send the ``psu[X].source.slewrate.v = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - psu[X].source.slewrate.v = value
+            - print(psu[X].source.slewrate.v)
+            ```
+
+        Info:
+            - ``X``, the module channel number.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".v", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.v = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.v`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
 
 
 class PsuItemSourceProtect(BaseTSPCmd):
@@ -719,12 +801,13 @@ class PsuItemSource(BaseTSPCmd):
         - ``.output``: The ``psu[X].source.output`` attribute.
         - ``.protect``: The ``psu[X].source.protect`` command tree.
         - ``.rangev``: The ``psu[X].source.rangev`` attribute.
-        - ``.slewratev``: The ``psu[X].source.slewratev`` attribute.
+        - ``.slewrate``: The ``psu[X].source.slewrate`` command tree.
     """
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._protect = PsuItemSourceProtect(device, f"{self._cmd_syntax}.protect")
+        self._slewrate = PsuItemSourceSlewrate(device, f"{self._cmd_syntax}.slewrate")
 
     @property
     def constantcurrent(self) -> str:
@@ -1115,75 +1198,16 @@ class PsuItemSource(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
     @property
-    def slewratev(self) -> str:
-        """Access the ``psu[X].source.slewratev`` attribute.
-
-        Description:
-            - This attribute configures the voltage source slew rate.
-
-        Usage:
-            - Accessing this property will send the ``print(psu[X].source.slewratev)`` query.
-            - Setting this property to a value will send the ``psu[X].source.slewratev = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - psu[X].source.slewratev = value
-            - print(psu[X].source.slewratev)
-            ```
+    def slewrate(self) -> PsuItemSourceSlewrate:
+        """Return the ``psu[X].source.slewrate`` command tree.
 
         Info:
             - ``X``, the module channel number.
 
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        Sub-properties and sub-methods:
+            - ``.v``: The ``psu[X].source.slewrate.v`` attribute.
         """
-        try:
-            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
-                return self._cmd_syntax + ".slewratev"
-            return self._device.query(  # type: ignore[union-attr]
-                f"print({self._cmd_syntax}.slewratev)"
-            )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slewratev`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
-
-    @slewratev.setter
-    def slewratev(self, value: str | float) -> None:
-        """Access the ``psu[X].source.slewratev`` attribute.
-
-        Description:
-            - This attribute configures the voltage source slew rate.
-
-        Usage:
-            - Accessing this property will send the ``print(psu[X].source.slewratev)`` query.
-            - Setting this property to a value will send the ``psu[X].source.slewratev = value``
-              command.
-
-        TSP Syntax:
-            ```
-            - psu[X].source.slewratev = value
-            - print(psu[X].source.slewratev)
-            ```
-
-        Info:
-            - ``X``, the module channel number.
-
-        Raises:
-            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
-        """
-        try:
-            if self._device.command_verification_enabled:  # type: ignore[union-attr]
-                self._device.set_and_check(  # type: ignore[union-attr]
-                    self._cmd_syntax + ".slewratev", value
-                )
-            else:
-                self._device.write(  # type: ignore[union-attr]
-                    f"{self._cmd_syntax}.slewratev = {value}"
-                )
-        except AttributeError as error:
-            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slewratev`` attribute."  # noqa: E501
-            raise NoDeviceProvidedError(msg) from error
+        return self._slewrate
 
 
 class PsuItemMeasureRel(BaseTSPCmd):
@@ -2791,7 +2815,7 @@ class PsuItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             - ``.output``: The ``psu[X].source.output`` attribute.
             - ``.protect``: The ``psu[X].source.protect`` command tree.
             - ``.rangev``: The ``psu[X].source.rangev`` attribute.
-            - ``.slewratev``: The ``psu[X].source.slewratev`` attribute.
+            - ``.slewrate``: The ``psu[X].source.slewrate`` command tree.
         """
         return self._source
 

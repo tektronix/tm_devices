@@ -23,7 +23,7 @@ class BaseAFGSourceChannel(BaseSourceChannel, ABC):
         super().__init__(pi_control=pi_control, channel_name=channel_name)
 
     @abstractmethod
-    def set_function_properties(  # noqa: PLR0913
+    def set_function_properties(  # noqa: PLR0913,PLR0917
         self,
         frequency: float,
         function: SignalGeneratorFunctionBase,

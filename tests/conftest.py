@@ -82,9 +82,7 @@ def bypass_time_sleep() -> Generator[mock.MagicMock, None, None]:
 
 
 @pytest.fixture(autouse=True)
-def _auto_add_newline_to_test_start() -> (  # pyright: ignore [reportUnusedFunction]
-    Generator[None, None, None]
-):
+def _auto_add_newline_to_test_start() -> Generator[None, None, None]:
     """Automatically add a newline at the start of each test."""
     print(f"\n{'#' * 90}\nExecuting {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n")  # noqa: T201
     yield
@@ -137,7 +135,7 @@ def fixture_unit_test_config_file(
 
 
 @pytest.fixture(autouse=True)
-def _reset_dm(  # pyright: ignore[reportUnusedFunction]
+def _reset_dm(
     device_manager: DeviceManager, unit_test_config_file: Path
 ) -> Generator[None, None, None]:
     """Reset the device_manager settings after each test.
@@ -158,9 +156,7 @@ def _reset_dm(  # pyright: ignore[reportUnusedFunction]
 
 
 @pytest.fixture(name="mock_http_server", scope="session")
-def _fixture_mock_http_server() -> (  # pyright: ignore [reportUnusedFunction]
-    Generator[None, None, None]
-):
+def _fixture_mock_http_server() -> Generator[None, None, None]:
     """Create a mock HTTP server.
 
     Yields:

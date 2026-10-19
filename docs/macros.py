@@ -54,8 +54,10 @@ PAGE_REPLACEMENTS = {
     "CONTRIBUTING.md": (
         ("> [!TIP]", ""),
         (
-            "> View this page in the [online documentation]"
-            "(https://tm-devices.readthedocs.io/latest/CONTRIBUTING) for the best experience.",
+            (
+                "> View this page in the [online documentation]"
+                "(https://tm-devices.readthedocs.io/latest/CONTRIBUTING) for the best experience."
+            ),
             "",
         ),
     ),

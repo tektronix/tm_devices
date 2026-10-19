@@ -25,8 +25,10 @@ if TYPE_CHECKING:
         (
             2,
             ValueError,
-            r"Error encountered while accessing module commands object: TBD Module "
-            r"in slot 2 is an invalid module.",
+            (
+                r"Error encountered while accessing module commands object: TBD Module "
+                r"in slot 2 is an invalid module."
+            ),
         ),
         # Test slot with a non-integer type
         (
@@ -125,8 +127,10 @@ def test_tsp_buffer_cleanup(
         (
             2,
             ValueError,
-            r"Error encountered while accessing module commands object: TBD Module "
-            r"in slot 2 is an invalid module.",
+            (
+                r"Error encountered while accessing module commands object: TBD Module "
+                r"in slot 2 is an invalid module."
+            ),
         ),
         # Test slot with a non-integer type
         (

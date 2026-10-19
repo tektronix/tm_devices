@@ -253,7 +253,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """Return the VISA status byte."""
         return self._visa_resource.read_stb()
 
-    def poll_query(  # noqa: PLR0913  # pylint: disable=too-many-locals
+    def poll_query(  # noqa: PLR0913,PLR0917  # pylint: disable=too-many-locals
         self,
         number_of_polls: int,
         query: str,
@@ -379,7 +379,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         return response
 
-    def query_binary(  # noqa: PLR0913
+    def query_binary(  # noqa: PLR0913,PLR0917
         self,
         query: str,
         verbose: bool = True,

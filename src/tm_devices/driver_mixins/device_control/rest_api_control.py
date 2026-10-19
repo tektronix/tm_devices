@@ -71,7 +71,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
     # Public Methods
     ################################################################################################
     # pylint: disable=too-many-arguments
-    def delete(  # noqa: PLR0913
+    def delete(  # noqa: PLR0913,PLR0917
         self,
         url: str,
         headers: Mapping[str, str] | None = None,
@@ -111,7 +111,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         )
 
     # pylint: disable=too-many-arguments
-    def get(  # noqa: PLR0913
+    def get(  # noqa: PLR0913,PLR0917
         self,
         url: str,
         headers: Mapping[str, str] | None = None,
@@ -151,7 +151,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         )
 
     # pylint: disable=too-many-arguments
-    def patch(  # noqa: PLR0913
+    def patch(  # noqa: PLR0913,PLR0917
         self,
         url: str,
         json_body: dict[str, Any] | None = None,
@@ -200,7 +200,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         )
 
     # pylint: disable=too-many-arguments
-    def post(  # noqa: PLR0913
+    def post(  # noqa: PLR0913,PLR0917
         self,
         url: str,
         json_body: dict[str, Any] | None = None,
@@ -249,7 +249,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         )
 
     # pylint: disable=too-many-arguments
-    def put(  # noqa: PLR0913
+    def put(  # noqa: PLR0913,PLR0917
         self,
         url: str,
         json_body: dict[str, Any] | None = None,
@@ -386,7 +386,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         raise NotImplementedError
 
     # pylint: disable=too-many-branches,too-many-arguments,too-many-locals
-    def _send_request(  # noqa: PLR0913,PLR0912,C901
+    def _send_request(  # noqa: PLR0913,PLR0912,PLR0917,C901
         self,
         request_type: SupportedRequestTypes,
         url: str,
