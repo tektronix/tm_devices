@@ -16,6 +16,7 @@ from packaging.version import Version
 
 from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 if TYPE_CHECKING:
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
@@ -90,6 +91,16 @@ def test_smu(  # noqa: PLR0915
     assert "endscript" in stdout
     assert "loadfuncs.save()" not in stdout
     assert "loadfuncs()" in stdout
+    smu.expect_esr(0)
+
+    # Test load_script batches data when exceeding max write limit
+    overrun_script = "print('" + ("x" * 1001) + "')"
+    smu.load_script(script_name="overrun_script", script_body=overrun_script)
+    stdout = capsys.readouterr().out
+    assert "loadscript overrun_script" in stdout
+    assert "endscript" in stdout
+    assert f"print('{'x' * 993}" in stdout
+    assert f"{'x' * 8}')" in stdout
     smu.expect_esr(0)
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
@@ -327,3 +338,32 @@ def test_smu6430(device_manager: DeviceManager) -> None:
     assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
     assert smu.all_channel_names_list == ("SOURCE1",)
+
+
+def test_tsp_batch_script() -> None:
+    """Test the TSPControl._batch_script batching logic."""
+    # Test empty script
+    assert TSPControl._batch_script("", 1000) == []  # noqa: SLF001
+
+    # Test short script fits in a single batch
+    script = "line1 = 1\nline2 = 2"
+    assert TSPControl._batch_script(script, 1000) == [script]  # noqa: SLF001
+
+    # Test lines batched together up to batch_size
+    lines = ["a = 1", "b = 2", "c = 3"]
+    # "a = 1\nb = 2" is 11 chars, with batch_size=12 it fits, but adding "\nc = 3" would exceed 12
+    assert TSPControl._batch_script("\n".join(lines), 12) == ["a = 1\nb = 2", "c = 3"]  # noqa: SLF001
+
+    # Test single line exceeding batch_size is split into chunks of batch_size
+    long_line = "x" * 25
+    assert TSPControl._batch_script(long_line, 10) == ["x" * 10, "x" * 10, "x" * 5]  # noqa: SLF001
+
+    # Test mixed: normal lines before and after a long line
+    mixed_script = "pre = 1\n" + ("x" * 25) + "\npost = 2"
+    assert TSPControl._batch_script(mixed_script, 10) == [  # noqa: SLF001
+        "pre = 1",
+        "x" * 10,
+        "x" * 10,
+        "x" * 5,
+        "post = 2",
+    ]
