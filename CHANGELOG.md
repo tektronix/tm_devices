@@ -16,10 +16,13 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Added
+
+- Added `TSPControl.write_long()`, which splits a long string into multiple bounded writes so that TSP devices receive a write termination character often enough to avoid a communication overrun.
 
 ### Fixed
 
+- Fixed `TSPControl.load_script()` sending script content as a single unbounded write, which could exceed the instrument's max write length before a write termination and cause a communication overrun; content is now sent in bounded chunks using `TSPControl.write_long()`.
 - Fixed uncaught exceptions whose first argument is not a string, such as the `OSError` family, being replaced by an `Error in sys.excepthook:` message that hid the original exception and its traceback. The log file location is now attached to these exceptions as a note (Python 3.11 and newer) rather than by rewriting their arguments.
 - Fixed a failure while logging an uncaught exception, which can happen when the log handlers are already closed during interpreter shutdown, preventing that exception from being reported at all.
 - Fixed the sample rate calculation used by the AWG `CLOCK` function. The predefined `*Clock960` waveform is a fixed 2 samples per cycle rather than a single cycle spread across its 960 sample record. This affects all AWG drivers, which previously generated a `CLOCK` signal 480x faster than requested or raised a `ValueError` for valid frequencies.

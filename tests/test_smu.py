@@ -277,6 +277,100 @@ def test_smu(  # noqa: PLR0915
         smu.expect_esr(1)
 
 
+def test_smu_load_script_max_write_length(device_manager: DeviceManager) -> None:
+    """Verify load_script() splits long content into writes bounded by the max write length.
+
+    TSP devices require a write termination character to be sent at least once every
+    ``TSPControl._MAX_TSP_WRITE_LENGTH`` characters, or a communication overrun
+    occurs on the instrument. This covers the exact scenario reported in #500: a single
+    line (e.g. one long ``print()`` call) that by itself exceeds the max write length.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-long-script")
+    max_length = smu._MAX_TSP_WRITE_LENGTH  # noqa: SLF001
+
+    # A single line with no newlines that is, on its own, well over the max write length.
+    long_line = 'print("' + ("1" * (max_length + 500)) + '")'
+    expected_full_script = f"loadscript overrun\n{long_line}\nendscript"
+
+    with mock.patch.object(smu, "write", wraps=smu.write) as write_spy:
+        smu.load_script("overrun", script_body=long_line)
+
+    # First call is the "delete if it exists" check; the rest are the script content.
+    script_write_calls = [call.args[0] for call in write_spy.call_args_list[1:]]
+
+    # The oversized line forces more than one write.
+    assert len(script_write_calls) > 1
+    # No individual write exceeds the instrument's max write length.
+    assert all(len(chunk) <= max_length for chunk in script_write_calls)
+    # The writes reassemble to the exact original script content.
+    assert "".join(script_write_calls) == expected_full_script
+
+
+def test_smu_load_script_short_script_single_write(device_manager: DeviceManager) -> None:
+    """Verify load_script() still sends short scripts in a single write.
+
+    This is a regression check to ensure the chunking added for #500 does not change
+    behavior for scripts that already fit within the max write length.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-short-script")
+
+    with mock.patch.object(smu, "write", wraps=smu.write) as write_spy:
+        smu.load_script("shortscript", script_body='print("TEK")')
+
+    # First call is the "delete if it exists" check; the second is the entire script.
+    assert len(write_spy.call_args_list) == 2
+    assert write_spy.call_args_list[1].args[0] == 'loadscript shortscript\nprint("TEK")\nendscript'
+
+
+def test_smu_write_long(device_manager: DeviceManager) -> None:
+    """Verify write_long() splits long commands into writes bounded by the max write length.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-write-long")
+    max_length = smu._MAX_TSP_WRITE_LENGTH  # noqa: SLF001
+    long_command = "x" * (2 * max_length + 250)
+
+    with mock.patch.object(smu, "write") as write_mock:
+        smu.write_long(long_command, opc=True)
+
+    written = [call.args[0] for call in write_mock.call_args_list]
+    # Two full chunks plus the remainder.
+    assert len(written) == 3
+    assert all(len(chunk) <= max_length for chunk in written)
+    # The writes reassemble to the exact original command.
+    assert "".join(written) == long_command
+    # The OPC check is only requested once, after the final chunk.
+    assert [call.kwargs.get("opc", False) for call in write_mock.call_args_list] == [
+        False,
+        False,
+        True,
+    ]
+
+
+def test_smu_write_long_short_and_empty_commands(device_manager: DeviceManager) -> None:
+    """Verify write_long() sends commands within the max write length as a single write.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-write-long-short")
+    max_length = smu._MAX_TSP_WRITE_LENGTH  # noqa: SLF001
+
+    for command in ("", "print(1)", "y" * max_length):
+        with mock.patch.object(smu, "write") as write_mock:
+            smu.write_long(command)
+        assert write_mock.call_count == 1
+        assert write_mock.call_args.args[0] == command
+
+
 def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
     """Test the SMU2450 driver specific code.
 
