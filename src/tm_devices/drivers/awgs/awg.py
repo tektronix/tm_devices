@@ -27,7 +27,7 @@ from tm_devices.helpers.enums import (
 )
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class AWGSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
