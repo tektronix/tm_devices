@@ -1,5 +1,7 @@
 """Module containing constants and dataclasses for the `tm_devices` package."""
 
+import warnings
+
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
@@ -581,12 +583,37 @@ class DMConfigOptions(AsDictionaryMixin):
         Optional[bool],
         SchemaAnnotation(
             description=(
+                "Deprecated, use `visa_library` instead. "
                 "Indicate if PyVISA-py's pure Python VISA backend should be used\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#standalone"
             ),
         ),
     ] = None
-    """An option indicating to use PyVISA-py's pure Python VISA backend."""
+    """An option indicating to use PyVISA-py's pure Python VISA backend.
+
+    Deprecated, use
+    [`visa_library`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.visa_library]
+    instead.
+    """
+    visa_library: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "The VISA library to use when connecting to devices, as a PyVISA backend string "
+                '(for example `"@py"` or `"@ivi"`) or the path to a VISA library file\n'
+                "https://tm-devices.readthedocs.io/stable/configuration/#visa_library"
+            ),
+        ),
+    ] = None
+    """The VISA library to use when connecting to devices.
+
+    The value is passed directly to PyVISA when it creates the VISA resource manager. Common
+    values are `"@ivi"` for the VISA library installed on the system, `"@py"` for PyVISA-py
+    (which needs no separate VISA installation), or the full path to a VISA library file.
+
+    When this option is not set, PyVISA uses the system's default VISA library and falls back to
+    PyVISA-py if none is installed.
+    """
     setup_cleanup: Annotated[
         Optional[bool],
         SchemaAnnotation(
@@ -809,6 +836,13 @@ class DMConfigOptions(AsDictionaryMixin):
                     f"Valid values are {LoggingLevels.list_values()}"
                 )
                 raise ValueError(msg) from error
+
+        if self.standalone is not None:
+            deprecation_msg = (
+                "`standalone` is deprecated. Use the `visa_library` option instead. "
+                '(visa_library="@py" is equivalent to standalone=True.)'
+            )
+            warnings.warn(deprecation_msg, DeprecationWarning, stacklevel=2)
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""
