@@ -595,25 +595,6 @@ class DMConfigOptions(AsDictionaryMixin):
     [`visa_library`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.visa_library]
     instead.
     """
-    visa_library: Annotated[
-        Optional[str],
-        SchemaAnnotation(
-            description=(
-                "The VISA library to use when connecting to devices, as a PyVISA backend string "
-                '(for example `"@py"` or `"@ivi"`) or the path to a VISA library file\n'
-                "https://tm-devices.readthedocs.io/stable/configuration/#visa_library"
-            ),
-        ),
-    ] = None
-    """The VISA library to use when connecting to devices.
-
-    The value is passed directly to PyVISA when it creates the VISA resource manager. Common
-    values are `"@ivi"` for the VISA library installed on the system, `"@py"` for PyVISA-py
-    (which needs no separate VISA installation), or the full path to a VISA library file.
-
-    When this option is not set, PyVISA uses the system's default VISA library and falls back to
-    PyVISA-py if none is installed.
-    """
     setup_cleanup: Annotated[
         Optional[bool],
         SchemaAnnotation(
@@ -818,6 +799,25 @@ class DMConfigOptions(AsDictionaryMixin):
 
     Defaults to True. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
+    """
+    visa_library: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "The VISA library to use when connecting to devices, as a PyVISA backend string "
+                '(for example `"@py"` or `"@ivi"`) or the path to a VISA library file\n'
+                "https://tm-devices.readthedocs.io/stable/configuration/#visa_library"
+            ),
+        ),
+    ] = None
+    """The VISA library to use when connecting to devices.
+
+    The value is passed directly to PyVISA when it creates the VISA resource manager. Common
+    values are `"@ivi"` for the VISA library installed on the system, `"@py"` for PyVISA-py
+    (which needs no separate VISA installation), or the full path to a VISA library file.
+
+    When this option is not set, PyVISA uses the system's default VISA library and falls back to
+    PyVISA-py if none is installed.
     """
 
     def __post_init__(self) -> None:
