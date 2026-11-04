@@ -66,7 +66,9 @@ class TestDeviceManager:  # pylint: disable=no-self-use
             ),
         )
         device_manager.add_scope("MSO56-HOSTNAME")
+        saved_visa_lib = device_manager.visa_library
         try:
+            device_manager.visa_library = PYVISA_PY_BACKEND
             with mock.patch.dict("os.environ", {"TM_DEVICES_CONFIG": "./temp_config.toml"}):
                 # respect the env var if no path is given
                 device_manager.write_current_configuration_to_config_file()
@@ -98,10 +100,10 @@ device_type = "SCOPE"
 default_visa_timeout = {UNIT_TEST_TIMEOUT}
 disable_command_verification = false
 setup_cleanup = false
-standalone = false
 teardown_cleanup = false
 verbose_mode = true
 verbose_visa = false
+visa_library = "@py"
 """
             )
             text = Path("./temp_config.yaml").read_text(encoding="utf-8")
@@ -128,24 +130,26 @@ options:
   default_visa_timeout: {UNIT_TEST_TIMEOUT}
   disable_command_verification: false
   setup_cleanup: false
-  standalone: false
   teardown_cleanup: false
   verbose_mode: true
   verbose_visa: false
+  visa_library: '@py'
 """
+            )
+
+            assert (
+                device_manager.get_current_configuration_as_environment_variable_strings()
+                == f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT={UNIT_TEST_TIMEOUT},VERBOSE_MODE,"
+                "VISA_LIBRARY=@py\n"
+                "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
+                "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
+                "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"
+                "~~~address=MSO56-HOSTNAME,connection_type=TCPIP,device_type=SCOPE~~~"
             )
         finally:
             os.remove("./temp_config.toml")
             os.remove("./temp_config.yaml")
-
-        assert (
-            device_manager.get_current_configuration_as_environment_variable_strings()
-            == f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT={UNIT_TEST_TIMEOUT},VERBOSE_MODE\n"
-            "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
-            "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
-            "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"
-            "~~~address=MSO56-HOSTNAME,connection_type=TCPIP,device_type=SCOPE~~~"
-        )
+            device_manager.visa_library = saved_visa_lib
 
     def test_dm_properties(self, device_manager: DeviceManager) -> None:
         """Test the editable properties of the DeviceManager.

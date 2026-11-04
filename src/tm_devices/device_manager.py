@@ -298,7 +298,9 @@ class DeviceManager(metaclass=Singleton):
     @visa_library.setter
     def visa_library(self, value: str) -> None:
         """Set the VISA library to use when creating new device connections."""
-        self.__config.options.standalone = value == PYVISA_PY_BACKEND
+        self.__config.options.visa_library = value
+        # Clear deprecated standalone option so it can't override visa_library or trigger warnings.
+        self.__config.options.standalone = None
         self.__visa_library = value
 
     ################################################################################################
@@ -1589,7 +1591,10 @@ class DeviceManager(metaclass=Singleton):
             else self.__config.options.default_visa_timeout
         )
         # Configure the VISA library
-        if self.__config.options.standalone:
+        if self.__config.options.visa_library is not None:
+            self.__visa_library = self.__config.options.visa_library
+        # TODO: Remove this branch when the deprecated `standalone` option is removed in v4.0
+        elif self.__config.options.standalone:
             self.__visa_library = PYVISA_PY_BACKEND
         elif self.__visa_library is NotImplemented:
             # Check for an environment variable, primarily used for enabling
