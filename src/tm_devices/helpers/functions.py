@@ -353,7 +353,8 @@ def create_visa_connection(
             warning_msg = (
                 "No VISA installation was detected, defaulting to using "
                 "PyVISA-py as the VISA backend.\n\n"
-                'Set the "visa_library" option to "@py" in the configuration or set the '
+                f'Set the "visa_library" option to "{PYVISA_PY_BACKEND}" in '
+                "the configuration or set the "
                 "`DeviceManager.visa_library` attribute to a valid VISA library to "
                 "silence this warning."
             )

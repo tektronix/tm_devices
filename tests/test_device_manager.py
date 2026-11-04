@@ -103,7 +103,7 @@ setup_cleanup = false
 teardown_cleanup = false
 verbose_mode = true
 verbose_visa = false
-visa_library = "@py"
+visa_library = "{PYVISA_PY_BACKEND}"
 """
             )
             text = Path("./temp_config.yaml").read_text(encoding="utf-8")
@@ -133,14 +133,14 @@ options:
   teardown_cleanup: false
   verbose_mode: true
   verbose_visa: false
-  visa_library: '@py'
+  visa_library: '{PYVISA_PY_BACKEND}'
 """
             )
 
             assert (
                 device_manager.get_current_configuration_as_environment_variable_strings()
                 == f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT={UNIT_TEST_TIMEOUT},VERBOSE_MODE,"
-                "VISA_LIBRARY=@py\n"
+                f"VISA_LIBRARY={PYVISA_PY_BACKEND}\n"
                 "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
                 "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
                 "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"
@@ -212,7 +212,7 @@ options:
             # Part 2: the setter records visa_library and clears standalone
             device_manager.visa_library = PYVISA_PY_BACKEND
             env_string = device_manager.get_current_configuration_as_environment_variable_strings()
-            assert "VISA_LIBRARY=@py" in env_string
+            assert f"VISA_LIBRARY={PYVISA_PY_BACKEND}" in env_string
             assert "STANDALONE" not in env_string
         finally:
             device_manager.visa_library = saved_visa_lib

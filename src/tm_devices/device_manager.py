@@ -863,7 +863,7 @@ class DeviceManager(metaclass=Singleton):
                 msg = (
                     "Unable to query local resources, ensure you have a suitable "
                     "VISA backend properly installed (NI-VISA is recommended) or "
-                    'set the "visa_library" option to "@py" in your config file.'
+                    f'set the "visa_library" option to "{PYVISA_PY_BACKEND}" in your config file.'
                 )
                 raise AssertionError(msg) from exc
         if search:

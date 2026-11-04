@@ -164,14 +164,14 @@ def test_standalone_option_is_deprecated() -> None:
 
 def test_visa_library_option() -> None:
     """Test the visa_library option."""
-    file_contents = """
+    file_contents = f"""
 devices:
 # This is a SMU
 - address: 192.168.0.101
   connection_type: TCPIP
   device_type: SMU
 options:
-  visa_library: "@py"
+  visa_library: "{PYVISA_PY_BACKEND}"
   """
 
     with (
@@ -186,7 +186,9 @@ options:
     assert config.options.standalone is None
     assert config.options.visa_library == PYVISA_PY_BACKEND
 
-    with mock.patch.dict("os.environ", {"TM_OPTIONS": "VISA_LIBRARY=@py"}, clear=True):
+    with mock.patch.dict(
+        "os.environ", {"TM_OPTIONS": f"VISA_LIBRARY={PYVISA_PY_BACKEND}"}, clear=True
+    ):
         config = DMConfigParser()
 
     assert config.options.visa_library == PYVISA_PY_BACKEND

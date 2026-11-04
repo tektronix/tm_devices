@@ -28,7 +28,10 @@ from tm_devices.helpers.enums import (
     SupportedModels,
 )
 from tm_devices.helpers.logging import LoggingLevels
-from tm_devices.helpers.standalone_helpers import validate_address
+from tm_devices.helpers.standalone_helpers import (
+    PYVISA_PY_BACKEND,
+    validate_address,
+)
 
 
 @dataclass
@@ -840,7 +843,7 @@ class DMConfigOptions(AsDictionaryMixin):
         if self.standalone is not None:
             deprecation_msg = (
                 "`standalone` is deprecated. Use the `visa_library` option instead. "
-                '(visa_library="@py" is equivalent to standalone=True.)'
+                f'(visa_library="{PYVISA_PY_BACKEND}" is equivalent to standalone=True.)'
             )
             warnings.warn(deprecation_msg, DeprecationWarning, stacklevel=2)
 
