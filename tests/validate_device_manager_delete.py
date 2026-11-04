@@ -6,6 +6,7 @@ runs this script via a subprocess to avoid interactions with the test of the tes
 
 from contextlib import redirect_stdout
 from io import StringIO
+from pathlib import Path
 from unittest import mock
 
 import pyvisa.constants
@@ -78,6 +79,9 @@ def verify_deleting_device_manager() -> None:
     # Test that the closing happens when the python interpreter exits
     with mock.patch.dict("os.environ", {"TM_DEVICES_VISA_LIBRARY": "custom_lib"}):
         dev_manager = DeviceManager(verbose=True)
+    assert dev_manager.visa_library == "custom_lib"
+    # Loading a config without visa_library or standalone must keep the current VISA library
+    dev_manager.load_config_file(Path(__file__).parent / "samples/simulated_config_no_devices.yaml")
     assert dev_manager.visa_library == "custom_lib"
     dev_manager.visa_library = SIMULATED_VISA_LIB
     # Set up the device manager with a single device
