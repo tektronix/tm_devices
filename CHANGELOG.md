@@ -20,11 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Added the `visa_library` configuration option, which selects the VISA backend used when creating VISA connections. It accepts any value PyVISA accepts when creating a resource manager, for example `"@py"` for PyVISA-py, `"@ivi"` for the VISA backend installed on the system, or the path to a specific VISA library file. When both `visa_library` and the deprecated `standalone` option are set, `visa_library` takes precedence. USB and GPIB connections are rejected when `visa_library` is `"@py"`, matching the existing behavior of `standalone`.
-
-### Changed
-
-- Setting the `DeviceManager.visa_library` property now stores the value in the `visa_library` configuration option instead of setting the `standalone` option. Configuration files written by `DeviceManager.write_current_configuration_to_config_file()` and the output of `DeviceManager.get_current_configuration_as_environment_variable_strings()` now contain `visa_library` instead of `standalone`.
+- Added the `visa_library` configuration option, which selects the VISA backend used when creating VISA connections (for example `"@py"`, `"@ivi"`, or the path to a VISA library file). When both `visa_library` and the deprecated `standalone` option are set, `visa_library` takes precedence. Setting `DeviceManager.visa_library` now updates this option, so saved configurations contain `visa_library` instead of `standalone`.
 
 ### Deprecated
 
