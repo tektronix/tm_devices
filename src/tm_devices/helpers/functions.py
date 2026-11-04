@@ -346,14 +346,15 @@ def create_visa_connection(
         visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
             visa_library
         ).open_resource(resource_expression)
-        # Print a warning if PyVISA-py is used when the user didn't specify STANDALONE
+        # Print a warning if PyVISA-py is used when the user didn't explicitly select it
         if (
             visa_object.visalib.library_path.path == "py" and visa_library != PYVISA_PY_BACKEND
         ):  # pragma: no cover
             warning_msg = (
                 "No VISA installation was detected, defaulting to using "
                 "PyVISA-py as the VISA backend.\n\n"
-                'Add the "STANDALONE" option to the configuration or set the '
+                f'Set the "visa_library" option to "{PYVISA_PY_BACKEND}" in '
+                "the configuration or set the "
                 "`DeviceManager.visa_library` attribute to a valid VISA library to "
                 "silence this warning."
             )

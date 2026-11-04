@@ -249,7 +249,7 @@ These options are used to configure runtime behaviors of `tm_devices`.
 options:
   verbose_mode: false
   verbose_visa: false
-  standalone: false
+  visa_library: ''
   setup_cleanup: false
   teardown_cleanup: false
   disable_command_verification: false
@@ -277,11 +277,38 @@ options:
 
 ##### `standalone`
 
+!!! warning
+
+    This config option is deprecated and will be removed in v4.0, use
+    [`visa_library`](#visa_library) instead (`visa_library: "@py"` is
+    equivalent to `standalone: true`).
+
 - This config option specifies to use the PyVISA-py VISA backend, which
     does not require any actual visa.dll to exist on the system to work.
 - By default, the Device Manager will default to using whatever visa.dll it
     can find on the system and fall back to using PyVISA-py's backend if no other
     VISA backends are found.
+
+##### `visa_library`
+
+- This config option specifies which VISA backend the Device Manager will use
+    when creating VISA connections. The value is passed directly to PyVISA when
+    it creates the VISA resource manager, so any backend string that PyVISA
+    accepts can be used.
+- Common values for `<visa_library>`:
+    - `"@py"`: The PyVISA-py VISA backend, which does not require any actual
+        visa.dll to exist on the system to work.
+    - `"@ivi"`: The VISA backend installed on the system, such as TekVISA or NI-VISA.
+    - `""`: Explicitly selects the system's default VISA backend, described below.
+    - The path to a specific VISA library file.
+- By default (when this option is not set), the Device Manager will use
+    whatever visa.dll it can find on the system and fall back to using
+    PyVISA-py's backend if no other VISA backends are found.
+- USB and GPIB connections are not supported when using the PyVISA-py
+    backend (`"@py"`).
+- This config option replaces the deprecated [`standalone`](#standalone)
+    option. `visa_library: "@py"` is equivalent to `standalone: true`, and when
+    both options are set, `visa_library` takes precedence.
 
 ##### `setup_cleanup`
 
@@ -413,7 +440,7 @@ options:
   setup_cleanup: true
   teardown_cleanup: true
   disable_command_verification: true
-  standalone: false
+  visa_library: ''
   verbose_mode: false
   verbose_visa: false
   retry_visa_connection: false
@@ -496,7 +523,7 @@ lan_port = 5000
 setup_cleanup = true
 teardown_cleanup = true
 disable_command_verification = true
-standalone = false
+visa_library = ""
 verbose_mode = false
 verbose_visa = false
 retry_visa_connection = false
@@ -544,7 +571,7 @@ environment variable)
 ```python
 # fmt: off
 # Sample SMU using IP address and PyVISA-py
-TM_OPTIONS = "STANDALONE"
+TM_OPTIONS = "VISA_LIBRARY=@py"
 TM_DEVICES = "address=123.45.67.255,device_type=SMU"
 
 # Sample scope using hostname and AFG using IP address with cleanup and a non-standard default VISA timeout

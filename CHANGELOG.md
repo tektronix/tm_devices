@@ -18,6 +18,14 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added the `visa_library` configuration option, which selects the VISA backend used when creating VISA connections (for example `"@py"`, `"@ivi"`, or the path to a VISA library file). When both `visa_library` and the deprecated `standalone` option are set, `visa_library` takes precedence. Setting `DeviceManager.visa_library` now updates this option, so saved configurations contain `visa_library` instead of `standalone`.
+
+### Deprecated
+
+- Deprecated the `standalone` configuration option in favor of the new `visa_library` option (`visa_library: "@py"` is equivalent to `standalone: true`). The `standalone` option still works, but now raises a `DeprecationWarning` and will be removed in v4.0.
+
 ### Fixed
 
 - Fixed uncaught exceptions whose first argument is not a string, such as the `OSError` family, being replaced by an `Error in sys.excepthook:` message that hid the original exception and its traceback. The log file location is now attached to these exceptions as a note (Python 3.11 and newer) rather than by rewriting their arguments.

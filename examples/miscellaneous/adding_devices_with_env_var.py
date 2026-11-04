@@ -8,9 +8,10 @@ import os
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import AFG31052, MSO2, SMU2601B
+from tm_devices.helpers import PYVISA_PY_BACKEND
 
 # Indicate to use the PyVISA-py backend rather than any installed VISA backends.
-os.environ["TM_OPTIONS"] = "STANDALONE"
+os.environ["TM_OPTIONS"] = f"VISA_LIBRARY={PYVISA_PY_BACKEND}"
 # Define some devices.
 os.environ["TM_DEVICES"] = (
     "device_type=SCOPE,address=<IP or hostname>"  # Define a scope

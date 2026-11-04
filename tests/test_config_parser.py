@@ -1,6 +1,8 @@
 # pyright: reportPrivateUsage=none
 """Tests for the config_parser.py file."""
 
+import warnings
+
 from pathlib import Path
 from types import MappingProxyType
 from typing import TYPE_CHECKING
@@ -15,6 +17,7 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     DeviceTypes,
     DMConfigOptions,
+    PYVISA_PY_BACKEND,
     SerialConfig,
 )
 from tm_devices.helpers.constants_and_dataclasses import CONFIG_CLASS_STR_PREFIX_MAPPING
@@ -136,6 +139,105 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert expected_entry == config.devices, (
         f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
     )
+
+
+def test_standalone_option_is_deprecated() -> None:
+    """Test that the standalone option is deprecated."""
+    with pytest.warns(DeprecationWarning, match="visa_library"):
+        options = DMConfigOptions(
+            standalone=True,
+        )
+    assert options.visa_library is None
+    assert options.standalone is True
+
+    with pytest.warns(DeprecationWarning, match="visa_library"):
+        options = DMConfigOptions(
+            standalone=False,
+        )
+    assert options.visa_library is None
+    assert options.standalone is False
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        DMConfigOptions()
+
+
+def test_visa_library_option() -> None:
+    """Test the visa_library option."""
+    file_contents = f"""
+devices:
+# This is a SMU
+- address: 192.168.0.101
+  connection_type: TCPIP
+  device_type: SMU
+options:
+  visa_library: "{PYVISA_PY_BACKEND}"
+  """
+
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("pathlib.Path.is_file", mock.MagicMock(return_value=True)),
+        mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)),
+        warnings.catch_warnings(),
+    ):
+        warnings.simplefilter("error")
+        config = DMConfigParser()
+
+    assert config.options.standalone is None
+    assert config.options.visa_library == PYVISA_PY_BACKEND
+
+    with mock.patch.dict(
+        "os.environ", {"TM_OPTIONS": f"VISA_LIBRARY={PYVISA_PY_BACKEND}"}, clear=True
+    ):
+        config = DMConfigParser()
+
+    assert config.options.visa_library == PYVISA_PY_BACKEND
+
+
+@pytest.mark.parametrize(
+    ("visa_library", "standalone", "connection_type", "blocked"),
+    [
+        (PYVISA_PY_BACKEND, None, "USB", True),
+        (PYVISA_PY_BACKEND, None, "GPIB", True),
+        ("@ivi", True, "USB", False),
+        ("@ivi", True, "GPIB", False),
+        (None, True, "USB", True),
+        (None, True, "GPIB", True),
+        (None, None, "USB", False),
+        (None, None, "GPIB", False),
+    ],
+)
+def test_pyvisa_py_rejects_usb_and_gpib(
+    visa_library: str | None,
+    standalone: bool | None,
+    connection_type: str,
+    blocked: bool,
+) -> None:
+    """Test that USB and GPIB devices are rejected when PyVISA-py is used.
+
+    Args:
+        visa_library: The visa_library option to set.
+        standalone: The standalone option to set.
+        connection_type: The connection type to add.
+        blocked: Whether the device is blocked from being added.
+    """
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("os.path.isfile", mock.MagicMock(return_value=False)),
+    ):
+        config = DMConfigParser()
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error" if standalone is None else "ignore", DeprecationWarning)
+        config.update_options(DMConfigOptions(visa_library=visa_library, standalone=standalone))
+
+    address = "MSO54-123456" if connection_type == "USB" else "1"
+    if blocked:
+        with pytest.raises(ValueError, match="not supported"):
+            config.add_device(device_type="SCOPE", address=address, connection_type=connection_type)
+    else:
+        config.add_device(device_type="SCOPE", address=address, connection_type=connection_type)
+        assert len(config.devices) == 1
 
 
 def test_file_config_default_path() -> None:
