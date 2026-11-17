@@ -3,9 +3,9 @@
 
 from collections.abc import Callable
 from functools import cached_property, wraps
-from typing import Concatenate, overload, TypeVar
+from typing import Concatenate, overload, Self, TypeVar
 
-from typing_extensions import ParamSpec, Self
+from typing_extensions import ParamSpec
 
 # bound is used to allow anything that subclasses from Device
 _EM = TypeVar("_EM", bound="_ExtendableMixin")

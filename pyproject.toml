@@ -48,7 +48,7 @@ maintainers = [
 ]
 name = "tm_devices"
 readme = "README.md"
-requires-python = ">=3.10,<3.16"  # PYTHON VERSION MARKER
+requires-python = ">=3.11,<3.16"  # PYTHON VERSION MARKER
 
 [project.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -110,14 +110,12 @@ version = "3.7.0"
 nodeenv = "^1.9.1"
 pip = "^26.0"
 poetry = "^2.2.0"
-poetry-audit-plugin = "^1.0.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
 pylint = "4.0.9"
 pyright = { extras = ["nodejs"], version = "1.1.414" }
 pyroma = "^5.0"
-safety = "~3.7.0"  # TODO: Remove this version pin once the issue with safety is resolved
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
 twine = "^7.0.0"
@@ -190,7 +188,7 @@ ignore-patterns = [
   "^\\.vscode",
   "^temp_.*\\..*",
 ]
-jobs = 0
+jobs = 0  # TODO: Remove the scripts/run_pylint.py workaround once dill > 0.4.1 is released (co_lnotab was removed in Python 3.15)
 load-plugins = """
 pylint.extensions.check_elif,
 pylint.extensions.code_style,
@@ -209,7 +207,7 @@ pylint.extensions.set_membership,
 pylint.extensions.typing,
 pylint.extensions.while_used
 """
-py-version = "3.10"  # PYTHON VERSION MARKER
+py-version = "3.11"  # PYTHON VERSION MARKER
 recursive = true
 
 [tool.pylint."messages control"]
@@ -269,7 +267,7 @@ ignore = [
   "temp_*.py",
 ]
 pythonPlatform = "All"
-pythonVersion = "3.10"  # PYTHON VERSION MARKER
+pythonVersion = "3.11"  # PYTHON VERSION MARKER
 reportCallInDefaultInitializer = "error"
 reportImplicitOverride = "none"  # this check is not needed
 reportImplicitStringConcatenation = "none"  # this is allowed by this project's formatting standard
@@ -317,7 +315,7 @@ line-length = 100
 namespace-packages = ["docs/**", "examples/**", "scripts/**", "tests/**"]
 output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
-target-version = "py310"  # PYTHON VERSION MARKER
+target-version = "py311"  # PYTHON VERSION MARKER
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
@@ -426,15 +424,14 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py310,py311,py312,py313,py314,py315,tests,docs,doctests  # PYTHON VERSION MARKER
+envlist = py311,py312,py313,py314,py315,tests,docs,doctests  # PYTHON VERSION MARKER
 skip_missing_interpreters = True
 labels =
-  basic = py310,py311,py312,py313,py314,py315,tests  # PYTHON VERSION MARKER
+  basic = py311,py312,py313,py314,py315,tests  # PYTHON VERSION MARKER
   documentation = docs,doctests
 
 [gh-actions]
 python =  # PYTHON VERSION MARKER
-    3.10: py310
     3.11: py311
     3.12: py312
     3.13: py313

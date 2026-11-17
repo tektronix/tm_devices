@@ -10,7 +10,7 @@ ci:
     - pyright-verifytypes
     - pyroma
     - poetry-lock
-    - poetry-audit
+    - osv-scanner
     - poetry-check
     - check-tm-devices-schema-file
 repos:
@@ -94,7 +94,8 @@ repos:
     hooks:
       - id: pylint
         name: pylint
-        entry: pylint
+        # TODO: Revert entry to `pylint` and delete scripts/run_pylint.py once a dill release newer than 0.4.1 is available. dill 0.4.1 reads code.co_lnotab, which Python 3.15 removed, so this wrapper forces --jobs=1 there.
+        entry: python scripts/run_pylint.py
         language: system
         types: [python]
         pass_filenames: true
@@ -128,15 +129,6 @@ repos:
         pass_filenames: false
         always_run: true
         files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
-      - id: poetry-audit
-        name: poetry-audit
-        entry: poetry audit
-        language: system
-        pass_filenames: false
-        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
-        always_run: true
-        # nltk is only a transitive dev dependency of safety, and CVE-2026-81726 has no fixed release.
-        args: [--json, --ignore-code=CVE-2026-81726]
       - id: poetry-check
         name: poetry-check
         entry: poetry check
@@ -151,6 +143,11 @@ repos:
         types: [python]
         pass_filenames: false
         args: [scripts/generate_schema.py]
+  - repo: https://github.com/google/osv-scanner
+    rev: bfe2f84abd2f09fe0b83ba7f6dad40d296762f40  # frozen: v2.7.0
+    hooks:
+      - id: osv-scanner
+        args: [scan, source, --lockfile=poetry.lock]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 38bfb07c0c64c304f47eb52090f8288150c77730  # frozen: v0.17.1
     hooks:

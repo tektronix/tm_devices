@@ -393,7 +393,7 @@ class DMConfigParser:
                 try:
                     dev_key, dev_val = dev_arg.split("=", 1)
                     temp_dict[dev_key] = dev_val
-                except ValueError:  # noqa: PERF203
+                except ValueError:
                     msg.append(
                         f'Expected device defined like "device_type=SCOPE,address=1.2.3.4,...",\n'
                         f'cannot parse "{dev_entry}"'

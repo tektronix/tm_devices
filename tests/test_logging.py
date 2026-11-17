@@ -129,10 +129,9 @@ def test_exception_handler_with_non_string_first_argument(
     # The arguments of an OSError must be left alone, its message is built from other attributes.
     assert exception.args == (10054, "forcibly closed")
     assert str(exception) == "[Errno 10054] forcibly closed"
-    # The logfile location is attached as a note instead, which requires Python 3.11 or newer.
-    if sys.version_info >= (3, 11):
-        assert len(exception.__notes__) == 1
-        assert exception.__notes__[0].startswith("See the logfile at")
+    # The logfile location is attached as a note instead of rewriting the arguments.
+    assert len(exception.__notes__) == 1
+    assert exception.__notes__[0].startswith("See the logfile at")
 
 
 def test_exception_handler_with_no_arguments(

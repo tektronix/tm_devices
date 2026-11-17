@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Added support for Python 3.15.
 
+### Changed
+
+- Dropped support for Python 3.10.
+
 ### Fixed
 
 - Fixed uncaught exceptions whose first argument is not a string, such as the `OSError` family, being replaced by an `Error in sys.excepthook:` message that hid the original exception and its traceback. The log file location is now attached to these exceptions as a note (Python 3.11 and newer) rather than by rewriting their arguments.

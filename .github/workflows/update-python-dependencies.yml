@@ -12,7 +12,7 @@ jobs:
       commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
       update-pre-commit: false
       run-pre-commit: true
-      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,poetry-audit,poetry-check,check-tm-devices-schema-file
+      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,osv-scanner,poetry-check,check-tm-devices-schema-file
       export-dependency-groups: docs,tests
     permissions:
       contents: write
