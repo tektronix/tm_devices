@@ -48,7 +48,7 @@ maintainers = [
 ]
 name = "tm_devices"
 readme = "README.md"
-requires-python = ">=3.11,<3.16"  # PYTHON VERSION MARKER
+requires-python = ">=3.11.5,<3.16"  # PYTHON VERSION MARKER
 
 [project.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -100,6 +100,8 @@ classifiers = [
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
+  # TODO: Remove this classifier when Python 3.11 is dropped. Poetry compares "3.11" as exactly 3.11.0, so requires-python >=3.11.5 drops it unless it is listed here.
+  "Programming Language :: Python :: 3.11",
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",

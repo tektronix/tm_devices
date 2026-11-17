@@ -24,7 +24,7 @@ Things to be included in the next release go here.
 
 ### Changed
 
-- Dropped support for Python 3.10.
+- Dropped support for Python 3.10 and for Python 3.11.0 through 3.11.4. The minimum supported version is 3.11.5.
 
 ### Fixed
 
