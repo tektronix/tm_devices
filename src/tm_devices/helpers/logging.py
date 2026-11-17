@@ -281,12 +281,10 @@ def __exception_handler(
         if first_arg_is_message:
             exc_value.args = (updated_message, *exc_value.args[1:])
         else:
-            # Attaching the location as a note leaves the arguments untouched, Python appends
-            # notes to the printed traceback. Notes require Python 3.11 or newer, on older
-            # versions the location is only available in the log file itself.
+            # Attaching the location as a note leaves the arguments untouched. Python appends
+            # notes to the printed traceback.
             logfile_hint = updated_message.removeprefix(original_message).strip()
-            with contextlib.suppress(AttributeError):
-                exc_value.add_note(logfile_hint)  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+            exc_value.add_note(logfile_hint)
     except Exception:  # noqa: BLE001
         # Printing the secondary failure is also best-effort, since sys.stderr may be None.
         with contextlib.suppress(Exception):

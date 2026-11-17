@@ -61,9 +61,9 @@ with warnings.catch_warnings():
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
+    from typing import Self
 
     from pyvisa.resources import MessageBasedResource
-    from typing_extensions import Self
 
     # noinspection PyUnresolvedReferences
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -793,7 +793,7 @@ class DeviceManager(metaclass=Singleton):
         for device_name, device_object in self.__devices.items():
             try:
                 device_object.cleanup(verbose=bool(self.__config.options.verbose_mode))
-            except (visa.errors.Error, socket.error, RPCError, AttributeError):  # noqa: PERF203
+            except (visa.errors.Error, socket.error, RPCError, AttributeError):
                 _logger.warning("Device cleanup of %s failed. Retrying...", device_name)
                 device_object.cleanup()
 
@@ -808,7 +808,7 @@ class DeviceManager(metaclass=Singleton):
                 for device_object in self.__devices.values():
                     try:
                         device_object.close()
-                    except AttributeError:  # noqa: PERF203
+                    except AttributeError:
                         _logger.warning(
                             "%s was previously closed, no need to close it again",
                             device_object.name,

@@ -251,7 +251,7 @@ def validate_links_in_json(file_path: Path) -> None:
                 response = requests.get(url, timeout=5)
                 response.raise_for_status()
                 logger.debug("URL is valid: %s", url)
-            except requests.RequestException:  # noqa: PERF203
+            except requests.RequestException:
                 logger.debug("URL is invalid or inaccessible: %s", url)
                 invalid_links.append(url)
     finally:

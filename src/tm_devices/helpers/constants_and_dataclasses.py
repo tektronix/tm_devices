@@ -803,7 +803,7 @@ class DMConfigOptions(AsDictionaryMixin):
             try:
                 if (value := getattr(self, attribute)) is not None:
                     _ = LoggingLevels(value)
-            except ValueError as error:  # noqa: PERF203
+            except ValueError as error:
                 msg = (
                     f'Invalid value for {attribute}: "{getattr(self, attribute)}". '
                     f"Valid values are {LoggingLevels.list_values()}"
