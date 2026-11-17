@@ -2,6 +2,10 @@
 
 import re
 
+
+# TODO: Drop this once astroid sees _decimal re-exports on Python 3.15.
+# useless-suppression: the false positive does not happen on every platform.
+# pylint: disable-next=no-name-in-module,useless-suppression
 from decimal import Decimal, InvalidOperation
 
 
