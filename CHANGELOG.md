@@ -18,6 +18,21 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.8.0 (2026-11-18)
+
+### Merged Pull Requests
+
+- feat: Add support for Python 3.15 and update dependencies ([#643](https://github.com/tektronix/tm_devices/pull/643))
+- chore(deps): Bump the "python-and-pre-commit" group with 1 update across multiple ecosystems ([#644](https://github.com/tektronix/tm_devices/pull/644))
+- gh-actions(deps): bump the gh-actions-dependencies group with 12 updates ([#641](https://github.com/tektronix/tm_devices/pull/641))
+- fix(AWG): Fix sample rate calculation/max frequency for AWG clock output ([#638](https://github.com/tektronix/tm_devices/pull/638))
+- chore(deps-dev): bump the python-and-pre-commit group with 4 updates ([#639](https://github.com/tektronix/tm_devices/pull/639))
+- fix(logging): improve exception handling to preserve original exceptions and enhance logging during interpreter shutdown ([#628](https://github.com/tektronix/tm_devices/pull/628))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 12 updates ([#637](https://github.com/tektronix/tm_devices/pull/637))
+- chore(deps): Bump the "python-and-pre-commit" group with 2 updates across multiple ecosystems ([#624](https://github.com/tektronix/tm_devices/pull/624))
+
 ### Added
 
 - Added support for Python 3.15.
