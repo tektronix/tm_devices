@@ -329,6 +329,26 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         ),
     ] = None
     """The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)."""  # noqa: E501
+    login_command: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "A login command to send before the initial *IDN? query of the instrument\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#login_command"
+            ),
+        ),
+    ] = None
+    """Optional login command sent before the initial ``*IDN?`` query."""
+    logout_command: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            description=(
+                "A logout command to send during device teardown before closing the connection\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#logout_command"
+            ),
+        ),
+    ] = None
+    """Optional logout command sent during teardown before closing the connection."""
     gpib_board_number: Annotated[
         Optional[int],
         SchemaAnnotation(

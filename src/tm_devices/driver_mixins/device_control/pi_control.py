@@ -1005,6 +1005,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
     def _close(self) -> None:
         """Close this device and all its used resources and components."""
+        if self._config_entry.logout_command:
+            try:
+                self._visa_resource.write(self._config_entry.logout_command)
+            except VisaIOError as error:
+                error_msg = f"Error encountered while sending logout command:\n{error}"
+                warnings.warn(error_msg, stacklevel=2)
+                _logger.exception(error_msg)
         try:
             self._visa_resource.close()
         except VisaIOError as error:
