@@ -41,7 +41,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 4f85d46a92dc17713078e5de73f8a13190edf6fc  # frozen: 0.38.2
+    rev: 39478bf2c099a58683d3f1aedf675105318b078d  # frozen: 0.39.0
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -54,7 +54,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: f6be1834c1d5c46f3ad126fb112ca599b6ade685  # frozen: v4.19.2
+    rev: 0c47f153e36705819b4d819508fa913d979c1ccc  # frozen: v4.19.3
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -72,7 +72,7 @@ repos:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
-          - setuptools==84.0.0  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
+          - setuptools==84.2.1  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-config
@@ -87,7 +87,7 @@ repos:
           - mdformat-web
           - mdformat-wikilink
   - repo: https://github.com/pappasam/toml-sort
-    rev: 6bcff12c5d156baa6897ca2a85f6d534af296e7c  # frozen: v0.25.0
+    rev: bb0722c5b9b3f8ca3a7398bb3dcb9b7c26163c16  # frozen: v0.26.0
     hooks:
       - id: toml-sort-fix
   - repo: local
@@ -144,12 +144,12 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/google/osv-scanner
-    rev: bfe2f84abd2f09fe0b83ba7f6dad40d296762f40  # frozen: v2.7.0
+    rev: 7f97ec2cfa6a4aab0e042fa67e40958774d1ab8b  # frozen: v2.7.1
     hooks:
       - id: osv-scanner
         args: [scan, source, --lockfile=poetry.lock]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 38bfb07c0c64c304f47eb52090f8288150c77730  # frozen: v0.17.1
+    rev: ef6cf06c079dd6b299dfc720b0f14400c9d168e1  # frozen: v0.17.5
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
