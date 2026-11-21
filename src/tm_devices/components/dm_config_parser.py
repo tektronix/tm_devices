@@ -39,7 +39,7 @@ if TYPE_CHECKING:
 
 
 @runtime_checkable
-@dataclasses.dataclass
+@dataclasses.dataclass(kw_only=True)
 class _DataclassProtocol(Protocol):
     """A Protocol class to allow for type hinting things that accept generic dataclasses."""
 

@@ -66,14 +66,14 @@ if TYPE_CHECKING:
 _logger: logging.Logger = logging.getLogger(__name__)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TekScopeSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
     functions: type[SignalGeneratorFunctionsIAFG] = SignalGeneratorFunctionsIAFG
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TekProbeData:
     """Immutable information for ``TekScope.channel["<ch_name>"].probe`` data."""
 
@@ -1005,7 +1005,7 @@ class TekScope(
         )
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TekScopeChannel:
     """Scope channel information."""
 
