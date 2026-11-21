@@ -16,6 +16,7 @@ from packaging.version import Version
 
 from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.device_control import TSPControl
 
 if TYPE_CHECKING:
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
@@ -275,6 +276,79 @@ def test_smu(  # noqa: PLR0915
 
     with pytest.raises(AssertionError, match="ESR value mismatch \\(Expected: 1, Actual: 0\\)"):
         smu.expect_esr(1)
+
+
+def test_smu_load_script_long_script_write_termination(device_manager: DeviceManager) -> None:
+    """Test that loading a long TSP script sends bounded, terminated writes (issue #500).
+
+    TSP devices have a max write length before a write_termination character must exist
+    in the data sent to the instrument, otherwise the instrument's receive buffer
+    overruns and the script is corrupted. When loading a script whose content exceeds
+    the max write length, ``load_script()`` must split the script into multiple writes
+    and every single write must include the device's ``write_termination`` character.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-long-script")
+    visa_resource = smu._visa_resource  # noqa: SLF001
+    write_termination = visa_resource.write_termination
+    # The simulated visa resource is configured with a write termination character
+    assert write_termination == "\n"
+    term_bytes = write_termination.encode()
+    max_write_length = TSPControl._MAX_TSP_WRITE_LENGTH  # noqa: SLF001
+
+    # The exact reproduction from issue #500: a single line, with no embedded newlines,
+    # that is on its own longer than the max write length of the instrument.
+    long_line = 'print("' + ("1" * (2 * max_write_length + 500)) + '")'
+    expected_script = f"loadscript overrun\n{long_line}\nendscript"
+    expected_delete = "if overrun ~= nil then script.delete('overrun') end"
+
+    # Spy on write_raw to capture the exact bytes sent over the wire (pyvisa appends
+    # the write_termination to every write() call before calling write_raw).
+    with mock.patch.object(visa_resource, "write_raw") as write_raw_mock:
+        smu.load_script("overrun", script_body=long_line)
+
+    payloads = [call.args[0] for call in write_raw_mock.call_args_list]
+    assert len(payloads) > 0
+    # The first write is the "delete the script if it exists" check,
+    # the remaining writes are the chunks of the script itself.
+    script_payloads = payloads[1:]
+
+    # Every single write sent to the instrument includes the write_termination character
+    assert all(payload.endswith(term_bytes) for payload in payloads)
+    # No single write exceeds the max write length of the instrument (termination included)
+    assert all(len(payload) <= max_write_length for payload in payloads)
+    # The long script had to be split into multiple writes
+    assert len(script_payloads) > 1
+    # Reassembling the exact bytes written reproduces the original commands byte-for-byte
+    reassembled = b"".join(payload[: -len(term_bytes)] for payload in payloads)
+    assert reassembled == f"{expected_delete}{expected_script}".encode()
+
+
+def test_smu_load_script_short_script_single_write(device_manager: DeviceManager) -> None:
+    """Test that loading a short TSP script is still sent as a single write (issue #500).
+
+    Scripts that already fit within the max write length must keep the existing
+    behavior of a single write, so this is a regression guard for the chunking fix.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-short-script")
+    visa_resource = smu._visa_resource  # noqa: SLF001
+    term_bytes = visa_resource.write_termination.encode()
+
+    with mock.patch.object(visa_resource, "write_raw") as write_raw_mock:
+        smu.load_script("shortscript", script_body='print("TEK")')
+
+    payloads = [call.args[0] for call in write_raw_mock.call_args_list]
+    # One write for the "delete the script if it exists" check and a single write
+    # containing the whole script for scripts that fit within the max write length.
+    assert len(payloads) == 2
+    assert all(payload.endswith(term_bytes) for payload in payloads)
+    expected_payload = b'loadscript shortscript\nprint("TEK")\nendscript'
+    assert payloads[1] == expected_payload + term_bytes
 
 
 def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
