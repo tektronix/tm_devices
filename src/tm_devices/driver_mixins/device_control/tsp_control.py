@@ -158,11 +158,12 @@ class TSPControl(PIControl, ABC):
     def load_script(
         self,
         script_name: str,
-        *,
         script_body: str = "",
         file_path: str | os.PathLike[str] | None = None,
         run_script: bool = False,
         to_nv_memory: bool = False,
+        *,
+        batch_size: int = 1000,
     ) -> None:
         """Upload a TSP script to the instrument.
 
@@ -172,6 +173,7 @@ class TSPControl(PIControl, ABC):
             file_path: a *.tsp file from the local filesystem to read and use as the `script_body`.
             run_script: Boolean indicating if the script should be run immediately after loading.
             to_nv_memory: Boolean indicating if the script is to be saved to non-volatile memory.
+            batch_size: The maximum number of characters to send in a single write batch.
         """
         if file_path is not None:
             # script_body argument is overwritten by file contents
@@ -181,7 +183,10 @@ class TSPControl(PIControl, ABC):
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
         # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        self.write(f"loadscript {script_name}")
+        for batch in self._batch_script(script_body, batch_size):
+            self.write(batch)
+        self.write("endscript")
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
@@ -280,6 +285,46 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+    @staticmethod
+    def _batch_script(script_body: str, batch_size: int) -> list[str]:
+        """Split a script body into batches that do not exceed the batch size.
+
+        Args:
+            script_body: The script content to split into batches.
+            batch_size: The maximum number of characters per batch.
+
+        Returns:
+            A list of batches, each at most batch_size characters.
+        """
+        batches: list[str] = []
+        if not script_body:
+            return batches
+
+        current_batch: list[str] = []
+        current_len = 0
+
+        for line in script_body.splitlines():
+            if len(line) > batch_size:
+                if current_batch:
+                    batches.append("\n".join(current_batch))
+                    current_batch = []
+                    current_len = 0
+                batches.extend(line[i : i + batch_size] for i in range(0, len(line), batch_size))
+            else:
+                new_len = current_len + len(line) + (1 if current_batch else 0)
+                if new_len > batch_size:
+                    batches.append("\n".join(current_batch))
+                    current_batch = [line]
+                    current_len = len(line)
+                else:
+                    current_batch.append(line)
+                    current_len = new_len
+
+        if current_batch:
+            batches.append("\n".join(current_batch))
+
+        return batches
+
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""
         super()._cleanup()

@@ -7,8 +7,13 @@ devices:
         r: Keithley Instruments Inc., Model 2601B, 4498311, 3.3.5
       - q: print(available(gpib))
         r: 'true'
-      - q: loadscript loadfuncs\n-- Sample script used in test_smu.py.\nprint("TEK")\nendscript
-      - q: loadscript tsp_function\n-- Sample script used in test_smu.py.\nprint("TEK")\nendscript
+      - q: loadscript loadfuncs
+      - q: loadscript tsp_function
+      - q: -- Sample script used in test_smu.py.\nprint("TEK")
+      - q: loadscript overrun_script
+      - q: "print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      - q: "xxxxxxxx')"
+      - q: endscript
       - q: loadfuncs.save()
       - q: loadfuncs()
       - q: errorqueue.clear()
@@ -35,6 +40,7 @@ devices:
         r: 1
       - q: if loadfuncs ~= nil then script.delete('loadfuncs') end
       - q: if tsp_function ~= nil then script.delete('tsp_function') end
+      - q: if overrun_script ~= nil then script.delete('overrun_script') end
       - q: if smua.nvbuffer1.n == 0 then print('smua.nvbuffer1 was found to be empty')
           else printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1) end
         r: 1, 2, 3, 4, 5
