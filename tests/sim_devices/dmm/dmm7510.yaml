@@ -12,6 +12,7 @@ devices:
       - q: eventlog.clear()
       - q: status.clear()
       - q: reset()
+      - q: trigger.model.load("Empty")
       - q: collectgarbage()
     error:
       status_register:

@@ -12,16 +12,21 @@ if TYPE_CHECKING:
     from tm_devices.drivers import DAQ6510, DMM6500, DMM7510
 
 
-def test_dmm6500(device_manager: DeviceManager) -> None:
+def test_dmm6500(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
     """Test the DMM drivers.
 
     Args:
         device_manager: The DeviceManager object.
+        capsys: The captured stdout and stderr.
     """
     dmm: DMM6500 = device_manager.add_dmm("DMM6500-hostname", alias="dmm-device")
     assert id(device_manager.get_dmm(number_or_alias="dmm-device")) == id(dmm)
     assert id(device_manager.get_dmm(number_or_alias=dmm.device_number)) == id(dmm)
 
+    dmm.commands.trigger.model.load_empty()
+    stdout = capsys.readouterr().out
+    assert 'trigger.model.load("Empty")' in stdout
+
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert dmm.query_expect_timeout("INVALID?", timeout_ms=1) == ""
     with (
@@ -35,13 +40,18 @@ def test_dmm6500(device_manager: DeviceManager) -> None:
     assert dmm.expect_esr(32, ("Command error", "No Error"))
 
 
-def test_dmm75xx(device_manager: DeviceManager) -> None:
+def test_dmm75xx(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
     """Test the DMM drivers.
 
     Args:
         device_manager: The DeviceManager object.
+        capsys: The captured stdout and stderr.
     """
     dmm: DMM7510 = device_manager.add_dmm("DMM7510-hostname")
+
+    dmm.commands.trigger.model.load_empty()
+    stdout = capsys.readouterr().out
+    assert 'trigger.model.load("Empty")' in stdout
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert dmm.query_expect_timeout("INVALID?", timeout_ms=1) == ""
@@ -56,15 +66,20 @@ def test_dmm75xx(device_manager: DeviceManager) -> None:
     assert dmm.expect_esr(32, ("Command error", "No Error"))
 
 
-def test_daq6510(device_manager: DeviceManager) -> None:
+def test_daq6510(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
     """Test the DAQ drivers.
 
     Args:
         device_manager: The DeviceManager object.
+        capsys: The captured stdout and stderr.
     """
     daq: DAQ6510 = device_manager.add_daq("DAQ6510-hostname", alias="daq-device")
     assert id(device_manager.get_daq(number_or_alias="daq-device")) == id(daq)
     assert id(device_manager.get_daq(number_or_alias=daq.device_number)) == id(daq)
+
+    daq.commands.trigger.model.load_empty()
+    stdout = capsys.readouterr().out
+    assert 'trigger.model.load("Empty")' in stdout
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert daq.query_expect_timeout("INVALID?", timeout_ms=1) == ""

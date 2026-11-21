@@ -1526,7 +1526,7 @@ class TriggerModel(BaseTSPCmd):
         """
         try:
             self._device.write(  # type: ignore[union-attr]
-                f"{self._cmd_syntax}.load()"
+                f'{self._cmd_syntax}.load("Empty")'
             )
         except AttributeError as error:
             msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
