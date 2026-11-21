@@ -21,12 +21,14 @@ devices:
       - q: print(status.standard.enable)
         r: 1
       - q: opc()
+      - q: if slot[1] == nil then print('') else print(slot[1].model) end
+        r:
+      - q: if slot[2] == nil then print('') else print(slot[2].model) end
+        r:
+      - q: if slot[3] == nil then print('') else print(slot[3].model) end
+        r: MPSU50-2ST
       - q: print(slot[3].model)
         r: MPSU50-2ST
-      - q: print(slot[1].model)
-        r: TBD-xxx
-      - q: print(slot[2].model)
-        r: TBD
       - q: print([[1]])
         r: 1
       - q: reset()

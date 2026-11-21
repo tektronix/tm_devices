@@ -1,5 +1,7 @@
 """Test the MFs."""
 
+from collections.abc import Callable
+from functools import partial
 from typing import TYPE_CHECKING
 from unittest import mock
 
@@ -10,6 +12,19 @@ from tm_devices import DeviceManager
 
 if TYPE_CHECKING:
     from tm_devices.drivers import MP5103
+
+
+def _query_with_response_overrides(
+    original_query: Callable[..., str],
+    response_overrides: dict[str, str],
+    *args: object,
+    **kwargs: object,
+) -> str:
+    """Return fixed responses for selected query strings, then fall back to the real query."""
+    query = args[0] if args else kwargs.get("query")
+    if isinstance(query, str) and query in response_overrides:
+        return response_overrides[query]
+    return original_query(*args, **kwargs)
 
 
 @pytest.mark.parametrize(
@@ -89,8 +104,41 @@ def test_mainframe_psu_exception(
 
     # Slot-specific PSU checks
     if expected_exception:
-        with pytest.raises(expected_exception, match=match_msg):
-            mainframe.get_module_commands_psu(slot)
+        if slot == 2 and expected_exception is ValueError:
+            with (
+                mock.patch.object(
+                    mainframe,
+                    "query",
+                    side_effect=partial(
+                        _query_with_response_overrides,
+                        mainframe.query,
+                        {
+                            "if slot[2] == nil then print('') else print(slot[2].model) end": "TBD",
+                        },
+                    ),
+                ),
+                pytest.raises(expected_exception, match=match_msg),
+            ):
+                mainframe.get_module_commands_psu(slot)
+        elif slot == 1 and expected_exception is TypeError:
+            with (
+                mock.patch.object(
+                    mainframe,
+                    "query",
+                    side_effect=partial(
+                        _query_with_response_overrides,
+                        mainframe.query,
+                        {
+                            "if slot[1] == nil then print('') else print(slot[1].model) end": "TBD-xxx",  # noqa: E501
+                        },
+                    ),
+                ),
+                pytest.raises(expected_exception, match=match_msg),
+            ):
+                mainframe.get_module_commands_psu(slot)
+        else:
+            with pytest.raises(expected_exception, match=match_msg):
+                mainframe.get_module_commands_psu(slot)
     else:
         psu_commands = mainframe.get_module_commands_psu(slot)
         assert psu_commands.model == "MPSU50-2ST"
@@ -158,8 +206,41 @@ def test_mainframe_smu_exception(
         "TCPIP::MP5103-HOSTNAME::10002::SOCKET", alias="mainframe-device"
     )
     if expected_exception:
-        with pytest.raises(expected_exception, match=match_msg):
-            mainframe.get_module_commands_smu(slot)
+        if slot == 2 and expected_exception is ValueError:
+            with (
+                mock.patch.object(
+                    mainframe,
+                    "query",
+                    side_effect=partial(
+                        _query_with_response_overrides,
+                        mainframe.query,
+                        {
+                            "if slot[2] == nil then print('') else print(slot[2].model) end": "TBD",
+                        },
+                    ),
+                ),
+                pytest.raises(expected_exception, match=match_msg),
+            ):
+                mainframe.get_module_commands_smu(slot)
+        elif slot == 1 and expected_exception is TypeError:
+            with (
+                mock.patch.object(
+                    mainframe,
+                    "query",
+                    side_effect=partial(
+                        _query_with_response_overrides,
+                        mainframe.query,
+                        {
+                            "if slot[1] == nil then print('') else print(slot[1].model) end": "TBD-xxx",  # noqa: E501
+                        },
+                    ),
+                ),
+                pytest.raises(expected_exception, match=match_msg),
+            ):
+                mainframe.get_module_commands_smu(slot)
+        else:
+            with pytest.raises(expected_exception, match=match_msg):
+                mainframe.get_module_commands_smu(slot)
     else:
         smu_commands = mainframe.get_module_commands_smu(slot)
         assert smu_commands.model == "MSMU60-2"

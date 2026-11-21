@@ -488,9 +488,10 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         This is not the resource expression, it is used to help catch duplicate addresses.
         """
         return (
-            self.connection_type.value + " " + self.address + ""
-            if self.lan_port is None
-            else f":{self.lan_port}"
+            self.connection_type.value
+            + " "
+            + self.address
+            + ("" if self.lan_port is None else f":{self.lan_port}")
         )
 
     def get_visa_resource_expression(self) -> str:
