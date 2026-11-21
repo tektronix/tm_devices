@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- fix(tsp): check the device `write_termination` when loading a script and split long `load_script()` writes into chunks within the max write length (1000 chars) of TSP instruments, so every write includes the termination character and long scripts are no longer corrupted ([#500](https://github.com/tektronix/tm_devices/issues/500))
+
 ---
 
 ## v3.8.0 (2026-11-18)

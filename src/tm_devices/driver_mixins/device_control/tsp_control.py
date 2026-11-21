@@ -34,6 +34,11 @@ class TSPControl(PIControl, ABC):
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
 
+    # TSP devices have a max write length before a write_termination character must exist
+    # in the data sent to the instrument, or the instrument's receive buffer overruns and
+    # the data sent is corrupted (see issue #500).
+    _MAX_TSP_WRITE_LENGTH = 1000
+
     def __init__(
         self,
         config_entry: DeviceConfigEntry,
@@ -172,6 +177,13 @@ class TSPControl(PIControl, ABC):
             file_path: a *.tsp file from the local filesystem to read and use as the `script_body`.
             run_script: Boolean indicating if the script should be run immediately after loading.
             to_nv_memory: Boolean indicating if the script is to be saved to non-volatile memory.
+
+        Note:
+            TSP devices have a max write length before a write_termination character must
+            exist in the data sent to the instrument. Scripts larger than that limit are
+            automatically split into multiple writes (see
+            [`write_long()`][tm_devices.driver_mixins.device_control.tsp_control.TSPControl.write_long]),
+            where every write includes the device's ``write_termination`` character.
         """
         if file_path is not None:
             # script_body argument is overwritten by file contents
@@ -180,8 +192,10 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Load the script. The script is sent with write_long() (instead of a single write())
+        # so that the write_termination character appended to every write always occurs
+        # within the max write length of the instrument, even for very long scripts.
+        self.write_long(f"loadscript {script_name}\n{script_body}\nendscript")
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
@@ -226,6 +240,41 @@ class TSPControl(PIControl, ABC):
             script_name: String indicating the name to of the script to run.
         """
         self.write(f"{script_name}()")
+
+    def write_long(self, command: str, *, opc: bool = False) -> None:
+        r"""Write a potentially long command to the device as a series of bounded writes.
+
+        TSP devices have a max write length (`_MAX_TSP_WRITE_LENGTH`) before a
+        write_termination character must exist in the data sent to the instrument, or the
+        instrument's receive buffer overruns and the data sent is corrupted. This method
+        checks the device's ``write_termination`` and splits ``command`` into chunks small
+        enough that the write_termination character, appended by VISA to every single
+        write, always occurs within the max write length. A command that already fits
+        within the max write length is sent as a single write, identical to calling
+        [`write()`][tm_devices.driver_mixins.device_control.pi_control.PIControl.write].
+
+        The split is based purely on the character count, not on line boundaries, so
+        concatenating all of the sent chunks in order reproduces ``command`` exactly.
+        This is intended for content the instrument accumulates across multiple writes,
+        such as a script being loaded with ``loadscript``/``endscript``.
+
+        Args:
+            command: The command to write to the device.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
+        """
+        write_termination = getattr(self._visa_resource, "write_termination", None) or ""
+        # Make sure the write_termination character appended by VISA to every write
+        # lands within the max write length window of the instrument.
+        max_chunk_length = self._MAX_TSP_WRITE_LENGTH - len(write_termination)
+        if max_chunk_length <= 0:  # pragma: no cover
+            max_chunk_length = self._MAX_TSP_WRITE_LENGTH
+        chunks = [
+            command[index : index + max_chunk_length]
+            for index in range(0, len(command), max_chunk_length)
+        ] or [command]
+        for chunk in chunks[:-1]:
+            self.write(chunk)
+        self.write(chunks[-1], opc=opc)
 
     def set_and_check(  # noqa: PLR0913
         self,
