@@ -15,6 +15,8 @@ from tm_devices.helpers import verify_values
 if TYPE_CHECKING:
     import os
 
+    from collections.abc import Generator
+
     import pyvisa as visa
 
     from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
@@ -33,6 +35,10 @@ class TSPControl(PIControl, ABC):
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
+
+    # TSP devices require a write termination character to be sent at least once every
+    # this many characters, or the instrument's receive buffer overruns.
+    _MAX_TSP_WRITE_LENGTH = 1000
 
     def __init__(
         self,
@@ -180,8 +186,13 @@ class TSPControl(PIControl, ABC):
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        # Load the script
-        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
+        # Load the script. This is sent as multiple writes (see write_long()), since TSP
+        # devices require a write termination character to be sent regularly or a
+        # communication overrun occurs on the instrument. A single long line (e.g. one very
+        # long print() statement) is split the same way as a long multi-line script; the
+        # instrument accumulates raw bytes across writes while in script-load mode, so
+        # this does not require splitting on line boundaries.
+        self.write_long(f"loadscript {script_name}\n{script_body}\nendscript")
 
         # Save to Non-Volatile Memory (script definition survives power cycle)
         if to_nv_memory:
@@ -277,9 +288,48 @@ class TSPControl(PIControl, ABC):
             check = ""
         return check
 
+    def write_long(self, command: str, *, opc: bool = False) -> None:
+        """Write a long string to the device as a series of bounded writes.
+
+        TSP devices require a write termination character to be sent at least once every
+        1000 characters, or the instrument's receive buffer overruns. This method splits
+        ``command`` into chunks of at most that many characters and sends each chunk with its
+        own write. A command that already fits within the limit is sent as a single write,
+        identical to calling ``write()``.
+
+        Note:
+            The split is based purely on character count, not on line or token boundaries, and
+            because each chunk is a separate write, a write termination character follows every
+            chunk. This is intended for content the instrument accumulates across writes, such as
+            a script being loaded with ``loadscript``/``endscript``.
+
+        Args:
+            command: The string to write to the device.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the final chunk.
+        """
+        chunks = list(self._chunk_string(command, self._MAX_TSP_WRITE_LENGTH)) or [command]
+        for chunk in chunks[:-1]:
+            self.write(chunk)
+        self.write(chunks[-1], opc=opc)
+
     ################################################################################################
     # Private Methods
     ################################################################################################
+    @staticmethod
+    def _chunk_string(value: str, max_length: int) -> Generator[str, None, None]:
+        """Yield successive chunks of ``value`` that are no longer than ``max_length``.
+
+        Args:
+            value: The string to split into chunks.
+            max_length: The maximum number of characters allowed in a single chunk.
+
+        Yields:
+            Chunks of ``value``, each at most ``max_length`` characters long. Concatenating
+            all yielded chunks in order reproduces ``value`` exactly.
+        """
+        for start in range(0, len(value), max_length):
+            yield value[start : start + max_length]
+
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""
         super()._cleanup()
